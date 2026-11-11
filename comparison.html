@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Migration Reconciliation</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,.10); --series: #2a78d6; --neg: #e34948;
+  --good: #0ca30c; --warning: #fab219; --critical: #d03b3b; --wash: rgba(208,59,59,.10); --sel: rgba(42,120,214,.10);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,.10); --series: #3987e5; --neg: #e66767;
+    --wash: rgba(230,103,103,.16); --sel: rgba(57,135,229,.18);
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 16px; background: var(--page); color: var(--ink);
+       font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1240px; margin: 0 auto; }
+h1 { font-size: 20px; margin: 0; }
+h2 { font-size: 15px; margin: 0 0 2px; }
+.sub { color: var(--ink2); margin: 0 0 10px; font-size: 13px; }
+.meta { color: var(--muted); font-size: 13px; margin: 2px 0 14px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+.step { display: inline-block; min-width: 20px; height: 20px; line-height: 20px; text-align: center; border-radius: 50%;
+        background: var(--ink); color: var(--surface); font-size: 12px; font-weight: 600; margin-right: 6px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.tile { margin: 0; }
+.tile .label { color: var(--ink2); font-size: 12px; }
+.tile .value { font-size: 26px; font-weight: 600; line-height: 1.2; }
+.tile .note { color: var(--muted); font-size: 12px; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 6px 8px; text-align: right; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { color: var(--muted); font-weight: 500; font-size: 12px; vertical-align: bottom; }
+th.l, td.l { text-align: left; }
+td.wrap { white-space: normal; min-width: 180px; }
+tr.total td { font-weight: 600; border-bottom: 0; }
+tr.sel td { background: var(--sel); }
+td.diff { background: var(--wash); font-weight: 600; }
+tr.sel td.diff { background: var(--wash); }
+.grp th { text-align: center; border-bottom: 1px solid var(--axis); color: var(--ink2); }
+.status { display: inline-flex; gap: 6px; align-items: center; white-space: nowrap; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+code { font: 12.5px ui-monospace, Consolas, monospace; }
+button.pick { font: inherit; background: none; border: 0; padding: 0; color: var(--series); cursor: pointer; text-decoration: underline; }
+.barcell { width: 18%; min-width: 110px; }
+.track { position: relative; height: 12px; }
+.bar { position: absolute; top: 0; bottom: 0; right: 0; border-radius: 3px; background: var(--neg); min-width: 2px; }
+.bar.pos { background: var(--series); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.filters button { font: inherit; font-size: 13px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border);
+                  background: transparent; color: var(--ink2); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.arrow { color: var(--muted); padding: 0 2px; }
+.foot, .empty { color: var(--muted); font-size: 12px; margin-top: 8px; }
+.empty { font-size: 13px; margin: 0; }
+</style>
+</head>
+<body>
+<main>
+<h1>Migration reconciliation: SQL Server vs Snowflake</h1>
+<div class="meta">DAL tier 1 liquidity tables · as at 31 Oct 2026 · sample values for illustration</div>
+
+<section class="tiles" id="tiles"></section>
+
+<section class="card">
+  <h2><span class="step">1</span>Every table at a glance</h2>
+  <p class="sub">Do the row counts and the key money total agree? One line per table. Select a table name to see its detail below.</p>
+  <div class="scroll"><table id="tables"></table></div>
+  <div class="foot">Within tolerance: a total difference under 1.00 with every row difference under 0.01.</div>
+</section>
+
+<section class="card">
+  <h2><span class="step">2</span><span class="tname"></span>: where the difference comes from</h2>
+  <p class="sub">The gap between the two totals, split by cause. This shows whether the problem is a few rows or a systematic conversion issue.</p>
+  <div class="scroll"><table id="bridge"></table></div>
+</section>
+
+<section class="card">
+  <h2><span class="step">3</span><span class="tname"></span>: by business grouping</h2>
+  <p class="sub">The same totals at the level the downstream liquidity reports use, so you can see which numbers would move.</p>
+  <div class="scroll"><table id="groups"></table></div>
+</section>
+
+<section class="card">
+  <h2><span class="step">4</span><span class="tname"></span>: column by column</h2>
+  <p class="sub">Data type, blanks and distinct values on each side, and how many matched rows differ in that column.</p>
+  <div class="scroll"><table id="columns"></table></div>
+</section>
+
+<section class="card">
+  <h2><span class="step">5</span><span class="tname"></span>: the rows that differ</h2>
+  <p class="sub">Side by side, with the differing value highlighted and the cause named.</p>
+  <div class="filters" id="filters"></div>
+  <div class="scroll"><table id="rows"></table></div>
+  <div class="foot" id="rowsfoot"></div>
+</section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const n = (v, d = 0) => v.toLocaleString("en-AU", { minimumFractionDigits: d, maximumFractionDigits: d });
+const signed = (v, d = 2) => { const r = +v.toFixed(d); return r === 0 ? n(0, d) : (r > 0 ? "+" : "−") + n(Math.abs(r), d); };
+const ST = {
+  match: ["var(--good)", "✓", "Match"],
+  tol:   ["var(--warning)", "▲", "Within tolerance"],
+  brk:   ["var(--critical)", "✕", "Break"],
+};
+const status = k => `<span class="status"><span class="dot" style="background:${ST[k][0]}"></span>${ST[k][1]} ${ST[k][2]}</span>`;
+const KIND = { diff: "Value differs", sql: "Only in SQL Server", sf: "Only in Snowflake", dup: "Duplicated in Snowflake" };
+
+// ---- static sample data ----------------------------------------------------
+// col(name, type SQL Server, type Snowflake, nulls SQL, nulls SF, distinct SQL, distinct SF, rows that differ)
+const col = (c, tSql, tSf, nSql, nSf, dSql, dSf, diff) => ({ c, tSql, tSf, nSql, nSf, dSql, dSf, diff });
+const same = (c, tSql, tSf, nulls, distinct) => col(c, tSql, tSf, nulls, nulls, distinct, distinct, 0);
+const key = (c, tSql, tSf, dSql, dSf, note) => col(c, tSql, tSf, 0, 0, dSql, dSf, note || null);
+
+const TABLES = [
+  { name: "DAL.DEPOSIT", used: "Cash outflows, stable funding", keyName: "DEPOSIT_ID", measure: "BALANCE_AUD",
+    rowsSql: 1248310, rowsSf: 1248307, st: "brk",
+    groups: [
+      { g: "Transaction accounts", sql: 31200410220.18, sf: 31200410220.02 },
+      { g: "Savings accounts",     sql: 22640118905.40, sf: 22639969843.39 },
+      { g: "Term deposits",        sql: 16318902410.66, sf: 16318408260.57 },
+      { g: "Corporate at-call",    sql: 5253448578.13,  sf: 5253448578.13 } ],
+    bridge: [
+      { cause: "Row only in SQL Server",      kind: "sql",  rows: 4,   impact: -512400.00, act: "Find why these keys were not loaded" },
+      { cause: "Value differs (late update)", kind: "diff", rows: 6,   impact: -149061.92, act: "Check load cut-off times on both sides" },
+      { cause: "Row only in Snowflake",       kind: "sf",   rows: 1,   impact: 18250.00,   act: "Check for a delete missed by the Snowflake load" },
+      { cause: "Rounding (4 decimals to 2)",  kind: "diff", rows: 147, impact: -0.34,      act: "Align the number scale, or accept within tolerance" },
+      { cause: "Date shifted by time zone",   kind: "diff", rows: 41,  impact: 0,          act: "Load dates without converting to UTC" },
+      { cause: "Empty text vs blank (NULL)",  kind: "diff", rows: 18,  impact: 0,          act: "Agree one convention and apply it in the load" } ],
+    columns: [
+      key("DEPOSIT_ID (key)", "bigint", "NUMBER(19,0)", 1248310, 1248307),
+      same("CUSTOMER_ID", "bigint", "NUMBER(19,0)", 0, 911204),
+      same("PRODUCT_CODE", "varchar(10)", "VARCHAR(10)", 0, 64),
+      col("BRANCH_CODE", "varchar(6)", "VARCHAR(6)", 20114, 20132, 213, 212, 18),
+      same("CURRENCY", "char(3)", "VARCHAR(3)", 0, 9),
+      col("BALANCE_AUD", "decimal(19,4)", "NUMBER(18,2)", 0, 0, 884310, 884102, 153),
+      same("INTEREST_RATE", "decimal(9,6)", "NUMBER(9,6)", 301220, 412),
+      col("MATURITY_DATE", "datetime", "TIMESTAMP_NTZ", 902118, 902118, 1461, 1478, 41),
+      same("FCS_COVERED_FLAG", "bit", "BOOLEAN", 0, 2) ],
+    rows: [
+      { key: "1001877001", kind: "sql",  col: "(whole row)",   sql: "180,000.00",       sf: "not present",      cause: "Row only in SQL Server" },
+      { key: "1001877002", kind: "sql",  col: "(whole row)",   sql: "150,400.00",       sf: "not present",      cause: "Row only in SQL Server" },
+      { key: "1002000019", kind: "sf",   col: "(whole row)",   sql: "not present",      sf: "18,250.00",        cause: "Row only in Snowflake" },
+      { key: "1000911872", kind: "diff", col: "BALANCE_AUD",   sql: "250,000.0000",     sf: "210,000.00",       cause: "Value differs (late update)" },
+      { key: "1001200345", kind: "diff", col: "BALANCE_AUD",   sql: "96,500.0000",      sf: "61,000.00",        cause: "Value differs (late update)" },
+      { key: "1000482917", kind: "diff", col: "BALANCE_AUD",   sql: "8,412.1249",       sf: "8,412.12",         cause: "Rounding (4 decimals to 2)" },
+      { key: "1000519004", kind: "diff", col: "MATURITY_DATE", sql: "2027-03-15 00:00", sf: "2027-03-14 13:00", cause: "Date shifted by time zone" },
+      { key: "1000733150", kind: "diff", col: "BRANCH_CODE",   sql: "'' (empty)",       sf: "NULL",             cause: "Empty text vs blank (NULL)" } ] },
+
+  { name: "DAL.LOAN", used: "Cash inflows, required stable funding", keyName: "LOAN_ID", measure: "BALANCE_AUD",
+    rowsSql: 412905, rowsSf: 412905, st: "match",
+    groups: [
+      { g: "Residential mortgages",           sql: 60012440100.25, sf: 60012440100.25 },
+      { g: "Business loans",                  sql: 12004118770.10, sf: 12004118770.10 },
+      { g: "Personal loans",                  sql: 6990204120.20,  sf: 6990204120.20 },
+      { g: "Loans to financial institutions", sql: 1504441100.00,  sf: 1504441100.00 } ],
+    bridge: [],
+    columns: [
+      key("LOAN_ID (key)", "bigint", "NUMBER(19,0)", 412905, 412905),
+      same("CUSTOMER_ID", "bigint", "NUMBER(19,0)", 0, 301114),
+      same("PRODUCT_CODE", "varchar(10)", "VARCHAR(10)", 0, 48),
+      same("BALANCE_AUD", "decimal(19,4)", "NUMBER(19,4)", 0, 398220),
+      same("LVR", "decimal(5,2)", "NUMBER(5,2)", 52480, 9120),
+      same("NEXT_REPAYMENT_AUD", "decimal(19,4)", "NUMBER(19,4)", 0, 120441),
+      same("MATURITY_DATE", "date", "DATE", 1204, 10958),
+      same("PERFORMING_FLAG", "bit", "BOOLEAN", 0, 2) ],
+    rows: [] },
+
+  { name: "DAL.SECURITY", used: "HQLA, required stable funding", keyName: "SECURITY_ID", measure: "MARKET_VALUE_AUD",
+    rowsSql: 3214, rowsSf: 3214, st: "tol",
+    groups: [
+      { g: "Government and semi-government", sql: 17930110000.00, sf: 17930110000.00 },
+      { g: "HQLA2 securities",               sql: 1105300000.00,  sf: 1105300000.02 },
+      { g: "Other securities",               sql: 5553000000.00,  sf: 5553000000.00 } ],
+    bridge: [
+      { cause: "Rounding (4 decimals to 2)", kind: "diff", rows: 6, impact: 0.02, act: "Align the number scale, or accept within tolerance" } ],
+    columns: [
+      key("SECURITY_ID (key)", "bigint", "NUMBER(19,0)", 3214, 3214),
+      same("ISIN", "char(12)", "VARCHAR(12)", 0, 3102),
+      same("ISSUER_TYPE", "varchar(20)", "VARCHAR(20)", 0, 7),
+      same("HQLA_CLASS", "varchar(6)", "VARCHAR(6)", 412, 3),
+      same("FACE_VALUE_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 1840),
+      col("MARKET_VALUE_AUD", "decimal(19,4)", "NUMBER(18,2)", 0, 0, 3190, 3190, 6),
+      same("MATURITY_DATE", "date", "DATE", 0, 611),
+      same("ENCUMBERED_FLAG", "bit", "BOOLEAN", 0, 2) ],
+    rows: [
+      { key: "50002214", kind: "diff", col: "MARKET_VALUE_AUD", sql: "25,418,750.0051", sf: "25,418,750.01", cause: "Rounding (4 decimals to 2)" },
+      { key: "50003102", kind: "diff", col: "MARKET_VALUE_AUD", sql: "9,870,412.3350",  sf: "9,870,412.34",  cause: "Rounding (4 decimals to 2)" } ] },
+
+  { name: "DAL.LOAN_FACILITY", used: "Undrawn commitment outflows", keyName: "FACILITY_ID", measure: "UNDRAWN_AUD",
+    rowsSql: 96440, rowsSf: 96440, st: "match",
+    groups: [
+      { g: "Retail and SME",         sql: 12010400120.00, sf: 12010400120.00 },
+      { g: "Corporate credit",       sql: 6002518220.00,  sf: 6002518220.00 },
+      { g: "Corporate liquidity",    sql: 989200000.00,   sf: 989200000.00 },
+      { g: "Financial institutions", sql: 500000000.00,   sf: 500000000.00 } ],
+    bridge: [],
+    columns: [
+      key("FACILITY_ID (key)", "bigint", "NUMBER(19,0)", 96440, 96440),
+      same("CUSTOMER_ID", "bigint", "NUMBER(19,0)", 0, 88102),
+      same("FACILITY_TYPE", "varchar(12)", "VARCHAR(12)", 0, 4),
+      same("LIMIT_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 20410),
+      same("UNDRAWN_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 61220),
+      same("COMMITTED_FLAG", "bit", "BOOLEAN", 0, 2),
+      same("EXPIRY_DATE", "date", "DATE", 40112, 3650) ],
+    rows: [] },
+
+  { name: "DAL.COLLATERAL", used: "Encumbrance (removes HQLA)", keyName: "COLLATERAL_ID", measure: "PLEDGED_VALUE_AUD",
+    rowsSql: 1872, rowsSf: 1872, st: "brk",
+    groups: [
+      { g: "Repo collateral",   sql: 1900400000.00, sf: 1900400000.00 },
+      { g: "Covered bond pool", sql: 450260120.00,  sf: 450260120.00 },
+      { g: "Derivative margin", sql: 150000000.00,  sf: 150000000.00 } ],
+    bridge: [
+      { cause: "Trailing spaces in text", kind: "diff", rows: 38, impact: 0, act: "Trim fixed-width text on load; no money impact, but joins and filters on this column can miss rows" } ],
+    columns: [
+      key("COLLATERAL_ID (key)", "bigint", "NUMBER(19,0)", 1872, 1872),
+      same("SECURITY_ID", "bigint", "NUMBER(19,0)", 0, 1604),
+      col("COLLATERAL_TYPE", "char(10)", "VARCHAR(10)", 0, 0, 3, 3, 38),
+      same("PLEDGED_VALUE_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 1710),
+      same("PLEDGED_TO", "varchar(40)", "VARCHAR(40)", 0, 22),
+      same("RELEASE_DATE", "date", "DATE", 310, 204) ],
+    rows: [
+      { key: "7700118", kind: "diff", col: "COLLATERAL_TYPE", sql: "'REPO      '", sf: "'REPO'",   cause: "Trailing spaces in text" },
+      { key: "7700342", kind: "diff", col: "COLLATERAL_TYPE", sql: "'MARGIN    '", sf: "'MARGIN'", cause: "Trailing spaces in text" } ] },
+
+  { name: "DAL.REPO", used: "Secured funding outflows and inflows", keyName: "TRADE_ID", measure: "CASH_AMOUNT_AUD",
+    rowsSql: 1204, rowsSf: 1206, st: "brk",
+    groups: [
+      { g: "Repos (funding)",         sql: 3500000000.00, sf: 3575000000.00 },
+      { g: "Reverse repos (lending)", sql: 2300000000.00, sf: 2300000000.00 } ],
+    bridge: [
+      { cause: "Row loaded twice in Snowflake", kind: "dup", rows: 2, impact: 75000000.00, act: "Add a unique-key check to the Snowflake load and reload" } ],
+    columns: [
+      key("TRADE_ID (key)", "varchar(20)", "VARCHAR(20)", 1204, 1204, "2 duplicate keys"),
+      same("DIRECTION", "varchar(8)", "VARCHAR(8)", 0, 2),
+      same("COLLATERAL_CLASS", "varchar(8)", "VARCHAR(8)", 0, 5),
+      same("CASH_AMOUNT_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 1010),
+      same("COUNTERPARTY_ID", "bigint", "NUMBER(19,0)", 0, 38),
+      same("MATURITY_DATE", "date", "DATE", 0, 44) ],
+    rows: [
+      { key: "RP-20261028-0147", kind: "dup", col: "(whole row)", sql: "1 row · 50,000,000.00", sf: "2 rows · 100,000,000.00", cause: "Row loaded twice in Snowflake" },
+      { key: "RP-20261029-0012", kind: "dup", col: "(whole row)", sql: "1 row · 25,000,000.00", sf: "2 rows · 50,000,000.00",  cause: "Row loaded twice in Snowflake" } ] },
+
+  { name: "DAL.DERIVATIVE", used: "Derivative and collateral outflows", keyName: "DEAL_ID", measure: "MTM_AUD",
+    rowsSql: 28410, rowsSf: 28410, st: "brk",
+    groups: [
+      { g: "Interest rate swaps",   sql: 412300000.00, sf: 412300000.00 },
+      { g: "FX forwards and swaps", sql: 188450000.00, sf: 187245669.82 },
+      { g: "Other derivatives",     sql: 20100000.00,  sf: 20100000.00 } ],
+    bridge: [
+      { cause: "Different FX rate used", kind: "diff", rows: 14, impact: -1204330.18, act: "Use the same rate date for the AUD conversion on both sides" } ],
+    columns: [
+      key("DEAL_ID (key)", "bigint", "NUMBER(19,0)", 28410, 28410),
+      same("PRODUCT", "varchar(20)", "VARCHAR(20)", 0, 14),
+      same("COUNTERPARTY_ID", "bigint", "NUMBER(19,0)", 0, 412),
+      same("CURRENCY", "char(3)", "VARCHAR(3)", 0, 11),
+      same("MTM_LOCAL", "decimal(19,2)", "NUMBER(19,2)", 0, 27880),
+      col("FX_RATE", "decimal(18,8)", "NUMBER(18,8)", 0, 0, 11, 11, 14),
+      col("MTM_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 0, 27902, 27901, 14),
+      same("MATURITY_DATE", "date", "DATE", 0, 2210) ],
+    rows: [
+      { key: "88120045", kind: "diff", col: "FX_RATE", sql: "0.65120000",    sf: "0.65480000",    cause: "Different FX rate used" },
+      { key: "88120045", kind: "diff", col: "MTM_AUD", sql: "18,427,518.43", sf: "18,326,206.48", cause: "Different FX rate used" } ] },
+
+  { name: "DAL.WHOLESALE_DEBT", used: "Debt outflows, stable funding", keyName: "ISSUE_ID", measure: "OUTSTANDING_AUD",
+    rowsSql: 642, rowsSf: 642, st: "match",
+    groups: [
+      { g: "Short-term paper", sql: 4500000000.00, sf: 4500000000.00 },
+      { g: "Senior bonds",     sql: 9000000000.00, sf: 9000000000.00 },
+      { g: "Covered bonds",    sql: 3000000000.00, sf: 3000000000.00 },
+      { g: "Tier 2 capital",   sql: 1500000000.00, sf: 1500000000.00 } ],
+    bridge: [],
+    columns: [
+      key("ISSUE_ID (key)", "varchar(20)", "VARCHAR(20)", 642, 642),
+      same("INSTRUMENT_TYPE", "varchar(20)", "VARCHAR(20)", 0, 4),
+      same("CURRENCY", "char(3)", "VARCHAR(3)", 0, 6),
+      same("OUTSTANDING_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 588),
+      same("ISSUE_DATE", "date", "DATE", 0, 402),
+      same("MATURITY_DATE", "date", "DATE", 0, 371) ],
+    rows: [] },
+
+  { name: "DAL.TRADE_FINANCE", used: "Contingent outflows", keyName: "EXPOSURE_ID", measure: "EXPOSURE_AUD",
+    rowsSql: 5318, rowsSf: 5309, st: "brk",
+    groups: [
+      { g: "Trade finance",                    sql: 720000000.00, sf: 720000000.00 },
+      { g: "Guarantees and letters of credit", sql: 960000000.00, sf: 948600000.00 } ],
+    bridge: [
+      { cause: "Row only in SQL Server (status text case)", kind: "sql", rows: 9, impact: -11400000.00, act: "Snowflake compares text case-sensitively: 'Active' was filtered out. Compare status codes ignoring case" } ],
+    columns: [
+      key("EXPOSURE_ID (key)", "bigint", "NUMBER(19,0)", 5318, 5309),
+      same("PRODUCT", "varchar(20)", "VARCHAR(20)", 0, 6),
+      col("STATUS", "varchar(10)", "VARCHAR(10)", 0, 0, 3, 2, 0),
+      col("EXPOSURE_AUD", "decimal(19,2)", "NUMBER(19,2)", 0, 0, 4102, 4095, 0),
+      col("CUSTOMER_ID", "bigint", "NUMBER(19,0)", 0, 0, 2204, 2201, 0),
+      col("EXPIRY_DATE", "date", "DATE", 0, 0, 890, 889, 0) ],
+    rows: [
+      { key: "4102277", kind: "sql", col: "(whole row)", sql: "STATUS 'Active' · 2,400,000.00", sf: "not present", cause: "Row only in SQL Server (status text case)" },
+      { key: "4102291", kind: "sql", col: "(whole row)", sql: "STATUS 'Active' · 1,150,000.00", sf: "not present", cause: "Row only in SQL Server (status text case)" } ] },
+
+  { name: "DAL.COUNTERPARTY", used: "Classification of every other table", keyName: "COUNTERPARTY_ID", measure: null,
+    rowsSql: 188020, rowsSf: 188020, st: "match",
+    groups: [], bridge: [],
+    columns: [
+      key("COUNTERPARTY_ID (key)", "bigint", "NUMBER(19,0)", 188020, 188020),
+      same("LEGAL_NAME", "nvarchar(200)", "VARCHAR(200)", 0, 187411),
+      same("COUNTERPARTY_TYPE", "varchar(20)", "VARCHAR(20)", 0, 9),
+      same("PARENT_ID", "bigint", "NUMBER(19,0)", 151020, 12210),
+      same("COUNTRY", "char(2)", "VARCHAR(2)", 0, 61),
+      same("FINANCIAL_FLAG", "bit", "BOOLEAN", 0, 2) ],
+    rows: [] },
+];
+
+// ---- derived figures -------------------------------------------------------
+const sum = (t, side) => t.measure ? t.groups.reduce((s, g) => s + g[side], 0) : null;
+const breaks = t => t.bridge.reduce((s, b) => s + b.rows, 0);
+const byKind = (t, kinds) => t.bridge.filter(b => kinds.includes(b.kind)).reduce((s, b) => s + b.rows, 0);
+const matched = t => t.rowsSql - byKind(t, ["sql", "diff", "dup"]);
+const moneyStatus = d => Math.abs(d) < 0.005 ? "match" : Math.abs(d) < 1 ? "tol" : "brk";
+
+// ---- render ----------------------------------------------------------------
+let current = 0, filter = "all";
+
+function drawTables() {
+  $("tables").innerHTML =
+    `<tr class="grp"><th></th><th></th><th colspan="3">Row count</th><th colspan="4">Key money total (AUD)</th><th></th><th></th></tr>
+     <tr><th class="l">Table</th><th class="l">Used in liquidity for</th><th>SQL Server</th><th>Snowflake</th><th>Difference</th>
+         <th class="l">Column</th><th>SQL Server</th><th>Snowflake</th><th>Difference</th><th>Rows that differ</th><th class="l">Result</th></tr>` +
+    TABLES.map((t, i) => {
+      const rd = t.rowsSf - t.rowsSql, a = sum(t, "sql"), b = sum(t, "sf"), sd = a == null ? null : b - a, rb = breaks(t);
+      return `<tr class="${i === current ? "sel" : ""}"><td class="l"><button class="pick" data-i="${i}" aria-pressed="${i === current}"><code>${t.name}</code></button></td>
+        <td class="l">${t.used}</td><td>${n(t.rowsSql)}</td><td>${n(t.rowsSf)}</td><td class="${rd ? "diff" : ""}">${signed(rd, 0)}</td>
+        <td class="l">${t.measure ? `<code>${t.measure}</code>` : "none"}</td>
+        <td>${a == null ? "" : n(a, 2)}</td><td>${a == null ? "" : n(b, 2)}</td>
+        <td class="${sd != null && Math.abs(sd) >= 0.005 ? "diff" : ""}">${sd == null ? "" : signed(sd)}</td>
+        <td class="${rb ? "diff" : ""}">${n(rb)}</td><td class="l">${status(t.st)}</td></tr>`;
+    }).join("");
+}
+
+function drawDetail() {
+  const t = TABLES[current], a = sum(t, "sql"), b = sum(t, "sf"), d = a == null ? null : b - a, rb = breaks(t);
+  document.querySelectorAll(".tname").forEach(e => e.textContent = t.name);
+  const counts = k => TABLES.filter(x => x.st === k).length;
+  const tile = (label, value, note) => `<div class="card tile"><div class="label">${label}</div><div class="value">${value}</div><div class="note">${note}</div></div>`;
+  const parts = [[byKind(t, ["diff"]), "values differ"], [byKind(t, ["sql", "sf"]), "rows on one side only"], [byKind(t, ["dup"]), "duplicated"]]
+    .filter(p => p[0]).map(p => `${n(p[0])} ${p[1]}`).join(" · ");
+  $("tiles").innerHTML =
+    tile("Tables compared", TABLES.length, `${counts("match")} match · ${counts("tol")} within tolerance · ${counts("brk")} break`) +
+    tile(`${t.name} rows matched`, (100 * matched(t) / t.rowsSql).toFixed(3) + "%", `${n(matched(t))} of ${n(t.rowsSql)}`) +
+    tile(`${t.name} rows that differ`, n(rb), parts || "none") +
+    tile(`${t.name} difference`, d == null ? "n/a" : signed(d), d == null ? "No money column" : `${t.measure}, Snowflake minus SQL Server`);
+
+  // 2. bridge
+  if (!t.bridge.length) {
+    $("bridge").innerHTML = `<tr><td class="l"><p class="empty">No differences: every row and value matches.</p></td></tr>`;
+  } else {
+    const max = Math.max(...t.bridge.map(x => Math.abs(x.impact)));
+    $("bridge").innerHTML =
+      `<tr><th class="l">Step</th><th>Rows</th><th>${t.measure || "Amount"} (AUD)</th><th></th><th class="l">What to do</th></tr>
+       <tr class="total"><td class="l">SQL Server total</td><td>${n(t.rowsSql)}</td><td>${a == null ? "" : n(a, 2)}</td><td></td><td></td></tr>` +
+      t.bridge.map(x => `<tr><td class="l">${x.cause}</td><td>${n(x.rows)}</td><td>${signed(x.impact)}</td>
+        <td class="barcell"><div class="track" title="${x.cause}: ${signed(x.impact)}">${x.impact ? `<div class="bar${x.impact > 0 ? " pos" : ""}" style="width:${(Math.abs(x.impact) / max * 100).toFixed(2)}%"></div>` : ""}</div></td>
+        <td class="l wrap">${x.act}</td></tr>`).join("") +
+      `<tr class="total"><td class="l">Snowflake total</td><td>${n(t.rowsSf)}</td><td>${a == null ? "" : n(b, 2)}</td><td></td>
+        <td class="l">${d == null ? "" : "Difference " + signed(d)}</td></tr>`;
+  }
+
+  // 3. groups
+  $("groups").innerHTML = !t.measure
+    ? `<tr><td class="l"><p class="empty">No money column: this table is compared by row and by column only.</p></td></tr>`
+    : `<tr><th class="l">Grouping</th><th>SQL Server</th><th>Snowflake</th><th>Difference</th><th>Difference %</th><th class="l">Result</th></tr>` +
+      t.groups.map(g => { const gd = g.sf - g.sql;
+        return `<tr><td class="l">${g.g}</td><td>${n(g.sql, 2)}</td><td>${n(g.sf, 2)}</td><td class="${Math.abs(gd) >= 0.005 ? "diff" : ""}">${signed(gd)}</td>
+          <td>${(100 * gd / g.sql).toFixed(5)}%</td><td class="l">${status(moneyStatus(gd))}</td></tr>`; }).join("") +
+      `<tr class="total"><td class="l">Total</td><td>${n(a, 2)}</td><td>${n(b, 2)}</td><td>${signed(d)}</td><td>${(100 * d / a).toFixed(5)}%</td><td></td></tr>`;
+
+  // 4. columns
+  $("columns").innerHTML =
+    `<tr class="grp"><th></th><th colspan="2">Data type</th><th colspan="2">Blank (NULL) values</th><th colspan="2">Distinct values</th><th></th><th></th></tr>
+     <tr><th class="l">Column</th><th class="l">SQL Server</th><th class="l">Snowflake</th><th>SQL Server</th><th>Snowflake</th>
+         <th>SQL Server</th><th>Snowflake</th><th>Matched rows that differ</th><th class="l">Result</th></tr>` +
+    t.columns.map(c => { const bad = !!c.diff || c.nSql !== c.nSf || c.dSql !== c.dSf;
+      return `<tr><td class="l"><code>${c.c}</code></td><td class="l"><code>${c.tSql}</code></td><td class="l"><code>${c.tSf}</code></td>
+        <td>${n(c.nSql)}</td><td class="${c.nSql !== c.nSf ? "diff" : ""}">${n(c.nSf)}</td>
+        <td>${n(c.dSql)}</td><td class="${c.dSql !== c.dSf ? "diff" : ""}">${n(c.dSf)}</td>
+        <td class="${c.diff ? "diff" : ""}">${c.diff == null ? "key" : typeof c.diff === "string" ? c.diff : n(c.diff)}</td>
+        <td class="l">${status(bad ? "brk" : "match")}</td></tr>`; }).join("");
+
+  drawRows();
+}
+
+function drawRows() {
+  const t = TABLES[current], kinds = [...new Set(t.rows.map(r => r.kind))];
+  if (!t.rows.length) {
+    $("filters").innerHTML = "";
+    $("rows").innerHTML = `<tr><td class="l"><p class="empty">No rows differ.</p></td></tr>`;
+    $("rowsfoot").textContent = "";
+    return;
+  }
+  $("filters").innerHTML = [["all", "All"], ...kinds.map(k => [k, KIND[k]])]
+    .map(([k, label]) => `<button data-k="${k}" aria-pressed="${k === filter}">${label}</button>`).join("");
+  const shown = t.rows.filter(r => filter === "all" || r.kind === filter);
+  $("rows").innerHTML =
+    `<tr><th class="l">${t.keyName}</th><th class="l">Type</th><th class="l">Column</th><th>SQL Server</th><th></th><th class="l">Snowflake</th><th class="l">Cause</th></tr>` +
+    shown.map(r => `<tr><td class="l"><code>${r.key}</code></td><td class="l">${KIND[r.kind]}</td><td class="l"><code>${r.col}</code></td>
+      <td class="${r.kind === "sf" ? "" : "diff"}">${r.sql}</td><td class="arrow">→</td><td class="l ${r.kind === "sql" ? "" : "diff"}">${r.sf}</td>
+      <td class="l">${r.cause}</td></tr>`).join("");
+  $("rowsfoot").textContent = `Showing ${shown.length} sample rows of ${n(breaks(t))} that differ.`;
+}
+
+$("tables").addEventListener("click", e => {
+  const b = e.target.closest("button.pick");
+  if (b) { current = +b.dataset.i; filter = "all"; drawTables(); drawDetail(); }
+});
+$("filters").addEventListener("click", e => { const k = e.target.dataset.k; if (k) { filter = k; drawRows(); } });
+drawTables();
+drawDetail();
+</script>
+</body>
+</html>
