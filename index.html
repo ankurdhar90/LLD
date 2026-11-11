@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liquidity Ticker</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,.10); --series: #2a78d6;
+  --good: #0ca30c; --warning: #fab219; --critical: #d03b3b; --neg: #e34948;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,.10); --series: #3987e5; --neg: #e66767;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 16px; background: var(--page); color: var(--ink);
+       font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; margin-bottom: 12px; }
+h1 { font-size: 18px; margin: 0; }
+h2 { font-size: 13px; margin: 0 0 8px; color: var(--ink2); font-weight: 600; }
+.meta { color: var(--muted); }
+#error { display: none; padding: 8px 12px; margin-bottom: 12px; border: 1px solid var(--critical); border-radius: 8px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 12px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.tile .label { color: var(--ink2); font-size: 12px; }
+.tile .value { font-size: 30px; font-weight: 600; line-height: 1.2; }
+.tile .sub { color: var(--muted); font-size: 12px; }
+.status { display: inline-flex; gap: 5px; align-items: center; font-size: 12px; color: var(--ink2); }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+.chart { position: relative; margin-bottom: 12px; }
+.plot { position: relative; height: 140px; margin-right: 44px; }
+.plot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.ylab { position: absolute; right: -44px; width: 40px; font-size: 11px; color: var(--muted); transform: translateY(-50%); font-variant-numeric: tabular-nums; }
+#tip { position: absolute; display: none; pointer-events: none; background: var(--surface); border: 1px solid var(--border);
+       border-radius: 6px; padding: 4px 8px; font-size: 12px; white-space: nowrap; transform: translate(-50%, -110%); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 12px; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { padding: 4px 6px; text-align: right; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { color: var(--muted); font-weight: 500; font-size: 12px; }
+th:first-child, td:first-child { text-align: left; white-space: normal; }
+tr.total td { font-weight: 600; border-bottom: 0; }
+td.barcell { width: 30%; min-width: 90px; padding: 4px 0 4px 10px; }
+.track { position: relative; height: 12px; }
+.track.mid { border-left: 0; background: linear-gradient(var(--axis), var(--axis)) 50% 0 / 1px 100% no-repeat; }
+.bar { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: var(--series); }
+.bar.neg { background: var(--neg); }
+.note { color: var(--muted); font-size: 12px; margin-top: 8px; }
+.feeds { display: flex; flex-wrap: wrap; gap: 8px; }
+.feed { border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; font-size: 12px; color: var(--ink2); }
+</style>
+</head>
+<body>
+<header>
+  <h1>APS 210 Liquidity Ticker</h1>
+  <span class="meta" id="source">Connecting…</span>
+  <span class="meta" id="clock"></span>
+  <span class="meta">AUD millions</span>
+</header>
+<div id="error" role="alert"></div>
+
+<section class="tiles" id="tiles"></section>
+
+<section class="card chart">
+  <h2>LCR this session (%)</h2>
+  <div class="plot" id="plot">
+    <svg id="svg" viewBox="0 0 600 140" preserveAspectRatio="none" role="img" aria-label="LCR over this session"></svg>
+    <div id="tip"></div>
+  </div>
+</section>
+
+<section class="card" style="margin-bottom:12px">
+  <h2>Feed freshness</h2>
+  <div class="feeds" id="feeds"></div>
+</section>
+
+<section class="grid2" id="risk" style="margin-bottom:12px"></section>
+
+<section class="grid2" id="tables"></section>
+
+<script>
+// Internal early-warning triggers above the 100% regulatory minimum. Set to your board limits.
+const AMBER = { lcr: 110, nsfr: 105 };
+const STALE_MS = 60 * 60 * 1000;   // a feed older than this is flagged stale
+const STALE_MS_BY_FEED = {};       // per-feed override, e.g. { loans: 26 * 3600e3 } for a daily batch
+const MAX_POINTS = 900;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const num = v => Math.round(v).toLocaleString("en-AU");
+const pct = v => v == null ? "n/a" : v.toFixed(1) + "%";
+const history = [];
+
+function status(value, amber) {
+  if (value == null) return ["var(--muted)", "–", "No ratio"];
+  if (value < 100) return ["var(--critical)", "✕", "Below 100% minimum"];
+  if (value < amber) return ["var(--warning)", "▲", "Below " + amber + "% trigger"];
+  return ["var(--good)", "✓", "Above " + amber + "% trigger"];
+}
+
+function tile(label, value, sub, st) {
+  const s = st ? `<div class="status"><span class="dot" style="background:${st[0]}"></span>${st[1]} ${esc(st[2])}</div>` : "";
+  return `<div class="card tile"><div class="label">${esc(label)}</div><div class="value">${esc(value)}</div>` +
+         `<div class="sub">${esc(sub)}</div>${s}</div>`;
+}
+
+function table(title, lines, factorKey, weightedKey, totalLabel, total, extraRows = "") {
+  const rows = lines.sort((a, b) => b[weightedKey] - a[weightedKey]).map(l =>
+    `<tr title="APS 210 ${esc(l.ref)}"><td>${esc(l.label)}</td><td>${num(l.amount)}</td><td>${(100 * l[factorKey]).toFixed(0)}%</td><td>${num(l[weightedKey])}</td></tr>`).join("");
+  return `<div class="card"><h2>${esc(title)}</h2><div class="scroll"><table>` +
+    `<tr><th>Line</th><th>Balance</th><th>Factor</th><th>Weighted</th></tr>${rows}${extraRows}` +
+    `<tr class="total"><td>${esc(totalLabel)}</td><td></td><td></td><td>${num(total)}</td></tr></table></div></div>`;
+}
+
+function ladderCard(ladder) {
+  let cum = 0;
+  const rows = ladder.map(([bucket, inflow, outflow]) => ({ bucket, inflow, outflow, net: inflow - outflow, cum: cum += inflow - outflow }));
+  const max = Math.max(1, ...rows.map(r => Math.abs(r.cum)));
+  const body = rows.map(r => {
+    const w = Math.abs(r.cum) / max * 50, side = r.cum < 0 ? `right:50%` : `left:50%`;
+    return `<tr><td>${esc(r.bucket)}</td><td>${num(r.inflow)}</td><td>${num(r.outflow)}</td><td>${num(r.net)}</td><td>${num(r.cum)}</td>` +
+      `<td class="barcell"><div class="track mid" title="${esc(r.bucket)}: cumulative gap ${num(r.cum)}">` +
+      `<div class="bar${r.cum < 0 ? " neg" : ""}" style="${side};width:${w.toFixed(1)}%"></div></div></td></tr>`;
+  }).join("");
+  return `<div class="card"><h2>Maturity ladder (contractual)</h2><div class="scroll"><table>` +
+    `<tr><th>Bucket</th><th>Inflows</th><th>Outflows</th><th>Net gap</th><th>Cumulative</th><th>Cumulative gap</th></tr>${body}</table></div>` +
+    `<div class="note">Bars left of the centre line are a cumulative shortfall. Contractual, so at-call deposits fall due overnight.</div></div>`;
+}
+
+function concentrationCard(depositors, total) {
+  const max = Math.max(1, ...depositors.map(d => d[1]));
+  const top = depositors.reduce((s, d) => s + d[1], 0);
+  const share = v => total ? (100 * v / total).toFixed(1) + "%" : "n/a";
+  const body = depositors.map(([name, amt]) =>
+    `<tr><td>${esc(name)}</td><td>${num(amt)}</td><td>${share(amt)}${total && amt / total > 0.01 ? " ▲" : ""}</td>` +
+    `<td class="barcell"><div class="track" title="${esc(name)}: ${num(amt)}"><div class="bar" style="left:0;width:${(amt / max * 100).toFixed(1)}%"></div></div></td></tr>`).join("");
+  return `<div class="card"><h2>Funding concentration (top ${depositors.length})</h2><div class="scroll"><table>` +
+    `<tr><th>Counterparty</th><th>Amount</th><th>% of funding</th><th></th></tr>${body}` +
+    `<tr class="total"><td>Top ${depositors.length} total</td><td>${num(top)}</td><td>${share(top)}</td><td></td></tr></table></div>` +
+    `<div class="note">▲ marks a counterparty above 1% of deposits and wholesale debt.</div></div>`;
+}
+
+function render(d) {
+  $("error").style.display = d.error ? "block" : "none";
+  if (d.error) { $("error").textContent = "Feed error, showing last good values. " + d.error; return; }
+  $("source").textContent = d.source;
+  $("clock").textContent = "Updated " + new Date().toLocaleTimeString();
+
+  $("tiles").innerHTML =
+    tile("LCR", pct(d.lcr), "HQLA ÷ 30-day net outflows", status(d.lcr, AMBER.lcr)) +
+    tile("NSFR", pct(d.nsfr), "Available ÷ required stable funding", status(d.nsfr, AMBER.nsfr)) +
+    tile("HQLA", num(d.hqla), "After haircuts and caps") +
+    tile("Net cash outflows", num(d.net_outflows), "30-day stress") +
+    tile("HQLA surplus", num(d.surplus), "Above 100% LCR");
+
+  const now = Date.now();
+  $("feeds").innerHTML = Object.entries(d.feeds).map(([f, t]) => {
+    const age = now - Date.parse(t), stale = !t || age > (STALE_MS_BY_FEED[f] ?? STALE_MS);
+    const txt = !t ? "no data" : age < 90e3 ? Math.max(0, Math.round(age / 1e3)) + "s ago" : Math.round(age / 60e3) + " min ago";
+    return `<span class="feed"><span class="dot" style="display:inline-block;background:${stale ? "var(--critical)" : "var(--good)"}"></span> ` +
+           `${esc(f.replace("_", " "))}: ${stale ? "✕ stale, " : "✓ "}${txt}</span>`;
+  }).join("");
+
+  $("risk").innerHTML = ladderCard(d.ladder) + concentrationCard(d.depositors, d.funding_total);
+
+  const by = (key, sides) => d.lines.filter(l => sides.includes(l[key]));
+  const cut = d.hqla_cap_cut > 0 ? `<tr><td>Less HQLA2 cap excess</td><td></td><td></td><td>-${num(d.hqla_cap_cut)}</td></tr>` : "";
+  const cap = d.inflows > d.inflows_capped ? `<tr><td>Less excess over 75% cap</td><td></td><td></td><td>-${num(d.inflows - d.inflows_capped)}</td></tr>` : "";
+  $("tables").innerHTML =
+    table("HQLA", by("lcr_side", ["hqla1", "hqla2a", "hqla2b"]), "lcr_factor", "lcr_weighted", "Total HQLA", d.hqla, cut) +
+    table("Cash outflows (30 days)", by("lcr_side", ["outflow"]), "lcr_factor", "lcr_weighted", "Total outflows", d.outflows) +
+    table("Cash inflows (30 days)", by("lcr_side", ["inflow"]), "lcr_factor", "lcr_weighted", "Inflows counted", d.inflows_capped, cap) +
+    table("Available stable funding", by("nsfr_side", ["asf"]), "nsfr_factor", "nsfr_weighted", "Total ASF", d.asf) +
+    table("Required stable funding", by("nsfr_side", ["rsf"]), "nsfr_factor", "nsfr_weighted", "Total RSF", d.rsf);
+
+  if (d.lcr != null) {
+    history.push({ t: now, v: d.lcr });
+    if (history.length > MAX_POINTS) history.shift();
+    drawChart();
+  }
+}
+
+let scale = null;
+function drawChart() {
+  const W = 600, H = 140, vals = history.map(p => p.v);
+  let lo = Math.min(100, ...vals), hi = Math.max(100, ...vals);
+  const pad = (hi - lo) * 0.1 || 1; lo -= pad; hi += pad;
+  const x = i => history.length < 2 ? W : i * W / (history.length - 1);
+  const y = v => H - (v - lo) / (hi - lo) * H;
+  scale = { x, y, W, H };
+  const pts = history.map((p, i) => x(i).toFixed(1) + "," + y(p.v).toFixed(1)).join(" ");
+  $("svg").innerHTML =
+    `<line x1="0" x2="${W}" y1="${y(100)}" y2="${y(100)}" stroke="var(--axis)" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/>` +
+    `<polyline points="${pts}" fill="none" stroke="var(--series)" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>` +
+    `<line id="cross" y1="0" y2="${H}" stroke="var(--axis)" vector-effect="non-scaling-stroke" visibility="hidden"/>`;
+  const last = vals[vals.length - 1];
+  $("plot").querySelectorAll(".ylab").forEach(e => e.remove());
+  const labels = [[100, "100%"]];
+  if (Math.abs(y(last) - y(100)) > 14) labels.push([last, last.toFixed(1) + "%"]);
+  for (const [v, text] of labels) {
+    const el = document.createElement("div");
+    el.className = "ylab"; el.textContent = text; el.style.top = (y(v) / H * 100) + "%";
+    $("plot").appendChild(el);
+  }
+}
+
+$("plot").addEventListener("mousemove", e => {
+  if (!scale || !history.length) return;
+  const r = $("svg").getBoundingClientRect();
+  const i = Math.max(0, Math.min(history.length - 1, Math.round((e.clientX - r.left) / r.width * (history.length - 1))));
+  const p = history[i], cross = $("cross"), tip = $("tip");
+  if (cross) { cross.setAttribute("x1", scale.x(i)); cross.setAttribute("x2", scale.x(i)); cross.setAttribute("visibility", "visible"); }
+  tip.style.display = "block";
+  tip.style.left = (scale.x(i) / scale.W * r.width) + "px";
+  tip.style.top = (scale.y(p.v) / scale.H * r.height) + "px";
+  tip.textContent = p.v.toFixed(1) + "% at " + new Date(p.t).toLocaleTimeString();
+});
+$("plot").addEventListener("mouseleave", () => {
+  $("tip").style.display = "none";
+  const c = $("cross"); if (c) c.setAttribute("visibility", "hidden");
+});
+
+const es = new EventSource("/stream");
+es.onmessage = e => render(JSON.parse(e.data));
+es.onerror = () => { $("source").textContent = "Disconnected, retrying…"; };
+</script>
+</body>
+</html>
