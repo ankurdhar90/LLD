@@ -1,0 +1,2331 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>07 Data: where the numbers come from and how each balance is classified | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="06_APS210_Companion_Attachments_B_and_C.html" title="06 APS 210 companion: Attachments B (MLH) and C (NSFR)">&#9664; 06</a><span class="t">07 Data: where the numbers come from and how each balance is classified</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#1-why-data-comes-first">1. Why data comes first</option><option value="#2-the-source-systems">2. The source systems</option><option value="#3-basic-ideas-you-need-before-the-data-dictionary">3. Basic ideas you need before the data dictionary</option><option value="#4-what-aps-210-needs-the-data-dictionary">4. What APS 210 needs: the data dictionary</option><option value="#5-how-to-use-the-decision-trees">5. How to use the decision trees</option><option value="#6-decision-trees-for-deposits">6. Decision trees for deposits</option><option value="#7-decision-trees-for-everything-else">7. Decision trees for everything else</option><option value="#8-twelve-worked-classification-examples">8. Twelve worked classification examples</option><option value="#9-data-quality-checks">9. Data quality checks</option><option value="#10-when-an-attribute-is-missing">10. When an attribute is missing</option><option value="#11-how-classification-rules-are-documented-approved-and-changed">11. How classification rules are documented, approved and changed</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="08_LCR_Production_End_to_End.html" title="08 Producing the daily LCR, end to end">08 &#9654;</a></header>
+<main><h1 id="07-data-where-the-numbers-come-from-and-how-each-balance-is-classified">07 Data: where the numbers come from and how each balance is classified</h1>
+<p><strong>Purpose:</strong> To teach you where every number in the liquidity returns starts, what facts the bank must hold about each deposit, loan, security and contract, and how to turn each record into the right LCR run-off or inflow rate and the right NSFR factor. This is the document you will use most when someone asks, "How do we treat this product?"</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Name the bank's source systems and say what each one is the master record for.</li>
+<li>List, for each product, the data fields APS 210 needs and the paragraph that needs each one.</li>
+<li>Walk any deposit, security, loan, facility, secured transaction, derivative or debt issue down a decision tree to its LCR category and rate and its NSFR category and factor.</li>
+<li>Run the data quality checks (completeness, validity, reconciliation to the ledger, movement) and say what to do when a field is missing.</li>
+<li>Explain how classification rules are written down, approved and changed.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) so that the words liquidity coverage ratio, net stable funding ratio, run-off and balance sheet are familiar. Keep document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> (companion to Attachment A) and document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (companion to Attachments B and C) open beside you. For the full theory behind each rate, the guide chapters are cited as you go.</p>
+<p><strong>Time:</strong> About six hours: two to read, two to follow the decision trees with a pen, and two to do the Check yourself questions.</p>
+<hr />
+<h2 id="1-why-data-comes-first">1. Why data comes first</h2>
+<p>Every liquidity number is a balance multiplied by a rate. The rate comes from a rule in APS 210 (the prudential standard on liquidity that APRA, the Australian Prudential Regulation Authority, issues). The balance comes from a computer system. If the balance is wrong, or if the record is put in the wrong category, the answer is wrong, even when your arithmetic is perfect.</p>
+<p>Think of a post office sorting letters. The sorter does not care what the letter says. He cares only about the postcode. A letter with the wrong postcode goes to the wrong town. In liquidity work the "postcode" of each record is a small set of facts: who the customer is, how long until the money moves, whether the asset is pledged, and whether the customer can withdraw early. Your job is to make sure every record carries the right postcode, and that you can prove it.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> In my first year I found that most of our reporting errors were not maths errors. They were records sitting in the wrong bucket. A deposit marked "corporate" that was really a super fund. A bond marked "unencumbered" that had been repoed the day before. Learn the data first, and the formulas become easy.</p>
+</blockquote>
+<p>APS 210 expects this discipline. The bank must have "operating standards" (policies, procedures and controls) for identifying, measuring, monitoring and controlling liquidity risk (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>(c)). Senior management must make sure the bank has adequate internal controls to ensure the integrity of its liquidity risk management processes (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(d)). Data classification is one of those processes.</p>
+<p>Example Bank is a locally incorporated LCR ADI. An ADI is an authorised deposit-taking institution, which is what the law calls a bank, building society or credit union that may take deposits. An LCR ADI is one that must meet the liquidity coverage ratio (LCR) under Attachment A (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). Example Bank has one legal entity and one currency, so Level 1 (the ADI on its own) equals Level 2 (the whole group), and the Australian-dollar LCR equals the all-currencies LCR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 paras 3 and 4</a>).</p>
+<hr />
+<h2 id="2-the-source-systems">2. The source systems</h2>
+<p>A bank does not keep its records in one place. Different systems hold different facts. The names of the systems differ from bank to bank, so this section uses plain descriptions.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The system names, owners and feed times below are typical of a mid-sized Australian bank. Example Bank's actual names and times are set by its technology and finance teams; confirm with your controller.</p>
+</blockquote>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What it holds, in everyday words</th>
+<th>Master record for</th>
+<th>Typical owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core banking: deposits</td>
+<td>The engine that keeps every customer account: balance, interest rate, product type, opening date, maturity date for term deposits, rules for early withdrawal</td>
+<td>Deposit balances and terms</td>
+<td>Retail and business banking operations</td>
+</tr>
+<tr>
+<td>Core banking: loans</td>
+<td>The loan engine: each loan's balance, repayment schedule, interest rate, maturity, security, arrears status</td>
+<td>Loan balances, contractual repayments, performing status</td>
+<td>Lending operations</td>
+</tr>
+<tr>
+<td>Customer master</td>
+<td>One record per customer: legal type (person, company, trust, super fund), industry code, aggregate relationship, products held, date joined</td>
+<td>Who the customer is and how many products they hold</td>
+<td>Data management or customer operations</td>
+</tr>
+<tr>
+<td>Treasury system</td>
+<td>The dealing room's book: bonds held, repos and reverse repos, interbank loans and deposits, wholesale debt issued, derivatives, market values</td>
+<td>Securities, wholesale funding and derivative trades</td>
+<td>Treasury (Markets)</td>
+</tr>
+<tr>
+<td>Collateral system</td>
+<td>Tracks which assets are pledged to whom, margin called and posted, and which received collateral may be reused</td>
+<td>Encumbrance, variation margin, initial margin</td>
+<td>Treasury operations or collateral management</td>
+</tr>
+<tr>
+<td>General ledger (GL)</td>
+<td>The accounting books. Every other system feeds it, and the financial statements come from it</td>
+<td>Totals that must agree with the financial statements</td>
+<td>Finance (Financial Control)</td>
+</tr>
+<tr>
+<td>Product catalogue (reference data)</td>
+<td>The master list of products and their liquidity attributes, such as "this product is a term deposit with no early withdrawal right"</td>
+<td>The mapping of product code to liquidity category</td>
+<td>Product teams, maintained with Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Market data</td>
+<td>Daily prices for bonds, exchange rates, and credit ratings</td>
+<td>Market values and external ratings</td>
+<td>Treasury or Market Risk</td>
+</tr>
+<tr>
+<td>Payments and settlement</td>
+<td>Cash balance at the Reserve Bank of Australia (RBA) and intraday movements</td>
+<td>Exchange Settlement Account balance</td>
+<td>Treasury operations</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two terms you will hear. The <strong>Exchange Settlement Account (ESA)</strong> is the bank's own account at the RBA, used to settle payments between banks. Its balance counts as central bank balances for the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(b)). The <strong>general ledger</strong> is the single set of accounting books; the term "reconcile to the ledger" means "prove that the total of my records equals the ledger total."</p>
+<h3 id="21-how-a-record-travels">2.1 How a record travels</h3>
+<p>A record moves through five stages. You work mainly in stages 3 to 5.</p>
+<ol>
+<li><strong>Capture.</strong> A customer opens an account or Treasury does a trade. The source system records it.</li>
+<li><strong>Extract.</strong> At close of business each system produces a file or table of positions as at a stated time. This is called a feed.</li>
+<li><strong>Stage and validate.</strong> The feeds land in a staging area. Automated checks test completeness and validity (section 9).</li>
+<li><strong>Classify.</strong> Rules map each record to an LCR category and rate and an NSFR category and factor (sections 6 and 7).</li>
+<li><strong>Calculate and report.</strong> The weighted amounts are summed into the LCR and NSFR (documents <a href="08_LCR_Production_End_to_End.html">08</a> and 09), and flow into the returns to APRA (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</li>
+</ol>
+<h3 id="22-the-grain-why-account-level-not-totals">2.2 The grain: why account level, not totals</h3>
+<p>You cannot calculate the LCR from the balance sheet totals. You need the record at the level where the facts differ: each account, each loan, each security holding, each trade. The reason is simple. Two retail deposit accounts of A$100,000 can have different rates (5% and 25%) because one belongs to a salary customer and the other is an on-line account with a promotional rate. The total balance cannot tell you that.</p>
+<blockquote class="q-example"><p><strong>Example:</strong> Example Bank shows "Retail deposits, less stable (at call): A$15.0bn". That one line hides millions of accounts. Each account has been scored against the scorecard (section 6.2) and the result is that the whole line takes 10%. If a block of promotional accounts scored 3 or more, part of the line would take 25% instead.</p>
+</blockquote>
+<hr />
+<h2 id="3-basic-ideas-you-need-before-the-data-dictionary">3. Basic ideas you need before the data dictionary</h2>
+<h3 id="31-carrying-value-and-market-value">3.1 Carrying value and market value</h3>
+<p>The <strong>carrying value</strong> is the amount shown in the bank's accounting records. The <strong>market value</strong> is what you could sell the item for today. The NSFR uses carrying value (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p7">Att C paras 7</a>(a) and 17(a)). The LCR values liquid assets at market value (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a> for HQLA1; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A paras 10 and 12</a> for haircuts on HQLA2). Be sure you take the right one.</p>
+<h3 id="32-residual-maturity">3.2 Residual maturity</h3>
+<p>The <strong>residual maturity</strong> is the time left until the money is due. A 5-year bond issued four years ago has a residual maturity of one year. Do not use the original term. Always count from the reporting date.</p>
+<p>The two ratios look at maturity differently, and a mistake here is common.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>LCR (30 days)</th>
+<th>NSFR (one year)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which date counts for a liability?</td>
+<td>Earliest date the customer can get the money, including options at the investor's discretion (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>)</td>
+<td>Earliest date the funds may be redeemed (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>)</td>
+</tr>
+<tr>
+<td>Which date counts for an asset or inflow?</td>
+<td>Latest possible date, based on the counterparty's contractual rights (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>)</td>
+<td>Latest possible date the asset may mature, assuming any extension option is exercised (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>)</td>
+</tr>
+<tr>
+<td>What if there is no maturity?</td>
+<td>Funding with undetermined maturity is inside the window (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>); loans with no specific maturity give no inflow except minimum payments (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>)</td>
+<td>An asset without a defined maturity, or one subject to periodic review, is treated as one year or more (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p21">Att C para 21</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The pattern is the same in both ratios: for money going out, assume the worst (earliest); for money coming in, assume the worst (latest). That is the caution built into the rules.</p>
+<h3 id="33-maturity-buckets">3.3 Maturity buckets</h3>
+<p>Use these fixed buckets so that all teams speak the same language.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>Label in this pack</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 calendar days or fewer</td>
+<td>Within 30 days</td>
+<td>LCR</td>
+</tr>
+<tr>
+<td>More than 30 days, under 6 months</td>
+<td>30 days to under 6 months</td>
+<td>NSFR (ASF and RSF), LCR (outside the window)</td>
+</tr>
+<tr>
+<td>6 months to under 1 year</td>
+<td>6 months to under 1 year</td>
+<td>NSFR</td>
+</tr>
+<tr>
+<td>1 year or more</td>
+<td>1 year or more</td>
+<td>NSFR</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="34-counterparty">3.4 Counterparty</h3>
+<p>The <strong>counterparty</strong> is the other side of the contract: the customer, the borrower, the lender. The rules sort counterparties into groups, and the group often decides the rate. The groups are:</p>
+<ul>
+<li>Natural persons (individual people). Their deposits are retail (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p34">Att A para 34</a>).</li>
+<li>Small and medium enterprises (SMEs) that meet the test in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a> (see section 6.1).</li>
+<li>Non-financial corporations, sovereigns (governments), central banks, public sector entities (PSEs, for example state government agencies) and multilateral development banks (MDBs, for example the World Bank).</li>
+<li>Banks and other ADIs subject to prudential supervision.</li>
+<li>Other financial institutions. APS 210 says a financial institution "includes a money market corporation, finance company, friendly society and the trustee of a superannuation/pension fund, public unit trust/mutual fund or cash management trust" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b)).</li>
+<li>Other legal entity customers (a catch-all for committed facilities).</li>
+</ul>
+<h3 id="35-encumbered-and-unencumbered">3.5 Encumbered and unencumbered</h3>
+<p>An asset is <strong>encumbered</strong> when it is pledged, for example as security for a repurchase agreement (repo, a sale of a security with a promise to buy it back). A pledged asset cannot be sold freely. Assets in the LCR liquid stock must be unencumbered (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 and 23</a>). The NSFR penalises encumbered assets by the length of the encumbrance (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>).</p>
+<h3 id="36-performing-and-non-performing">3.6 Performing and non-performing</h3>
+<p>A loan is <strong>performing</strong> if the borrower is paying as agreed. A <strong>non-performing</strong> loan is in default or arrears as determined under the credit risk standard APS 220 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f27">Att C footnote 27</a>). Only fully performing loans give LCR inflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>).</p>
+<hr />
+<h2 id="4-what-aps-210-needs-the-data-dictionary">4. What APS 210 needs: the data dictionary</h2>
+<p>The tables below list, per product group, the fields that each record must carry. "Why needed" says what decision the field drives. The last column gives the paragraph. If a field is missing, go to section 10.</p>
+<h3 id="41-retail-and-sme-deposits-including-term-deposits">4.1 Retail and SME deposits (including term deposits)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account identifier and product code</td>
+<td>Links to the product catalogue and the ledger</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>(c))</td>
+</tr>
+<tr>
+<td>Customer identifier</td>
+<td>Aggregates all accounts of one person so the FCS limit and relationship tests can be applied</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>)</td>
+</tr>
+<tr>
+<td>Customer legal type (natural person, sole trader, partnership, company, trust, super fund)</td>
+<td>Retail is deposits "placed with an ADI by a natural person"; legal entities, sole proprietorships and partnerships are wholesale unless they qualify as SME</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p34">Att A para 34</a>)</td>
+</tr>
+<tr>
+<td>SME flag and total aggregated funding from the customer (consolidated)</td>
+<td>The SME test needs total funding below A$2 million</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>)</td>
+</tr>
+<tr>
+<td>Non-financial flag and "managed as retail" flag</td>
+<td>The SME test needs non-financial customers managed as retail exposures</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>)</td>
+</tr>
+<tr>
+<td>Balance (carrying value) at the reporting date</td>
+<td>The amount to weight</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p7">Att C para 7</a>(a))</td>
+</tr>
+<tr>
+<td>Balance covered by the Financial Claims Scheme (FCS)</td>
+<td>Stable deposits must be "fully covered" by the FCS (the government guarantee of A$250,000 per account holder per ADI)</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>)</td>
+</tr>
+<tr>
+<td>Transactional account flag (salary credited)</td>
+<td>One of two routes to "stable"</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>(b))</td>
+</tr>
+<tr>
+<td>Number of other established products held by the customer</td>
+<td>The other route to "stable"</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>(a))</td>
+</tr>
+<tr>
+<td>On-line account flag</td>
+<td>Scorecard: on-line scores 2</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+</tr>
+<tr>
+<td>Established relationship flag</td>
+<td>Scorecard: absence of relationship scores 1</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+</tr>
+<tr>
+<td>Heavily rate-driven flag (promotional rate)</td>
+<td>Scorecard: scores 1</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+</tr>
+<tr>
+<td>Intermediary flag and intermediary conditions test result</td>
+<td>Deposits placed through an intermediary are financial institution deposits unless all four conditions hold</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>)</td>
+</tr>
+<tr>
+<td>Product type: at call, term, notice</td>
+<td>Decides whether the 30-day test applies</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>)</td>
+</tr>
+<tr>
+<td>Contractual maturity date or notice period</td>
+<td>Residual maturity for the 30-day test and the NSFR</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>)</td>
+</tr>
+<tr>
+<td>Early withdrawal terms: legal right to withdraw (yes or no); penalty size</td>
+<td>A term deposit with residual maturity over 30 days is excluded only if the depositor has no right to withdraw, or the penalty is materially greater than the loss of interest</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>)</td>
+</tr>
+<tr>
+<td>Hardship withdrawal count and policy reference</td>
+<td>Hardship withdrawals are allowed without tainting the pool, if the bank has a hardship policy</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p43">Att A para 43</a>)</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>AUD LCR and all-currencies LCR</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>)</td>
+</tr>
+<tr>
+<td>Encumbrance flag (rare for deposits)</td>
+<td>Deposits that secure something are not available</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="42-wholesale-deposits-corporate-government-financial-institution">4.2 Wholesale deposits (corporate, government, financial institution)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Counterparty identifier and legal name</td>
+<td>Group-level views, concentration</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>)</td>
+</tr>
+<tr>
+<td>Counterparty type: non-financial corporate, sovereign, central bank, PSE, MDB, bank or ADI, other financial institution (money market corporation, finance company, friendly society, trustee of super fund, public unit trust or mutual fund, cash management trust)</td>
+<td>Table 3 rows and the NSFR category</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b); <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Operational flag, with the qualifying service (clearing, custody, cash management) and the evidence</td>
+<td>Operational deposits get 25% instead of 40% or 100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>)</td>
+</tr>
+<tr>
+<td>Operational balance requirement (the amount needed for the service) and excess</td>
+<td>Excess balances do not qualify</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p50">Att A para 50</a>)</td>
+</tr>
+<tr>
+<td>Notice period to terminate the services agreement; switching costs</td>
+<td>Qualifies only if at least 30 days' notice or significant switching costs</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p48">Att A para 48</a>)</td>
+</tr>
+<tr>
+<td>Whether the deposit is fully covered by deposit insurance</td>
+<td>5% vs 25% for operational; 20% vs 40% for non-operational</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Balance, currency, maturity or notice date</td>
+<td>Amount and time</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>)</td>
+</tr>
+<tr>
+<td>Callable-by-provider flag and contractual notice period</td>
+<td>Wholesale funding callable subject to a binding notice period beyond 30 days may be excluded</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>)</td>
+</tr>
+<tr>
+<td>Investor option dates</td>
+<td>Options exercisable at the investor's discretion inside 30 days are included</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>)</td>
+</tr>
+<tr>
+<td>Intermediary flag</td>
+<td>Placed by an intermediary: treat as financial institution unless <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a> conditions are met</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="43-securities-held-the-liquid-asset-portfolio-and-other-holdings">4.3 Securities held (the liquid asset portfolio and other holdings)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security identifier (for example an ISIN, the international code for a security) and description</td>
+<td>Links to price and rating</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p38">APS 210 para 38</a>)</td>
+</tr>
+<tr>
+<td>Issuer and issuer type (sovereign, central bank, PSE, MDB, financial institution, corporate, securitisation vehicle)</td>
+<td>HQLA class and the financial-institution exclusion</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9 to 12</a>)</td>
+</tr>
+<tr>
+<td>Guarantor</td>
+<td>Claims "guaranteed by" a sovereign can qualify</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9</a>(c) and 10(a))</td>
+</tr>
+<tr>
+<td>Currency of issue</td>
+<td>HQLA treatment depends on currency; in Australian dollars only a short list qualifies</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9</a>(d), 9(e))</td>
+</tr>
+<tr>
+<td>APS 112 risk weight (0%, 20%, other)</td>
+<td>Decides HQLA1 (0%) vs HQLA2A (20%) for sovereign-type paper</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9</a>(c)(i), 10(a)(i))</td>
+</tr>
+<tr>
+<td>External credit rating and rating agency; rating date</td>
+<td>HQLA2A needs at least AA-; HQLA2B RMBS needs AA or higher; corporates A+ to BBB-</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A paras 10</a>(b)(iii), 12(a)(ii), 12(b)(ii))</td>
+</tr>
+<tr>
+<td>APRA recognition flag</td>
+<td>HQLA2A and HQLA2B assets must be "recognised by APRA"</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A paras 10 and 12</a>)</td>
+</tr>
+<tr>
+<td>Issued-by-self or associated entity flag</td>
+<td>Own covered bonds and own RMBS are excluded</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A paras 10</a>(b)(ii), 12(a)(i))</td>
+</tr>
+<tr>
+<td>Market value at the reporting date, and price source</td>
+<td>HQLA is counted at market value</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9, 10, 15</a>)</td>
+</tr>
+<tr>
+<td>Carrying value</td>
+<td>NSFR RSF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p17">Att C para 17</a>(a))</td>
+</tr>
+<tr>
+<td>Remaining maturity (latest possible date)</td>
+<td>NSFR buckets; maturing securities not in HQLA are inflows</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Encumbered flag, encumbrance end date, and the counterparty</td>
+<td>Operational requirement; NSFR encumbrance factor</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Portfolio or pool code, and the managing function (Treasury)</td>
+<td>Control evidence that Treasury manages the asset</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>(b), (c))</td>
+</tr>
+<tr>
+<td>Securities received as collateral (reverse repo), whether rehypothecated</td>
+<td>Received collateral that is held and not reused may count</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>)</td>
+</tr>
+<tr>
+<td>Performing or defaulted flag</td>
+<td>Defaulted securities get 100% RSF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Exchange-traded and index membership (for equities)</td>
+<td>HQLA2B equities and the 50% RSF for ASX 200 shares</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>(c); <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(e))</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="44-loans">4.4 Loans</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loan identifier, product code, balance (carrying value)</td>
+<td>Amount and link to ledger</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p17">Att C para 17</a>(a))</td>
+</tr>
+<tr>
+<td>Borrower type: natural person, SME, non-financial corporate, sovereign, PSE, financial institution, central bank</td>
+<td>Inflow rate; NSFR category</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A paras 61, 62</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C paras 31 to 37</a>)</td>
+</tr>
+<tr>
+<td>Performing flag (and days past due)</td>
+<td>Only fully performing loans give inflows; non-performing is 100% RSF</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Contractual repayment schedule: dates and amounts of principal, interest and fees</td>
+<td>Inflows within 30 days; amortising portion within one year</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p22">Att C para 22</a>)</td>
+</tr>
+<tr>
+<td>Final maturity, including any extension option</td>
+<td>NSFR maturity uses the latest possible date</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>)</td>
+</tr>
+<tr>
+<td>Facility type: amortising, bullet, revolving or open maturity</td>
+<td>Open-maturity loans give only minimum payments as inflows; no defined maturity is one year or more in the NSFR</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p21">Att C para 21</a>)</td>
+</tr>
+<tr>
+<td>Loan to valuation ratio (LVR) at origination or as defined in APS 112, and standard or non-standard flag</td>
+<td>65% RSF needs LVR 80% or below and "standard"</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a))</td>
+</tr>
+<tr>
+<td>Residential purpose, owner-occupied or investor</td>
+<td>Part of the standard residential property definition</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a))</td>
+</tr>
+<tr>
+<td>APS 112 risk weight (35% or lower)</td>
+<td>Other loans over one year at risk weight 35% or lower get 65%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(b))</td>
+</tr>
+<tr>
+<td>Security: secured against HQLA1? Can the collateral be freely rehypothecated?</td>
+<td>Loans to financial institutions secured against HQLA1 get 10% RSF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C para 31</a>)</td>
+</tr>
+<tr>
+<td>Pledged or securitised flag, and end date</td>
+<td>Encumbrance</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Purpose: leveraged trading positions (margin lending)</td>
+<td>50% inflow on margin lending</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A para 55</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="45-committed-and-revocable-facilities-off-balance-sheet">4.5 Committed and revocable facilities (off balance sheet)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Facility limit, drawn balance and undrawn amount</td>
+<td>Only the undrawn portion runs off</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a> (Table 3))</td>
+</tr>
+<tr>
+<td>Committed or revocable flag; if revocable, unconditional or conditional</td>
+<td>Revocable 5% (LCR); NSFR 1% unconditional, 5% conditionally revocable</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>)</td>
+</tr>
+<tr>
+<td>Customer type</td>
+<td>Rate depends on retail and SME, corporate, bank, other financial institution, other</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Purpose: credit or liquidity</td>
+<td>Credit 10% vs liquidity 30% for non-financial corporates</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>)</td>
+</tr>
+<tr>
+<td>For liquidity: amount of the customer's debt maturing within 30 days that is backstopped</td>
+<td>Only that amount is a liquidity facility; the rest is credit</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>)</td>
+</tr>
+<tr>
+<td>Special vehicle flag: hedge fund, money market fund, special purpose funding vehicle, vehicle financing the ADI's own assets</td>
+<td>Whole facility is a liquidity facility to a financial institution</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>)</td>
+</tr>
+<tr>
+<td>General working capital flag</td>
+<td>These must be credit facilities, never liquidity</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="46-secured-funding-and-secured-lending-repo-reverse-repo-securities-lending">4.6 Secured funding and secured lending (repo, reverse repo, securities lending)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trade identifier, direction (we borrow cash or we lend cash)</td>
+<td>Outflow side vs inflow side</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A paras 53, 55</a>)</td>
+</tr>
+<tr>
+<td>Cash amount, start and maturity date</td>
+<td>Window test and maturity</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>)</td>
+</tr>
+<tr>
+<td>Counterparty and counterparty type</td>
+<td>25% row for domestic sovereign, PSE or MDB; NSFR bucket</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C para 31</a>)</td>
+</tr>
+<tr>
+<td>Collateral asset class of each security (HQLA1, HQLA2A, RMBS HQLA2B, other HQLA2B, non-HQLA)</td>
+<td>The run-off or inflow rate follows the collateral</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Tables 3 and 4</a>)</td>
+</tr>
+<tr>
+<td>Collateral market value and haircut</td>
+<td>Value of what backs the trade</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a>)</td>
+</tr>
+<tr>
+<td>Rehypothecated and tied up for 30 days or more to cover short positions</td>
+<td>Then the reverse repo inflow is zero</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p56">Att A para 56</a>)</td>
+</tr>
+<tr>
+<td>Beneficial ownership retained or not</td>
+<td>NSFR asset inclusion</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>)</td>
+</tr>
+<tr>
+<td>Netting agreement in place</td>
+<td>NSFR netting with a single counterparty</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p26">Att C para 26</a>)</td>
+</tr>
+<tr>
+<td>Open (non-maturity) flag</td>
+<td>Non-maturity reverse repo gets 100% RSF unless shown otherwise</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f28">Att C footnote 28</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="47-derivatives-and-collateral">4.7 Derivatives and collateral</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trade identifier, counterparty and netting set (master netting agreement identifier)</td>
+<td>Net by counterparty, only with a valid master netting agreement</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>)</td>
+</tr>
+<tr>
+<td>Expected cash payable and receivable within 30 days, by counterparty</td>
+<td>LCR derivative outflows and inflows</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A paras 53, 65</a>)</td>
+</tr>
+<tr>
+<td>FX full-exchange flag (principal exchanged same day)</td>
+<td>Such FX flows may be shown net even without master netting</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>)</td>
+</tr>
+<tr>
+<td>Mark-to-market (replacement cost), positive and negative</td>
+<td>NSFR derivative asset and liability amounts</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C paras 9, 27</a>)</td>
+</tr>
+<tr>
+<td>Variation margin posted and received, form (cash or securities), currency</td>
+<td>NSFR net-down, and which assets are not counted</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p10">Att C paras 10, 28</a>)</td>
+</tr>
+<tr>
+<td>Initial margin posted, and contributions to a central counterparty default fund</td>
+<td>85% RSF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(a))</td>
+</tr>
+<tr>
+<td>Collateral posted and received, by asset class</td>
+<td>Collateral outflows; no double count with HQLA</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a> and para 31)</td>
+</tr>
+<tr>
+<td>Rating-trigger terms: collateral required on a 3-notch downgrade</td>
+<td>LCR 100% outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Excess non-segregated collateral that can be called at any time</td>
+<td>100% outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Contractually required collateral not yet demanded</td>
+<td>100% outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Collateral substitution rights to non-HQLA</td>
+<td>100% of the HQLA that may be substituted</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Daily collateral flow history for 24 months</td>
+<td>The largest absolute net 30-day collateral flow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> (footnote 6))</td>
+</tr>
+<tr>
+<td>Posted non-HQLA1 collateral and value</td>
+<td>20% for valuation changes</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="48-wholesale-debt-issued-by-the-bank">4.8 Wholesale debt issued by the bank</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Issue identifier, type (senior unsecured, subordinated, covered bond, ABCP, securitisation notes, commercial paper)</td>
+<td>Table 3 rows</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Face and carrying amount, currency</td>
+<td>Amount</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p7">Att C para 7</a>(a))</td>
+</tr>
+<tr>
+<td>Maturity date, and every option date (investor put, issuer call)</td>
+<td>Earliest date for outflow and ASF</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>)</td>
+</tr>
+<tr>
+<td>Holder type if known (financial institution, non-financial corporate, retail)</td>
+<td>NSFR 50% vs 0% for funding under one year</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C paras 14</a>(a), 15(a))</td>
+</tr>
+<tr>
+<td>Issued by the ADI itself or by a conduit or vehicle</td>
+<td>100% rows for maturing own paper and loss of funding on vehicles</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Secured or unsecured (legal rights to designated assets)</td>
+<td>Unsecured wholesale funding definition</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p44">Att A para 44</a>)</td>
+</tr>
+<tr>
+<td>Tier 2 or other capital instrument flag and remaining term</td>
+<td>ASF for capital</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a), (b))</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="49-trade-finance-and-guarantees">4.9 Trade finance and guarantees</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product: trade finance obligation or guarantee or letter of credit not related to trade</td>
+<td>Different LCR factors</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Monthly net outflow for each of the last 12 months</td>
+<td>LCR: average of actual monthly net outflows; NSFR: net outflows in the most recent 12-month period</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="410-capital-equity-and-other-liabilities">4.10 Capital, equity and other liabilities</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Why needed</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory capital before adjustments, by instrument and remaining term</td>
+<td>100% ASF; Tier 2 under one year is excluded</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a))</td>
+</tr>
+<tr>
+<td>Other liabilities with a stated or no stated maturity; deferred tax; minority interests</td>
+<td>ASF category and maturity</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b))</td>
+</tr>
+<tr>
+<td>Contractual payables within 30 days (rent, tax, trade creditors)</td>
+<td>LCR "other contractual cash outflows" at 100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Trade date payables and receivables</td>
+<td>0% in the NSFR if they settle in the normal cycle</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C paras 15</a>(d), 29(d))</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-in"><p><strong>In the standard:</strong> The NSFR works from carrying value "before application of any regulatory deductions, filters or other adjustments" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f9">Att C footnote 9</a>). That is why the ledger carrying value is the right starting point for the NSFR, while the LCR liquid asset stock uses market value.</p>
+</blockquote>
+<hr />
+<h2 id="5-how-to-use-the-decision-trees">5. How to use the decision trees</h2>
+<p>A decision tree is a list of questions. You answer them in order and stop at the first step that fits. Each step ends in a category, a rate and a paragraph. Always write the paragraph next to the result. When the auditor asks "why 25%?", the paragraph is your answer.</p>
+<p>Ask these six questions of every record, in this order:</p>
+<ol>
+<li><strong>Which side is it?</strong> An asset, a liability (including capital) or an off-balance sheet item such as an undrawn facility?</li>
+<li><strong>Who is the counterparty?</strong> Person, SME, non-financial corporate, government body, bank, other financial institution?</li>
+<li><strong>When does the cash move?</strong> Inside 30 days (LCR)? Under 6 months, 6 months to under 1 year, or 1 year or more (NSFR)?</li>
+<li><strong>Is it secured, pledged or netted?</strong> What is the collateral, and for how long is it encumbered?</li>
+<li><strong>Does it pass the special tests?</strong> Financial Claims Scheme cover, scorecard, operational deposit tests, HQLA tests, performing status, revocability?</li>
+<li><strong>Which paragraph gives the rate?</strong></li>
+</ol>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The LCR and the NSFR classify the same record differently. The same A$10m deposit may get 40% in the LCR and 50% in the NSFR. Classify for each ratio separately and store both results on the record.</p>
+</blockquote>
+<hr />
+<h2 id="6-decision-trees-for-deposits">6. Decision trees for deposits</h2>
+<p>Deposits are the biggest and most error-prone group. Work through trees D1 to D6 in order.</p>
+<h3 id="61-tree-d1-who-is-the-customer">6.1 Tree D1: Who is the customer?</h3>
+<ol>
+<li><strong>If the funds reach the bank through an intermediary</strong> (for example a platform or adviser who places clients' money with the bank), go to step 2. Otherwise go to step 3.</li>
+<li><strong>Test the four intermediary conditions.</strong> The deposit may be treated as the end person's only if, during the next 30 days, all of these hold, and the bank can demonstrate it (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>):
+   - (a) the person keeps all legal rights over withdrawal or other movement of the funds;
+   - (b) the person uses those rights in practice and cannot transfer them to the intermediary;
+   - (c) there is clear and prominent disclosure to the person that the funds will be placed with the ADI; and
+   - (d) the intermediary or an associated entity can neither make investment decisions for the person on the deposit nor withdraw funds without specific directions from the person (fees, expense reimbursements and taxes aside).</li>
+</ol>
+<p>If all four hold, treat the funds as coming from the person and go to step 3 for the person. If any fails, it is a <strong>financial institution deposit</strong>: go to tree D5 and take 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>).
+3. <strong>If the depositor is a natural person</strong> (an actual human being, alone or jointly), it is a <strong>retail deposit</strong>. Go to tree D2 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p34">Att A para 34</a>).
+4. <strong>If the depositor is a sole proprietorship, partnership, company, trust or other entity,</strong> it is wholesale (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p34">Att A para 34</a>), unless step 5 turns it into a qualifying SME deposit.
+5. <strong>SME test.</strong> An SME deposit may be treated as retail only if both are true (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>):
+   - (a) the customer is a non-financial SME, and its deposits and other extensions of funds are managed as retail exposures with liquidity risk similar to retail accounts; and
+   - (b) the total aggregated funding raised from that customer is less than A$2 million, on a consolidated basis where applicable.</p>
+<p>If both are true, treat it as retail: go to tree D2. If the bank has no liability products to apply the SME definition, the definition in para 40 of APS 113 may be used instead (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f7">Att A footnote 7</a>). If either fails, it is wholesale: go to tree D4 and D5.
+6. <strong>Check whether the customer is a financial institution.</strong> Under APS 210, "a financial institution includes a money market corporation, finance company, friendly society and the trustee of a superannuation/pension fund, public unit trust/mutual fund or cash management trust" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b)). The word "includes" means the list is not exhaustive: banks and other ADIs, insurers and fund managers are also financial institutions in practice. Record the sub-type. This sets both the LCR rate (100% for non-operational) and the NSFR factor (0% under six months).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A super fund is a <em>trustee</em>, so it is a financial institution, even though the members are people. Our practice-case customers show this. Do not be fooled by a name like "Teachers Retirement Fund Pty Ltd": check what it is (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b)).</p>
+<p><strong>Typical practice:</strong> The SME flag is set in the customer master by a monthly batch that sums all liabilities and funding of the customer group. A new facility can push a customer over A$2 million overnight, so the batch result should be refreshed daily for customers near the line. Confirm with your controller.</p>
+</blockquote>
+<h3 id="62-tree-d2-stable-or-less-stable-the-scorecard">6.2 Tree D2: Stable or less stable? The scorecard</h3>
+<p>Retail and qualifying SME deposits split into <strong>stable</strong> and <strong>less stable</strong> portions (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p36">Att A para 36</a>).</p>
+<ol>
+<li><strong>Find the portion fully covered by the Financial Claims Scheme (FCS).</strong> The FCS is the Australian Government's deposit guarantee, A$250,000 per account holder per ADI. It is per <em>person</em> across <em>all</em> accounts at the bank, not per account. So add up all of the customer's deposits first. Joint accounts count by account holder. The first A$250,000 in total is covered; any more is not.</li>
+<li><strong>Is the covered portion in a transactional account (for example salary credited automatically), or does the depositor have other established relationships with the ADI that make withdrawal highly unlikely?</strong> If yes to either, the covered portion is <strong>stable</strong>: LCR 5% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A paras 37 and 53</a>).</li>
+<li><strong>Everything else is less stable</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p38">Att A para 38</a>). That includes the part above the FCS limit and the covered part of accounts that fail step 2.</li>
+<li><strong>Score each less stable account or product balance</strong> against the scorecard (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>, Table 1):</li>
+</ol>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deposit balance is greater than any government deposit guarantee limit (in its absence, AUD 250,000)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Deposit is an on-line account</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Absence of an established customer relationship</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Deposit is heavily rate-driven</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="5">
+<li><strong>Add the scores and read the rate</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t2">Att A Table 2</a>):</li>
+</ol>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Total score</th>
+<th>LCR run-off rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 to 2</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>3 or more</td>
+<td>25%</td>
+</tr>
+</tbody>
+</table></div>
+<p>The reason for each criterion is in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p39">Att A para 39</a>: high-value deposits, customers with no relationship, deposits where the internet is integral to the account, and promotional-rate deposits are the ones more likely to leave first in a stress.</p>
+<blockquote class="q-example"><p><strong>Example:</strong> A customer with A$40,000 in an on-line saver at a promotional rate, who has no other product. Balance above A$250,000? No (0). On-line? Yes (2). No relationship? Yes (1). Rate-driven? Yes (1). Total 4, so 25%. The same on-line account for a customer with a home loan and a normal rate scores 2 only, so 10%.</p>
+<p><strong>Typical practice:</strong> The standard's stable test (step 2) looks only at FCS cover plus a transactional account or other relationships. It does not mention on-line accounts there. Example Bank's convention is that an on-line account is never stable: the whole balance is put through the scorecard, so every on-line balance scores at least 2 and takes at least 10%. This is a cautious bank policy, not a rule: under the standard alone, a fully FCS-covered on-line account held by a customer with an established relationship could be stable (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>). Confirm with your controller before applying it to a new product.</p>
+<p><strong>From the controller:</strong> The maximum score is 6. The scorecard has no "stable" outcome: a deposit that fails the stable test is at least 10%. Notice that on-line alone (2) still gives 10%. It takes a second flag to reach 25%.</p>
+</blockquote>
+<p><strong>NSFR factor for retail and SME deposits</strong> (all with residual maturity under one year):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Result</th>
+<th>NSFR factor</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stable demand or term deposit, residual maturity under 1 year</td>
+<td>95%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a))</td>
+</tr>
+<tr>
+<td>Less stable demand or term deposit, residual maturity under 1 year</td>
+<td>90%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a))</td>
+</tr>
+<tr>
+<td>Retail or SME term deposit with effective residual maturity of 1 year or more</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-tree-d3-term-deposits-fixed-term-and-notice-deposits">6.3 Tree D3: Term deposits (fixed-term and notice deposits)</h3>
+<ol>
+<li><strong>Is the residual maturity or withdrawal notice period 30 days or less?</strong> If yes, the depositor can get the money inside the window. Treat it like any other retail deposit: go back to tree D2 and apply 5%, 10% or 25% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a> applies only to periods greater than 30 days).</li>
+<li><strong>If the residual maturity or notice period is greater than 30 days, does the depositor have a legal right to withdraw within 30 days?</strong> If <strong>no</strong>, the outflow is <strong>excluded</strong>: LCR 0% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>).</li>
+<li><strong>If the depositor has such a right, is there a significant penalty for early withdrawal that is materially greater than the loss of interest?</strong> If yes, excluded: 0% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>). If no, treat as a demand deposit: go to tree D2.</li>
+<li><strong>Pool test.</strong> If the bank allows a depositor to withdraw despite a clause saying there is no legal right, the <strong>entire category</strong> of these funds must be treated as demand deposits (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>). One exception: depositors in genuine hardship may withdraw without tainting the pool, but only if the bank has a policy defining hardship (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p43">Att A para 43</a>).</li>
+<li><strong>NSFR:</strong> use the earliest date funds may be redeemed (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>). Under one year: stable 95% or less stable 90%. One year or more: 100%.</li>
+</ol>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Step 4 is a trap that is easy to miss. If a branch manager lets customers break "no early withdrawal" term deposits as a favour, the bank can lose the 0% treatment on the whole product category. Keep an exceptions log of every early withdrawal on these products, with the reason code (hardship or not), and review it monthly (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A paras 42 and 43</a>).</p>
+</blockquote>
+<h3 id="64-tree-d4-is-a-wholesale-deposit-operational">6.4 Tree D4: Is a wholesale deposit operational?</h3>
+<p>An <strong>operational deposit</strong> is money a business keeps with the bank because it needs the bank's payment and settlement services to run its day-to-day business (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A para 47</a>).</p>
+<ol>
+<li><strong>Does the customer have a substantive dependency on the ADI, and is the deposit required for those activities</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A para 47</a>)? If no, go to tree D5.</li>
+<li><strong>Is the activity clearing, custody or cash management, where the customer relies on the ADI as an independent third-party intermediary to carry out its normal banking activities over the next 30 days</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p48">Att A para 48</a>)? If no, go to D5.</li>
+<li><strong>Are the services provided to an institutional customer under a legally binding agreement, and is termination subject to either a notice period of at least 30 days or significant switching costs borne by the customer if the deposits are moved before 30 days</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p48">Att A para 48</a>)? If no, go to D5.</li>
+<li><strong>Is the deposit</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p49">Att A para 49</a>):
+   - (a) a by-product of the underlying services;
+   - (b) not offered in the wholesale market for the sole purpose of offering interest income; and
+   - (c) held in specifically designated accounts and priced without giving an economic incentive to leave excess funds in them?</li>
+</ol>
+<p>If any answer is no, go to D5.
+5. <strong>Split the balance into the operational amount and the excess.</strong> "Any excess balances that could be withdrawn without jeopardising these clearing, custody or cash management activities do not qualify" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p50">Att A para 50</a>). The excess goes to tree D5.
+6. <strong>Is the whole deposit amount fully covered by deposit insurance?</strong> Operational and fully covered: <strong>5%</strong>. Operational and not fully covered: <strong>25%</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).
+7. <strong>NSFR:</strong> operational deposits get <strong>50%</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b)). Superannuation fund deposits that meet the operational definition also get 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(c)).</p>
+<blockquote class="q-in"><p><strong>In the standard:</strong> The operational test is applied to <em>all</em> counterparties, including banks and super funds. The 25% rate is "from all counterparties not fully covered by deposit insurance" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). So a custody deposit from a super fund trustee can be operational (25%), while the same fund's ordinary at-call savings are not (100%).</p>
+<p><strong>Typical practice:</strong> Operational status is set by the relationship manager and product owner, who hold the service agreements, and is tested annually by Liquidity Risk. Your daily job is only to use the flag and operational amount supplied; you keep the evidence file reference on the record. Confirm with your controller.</p>
+</blockquote>
+<h3 id="65-tree-d5-non-operational-wholesale-deposits-and-other-unsecured-funding">6.5 Tree D5: Non-operational wholesale deposits and other unsecured funding</h3>
+<ol>
+<li><strong>Is the funding callable within 30 days, or does it have its earliest possible contractual maturity inside 30 days, or an undetermined maturity?</strong> Include funding with options exercisable at the investor's discretion within 30 days. If it is callable by the provider only after a contractually defined and binding notice period longer than 30 days, it may be excluded (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>). If it is outside the window, LCR 0%.</li>
+<li><strong>Is the customer a financial institution or something not on the list in step 3?</strong> This includes banks and other ADIs, and the entities named in <a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b), such as super fund trustees, unit trusts and cash management trusts. If yes: <strong>100%</strong> ("all other non-operational deposits", <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li><strong>Is the customer a non-financial corporation, sovereign, central bank, PSE or MDB, or an SME with more than A$2m of funding</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)?
+   - Is the entire amount fully covered by deposit insurance? If yes: <strong>20%</strong>.
+   - If not: <strong>40%</strong>.</li>
+<li><strong>Is the funding an unsecured debt issue?</strong> <strong>100%</strong> if maturing inside the window (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). See tree W.</li>
+</ol>
+<p><strong>NSFR factor for wholesale funding</strong> (work down; stop at first match):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>ASF factor</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory capital (before regulatory adjustments; excluding Tier 2 under one year)</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a))</td>
+</tr>
+<tr>
+<td>Any liability or term deposit with effective residual maturity of one year or more</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>Operational deposits (including super fund operational deposits)</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b), (c))</td>
+</tr>
+<tr>
+<td>Funding under one year from non-financial corporate customers</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a))</td>
+</tr>
+<tr>
+<td>Funding under one year from sovereigns, PSEs, MDBs and national development banks</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(e))</td>
+</tr>
+<tr>
+<td>Other funding, 6 months to under 1 year, including from central banks and financial institutions</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f))</td>
+</tr>
+<tr>
+<td>Funding under 6 months from central banks and financial institutions; all other liabilities</td>
+<td>0%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="66-tree-d6-summary-lookup-for-deposits">6.6 Tree D6: Summary lookup for deposits</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Deposit</th>
+<th>LCR (inside 30 days)</th>
+<th>NSFR (under 1 year)</th>
+<th>Paragraphs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail stable</td>
+<td>5%</td>
+<td>95%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a))</td>
+</tr>
+<tr>
+<td>Retail less stable, score 0 to 2</td>
+<td>10%</td>
+<td>90%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t2">Att A Table 2</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a))</td>
+</tr>
+<tr>
+<td>Retail less stable, score 3 or more</td>
+<td>25%</td>
+<td>90%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t2">Att A Table 2</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a))</td>
+</tr>
+<tr>
+<td>Retail term, over 30 days, no right to withdraw</td>
+<td>0%</td>
+<td>90% or 95%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12</a>(a), 13(a))</td>
+</tr>
+<tr>
+<td>Qualifying SME (under A$2m)</td>
+<td>as retail</td>
+<td>as retail</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>)</td>
+</tr>
+<tr>
+<td>Operational, fully insured</td>
+<td>5%</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b))</td>
+</tr>
+<tr>
+<td>Operational, not fully insured</td>
+<td>25%</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b))</td>
+</tr>
+<tr>
+<td>Non-financial corporate, sovereign, central bank, PSE, MDB, SME over A$2m: non-operational, fully insured</td>
+<td>20%</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C paras 14</a>(a), 14(e))</td>
+</tr>
+<tr>
+<td>Same, not fully insured</td>
+<td>40%</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C paras 14</a>(a), 14(e))</td>
+</tr>
+<tr>
+<td>Financial institution (including a bank or super fund trustee), non-operational, at call</td>
+<td>100%</td>
+<td>0%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+</tr>
+<tr>
+<td>Intermediated deposit failing <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a> conditions</td>
+<td>100%</td>
+<td>0% (under 6 months)</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="7-decision-trees-for-everything-else">7. Decision trees for everything else</h2>
+<h3 id="71-tree-s-securities-and-the-liquid-asset-stock">7.1 Tree S: Securities and the liquid asset stock</h3>
+<p>This tree answers two questions: "Is it HQLA, and what class?" and "What NSFR factor?" Run both.</p>
+<p><strong>Part 1: HQLA class (LCR numerator).</strong></p>
+<ol>
+<li><strong>Is the security on the bank's balance sheet, owned by the bank?</strong> If it was borrowed and the bank does not keep beneficial ownership, it is not an asset for the NSFR (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>). For the LCR, collateral received in a reverse repo may count only if it is held at the ADI, not rehypothecated, and legally and contractually available for the bank's use (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>).</li>
+<li><strong>Are they notes and coin?</strong> HQLA1 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(a)).</li>
+<li><strong>Are they central bank balances that can be drawn down in a stress?</strong> HQLA1 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(b)). Example Bank's Exchange Settlement Account balance at the RBA is in this group.</li>
+<li><strong>Is it a marketable security that is a claim on, or guaranteed by, a sovereign, central bank, PSE, the Bank for International Settlements, the International Monetary Fund, the European Central Bank, the European Union or an MDB, and does it meet all four conditions?</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(c))
+   - (i) a zero per cent risk weight under APS 112;
+   - (ii) traded in large, deep and active repo or cash markets with low concentration;
+   - (iii) a proven record as a reliable source of liquidity even in stress; and
+   - (iv) not an obligation of a financial institution or any of its associated entities.</li>
+</ol>
+<p>If all four hold, it is <strong>HQLA1</strong>. Included at market value, no haircut (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>).
+5. <strong>Is it a sovereign or central bank debt security with a non-zero risk weight?</strong> It can be HQLA1 if issued in domestic currency by the sovereign in the country where the liquidity risk is taken or the bank's home country (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(d)), or, if in foreign currency, only up to the bank's stressed net cash outflows in that currency in that jurisdiction (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(e)).
+6. <strong>HQLA2A (15% haircut) if recognised by APRA or the relevant regulator</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a>):
+   - sovereign, central bank, PSE or MDB paper at a 20% risk weight, with deep markets, a proven record (price decline of no more than 10% or haircut rise of no more than 10 percentage points over 30 days in a stress period) and not issued by a financial institution (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a>(a)); or
+   - corporate debt (including commercial paper) not issued by a financial institution, plain vanilla, or covered bonds not issued by the ADI or an associated entity, rated at least AA- (or the IRB equivalent) with deep markets and a proven record (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a>(b)).
+7. <strong>HQLA2B if recognised</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>): residential mortgage-backed securities (RMBS) meeting criteria (i) to (vii), 25% haircut (para 12(a)); corporate debt rated A+ to BBB-, 50% haircut (para 12(b)); common equity shares meeting criteria (i) to (vi), 50% haircut (para 12(c)).
+8. <strong>Australian dollar reality check.</strong> Per APRA's liquidity FAQ, in Australian dollars only notes and coin, balances with the RBA, and Australian Government and semi-government securities are HQLA1, and no AUD assets currently qualify as HQLA2. So for Example Bank, any AUD security that is not one of those is <strong>not HQLA</strong>, however good its rating.
+9. <strong>Operational requirements</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 and 23</a>). Every asset in the stock must meet all of these:
+   - available to be converted into cash at any time (para 22(a));
+   - unencumbered and under the control of the function charged with managing liquidity risk (typically the treasurer), who has continuous authority and the legal and operational capability to sell it (para 22(b));
+   - control evidenced either by a separate pool managed solely as a source of contingent funds, or by showing the function can sell the asset at any time in the 30-day stress and use the proceeds without conflicting with a stated business or risk strategy (para 22(c));
+   - not pledged to secure, collateralise or credit enhance any transaction, and not designated to cover operational costs such as rents and salaries (para 23).
+10. <strong>If an asset becomes ineligible</strong> (for example a rating downgrade), it may stay in the stock for an additional 30 calendar days to allow replacement (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>). Record the date it became ineligible and the day it must leave.
+11. <strong>Value and apply the haircut and caps.</strong> HQLA is held at market value; haircuts are 0% for HQLA1, 15% for HQLA2A, 25% for RMBS HQLA2B, 50% for other HQLA2B. Total HQLA2 may be at most 40% of the stock, and HQLA2B at most 15% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>), calculated on adjusted amounts after unwinding secured transactions maturing within 30 days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A paras 7 and 8</a>). Document <a href="08_LCR_Production_End_to_End.html">08</a> shows the cap calculation.
+12. <strong>No double counting.</strong> If an asset is in the stock, its maturity cash must not also be counted as an inflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>).</p>
+<p><strong>Part 2: NSFR required stable funding factor.</strong> Use carrying value. Work down; stop at first match.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>RSF factor</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Encumbered for 1 year or more?</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C paras 23, 37</a>(a))</td>
+</tr>
+<tr>
+<td>Encumbered 6 months to under 1 year?</td>
+<td>50%, or the higher unencumbered factor if that is above 50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C paras 23, 34</a>(b))</td>
+</tr>
+<tr>
+<td>Encumbered with under 6 months left?</td>
+<td>Same factor as the equivalent unencumbered asset</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Notes and coin; central bank reserves and balances; claims on central banks under 6 months</td>
+<td>0%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>(a) to (c))</td>
+</tr>
+<tr>
+<td>Unencumbered HQLA1 (government, semi-government and similar zero risk weight securities)</td>
+<td>5%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a>)</td>
+</tr>
+<tr>
+<td>Unencumbered HQLA2A</td>
+<td>15%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(a))</td>
+</tr>
+<tr>
+<td>Unencumbered HQLA2B</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(a))</td>
+</tr>
+<tr>
+<td>ASX 200 Australian equities (not financial institutions)</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(e))</td>
+</tr>
+<tr>
+<td>Other non-HQLA with residual maturity under 1 year</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f))</td>
+</tr>
+<tr>
+<td>Unencumbered securities with remaining maturity 1 year or more, and exchange-traded equities that are not HQLA and not in default</td>
+<td>85%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(c))</td>
+</tr>
+<tr>
+<td>Defaulted securities</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> For the NSFR, HQLA is defined "without regard to LCR operational requirements and LCR caps" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f20">Att C footnote 20</a>). A bond that is HQLA1 but sits outside Treasury's control for the LCR still earns the 5% factor in the NSFR if unencumbered.</p>
+</blockquote>
+<h3 id="72-tree-l-loans">7.2 Tree L: Loans</h3>
+<p><strong>Part 1: LCR inflow</strong> (is there any cash coming in within 30 days, and at what rate?)</p>
+<ol>
+<li><strong>Is the loan fully performing, with no reason to expect a default within 30 days?</strong> If not, <strong>no inflow</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>).</li>
+<li><strong>Is a contractual payment due within 30 days?</strong> Use the latest possible date based on the borrower's contractual rights (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>). Include principal, interest and fees due. If the loan has no specific maturity (for example a credit card or overdraft), count only minimum payments of principal, fee or interest (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>). If nothing is due: no inflow.</li>
+<li><strong>Is the asset already in the stock of HQLA?</strong> Then do not count its inflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>).</li>
+<li><strong>Who is the borrower?</strong></li>
+</ol>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Borrower</th>
+<th>Inflow rate</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail or SME customer</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>)</td>
+</tr>
+<tr>
+<td>Financial institution or central bank</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>(a))</td>
+</tr>
+<tr>
+<td>Non-financial corporate, sovereign, PSE, MDB or other</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>(b))</td>
+</tr>
+<tr>
+<td>Maturing securities not in the stock of HQLA</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Other contractual cash inflows (not non-financial revenues)</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p66">Att A para 66</a>)</td>
+</tr>
+<tr>
+<td>Deposits at other financial institutions for operational purposes</td>
+<td>0%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p63">Att A para 63</a>)</td>
+</tr>
+<tr>
+<td>Deposits at the centralised institution of a cooperative network</td>
+<td>0%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p64">Att A para 64</a>)</td>
+</tr>
+<tr>
+<td>Lines of credit and facilities held at other institutions</td>
+<td>0%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p57">Att A para 57</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="5">
+<li><strong>Remember the cap.</strong> Total inflows are counted only up to 75% of total outflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). That check is done once, in total, not loan by loan (document <a href="08_LCR_Production_End_to_End.html">08</a>).</li>
+</ol>
+<p>The retail and SME rate is 50% because the bank is assumed to keep lending, at 50% of what it receives (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>). The rate for financial institutions and central banks is 100% because the bank is assumed to keep none of them (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>).</p>
+<p><strong>Part 2: NSFR factor</strong> (work down; stop at first match).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>RSF factor</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Encumbered?</td>
+<td>See the encumbrance rules in 7.1</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Non-performing?</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Claim on a central bank, residual under 6 months</td>
+<td>0%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>(c))</td>
+</tr>
+<tr>
+<td>Loan to a financial institution, under 6 months, secured against HQLA1, freely rehypothecable for the life of the loan</td>
+<td>10%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C para 31</a>)</td>
+</tr>
+<tr>
+<td>Any other loan to a financial institution under 6 months</td>
+<td>15%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(b))</td>
+</tr>
+<tr>
+<td>Loan to a financial institution or central bank, 6 months to under 1 year</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(c))</td>
+</tr>
+<tr>
+<td>Loan to a financial institution, 1 year or more</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Loans to non-financial corporates, retail and SME customers, sovereigns and PSEs, under 1 year</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f))</td>
+</tr>
+<tr>
+<td>Standard residential mortgage to a natural person, 1 year or more, LVR 80% or below, unencumbered</td>
+<td>65%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a))</td>
+</tr>
+<tr>
+<td>Other loan, 1 year or more, risk weight 35% or lower under APS 112 (not a financial institution)</td>
+<td>65%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(b))</td>
+</tr>
+<tr>
+<td>Other performing loan, 1 year or more (for example a mortgage with LVR above 80%, or a business loan at a higher risk weight)</td>
+<td>85%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(b))</td>
+</tr>
+<tr>
+<td>No defined maturity, or maturity subject to periodic review</td>
+<td>Treat as 1 year or more</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p21">Att C para 21</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>For maturity, use the latest possible date, and assume extension options will be exercised (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>). For an amortising loan, or one with minimum contractual payments, the portion that falls due within one year <em>may</em> be included in the under-one-year category (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p22">Att C para 22</a>).</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Example Bank's base position treats each mortgage and business loan as one block in the "over 1 year" bucket and does not split off the next 12 months of principal. This is a simplification that slightly overstates required stable funding, so it is conservative. If your controller asks you to apply <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p22">Att C para 22</a>, the split must come from the repayment schedule field, not an estimate.</p>
+</blockquote>
+<h3 id="73-tree-f-facilities">7.3 Tree F: Facilities</h3>
+<ol>
+<li><strong>Is the facility revocable?</strong> If the bank can cancel it freely at any time without notice ("unconditionally revocable"), it falls in the LCR row "Revocable credit and liquidity facilities": <strong>5%</strong> of the undrawn portion (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). NSFR: <strong>1%</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>). If the bank can cancel it only when something happens (a "conditionally revocable" facility), the NSFR rate is <strong>5%</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>).</li>
+<li><strong>Otherwise it is committed.</strong> Take only the <strong>undrawn portion</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li><strong>Is the counterparty a hedge fund, money market fund, special purpose funding vehicle, or other vehicle used to finance the ADI's own assets?</strong> Then the <em>entire</em> facility is a <strong>liquidity facility to a financial institution</strong>: <strong>100%</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>).</li>
+<li><strong>Is it a liquidity facility?</strong> A liquidity facility is any committed, undrawn back-up facility used to refinance the debt obligations of a customer who cannot roll over that debt in financial markets. The amount treated as a liquidity facility is only the customer's outstanding debt maturing within 30 days that the facility backstops (or the proportionate share of a syndicate). <strong>Any additional capacity is a committed credit facility.</strong> General working capital facilities and revolving credit facilities for general corporate purposes are <strong>credit facilities</strong>, never liquidity facilities (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>).</li>
+<li><strong>Apply the rate by customer and purpose</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>):</li>
+</ol>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>Credit facility</th>
+<th>Liquidity facility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail and SME customers</td>
+<td>5%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>Non-financial corporates, sovereigns and central banks, PSEs</td>
+<td>10%</td>
+<td>30%</td>
+</tr>
+<tr>
+<td>Banks and other ADIs subject to prudential supervision</td>
+<td>40%</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Other financial institutions</td>
+<td>40%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Other legal entity customers</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="6">
+<li><strong>NSFR:</strong> all irrevocable and conditionally revocable credit and liquidity facilities to any client: 5% of the undrawn amount (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p41">Att C para 41</a>, <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>).</li>
+<li><strong>Trade finance and guarantees.</strong> For the LCR, trade finance related obligations take 100% of the average of actual monthly net outflows in a recent 12-month period; guarantees and letters of credit other than trade finance take 50% of that average (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). For the NSFR both take 100% of the actual net outflows of the most recent 12-month period (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a>).</li>
+</ol>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> APS 210 has no separate LCR row for "conditionally revocable". Example Bank treats a conditionally revocable facility as committed for the LCR, which is the cautious reading, and as 5% for the NSFR. Confirm with your controller before applying it to a new product.</p>
+</blockquote>
+<h3 id="74-tree-r-secured-funding-and-secured-lending-repo-reverse-repo-securities-lending">7.4 Tree R: Secured funding and secured lending (repo, reverse repo, securities lending)</h3>
+<p><strong>Part 1: Secured funding (the bank borrows cash and pledges assets). Only transactions maturing inside 30 days run off.</strong> Work down; stop at first match (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</p>
+<ol>
+<li>Backed by HQLA1, any counterparty: <strong>0%</strong>.</li>
+<li>Backed by CLF-eligible debt securities where the pledging ADI has a CLF with the RBA: <strong>0%</strong>. (The aggregate CLF was phased out to zero as at 1 January 2023, so this row does not apply to Example Bank.)</li>
+<li>Backed by HQLA2A, any counterparty: <strong>15%</strong>.</li>
+<li>Not in the 0% or 15% rows, and the counterparty is a domestic sovereign, PSE (but not the RBA) or MDB with a risk weight of 20% or lower under APS 112: <strong>25%</strong>.</li>
+<li>Backed by RMBS eligible as HQLA2B: <strong>25%</strong>.</li>
+<li>Backed by other HQLA2B, any counterparty: <strong>50%</strong>.</li>
+<li>All other secured funding: <strong>100%</strong>.</li>
+</ol>
+<p>For an Australian-dollar bank, almost everything resolves at step 1 (government and semi-government collateral) or step 7 (anything else). Step 4 helps when the counterparty is a state treasury corporation.</p>
+<p><strong>Part 2: Secured lending (the bank lends cash and holds collateral). Only maturing transactions give inflow</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A para 55</a> and Table 4).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Collateral held</th>
+<th>Inflow rate (collateral not used to cover short positions)</th>
+<th>If collateral is used to cover short positions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>CLF-eligible debt securities (where the bank has a CLF)</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>HQLA2A</td>
+<td>15%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>RMBS eligible as HQLA2B</td>
+<td>25%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>50%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Margin lending backed by securities that are not HQLA1, HQLA2 or CLF-eligible</td>
+<td>50%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>All other collateral</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Why zero for HQLA1? The bank is assumed to roll over the reverse repo, so no cash comes back. For other collateral, the lender gets a part of its money back because the borrower can only re-borrow against assets that still qualify (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A para 55</a>). If the collateral is rehypothecated (reused) and tied up for 30 days or longer to cover short positions, the inflow is zero (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p56">Att A para 56</a>).</p>
+<p><strong>NSFR for secured trades:</strong></p>
+<ul>
+<li>Securities <strong>borrowed</strong> where the ADI does not keep beneficial ownership are excluded from assets; securities <strong>lent</strong> where it does keep beneficial ownership are included (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>).</li>
+<li>Securities pledged but still on the balance sheet with ownership retained are allocated to the right RSF category (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>), and then the encumbrance rules in 7.1 apply.</li>
+<li>Securities financing transactions with a single counterparty may be netted if the conditions in APS 110 are met (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p26">Att C para 26</a>).</li>
+<li>A reverse repo with no maturity gets 100% RSF unless the ADI can show APRA a different effective maturity (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f28">Att C footnote 28</a>).</li>
+<li>Cash lent against collateral to a financial institution under six months: 10% if secured by HQLA1 and the bank can freely rehypothecate it; 15% otherwise (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C paras 31 and 33</a>(b)).</li>
+</ul>
+<h3 id="75-tree-x-derivatives-and-collateral">7.5 Tree X: Derivatives and collateral</h3>
+<p><strong>Part 1: LCR.</strong></p>
+<ol>
+<li><strong>Group the trades by counterparty.</strong> Only if a valid master netting agreement exists can payables and receivables be netted. Without one, take payables gross (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>). FX trades that swap full principal on the same day (or within the same day) may be shown net even without a master netting agreement (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>). Netting of payments under industry-wide netting agreements needs APRA approval (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>).</li>
+<li><strong>Net off HQLA1 and HQLA2 collateral held</strong>, but only if that collateral is not already counted in the stock of HQLA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a> and para 31).</li>
+<li><strong>Net payable: 100% outflow</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). <strong>Net receivable: 100% inflow</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a>).</li>
+<li><strong>Collateral lines, each separate</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>):</li>
+</ol>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collateral to be posted on a 3-notch downgrade of the ADI</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Excess non-segregated collateral held that could be called at any time by the counterparty</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Contractually required collateral the counterparty has not yet demanded</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Contracts allowing collateral substitution to non-HQLA: the amount of HQLA that may be substituted without the ADI's consent</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Collateral outflows due to market valuation changes on derivatives and other transactions</td>
+<td>100% of the largest absolute net 30-day collateral flow realised in the past 24 months</td>
+</tr>
+<tr>
+<td>Valuation changes on posted non-HQLA1 collateral</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<p>APRA may approve an alternative method for the market valuation line in certain circumstances (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f6">Att A footnote 6</a>).</p>
+<p><strong>Part 2: NSFR.</strong></p>
+<ol>
+<li><strong>NSFR derivative liabilities</strong> = replacement cost of contracts with negative value (net per eligible netting agreement) less variation margin posted (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C paras 9 and 10</a> and footnote 11).</li>
+<li><strong>NSFR derivative assets</strong> = replacement cost of contracts with positive value (net per eligible netting agreement). Collateral received does not offset it, except cash variation margin in the same currency as settlement meeting the conditions of APS 110 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>). Any other variation margin received, and all initial margin received, is a liability with <strong>0% ASF</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>).</li>
+<li><strong>If liabilities exceed assets:</strong> the net amount takes 0% ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(c)). <strong>If assets exceed liabilities:</strong> the net amount takes <strong>100% RSF</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(b)).</li>
+<li><strong>Add 20% of derivative liabilities before deducting variation margin</strong> as an RSF item (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(d)).</li>
+<li><strong>Initial margin posted and CCP default fund contributions</strong> (CCP means central counterparty, a clearing house): <strong>85% RSF</strong>, or the higher factor if the asset posted would otherwise receive more (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(a)).</li>
+<li><strong>Do not also count as an asset</strong> the variation margin asset you deducted from the replacement cost (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f12">Att C footnote 12</a>).</li>
+</ol>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Example Bank's base NSFR ignores derivatives to keep the first examples simple. The practice case (document <a href="14_Exercises_and_Assessments.html">14</a>) includes derivatives.</p>
+</blockquote>
+<h3 id="76-tree-w-wholesale-debt-issued-by-the-bank">7.6 Tree W: Wholesale debt issued by the bank</h3>
+<p><strong>Part 1: LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> and para 45).</strong></p>
+<ol>
+<li><strong>Is the debt unsecured wholesale funding?</strong> It is, if raised from non-natural persons and not collateralised by legal rights to specifically designated assets in a bankruptcy, insolvency, liquidation or resolution. Derivative obligations are excluded (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p44">Att A para 44</a>). If it is secured by designated assets, go to step 4.</li>
+<li><strong>Does any holder have a right to be paid inside 30 days?</strong> That means a maturity date inside 30 days, or a call or put exercisable at the investor's discretion inside 30 days, or an undetermined maturity (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>). Yes: <strong>100%</strong> ("unsecured debt issuance").</li>
+<li><strong>Is the debt callable by the provider only after a contractually defined and binding notice period longer than 30 days?</strong> It may be excluded (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>).</li>
+<li><strong>Covered bonds, ABCP, ABS and other structured financing issued by the ADI itself maturing inside 30 days: 100%.</strong> Loss of funding on special purpose vehicles, conduits and structured investment vehicles from failure to refinance maturing debt, embedded options and other potential losses of funding: 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li><strong>Buybacks of domestic Australian debt securities</strong> the bank may feel obliged to make as a market maker: 10% for short-term and 5% for long-term securities, unless otherwise agreed with APRA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li><strong>Non-contractual obligations:</strong> structured products and managed funds 5%; issuers with an affiliated dealer or market maker and other non-contractual contingent funding obligations: a rate set by the ADI, unless APRA determines the rate (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). Document the basis (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p32">Att A para 32</a>).</li>
+</ol>
+<p><strong>Part 2: NSFR.</strong> Use the <strong>earliest</strong> date at which the funds may be redeemed, including investor options (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>). Only the portion falling on or after the six-month and one-year horizons may be treated as having a residual maturity of six months or more or one year or more (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Remaining term to earliest redemption</th>
+<th>ASF factor</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 year or more</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>6 months to under 1 year</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f))</td>
+</tr>
+<tr>
+<td>Under 6 months</td>
+<td>0%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+</tr>
+<tr>
+<td>Under 1 year, and the holder is known to be a non-financial corporate</td>
+<td>50%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a))</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> For bonds the holders are often unknown, so Example Bank assumes under six months gets 0%, the cautious reading. If the registry shows a non-financial corporate holder, <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a) allows 50%. Confirm with your controller before using a holder-by-holder analysis.</p>
+</blockquote>
+<h3 id="77-capital-other-liabilities-and-other-assets">7.7 Capital, other liabilities and other assets</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>LCR</th>
+<th>NSFR</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shareholders' equity and regulatory capital</td>
+<td>None</td>
+<td>100% (Tier 2 under 1 year excluded)</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a))</td>
+</tr>
+<tr>
+<td>Capital instrument with effective residual maturity 1 year or more (no option reducing it below 1 year)</td>
+<td>None</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(b))</td>
+</tr>
+<tr>
+<td>Other liabilities with no stated maturity</td>
+<td>None unless contractual payable within 30 days</td>
+<td>0%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b))</td>
+</tr>
+<tr>
+<td>Deferred tax liabilities</td>
+<td>Not applicable</td>
+<td>By nearest date they could be realised</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b)(i))</td>
+</tr>
+<tr>
+<td>Contractual payables within 30 days (rent, tax, suppliers)</td>
+<td>100% ("other contractual cash outflows")</td>
+<td>0%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+</tr>
+<tr>
+<td>Trade date payables, settling normally</td>
+<td>None</td>
+<td>0%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(d))</td>
+</tr>
+<tr>
+<td>Trade date receivables, settling normally</td>
+<td>None</td>
+<td>0% RSF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>(d))</td>
+</tr>
+<tr>
+<td>Fixed assets, non-exchange traded equities, items deducted from capital, insurance assets, subsidiary interests</td>
+<td>None</td>
+<td>100%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Physical traded commodities, including gold</td>
+<td>None</td>
+<td>85%</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(d))</td>
+</tr>
+</tbody>
+</table></div>
+<p>Guide cross-references: deposits (<a href="../LIQUIDITY_GUIDE.html#chapter-4-instruments-and-market-terms">Guide Ch 4</a> s4.1; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> s12 and s13), facilities (<a href="../LIQUIDITY_GUIDE.html#chapter-4-instruments-and-market-terms">Guide Ch 4</a> s4.2; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> s15 onwards), secured funding (<a href="../LIQUIDITY_GUIDE.html#chapter-4-instruments-and-market-terms">Guide Ch 4</a> s4.6; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> s14), derivatives (<a href="../LIQUIDITY_GUIDE.html#chapter-4-instruments-and-market-terms">Guide Ch 4</a> s4.8), the NSFR factors (<a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a>) and the mapping of Example Bank lines (<a href="../LIQUIDITY_GUIDE.html#chapter-3-how-to-read-a-bank-balance-sheet">Guide Ch 3</a> s3.11).</p>
+<hr />
+<h2 id="8-twelve-worked-classification-examples">8. Twelve worked classification examples</h2>
+<p>Each example shows the facts, the reasoning in steps, and the result for both ratios. All amounts are invented. Check every multiplication yourself.</p>
+<h3 id="example-1-a-stable-retail-transaction-account">Example 1: A stable retail transaction account</h3>
+<p><strong>Facts.</strong> Mei holds A$180,000 in a transaction account into which her salary is paid. It is her only deposit at the bank.</p>
+<p><strong>Reasoning.</strong></p>
+<ol>
+<li>Natural person, so retail (tree D1, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p34">Att A para 34</a>).</li>
+<li>FCS cover: A$250,000 per person per bank. Her total is A$180,000, so all of it is covered.</li>
+<li>The account is transactional (salary credited), so the covered balance is stable (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>(b)).</li>
+<li>LCR rate for stable deposits: 5% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li>NSFR: stable demand deposit, under one year: 95% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> LCR outflow 5% x A$180,000 = <strong>A$9,000</strong>. NSFR available stable funding 95% x A$180,000 = <strong>A$171,000</strong>.</p>
+<h3 id="example-2-an-on-line-saver-above-the-guarantee-limit">Example 2: An on-line saver above the guarantee limit</h3>
+<p><strong>Facts.</strong> Raj has A$320,000 in an on-line saver at a normal (non-promotional) rate. He has had a home loan with the bank for eight years. He has no other deposits.</p>
+<p><strong>Reasoning.</strong></p>
+<ol>
+<li>Retail (tree D1).</li>
+<li>Example Bank convention: on-line accounts are never stable, so the whole balance is less stable and is scored (tree D2).</li>
+<li>Scorecard: balance above A$250,000? Yes, 2. On-line? Yes, 2. No established relationship? No (he has a home loan), 0. Rate-driven? No, 0. Total <strong>4</strong>.</li>
+<li>Score of 3 or more gives 25% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t2">Att A Table 2</a>).</li>
+<li>NSFR: less stable retail, under one year: 90% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> LCR outflow 25% x A$320,000 = <strong>A$80,000</strong>. NSFR 90% x A$320,000 = <strong>A$288,000</strong>.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> If Raj's balance were A$200,000 the score would be 2 (on-line only), so the rate would be 10% and the outflow A$20,000. The A$250,000 line is a cliff for scoring. That is why the balance must be the customer's <em>total</em> deposits, because the FCS limit is per person.</p>
+</blockquote>
+<h3 id="example-3-term-deposits-and-the-no-right-to-withdraw-test">Example 3: Term deposits and the "no right to withdraw" test</h3>
+<p><strong>Facts.</strong> Three cases of the same product, a 12-month term deposit that says the customer has no legal right to withdraw early. Each is A$50,000. The customer has no other relationship with the bank, so the deposit is less stable.</p>
+<p><strong>Reasoning and result.</strong></p>
+<ul>
+<li><strong>(a) Matures in 90 days.</strong> Residual maturity is over 30 days and there is no right to withdraw, so the outflow is excluded: <strong>LCR 0%</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>). NSFR: less stable retail under one year, 90% x A$50,000 = <strong>A$45,000</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)).</li>
+<li><strong>(b) Matures in 20 days.</strong> The depositor gets the money inside the window, so tree D2 applies. Scorecard: balance not above the limit, 0; not on-line, 0; no relationship, 1; not rate-driven, 0. Total 1, so 10%. LCR outflow 10% x A$50,000 = <strong>A$5,000</strong>. NSFR still <strong>A$45,000</strong>.</li>
+<li><strong>(c) The pool test.</strong> In the past quarter, branches let 60 customers out of the 90-day product, and only 4 of them were genuine hardship cases under the bank's hardship policy. The other 56 are early withdrawals despite the clause. The <em>entire category</em> of these funds must be treated as demand deposits (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>). The hardship cases do not count against the bank (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p43">Att A para 43</a>). Case (a) is now scored as a demand deposit: 10%, so <strong>A$5,000</strong>.</li>
+</ul>
+<h3 id="example-4-who-is-the-customer">Example 4: Who is the customer?</h3>
+<p><strong>Facts.</strong> Two deposits. (1) A wealth platform has placed A$20m of its clients' money with the bank in a pooled account. The platform agreement lets the platform move the money to other banks without asking clients. (2) Smith Hardware Pty Ltd, a non-financial company managed by a business banker, has deposits of A$3.4m and no other funding from the bank.</p>
+<p><strong>Reasoning, deposit (1).</strong></p>
+<ol>
+<li>It arrives through an intermediary (tree D1 step 1).</li>
+<li>Test the conditions in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>. Condition (b), the person exercises the withdrawal rights in practice and cannot transfer them to the intermediary, fails. Condition (d), the intermediary cannot withdraw without specific directions, fails.</li>
+<li>So the deposit is from a financial institution: tree D5: 100%.</li>
+<li>NSFR: it is funding from a financial institution under six months (at call): 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> LCR outflow <strong>A$20m</strong> (100%). NSFR <strong>A$0</strong>.</p>
+<p><strong>Reasoning, deposit (2).</strong></p>
+<ol>
+<li>Not a natural person; it is a company, so wholesale unless the SME test is met.</li>
+<li>Total aggregated funding is A$3.4m, which is not under A$2 million, so it fails <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>(b). Wholesale.</li>
+<li>Not operational (no custody, clearing or cash management dependency evidenced).</li>
+<li>Non-financial corporation, not fully insured (A$3.4m exceeds the FCS cover): 40% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li>NSFR: funding under one year from a non-financial corporate: 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> LCR outflow 40% x A$3.4m = <strong>A$1.36m</strong>. NSFR 50% x A$3.4m = <strong>A$1.70m</strong>.</p>
+<p>If Smith Hardware's total funding had been A$1.4m and it had been managed as a retail exposure, it would have qualified as an SME treated as retail (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>) and gone through tree D2.</p>
+<h3 id="example-5-an-operational-deposit-with-excess-and-a-super-fund">Example 5: An operational deposit with excess, and a super fund</h3>
+<p><strong>Facts.</strong> (1) A corporate customer holds A$40m in a cash management account under a binding agreement with 90 days' notice of termination. Liquidity Risk's analysis shows A$30m is needed to run the payment activity; the rest is excess. Not fully insured. (2) A superannuation fund trustee holds A$80m at call in a savings product. It is not an operational relationship.</p>
+<p><strong>Reasoning (1).</strong></p>
+<ol>
+<li>Services: cash management, institutional customer, binding agreement, 90 days' notice (at least 30 days): tests in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 and 48</a> pass.</li>
+<li>By-product, designated account, no incentive to leave excess funds: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p49">Att A para 49</a> passes.</li>
+<li>Split: A$30m operational, A$10m excess (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p50">Att A para 50</a>).</li>
+<li>Operational, not fully insured: 25%. The excess is a non-operational deposit from a non-financial corporation, not fully insured: 40%.</li>
+<li>NSFR: operational 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b)); the excess is under one year from a non-financial corporate, 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> LCR outflow (25% x A$30m) + (40% x A$10m) = 7.5 + 4.0 = <strong>A$11.5m</strong>. NSFR 50% x A$40m = <strong>A$20.0m</strong>.</p>
+<p><strong>Reasoning (2).</strong></p>
+<ol>
+<li>A trustee of a superannuation fund is a financial institution (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b)).</li>
+<li>Not operational. Non-operational deposit from a financial institution: "all other non-operational deposits": 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li>NSFR: funding from a financial institution under six months: 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> LCR outflow <strong>A$80m</strong>. NSFR <strong>A$0</strong>.</p>
+<p>Variant: if A$30m of the fund's money sat in a custody account that passes all the operational tests, that A$30m would be 25% (A$7.5m) and 50% ASF (A$15m), and the remaining A$50m would stay at 100% and 0%.</p>
+<h3 id="example-6-a-government-bond-valued-two-ways-and-the-same-bond-pledged">Example 6: A government bond, valued two ways, and the same bond pledged</h3>
+<p><strong>Facts.</strong> The bank holds A$100m face value of Australian Government bonds. The market value today is A$98.5m. The accounting carrying value (amortised cost) is A$100.3m. The bonds are in Treasury's liquid asset portfolio and are unencumbered.</p>
+<p><strong>Reasoning.</strong></p>
+<ol>
+<li>A marketable claim on the Australian Government, zero risk weight, deep market: <strong>HQLA1</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(c)).</li>
+<li>HQLA1 is counted at market value with no haircut (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>).</li>
+<li>Operational tests pass: available, unencumbered, controlled by Treasury, in a designated pool (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 and 23</a>).</li>
+<li>NSFR: unencumbered HQLA1: 5% of carrying value (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p17">Att C para 17</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> HQLA <strong>A$98.5m</strong>. RSF 5% x A$100.3m = <strong>A$5.015m</strong>.</p>
+<p><strong>The same bond pledged.</strong> Treasury repos the bonds for 14 days to fund cash.</p>
+<ul>
+<li><strong>LCR:</strong> the bonds are encumbered, so they leave the stock of HQLA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>). The repo cash borrowed is secured funding backed by HQLA1, so the run-off rate is 0% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). The stock falls by A$98.5m and there is no outflow to offset it. Treasury must weigh that loss of liquid assets against the funding it raises.</li>
+<li><strong>NSFR:</strong> encumbered with under six months remaining: the same factor as unencumbered: 5% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). RSF stays <strong>A$5.015m</strong>.</li>
+<li><strong>If the repo ran for nine months:</strong> encumbered for six months to under one year. An HQLA asset encumbered for that period takes 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C paras 23 and 34</a>(b)). RSF 50% x A$100.3m = <strong>A$50.15m</strong>.</li>
+<li><strong>If it ran for 15 months:</strong> 100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C paras 23 and 37</a>(a)): <strong>A$100.3m</strong>.</li>
+</ul>
+<h3 id="example-7-a-bond-that-looks-good-but-is-not-hqla">Example 7: A bond that looks good but is not HQLA</h3>
+<p><strong>Facts.</strong> (1) The bank holds A$20m (carrying value; market value A$19.4m) of AAA-rated residential mortgage-backed securities issued by another lender. They are in Australian dollars. Remaining term is four years. (2) The bank holds A$50m of senior bonds issued by another bank, maturing in 20 days.</p>
+<p><strong>Reasoning (1).</strong></p>
+<ol>
+<li>RMBS can be HQLA2B only if they meet the criteria in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>(a) and are recognised by APRA. Per APRA's liquidity FAQ, no AUD assets currently qualify as HQLA2. So these are <strong>not HQLA</strong>.</li>
+<li>Not in the stock: no LCR numerator. No inflow either, because they do not mature inside 30 days.</li>
+<li>NSFR: unencumbered securities with remaining maturity of one year or more that do not qualify as HQLA: 85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(c)).</li>
+</ol>
+<p><strong>Result.</strong> LCR: nothing. NSFR RSF 85% x A$20.0m = <strong>A$17.0m</strong>.</p>
+<p><strong>Reasoning (2).</strong></p>
+<ol>
+<li>Bonds issued by a bank are an obligation of a financial institution, so they are not HQLA1 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(c)(iv)).</li>
+<li>They are maturing securities not included in the stock of HQLA: inflow <strong>100%</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>), so A$50m.</li>
+<li>NSFR: other non-HQLA with residual maturity under one year: 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f)).</li>
+</ol>
+<p><strong>Result.</strong> LCR inflow <strong>A$50m</strong>. RSF 50% x A$50m = <strong>A$25m</strong>.</p>
+<h3 id="example-8-mortgages">Example 8: Mortgages</h3>
+<p><strong>Facts.</strong> A loan of A$600,000 to Dana, an individual, secured on her home (owner-occupied). LVR 78% as defined under APS 112. 24 years remaining. Fully performing. Unencumbered. Monthly repayment A$3,300 due within the next 30 days.</p>
+<p><strong>Reasoning.</strong></p>
+<ol>
+<li>Fully performing, due date inside 30 days: inflow possible (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A paras 54 and 60</a>).</li>
+<li>Retail customer: 50% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>).</li>
+<li>NSFR: standard residential loan to an individual, one year or more, LVR 80% or below, unencumbered: 65% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a)).</li>
+</ol>
+<p><strong>Result.</strong> LCR inflow 50% x A$3,300 = <strong>A$1,650</strong>. NSFR RSF 65% x A$600,000 = <strong>A$390,000</strong>.</p>
+<p><strong>What changes the answer.</strong></p>
+<ul>
+<li>LVR 85%: no longer "80% or below", so it is another performing loan of one year or more: 85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(b)). RSF 85% x A$600,000 = A$510,000.</li>
+<li>90 days past due: not fully performing, so no LCR inflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>). NSFR 100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c)).</li>
+<li>Securitised into a vehicle that holds the loan for 2 years: encumbered for one year or more: 100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>).</li>
+</ul>
+<h3 id="example-9-a-loan-to-another-bank-and-a-reverse-repo">Example 9: A loan to another bank, and a reverse repo</h3>
+<p><strong>Facts.</strong> The bank has A$200m outstanding with another ADI, maturing in 20 days. Four versions.</p>
+<p><strong>Reasoning and result.</strong></p>
+<ul>
+<li><strong>(a) Unsecured loan.</strong> Fully performing, due inside 30 days, borrower is a financial institution: inflow <strong>100%</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>(a)) = <strong>A$200m</strong>. NSFR: loan to a financial institution under six months, not secured by HQLA1: 15% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(b)) = <strong>A$30m</strong>.</li>
+<li><strong>(b) Reverse repo, collateral is Australian Government bonds, freely rehypothecable, not used to cover short positions.</strong> Table 4: HQLA1 collateral gives <strong>0%</strong> inflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A para 55</a>). The bank is assumed to roll it over. The collateral received may count in the stock of HQLA if held, not rehypothecated and available (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>). NSFR: loan to a financial institution under six months, secured by HQLA1 with free rehypothecation: 10% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C para 31</a>) = <strong>A$20m</strong>.</li>
+<li><strong>(c) Reverse repo secured by corporate bonds that are not HQLA.</strong> "All other collateral": inflow <strong>100%</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t4">Att A Table 4</a>) = <strong>A$200m</strong>. NSFR 15% = <strong>A$30m</strong>.</li>
+<li><strong>(d) Reverse repo with no maturity date.</strong> NSFR 100% unless the bank shows APRA a different effective maturity (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f28">Att C footnote 28</a>) = <strong>A$200m</strong>.</li>
+</ul>
+<h3 id="example-10-facilities">Example 10: Facilities</h3>
+<p><strong>Facts.</strong> Five undrawn facilities.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Facility</th>
+<th>Reasoning</th>
+<th>LCR</th>
+<th>NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>A$50m revolving credit to a listed manufacturer for general working capital</td>
+<td>Committed. General working capital is a credit facility, never liquidity (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>). Non-financial corporate: 10%</td>
+<td>A$5.0m</td>
+<td>5% x 50 = A$2.5m</td>
+</tr>
+<tr>
+<td>b</td>
+<td>A$40m facility to a corporate that backs its commercial paper. A$30m of paper matures inside 30 days</td>
+<td>Liquidity part is the backstopped debt maturing within 30 days: A$30m at 30%; the remaining A$10m is credit at 10% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>)</td>
+<td>9.0 + 1.0 = A$10.0m</td>
+<td>5% x 40 = A$2.0m</td>
+</tr>
+<tr>
+<td>c</td>
+<td>A$100m facility to a hedge fund</td>
+<td>Hedge funds: whole facility is a liquidity facility to a financial institution: 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>)</td>
+<td>A$100m</td>
+<td>5% x 100 = A$5.0m</td>
+</tr>
+<tr>
+<td>d</td>
+<td>A$800m of undrawn credit card limits that the bank can cancel at any time without notice</td>
+<td>Unconditionally revocable: 5% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>); NSFR 1% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>)</td>
+<td>A$40m</td>
+<td>1% x 800 = A$8.0m</td>
+</tr>
+<tr>
+<td>e</td>
+<td>A$20m committed line to a bank</td>
+<td>Banks and other ADIs: 40% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+<td>A$8.0m</td>
+<td>5% x 20 = A$1.0m</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="example-11-derivatives-and-collateral">Example 11: Derivatives and collateral</h3>
+<p><strong>Facts.</strong> (LCR) Counterparty A has a valid master netting agreement: payables within 30 days A$30m, receivables A$22m. Counterparty B has no master netting agreement and the trades are not same-day FX swaps: payables A$5m, receivables A$4m. The bank would have to post A$12m more collateral on a 3-notch downgrade. The largest absolute net 30-day collateral flow in the past 24 months was A$9m. A$2m of excess non-segregated collateral could be called at any time.</p>
+<p>(NSFR) Derivative contracts with negative replacement cost, net per eligible netting agreements: A$60m. Variation margin posted against them: A$35m. Contracts with positive replacement cost, net: A$18m, with no qualifying cash variation margin received. Initial margin posted in cash: A$10m.</p>
+<p><strong>Reasoning (LCR).</strong></p>
+<ol>
+<li>Counterparty A: net payable 30 - 22 = A$8m. Outflow 100% = A$8m.</li>
+<li>Counterparty B: no netting allowed (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>). Payables A$5m outflow at 100% = A$5m; receivables A$4m inflow at 100% = A$4m (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a>).</li>
+<li>Downgrade collateral A$12m at 100%. Largest net flow A$9m at 100%. Excess collateral A$2m at 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+</ol>
+<p><strong>Result (LCR).</strong> Outflows 8 + 5 + 12 + 9 + 2 = <strong>A$36m</strong>. Inflows <strong>A$4m</strong>.</p>
+<p><strong>Reasoning (NSFR).</strong></p>
+<ol>
+<li>NSFR derivative liabilities = 60 - 35 = A$25m (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p10">Att C para 10</a>).</li>
+<li>NSFR derivative assets = A$18m (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p27">Att C para 27</a>).</li>
+<li>Liabilities exceed assets, so the net A$7m takes 0% ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(c)), and there is no 100% RSF item (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(b)).</li>
+<li>RSF 20% of derivative liabilities before deducting variation margin: 20% x A$60m = A$12m (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(d)).</li>
+<li>Initial margin: 85% x A$10m = A$8.5m (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(a)).</li>
+<li>The A$35m variation margin asset is not given an RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f12">Att C footnote 12</a>).</li>
+</ol>
+<p><strong>Result (NSFR).</strong> RSF <strong>A$20.5m</strong>; ASF <strong>A$0</strong> from the net derivative liability.</p>
+<h3 id="example-12-wholesale-debt-in-and-out-of-the-window">Example 12: Wholesale debt in and out of the window</h3>
+<p><strong>Facts.</strong> Four issues, all A$ amounts.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Issue</th>
+<th>Reasoning</th>
+<th>LCR</th>
+<th>NSFR ASF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>A$500m senior unsecured note maturing in 25 days</td>
+<td>Unsecured debt issuance inside the window: 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+<td>A$500m</td>
+<td>Under 6 months: 0% = A$0</td>
+</tr>
+<tr>
+<td>b</td>
+<td>A$300m 5-year note with an investor put exercisable in 20 days</td>
+<td>Options exercisable at the investor's discretion inside 30 days are included (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>): 100%</td>
+<td>A$300m</td>
+<td>Earliest redemption date is 20 days: 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>)</td>
+</tr>
+<tr>
+<td>c</td>
+<td>A$800m of the bank's own covered bonds maturing in 4 months</td>
+<td>Outside the 30-day window: no outflow</td>
+<td>A$0</td>
+<td>Under 6 months: 0%</td>
+</tr>
+<tr>
+<td>d</td>
+<td>A$1.0bn senior note maturing in 9 months</td>
+<td>Outside the window</td>
+<td>A$0</td>
+<td>6 months to under 1 year: 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f)) = A$500m</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Look at (c). It contributes nothing to today's LCR. But in about three months it will sit squarely inside the window and cost A$800m of outflow, unless it is replaced. That is why we run the forward-looking LCR in document <a href="08_LCR_Production_End_to_End.html">08</a>.</p>
+</blockquote>
+<hr />
+<h2 id="9-data-quality-checks">9. Data quality checks</h2>
+<p>Run these checks every day before you classify and calculate. A check that is not run is a check that did not find the error.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The thresholds below are common starting points. The tolerances Example Bank actually uses are set in its data quality procedure; confirm with your controller.</p>
+</blockquote>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Check</th>
+<th>How</th>
+<th>Typical tolerance</th>
+<th>If it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completeness</td>
+<td>Record count by feed equals the source system's control count</td>
+<td>Compare the count and the total balance in the feed footer with the loaded table</td>
+<td>Zero difference</td>
+<td>Stop. Ask the data owner to resend. Do not calculate on a partial feed</td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td>Every feed has arrived</td>
+<td>Feed arrival checklist</td>
+<td>All feeds in by the cut-off time</td>
+<td>Escalate to the controller; see timetable in document <a href="08_LCR_Production_End_to_End.html">08</a></td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td>Mandatory fields filled</td>
+<td>Count nulls in each field of section 4</td>
+<td>Zero for fields that decide a rate</td>
+<td>Apply a conservative default (section 10) and log</td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td>Every product code maps to a classification</td>
+<td>Count unmapped product codes</td>
+<td>Zero</td>
+<td>New product: raise to the rulebook owner the same day</td>
+</tr>
+<tr>
+<td>Validity</td>
+<td>Values within allowed lists</td>
+<td>Counterparty type, currency, flags (yes or no), asset class</td>
+<td>100% valid</td>
+<td>Fix at source; default meanwhile</td>
+</tr>
+<tr>
+<td>Validity</td>
+<td>Dates make sense</td>
+<td>Maturity on or after reporting date; start before maturity; encumbrance end date after reporting date</td>
+<td>Zero exceptions</td>
+<td>Investigate; a maturity in the past on an asset is an overdue loan or a stale feed</td>
+</tr>
+<tr>
+<td>Validity</td>
+<td>Amounts make sense</td>
+<td>No negative balances for deposits or loans; no zero market value for a held security</td>
+<td>Zero exceptions</td>
+<td>Investigate</td>
+</tr>
+<tr>
+<td>Validity</td>
+<td>Rule-consistency</td>
+<td>Operational flag only for non-retail customers with an evidenced service; stable flag only if FCS cover is full; HQLA flag only for allowed asset classes</td>
+<td>Zero exceptions</td>
+<td>Correct the flag or the rule</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>Total assets from feeds equal the general ledger</td>
+<td>By ledger line, difference between the feeds and the GL</td>
+<td>Zero, or only small explained timing differences</td>
+<td>Break down by line; do not release until explained</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>Total liabilities and equity equal the general ledger</td>
+<td>As above</td>
+<td>Same</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>Assets equal liabilities plus equity</td>
+<td>After loading, total assets minus total liabilities and equity</td>
+<td>Zero</td>
+<td>A one-sided feed is missing or doubled</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>Cash and RBA balance equals the RBA statement</td>
+<td>Compare Exchange Settlement Account balance with the RBA statement</td>
+<td>Zero</td>
+<td>Treasury operations must explain before the HQLA is counted</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>Customer master and deposit system agree on customer type</td>
+<td>Sample and count mismatches</td>
+<td>Near zero</td>
+<td>Raise with data management</td>
+</tr>
+<tr>
+<td>Consistency</td>
+<td>Encumbrance agrees across systems</td>
+<td>Treasury system pledged bonds against the collateral system</td>
+<td>Zero</td>
+<td>Treat the disputed amount as encumbered until resolved</td>
+</tr>
+<tr>
+<td>Consistency</td>
+<td>Derivative collateral agrees with counterparty statements</td>
+<td>Treasury operations match</td>
+<td>Within agreed margin</td>
+<td>Use the higher outflow until matched</td>
+</tr>
+<tr>
+<td>Duplicates</td>
+<td>No account or trade appears twice</td>
+<td>Duplicate key test</td>
+<td>Zero</td>
+<td>Remove, log</td>
+</tr>
+<tr>
+<td>Movement</td>
+<td>Each balance line moves reasonably from the previous day</td>
+<td>Compare each line with the prior day and the average of the last 20 days</td>
+<td>For example more than 5% or A$200m on a major line</td>
+<td>Explain from source before sign-off; see the movement analysis in document <a href="08_LCR_Production_End_to_End.html">08</a></td>
+</tr>
+<tr>
+<td>Movement</td>
+<td>Rates and categories stable</td>
+<td>Count of accounts changing category since yesterday</td>
+<td>Explained by product or customer events</td>
+<td>Investigate</td>
+</tr>
+</tbody>
+</table></div>
+<p>Keep the results of each check, including passes, for audit (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p32">Att A para 32</a> requires the bank to provide analysis and evidence to justify derived assumptions).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A reconciliation that "balances" can still be wrong if two errors cancel. That is why you also run the movement checks and the category-level checks. A total that is correct while a deposit has moved from retail to wholesale shows up only in the category check.</p>
+</blockquote>
+<hr />
+<h2 id="10-when-an-attribute-is-missing">10. When an attribute is missing</h2>
+<p>Sometimes a record arrives without a field you need. The rule of thumb is: <strong>take the conservative category and record it.</strong> "Conservative" means the answer that makes the LCR or NSFR look worse. Higher outflow, lower inflow, lower available funding, higher required funding. Never fill a gap with the favourable answer because "it is probably fine".</p>
+<h3 id="101-the-procedure">10.1 The procedure</h3>
+<ol>
+<li><strong>Detect.</strong> The completeness and validity checks in section 9 list the records.</li>
+<li><strong>Default.</strong> Apply the conservative category from the table below, so the calculation can proceed.</li>
+<li><strong>Log.</strong> Write each case to the data exceptions register: date, system, record, amount, missing field, default applied, owner asked, due date.</li>
+<li><strong>Ask.</strong> Contact the data owner for the true value.</li>
+<li><strong>Fix at the source.</strong> The correct value is entered in the source system. Do not fix it by hand in the report: a fix in the report vanishes tomorrow and leaves no trail.</li>
+<li><strong>Reverse the default</strong> once the true value arrives, and record the effect on the ratio.</li>
+<li><strong>Report.</strong> Include the count and amount of defaulted records in the daily pack. If defaults exceed the materiality level in Example Bank's data quality procedure, tell the controller the same day. Repeated defaults on the same field signal a systemic problem: raise it with the system owner and Liquidity Risk.</li>
+</ol>
+<h3 id="102-conservative-defaults">10.2 Conservative defaults</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Missing or doubtful field</th>
+<th>LCR default</th>
+<th>NSFR default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer type on a deposit</td>
+<td>Financial institution, non-operational, at call: 100%</td>
+<td>0% ASF</td>
+</tr>
+<tr>
+<td>FCS cover or stable test flag</td>
+<td>Not stable (less stable), not fully insured</td>
+<td>90% for retail</td>
+</tr>
+<tr>
+<td>Any scorecard criterion</td>
+<td>Treat as scoring (set), so assume 25%</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>Operational flag or amount</td>
+<td>Not operational</td>
+<td>50% only if non-financial under one year, else 0%</td>
+</tr>
+<tr>
+<td>Term deposit withdrawal right or penalty</td>
+<td>Treat as demand deposit: apply 5%, 10% or 25%</td>
+<td>90% or 95% by residual maturity</td>
+</tr>
+<tr>
+<td>Liability maturity date</td>
+<td>Earliest possible: at call, inside 30 days</td>
+<td>0% ASF</td>
+</tr>
+<tr>
+<td>Asset maturity date</td>
+<td>No inflow</td>
+<td>One year or more (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p21">Att C para 21</a>)</td>
+</tr>
+<tr>
+<td>Borrower type on a loan</td>
+<td>50% inflow (the lower of the two rates)</td>
+<td>85%, or 100% if a financial institution is possible</td>
+</tr>
+<tr>
+<td>Performing status</td>
+<td>Non-performing: no inflow</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Collateral class on secured funding</td>
+<td>100%</td>
+<td>0% ASF (under 6 months), per the lender type</td>
+</tr>
+<tr>
+<td>Collateral class on secured lending</td>
+<td>0% inflow</td>
+<td>15% for loans to financial institutions</td>
+</tr>
+<tr>
+<td>Encumbrance of a security</td>
+<td>Encumbered: not HQLA</td>
+<td>100% (encumbered one year or more) until resolved</td>
+</tr>
+<tr>
+<td>Market value or rating of a liquid asset</td>
+<td>Exclude from HQLA if no validated price for the day; HQLA2 needs a rating, so exclude</td>
+<td>Use carrying value</td>
+</tr>
+<tr>
+<td>Facility counterparty</td>
+<td>100%</td>
+<td>5% for committed facilities</td>
+</tr>
+<tr>
+<td>Facility revocability</td>
+<td>Committed</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>Credit or liquidity purpose</td>
+<td>Liquidity</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>Treat as a foreign currency: out of the AUD numerator, into the AUD outflows</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Derivative netting agreement</td>
+<td>No netting</td>
+<td>Replacement cost gross</td>
+</tr>
+<tr>
+<td>Holder type on issued debt</td>
+<td>n/a</td>
+<td>0% ASF under 6 months</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-from"><p><strong>From the controller:</strong> A large default is a market-moving event inside the team. On Example Bank's base position, a single A$50m deposit without a customer type, defaulted to 100% run-off, adds A$0.05bn of outflow and moves the LCR from 147.2% to 146.6%. That is easily visible in the movement analysis. Do not sit on it. Pick up the phone.</p>
+</blockquote>
+<hr />
+<h2 id="11-how-classification-rules-are-documented-approved-and-changed">11. How classification rules are documented, approved and changed</h2>
+<p>The rules in this document are the <em>standard's</em>. Example Bank also needs its own written rulebook that turns each rule into a precise test on data fields. The rulebook is the evidence that the bank has policies, procedures and controls for identifying, measuring and monitoring liquidity risk (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>(c)), and that the liquidity risk management framework and practices are documented and reviewed at least annually (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>(b)).</p>
+<h3 id="111-what-a-rule-record-contains">11.1 What a rule record contains</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rule identifier</td>
+<td>For example D-007</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>"Retail term deposit over 30 days with no legal right to withdraw"</td>
+</tr>
+<tr>
+<td>Applies to</td>
+<td>Product codes, record types</td>
+</tr>
+<tr>
+<td>Inputs</td>
+<td>Fields used, source system, how each is derived</td>
+</tr>
+<tr>
+<td>Logic</td>
+<td>The exact test in if-then form, including the order of tests</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>LCR category and rate; NSFR category and factor</td>
+</tr>
+<tr>
+<td>Authority</td>
+<td>The paragraph(s) of APS 210</td>
+</tr>
+<tr>
+<td>Judgements</td>
+<td>Any interpretation, and the reasoning (for example the on-line account convention)</td>
+</tr>
+<tr>
+<td>Owner and approver</td>
+<td>Who maintains the rule and who approved it</td>
+</tr>
+<tr>
+<td>Version and effective date</td>
+<td>Version number and the date from which the rule applies</td>
+</tr>
+<tr>
+<td>Test cases</td>
+<td>Examples with the expected result (use Examples 1 to 12)</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Where the supporting documents are kept</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="112-who-does-what-example-bank-convention">11.2 Who does what (Example Bank convention)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Who</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proposes or drafts a rule</td>
+<td>Liquidity Reporting (the preparer)</td>
+</tr>
+<tr>
+<td>Reviews the reading of APS 210</td>
+<td>A second member of Liquidity Reporting, then the controller</td>
+</tr>
+<tr>
+<td>Independent challenge</td>
+<td>Liquidity Risk (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a> requires an operationally independent oversight function able to challenge Treasury and other liquidity risk management businesses)</td>
+</tr>
+<tr>
+<td>Approves</td>
+<td>The controller approves routine changes; ALCO approves any change that moves the LCR or NSFR materially, or that introduces a new judgement</td>
+</tr>
+<tr>
+<td>Informed</td>
+<td>Treasury, product owners, internal audit</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="113-change-procedure">11.3 Change procedure</h3>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The following is typical; confirm with your controller.</p>
+</blockquote>
+<ol>
+<li><strong>Trigger.</strong> A new product; a change to APS 210 or APRA's guidance; an error found; a change to a source system; the annual review; a regulator query.</li>
+<li><strong>Draft</strong> the new or amended rule record.</li>
+<li><strong>Impact analysis.</strong> Run the old and new rules in parallel on the latest month-end and the last 20 business days. Record the effect on LCR, NSFR and each line.</li>
+<li><strong>Review and challenge.</strong> Second preparer, controller and Liquidity Risk.</li>
+<li><strong>Approve</strong> at the right level. Keep minutes.</li>
+<li><strong>Implement</strong> in the system or spreadsheet under change control (document <a href="12_Controls_Incidents_and_Escalation.html">12</a>). Test with the rule's test cases.</li>
+<li><strong>Communicate</strong> to Treasury, product owners and everyone who reads the daily LCR.</li>
+<li><strong>Record</strong> the effective date. Past results are not restated unless an error is being corrected (see document <a href="12_Controls_Incidents_and_Escalation.html">12</a> for errors).</li>
+<li><strong>Tell APRA if needed.</strong> If a new treatment depends on an interpretation of the standard that is not obvious, ask APRA before relying on it. Note that APRA assesses the suitability of the assumptions behind derived cash flow items, and the ADI must be able to provide analysis and evidence to justify them (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p32">Att A para 32</a>). If the bank uses a previous exemption or exercise of discretion by APRA under an older version of the standard, it must contact APRA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p72">APS 210 para 72</a>).</li>
+</ol>
+<h3 id="114-annual-review">11.4 Annual review</h3>
+<p>At least once a year, the owner re-reads every rule against the current standard, runs the test cases, reviews the judgements register and the exceptions register for recurring problems, and presents the results to ALCO. This supports the Board's duty to ensure the liquidity risk management framework is documented and reviewed at least annually (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>(b)) and the requirement that it be subject to effective review on an ongoing basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p35">APS 210 para 35</a>).</p>
+<h3 id="115-evidence-kept">11.5 Evidence kept</h3>
+<ul>
+<li>The rulebook with version history and the minutes of approvals.</li>
+<li>Impact analyses and test results.</li>
+<li>The data exceptions register and the judgements register.</li>
+<li>Daily data quality check results.</li>
+<li>Source-system extracts for each reporting date.</li>
+</ul>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Priya has A$60,000 in a salary account and A$100,000 in a 6-month term deposit with 20 days to run, with no right to withdraw early. She has no other deposits. What are the LCR outflow and the NSFR available stable funding for her two deposits?</li>
+</ol>
+<p><strong>Answer:</strong> She is a natural person: retail. Her total is A$160,000, under the A$250,000 FCS cover. The salary account is transactional: stable (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>(b)). The term deposit matures in 20 days, so it is inside the window (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a> applies only above 30 days). She has an established relationship through the salary account, so it is stable too (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>(a)). LCR: 5% x 160,000 = A$8,000. NSFR: stable, under one year, 95% x 160,000 = A$152,000 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a)).</p>
+<ol start="2">
+<li>A customer with no other products has A$30,000 in an on-line saver at the standard rate. What is the score, the rate and the outflow?</li>
+</ol>
+<p><strong>Answer:</strong> Balance above limit: no (0). On-line: yes (2). No established relationship: yes (1). Rate-driven: no (0). Total 3, so 25% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t2">Att A Table 2</a>). Outflow 25% x 30,000 = A$7,500. NSFR (less stable, 90%) = A$27,000.</p>
+<ol start="3">
+<li>A company has A$2.5m of deposits and no other funding with the bank. It is not operational and is not fully insured. What are the rates and amounts?</li>
+</ol>
+<p><strong>Answer:</strong> Total funding is not below A$2m, so it is not a qualifying SME (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>). Non-financial corporate, not fully insured: 40% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>) = A$1.0m. NSFR: funding under one year from a non-financial corporate: 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)) = A$1.25m.</p>
+<ol start="4">
+<li>A super fund trustee holds A$20m at call, not operational. What is the LCR outflow and the ASF?</li>
+</ol>
+<p><strong>Answer:</strong> The trustee of a superannuation fund is a financial institution (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b)). 100% of A$20m = A$20m outflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). ASF 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)).</p>
+<ol start="5">
+<li>The bank holds government bonds with market value A$49.2m and carrying value A$50.0m, unencumbered. What goes into the HQLA and what is the RSF?</li>
+</ol>
+<p><strong>Answer:</strong> HQLA1 at market value: A$49.2m (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>). RSF is 5% of carrying value: 5% x 50.0 = A$2.5m (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a>).</p>
+<ol start="6">
+<li>A$20m is undrawn on a committed credit facility to another bank. What are the LCR and NSFR amounts?</li>
+</ol>
+<p><strong>Answer:</strong> Banks and other ADIs: 40% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>) = A$8.0m. NSFR 5% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>) = A$1.0m.</p>
+<ol start="7">
+<li>A hedge fund has an undrawn committed A$10m facility described as a "credit line". How is it treated?</li>
+</ol>
+<p><strong>Answer:</strong> Facilities to hedge funds are captured in their entirety as a liquidity facility to a financial institution (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>): 100% = A$10m LCR outflow. NSFR 5% = A$0.5m.</p>
+<ol start="8">
+<li>A counterparty without a master netting agreement owes the bank A$5m and the bank owes it A$6m on derivatives within 30 days. What goes in the LCR?</li>
+</ol>
+<p><strong>Answer:</strong> No netting without a valid master netting agreement (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>). Outflow A$6m at 100%; inflow A$5m at 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a>).</p>
+<ol start="9">
+<li>The bank lets 20 customers break a 6-month "no early withdrawal" term deposit product for reasons other than hardship. What is the effect?</li>
+</ol>
+<p><strong>Answer:</strong> The entire category of these funds must be treated as demand deposits (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>). The outflow is no longer 0% for deposits more than 30 days from maturity. The product falls into the stable or less stable rates by customer (5%, 10% or 25%). Hardship withdrawals under a defined hardship policy would not have this effect (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p43">Att A para 43</a>).</p>
+<ol start="10">
+<li>
+<p>A feed arrives with 400 deposit records missing the customer type, total A$80m. What do you do and what is the effect?</p>
+<p><strong>Answer:</strong> Apply the conservative default: financial institution, non-operational, at call: 100% outflow, 0% ASF. Log the records, ask the data owner, and report the default count. The default produces A$80m of outflow. If the true class turns out to be stable retail at 5% (A$4m), the default overstates the outflow by A$76m. The movement analysis will show the jump, so you can explain it.</p>
+</li>
+</ol>
+<hr />
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>Every liquidity number is a balance times a rate, and the rate depends on the record's attributes. Wrong attribute, wrong number.</li>
+<li>Always ask six questions: which side, who, when, secured or not, special tests, which paragraph. Write the paragraph down.</li>
+<li>The LCR uses market value for the liquid stock; the NSFR uses carrying value.</li>
+<li>Deposits: natural person is retail; intermediated funds are financial institution deposits unless all four conditions are met (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>); a super fund trustee is a financial institution (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b)); SME under A$2m treated as retail (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>).</li>
+<li>The scorecard: above the limit 2, on-line 2, no relationship 1, rate-driven 1. Total 0 to 2 is 10%; 3 or more is 25%.</li>
+<li>A term deposit over 30 days with no withdrawal right is excluded, but one pattern of early withdrawals taints the whole category (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A paras 41 to 43</a>).</li>
+<li>In Australian dollars, only notes and coin, RBA balances, and Australian Government and semi-government securities are HQLA, all HQLA1.</li>
+<li>When data is missing, take the conservative category, log it, fix it at the source, and tell the controller if it is large.</li>
+<li>Classification rules are written down, approved, versioned and tested. Never change a rate quietly.</li>
+</ul></main><footer><a href="06_APS210_Companion_Attachments_B_and_C.html">&#9664; 06 APS 210 companion: Attachments B (MLH) and C (NSFR)</a><a href="08_LCR_Production_End_to_End.html">08 Producing the daily LCR, end to end &#9654;</a></footer></body></html>

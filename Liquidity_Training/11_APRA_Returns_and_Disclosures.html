@@ -1,0 +1,1842 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11 Returns to APRA and public disclosure | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="10_Monitoring_Beyond_the_Ratios.html" title="10 Monitoring beyond the two ratios">&#9664; 10</a><span class="t">11 Returns to APRA and public disclosure</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#1-what-a-regulatory-return-is">1. What a regulatory return is</option><option value="#2-prudential-standards-reporting-standards-and-forms">2. Prudential standards, reporting standards and forms</option><option value="#3-reporting-standard-ars-2100-liquidity">3. Reporting Standard ARS 210.0 Liquidity</option><option value="#4-what-each-form-collects">4. What each form collects</option><option value="#5-mapping-the-lcr-and-nsfr-calculation-to-the-forms">5. Mapping the LCR and NSFR calculation to the forms</option><option value="#6-the-return-production-procedure">6. The return production procedure</option><option value="#7-notifications-and-approvals-required-by-aps-210">7. Notifications and approvals required by APS 210</option><option value="#8-public-disclosure-of-the-lcr-and-nsfr-under-aps-330">8. Public disclosure of the LCR and NSFR under APS 330</option><option value="#9-requests-from-apra-and-supervisory-reviews">9. Requests from APRA and supervisory reviews</option><option value="#10-typical-errors-in-returns">10. Typical errors in returns</option><option value="#11-what-was-verified-and-what-was-not">11. What was verified, and what was not</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option><option value="#sources">Sources</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="12_Controls_Incidents_and_Escalation.html" title="12 Controls, incidents and escalation">12 &#9654;</a></header>
+<main><h1 id="11-returns-to-apra-and-public-disclosure">11 Returns to APRA and public disclosure</h1>
+<p><strong>Purpose:</strong> To teach you how the bank reports its liquidity position to APRA and to the public: what a regulatory return is, which forms Example Bank files and when, how each part of the LCR and NSFR calculation lands on a form, how we produce, check, sign and submit a return, which notifications and approvals APS 210 requires outside the returns, and how public disclosure under APS 330 works.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Explain the difference between a prudential standard, a reporting standard and a reporting form, and name the ones that matter for liquidity.</li>
+<li>Say which ARF 210 forms an LCR ADI files, at which level, how often, and by what date.</li>
+<li>Map each part of the LCR and NSFR to the form item that reports it.</li>
+<li>Run the return production procedure from data freeze to confirmation, including validation, reconciliation, review and resubmission.</li>
+<li>List every notification and approval that APS 210 requires, with its trigger, timing and owner.</li>
+<li>Describe what APS 330 requires the bank to publish about its LCR and NSFR, and which facts in this document are verified and which still need confirming.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero), document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year), document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR) and document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR). Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios) helps with the maturity forms.</p>
+<p><strong>Time:</strong> About four hours to read; allow another two for the exercises and questions.</p>
+<blockquote>
+<p><strong>How this document was researched.</strong> Statements marked "verified" were read on apra.gov.au or legislation.gov.au on 14 November 2026 (see Sources at the end). Statements marked "unverified" could not be confirmed and say what to check. Anything about Example Bank's own timetable, cut-off times and sign-off is typical practice; confirm with your controller. To avoid confusing them with APS 210 paragraphs, this document calls the numbered paragraphs of ARS 210.0 and APS 330 <strong>clauses</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="1-what-a-regulatory-return-is">1. What a regulatory return is</h2>
+<h3 id="11-in-everyday-words">1.1 In everyday words</h3>
+<p>Every year you may send a tax return to the tax office. It is a form, with set boxes, filled in from your records, signed to say it is true, and sent by a due date. A <strong>regulatory return</strong> is the same idea for a bank. APRA (the Australian Prudential Regulation Authority) is the regulator that licenses and supervises banks. It cannot supervise what it cannot see. So it requires every bank to send numbers in a standard layout, on a regular schedule.</p>
+<p>Three things make a return different from an internal report:</p>
+<ul>
+<li><strong>Fixed definitions.</strong> Every bank must put the same thing in the same box. That is what lets APRA compare banks.</li>
+<li><strong>A legal due date.</strong> Missing it is a breach, not an inconvenience.</li>
+<li><strong>Accountability.</strong> Someone senior has to be able to stand behind the numbers, and the controls behind them are tested by the external auditor.</li>
+</ul>
+<h3 id="12-why-apra-wants-liquidity-data">1.2 Why APRA wants liquidity data</h3>
+<p>APRA says it uses the data "for the purpose of prudential supervision, including assessing compliance with Prudential Standard APS 210 Liquidity" and that it "may also be used by the Reserve Bank of Australia (RBA)" (ARS 210.0 clause 2, verified). In practice, the liquidity returns let APRA:</p>
+<ul>
+<li>check that each bank meets the LCR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>) and the NSFR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>) at quarter end;</li>
+<li>see the shape of each bank's maturity mismatch and funding plan;</li>
+<li>compare banks, spot trends and find banks that need a closer look;</li>
+<li>during a crisis, ask for the daily liquidity report.</li>
+</ul>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The numbers on the form are not a second set of numbers. They are the same numbers as the daily LCR and the monthly NSFR, laid out in APRA's boxes. If they differ, one of them is wrong, and APRA can compare us with everybody else.</p>
+</blockquote>
+<hr />
+<h2 id="2-prudential-standards-reporting-standards-and-forms">2. Prudential standards, reporting standards and forms</h2>
+<p>APRA issues several kinds of document. New staff often mix them up, so here is the family.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Document type</th>
+<th>What it is</th>
+<th>Made under</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prudential standard</strong></td>
+<td>Rules a bank must follow (what to hold, how to manage risk)</td>
+<td>Section 11AF of the Banking Act 1959 (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p1">APS 210 para 1</a>)</td>
+<td>APS 210 Liquidity</td>
+</tr>
+<tr>
+<td><strong>Prudential practice guide</strong></td>
+<td>APRA's guidance on how to apply a standard; not a rule</td>
+<td>Not binding</td>
+<td>APG 210 Liquidity</td>
+</tr>
+<tr>
+<td><strong>Reporting standard</strong></td>
+<td>Rules on what data must be sent to APRA, when and how</td>
+<td>Section 13 of the Financial Sector (Collection of Data) Act 2001 (ARS 210.0 clause 1, verified)</td>
+<td>ARS 210.0 Liquidity</td>
+</tr>
+<tr>
+<td><strong>Reporting form</strong> (ARF)</td>
+<td>The numbered form inside a reporting standard, with instructions</td>
+<td>Part of the reporting standard</td>
+<td>ARF 210.1A</td>
+</tr>
+<tr>
+<td><strong>Public disclosure standard</strong></td>
+<td>Rules on what the bank must publish</td>
+<td>Section 11AF of the Banking Act 1959</td>
+<td>APS 330 Public Disclosure</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notes:</p>
+<ul>
+<li>"ADI" means authorised deposit-taking institution, the legal name for a bank (and some building societies and credit unions) licensed under the Banking Act 1959.</li>
+<li>A prudential standard says "you must hold a 100% LCR". A reporting standard says "tell APRA your LCR by this date in this layout".</li>
+<li>APS 210 does not set reporting frequency or due dates. A line in APS 210 says it applies to all ADIs; the returns and the timing are set in ARS 210.0.</li>
+<li>ARS 210.0 "should be read in conjunction with Prudential Standard APS 210 Liquidity" (ARS 210.0, objective, verified). Terms in the forms are defined in clause 21 of ARS 210.0, many by pointing back to APS 210 (for example "HQLA1 has the meaning given in paragraph 9 of Attachment A of APS 210").</li>
+<li>The data you report must be consistent with what the bank publishes (see section 8) and with what the bank has told APRA elsewhere.</li>
+</ul>
+<p>For the guide's high-level view, see (<a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a>, "Reporting to APRA and public disclosure").</p>
+<hr />
+<h2 id="3-reporting-standard-ars-2100-liquidity">3. Reporting Standard ARS 210.0 Liquidity</h2>
+<h3 id="31-which-version-is-current-verified">3.1 Which version is current (verified)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Finding</th>
+<th>Where verified</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Reporting Standard ARS 210.0 Liquidity</td>
+<td>APRA standards page</td>
+</tr>
+<tr>
+<td>Legal instrument</td>
+<td>Financial Sector (Collection of Data) (reporting standard) determination No. 54 of 2023 (instrument F2023L00417)</td>
+<td>legislation.gov.au</td>
+</tr>
+<tr>
+<td>Registered; commenced</td>
+<td>Registered 4 April 2023; commences on registration (determination text)</td>
+<td>legislation.gov.au</td>
+</tr>
+<tr>
+<td>Status on APRA's site</td>
+<td>"In force"; effective date 4 April 2023</td>
+<td>apra.gov.au</td>
+</tr>
+<tr>
+<td>What it replaced</td>
+<td>It revoked determination No. 4 of 2022 and the ARS 210.0 made under it</td>
+<td>determination text</td>
+</tr>
+<tr>
+<td>Applies to reporting periods</td>
+<td>Ending on or after 31 March 2023 (clause 4)</td>
+<td>determination text</td>
+</tr>
+<tr>
+<td>Amendments</td>
+<td>On 14 November 2026 the Federal Register of Legislation showed the instrument "in force" with no unincorporated amendments; scheduled to be repealed (sunset) on 1 October 2033 by section 50 of the Legislation Act 2003</td>
+<td>legislation.gov.au API</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The web page that holds the full text carries the browser title "Reporting Standard ARS 210.0 Liquidity (consultation responses)". The body of the document is the determination and the standard, but check you are reading the registered instrument (F2023L00417) and not a consultation draft. Always work from legislation.gov.au or from the file your controller keeps under document control.</p>
+<p><strong>Unverified:</strong> I did not find on apra.gov.au any later version, final-not-yet-in-force version, or open consultation for ARS 210.0 (the APRA banking standards list showed none). Because APRA changes forms from time to time, check the APRA standards page each quarter before the freeze (see the controls in section 6).</p>
+</blockquote>
+<p>The ARF 210.5 Daily Liquidity Report is also shown on APRA's standards list as a separate entry "in force" from 1 April 2021 (verified in the APRA standards list). Its text is within ARS 210.0.</p>
+<h3 id="32-who-must-report-what-ars-2100-clause-8-verified">3.2 Who must report what (ARS 210.0 clause 8, verified)</h3>
+<p>ARS 210.0 applies to all ADIs "excluding providers of purchased payment facilities" (clause 3). It may also apply to an authorised non-operating holding company (NOHC; clause 6). An ADI that is neither an LCR ADI nor an MLH ADI reports only if APRA gives written notice (clause 7). Clause 8 sets out forms by class:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Class of ADI</th>
+<th>Type of ADI</th>
+<th>Reporting level</th>
+<th>Forms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LCR ADI</td>
+<td>Locally incorporated</td>
+<td>Level 1 and Level 2</td>
+<td>210.1A, 210.1B, 210.3.1, 210.3.2, 210.4, 210.5, 210.6</td>
+</tr>
+<tr>
+<td>LCR ADI</td>
+<td>Foreign ADI</td>
+<td>Domestic books of the licensed ADI</td>
+<td>210.1A, 210.1B, 210.3.1, 210.3.2, 210.4, 210.5 (not 210.6)</td>
+</tr>
+<tr>
+<td>MLH ADI</td>
+<td>Locally incorporated</td>
+<td>Level 1 and Level 2</td>
+<td>210.2, 210.3.1, 210.3.2, 210.4, 210.5</td>
+</tr>
+<tr>
+<td>MLH ADI</td>
+<td>Foreign ADI</td>
+<td>Domestic books of the licensed ADI</td>
+<td>210.2, 210.3.1, 210.3.2, 210.4, 210.5</td>
+</tr>
+</tbody>
+</table></div>
+<p>The standard notes that "210.6 is only to be completed by locally incorporated LCR ADIs" (clause 8). That matches APS 210, where the NSFR applies to a locally incorporated LCR ADI (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 para 59</a>).</p>
+<p><strong>Example Bank files:</strong> ARF 210.1A, 210.1B, 210.3.1, 210.3.2, 210.4, 210.5 (on request) and 210.6. It does not file ARF 210.2, which is for MLH ADIs.</p>
+<h3 id="33-levels-level-1-level-2-and-domestic-books-verified">3.3 Levels: Level 1, Level 2 and domestic books (verified)</h3>
+<ul>
+<li><strong>Level 1</strong> is the ADI as one legal entity. <strong>Level 2</strong> is the consolidated group (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 para 3</a>).</li>
+<li>"If an ADI … is part of a Level 2 group, the ADI must also provide … information … designated for an ADI at Level 2 … unless the ADI is a subsidiary of an authorised NOHC", in which case the parent NOHC reports at Level 2 and "must comply with this Reporting Standard (other than [clause] 5) as if it were the relevant ADI" (ARS 210.0 clause 6).</li>
+<li><strong>Domestic books</strong> means the Australian operations of a foreign ADI's licensed branch.</li>
+<li>Securitisation vehicles: where the ADI is the originating ADI in a securitisation, the vehicle's assets and liabilities are included in the LCR and the maturity forms regardless of capital relief, but excluded from the NSFR if the operational requirements for capital relief are met (ARF instructions; compare <a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a>).</li>
+</ul>
+<blockquote class="q-in"><p><strong>In the standard:</strong> The ARF 210.1A and 210.1B instructions say locally incorporated ADIs complete both at Level 1 and Level 2, and add that "for ADIs without a Level 2 consolidation ARF 210.1B is to be completed at Level 1" (verified in the form instructions).</p>
+</blockquote>
+<p><strong>Example Bank:</strong> it has one legal entity and no subsidiaries, so Level 1 equals Level 2. Whether a single-entity ADI lodges separate Level 1 and Level 2 returns, or only Level 1, is a point to confirm with APRA and your controller; the clause-6 duty is expressed for an ADI that is "part of a Level 2 group". (Unverified for a single-entity ADI.)</p>
+<h3 id="34-reporting-basis-and-units-verified">3.4 Reporting basis and units (verified)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Rule</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accounting basis</td>
+<td>Items reported "in accordance with Australian Accounting Standards unless otherwise specified"</td>
+<td>Form instructions</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>Australian dollars; foreign currency converted under AASB 121</td>
+<td>Form instructions</td>
+</tr>
+<tr>
+<td>Units</td>
+<td>Banks: millions of dollars to one decimal place. Other ADIs: whole dollars on the maturity and plan forms</td>
+<td>Form headers and instructions</td>
+</tr>
+<tr>
+<td>No netting</td>
+<td>ADIs "must not net asset and liability items … unless specifically instructed to do so"</td>
+<td>Form instructions</td>
+</tr>
+<tr>
+<td>Every field</td>
+<td>An amount must be entered in each field; enter zero if not applicable</td>
+<td>Form instructions</td>
+</tr>
+<tr>
+<td>As-at date</td>
+<td>Quarterly forms: the last day of the reporting quarter; ARF 210.4: the ADI's end of financial year; ARF 210.5: close of business the previous business day</td>
+<td>Form instructions</td>
+</tr>
+<tr>
+<td>Derived fields</td>
+<td>Shaded in the form; calculated by the form</td>
+<td>Form instructions</td>
+</tr>
+</tbody>
+</table></div>
+<p>Example: Example Bank's HQLA of A$17.0bn is reported as 17,000.0 (millions to one decimal place).</p>
+<h3 id="35-frequency-and-due-dates-ars-2100-clauses-11-to-14-verified">3.5 Frequency and due dates (ARS 210.0 clauses 11 to 14, verified)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Frequency</th>
+<th>Due date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARF 210.1A, 210.1B, 210.3.1, 210.3.2, 210.6 (and 210.2 for MLH ADIs)</td>
+<td>Quarterly, "based on the financial year (within the meaning of the Corporations Act 2001) of the ADI"</td>
+<td>Within <strong>35 calendar days</strong> of the end of the quarter</td>
+</tr>
+<tr>
+<td>ARF 210.4 (3-year funding plan)</td>
+<td>Annually</td>
+<td>Within <strong>35 calendar days</strong> of the end of the ADI's financial year</td>
+</tr>
+<tr>
+<td>ARF 210.5 (daily liquidity report)</td>
+<td>On request from APRA, then daily for the period APRA specifies</td>
+<td>By close of business the <strong>same day</strong> (using data at close of business the previous day), or the <strong>next business day</strong> (using data at close of business on the day of the request) if the request was received after 12 pm (clause 12)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Other rules about timing:</p>
+<ul>
+<li>APRA "may, by notice in writing, vary the reporting periods … to require [the ADI] to provide the information … more frequently, or less frequently" (clause 13).</li>
+<li>APRA "may, by notice in writing, extend the due date" and the new due date is the one on the notice (clause 14). An extension is APRA's decision. Never assume one.</li>
+<li>"Calendar days" includes weekends and public holidays. A due date that falls on a weekend does not move (the standard says nothing about moving it; treat the due date as firm, and aim to submit earlier).</li>
+</ul>
+<p><strong>Example calendar.</strong> Suppose Example Bank's financial year ends on 30 June (an assumption for training; confirm with your controller). The 35 calendar days after each quarter end give:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Quarter end</th>
+<th>Counting 35 calendar days</th>
+<th>Due date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 September</td>
+<td>30 Sep + 35 days</td>
+<td>4 November</td>
+</tr>
+<tr>
+<td>31 December</td>
+<td>31 Dec + 35 days</td>
+<td>4 February</td>
+</tr>
+<tr>
+<td>31 March</td>
+<td>31 Mar + 35 days</td>
+<td>5 May</td>
+</tr>
+<tr>
+<td>30 June (also the year end, so ARF 210.4 too)</td>
+<td>30 Jun + 35 days</td>
+<td>4 August</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check one: 31 March + 30 days = 30 April; 5 more days = 5 May. Check another: 31 December + 31 days = 31 January; 4 more days = 4 February.</p>
+<blockquote>
+<p><strong>Unverified:</strong> The four dates above are my arithmetic from clause 11, not an APRA calendar. APRA publishes due dates in its portal; confirm each quarter against the system that you submit through.</p>
+</blockquote>
+<h3 id="36-the-daily-liquidity-report-arf-2105">3.6 The daily liquidity report, ARF 210.5</h3>
+<p>ARF 210.5 is not filed routinely under the text I verified. It is a form that APRA can call for in a time of concern. The ADI must then provide it daily "for the number of consecutive business days, or other duration or reporting frequency, specified by APRA at the time of the request" (ARS 210.0 clause 12). The information "must be given to APRA in an electronic form as notified by APRA at the time of APRA's request" (clause 10).</p>
+<p><strong>What it collects</strong> (form items, verified): unencumbered liquid assets (item 1); net funding outflows over the last five business days by retail, wholesale and financial institution (item 2); net contingent and committed outflows (item 3); net collateral and margin outflows (item 4); the LCR (or MLH ratio) over five business days (item 5); funding maturities from at call to six months (item 6); other contractual cash flows (item 7); and withdrawal notifications and buyback requests (item 8).</p>
+<blockquote class="q-watch"><p><strong>Watch out (unverified):</strong> In July 2026 APRA's notice on the end of the alternate submission process refers to a "Liquidity 210.5 monthly return" with a first mandatory APRA Connect period of 31 July 2026, and its migration support page lists "ADI Daily Liquidity (ARF 210.5)" with reporting beginning 31 May 2026. The verified text of ARS 210.0 says ARF 210.5 is submitted on APRA's request. I could not reconcile these. It may be that APRA has asked ADIs to report ARF 210.5 monthly under its power to vary reporting periods (clause 13), but I did not find that notice. Ask your controller whether Example Bank has a standing request from APRA, and keep the daily data ready either way (see document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>, section 7 for crisis data packs).</p>
+</blockquote>
+<h3 id="37-how-returns-are-submitted">3.7 How returns are submitted</h3>
+<p><strong>What the reporting standard says (verified).</strong></p>
+<ul>
+<li>Subject to the ARF 210.5 rule, the information "must be given to APRA in electronic format using an electronic method available on APRA's website or by a method notified by APRA prior to submission" (clause 9).</li>
+<li>"When an officer or agent of an ADI submits information under this Reporting Standard using a method notified by APRA, the officer or agent must digitally sign the relevant information using a digital certificate acceptable to APRA" (clause 17).</li>
+</ul>
+<p><strong>What APRA's pages say about the system (verified, with gaps).</strong></p>
+<ul>
+<li>APRA Connect is "a data collection tool used to submit financial, statistical, and prudential information to APRA". ADI collections accept XML or XLSX uploads, not CSV. Uploaded data must match the reporting template, and upload history shows any failure reason.</li>
+<li>Each reporting entity (identified by its Australian Business Number) must nominate one <strong>Regulatory Reporting Administrator (RRA)</strong>. The RRA assigns roles, such as Preparer and Service Provider, to others. Users sign in through myGovID and the Relationship Authorisation Manager (RAM). Validation checks cover length, allowed characters, mandatory fields and permitted combinations. A successful submission triggers an email confirmation. An optional approval step (a "no auto submit" rule) can be requested from APRA.</li>
+<li>APRA's notice dated 27 July 2026 says the alternate submission process ends for certain collections on set dates: "Liquidity 210.5 monthly return" from 31 July 2026, EFS from 31 August 2026, and "all other" migrated ADI collections from 30 September 2026. A footnote says the "all other" group "excludes forms for" several returns, including "ARS 210 - Liquidity".</li>
+<li>APRA's migration page lists "ADI – Liquidity" with reporting beginning 30 September 2026 and does not itemise ARS 210 forms.</li>
+<li>For help: APRA publishes contact details for submission concerns and for technical issues on the notice. Take them from APRA's site, not from this page.</li>
+</ul>
+<blockquote>
+<p><strong>Unverified:</strong> I could not confirm from APRA's pages exactly how the quarterly forms ARF 210.1A to 210.6 reach APRA today. The pages above point to APRA Connect, with the older "D2A" (data to APRA, with a digital certificate) route being phased out, but the notice's footnote leaves ARS 210 unclear. Ask your controller which route Example Bank used for the last quarter, who the RRA is, and who holds each role. Do not describe a submission system in a procedure, in writing, until this is confirmed against the last submission confirmation.</p>
+</blockquote>
+<h3 id="38-quality-control-and-authorisation-verified">3.8 Quality control and authorisation (verified)</h3>
+<p>ARS 210.0 sets two quality duties.</p>
+<ol>
+<li><strong>External auditor.</strong> "All information provided … must be the product of systems, processes and controls that have been reviewed and tested by the external auditor of the ADI as set out in Prudential Standard APS 310 Audit and Related Matters", and "this review and testing must be done on an annual basis or more frequently if required by the external auditor" (clause 15).</li>
+<li><strong>Internal review and authorisation.</strong> All information "must be subject to systems, processes and controls developed by the ADI for the internal review and authorisation of that information. These systems, processes and controls are to assure the completeness and reliability of the information provided" (clause 16).</li>
+</ol>
+<p>In practice you will meet the auditor each year asking to walk through the controls (data reconciliations, four-eyes review, sign-off). See document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation).</p>
+<h3 id="39-changes-apra-can-make">3.9 Changes APRA can make</h3>
+<ul>
+<li>APRA may make minor variations to a form to correct "technical, programming or logical errors, inconsistencies or anomalies", or to clarify instructions, without changing any substantive requirement. If it does, it "will notify, in writing, each ADI that is required to report" (clauses 18 and 19).</li>
+<li>A new version of the standard has a transition rule: an ADI reports under the old standard for any period that ended before the old standard was revoked (clause 20).</li>
+</ul>
+<blockquote>
+<p><strong>Controller's tip:</strong> When APRA notifies a change, log the date, the change, the owner and the first return affected. Then update the form template, the mapping (section 5) and the validation rules (section 6.5).</p>
+</blockquote>
+<hr />
+<h2 id="4-what-each-form-collects">4. What each form collects</h2>
+<p>The table gives the purpose of each form, with the sections and items verified from the form layouts in the determination. Item numbers can change between versions, so always check against the current form before relying on an item number in a procedure.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Name</th>
+<th>Purpose</th>
+<th>Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARF 210.1A</td>
+<td>Liquidity Coverage Ratio, all currencies</td>
+<td>The LCR on an all-currencies basis</td>
+<td>Section A liquid assets (items 1 to 7); B cash outflows (items 8 to 18); C cash inflows (items 19 to 23); D cash outflows minus inflows by currency (item 24); E calculation of the LCR (items 25 to 35)</td>
+</tr>
+<tr>
+<td>ARF 210.1B</td>
+<td>Liquidity Coverage Ratio, AUD only</td>
+<td>The LCR for Australian dollars only</td>
+<td>The same sections A to E as 210.1A, in AUD only; item 24 is a single derived figure and the "significant currencies" item 35 is not in this form</td>
+</tr>
+<tr>
+<td>ARF 210.2</td>
+<td>Minimum Liquidity Holdings Ratio</td>
+<td>The MLH ratio (MLH ADIs only)</td>
+<td>A calculation of minimum liquidity holdings; B adjusted liability base; C the MLH ratio</td>
+</tr>
+<tr>
+<td>ARF 210.3.1</td>
+<td>Contractual Maturity Mismatch, Funded Assets</td>
+<td>Contractual maturity profile of assets</td>
+<td>Items 1 to 9 (notes and coin and central bank balances; unencumbered debt securities; equity and other securities; securities purchased under agreement to resell; other earning assets by counterparty; other material funded assets; FX transaction inflows; total assets; memo items), in maturity buckets from at call to ten years or more</td>
+</tr>
+<tr>
+<td>ARF 210.3.2</td>
+<td>Contractual Maturity Mismatch, Funding Liabilities and Capital</td>
+<td>Contractual maturity profile of liabilities and capital</td>
+<td>Items 1 to 10 (deposits and funding by type; unsecured debt securities issued; secured funding; other interest-bearing liabilities; other funding liabilities; capital; FX transaction outflows; total liabilities and capital; memo items; large liability exposures)</td>
+</tr>
+<tr>
+<td>ARF 210.4</td>
+<td>3-year Funding Plan</td>
+<td>The quantified three-year funding strategy</td>
+<td>Section A assets; B liabilities and capital; C off-balance sheet; D memo items. Columns: actual balance and forecasts at 3, 6, 12, 24 and 36 months</td>
+</tr>
+<tr>
+<td>ARF 210.5</td>
+<td>Daily Liquidity Report</td>
+<td>Daily liquidity position when requested</td>
+<td>Eight items (see section 3.6)</td>
+</tr>
+<tr>
+<td>ARF 210.6</td>
+<td>Net Stable Funding Ratio</td>
+<td>The NSFR (locally incorporated LCR ADIs only)</td>
+<td>A available stable funding (items 1 to 19); B required stable funding, on-balance sheet (items 20 to 47) and off-balance sheet (items 48 to 55); C NSFR (item 56)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three things to notice.</p>
+<ol>
+<li><strong>The 210.1 forms carry three columns:</strong> (1) the market value or amount before any rate; (2) the weight (haircut, run-off rate or inflow rate), pre-set in the form "in accordance with the requirements of Attachment A of APS 210"; (3) the weighted amount, calculated by the form. So you report balances; the form applies the rates. A rate mismatch between your daily model and the form's pre-set weights is a red flag worth investigating.</li>
+<li><strong>The maturity forms are contractual.</strong> "ADIs should not apply behavioural assumptions" to assets or liabilities, and must "not include new business volumes" (ARF 210.3.1 and 210.3.2 instructions). That is the contractual ladder of document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>, section 2.</li>
+<li><strong>ARF 210.4 mirrors 210.3.1 and 210.3.2.</strong> Its categories follow the same item structure so that actual and forecast balances can be compared with the contractual forms. It "is a quantification of the ADI's 3-year funding strategy" (ARF 210.4 instructions). It is the form behind <a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(a) (see section 7).</li>
+</ol>
+<h3 id="41-the-lcr-forms-item-by-item-verified-from-arf-2101a">4.1 The LCR forms, item by item (verified from ARF 210.1A)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Liquid assets</td>
+<td>1 HQLA1 (1.1 notes and coin; 1.2 central bank balances, 1.2.1 held with the RBA; 1.3 zero risk weight securities, 1.3.1 Australian Government, 1.3.2 Australian State Government or Territory Central Borrowing Authorities, and others; 1.4 other sovereign debt; 1.5 adjusted amount of HQLA1 stock); 2 HQLA2A; 3 HQLA2B; 4 Total HQLA; 5 RBNZ eligible securities; 6 Alternative liquid assets (ALA); 7 Total</td>
+</tr>
+<tr>
+<td>B. Cash outflows</td>
+<td>8 Retail deposits (8.1 stable; 8.2 stable eligible for 3%; 8.3 less stable covered by the Financial Claims Scheme (FCS); 8.4 less stable not covered; 8.5 higher run-off; 8.6 called notice period deposits with 30 days or less); 9 Unsecured wholesale funding (9.1 SME; 9.2 non-financial corporate; 9.3 sovereign, central bank, PSE and MDB; 9.4 ADI or bank; 9.5 other financial institutions and legal entities); 10 Unsecured debt securities issued; 11 Secured funding (by collateral class); 12 ABCP, ABS, covered bonds and other structured financing; 13 Increased liquidity needs related to derivatives (13.1 derivatives cash outflow; 13.2 3-notch downgrade; 13.3 to 13.7 collateral items); 14 Committed facilities (by counterparty and credit or liquidity); 15 Other contractual obligations to extend funds; 16 Other contingent funding obligations (16.1 uncommitted facilities; 16.2 trade finance; 16.3 guarantees and letters of credit; and others); 17 Cash outflows due to collateral swaps; 18 Total</td>
+</tr>
+<tr>
+<td>C. Cash inflows</td>
+<td>19 Secured lending; 20 Other inflows by counterparty (20.1 retail; 20.2 SME; 20.3 non-financial corporate; 20.4 central bank; 20.5 financial institution; 20.6 other); 21 Other cash inflows (21.1 derivatives cash inflows and others); 22 Cash inflows due to collateral swaps; 23 Total</td>
+</tr>
+<tr>
+<td>D. By currency</td>
+<td>24 Cash outflows minus cash inflows, by AUD, NZD, USD, GBP, EUR, JPY, RMB and all other currencies</td>
+</tr>
+<tr>
+<td>E. Calculation</td>
+<td>25 Total HQLA; 26 RBNZ eligible securities plus ALA; 27 Total cash outflows; 28 Total cash inflows after applying the inflow cap; 29 Net cash outflows; 29.1 Net cash outflows overlay; 30 LCR; 31 Minimum LCR per liquidity management strategy; 32 Lowest LCR during the period; 33 Highest LCR; 34 Mean LCR; 35 LCR for significant currencies (ARF 210.1A only)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Section E in the instructions:</p>
+<ul>
+<li>Item 28 is the lower of total inflows or 75% of total outflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>).</li>
+<li>Item 29 is item 27 plus the overlay in item 29.1 less item 28.</li>
+<li>Item 30 is (item 25 plus item 26) divided by item 29, times 100.</li>
+<li>Items 32 to 34 are the <strong>lowest, highest and mean end-of-day LCR</strong> during the reporting period, using <strong>business days only</strong>. The daily LCR series from document <a href="08_LCR_Production_End_to_End.html">08</a> is therefore a data source for the quarterly return, not only for management.</li>
+<li>Item 31 is "the ADI's board-approved minimum LCR as contained in its Liquidity Management Strategy".</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out (conflict):</strong> The instruction for item 29.1 refers to adjustments that are specific to the requirements of provision 70 of APS 210, and says to report zero if APRA has not advised an overlay. In the July 2025 APS 210, that provision is Exceptional Liquidity Assistance (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>); the power for APRA to require a higher minimum LCR is (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p56">APS 210 para 56</a>). The reporting standard was made in 2023 and refers to the numbering at that time. Report zero unless APRA has told you in writing about an overlay, and ask your controller to confirm the reference with APRA's data team.</p>
+</blockquote>
+<hr />
+<h2 id="5-mapping-the-lcr-and-nsfr-calculation-to-the-forms">5. Mapping the LCR and NSFR calculation to the forms</h2>
+<p>This table traces each part of Example Bank's calculation to the form and item that reports it. It uses the base position from document <a href="02_Liquidity_From_Zero.html">02</a> and treats the form item numbers as verified in the form layouts; the sub-item for each line should be checked against the current form before use. All amounts are shown in A$bn in the table; the form wants A$ millions to one decimal place (multiply by 1,000).</p>
+<h3 id="51-lcr-arf-2101a-and-2101b">5.1 LCR (ARF 210.1A and 210.1B)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part of the calculation</th>
+<th>Example Bank</th>
+<th>LCR rate</th>
+<th>Form item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and balances with the RBA, notes and coin</td>
+<td>5.0</td>
+<td>Haircut 0%</td>
+<td>1.1 notes and coin; 1.2.1 RBA balances</td>
+</tr>
+<tr>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>Haircut 0%</td>
+<td>1.3.1 Australian Government; 1.3.2 State Government or Territory Central Borrowing Authorities (semi-government)</td>
+</tr>
+<tr>
+<td>Total HQLA</td>
+<td>17.0</td>
+<td></td>
+<td>4 (carried to 25)</td>
+</tr>
+<tr>
+<td>Retail deposits, stable</td>
+<td>25.0</td>
+<td>5% = 1.25</td>
+<td>8.1</td>
+</tr>
+<tr>
+<td>Retail deposits, less stable</td>
+<td>15.0</td>
+<td>10% or 25% by scorecard</td>
+<td>8.3 to 8.5 by FCS cover and rate</td>
+</tr>
+<tr>
+<td>Retail term deposits (over 30 days, no early withdrawal)</td>
+<td>10.0</td>
+<td>0%</td>
+<td>Outside the 30-day window; not weighted. Check the notice-period lines 8.6</td>
+</tr>
+<tr>
+<td>SME deposits</td>
+<td>5.0</td>
+<td>10%</td>
+<td>9.1</td>
+</tr>
+<tr>
+<td>Corporate operational deposits</td>
+<td>4.0</td>
+<td>25%</td>
+<td>9.2.4</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits</td>
+<td>6.0</td>
+<td>40%</td>
+<td>9.2.6</td>
+</tr>
+<tr>
+<td>Financial institution deposits</td>
+<td>4.0</td>
+<td>100%</td>
+<td>9.5.5</td>
+</tr>
+<tr>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>100%</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Undrawn committed facilities, retail and SME</td>
+<td>10.0</td>
+<td>5%</td>
+<td>14.1.1 and 14.2.1</td>
+</tr>
+<tr>
+<td>Undrawn corporate credit</td>
+<td>5.0</td>
+<td>10%</td>
+<td>14.3.1</td>
+</tr>
+<tr>
+<td>Undrawn corporate liquidity</td>
+<td>1.0</td>
+<td>30%</td>
+<td>14.3.2</td>
+</tr>
+<tr>
+<td>Net derivative outflows</td>
+<td>0.3</td>
+<td>100%</td>
+<td>13.1</td>
+</tr>
+<tr>
+<td>Collateral on a 3-notch downgrade</td>
+<td>0.2</td>
+<td>100%</td>
+<td>13.2</td>
+</tr>
+<tr>
+<td>Total outflows</td>
+<td>13.45</td>
+<td></td>
+<td>18 (carried to 27)</td>
+</tr>
+<tr>
+<td>Contractual inflows, retail and SME</td>
+<td>1.0</td>
+<td>50% = 0.5</td>
+<td>20.1 and 20.2</td>
+</tr>
+<tr>
+<td>Contractual inflows, corporates</td>
+<td>0.8</td>
+<td>50% = 0.4</td>
+<td>20.3</td>
+</tr>
+<tr>
+<td>Contractual inflows, banks</td>
+<td>1.0</td>
+<td>100%</td>
+<td>20.5</td>
+</tr>
+<tr>
+<td>Total inflows</td>
+<td>1.90</td>
+<td></td>
+<td>23 (carried to 28 after the 75% cap)</td>
+</tr>
+<tr>
+<td>Net cash outflows</td>
+<td>11.55</td>
+<td></td>
+<td>29</td>
+</tr>
+<tr>
+<td>LCR</td>
+<td>147.2%</td>
+<td></td>
+<td>30</td>
+</tr>
+</tbody>
+</table></div>
+<p>The base position's rates are those in document <a href="02_Liquidity_From_Zero.html">02</a> and in the standard (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). Check the exact sub-item with the current form; for example the stable retail deposit line may sit under 8.1 or 8.2 depending on whether it qualifies for the 3% rate. For Example Bank, all amounts on the all-currencies form (ARF 210.1A) are in AUD, so the AUD form (ARF 210.1B) shows the same numbers and the same 147.2%.</p>
+<h3 id="52-nsfr-arf-2106">5.2 NSFR (ARF 210.6)</h3>
+<p>ARF 210.6 reports each balance in one of three residual maturity columns (under 6 months; 6 months to under 1 year; 1 year or more), shows the pre-set factor for each column, and calculates the weighted amount (verified from the form layout and instructions). Item numbers below are the item headings of the 2023 form.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part of the calculation</th>
+<th>Example Bank (A$bn)</th>
+<th>Factor</th>
+<th>Weighted (A$bn)</th>
+<th>Form item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shareholders' equity (regulatory capital)</td>
+<td>8.0</td>
+<td>ASF 100%</td>
+<td>8.00</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Wholesale debt, 1 year or more</td>
+<td>15.0</td>
+<td>ASF 100%</td>
+<td>15.00</td>
+<td>Funding item for other legal entities and debt, 1 year or more column (check the current form)</td>
+</tr>
+<tr>
+<td>Retail deposits, stable</td>
+<td>25.0</td>
+<td>ASF 95%</td>
+<td>23.75</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Retail deposits, less stable</td>
+<td>15.0</td>
+<td>ASF 90%</td>
+<td>13.50</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Retail term deposits (over 30 days, under 1 year)</td>
+<td>10.0</td>
+<td>ASF 90%</td>
+<td>9.00</td>
+<td>5</td>
+</tr>
+<tr>
+<td>SME deposits (less stable)</td>
+<td>5.0</td>
+<td>ASF 90%</td>
+<td>4.50</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Corporate operational deposits</td>
+<td>4.0</td>
+<td>ASF 50%</td>
+<td>2.00</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits</td>
+<td>6.0</td>
+<td>ASF 50%</td>
+<td>3.00</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Wholesale debt, 6 months to under 1 year</td>
+<td>2.0</td>
+<td>ASF 50%</td>
+<td>1.00</td>
+<td>Wholesale funding item, 6 months to under 1 year column</td>
+</tr>
+<tr>
+<td>Financial institution deposits (at call) and wholesale debt under 6 months</td>
+<td>4.0 + 4.0</td>
+<td>ASF 0%</td>
+<td>0.00</td>
+<td>12 and the wholesale funding items</td>
+</tr>
+<tr>
+<td><strong>Total ASF</strong></td>
+<td></td>
+<td></td>
+<td><strong>79.75</strong></td>
+<td>19</td>
+</tr>
+<tr>
+<td>Cash and RBA balances</td>
+<td>5.0</td>
+<td>RSF 0%</td>
+<td>0.00</td>
+<td>20 and 21</td>
+</tr>
+<tr>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>RSF 5%</td>
+<td>0.60</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Other debt securities (non-HQLA, over 1 year)</td>
+<td>3.0</td>
+<td>RSF 85%</td>
+<td>2.55</td>
+<td>37 or the matching asset item (check the current form)</td>
+</tr>
+<tr>
+<td>Loans to other banks (under 6 months)</td>
+<td>2.0</td>
+<td>RSF 15%</td>
+<td>0.30</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Residential mortgages (standard, LVR 80% or below)</td>
+<td>50.0</td>
+<td>RSF 65%</td>
+<td>32.50</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Business loans over 1 year</td>
+<td>15.0</td>
+<td>RSF 85%</td>
+<td>12.75</td>
+<td>37</td>
+</tr>
+<tr>
+<td>Loans under 1 year</td>
+<td>8.0</td>
+<td>RSF 50%</td>
+<td>4.00</td>
+<td>37 (under 1 year column)</td>
+</tr>
+<tr>
+<td>Other assets</td>
+<td>5.0</td>
+<td>RSF 100%</td>
+<td>5.00</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Off-balance sheet commitments (16.0 at 5%)</td>
+<td>16.0</td>
+<td>RSF 5%</td>
+<td>0.80</td>
+<td>48 and 49</td>
+</tr>
+<tr>
+<td><strong>Total RSF</strong></td>
+<td></td>
+<td></td>
+<td><strong>58.50</strong></td>
+<td>47 plus 55</td>
+</tr>
+<tr>
+<td><strong>NSFR</strong></td>
+<td></td>
+<td></td>
+<td><strong>136.3%</strong></td>
+<td>56</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check: ASF 8.00 + 15.00 + 23.75 + 13.50 + 9.00 + 4.50 + 2.00 + 3.00 + 1.00 = 79.75. RSF 0 + 0.60 + 2.55 + 0.30 + 32.50 + 12.75 + 4.00 + 5.00 + 0.80 = 58.50. NSFR = 79.75 / 58.50 = 136.3%. (Derivatives are ignored in this base position.) The classification reasoning is in document <a href="09_NSFR_Production_End_to_End.html">09</a>; where the table says "check the current form", look up the exact item in the form before use.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The table is a teaching map, not a filing instruction. Item numbers belong to one version of one form. When APRA issues a new version, the whole mapping must be re-checked line by line, and signed off by the controller.</p>
+</blockquote>
+<h3 id="53-the-maturity-and-plan-forms">5.3 The maturity and plan forms</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Where the data comes from</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARF 210.3.1</td>
+<td>The balance sheet by product, with contractual maturity</td>
+<td>Contractual only. No behavioural assumptions. No new business. Assets in at call, 1 to 7 days, 8 to 15 days, 16 to 30 days, 31 days to under 2 months, and so on out to ten years or more or no contractual maturity. Item 9 total assets is the sum of items 1 to 7</td>
+</tr>
+<tr>
+<td>ARF 210.3.2</td>
+<td>Liabilities and capital with contractual maturity</td>
+<td>Same rules. Item 8 total liabilities and capital is the sum of items 1 to 6. Notice period deposits, intragroup amounts and intermediated deposits are reported in memo items</td>
+</tr>
+<tr>
+<td>ARF 210.4</td>
+<td>The Board-approved funding strategy and the actual year-end balance sheet</td>
+<td>Actual balance and forecast balances at 3, 6, 12, 24 and 36 months</td>
+</tr>
+</tbody>
+</table></div>
+<p>The totals of ARF 210.3.1 item 9 and ARF 210.3.2 item 8 should be explained against the general ledger. A difference between them or against the ledger needs a written reconciliation, because APRA analysts compare them.</p>
+<hr />
+<h2 id="6-the-return-production-procedure">6. The return production procedure</h2>
+<h3 id="61-the-shape-of-the-procedure">6.1 The shape of the procedure</h3>
+<p><strong>Trigger:</strong> Each quarter end (30 September, 31 December, 31 March, 30 June for a 30 June financial year); annually for ARF 210.4 at the financial year end; and on request for ARF 210.5.</p>
+<p><strong>Inputs:</strong></p>
+<ol>
+<li>The signed daily LCR for the quarter-end date, and the full series of signed daily LCRs for the quarter (document <a href="08_LCR_Production_End_to_End.html">08</a>).</li>
+<li>The signed NSFR for the quarter-end month (document <a href="09_NSFR_Production_End_to_End.html">09</a>).</li>
+<li>The general ledger balance sheet at the quarter end, by product, counterparty type and residual maturity (document <a href="07_Data_and_Classification.html">07</a>).</li>
+<li>The contractual cash flow data for the maturity forms (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>, section 2).</li>
+<li>For ARF 210.4: the Board-approved funding strategy and forecast balance sheet (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>, section 6).</li>
+<li>The current versions of the forms and instructions, and the mapping table (section 5).</li>
+<li>Last quarter's submitted return and its confirmation.</li>
+</ol>
+<p><strong>Outputs:</strong> The completed forms, the validation report, the reconciliation pack, the signed attestation, the submission confirmation, and a filed evidence pack.</p>
+<p><strong>Who prepares, reviews, signs:</strong> One analyst prepares, a second reviews, the controller signs (four-eyes rule, Example Bank convention). The senior officer who authorises the submission is set by the bank's own procedure (typical practice; confirm with your controller). ARS 210.0 requires "internal review and authorisation" controls (clause 16).</p>
+<h3 id="62-timetable">6.2 Timetable</h3>
+<p>The legal deadline is 35 calendar days after quarter end (ARS 210.0 clause 11). Example Bank builds in a margin. The days below are typical practice; confirm with your controller.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Calendar day after quarter end</th>
+<th>Step</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Day 0</td>
+<td>Quarter-end close of business; daily LCR run for the quarter-end date</td>
+<td>Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Day 1</td>
+<td>Daily LCR signed for the quarter-end date (10:00 am convention)</td>
+<td>Controller</td>
+</tr>
+<tr>
+<td>Day 5</td>
+<td><strong>Data freeze</strong>: ledger closed for the quarter; extracts taken and recorded with a data ID</td>
+<td>Finance, Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Day 6 to 12</td>
+<td>Preparation: classification, mapping, load to the forms</td>
+<td>Analyst</td>
+</tr>
+<tr>
+<td>Day 12</td>
+<td>Draft return complete; validation rules run</td>
+<td>Analyst</td>
+</tr>
+<tr>
+<td>Day 13 to 18</td>
+<td>Reconciliations and analytical review</td>
+<td>Analyst, second analyst</td>
+</tr>
+<tr>
+<td>Day 19 to 22</td>
+<td>Second-person review; queries resolved</td>
+<td>Second analyst</td>
+</tr>
+<tr>
+<td>Day 23</td>
+<td>Controller review; Treasury and Liquidity Risk comment</td>
+<td>Controller</td>
+</tr>
+<tr>
+<td>Day 25</td>
+<td>Attestation and authorisation</td>
+<td>Controller and the authorising officer</td>
+</tr>
+<tr>
+<td>Day 28 to 30</td>
+<td>Submission target date</td>
+<td>Submitter</td>
+</tr>
+<tr>
+<td>Day 35</td>
+<td>Hard deadline (ARS 210.0 clause 11)</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Allow for weekends and public holidays: the standard counts calendar days and says nothing about moving the date.</p>
+<h3 id="63-step-by-step">6.3 Step-by-step</h3>
+<ol>
+<li><strong>Confirm the forms.</strong> Check APRA's site for any new version of ARS 210.0 or notified minor variation (ARS 210.0 clauses 18 and 19). Record the version used.</li>
+<li><strong>Freeze the data.</strong> Agree the cut-off with Finance. Record the extract IDs, times and the ledger close. After the freeze, no change without a logged exception approved by the controller (see 6.8).</li>
+<li><strong>Prepare the LCR forms (ARF 210.1A and 210.1B).</strong> Take the balances (not the weighted amounts) from the signed daily LCR for the quarter-end date, map each classified line to its form item (section 5), and enter amounts in A$ millions to one decimal place. Let the form calculate the weights and totals. Enter zero where there is nothing to report.</li>
+<li><strong>Calculate the period statistics.</strong> From the daily series, take the lowest, highest and mean end-of-day LCR over the quarter for items 32 to 34, using business days only. Item 31 is the Board-approved minimum LCR in the Liquidity Management Strategy (Example Bank: 120% in the Board risk appetite; confirm the figure in the strategy document).</li>
+<li><strong>Prepare the NSFR form (ARF 210.6).</strong> Take the signed NSFR for the quarter-end month, fill the three residual-maturity columns, and compare the result with the form's calculation.</li>
+<li><strong>Prepare the maturity forms (ARF 210.3.1 and 210.3.2).</strong> Extract contractual maturity data by product. Do not apply behavioural assumptions. Do not include new business. Report FX transaction legs gross in items 8 (inflows) and 7 (outflows) and do not net.</li>
+<li><strong>Prepare ARF 210.4 (annually).</strong> Enter the actual year-end balances and the forecast balances at 3, 6, 12, 24 and 36 months from the Board-approved strategy.</li>
+<li><strong>Run validation</strong> (section 6.5).</li>
+<li><strong>Reconcile</strong> (section 6.6).</li>
+<li><strong>Analytical review</strong> (section 6.7).</li>
+<li><strong>Review, sign, attest</strong> (section 6.9).</li>
+<li><strong>Submit and confirm</strong> (section 6.10).</li>
+<li><strong>File the evidence</strong> (section 6.11).</li>
+</ol>
+<h3 id="64-the-period-statistics-a-worked-example">6.4 The period statistics: a worked example</h3>
+<p>Suppose the signed daily LCR for five days of a short period were 147.2%, 146.0%, 148.5%, 149.9% and 145.1% (invented numbers; a real quarter has around 60 business days).</p>
+<pre><code>Lowest  = 145.1%
+Highest = 149.9%
+Mean    = (147.2 + 146.0 + 148.5 + 149.9 + 145.1) / 5 = 736.7 / 5 = 147.34, reported as 147.3%
+</code></pre>
+<p>The instruction asks for "end of day" LCRs and the "mean" using "business days only" (ARF 210.1A instructions). If a day is missing from the series, the mean is wrong, so the completeness of the series is a control (section 6.5).</p>
+<h3 id="65-validation-rules">6.5 Validation rules</h3>
+<p>Validation has three layers: APRA's own checks when you upload (data model rules, permitted combinations, mandatory fields), the form's built-in derived fields, and our own checks. Run our checks before upload so APRA's system does not find them first.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Rule</th>
+<th>Type</th>
+<th>What to do on failure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Every field has an amount (zero if none)</td>
+<td>Completeness</td>
+<td>Fill; confirm zero is correct</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Units are A$ millions to one decimal place; no amounts left in A$bn or whole dollars</td>
+<td>Format</td>
+<td>Rescale</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Item 4 total HQLA equals the sum of items 1 to 3</td>
+<td>Arithmetic</td>
+<td>Check HQLA caps and the adjusted amounts (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8</a>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Item 18 total outflows equals the sum of items 8 to 17</td>
+<td>Arithmetic</td>
+<td>Find the missing or duplicate line</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Item 28 equals the lower of item 23 and 75% of item 18</td>
+<td>Arithmetic</td>
+<td>Check the cap (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Item 30 equals (25 + 26) / 29 x 100</td>
+<td>Arithmetic</td>
+<td>Recompute</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ARF 210.1A item 30 equals ARF 210.1B item 30 for a single-currency bank</td>
+<td>Cross-form</td>
+<td>Find the currency difference</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Item 30 equals the signed daily LCR for the quarter-end date, to one decimal place</td>
+<td>Cross-source</td>
+<td>Investigate the difference, never overwrite</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Items 32 to 34 are consistent: lowest not above mean, mean not above highest, and the quarter-end LCR lies in the range</td>
+<td>Logic</td>
+<td>Check the daily series for gaps</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ARF 210.6 item 56 equals the signed month-end NSFR</td>
+<td>Cross-source</td>
+<td>Investigate</td>
+</tr>
+<tr>
+<td>11</td>
+<td>ARF 210.3.1 item 9 and 210.3.2 item 8 agree to the ledger or are explained (FX legs and "funded" scope differ by form)</td>
+<td>Cross-source</td>
+<td>Written reconciliation</td>
+</tr>
+<tr>
+<td>12</td>
+<td>The maturity buckets in 210.3.1 and 210.3.2: no negative balances except where the form allows</td>
+<td>Logic</td>
+<td>Check sign conventions</td>
+</tr>
+<tr>
+<td>13</td>
+<td>ARF 210.4 actual balance column equals the year-end amounts on 210.3.1 and 210.3.2 for the mapped items</td>
+<td>Cross-form</td>
+<td>Check the mapping (items 9 to 14 map to 210.3.2 items 1 to 6, and item 15 maps to item 8)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>ARF 210.4 forecast columns balance: total assets equal total liabilities and capital at each date</td>
+<td>Arithmetic</td>
+<td>Fix the forecast</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Item 31 equals the Board-approved minimum in the strategy</td>
+<td>Cross-source</td>
+<td>Update</td>
+</tr>
+<tr>
+<td>16</td>
+<td>The overlay item 29.1 is zero unless APRA has advised in writing</td>
+<td>Logic</td>
+<td>Confirm with controller</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Sign conventions in ARF 210.5: outflows positive, inflows negative</td>
+<td>Format</td>
+<td>Correct</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Reporting date, entity name and ABN are correct on every form</td>
+<td>Header</td>
+<td>Correct</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="66-reconciliations">6.6 Reconciliations</h3>
+<p>You prove the return in three directions.</p>
+<p><strong>To the daily LCR.</strong> The balances you enter must agree to the signed daily LCR for the quarter-end date. For Example Bank at the base position: HQLA 17.0, outflows 13.45, inflows 1.90, net 11.55, LCR 147.2%. In the form: item 4 = 17,000.0; item 27 = 13,450.0; item 28 = 1,900.0 (the cap of 10,087.5 is not binding; 75% of 13,450.0 = 10,087.5); item 29 = 13,450.0 - 1,900.0 = 11,550.0; item 30 = 17,000.0 / 11,550.0 = 147.2%. Any difference is explained in writing and corrected at source.</p>
+<p><strong>To the general ledger.</strong> Balance sheet totals on the maturity forms agree to the ledger at the quarter end (document <a href="07_Data_and_Classification.html">07</a>, section on reconciliation to the ledger). Total assets and total liabilities and equity both equal A$100.0bn at the base position, so 100,000.0 in A$ millions. Differences caused by scope (for example, items APRA says to report gross, or FX legs) are documented.</p>
+<p><strong>To last quarter's return.</strong> Every line has a movement figure and a reason (section 6.7).</p>
+<h3 id="67-analytical-review-against-last-period">6.7 Analytical review against last period</h3>
+<p>Compare each key line with the previous quarter and with the same quarter last year. A simple rule (typical practice; confirm with your controller): investigate and comment on any line that moves by more than 10% and more than A$100m, and any change of sign.</p>
+<p>Worked example. Suppose HQLA moved from A$17.0bn to A$15.0bn between two quarters. The change is -2.0 (-11.8%, since 2.0 / 17.0 = 11.76%). Both thresholds are exceeded, so the review notes must say why: for example, A$2.0bn of government bonds became encumbered under a repo (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>) and left the HQLA stock. A second reviewer checks that the explanation agrees with the collateral report and the daily LCR movements.</p>
+<p>Also compare the <strong>ratio</strong> with the Board appetite and the minimum: an LCR that falls below 120% at the quarter end is already known from the daily process (document <a href="12_Controls_Incidents_and_Escalation.html">12</a>), and must not first appear in the return.</p>
+<h3 id="68-data-freeze-and-changes-after-it">6.8 Data freeze and changes after it</h3>
+<p>A freeze is a line in time: after it, the data does not change without a reason and an approval. If you find an error after the freeze:</p>
+<ol>
+<li>Stop. Tell your controller the same day.</li>
+<li>Record what, where, how big and when found.</li>
+<li>Fix at source (the ledger, the classification or the mapping), re-extract, re-run the affected forms and all validation and reconciliation.</li>
+<li>Record the approval of the controller for the change.</li>
+<li>If the daily LCR for any day was affected, follow the incident rules in document <a href="12_Controls_Incidents_and_Escalation.html">12</a>.</li>
+</ol>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Never edit a number on the form to make a check pass. The form must be reproducible from the extract. If you cannot recreate the submitted number from the stored data, the return is not supported.</p>
+</blockquote>
+<h3 id="69-review-sign-off-and-attestation">6.9 Review, sign-off and attestation</h3>
+<p><strong>Review checklist (second analyst).</strong></p>
+<ul>
+<li>Right form version and reporting date.</li>
+<li>All validation rules passed or each exception explained.</li>
+<li>Reconciliations to the daily LCR, NSFR and ledger complete and signed.</li>
+<li>Analytical commentary present and plausible.</li>
+<li>Classification changes since last quarter listed, with approvals.</li>
+<li>Mapping unchanged or change logged.</li>
+<li>Evidence pack complete.</li>
+</ul>
+<p><strong>Controller review.</strong> Reads the commentary and the reconciliations, challenges two or three material lines, signs.</p>
+<p><strong>Attestation.</strong> ARS 210.0 does not set a form of words, but it requires internal authorisation controls (clause 16), and, when using an APRA-notified method, a digital signature by an officer or agent (clause 17). Example Bank's typical practice (confirm with your controller): the controller signs a preparation certificate; a more senior authorised officer approves the submission; Liquidity Risk gets a copy.</p>
+<h3 id="610-submission-and-confirmation">6.10 Submission and confirmation</h3>
+<p>See section 3.7 for the verified and unverified facts about the system. The procedure steps (typical practice) are:</p>
+<ol>
+<li>The submitter, a user with the right role, uploads the file (XML or XLSX if APRA Connect is used), after the final review.</li>
+<li>Check the upload result: every form accepted, with no failure reason.</li>
+<li>Wait for the confirmation message. APRA says a successful submission triggers an email confirmation (verified).</li>
+<li>Save the confirmation (with its time) into the evidence pack, and compare the submitted figures with the approved ones.</li>
+<li>Tell the controller, Treasury and Liquidity Risk that the return is in, with the key ratios.</li>
+</ol>
+<p>If anything prevents submission by the due date (system outage, access problem), contact APRA immediately using the contact details on its notice (section 3.7) and tell your controller. Only APRA can extend the date (ARS 210.0 clause 14).</p>
+<h3 id="611-record-keeping">6.11 Record-keeping</h3>
+<p>Keep for each return: the extracts with data IDs; the mapping; the form files as submitted; the validation report; reconciliations; analytical review notes; review and sign-off records; the confirmation; correspondence with APRA. How long to keep them is set by the bank's records policy (typical practice: not less than seven years; confirm with your controller). The external auditor tests these controls each year (ARS 210.0 clause 15).</p>
+<h3 id="612-resubmission-when-an-error-is-found">6.12 Resubmission when an error is found</h3>
+<blockquote>
+<p><strong>Unverified:</strong> APRA's current guidance on resubmission was not checked. The steps below are typical practice; find the current method and contact details on APRA's website, or ask your controller, before the first time you do it.</p>
+</blockquote>
+<p><em>Trigger:</em> an error is found in a submitted return, by us, by the auditor or by APRA.</p>
+<ol>
+<li>Tell your controller immediately. Record the time found.</li>
+<li>Assess the size and effect: which forms and items, how much, whether any ratio changes, whether any limit or regulatory minimum is affected.</li>
+<li>If a regulatory minimum is affected (LCR or NSFR below 100% on the corrected numbers), treat it as an incident (document <a href="12_Controls_Incidents_and_Escalation.html">12</a>) and see the notification rules in section 7: inform APRA immediately (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>).</li>
+<li>Correct at source, re-run validation and reconciliation.</li>
+<li>Review and sign off the corrected return as for a new one.</li>
+<li>Contact APRA, explain the error and the correction, and resubmit through the method APRA specifies.</li>
+<li>Record the cause, the control that failed, and the fix.</li>
+</ol>
+<p><strong>Controls:</strong> the corrected figures reconcile; the error is added to the error log; a lessons-learned review within a set time.
+<strong>Evidence kept:</strong> the original, the corrected return, the explanation sent to APRA, the confirmation.</p>
+<hr />
+<h2 id="7-notifications-and-approvals-required-by-aps-210">7. Notifications and approvals required by APS 210</h2>
+<p>The table below lists every notification, advice, approval or provision of information in APS 210 that sits <strong>outside the returns</strong>. It covers every provision of APS 210 that creates a duty to notify, advise, apply, attest or provide information to APRA or the Board, including the main-body paragraphs 14, 44(a), 46, 51, 65, 67, 70 and 72, Attachment A paragraphs 5, 17 to 21 and 32, and Attachment B paragraph 6. "Who" is Example Bank's typical practice; the standard names only "the ADI" or "senior management". Confirm owners with your controller.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Paragraph</th>
+<th>What is required</th>
+<th>Trigger</th>
+<th>Timing</th>
+<th>Who does it at Example Bank (typical)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>)</td>
+<td>Inform APRA of concerns about the current or future liquidity position and the plans to address them; if the ADI experiences a <strong>severe liquidity stress</strong>, notify APRA and advise the action being taken</td>
+<td>Any concern about current or future liquidity; a severe liquidity stress</td>
+<td>"As soon as possible"; for severe stress, "immediately"</td>
+<td>Chief Financial Officer or Treasurer, on advice from Liquidity Risk; we supply the numbers</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(a))</td>
+<td>Provide the documented three-year funding strategy to APRA</td>
+<td>APRA's request</td>
+<td>On request, within the time APRA states</td>
+<td>Treasurer with the controller; Board-approved version sent</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p45">APS 210 para 45</a>)</td>
+<td>Board reviews and approves the funding strategy</td>
+<td>Annual cycle</td>
+<td>At least annually</td>
+<td>Board; Treasury prepares the paper</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p46">APS 210 para 46</a>)</td>
+<td>Advise APRA of any material changes to the funding strategy</td>
+<td>A material change (for example a change in funding mix, growth plan or market access)</td>
+<td>As soon as practicable after the change is decided (the standard sets no day count)</td>
+<td>Treasurer, with Liquidity Risk</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>)</td>
+<td>Review and test the contingency funding plan; Board reviews and approves it (an internal approval, not a notice to APRA)</td>
+<td>Annual cycle, or when business or market circumstances change</td>
+<td>At least annually</td>
+<td>Treasury and Liquidity Risk run the test; Board approves</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>)</td>
+<td>Report stress test results, vulnerabilities and resulting actions to the Board <strong>and APRA</strong>, and discuss them</td>
+<td>Each regular stress test cycle</td>
+<td>Regularly with each test; APRA may request at any time (APRA FAQ 14, verified)</td>
+<td>Liquidity Risk and the Chief Risk Officer; we supply data</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p67">APS 210 para 67</a>)</td>
+<td><strong>Foreign ADI only:</strong> assess local operational capacity (LOC) at least annually and give APRA the results on request</td>
+<td>Annual; APRA request</td>
+<td>Annually; on request</td>
+<td>Not applicable to Example Bank (locally incorporated)</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>)</td>
+<td><strong>Before approaching the RBA for Exceptional Liquidity Assistance (ELA):</strong> notify APRA immediately of liquidity concerns and the intention to request ELA; provide any information APRA or the RBA requests; have the operational capability to provide information with the application or in other timeframes APRA specifies</td>
+<td>Severe liquidity stress and a decision to seek ELA</td>
+<td>"Immediately" before approaching the RBA; information within APRA's timeframes</td>
+<td>Chief Executive or Chief Financial Officer; the team supplies the data pack quickly</td>
+</tr>
+<tr>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p72">APS 210 para 72</a>)</td>
+<td>Contact APRA if the ADI relies, for compliance with APS 210, on a previous exemption or other exercise of discretion made under a previous version</td>
+<td>The bank is relying on an earlier APRA exemption or discretion</td>
+<td>Before relying on it (the standard sets no day count)</td>
+<td>Controller with the Chief Financial Officer; keep the original letter</td>
+</tr>
+<tr>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>)</td>
+<td>Inform APRA <strong>immediately</strong> of an actual breach of the LCR requirement, or if the ADI becomes aware of circumstances that may result in a breach</td>
+<td>The LCR falls below 100%, or is projected to</td>
+<td>Immediately</td>
+<td>Chief Financial Officer; we tell the controller the same minute we know</td>
+</tr>
+<tr>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p17">Att A para 17</a>)</td>
+<td>Apply to APRA for approval <strong>before</strong> establishing a Committed Liquidity Facility (CLF) with the RBA</td>
+<td>A need for a CLF</td>
+<td>Before establishing</td>
+<td>Treasurer. Dormant: the aggregate CLF was phased out to zero as at 1 January 2023 (APRA)</td>
+</tr>
+<tr>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p18">Att A para 18</a>)</td>
+<td>The funding strategy must state the CLF amount required in the forecast period; the ADI must first make "every reasonable effort" to manage through its own balance sheet</td>
+<td>When applying for a CLF</td>
+<td>With the application</td>
+<td>Treasurer (dormant, as above)</td>
+</tr>
+<tr>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p19">Att A para 19</a>)</td>
+<td>After initial approval, apply annually for APRA's approval of the CLF size recognised for LCR purposes</td>
+<td>Annual cycle</td>
+<td>Annually</td>
+<td>Treasurer (dormant)</td>
+</tr>
+<tr>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p20">Att A para 20</a>)</td>
+<td>Apply to APRA at any time for a change in the recognised CLF amount, with an updated Board-approved funding and liquidity plan</td>
+<td>Unforeseen change in circumstances</td>
+<td>At any time</td>
+<td>Treasurer (dormant)</td>
+</tr>
+<tr>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p21">Att A para 21</a>)</td>
+<td>Senior management must attest that drawdown proceeds are for Australian dollar liquidity needs only; APRA must be advised of any proposed drawdown not for intraday purposes or end-of-day RBA balances</td>
+<td>A proposed CLF drawdown</td>
+<td>Before drawing</td>
+<td>Senior management; Treasurer (dormant)</td>
+</tr>
+<tr>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p32">Att A para 32</a>)</td>
+<td>Provide APRA with analysis and evidence to justify the assumptions behind derived cash flow items (for example behavioural run-off assumptions)</td>
+<td>APRA's assessment of the assumptions</td>
+<td>On request; keep it ready at all times</td>
+<td>Liquidity Risk and the controller; assumptions file with evidence</td>
+</tr>
+<tr>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p6">Att B para 6</a>)</td>
+<td><strong>MLH ADI only:</strong> inform APRA immediately when aware that liquid assets may fall below the MLH requirement, and advise the remedial action planned or taken</td>
+<td>A possible or actual MLH shortfall</td>
+<td>Immediately</td>
+<td>Not applicable to Example Bank (an LCR ADI)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notes on the table.</p>
+<ul>
+<li><strong>Four rows are triggered by stress or breach</strong> and must be done at once: (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>) for severe stress, (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>) for ELA, (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>) for an LCR breach, and (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p6">Att B para 6</a>) for an MLH shortfall (other classification). Their data needs drive the incident procedures in document <a href="12_Controls_Incidents_and_Escalation.html">12</a>.</li>
+<li><strong>Four rows are on request:</strong> (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(a)), (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p67">APS 210 para 67</a>), (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p32">Att A para 32</a>), and the stress test discussion in (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>). Keep the documents current so you can respond the same day.</li>
+<li><strong>Rows that are annual cycles:</strong> (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p45">APS 210 para 45</a>) and (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>) for Board approval, and (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p19">Att A para 19</a>) for CLF size.</li>
+<li>The standard also says APRA "may require an LCR ADI to maintain a higher minimum LCR" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p56">APS 210 para 56</a>) and a higher NSFR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p61">APS 210 para 61</a>). A notice from APRA of this kind changes the minimums your daily numbers are measured against and must reach the controller at once.</li>
+<li>For internal escalation (Board and senior management informed "immediately" of new and emerging liquidity concerns) see (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>).</li>
+</ul>
+<h3 id="71-related-duties-outside-aps-210">7.1 Related duties outside APS 210</h3>
+<p>These are not in APS 210 but follow the same logic:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Duty</th>
+<th>Trigger and timing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARS 210.0 clause 11</td>
+<td>Quarterly returns and the annual funding plan</td>
+<td>Within 35 calendar days</td>
+</tr>
+<tr>
+<td>ARS 210.0 clause 12</td>
+<td>ARF 210.5 on request</td>
+<td>Same day or next business day</td>
+</tr>
+<tr>
+<td>ARS 210.0 clause 14</td>
+<td>Ask APRA for an extension (APRA's decision)</td>
+<td>Before the due date</td>
+</tr>
+<tr>
+<td>APS 330 clause 20</td>
+<td>Notify APRA in advance if the bank makes minor modifications to the content of BCBS disclosures</td>
+<td>Before publishing the modified disclosure</td>
+</tr>
+<tr>
+<td>APS 330 clause 30</td>
+<td>An Accountable Person attests that prudential disclosures follow the disclosure policy</td>
+<td>With each disclosure</td>
+</tr>
+<tr>
+<td>APS 330 clause 23 and 24</td>
+<td>APRA may require the ADI to rectify disclosures, or to commission an independent audit</td>
+<td>On APRA's direction</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Keep a one-page "notification card" for the people who would make these calls, with the provision, the phone numbers and the contact at APRA (roles, not names). Update it every quarter. It must be usable at 2 am.</p>
+</blockquote>
+<h3 id="72-example-the-incident-scenario">7.2 Example: the incident scenario</h3>
+<p>In document <a href="12_Controls_Incidents_and_Escalation.html">12</a>'s worked incident, the LCR falls to 94.7% after A$2.8bn of wholesale debt moves into the 30-day window. The notifications triggered are (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>) and (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>). If the shortfall were not curable and the bank decided to seek ELA, (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>) would add a notice to APRA before approaching the RBA. Next, the quarterly return for that quarter would show a quarter-low LCR in item 32 of 94.7% (or lower); APRA already knows, because <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a> required the immediate notice.</p>
+<hr />
+<h2 id="8-public-disclosure-of-the-lcr-and-nsfr-under-aps-330">8. Public disclosure of the LCR and NSFR under APS 330</h2>
+<h3 id="81-what-public-disclosure-is-in-everyday-words">8.1 What public disclosure is, in everyday words</h3>
+<p>A return goes to APRA, privately. <strong>Public disclosure</strong> is what the bank publishes for everyone: investors, analysts, customers and other banks. A listed company publishes accounts so that outsiders can judge it. Banks also publish their capital and liquidity numbers. The idea is <strong>market discipline</strong>: if the world can see a bank's numbers, the bank has a reason to keep them sound. APS 330 Public Disclosure says its key principle is "clear, comprehensive, meaningful, consistent, and comparable public disclosures of prudential information … so as to contribute to the transparency of financial markets and to enhance market discipline" (APS 330 clause 11, verified).</p>
+<p>The bank's Pillar 3 report is the common name for this publication (Pillar 3 is the Basel term for market disclosure; see <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> and <a href="../LIQUIDITY_GUIDE.html#chapter-3-how-to-read-a-bank-balance-sheet">Guide Ch 3</a>).</p>
+<h3 id="82-which-version-and-who-it-applies-to">8.2 Which version, and who it applies to</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Finding</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version in force</td>
+<td>APS 330 Public Disclosure, commencing 1 January 2025 (instrument F2024L01075, registered 3 September 2024). APRA's page shows "In force", effective 1 January 2025</td>
+<td>Verified</td>
+</tr>
+<tr>
+<td>Applies to</td>
+<td>All ADIs except foreign ADIs, non-significant financial institutions (non-SFIs) and purchased payment facility providers (clause 2)</td>
+<td>Verified</td>
+</tr>
+<tr>
+<td>Whether Example Bank is an SFI</td>
+<td>Not stated in the standard text I read; "significant financial institution" is defined elsewhere in APRA's framework</td>
+<td>Unverified: confirm with your controller (most large and medium banks are)</td>
+</tr>
+<tr>
+<td>Next version</td>
+<td>The Federal Register of Legislation shows the 2025 version ending on 1 January 2027, and APRA's list of standards shows a version "final, not yet in force" with effect from 1 January 2027</td>
+<td>Verified for the end date (legislation API); the replacement text I did not read</td>
+</tr>
+<tr>
+<td>Impact of the new version on liquidity disclosures</td>
+<td>Not known</td>
+<td>Unverified: read the 2027 version before the first disclosure under it</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> All clause numbers below are from the 2025 version. They may change in the 2027 version. Check them before you cite a clause in a working paper after 1 January 2027.</p>
+</blockquote>
+<h3 id="83-what-the-standard-requires-for-liquidity-verified-2025-version">8.3 What the standard requires for liquidity (verified, 2025 version)</h3>
+<ol>
+<li><strong>Follow the Basel templates.</strong> An ADI "must make the prudential disclosures as set out in the Standard made by the Basel Committee on Banking Supervision (BCBS Standard) titled 'Disclosure requirements', as the BCBS Standard exists from time to time, subject to the modifications specified in Attachment A" of APS 330 (clause 19). The BCBS standard covers, among others, "leverage ratio and liquidity" (clause 21).</li>
+<li><strong>Frequency.</strong> Disclosures are published "as indicated in the relevant BCBS disclosure templates and tables" and vary "between quarterly, semi-annual and annual" (clause 31). They must be published "concurrently with the lodgement of the ADI's financial reports under the Corporations Act" (clause 32).</li>
+<li><strong>Liquidity specifics (clauses 41 to 43).</strong> The ADI must disclose total HQLA and alternative liquid assets, and total liquid assets that are RBNZ eligible securities (clause 41). For the NSFR it is not required to disclose performing loans and securities with a risk weight of 35% or less under the Basel II standardised approach; instead it discloses standard residential property loans to individuals with an LVR of 80% or below, excluding encumbered loans and loans under one year (clause 42). Disclosures about "small business customers" use the SME definition in APS 210 (clause 43).</li>
+<li><strong>MLH exemption.</strong> SFIs that use the minimum liquidity holdings approach are not required to make LCR or NSFR disclosures under the BCBS Standard (clause 44). Example Bank is an LCR ADI, so it is covered.</li>
+<li><strong>Governance.</strong>
+   - A Board-approved disclosure policy, with key elements summarised in the year-end public disclosure, setting out the approach to content and the internal controls, review and verification (clause 25).
+   - "At a minimum, the same level of internal controls and procedures as for the ADI's financial reporting" (clause 26).
+   - Disclosures must be "appropriately verified", and "consistent with information that has been subject to review by an external auditor, is lodged or published elsewhere or has been already supplied to APRA" (clauses 28 and 29).
+   - An <strong>Accountable Person</strong> must attest in writing that the disclosures follow the disclosure policy, and the attestation is included in the disclosure (clause 30).</li>
+<li><strong>Presentation.</strong> A "Regulatory Disclosures" section on the ADI's website; a standalone document; quantitative information also in CSV or Excel; and an archive of prior disclosures for at least the past 12 months (clauses 34 to 36). The liquidity information is included in the financial report, the directors' report, accompanying information or the website section with a link (clause 37).</li>
+<li><strong>Modifications.</strong> Minor modifications to BCBS content are allowed where it conflicts with prudential standards, with a description and notice to APRA in advance (clause 20).</li>
+<li><strong>APRA powers.</strong> APRA may require the ADI to rectify disclosures or to disclose further information (clause 23), or to commission an independent audit (clause 24).</li>
+</ol>
+<h3 id="84-the-liquidity-templates-verified-on-the-bis-site-with-limits">8.4 The liquidity templates (verified on the BIS site, with limits)</h3>
+<p>APS 330 itself does not list template names; it points to the BCBS Standard. The BIS Basel Framework chapter DIS85 (liquidity) lists these items (as retrieved):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Name</th>
+<th>Frequency</th>
+<th>Data basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIQA</td>
+<td>Liquidity risk management</td>
+<td>Annual</td>
+<td>Qualitative narrative; flexible format</td>
+</tr>
+<tr>
+<td>LIQ1</td>
+<td>Liquidity Coverage Ratio</td>
+<td>Quarterly</td>
+<td>Simple averages of daily observations over the previous quarter; the number of data points is disclosed</td>
+</tr>
+<tr>
+<td>LIQ2</td>
+<td>Net Stable Funding Ratio</td>
+<td>Semi-annual</td>
+<td>Quarter-end observations, with two data sets (the latest and previous quarter)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Differences from the return you file with APRA:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>APRA return (ARF 210.1A, 210.6)</th>
+<th>Public disclosure (LIQ1, LIQ2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audience</td>
+<td>APRA (and the RBA)</td>
+<td>The public</td>
+</tr>
+<tr>
+<td>LCR basis</td>
+<td>Position at the quarter-end date, with the lowest, highest and mean over the period as extra items</td>
+<td>Average of daily values over the quarter</td>
+</tr>
+<tr>
+<td>NSFR basis</td>
+<td>Quarter-end</td>
+<td>Quarter-end observations</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>APRA's forms</td>
+<td>BCBS templates, as adjusted by APS 330</td>
+</tr>
+<tr>
+<td>Sign-off</td>
+<td>Internal authorisation; auditor tests controls</td>
+<td>Disclosure policy; Accountable Person attestation</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Unverified:</strong> (a) I could not confirm from the BIS text I retrieved whether the LIQ1 LCR ratio is an average of daily ratios or a ratio of averages; read the template instructions on the BIS site before you build the calculation. (b) APRA's liquidity pages that I saw (secondary summaries) described the NSFR template as published "concurrently with the lodgement of financial reports", while the BIS page shows semi-annual frequency. These are consistent with clauses 31 and 32 (the frequency comes from BCBS; the timing from the financial report), but I did not read an APRA table that states it. Confirm the bank's disclosure calendar with your controller and the Finance reporting team. (c) I did not read APRA's own modifications to the liquidity templates beyond clauses 41 to 44 and Attachment A.</p>
+</blockquote>
+<h3 id="85-the-teams-part">8.5 The team's part</h3>
+<p>Finance (financial reporting) usually owns the Pillar 3 document. Liquidity Reporting provides the liquidity numbers and their support.</p>
+<p><strong>Procedure: producing the LIQ1 and LIQ2 inputs.</strong></p>
+<p><em>Trigger:</em> the Pillar 3 calendar (each quarter, with the financial report date); the Finance team's request.
+<em>Inputs:</em> the signed daily LCR series for the quarter (HQLA, outflows by category, inflows, net outflows, LCR); the signed quarter-end NSFR; the BCBS template instructions and APRA modifications; the prior disclosure.
+<em>Steps:</em> (1) Confirm the template version and any APRA modifications. (2) Pull the daily values after haircuts, rates and caps. (3) Compute the simple averages over the quarter, and count the data points. (4) Map the categories to the template rows. (5) Prepare the NSFR quarter-end data. (6) Reconcile to the APRA return for the same period (the quarter-end figure and the mean must be consistent with item 34 of ARF 210.1A). (7) Write the commentary on drivers of change. (8) Review by a second analyst; controller sign-off; hand to Finance.
+<em>Controls:</em> every daily value in the quarter is present and signed; the average recomputes from the stored series; template totals foot; the numbers agree with the APRA return; the commentary agrees with the Board paper; no number is published before sign-off.
+<em>Outputs:</em> populated templates, commentary and reconciliation.
+<em>Who reviews:</em> second analyst; controller; Finance; the Accountable Person attests.
+<em>Evidence kept:</em> the daily series, calculations, reconciliations, the approved disclosure, the attestation.</p>
+<blockquote class="q-example"><p><strong>Example (simple average).</strong> Suppose the daily HQLA were A$17.0bn, 16.8, 17.2 and 17.0 over four days (a real quarter has about 60). The simple average = (17.0 + 16.8 + 17.2 + 17.0) / 4 = 68.0 / 4 = A$17.0bn.</p>
+<p><strong>Watch out:</strong> A published figure is permanent and public. If you find an error in published disclosures, tell your controller at once; the Accountable Person and Finance decide how to correct it, and APRA may require changes (APS 330 clause 23).</p>
+</blockquote>
+<hr />
+<h2 id="9-requests-from-apra-and-supervisory-reviews">9. Requests from APRA and supervisory reviews</h2>
+<h3 id="91-what-they-look-like">9.1 What they look like</h3>
+<p>APRA supervises each bank continuously. Besides returns, you may see:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Request type</th>
+<th>Example</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A call for data</td>
+<td>"Provide ARF 210.5 daily for the next 10 business days"</td>
+<td>ARS 210.0 clause 12</td>
+</tr>
+<tr>
+<td>A call for documents</td>
+<td>"Provide the three-year funding strategy"</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(a))</td>
+</tr>
+<tr>
+<td>Stress test results</td>
+<td>"Provide the latest results and actions"</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>); APRA FAQ 14</td>
+</tr>
+<tr>
+<td>Evidence for assumptions</td>
+<td>"Show the analysis behind your run-off assumptions"</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p32">Att A para 32</a>)</td>
+</tr>
+<tr>
+<td>Query on a return</td>
+<td>"Explain the movement in item 11 between quarters"</td>
+<td>Supervision</td>
+</tr>
+<tr>
+<td>A supervisory review</td>
+<td>A scheduled review of liquidity risk management, with interviews and sampling</td>
+<td>Supervision</td>
+</tr>
+<tr>
+<td>An external auditor test</td>
+<td>Walk-through of the return controls</td>
+<td>ARS 210.0 clause 15</td>
+</tr>
+<tr>
+<td>A request to hold more</td>
+<td>A higher minimum LCR or NSFR</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p56">APS 210 para 56</a>) (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p61">APS 210 para 61</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="92-principles">9.2 Principles</h3>
+<ol>
+<li><strong>One voice.</strong> Requests go to a named coordinator (typically the Chief Financial Officer's office or Regulatory Affairs, not the analyst). Tell your controller the moment you receive a request or a query from anyone at APRA.</li>
+<li><strong>Understand it.</strong> What exactly is asked, as at what date, at what level, and by when?</li>
+<li><strong>Log it.</strong> Record the time received, from whom, the wording, the deadline, the owner.</li>
+<li><strong>Accurate first, fast second.</strong> A wrong answer is worse than a short delay. If you need more time, the coordinator asks APRA.</li>
+<li><strong>Consistent.</strong> The answer must agree with the returns, the daily LCR, the Board papers and the public disclosures.</li>
+<li><strong>Evidence.</strong> Every number can be traced to a stored extract.</li>
+<li><strong>Approved before it goes.</strong> The authorised officer approves the response.</li>
+<li><strong>No new facts invented.</strong> If you do not know, say so and find out.</li>
+<li><strong>Keep a copy</strong> of what was sent, and the confirmation of sending.</li>
+</ol>
+<h3 id="93-procedure">9.3 Procedure</h3>
+<p><em>Trigger:</em> any request from APRA, or an auditor, for liquidity information.
+<em>Inputs:</em> the request; the log; the underlying data.
+<em>Steps:</em> (1) Tell the controller immediately. (2) Open a log entry. (3) Confirm the scope and deadline with the coordinator. (4) Gather data from the signed outputs, not from fresh extracts, unless the request is for a new analysis. (5) Prepare the response with sources noted. (6) Reconcile to the returns and disclosures. (7) Second-person check. (8) Approval by the authorised officer. (9) Send through the channel APRA specifies. (10) Record the confirmation and file.
+<em>Controls:</em> response agrees to prior submissions or the difference is explained; a named person approved; the log shows completion before the deadline.
+<em>Outputs:</em> the response and the log.
+<em>Who reviews:</em> second analyst, controller, authorised officer.
+<em>Evidence kept:</em> the request, the working papers, the response, the confirmation.</p>
+<h3 id="94-supervisory-reviews-getting-ready">9.4 Supervisory reviews: getting ready</h3>
+<ul>
+<li>Keep an up-to-date "evidence index" for each requirement area: the framework documents, limits, the early warning set, stress test files, the funding strategy, the CFP, the data dictionary, classification rules, the control matrix, the return packs and the minutes of ALCO and the Board.</li>
+<li>Keep a list of open issues and action owners.</li>
+<li>Rehearse: the liquid asset operational test (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>) and the contingency plan data pack (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>, section 7) should be demonstrable in minutes.</li>
+<li>On the day, answer the question asked, with evidence, and take actions away in writing.</li>
+</ul>
+<hr />
+<h2 id="10-typical-errors-in-returns">10. Typical errors in returns</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Error</th>
+<th>Effect</th>
+<th>How to prevent or catch it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Wrong units (A$bn entered as A$ millions)</td>
+<td>Off by a factor of 1,000</td>
+<td>Units check; compare with the previous quarter</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Stale form version</td>
+<td>Missing or wrong items</td>
+<td>Check APRA's site and version log before the freeze</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Data not frozen; late changes not re-run</td>
+<td>Return does not match its support</td>
+<td>Freeze; change log; re-run all validations</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Quarter-end LCR not equal to the signed daily LCR</td>
+<td>Credibility loss; inconsistent with APRA's other data</td>
+<td>Validation 8; reconciliation</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Gaps in the daily series, so lowest, highest and mean are wrong</td>
+<td>Items 32 to 34 wrong</td>
+<td>Completeness check of every business day</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Calendar days mistaken for business days when counting the due date</td>
+<td>Late return</td>
+<td>Calendar of due dates; target day 30</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Encumbered assets included in HQLA</td>
+<td>HQLA overstated</td>
+<td>Collateral reconciliation (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>, section 9)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Behavioural assumptions applied on the maturity forms</td>
+<td>Breach of the form instructions</td>
+<td>Review the instruction; contractual only</td>
+</tr>
+<tr>
+<td>9</td>
+<td>New business included on the maturity forms</td>
+<td>Overstated flows</td>
+<td>Use the contractual book at the date only</td>
+</tr>
+<tr>
+<td>10</td>
+<td>FX legs netted</td>
+<td>Wrong totals</td>
+<td>Report gross legs in the specified items</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Intragroup or intermediated deposits in the wrong item</td>
+<td>Wrong run-off category</td>
+<td>Customer master mapping</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Wrong sign (outflows positive, inflows negative in ARF 210.5)</td>
+<td>Wrong net flows</td>
+<td>Sign rule in validation</td>
+</tr>
+<tr>
+<td>13</td>
+<td>NSFR maturity buckets wrong (residual vs original)</td>
+<td>ASF or RSF wrong</td>
+<td>Recompute residual maturity from the reporting date</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Overlay item reported as non-zero without APRA advice</td>
+<td>Wrong LCR</td>
+<td>Controller confirmation</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Derived fields overwritten</td>
+<td>Return not reproducible</td>
+<td>Locked cells; do not edit derived fields</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Not tying 210.4 actuals to 210.3.1 and 210.3.2</td>
+<td>Inconsistent forms</td>
+<td>Cross-form validation (rule 13)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Level 1 and Level 2 mixed or the wrong level submitted</td>
+<td>Wrong consolidation</td>
+<td>Level check on every form header</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Submission not confirmed; assumed received</td>
+<td>A missed return</td>
+<td>Save the confirmation; check the next day</td>
+</tr>
+<tr>
+<td>19</td>
+<td>The ratio difference between return and disclosure unexplained (point-in-time against average)</td>
+<td>Questions from analysts and APRA</td>
+<td>Reconciliation memo each quarter</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Original return not kept after resubmission</td>
+<td>No audit trail</td>
+<td>Keep every version</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="11-what-was-verified-and-what-was-not">11. What was verified, and what was not</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Statement</th>
+<th>Status</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARS 210.0 in force, effective 4 April 2023, instrument F2023L00417, no amendments on 14 November 2026</td>
+<td>Verified</td>
+<td>APRA standards page; legislation.gov.au and its API</td>
+</tr>
+<tr>
+<td>Forms, who files, levels, units, due dates (35 calendar days; annual ARF 210.4; ARF 210.5 timing), quality and authorisation clauses</td>
+<td>Verified</td>
+<td>Determination text (F2023L00417)</td>
+</tr>
+<tr>
+<td>Form item structure for ARF 210.1A, 210.3.1, 210.3.2, 210.4, 210.5, 210.6</td>
+<td>Verified (read from the registered text); a few sub-items not itemised</td>
+<td>Determination text</td>
+</tr>
+<tr>
+<td>APRA Connect features, roles, file types</td>
+<td>Verified</td>
+<td>APRA Connect support page</td>
+</tr>
+<tr>
+<td>Dates in APRA's notice of 27 July 2026</td>
+<td>Verified as published</td>
+<td>APRA notice</td>
+</tr>
+<tr>
+<td>Which route the quarterly ARS 210 forms use today (APRA Connect or the older D2A route)</td>
+<td><strong>Unverified</strong></td>
+<td>Pages conflict or are silent</td>
+</tr>
+<tr>
+<td>Whether ARF 210.5 is now reported monthly, and under what instruction</td>
+<td><strong>Unverified</strong></td>
+<td>APRA notice and migration page refer to a "monthly return" and a May 2026 start; the standard says on request</td>
+</tr>
+<tr>
+<td>Due dates in the example calendar</td>
+<td>My arithmetic</td>
+<td>Clause 11</td>
+</tr>
+<tr>
+<td>APS 330 (2025 version) clauses, application and liquidity requirements</td>
+<td>Verified</td>
+<td>APS 330 text (F2024L01075)</td>
+</tr>
+<tr>
+<td>APS 330 replacement from 1 January 2027</td>
+<td>End date verified; replacement text not read</td>
+<td>Legislation API; search result for APRA page</td>
+</tr>
+<tr>
+<td>LIQ1 and LIQ2 names and frequency</td>
+<td>Verified on the BIS Basel Framework (DIS85); APRA overlays not read</td>
+<td>BIS</td>
+</tr>
+<tr>
+<td>Whether Example Bank is an SFI under APS 330</td>
+<td><strong>Unverified</strong></td>
+<td>Not in the text read</td>
+</tr>
+<tr>
+<td>Method for resubmitting a return</td>
+<td><strong>Unverified</strong></td>
+<td>Not retrieved</td>
+</tr>
+<tr>
+<td>Reconciliation of item 29.1's reference to "paragraph 70 of APS 210" with the 2025 APS 210</td>
+<td>Conflict noted</td>
+<td>Section 4.1</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>
+<p><strong>Example Bank's financial year ends on 30 June. By what date must the return for the quarter ending 31 December be lodged, and the funding plan ARF 210.4 for the year ending 30 June?</strong>
+   <strong>Answer:</strong> Quarterly returns are due within 35 calendar days of quarter end (ARS 210.0 clause 11): 31 December plus 35 days is 4 February (31 days to 31 January, then 4 more days). ARF 210.4 is due within 35 calendar days of the end of the financial year: 30 June plus 35 days is 4 August.</p>
+</li>
+<li>
+<p><strong>APRA asks for ARF 210.5 at 9:15 am on a Wednesday, and at 2:30 pm on a Thursday. What are the deadlines, and what date's data is used?</strong>
+   <strong>Answer:</strong> The 9:15 am request (before 12 pm) must be answered by close of business the same Wednesday, using data at close of business on Tuesday. The 2:30 pm request (after 12 pm) must be answered by close of business on the next business day (Friday), using data at close of business on Thursday, the day of the request (ARS 210.0 clause 12).</p>
+</li>
+<li>
+<p><strong>The signed end-of-day LCRs for four business days in a short period are 130.0%, 128.0%, 135.0% and 127.0%. What do items 32, 33 and 34 show?</strong>
+   <strong>Answer:</strong> Lowest (item 32) 127.0%; highest (item 33) 135.0%; mean (item 34) = (130.0 + 128.0 + 135.0 + 127.0) / 4 = 520.0 / 4 = 130.0%.</p>
+</li>
+<li>
+<p><strong>A bank reports total weighted outflows of A$13,450.0m and total inflows of A$20,000.0m. What goes in item 28, and what are the net cash outflows in item 29 (overlay zero)?</strong>
+   <strong>Answer:</strong> The cap is 75% x 13,450.0 = 10,087.5. Inflows of 20,000.0 exceed it, so item 28 = 10,087.5. Item 29 = 13,450.0 - 10,087.5 = 3,362.5 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>).</p>
+</li>
+<li>
+<p><strong>Which forms does Example Bank not file, and why?</strong>
+   <strong>Answer:</strong> ARF 210.2 (Minimum Liquidity Holdings), which is for MLH ADIs only. Example Bank is an LCR ADI. ARF 210.5 is filed only when APRA requests it (ARS 210.0 clauses 8 and 12).</p>
+</li>
+<li>
+<p><strong>Which paragraph requires the bank to inform APRA immediately that the LCR has fallen below 100%, and what other provision is triggered when the stress is severe?</strong>
+   <strong>Answer:</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>) for an actual or possible breach; (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>) for severe liquidity stress, which also requires advising the action being taken.</p>
+</li>
+<li>
+<p><strong>Between two quarters, HQLA moves from A$17.0bn to A$15.8bn. Using the rule "investigate lines that move by more than 10% and more than A$100m", is an investigation required?</strong>
+   <strong>Answer:</strong> The change is -1.2bn (A$1,200m), which is more than A$100m. As a percentage, 1.2 / 17.0 = 7.1%, which is below 10%. The rule needs both conditions, so it is not required by the rule. The reviewer may still ask for a comment because the change is more than A$100m.</p>
+</li>
+<li>
+<p><strong>What are the two quality duties in ARS 210.0 clauses 15 and 16?</strong>
+   <strong>Answer:</strong> Information must come from systems, processes and controls reviewed and tested by the external auditor (under APS 310) at least annually; and it must be subject to the ADI's own internal review and authorisation controls to assure completeness and reliability.</p>
+</li>
+<li>
+<p><strong>What is the difference between the quarter-end LCR in the APRA return and the LCR in the public disclosure template LIQ1?</strong>
+   <strong>Answer:</strong> The return reports the position at the quarter-end date (with the lowest, highest and mean over the period as separate items); LIQ1 reports averages of daily observations over the quarter. They are different measures, so a reconciliation memo explains the difference (BIS DIS85; APS 330 clause 19).</p>
+</li>
+<li>
+<p><strong>When must a bank approach APRA before approaching the RBA, and what must it be able to provide?</strong>
+    <strong>Answer:</strong> Before requesting Exceptional Liquidity Assistance, the bank must notify APRA immediately of its liquidity concerns and its intention to request ELA, and must be operationally able to provide information with the application or within the timeframes APRA sets (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>).</p>
+</li>
+</ol>
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>A return is the same numbers as the daily LCR and the monthly NSFR, laid out in APRA's boxes, signed and sent by a legal due date.</li>
+<li>Prudential standards (APS 210) set the rules; reporting standards (ARS 210.0) set the forms, timing and method; APS 330 sets public disclosure.</li>
+<li>Example Bank files ARF 210.1A, 210.1B, 210.3.1, 210.3.2, 210.4 and 210.6, and ARF 210.5 on request. Quarterly forms and the annual plan are due within 35 calendar days; ARF 210.5 within a day.</li>
+<li>The maturity forms are contractual only, with no behavioural assumptions and no new business.</li>
+<li>Items 32 to 34 of the LCR form need a complete daily series: one missing day makes the statistics wrong.</li>
+<li>Freeze, validate, reconcile to the daily LCR and ledger, review, sign, submit, keep the confirmation. Never edit a number to make a check pass.</li>
+<li>The notifications table is your emergency list: (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>), (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>) and (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>) are immediate; others are on request or annual.</li>
+<li>APS 330 requires the BCBS templates, a Board-approved disclosure policy, an Accountable Person attestation and consistency with what APRA has been given.</li>
+<li>Confirm the unverified items (submission route, ARF 210.5 monthly instruction, SFI status, resubmission method) with your controller and APRA before relying on them.</li>
+</ul>
+<hr />
+<h2 id="sources">Sources</h2>
+<p>All pages were accessed on 14 November 2026.</p>
+<ol>
+<li>APRA, "ARS 210.0 Liquidity (applies to both Level 1 and Level 2 forms)": https://www.apra.gov.au/standards/ars-2100 (status "In force", effective 4 April 2023, link to F2023L00417).</li>
+<li>Federal Register of Legislation, "Financial Sector (Collection of Data) (reporting standard) determination No. 54 of 2023", F2023L00417: https://www.legislation.gov.au/Details/F2023L00417 (title, registered 4 April 2023).</li>
+<li>Full text of the determination and ARS 210.0 (clauses, definitions, forms and instructions): https://www.legislation.gov.au/F2023L00417/asmade/2023-04-04/text/original/epub/OEBPS/document_1/document_1.html (its browser title reads "(consultation responses)"; the body is determination No. 54 of 2023).</li>
+<li>Federal Register of Legislation API, status of F2023L00417 (in force; no unincorporated amendments; sunset 1 October 2033): https://api.prod.legislation.gov.au/v1/versions/find(titleId='F2023L00417',asAtSpecification='latest')</li>
+<li>APRA, "Prudential and reporting standards" (banking list: APS 210 in force 1 July 2025; ARS 210.0 in force 4 April 2023; ARF 210.5 in force 1 April 2021; APS 330 in force 1 January 2025; later version effective 1 January 2027): https://www.apra.gov.au/banking/Prudential-and-reporting-standards</li>
+<li>APRA, "Liquidity – frequently asked questions" (FAQ dated 9 December 2021; FAQ 14 on stress test reporting; items by form): https://www.apra.gov.au/liquidity-frequently-asked-questions</li>
+<li>APRA, "APRA Connect support material" (roles, file types, validation): https://www.apra.gov.au/apra-connect-support-material</li>
+<li>APRA, "End of Alternate Submission Process for ADIs and RFCs", 27 July 2026: https://www.apra.gov.au/news-and-publications/end-alternate-submission-process-adis-and-rfcs</li>
+<li>APRA, "Migrating D2A Collections Support Material": https://www.apra.gov.au/migrating-d2a-collections-support-material</li>
+<li>APRA, "APRA releases consultation on alignment of Daily Liquidity Report", 17 September 2020: https://www.apra.gov.au/news-and-publications/apra-releases-consultation-alignment-daily-liquidity-report-authorised</li>
+<li>APRA, "APS 330 Public Disclosure" (in force from 1 January 2025): https://www.apra.gov.au/standards/aps-330</li>
+<li>Federal Register of Legislation, APS 330 as made (F2024L01075), text read for clauses 2, 11, 19 to 37 and 41 to 44 and Attachment A: https://www.legislation.gov.au/F2024L01075/asmade/2024-09-03/text/original/pdf</li>
+<li>Federal Register of Legislation API, status of F2024L01075 (version ends 1 January 2027): https://api.prod.legislation.gov.au/v1/versions/find(titleId='F2024L01075',asAtSpecification='latest')</li>
+<li>APRA, "APS 330 Public Disclosure" (final, not in force, 1 January 2027): https://www.apra.gov.au/standards/aps-330-final-not-force (seen in a search result only; the page itself and the replacement text were not read).</li>
+<li>Bank for International Settlements, Basel Framework DIS85 Liquidity (LIQA, LIQ1, LIQ2): https://www.bis.org/basel_framework/chapter/DIS/85.htm?inforce=20191215&amp;published=20191215</li>
+<li>APRA, "Liquidity" page (listing of liquidity standards, seen only in a search result summary, the page itself returned an error on fetch): https://www.apra.gov.au/liquidity</li>
+<li>APS 210 Liquidity, July 2025 (F2025L00653), paragraphs and attachments as cited in the text.</li>
+</ol></main><footer><a href="10_Monitoring_Beyond_the_Ratios.html">&#9664; 10 Monitoring beyond the two ratios</a><a href="12_Controls_Incidents_and_Escalation.html">12 Controls, incidents and escalation &#9654;</a></footer></body></html>

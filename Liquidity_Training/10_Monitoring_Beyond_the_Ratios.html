@@ -1,0 +1,2276 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10 Monitoring beyond the two ratios | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="09_NSFR_Production_End_to_End.html" title="09 Producing the NSFR, end to end">&#9664; 09</a><span class="t">10 Monitoring beyond the two ratios</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#1-why-two-ratios-are-not-enough">1. Why two ratios are not enough</option><option value="#2-the-maturity-ladder">2. The maturity ladder</option><option value="#3-funding-concentration">3. Funding concentration</option><option value="#4-limits-and-early-warning-indicators">4. Limits and early warning indicators</option><option value="#5-stress-testing">5. Stress testing</option><option value="#6-the-three-year-funding-strategy">6. The three-year funding strategy</option><option value="#7-the-contingency-funding-plan">7. The contingency funding plan</option><option value="#8-intraday-liquidity">8. Intraday liquidity</option><option value="#9-collateral-and-encumbrance">9. Collateral and encumbrance</option><option value="#10-currency">10. Currency</option><option value="#11-cost-allocation-funds-transfer-pricing">11. Cost allocation (funds transfer pricing)</option><option value="#12-management-information">12. Management information</option><option value="#13-level-1-and-level-2">13. Level 1 and Level 2</option><option value="#14-the-minimum-liquidity-holdings-regime-in-brief">14. The minimum liquidity holdings regime, in brief</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="11_APRA_Returns_and_Disclosures.html" title="11 Returns to APRA and public disclosure">11 &#9654;</a></header>
+<main><h1 id="10-monitoring-beyond-the-two-ratios">10 Monitoring beyond the two ratios</h1>
+<p><strong>Purpose:</strong> To teach you everything the Liquidity Reporting team and its neighbours watch besides the liquidity coverage ratio (LCR) and the net stable funding ratio (NSFR): the maturity ladder, funding concentration, limits and early warning indicators, stress tests, the funding strategy, the contingency funding plan, intraday liquidity, collateral, currency, cost allocation, management information, Level 1 and Level 2, and the minimum liquidity holdings (MLH) regime.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Build a contractual and a behavioural maturity ladder from a balance sheet and read the cumulative gap.</li>
+<li>Explain what each early warning indicator signals, where its data comes from, and how a limit and a trigger differ.</li>
+<li>Describe how a stress test is built, what a survival horizon is, and how the results feed limits and the contingency funding plan.</li>
+<li>List the data the team supplies for the funding strategy, the contingency funding plan, collateral, intraday and currency monitoring.</li>
+<li>Assemble a daily liquidity dashboard and a monthly ALCO pack (ALCO is the asset and liability committee).</li>
+<li>Say when Level 1 and Level 2 differ, and recognise the MLH regime when you meet it.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) and document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year). Documents <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR) and 09 (Producing the NSFR) will help, but you can read this one first.</p>
+<p><strong>Time:</strong> About three hours to read; allow another two to work the examples and the questions.</p>
+<hr />
+<h2 id="1-why-two-ratios-are-not-enough">1. Why two ratios are not enough</h2>
+<p>You will spend much of your time on two numbers: the LCR and the NSFR. Both are valuable. Both also have limits, and the standard knows it.</p>
+<ul>
+<li>The LCR looks at <strong>30 days</strong>. It cannot see a cliff of debt falling due in month four.</li>
+<li>The NSFR looks at <strong>one year</strong> and at the shape of the balance sheet. It cannot see today's cash.</li>
+<li>Both are <strong>snapshots</strong> at a date. Neither shows how the position will move.</li>
+<li>Both use <strong>regulatory</strong> assumptions. The bank's own stress could be worse, or different, from APRA's scenario.</li>
+</ul>
+<p>APS 210 therefore asks for more than ratios. The bank must have "a robust framework for comprehensively projecting cash flows arising from assets, liabilities and off-balance sheet items over an appropriate set of time horizons" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>). Think of the two ratios as the dashboard warning lights, and everything in this document as the rest of the instruments: the fuel gauge, the engine temperature and the map of the road ahead.</p>
+<p>Here is where each topic sits in the standard.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What the standard requires</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Projecting cash flows (the ladder)</td>
+<td>Identify, measure, monitor and control liquidity risk, with projected cash flows over a set of time horizons</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>)</td>
+</tr>
+<tr>
+<td>Limits</td>
+<td>Set limits, review them and their escalation procedures regularly; a plan of action on breach</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>)</td>
+</tr>
+<tr>
+<td>Collateral</td>
+<td>Manage collateral, separate encumbered from unencumbered assets, know where it is held</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p38">APS 210 para 38</a>)</td>
+</tr>
+<tr>
+<td>Early warning indicators</td>
+<td>Design a set for daily risk management</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>)</td>
+</tr>
+<tr>
+<td>Management information</td>
+<td>A reliable system giving timely, forward-looking information</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p40">APS 210 para 40</a>)</td>
+</tr>
+<tr>
+<td>Intraday liquidity</td>
+<td>Manage intraday positions under normal and stressed conditions</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>)</td>
+</tr>
+<tr>
+<td>Cost allocation</td>
+<td>Allocate the cost of liquidity to its sources</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p42">APS 210 para 42</a>)</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>Liquid assets by currency; mismatches; per-currency strategy</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 para 43</a>)</td>
+</tr>
+<tr>
+<td>Funding strategy</td>
+<td>Three-year strategy; market presence; funding capacity</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 paras 44 to 46</a>)</td>
+</tr>
+<tr>
+<td>Contingency funding plan</td>
+<td>Formal playbook for shortfalls</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>)</td>
+</tr>
+<tr>
+<td>Stress testing</td>
+<td>Regular tests across many scenarios</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 paras 62 to 66</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the full text of each paragraph, use document <a href="04_APS210_Companion_Main_Body.html">04</a> (APS 210 companion: the main body). For the way Treasury sees these topics, read Chapter 9 of the guide (<a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a>, "How Treasury manages liquidity day to day").</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Our team owns the numbers behind most of this list. Treasury owns the decisions. Liquidity Risk, the independent oversight function (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>), challenges both. When you build a report, ask three questions: who will read it, what decision will it help them make, and can they trust the number?</p>
+</blockquote>
+<h3 id="who-does-what">Who does what</h3>
+<p>The names below are Example Bank conventions (see document <a href="03_Your_Role_and_the_Team.html">03</a>). They are typical practice; confirm with your controller.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Liquidity Reporting (us)</th>
+<th>Treasury</th>
+<th>Liquidity Risk</th>
+<th>ALCO / Board Risk Committee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maturity ladder</td>
+<td>Builds and reconciles it</td>
+<td>Supplies behavioural assumptions</td>
+<td>Challenges assumptions</td>
+<td>Reviews monthly</td>
+</tr>
+<tr>
+<td>Funding concentration</td>
+<td>Produces the data</td>
+<td>Acts on it</td>
+<td>Sets and monitors limits</td>
+<td>Reviews</td>
+</tr>
+<tr>
+<td>Limits and indicators</td>
+<td>Calculates and reports daily</td>
+<td>Manages to them</td>
+<td>Owns the limit framework</td>
+<td>Approves limits</td>
+</tr>
+<tr>
+<td>Stress tests</td>
+<td>Supplies base data</td>
+<td>Helps design scenarios</td>
+<td>Runs and challenges</td>
+<td>Reviews results</td>
+</tr>
+<tr>
+<td>Funding strategy</td>
+<td>Supplies forecast balance sheet data</td>
+<td>Writes and executes</td>
+<td>Reviews</td>
+<td>Board approves</td>
+</tr>
+<tr>
+<td>Contingency funding plan</td>
+<td>Supplies the data pack</td>
+<td>Owns the plan</td>
+<td>Tests it</td>
+<td>Board approves</td>
+</tr>
+<tr>
+<td>Intraday</td>
+<td>Reports history</td>
+<td>Manages it daily</td>
+<td>Monitors</td>
+<td>Informed</td>
+</tr>
+<tr>
+<td>Collateral</td>
+<td>Reports encumbrance</td>
+<td>Manages it</td>
+<td>Monitors</td>
+<td>Informed</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="2-the-maturity-ladder">2. The maturity ladder</h2>
+<h3 id="21-what-it-is-in-everyday-words">2.1 What it is, in everyday words</h3>
+<p>Imagine your household finances laid out on a calendar. Rent is due on the 1st. Your salary arrives on the 15th. The car loan instalment goes out on the 20th. If you lined up every payment you expect to make and every payment you expect to receive, week by week, you would see weeks where you are short and weeks where you are comfortable. That calendar is a <strong>maturity ladder</strong>.</p>
+<p>A bank does the same thing, with its balance sheet. Each asset will pay the bank back at some date. Each liability must be paid by the bank at some date. The ladder sorts them into <strong>time buckets</strong> (for example "at call to 30 days", "31 days to under 6 months") and shows, for each bucket, the difference between cash coming in and cash going out.</p>
+<ul>
+<li>The <strong>net gap</strong> in a bucket is inflows minus outflows. A negative gap means more cash must go out than comes in during that bucket.</li>
+<li>The <strong>cumulative gap</strong> is the running total of the net gaps from the first bucket. It shows how much funding the bank has needed by the end of each bucket.</li>
+</ul>
+<pre><code>Net gap in bucket        = Inflows in bucket - Outflows in bucket
+Cumulative gap at bucket = Sum of net gaps from the first bucket to this one
+</code></pre>
+<p>Another name for the ladder is the <strong>liquidity gap report</strong> or <strong>maturity mismatch report</strong>. APRA collects a contractual version in its returns (see document <a href="11_APRA_Returns_and_Disclosures.html">11</a>, Returns to APRA and public disclosure). The standard's wording about projecting cash flows "over an appropriate set of time horizons" is the reason a bank must have one (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>). The standard does not set the buckets; the bank chooses them.</p>
+<h3 id="22-contractual-and-behavioural-two-different-pictures">2.2 Contractual and behavioural: two different pictures</h3>
+<p>The <strong>contractual ladder</strong> places each cash flow at the date written in the contract.</p>
+<ul>
+<li>A term deposit that matures in 4 months goes in the 4-month bucket.</li>
+<li>A deposit that can be withdrawn on demand goes in the "at call" bucket, even if most customers leave it there for years.</li>
+<li>A 25-year mortgage goes in the "1 year or more" bucket, except for the scheduled repayments that fall due in earlier buckets.</li>
+</ul>
+<p>The contractual ladder is objective and easy to audit. It is also brutally pessimistic on the liability side, because every at-call deposit is treated as if it could leave tomorrow.</p>
+<p>The <strong>behavioural ladder</strong> places each cash flow where management expects it to happen, using observed customer behaviour.</p>
+<ul>
+<li>Most at-call deposits are "sticky". Past data shows that a stable transaction account balance rarely falls fast. A behavioural ladder spreads it over several buckets.</li>
+<li>Mortgages are often repaid early. A behavioural ladder shortens their life.</li>
+</ul>
+<p>The behavioural ladder is more realistic, but it rests on assumptions, and assumptions need owners, evidence and review.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The contractual ladder tells you the worst case if everybody asks for their money tomorrow. The behavioural ladder tells you what you think will happen. The gap between them is exactly the amount of judgement in the numbers. Always show both, and always label which one you are showing.</p>
+</blockquote>
+<p>A third view adds the liquid assets that could be turned into cash. Many banks call it the <strong>liquidity-adjusted</strong> or <strong>counterbalancing capacity</strong> view. It moves liquid assets (for example government bonds) into the earliest bucket, because they can be sold or lent against (repoed) within days regardless of their final maturity. The LCR uses the same idea: HQLA counts at once, whatever its maturity (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>).</p>
+<h3 id="23-building-the-ladder-a-procedure">2.3 Building the ladder: a procedure</h3>
+<p><strong>Trigger:</strong> Daily or weekly production for Treasury; monthly for ALCO; quarterly for the APRA contractual maturity mismatch forms (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</p>
+<p><strong>Inputs:</strong></p>
+<ol>
+<li>Balance sheet by product, with the <strong>residual maturity</strong> (time left to the contractual date) of every asset and liability.</li>
+<li>Contractual repayment schedules for loans and securities.</li>
+<li>Off-balance sheet items: undrawn committed facilities, derivatives, guarantees.</li>
+<li>Behavioural assumptions (document owned by Treasury and approved through ALCO), with their date of last review.</li>
+<li>The liquid asset register with market values and encumbrance flags (document <a href="07_Data_and_Classification.html">07</a>, Data and classification).</li>
+</ol>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Load the position at the reporting date and reconcile it to the general ledger. Total assets must equal total liabilities and equity.</li>
+<li>Assign each line to a bucket by its residual maturity. Use the bank's fixed bucket definitions, the same every time.</li>
+<li>Where a product has no contractual maturity (for example other assets, equity, or at-call deposits on the contractual view), apply the bank's written rule (typically at call, or the last bucket).</li>
+<li>Compute inflows and outflows per bucket, then the net gap and the cumulative gap.</li>
+<li>Repeat on the behavioural view, replacing contractual dates with the approved behavioural profile.</li>
+<li>Add the liquidity-adjusted view by moving unencumbered liquid assets to the first bucket at market value less haircut.</li>
+<li>Compare each cumulative gap with its limit and trigger.</li>
+<li>Write a movement commentary against the last report.</li>
+</ol>
+<p><strong>Controls:</strong></p>
+<ul>
+<li>Total of all buckets equals the ledger totals (assets and liabilities separately).</li>
+<li>No line unassigned; no line in two buckets.</li>
+<li>Bucket totals move by plausible amounts from the last report, or the movement is explained.</li>
+<li>Behavioural assumptions equal the approved set (version-checked).</li>
+<li>The liquid assets moved to the first bucket agree to the LCR's HQLA before haircuts (otherwise explain the difference).</li>
+</ul>
+<p><strong>Outputs:</strong> The ladder table, a chart of the cumulative gap, a limit status and a commentary.</p>
+<p><strong>Who reviews:</strong> A second analyst (four-eyes rule: one person prepares, a second reviews, the controller signs); Treasury reviews the assumptions; Liquidity Risk reviews the limit status.</p>
+<p><strong>Evidence kept:</strong> The input extract, reconciliation, the assumption table with version, the ladder file, the review sign-off.</p>
+<h3 id="24-example-bank-a-worked-ladder">2.4 Example Bank: a worked ladder</h3>
+<p>Use the base position from document <a href="02_Liquidity_From_Zero.html">02</a>. To keep the arithmetic readable, use four buckets. The contractual maturity of the individual items is not in the base position, so the splits below are <strong>assumptions made for this illustration</strong>; they are labelled so you can see where judgement comes in. The sums tie to the base position (A$100.0bn).</p>
+<p>Buckets: <strong>B1</strong> at call to 30 days; <strong>B2</strong> 31 days to under 6 months; <strong>B3</strong> 6 months to under 1 year; <strong>B4</strong> 1 year or more (including items with no maturity).</p>
+<p><strong>Assets (A$bn), contractual</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Total</th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and RBA balances</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>At call</td>
+</tr>
+<tr>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>2.0</td>
+<td>8.0</td>
+<td>Maturities assumed</td>
+</tr>
+<tr>
+<td>Other debt securities (non-HQLA)</td>
+<td>3.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3.0</td>
+<td>Over 1 year</td>
+</tr>
+<tr>
+<td>Loans to other banks</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0</td>
+<td>0</td>
+<td>B1 1.0 matches the bank inflow in the base position</td>
+</tr>
+<tr>
+<td>Residential mortgages</td>
+<td>50.0</td>
+<td>0.6</td>
+<td>2.0</td>
+<td>2.4</td>
+<td>45.0</td>
+<td>Scheduled repayments assumed</td>
+</tr>
+<tr>
+<td>Business loans</td>
+<td>15.0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>1.0</td>
+<td>13.0</td>
+<td>Scheduled repayments assumed</td>
+</tr>
+<tr>
+<td>Personal and business loans (under 1 year)</td>
+<td>8.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>0</td>
+<td>Assumed</td>
+</tr>
+<tr>
+<td>Other assets</td>
+<td>5.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>5.0</td>
+<td>No maturity</td>
+</tr>
+<tr>
+<td><strong>Total assets</strong></td>
+<td><strong>100.0</strong></td>
+<td><strong>8.3</strong></td>
+<td><strong>9.3</strong></td>
+<td><strong>8.4</strong></td>
+<td><strong>74.0</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>The loan repayments in B1 are 0.6 + 0.2 + 1.0 = 1.8, which equals the base position's 30-day contractual inflows from retail and SME customers (1.0) and corporates (0.8). The check is deliberate: the ladder's first bucket must agree with the LCR's inflow data before any rate is applied.</p>
+<p><strong>Liabilities and equity (A$bn), contractual</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Liability</th>
+<th>Total</th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail deposits, stable (at call)</td>
+<td>25.0</td>
+<td>25.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>At call</td>
+</tr>
+<tr>
+<td>Retail deposits, less stable (at call)</td>
+<td>15.0</td>
+<td>15.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>At call</td>
+</tr>
+<tr>
+<td>Retail term deposits</td>
+<td>10.0</td>
+<td>0</td>
+<td>6.0</td>
+<td>4.0</td>
+<td>0</td>
+<td>Split assumed</td>
+</tr>
+<tr>
+<td>SME deposits (assumed at call)</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>Corporate operational deposits</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits</td>
+<td>6.0</td>
+<td>6.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>Financial institution deposits</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>At call</td>
+</tr>
+<tr>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>Wholesale debt 30 days to under 6 months</td>
+<td>3.0</td>
+<td>0</td>
+<td>3.0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>Wholesale debt 6 months to under 1 year</td>
+<td>2.0</td>
+<td>0</td>
+<td>0</td>
+<td>2.0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>Wholesale debt 1 year or more</td>
+<td>15.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>15.0</td>
+<td></td>
+</tr>
+<tr>
+<td>Other liabilities</td>
+<td>2.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2.0</td>
+<td>No maturity (assumed)</td>
+</tr>
+<tr>
+<td>Shareholders' equity</td>
+<td>8.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8.0</td>
+<td>No maturity</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>100.0</strong></td>
+<td><strong>60.0</strong></td>
+<td><strong>9.0</strong></td>
+<td><strong>6.0</strong></td>
+<td><strong>25.0</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The contractual ladder</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets</td>
+<td>8.3</td>
+<td>9.3</td>
+<td>8.4</td>
+<td>74.0</td>
+</tr>
+<tr>
+<td>Liabilities and equity</td>
+<td>60.0</td>
+<td>9.0</td>
+<td>6.0</td>
+<td>25.0</td>
+</tr>
+<tr>
+<td>Net gap (assets less liabilities)</td>
+<td>-51.7</td>
+<td>+0.3</td>
+<td>+2.4</td>
+<td>+49.0</td>
+</tr>
+<tr>
+<td>Cumulative gap</td>
+<td>-51.7</td>
+<td>-51.4</td>
+<td>-49.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Cumulative gap as % of total assets</td>
+<td>-51.7%</td>
+<td>-51.4%</td>
+<td>-49.0%</td>
+<td>0.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check: the final cumulative gap is zero because total assets equal total liabilities and equity. If your last cumulative figure is not zero, something is missing. That is a control, not a coincidence.</p>
+<p><strong>Reading it.</strong> A cumulative gap of minus 51.7 in the first bucket looks alarming, and on a contractual basis it is what every bank shows. The bank has borrowed at call and lent for decades. This is the "borrow short, lend long" shape from document <a href="02_Liquidity_From_Zero.html">02</a>. The question is not whether the gap is negative. It is whether the bank can fill it, which is the next view.</p>
+<p><strong>The behavioural ladder.</strong> Treasury's approved behavioural profiles for the at-call deposits (illustrative, <strong>typical practice; confirm with your controller</strong>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>At-call deposit line</th>
+<th>Total</th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail, stable</td>
+<td>25.0</td>
+<td>1.0</td>
+<td>1.5</td>
+<td>2.5</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td>Retail, less stable</td>
+<td>15.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>SME</td>
+<td>5.0</td>
+<td>1.5</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Corporate operational</td>
+<td>4.0</td>
+<td>1.0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Corporate non-operational</td>
+<td>6.0</td>
+<td>3.0</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Financial institutions (kept contractual)</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>59.0</strong></td>
+<td><strong>13.5</strong></td>
+<td><strong>7.5</strong></td>
+<td><strong>7.5</strong></td>
+<td><strong>30.5</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Add the other liabilities (unchanged): B1 1.0 (wholesale debt within 30 days), B2 6.0 + 3.0 = 9.0, B3 4.0 + 2.0 = 6.0, B4 15.0 + 2.0 + 8.0 = 25.0.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Behavioural liabilities</td>
+<td>13.5 + 1.0 = 14.5</td>
+<td>7.5 + 9.0 = 16.5</td>
+<td>7.5 + 6.0 = 13.5</td>
+<td>30.5 + 25.0 = 55.5</td>
+</tr>
+<tr>
+<td>Assets (contractual, unchanged)</td>
+<td>8.3</td>
+<td>9.3</td>
+<td>8.4</td>
+<td>74.0</td>
+</tr>
+<tr>
+<td>Net gap</td>
+<td>-6.2</td>
+<td>-7.2</td>
+<td>-5.1</td>
+<td>+18.5</td>
+</tr>
+<tr>
+<td>Cumulative gap</td>
+<td>-6.2</td>
+<td>-13.4</td>
+<td>-18.5</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Cumulative gap as % of total assets</td>
+<td>-6.2%</td>
+<td>-13.4%</td>
+<td>-18.5%</td>
+<td>0.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Total behavioural liabilities: 14.5 + 16.5 + 13.5 + 55.5 = 100.0. The gap is now much smaller, but it is a product of assumptions.</p>
+<p><strong>The liquidity-adjusted view.</strong> Move the government and semi-government securities (A$12.0bn) to B1, because Treasury can sell or repo them within days. (To keep the example simple we use full carrying value; in practice you would use market value less the haircut for its class (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9 to 12</a>), and any encumbered amount would stay out.)</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets (securities moved to B1)</td>
+<td>8.3 + 11.5 = 19.8</td>
+<td>9.3 - 1.5 = 7.8</td>
+<td>8.4 - 2.0 = 6.4</td>
+<td>74.0 - 8.0 = 66.0</td>
+</tr>
+<tr>
+<td>Behavioural liabilities</td>
+<td>14.5</td>
+<td>16.5</td>
+<td>13.5</td>
+<td>55.5</td>
+</tr>
+<tr>
+<td>Net gap</td>
+<td>+5.3</td>
+<td>-8.7</td>
+<td>-7.1</td>
+<td>+10.5</td>
+</tr>
+<tr>
+<td>Cumulative gap</td>
+<td>+5.3</td>
+<td>-3.4</td>
+<td>-10.5</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check the asset row: 19.8 + 7.8 + 6.4 + 66.0 = 100.0. In the liquidity-adjusted view the first bucket is positive, which is the picture a Treasurer wants to see.</p>
+<p><strong>An illustrative limit.</strong> Suppose the Example Bank convention sets a trigger on the <strong>behavioural cumulative gap within one year</strong> (B1 to B3) of no worse than minus 20% of total assets. The position is minus 18.5%. That is 92.5% of the limit (18.5 / 20), so under a typical amber rule of 90% utilisation it would be amber. (The limit and the 90% rule are invented for training: <strong>typical practice; confirm with your controller</strong>.)</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Never mix the views in one table without saying so. A reader who sees minus 51.7% and a reader who sees plus 5.3% are looking at the same bank. Label every ladder "contractual", "behavioural" or "liquidity-adjusted" and show the assumption version.</p>
+<p><strong>Watch out:</strong> Off-balance sheet commitments are not in the ladder above. Undrawn committed facilities of A$16.0bn (retail and SME 10.0, corporate credit 5.0, corporate liquidity 1.0) could be drawn. A full ladder adds an expected drawdown profile (the bank's own estimate) in the early buckets. Do not forget this when the ladder feeds a stress test.</p>
+</blockquote>
+<h3 id="25-common-errors">2.5 Common errors</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Effect</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rolling-over assumption hidden in the contractual view</td>
+<td>Understates the gap</td>
+<td>Contractual view contains no new business (see the instruction in document <a href="11_APRA_Returns_and_Disclosures.html">11</a> that new business is not included)</td>
+</tr>
+<tr>
+<td>Wholesale debt shown at issue maturity, not residual maturity</td>
+<td>Bucket wrong; the A$2.8bn-type surprise in the incident scenario (document <a href="12_Controls_Incidents_and_Escalation.html">12</a>)</td>
+<td>Always recompute residual maturity from the reporting date</td>
+</tr>
+<tr>
+<td>Securities in the first bucket and in the LCR HQLA and again as an inflow</td>
+<td>Double counting (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>)</td>
+<td>Reconcile with the LCR</td>
+</tr>
+<tr>
+<td>Behavioural assumption not reviewed</td>
+<td>Stale</td>
+<td>Date and version on the assumption table</td>
+</tr>
+<tr>
+<td>Equity treated as an outflow</td>
+<td>Gap wrong</td>
+<td>Equity goes in the last bucket</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="3-funding-concentration">3. Funding concentration</h2>
+<h3 id="31-what-it-is">3.1 What it is</h3>
+<p><strong>Concentration</strong> means a large share of something comes from one place. <strong>Funding concentration</strong> is dependence on one funder, product, market, currency or maturity date. Think of a shop that gets 60% of its sales from one customer. If that customer leaves, the shop is in trouble. A bank that funds itself from a few large depositors or one bond market is in the same position.</p>
+<p>The standard asks the liquidity management strategy to cover "the diversity and stability of funding sources" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p29">APS 210 para 29</a>(b)). It also lists "increasing funding costs or concentrations" among the new and emerging concerns that must be brought to the Board and senior management immediately (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>). So concentration is a monitored item, with escalation.</p>
+<h3 id="32-the-dimensions-we-measure">3.2 The dimensions we measure</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>The question</th>
+<th>Typical measure</th>
+<th>Example Bank illustration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Counterparty</td>
+<td>How much from the largest funders?</td>
+<td>Top 10 as a % of total funding; any single funder over 1% of liabilities</td>
+<td>Needs the customer master (document <a href="07_Data_and_Classification.html">07</a>)</td>
+</tr>
+<tr>
+<td>Product</td>
+<td>How reliant are we on each product?</td>
+<td>Share of total liabilities by product</td>
+<td>Deposits 69.0 of 92.0 liabilities (75.0%); wholesale debt 21.0 (22.8%)</td>
+</tr>
+<tr>
+<td>Market and investor</td>
+<td>Domestic or offshore? Which investor type?</td>
+<td>Share by market and by investor type</td>
+<td>Not in the base position</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>In which currency?</td>
+<td>Share by currency</td>
+<td>Single currency (AUD)</td>
+</tr>
+<tr>
+<td>Maturity</td>
+<td>When does debt fall due?</td>
+<td>Share of wholesale debt maturing in any one month or quarter</td>
+<td>1.0 within 30 days; 3.0 in 30 days to under 6 months; 15.0 at one year or more</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-in"><p><strong>In the standard:</strong> APS 210 does not set a numerical concentration limit. A threshold of 1% of liabilities for a "significant" funder comes from the Basel Committee's liquidity monitoring tools, as generally understood (confirm with Liquidity Risk before you cite it as a rule). It decides what to report on; it is not a ceiling.</p>
+</blockquote>
+<h3 id="33-two-measures-you-can-compute">3.3 Two measures you can compute</h3>
+<p><strong>Top-N share.</strong></p>
+<pre><code>Top-10 share of deposits = Sum of the ten largest depositor balances / Total deposits
+</code></pre>
+<p>Illustration (hypothetical numbers): if the ten largest corporate non-operational depositors together hold A$2.4bn of the A$6.0bn line, the top-10 share of that line is 2.4 / 6.0 = 40%. As a share of all deposits (69.0), it is 2.4 / 69.0 = 3.5%.</p>
+<p><strong>Herfindahl-Hirschman index (HHI).</strong> The HHI adds up the squares of each source's percentage share. It rises quickly when one source dominates.</p>
+<pre><code>HHI = (share1 in %)^2 + (share2 in %)^2 + ... 
+</code></pre>
+<p>Illustration (hypothetical): five wholesale funders with shares 40%, 25%, 15%, 10% and 10%.
+HHI = 1,600 + 625 + 225 + 100 + 100 = 2,650. If the shares were equal (20% each) the HHI would be 5 x 400 = 2,000, the lowest possible for five funders. A higher figure than 2,000 shows concentration. The bank sets its own warning level (<strong>typical practice; confirm with your controller</strong>).</p>
+<h3 id="34-producing-the-concentration-report">3.4 Producing the concentration report</h3>
+<p><strong>Trigger:</strong> Monthly for ALCO; daily for the largest-depositor list used in the early warning set.</p>
+<p><strong>Inputs:</strong> Deposit balances by customer (core banking); wholesale funding by counterparty and maturity (treasury system); customer master for group linking (several accounts owned by one group count as one funder).</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Extract balances by customer and by product at the reporting date.</li>
+<li>Link related customers into groups using the customer master. If grouping is missing, record it as a limitation.</li>
+<li>Rank funders; compute top-1, top-5, top-10 and top-20 shares.</li>
+<li>Compute the HHI for each funding type.</li>
+<li>Flag every funder above the bank's significant-funder threshold.</li>
+<li>Compute the maturity concentration of wholesale debt by month for the next 12 months.</li>
+<li>Compare with limits and triggers; write the commentary.</li>
+</ol>
+<p><strong>Controls:</strong> Totals reconcile to the ledger by product; each customer appears once; groups are complete; the top-10 list is reviewed by a second person; privacy rules are observed (customer names are masked outside the team that needs them).</p>
+<p><strong>Outputs:</strong> Concentration table and chart; list of significant funders; limit status.</p>
+<p><strong>Who reviews:</strong> Second analyst, then controller; Liquidity Risk gets the pack.</p>
+<p><strong>Evidence kept:</strong> Extract, grouping file, calculation file, review record.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> An intermediated deposit (a deposit placed through an agent such as a platform) may belong to many underlying customers or to the intermediary, depending on the structure (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>). Check how the data is mapped before you rank "customers".</p>
+</blockquote>
+<hr />
+<h2 id="4-limits-and-early-warning-indicators">4. Limits and early warning indicators</h2>
+<h3 id="41-what-a-limit-is-in-everyday-words">4.1 What a limit is, in everyday words</h3>
+<p>A <strong>limit</strong> is a line the bank agrees not to cross. A speed limit is the obvious example. The standard says the bank "must set limits to control its liquidity risk exposure and vulnerabilities", must review limits and their escalation procedures regularly, and must make them relevant to its location, complexity, products, currencies and markets (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>). When a limit is breached, the bank "must implement a plan of action to review the exposure and reduce it to a level that is within the limit" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</p>
+<p>Senior management must also set "specific procedures and approvals necessary for exceptions to policies and limits, including escalation procedures and follow-up actions to be taken for breaches of limits" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(g)). And the Board and senior management must be told immediately about "material and/or persistent breaches of limits" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>). The stress test results must be "explicitly considered in the setting of internal limits" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>).</p>
+<h3 id="42-three-layers-regulatory-appetite-trigger">4.2 Three layers: regulatory, appetite, trigger</h3>
+<p>Layers of lines stack up. For Example Bank (all values below are Example Bank conventions):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>LCR</th>
+<th>NSFR</th>
+<th>Who sets it</th>
+<th>What happens when crossed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory minimum</td>
+<td>100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>)</td>
+<td>100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>)</td>
+<td>APRA</td>
+<td>Immediate notification to APRA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>)</td>
+</tr>
+<tr>
+<td>Board risk appetite</td>
+<td>120%</td>
+<td>110%</td>
+<td>Board</td>
+<td>Limit breach: plan of action (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>), report to ALCO and Board Risk Committee</td>
+</tr>
+<tr>
+<td>Management early-warning trigger (amber)</td>
+<td>125%</td>
+<td>115%</td>
+<td>ALCO or management</td>
+<td>Escalate to Treasury and Liquidity Risk the same day; assess response</td>
+</tr>
+</tbody>
+</table></div>
+<p>The reason for stacking is simple. You want to see trouble coming while you still have room to act. A bank that only reacts at 100% has no room left. The standard says so directly: an LCR ADI "must include an appropriate buffer of HQLA over the LCR requirement in line with its liquidity risk tolerance" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p4">Att A para 4</a>), and the NSFR buffer follows the same logic (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p4">Att C para 4</a>).</p>
+<blockquote class="q-example"><p><strong>Example:</strong> Example Bank's LCR is 147.2%, HQLA 17.0, net outflows 11.55. The amber trigger at 125% needs HQLA of 1.25 x 11.55 = 14.4375. The headroom to amber is 17.0 - 14.4375 = 2.5625, about A$2.56bn. The Board appetite at 120% needs 1.20 x 11.55 = 13.86, so headroom to appetite is 3.14. The regulatory minimum at 100% needs 11.55, headroom 5.45.</p>
+</blockquote>
+<h3 id="43-typical-limits">4.3 Typical limits</h3>
+<p>All of these are typical practice, not rules in APS 210; confirm the actual set with your controller.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Limit</th>
+<th>What it controls</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum LCR (internal floor)</td>
+<td>Overall 30-day buffer</td>
+<td>Ratio</td>
+</tr>
+<tr>
+<td>Minimum NSFR (internal floor)</td>
+<td>Stable funding</td>
+<td>Ratio</td>
+</tr>
+<tr>
+<td>Minimum survival horizon in a combined stress</td>
+<td>How long the bank lasts</td>
+<td>Days</td>
+</tr>
+<tr>
+<td>Maximum cumulative gap to 1 month and to 1 year (behavioural)</td>
+<td>Maturity mismatch</td>
+<td>% of total assets</td>
+</tr>
+<tr>
+<td>Maximum wholesale funding maturing in any month or quarter</td>
+<td>Refinancing wall</td>
+<td>A$ and % of liabilities</td>
+</tr>
+<tr>
+<td>Maximum share from the top 10 depositors or any one funder</td>
+<td>Concentration</td>
+<td>% of deposits</td>
+</tr>
+<tr>
+<td>Minimum unencumbered HQLA as % of total assets</td>
+<td>Buffer size</td>
+<td>%</td>
+</tr>
+<tr>
+<td>Maximum asset encumbrance ratio</td>
+<td>Free assets</td>
+<td>%</td>
+</tr>
+<tr>
+<td>Maximum loan-to-deposit ratio</td>
+<td>Reliance on wholesale funding</td>
+<td>%</td>
+</tr>
+<tr>
+<td>Minimum liquid assets per material currency</td>
+<td>Currency risk</td>
+<td>A$ equivalent</td>
+</tr>
+<tr>
+<td>Maximum intraday liquidity usage</td>
+<td>Payment risk</td>
+<td>A$ at peak</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="44-early-warning-indicators">4.4 Early warning indicators</h3>
+<p>An <strong>early warning indicator (EWI)</strong> is a measure that moves before trouble arrives, the way a rising temperature warns of a fever. The standard requires the bank to "design a set of early warning indicators to aid its daily liquidity risk management processes in identifying the emergence of increased risk or vulnerabilities in its liquidity risk position or potential funding needs" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>). The set must help to "identify and escalate any negative trends" and "lead to an assessment and potential response by management" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>).</p>
+<p>Notice the word "daily". The set is part of the daily routine. The indicators fall into groups: balance sheet and funding, customer behaviour, market signals, and operational and reputational signals.</p>
+<p><strong>Twenty typical indicators.</strong> None of these is a list from the standard. They are typical practice; confirm Example Bank's actual set with your controller.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Indicator</th>
+<th>What it signals</th>
+<th>Typical data source</th>
+<th>Typical frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>LCR against internal trigger (all currencies)</td>
+<td>Buffer shrinking</td>
+<td>Daily LCR (document <a href="08_LCR_Production_End_to_End.html">08</a>)</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NSFR against internal trigger</td>
+<td>Stable funding eroding</td>
+<td>Monthly NSFR (document <a href="09_NSFR_Production_End_to_End.html">09</a>)</td>
+<td>Monthly (daily estimate if available)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>HQLA surplus over internal floor (A$)</td>
+<td>Cushion shrinking</td>
+<td>Liquid asset portfolio, treasury system</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Unencumbered HQLA as % of total assets</td>
+<td>Buffer relative to size</td>
+<td>Treasury and ledger</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Share of liquid assets that are encumbered</td>
+<td>Free assets falling</td>
+<td>Collateral system</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Net deposit flows (retail and SME), 1-day and 5-day</td>
+<td>Early sign of a run, or seasonality</td>
+<td>Core banking</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Withdrawals by the 20 largest depositors</td>
+<td>Large-funder flight</td>
+<td>Core banking, customer master</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Share of retail deposits fully covered by the Financial Claims Scheme (stable share)</td>
+<td>More money can move quickly if it falls</td>
+<td>Core banking and scorecard data</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Early withdrawal and notice requests on term deposits</td>
+<td>Customers seeking the exit</td>
+<td>Core banking</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Wholesale funding maturing in the next 31 to 90 days</td>
+<td>Rollover wall approaching the LCR window</td>
+<td>Treasury system</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Spread of the bank's new wholesale issuance over benchmark</td>
+<td>Investors demanding more for risk</td>
+<td>Treasury, market data</td>
+<td>Per issue, weekly summary</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Tenor of new wholesale issuance (average term)</td>
+<td>Investors refusing long terms</td>
+<td>Treasury</td>
+<td>Per issue</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Credit default swap price or share price of the bank</td>
+<td>Market doubts the bank</td>
+<td>Market data provider</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Credit rating outlook or downgrade</td>
+<td>Triggers collateral calls and investor limits</td>
+<td>Rating agency notices</td>
+<td>As they occur</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Collateral demanded by counterparties (margin calls)</td>
+<td>Counterparties want more security</td>
+<td>Collateral system</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Drawdowns on committed facilities (credit and liquidity)</td>
+<td>Customers hoarding cash</td>
+<td>Loan system</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Intraday peak usage as % of limit</td>
+<td>Payment pressure</td>
+<td>Payments system, RBA settlement data</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Interbank and funding market spreads</td>
+<td>Market-wide strain</td>
+<td>Market data</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Non-performing loans as % of loans</td>
+<td>Funders may lose confidence</td>
+<td>Credit risk reporting</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Negative press, social media volume and complaints about access</td>
+<td>Confidence, run speed</td>
+<td>Communications, customer care</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>How the set is used.</strong> Each indicator has a defined green, amber and red range, an owner, and an escalation path: for example, amber goes to Treasury and Liquidity Risk the same day; red goes to the head of Treasury, the Chief Financial Officer and the Chief Risk Officer, and may start the contingency funding plan's assessment. The numbers inside the ranges are the bank's choice (<strong>typical practice; confirm with your controller</strong>).</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The test of an EWI set is not how long the list is. It is whether a deteriorating trend is caught early and reaches someone who can act. Review the set with Liquidity Risk at least annually (limits and escalation must be reviewed regularly, <a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</p>
+</blockquote>
+<p><strong>Producing the EWI dashboard.</strong></p>
+<p><em>Trigger:</em> every business day, after the daily LCR is signed.
+<em>Inputs:</em> the 20 data feeds above; the threshold table with version and approval date.
+<em>Steps:</em> (1) Pull each indicator's value for the reporting day and the previous five days. (2) Classify green, amber or red against the threshold table. (3) Compute the trend (5-day change). (4) Flag any indicator that moved two or more bands. (5) Add one line of commentary for every amber or red. (6) Send to Treasury and Liquidity Risk.
+<em>Controls:</em> each indicator has a named data owner; a missing feed is shown as "no data", never as green; threshold table version matches the approved one; a second person reviews any change of band.
+<em>Outputs:</em> the one-page EWI panel (see section 12 for a specimen).
+<em>Who reviews:</em> second analyst; controller signs; Liquidity Risk reads.
+<em>Evidence kept:</em> feed extracts, threshold version, panel, escalation emails.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A silent feed is the worst failure. If the market data feed breaks and the dashboard shows "no change", it looks green. Always display staleness: "last updated" time beside every indicator.</p>
+</blockquote>
+<h3 id="45-limit-breaches-in-short">4.5 Limit breaches in short</h3>
+<p>When a limit is breached (the full procedure is in document <a href="12_Controls_Incidents_and_Escalation.html">12</a>, Controls, incidents and escalation):</p>
+<ol>
+<li>Tell your controller immediately, and record the time.</li>
+<li>Treasury and Liquidity Risk assess the cause and the exposure.</li>
+<li>Management prepares a plan of action to bring the exposure back within the limit (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</li>
+<li>Exceptions require the approvals that senior management has set (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(g)).</li>
+<li>A material or persistent breach goes to the Board and senior management immediately (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>).</li>
+</ol>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> You never adjust a number to avoid a breach. If a figure looks wrong, correct the data through the change process and record it. Document <a href="03_Your_Role_and_the_Team.html">03</a> covers professional conduct.</p>
+</blockquote>
+<hr />
+<h2 id="5-stress-testing">5. Stress testing</h2>
+<h3 id="51-what-a-stress-test-is-in-everyday-words">5.1 What a stress test is, in everyday words</h3>
+<p>A <strong>stress test</strong> asks "what if?" about something bad. A builder tests a bridge by loading it with more weight than it will ever carry. A bank tests its liquidity by imagining bad events and counting how long its cash lasts. The LCR is one fixed stress test set by APRA: a severe 30-day stress with prescribed rates. The standard requires more. An LCR ADI must conduct stress tests "on a regular basis for a variety of short-term and protracted institution-specific and market-wide stress scenarios (individually and in combination) to identify sources of potential liquidity strain and to ensure that current exposures remain in accordance with the ADI's liquidity risk tolerance" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 para 62</a>).</p>
+<p>The four words that matter in that sentence:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Institution-specific</strong> (also called idiosyncratic)</td>
+<td>Trouble that hits this bank only</td>
+<td>A credit rating downgrade; a data breach that shakes customer trust</td>
+</tr>
+<tr>
+<td><strong>Market-wide</strong></td>
+<td>Trouble that hits everyone</td>
+<td>Funding markets shut; government bond prices fall</td>
+</tr>
+<tr>
+<td><strong>Combined</strong></td>
+<td>Both at once</td>
+<td>The bank is downgraded as markets close</td>
+</tr>
+<tr>
+<td><strong>Short-term and protracted</strong></td>
+<td>Lasting days or lasting months</td>
+<td>A 10-day shock, or a 90-day squeeze</td>
+</tr>
+</tbody>
+</table></div>
+<p>The standard adds that stress tests "must enable the ADI to analyse the impact of stress scenarios on its Level 1 and Level 2 liquidity positions, as well as on the liquidity positions of individual business lines" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p64">APS 210 para 64</a>). The wider framework must hold "a cushion of unencumbered liquid assets, to withstand a range of stress events, including those involving the loss or impairment of both unsecured and secured funding sources" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p26">APS 210 para 26</a>). Note "secured funding" in that sentence: a stress test must also ask what happens if repo markets stop working, or collateral values fall.</p>
+<h3 id="52-the-building-blocks">5.2 The building blocks</h3>
+<p>Every scenario is made of the same parts.</p>
+<ol>
+<li><strong>Narrative.</strong> A short story of what happens, so people can judge whether it is plausible and severe enough.</li>
+<li><strong>Duration.</strong> For example 5, 30, 90 or 365 days.</li>
+<li><strong>Shocks (assumptions).</strong> For each line of the balance sheet, a stressed behaviour: the share of each deposit type that leaves, the share of wholesale debt that cannot be rolled, the share of committed facilities drawn, the haircut on each asset class, the collateral called on a downgrade.</li>
+<li><strong>Counterbalancing capacity.</strong> The liquid assets and other sources the bank could turn into cash, after haircuts, and the time that takes.</li>
+<li><strong>Output.</strong> The net cash position day by day (or bucket by bucket), the lowest point, and the <strong>survival horizon</strong>.</li>
+</ol>
+<p>The <strong>survival horizon</strong> is the number of days the bank can meet every payment before its liquid resources run out. The LCR's horizon is fixed at 30 days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p1">Att A para 1</a>). The bank's own stress tests find out whether the real horizon is longer or shorter under harsher assumptions.</p>
+<h3 id="53-a-worked-example-the-combined-stress">5.3 A worked example: the combined stress</h3>
+<p>Start from Example Bank's regulatory position: HQLA 17.0, net cash outflows over 30 days 11.55. Suppose Treasury and Liquidity Risk design an internal "combined" scenario that makes outflows <strong>1.5 times</strong> as severe as the LCR scenario over 30 days. (The multiplier is invented for training: <strong>typical practice; confirm with your controller</strong>. Real scenarios shock each line separately, not the total.)</p>
+<pre><code>Stressed 30-day net outflow = 1.5 x 11.55            = 17.325
+Average daily net outflow   = 17.325 / 30            = 0.5775
+Survival horizon            = HQLA / daily outflow   = 17.0 / 0.5775 = 29.4 days
+</code></pre>
+<p>Suppose the internal tolerance says the bank must survive at least 30 days in this scenario. It falls short by 0.6 of a day. The extra HQLA required is 17.325 - 17.0 = <strong>A$0.325bn</strong>. Management's options: hold A$0.325bn more HQLA; lengthen the maturity of funding that falls in the window; lower the exposure (for example cap undrawn facilities); or accept the tolerance and record the decision. This is exactly what the standard means when it says "stress test outcomes must be used to adjust the ADI's liquidity management strategy, policies and positions" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p63">APS 210 para 63</a>).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A straight-line survival horizon (as above) is a teaching shortcut. Real stress paths are uneven: the biggest outflows come early. A proper horizon is read from the day on which the projected cumulative net position first goes below the available resources.</p>
+</blockquote>
+<p><strong>A market-closure scenario (12 months, illustrative).</strong> Suppose all wholesale markets are shut for a year and no new term funding can be raised. Assumptions (invented): wholesale debt maturing in the year cannot be rolled; half of retail term deposits are not renewed; 5% of non-bank at-call deposits leave.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Calculation</th>
+<th>A$bn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wholesale debt maturing within 1 year</td>
+<td>1.0 + 3.0 + 2.0</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>Retail term deposits not renewed</td>
+<td>50% x 10.0</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>At-call deposits leaving (retail 25.0 + 15.0, SME 5.0, corporate 4.0 + 6.0 = 55.0)</td>
+<td>5% x 55.0</td>
+<td>2.75</td>
+</tr>
+<tr>
+<td><strong>Total funding to be replaced</strong></td>
+<td></td>
+<td><strong>13.75</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Resources: HQLA 17.0, plus other debt securities of 3.0 repoed or sold at an assumed 85% value = 2.55. Total 19.55. Surplus after the stress: 19.55 - 13.75 = <strong>A$5.80bn</strong>. The scenario is survived. Without the other debt securities the surplus would be 17.0 - 13.75 = 3.25.</p>
+<h3 id="54-reverse-stress-testing">5.4 Reverse stress testing</h3>
+<p>A <strong>reverse stress test</strong> starts from the end result: "the bank runs out of liquid assets on day 20". It then asks what combination of events would cause it. This finds weaknesses a forward scenario can miss. For Example Bank you could ask: how far would corporate non-operational deposits (A$6.0bn) and financial institution deposits (A$4.0bn) have to fall before HQLA of A$17.0bn is exhausted, if retail behaves as in the LCR? The answer defines a vulnerability that management should know about.</p>
+<h3 id="55-how-results-feed-everything-else">5.5 How results feed everything else</h3>
+<p>The standard sets four links.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Link</th>
+<th>Requirement</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategy and positions</td>
+<td>Outcomes are used to adjust strategy, policies and positions and to develop effective contingency plans</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p63">APS 210 para 63</a>)</td>
+</tr>
+<tr>
+<td>Documentation and review</td>
+<td>Scenarios and assumptions are well documented and reviewed together with the results</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>)</td>
+</tr>
+<tr>
+<td>Reporting</td>
+<td>Results, vulnerabilities and resulting actions must be "reported to, and discussed with, the Board and APRA"</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>)</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>Results go into strategic planning and day-to-day risk management, and are "explicitly considered in the setting of internal limits"</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>)</td>
+</tr>
+<tr>
+<td>Contingency funding plan</td>
+<td>The ADI "must decide how to incorporate the results" in assessing and planning for potential funding shortfalls in the plan</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p66">APS 210 para 66</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>In practice:</p>
+<ul>
+<li><strong>Limits.</strong> If the combined scenario shows a survival horizon of 29.4 days against a 30-day tolerance, the limit set (for example a minimum HQLA surplus or a wholesale maturity cap) is reviewed.</li>
+<li><strong>Contingency funding plan.</strong> The sizes of the stressed outflows set the size of the actions the plan must provide (section 7).</li>
+<li><strong>Funding strategy.</strong> If the stress needs more term funding, the three-year strategy must show it (section 6).</li>
+<li><strong>APRA.</strong> APRA's liquidity FAQ states that APRA "does not require regular reporting of stress test results but may request them at any time", as retrieved from apra.gov.au. The standard still says results must be reported to and discussed with APRA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>), so keep a current, ready-to-send summary (see document <a href="11_APRA_Returns_and_Disclosures.html">11</a> for how to answer APRA requests).</li>
+</ul>
+<h3 id="56-what-the-team-does">5.6 What the team does</h3>
+<p>Liquidity Reporting does not usually design the scenarios. Liquidity Risk (or Treasury with Liquidity Risk) does. We supply:</p>
+<ul>
+<li>the opening position at the stress date (balance sheet by counterparty, product and residual maturity);</li>
+<li>the HQLA portfolio with market values, haircuts and encumbrance;</li>
+<li>the contractual cash flow ladder;</li>
+<li>the LCR build, by line, so scenarios can reuse the classification;</li>
+<li>a record of which data version each test used, for evidence.</li>
+</ul>
+<p><strong>Procedure for the quarterly stress test data run (typical practice; confirm with your controller):</strong></p>
+<p><em>Trigger:</em> quarterly (or on request by Liquidity Risk or after a market event).
+<em>Inputs:</em> the signed month-end position; scenario definitions with version and approval date; behavioural assumption table.
+<em>Steps:</em> (1) Freeze the position and record its ID. (2) Load the scenario shocks. (3) Apply them by line. (4) Compute net flows by day or bucket and the survival horizon. (5) Compare with the limits and tolerance. (6) Record management actions proposed. (7) Produce the summary for ALCO and the Board Risk Committee.
+<em>Controls:</em> the base position reconciles to the signed LCR and NSFR; each shock traces to the approved scenario; a second person recomputes one scenario by hand.
+<em>Outputs:</em> a results table and summary.
+<em>Who reviews:</em> Liquidity Risk challenges; the controller signs the data; ALCO receives the results.
+<em>Evidence kept:</em> scenario version, frozen position, calculation file, review record.</p>
+<hr />
+<h2 id="6-the-three-year-funding-strategy">6. The three-year funding strategy</h2>
+<h3 id="61-what-it-is">6.1 What it is</h3>
+<p>A <strong>funding strategy</strong> is the bank's plan for where its money will come from, and in what mix, over the next few years. The standard requires an ADI to "develop and document a three-year funding strategy, which must be provided to APRA on request" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(a)). The Board must review and approve it "at least annually" with "robust assumptions in line with the ADI's liquidity management strategy and business objectives" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p45">APS 210 para 45</a>). It must be updated at least annually "to account for, at a minimum, changed funding conditions and/or a change in the ADI's strategy", and the ADI "must advise APRA of any material changes" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p46">APS 210 para 46</a>). The funding strategy is also one of the five parts of the liquidity risk management framework that the Board must approve (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>(d)).</p>
+<p>Two more duties sit with it: to "maintain an ongoing presence in its chosen funding markets and strong relationships with funds providers", and to "regularly gauge its capacity to raise funds quickly" by identifying and monitoring the main factors that affect it (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 paras 44</a>(b) and 44(c)).</p>
+<blockquote class="q-in"><p><strong>In the standard:</strong> The requirement to provide the strategy "on request" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(a)) and to "advise APRA of any material changes" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p46">APS 210 para 46</a>) are the only two APRA touchpoints. The APRA returns also carry a 3-year funding plan form (see document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</p>
+</blockquote>
+<h3 id="62-what-the-strategy-contains">6.2 What the strategy contains</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forecast balance sheet</td>
+<td>Expected assets, liabilities and capital at 3, 6, 12, 24 and 36 months</td>
+</tr>
+<tr>
+<td>Funding gap</td>
+<td>Asset growth minus deposit growth minus retained earnings</td>
+</tr>
+<tr>
+<td>Maturing debt</td>
+<td>Each maturing wholesale instrument and how it will be refinanced</td>
+</tr>
+<tr>
+<td>Issuance plan</td>
+<td>What to issue, in which markets, currencies and tenors, and when</td>
+</tr>
+<tr>
+<td>Ratio path</td>
+<td>Forecast LCR and NSFR against appetite</td>
+</tr>
+<tr>
+<td>Capacity assessment</td>
+<td>The factors that decide how fast the bank can raise funds (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(c))</td>
+</tr>
+<tr>
+<td>Contingency</td>
+<td>What is done if a market closes</td>
+</tr>
+<tr>
+<td>Assumptions</td>
+<td>Every growth and behaviour assumption, with owner and date</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-example-bank-a-one-year-funding-need">6.3 Example Bank: a one-year funding need</h3>
+<p>Treasury's draft assumptions for year one (invented for training): total assets grow 5%; deposits grow 5%; retained earnings add A$0.5bn of capital.</p>
+<pre><code>Asset growth           = 5% x 100.0                      = 5.0
+Wholesale debt maturing in year 1 = 1.0 + 3.0 + 2.0     = 6.0
+Deposit growth         = 5% x 69.0                       = 3.45
+Retained earnings      =                                   0.5
+New wholesale funding needed = 5.0 + 6.0 - 3.45 - 0.5   = 7.05
+</code></pre>
+<p>The strategy must show where A$7.05bn of new wholesale funding will come from in year one, and what it does to the LCR and NSFR. Because the NSFR gives only partial credit to funding with a residual maturity of 6 months to under 1 year, the <strong>tenor</strong> of the issuance matters: debt of one year or more earns 100% available stable funding, while debt of 6 months to under 1 year earns 50% (see document <a href="09_NSFR_Production_End_to_End.html">09</a>).</p>
+<blockquote class="q-example"><p><strong>Example:</strong> Suppose the A$7.05bn were raised as three-month paper. It would earn no available stable funding, would fall inside the LCR's 30-day window repeatedly, and would need to be refinanced four times in the year. The plan must therefore favour longer tenors and spread maturities to avoid a "wall" of debt in one month.</p>
+</blockquote>
+<h3 id="64-the-teams-part">6.4 The team's part</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Task</th>
+<th>What we do</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Actual balances at the reporting date</td>
+<td>Supply for the funding plan return form (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>)</td>
+<td>Annual (financial year end)</td>
+</tr>
+<tr>
+<td>Forecast balance sheet by product</td>
+<td>Build with Treasury and Finance planning from the same classification as the LCR and NSFR</td>
+<td>Annual, and on material change</td>
+</tr>
+<tr>
+<td>Forecast LCR and NSFR</td>
+<td>Run the models on the forecast balance sheet</td>
+<td>Quarterly roll-forward</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>Check that the return's actual column ties to the ledger and to the contractual maturity forms</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>Consistency check</td>
+<td>Confirm the strategy, the return and the Board paper show the same numbers</td>
+<td>Annual</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Keep the Board-approved version and the version sent to APRA</td>
+<td>Annual</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Procedure for the annual funding plan data package:</strong>
+<em>Trigger:</em> the financial year end and the strategy review cycle (the return is due within a set time after year end; see document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).
+<em>Inputs:</em> actual balance sheet at year end; Board-approved strategy; forecast assumptions.
+<em>Steps:</em> (1) Reconcile actuals. (2) Map actual and forecast to the form categories. (3) Check forecasts for the 3, 6, 12, 24 and 36 month points. (4) Run forecast ratios. (5) Write the variance commentary against last year's forecast. (6) Review and sign.
+<em>Controls:</em> totals tie across forecast dates (assets equal liabilities and capital at each date); categories agree with the contractual forms; growth assumptions match the Board paper.
+<em>Outputs:</em> data package; ratio forecast table.
+<em>Who reviews:</em> second analyst; controller; Treasury confirms assumptions.
+<em>Evidence kept:</em> approved strategy, assumptions, forecast files, sign-offs.</p>
+<hr />
+<h2 id="7-the-contingency-funding-plan">7. The contingency funding plan</h2>
+<h3 id="71-what-it-is">7.1 What it is</h3>
+<p>A <strong>contingency funding plan (CFP)</strong> is the bank's emergency playbook for a liquidity shortfall. Think of a fire drill. Nobody writes the evacuation plan while the building is burning. The standard requires "a formal contingency funding plan that clearly sets out the strategies for addressing liquidity shortfalls in stressed situations", with policies for "a range of stress environments", "clear lines of responsibility" and "clear invocation and escalation procedures" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 para 47</a>).</p>
+<p>It also says what the plan must contain.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commensurate with the ADI's complexity, risk profile, scope and role</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p48">APS 210 para 48</a>)</td>
+</tr>
+<tr>
+<td>State each contingency funding source, the amount that can be derived from it, escalation and prioritisation procedures, and the lead time to tap each source</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p48">APS 210 para 48</a>)</td>
+</tr>
+<tr>
+<td>Flexible enough to respond quickly in a variety of situations</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p48">APS 210 para 48</a>)</td>
+</tr>
+<tr>
+<td>Closely integrated with ongoing liquidity analysis and stress test assumptions and results</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p49">APS 210 para 49</a>)</td>
+</tr>
+<tr>
+<td>Address several time horizons, including intraday</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p49">APS 210 para 49</a>)</td>
+</tr>
+<tr>
+<td>If the ADI has retail deposits, address a retail deposit run and include measures to repay retail depositors as soon as practicable; it must not rely upon closing distribution channels</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p50">APS 210 para 50</a>)</td>
+</tr>
+<tr>
+<td>Reviewed and tested at least annually; Board reviews and approves at least annually, or more often if circumstances change</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>)</td>
+</tr>
+<tr>
+<td>Included in the liquidity risk management framework as a minimum element</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>(e))</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="72-the-parts-of-a-typical-plan">7.2 The parts of a typical plan</h3>
+<p>The standard sets the requirements but not the layout. A typical layout (typical practice; confirm with your controller):</p>
+<ol>
+<li><strong>Triggers and stages.</strong> Stage 0 normal; Stage 1 early warning; Stage 2 stress; Stage 3 crisis. Each stage has quantitative triggers (from the early warning indicators and limits) and a named decision maker.</li>
+<li><strong>Governance.</strong> A crisis committee, who chairs it, who attends, meeting frequency, decision rights and a record of decisions.</li>
+<li><strong>Contingency funding sources.</strong> A table of actions with the amount available, the lead time and any cost or franchise damage. For example: sell or repo the liquid asset portfolio; draw on committed lines the bank holds; issue secured funding against mortgages; raise retail deposit rates; reduce lending; use central bank facilities. Exceptional Liquidity Assistance (ELA) from the RBA is the last resort and has its own notice rule (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>; see section 7.5).</li>
+<li><strong>Retail run plan.</strong> Operational steps to pay out depositors as fast as practicable, branch and digital capacity, cash availability, communications. The plan must not rely on closing channels to retail depositors (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p50">APS 210 para 50</a>).</li>
+<li><strong>Communications.</strong> Who speaks to staff, customers, investors, the media, APRA and the RBA, with draft messages.</li>
+<li><strong>Data and monitoring.</strong> The information pack the committee needs, and who produces it at what time (section 7.4).</li>
+<li><strong>Testing.</strong> An annual test or simulation, with lessons recorded (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>).</li>
+</ol>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The CFP is only as good as its lead times. A source that "can raise A$2bn" is useless if the paperwork takes five days and the run lasts three. When you update the data pack, ask Treasury to confirm each lead time in writing.</p>
+</blockquote>
+<h3 id="73-example-bank-a-table-of-contingency-sources">7.3 Example Bank: a table of contingency sources</h3>
+<p>The amounts below are illustrative (not a plan Example Bank has adopted) and are drawn from the base position where possible.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Amount available (A$bn)</th>
+<th>Lead time</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sell or repo government and semi-government securities (already in HQLA)</td>
+<td>12.0 (before haircut)</td>
+<td>Same day</td>
+<td>Already counted in the LCR; using it lowers the LCR</td>
+</tr>
+<tr>
+<td>Cash and RBA balances</td>
+<td>5.0</td>
+<td>Immediate</td>
+<td>Already counted</td>
+</tr>
+<tr>
+<td>Repo non-HQLA debt securities with other banks or the RBA, if eligible</td>
+<td>3.0 (before haircut)</td>
+<td>1 to 2 days</td>
+<td>Eligibility and haircut to be confirmed with Treasury</td>
+</tr>
+<tr>
+<td>Secured funding against mortgages</td>
+<td>To be sized by Treasury</td>
+<td>Several days</td>
+<td>Needs a prepared pool</td>
+</tr>
+<tr>
+<td>Committed Liquidity Facility with the RBA</td>
+<td>0</td>
+<td>n/a</td>
+<td>Phased out to zero as at 1 January 2023 (APRA); the paragraphs remain in the standard</td>
+</tr>
+<tr>
+<td>Exceptional Liquidity Assistance</td>
+<td>Not a planned source</td>
+<td>Subject to RBA</td>
+<td>Last resort (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="74-the-data-the-team-supplies">7.4 The data the team supplies</h3>
+<p>The plan must be "closely integrated with the ADI's ongoing analysis of liquidity risk" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p49">APS 210 para 49</a>), so in a stress the CFP committee will ask for numbers quickly and often. Prepare these before you need them.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Data item</th>
+<th>Content</th>
+<th>Frequency in stress</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Liquidity position summary</td>
+<td>LCR, NSFR, HQLA, net outflows, surplus</td>
+<td>At least daily, intraday if possible</td>
+<td>Daily LCR</td>
+</tr>
+<tr>
+<td>Forward LCR</td>
+<td>Projection for the next 30 to 90 days</td>
+<td>Daily</td>
+<td>Forward-looking model (document <a href="08_LCR_Production_End_to_End.html">08</a>)</td>
+</tr>
+<tr>
+<td>Deposit flows</td>
+<td>Net inflow or outflow by customer segment, by day or hour</td>
+<td>Hourly if a run is suspected</td>
+<td>Core banking</td>
+</tr>
+<tr>
+<td>Largest depositors</td>
+<td>Balances and movements</td>
+<td>Daily</td>
+<td>Core banking, customer master</td>
+</tr>
+<tr>
+<td>Wholesale maturities</td>
+<td>Debt falling due, by date and counterparty</td>
+<td>Daily</td>
+<td>Treasury system</td>
+</tr>
+<tr>
+<td>Liquid asset inventory</td>
+<td>Unencumbered amounts, location, custodian, time to mobilise</td>
+<td>Daily</td>
+<td>Collateral system</td>
+</tr>
+<tr>
+<td>Collateral calls</td>
+<td>Margin calls and downgrade collateral</td>
+<td>Daily</td>
+<td>Collateral system</td>
+</tr>
+<tr>
+<td>Committed facility drawdowns</td>
+<td>Drawn amounts by facility type</td>
+<td>Daily</td>
+<td>Loan system</td>
+</tr>
+<tr>
+<td>Intraday position</td>
+<td>Opening balance, lowest balance, payments queued</td>
+<td>Intraday</td>
+<td>Payments data</td>
+</tr>
+<tr>
+<td>Funding capacity</td>
+<td>Current market pricing and access, by funding market</td>
+<td>Daily</td>
+<td>Treasury</td>
+</tr>
+<tr>
+<td>Branch and digital cash capacity</td>
+<td>Cash in branches and ATMs; online banking load</td>
+<td>Daily</td>
+<td>Operations</td>
+</tr>
+<tr>
+<td>Stress test comparisons</td>
+<td>Actual outflows versus scenario assumptions</td>
+<td>Daily</td>
+<td>Stress model</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Procedure: preparing the CFP data pack.</strong>
+<em>Trigger:</em> the CFP stage moves to 1 or above; or the annual test; or a request from the Chief Financial Officer or Treasurer.
+<em>Inputs:</em> the feeds above; the template.
+<em>Steps:</em> (1) Refresh all feeds and note each one's time stamp. (2) Build the one-page summary. (3) Build the supporting tables. (4) Compare actual outflows with the scenario assumptions. (5) Review and send to the committee by the agreed time.
+<em>Controls:</em> every number has a time stamp; totals tie to the daily LCR; any estimate is marked as an estimate; a second person checks the summary page.
+<em>Outputs:</em> a pack, at the frequency the committee asks for.
+<em>Who reviews:</em> second analyst; controller.
+<em>Evidence kept:</em> each version of the pack with time and recipients (the record may be needed for supervisors).</p>
+<h3 id="75-telling-apra-and-the-rba">7.5 Telling APRA and the RBA</h3>
+<p>The standard has three notice rules close to the plan. They appear again in the notifications table in document <a href="11_APRA_Returns_and_Disclosures.html">11</a>.</p>
+<ul>
+<li>"An ADI must inform APRA as soon as possible of any concerns it has about its current or future liquidity position, and its plans to address those concerns." If it "experiences a severe liquidity stress, it must notify APRA immediately and advise the action that is being taken to address the situation" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>).</li>
+<li>An LCR ADI must inform APRA immediately of an actual LCR breach, or if it "becomes aware of circumstances that may result in a breach" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>).</li>
+<li>Before approaching the RBA for ELA the ADI "must notify APRA immediately of the ADI's liquidity concerns and its intention to request ELA", and "must have the operational capability to provide information along with its application for ELA or within other timeframes specified by APRA" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>). The July 2025 version of the standard added that last operational capability requirement. For our team that means the data pack above must be producible quickly and reliably.</li>
+</ul>
+<hr />
+<h2 id="8-intraday-liquidity">8. Intraday liquidity</h2>
+<h3 id="81-what-it-is">8.1 What it is</h3>
+<p><strong>Intraday liquidity</strong> is the money a bank can use during the business day to make payments as they fall due. Think of paying a builder at 10:00 am before your customers pay you at 3:00 pm. You need cash (or credit) to cover the gap during the day, even if the day ends with you in surplus.</p>
+<p>Banks make and receive large payments through accounts at the Reserve Bank of Australia (RBA) called <strong>Exchange Settlement Accounts (ESAs)</strong>. If payments out run ahead of payments in, the ESA balance may fall low during the day. If it cannot cover a payment on time, the bank fails to settle, which can delay other banks too.</p>
+<p>The standard requires an ADI to "actively manage its intraday liquidity positions and risks in order to meet payment and settlement obligations on a timely basis under both normal and stressed conditions, thus contributing to the orderly functioning of payment and settlement systems" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>). The liquidity management strategy must include an approach to intraday liquidity (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p29">APS 210 para 29</a>(d)), and the contingency funding plan must address time horizons "including intraday" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p49">APS 210 para 49</a>).</p>
+<h3 id="82-measures-treasury-and-the-team-track">8.2 Measures Treasury and the team track</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Meaning</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opening balance</td>
+<td>Cash at the RBA at the start of the day</td>
+<td>Settlement data</td>
+</tr>
+<tr>
+<td>Lowest balance in the day, and the time</td>
+<td>The tightest point</td>
+<td>Settlement data</td>
+</tr>
+<tr>
+<td>Peak intraday usage</td>
+<td>Opening balance less lowest balance (cash used during the day)</td>
+<td>Calculated</td>
+</tr>
+<tr>
+<td>Intraday sources available</td>
+<td>Own balance plus what can be borrowed against collateral</td>
+<td>Collateral system and RBA arrangements</td>
+</tr>
+<tr>
+<td>Time-specific obligations</td>
+<td>Payments that must be made by a set time</td>
+<td>Payments team</td>
+</tr>
+<tr>
+<td>Largest payments in and out</td>
+<td>The big items driving the profile</td>
+<td>Payments system</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>How much value is paid early versus late in the day</td>
+<td>Payments system</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-example"><p><strong>Example:</strong> On a given day Example Bank opens with A$4.8bn in its ESA (invented figure). At 14:30 the balance falls to A$1.9bn, after A$6.0bn of payments out and A$3.1bn in. Peak intraday usage = 4.8 - 1.9 = A$2.9bn. If the intraday limit is A$3.5bn, utilisation is 2.9 / 3.5 = 82.9%. The next day's pack shows both numbers and the time.</p>
+</blockquote>
+<h3 id="83-what-changes-in-stress">8.3 What changes in stress</h3>
+<p>Intraday needs usually rise in stress: other banks delay payments to a stressed bank, and the stressed bank's own counterparties demand more collateral or pre-funding. The CFP data pack therefore includes the intraday position (section 7.4).</p>
+<p>The RBA arrangements for intraday funding (as generally understood, intraday repo against eligible securities) should be confirmed on the RBA's website before you rely on them in a document.</p>
+<h3 id="84-the-teams-part">8.4 The team's part</h3>
+<p>Treasury (or payments operations) manages intraday liquidity. We:</p>
+<ul>
+<li>receive the daily intraday statistics and add them to the dashboard;</li>
+<li>reconcile the closing ESA balance to the RBA balance used in the LCR;</li>
+<li>record limit utilisation and breaches;</li>
+<li>keep a history for trend analysis and stress calibration.</li>
+</ul>
+<p><em>Controls:</em> closing balance in the intraday feed equals the HQLA RBA balance at end of day; peak usage data has a time stamp; a missing day is shown as missing.
+<em>Evidence kept:</em> feeds, reconciliation, dashboard.</p>
+<hr />
+<h2 id="9-collateral-and-encumbrance">9. Collateral and encumbrance</h2>
+<h3 id="91-what-it-is">9.1 What it is</h3>
+<p><strong>Collateral</strong> is an asset that one party hands to another as security for a promise. A pawn shop holds your watch as collateral for a loan. When an asset is pledged, it is <strong>encumbered</strong>: it is not free to be sold. An asset that is not pledged and is free to be sold is <strong>unencumbered</strong>. Only unencumbered assets count in the stock of HQLA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>).</p>
+<p>The standard requires that an ADI "must actively manage its collateral positions, differentiating between encumbered and unencumbered assets", and "must monitor the legal entity and physical location where collateral is held and how it may be mobilised in a timely manner" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p38">APS 210 para 38</a>).</p>
+<h3 id="92-what-we-monitor">9.2 What we monitor</h3>
+<ol>
+<li><strong>Inventory</strong> of eligible assets by type, legal entity, custodian and location.</li>
+<li><strong>Encumbrance.</strong> What is pledged, to whom, and for how long (repo counterparties, central counterparties, the RBA, derivative counterparties, secured funding programmes).</li>
+<li><strong>Mobilisation time.</strong> How long to move an asset to where it is needed, including cut-off times.</li>
+<li><strong>Margin calls.</strong> Initial margin (collateral posted at the start to cover possible future losses) and variation margin (collateral exchanged as values change day to day).</li>
+<li><strong>Downgrade triggers.</strong> Contracts requiring extra collateral if the bank's rating falls. Example Bank has A$0.2bn of collateral to post on a three-notch downgrade, counted at 100% in the LCR.</li>
+<li><strong>Operational requirements.</strong> HQLA must be unpledged, available for conversion into cash at any time, and under the control of the function charged with managing liquidity risk (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>). If an asset becomes ineligible (for example after a rating downgrade) the ADI may keep it in the stock for an additional 30 calendar days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>).</li>
+</ol>
+<p>The same data supports the LCR (HQLA numerator, secured funding and lending lines) and the NSFR (encumbrance buckets, see document <a href="09_NSFR_Production_End_to_End.html">09</a>).</p>
+<blockquote class="q-example"><p><strong>Example:</strong> Suppose A$2.0bn of Example Bank's Australian Government bonds is posted to a counterparty. Reported HQLA falls from 17.0 to 15.0. If the collateral team does not tell the LCR team, the dashboard overstates the buffer by A$2.0bn, the LCR would show 17.0 / 11.55 = 147.2% instead of the true 15.0 / 11.55 = 129.9%, and the headroom to the 125% amber trigger would drop from A$2.56bn to A$0.56bn (15.0 - 14.4375 = 0.5625).</p>
+</blockquote>
+<p><strong>Encumbrance ratio.</strong> A common indicator is:</p>
+<pre><code>Encumbrance ratio = Encumbered assets / Total assets
+</code></pre>
+<p>Suppose Example Bank had encumbered assets of A$2.0bn (the pledged bonds) in total assets of A$100.0bn. The ratio would be 2.0 / 100.0 = 2.0%. The bank sets its own limit (typical practice; confirm with your controller).</p>
+<h3 id="93-procedure-the-daily-collateral-and-encumbrance-report">9.3 Procedure: the daily collateral and encumbrance report</h3>
+<p><em>Trigger:</em> every business day, before the daily LCR is finalised.
+<em>Inputs:</em> the collateral system's position (pledged and received assets, with counterparty and term); the treasury system's holdings; the custodian statements.
+<em>Steps:</em> (1) Reconcile holdings between the treasury system and the custodian. (2) Mark each asset encumbered or unencumbered, with the end date. (3) Check that the unencumbered liquid assets feeding the LCR match. (4) Compute the encumbrance ratio and the amount of margin posted and received. (5) Update the downgrade-trigger collateral amount. (6) Report exceptions.
+<em>Controls:</em> holdings agree to the custodian; every pledge has a counterparty and an end date; nothing is HQLA and pledged at the same time; changes from yesterday are explained.
+<em>Outputs:</em> inventory and encumbrance table; exceptions.
+<em>Who reviews:</em> second analyst; Treasury confirms.
+<em>Evidence kept:</em> extracts, reconciliations, exception log.</p>
+<hr />
+<h2 id="10-currency">10. Currency</h2>
+<p>The standard says an ADI "active in multiple currencies" must hold liquid assets "consistent with the distribution of its liquidity needs by currency", must "assess its aggregate foreign currency liquidity needs and determine an acceptable level of currency mismatches", and must analyse a strategy for each material currency, "considering potential constraints in times of stress" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 para 43</a>).</p>
+<p>A <strong>currency mismatch</strong> is a difference between the currency of assets and of liabilities, for example United States dollar funding used to lend Australian dollars. A bank normally closes the gap with foreign exchange swaps, but in stress that market can shut or become costly. That is why a locally incorporated ADI must keep its LCR at 100% on both an Australian dollar (AUD) basis and an all-currencies basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). AUD obligations need AUD liquid assets.</p>
+<p><strong>Example Bank is single-currency.</strong> It has one currency, so its AUD LCR equals its all-currencies LCR (147.2% on both). The currency requirement (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 para 43</a>) therefore needs little work for Example Bank today, but you must know the topic because:</p>
+<ul>
+<li>a bank with foreign currency business reports an LCR for each significant currency in its return (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>);</li>
+<li>the stress tests must analyse currencies separately (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 para 43</a>);</li>
+<li>an offshore subsidiary changes how Level 2 is built (section 13).</li>
+</ul>
+<p>If you work for a bank with several currencies, expect to produce, daily, an LCR by currency, a table of net cash outflows by currency before the inflow cap, and a currency mismatch limit report. Keep rules for converting amounts to AUD consistent with the accounting policy.</p>
+<hr />
+<h2 id="11-cost-allocation-funds-transfer-pricing">11. Cost allocation (funds transfer pricing)</h2>
+<h3 id="111-what-it-is">11.1 What it is</h3>
+<p>If a family shares one bank account, the person who spends the most is not always the person who earns the most. <strong>Funds transfer pricing (FTP)</strong> is the bank's internal system for charging each business line for the funding and liquidity it uses and rewarding those that provide it. The standard requires the ADI to "develop and implement a costs and benefits allocation process for funding and liquidity that appropriately apportions the costs of prudent liquidity management to the sources of liquidity risk and provides appropriate incentives to manage liquidity risk" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p42">APS 210 para 42</a>).</p>
+<p>Without it, a business that writes long loans funded by cheap at-call deposits looks very profitable while Treasury quietly carries the liquidity cost. With FTP, the cost goes to the product that creates the risk.</p>
+<h3 id="112-a-worked-example">11.2 A worked example</h3>
+<p>Holding HQLA costs money: the bank earns less on liquid assets than on loans. Suppose the margin lost is <strong>0.8% a year</strong> (invented for training). For each product, the liquid assets that the LCR requires set a <strong>liquidity charge</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Amount</th>
+<th>LCR rate</th>
+<th>HQLA needed</th>
+<th>Annual cost at 0.8%</th>
+<th>Charge in basis points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stable retail deposit (credit to the deposit taker)</td>
+<td>A$100m</td>
+<td>5%</td>
+<td>5m</td>
+<td>0.04m</td>
+<td>4 bps</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposit</td>
+<td>A$100m</td>
+<td>40%</td>
+<td>40m</td>
+<td>0.32m</td>
+<td>32 bps</td>
+</tr>
+<tr>
+<td>Undrawn committed corporate credit facility</td>
+<td>A$5,000m</td>
+<td>10%</td>
+<td>500m</td>
+<td>4.0m</td>
+<td>8 bps</td>
+</tr>
+</tbody>
+</table></div>
+<p>A <strong>basis point (bps)</strong> is one hundredth of one percent. Check one line: 40m x 0.8% = 0.32m; 0.32m / 100m = 0.32% = 32 bps. A corporate non-operational deposit is therefore a more expensive funding source than a stable retail one, once the liquidity it consumes is counted. For a facility: 10% x 5,000m = 500m; 500m x 0.8% = 4.0m; 4.0m / 5,000m = 0.08% = 8 bps.</p>
+<p>The NSFR adds a second charge for stable funding that long assets need. The size of both charges is a management choice and is set by Treasury and Finance (<strong>typical practice; confirm with your controller</strong>).</p>
+<h3 id="113-the-teams-part">11.3 The team's part</h3>
+<p>We supply the data on which the charges depend: balances by product with their LCR run-off or inflow rate and NSFR factor, updated monthly. We do not set the prices. We check that the rates in the FTP engine match the current APS 210 rates (for example the <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> rates) after any change in the standard.</p>
+<p><em>Control:</em> an annual reconciliation of the FTP rate table to the LCR and NSFR rate tables, signed by the controller.
+<em>Evidence kept:</em> the reconciliation and the approval of the FTP policy.</p>
+<hr />
+<h2 id="12-management-information">12. Management information</h2>
+<h3 id="121-what-the-standard-asks">12.1 What the standard asks</h3>
+<p>The standard requires "a reliable management information system that provides the Board, senior management and other appropriate personnel with timely and forward-looking information on the liquidity position of the ADI" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p40">APS 210 para 40</a>). Three words in that sentence set the test: <strong>reliable</strong> (the numbers are right and can be traced), <strong>timely</strong> (they arrive when needed) and <strong>forward-looking</strong> (they show where the position is heading, not only where it is).</p>
+<p>Related duties:</p>
+<ul>
+<li>Senior management must "establish a set of reporting criteria specifying the scope, manner and frequency of reporting for various recipients (such as the Board, senior management and the asset/liability committee) including the parties responsible for preparing the reports" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(f)).</li>
+<li>The Board "must review regular reports on the liquidity position of the ADI and, where necessary, information on new or emerging liquidity risks" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p18">APS 210 para 18</a>).</li>
+<li>Senior management must "continuously review information on the ADI's liquidity developments and report to the Board on a regular basis" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(i)).</li>
+<li>The Board and senior management must be "informed immediately of new and emerging liquidity concerns", listed in the standard (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>).</li>
+</ul>
+<p><strong>Management information (MI)</strong> is the umbrella term for the reports, dashboards and packs that carry this information. In our team, MI is the product of everything in documents <a href="07_Data_and_Classification.html">07</a> to 09 and this document. You will spend a lot of time on it, because a perfect calculation that nobody can read is a failure.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Every MI report has a reader and a decision. If I ask "who uses this page and what do they do with it?" and you cannot answer, we delete the page.</p>
+</blockquote>
+<h3 id="122-the-reporting-criteria-example-bank-conventions">12.2 The reporting criteria (Example Bank conventions)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Report</th>
+<th>Reader</th>
+<th>Frequency</th>
+<th>Content</th>
+<th>Timing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daily liquidity dashboard</td>
+<td>Treasury, Liquidity Risk, controller, Chief Financial Officer</td>
+<td>Daily</td>
+<td>Ratios, buffer, flows, indicators, limits</td>
+<td>By 10:00 am for the previous business day</td>
+</tr>
+<tr>
+<td>Monthly ALCO pack</td>
+<td>ALCO</td>
+<td>Monthly</td>
+<td>Full position, ladder, concentration, stress, funding, limits, movement analysis</td>
+<td>Before the ALCO meeting</td>
+</tr>
+<tr>
+<td>Quarterly Board Risk Committee report</td>
+<td>Board Risk Committee</td>
+<td>Quarterly</td>
+<td>Position against appetite, trends, stress results and actions, breaches, funding strategy, contingency funding plan status</td>
+<td>Before the meeting</td>
+</tr>
+<tr>
+<td>Ad hoc breach and trigger notices</td>
+<td>Treasury, Liquidity Risk, senior management</td>
+<td>As they occur</td>
+<td>What happened, size, action</td>
+<td>Immediately</td>
+</tr>
+<tr>
+<td>Returns to APRA</td>
+<td>APRA</td>
+<td>Per the reporting standard</td>
+<td>See document <a href="11_APRA_Returns_and_Disclosures.html">11</a></td>
+<td>Per due date</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are <strong>typical practice; confirm with your controller</strong>. The standard leaves the content to the bank, but requires that the bank define it (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(f)).</p>
+<h3 id="123-a-specimen-daily-dashboard">12.3 A specimen daily dashboard</h3>
+<p>Below is a specimen for Example Bank on the base position (all numbers from the base position; statuses and the 5-day trend column are invented for training). Layout is one page.</p>
+<p><strong>Header:</strong> Example Bank Daily Liquidity Dashboard; business date; prepared by; reviewed by; time produced; data version.</p>
+<p><strong>Panel 1: The two ratios</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Today</th>
+<th>Board appetite</th>
+<th>Amber trigger</th>
+<th>Regulatory minimum</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LCR (all currencies = AUD for Example Bank)</td>
+<td>147.2%</td>
+<td>120%</td>
+<td>125%</td>
+<td>100%</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>NSFR (latest month-end)</td>
+<td>136.3%</td>
+<td>110%</td>
+<td>115%</td>
+<td>100%</td>
+<td>Green</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Panel 2: LCR build (A$bn)</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA (cash and RBA balances 5.0, government and semi-government securities 12.0)</td>
+<td>17.0</td>
+</tr>
+<tr>
+<td>Total cash outflows</td>
+<td>13.45</td>
+</tr>
+<tr>
+<td>Total cash inflows</td>
+<td>1.90 (cap 10.09 not binding)</td>
+</tr>
+<tr>
+<td>Net cash outflows</td>
+<td>11.55</td>
+</tr>
+<tr>
+<td>Surplus over 100%</td>
+<td>5.45</td>
+</tr>
+<tr>
+<td>Headroom to amber trigger (125%)</td>
+<td>2.56</td>
+</tr>
+<tr>
+<td>Headroom to Board appetite (120%)</td>
+<td>3.14</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Panel 3: Position and flows</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+<th>Change from yesterday</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail and SME deposits</td>
+<td>A$55.0bn</td>
+<td>(specimen) -0.05</td>
+</tr>
+<tr>
+<td>Wholesale debt maturing within 30 days</td>
+<td>A$1.0bn</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Wholesale debt maturing in 31 to 90 days</td>
+<td>(from the treasury system)</td>
+<td></td>
+</tr>
+<tr>
+<td>Peak intraday usage (yesterday)</td>
+<td>(from payments data)</td>
+<td></td>
+</tr>
+<tr>
+<td>Encumbered liquid assets</td>
+<td>A$0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Undrawn committed facilities</td>
+<td>A$16.0bn</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Panel 4: Limits and indicators</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Behavioural cumulative gap within one year</td>
+<td>-18.5% of total assets</td>
+<td>Amber (92.5% of an illustrative -20% limit)</td>
+</tr>
+<tr>
+<td>Top 10 depositor share</td>
+<td>(from concentration report)</td>
+<td>Green (specimen)</td>
+</tr>
+<tr>
+<td>20 early warning indicators</td>
+<td>18 green, 2 amber, 0 red (specimen)</td>
+<td>List the two ambers with comment</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Panel 5: Movement and comment</strong></p>
+<ul>
+<li>The reason for the day's change in the LCR in two or three bullet points (see document <a href="08_LCR_Production_End_to_End.html">08</a> for movement analysis).</li>
+<li>Any data issue, estimate or late feed.</li>
+<li>Actions taken or required.</li>
+</ul>
+<p><strong>Panel 6: Forward-looking view</strong></p>
+<ul>
+<li>Forecast LCR for the next 30 days using known maturities.</li>
+<li>A flag for any week in which wholesale debt or large facilities mature (see forward-looking LCR in document <a href="08_LCR_Production_End_to_End.html">08</a>).</li>
+</ul>
+<p><strong>Footer:</strong> Prepared by (name, time); reviewed by (name, time); signed by controller; version.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A dashboard that is wrong and green is worse than no dashboard. Show data quality: the time of each feed, any manual adjustment, and any figure that is an estimate.</p>
+</blockquote>
+<p><strong>Producing the daily dashboard.</strong>
+<em>Trigger:</em> completion of the daily LCR (document <a href="08_LCR_Production_End_to_End.html">08</a>).
+<em>Inputs:</em> signed LCR; intraday, collateral, deposit flow and market feeds; limits and thresholds table (version approved).
+<em>Steps:</em> (1) Pull the signed LCR figures. (2) Add the other panels. (3) Classify status against thresholds. (4) Write the commentary. (5) Review. (6) Sign. (7) Distribute to the agreed list. (8) File.
+<em>Controls:</em> the LCR on the dashboard equals the signed LCR; thresholds equal the approved table; every number has a source and time stamp; a second person reviews.
+<em>Outputs:</em> one-page dashboard (and the data behind it).
+<em>Who reviews:</em> second analyst; controller signs.
+<em>Evidence kept:</em> dashboard file with version, distribution record, review record.</p>
+<h3 id="124-the-monthly-alco-pack">12.4 The monthly ALCO pack</h3>
+<p>The asset and liability committee (ALCO) meets monthly (Example Bank convention). The pack is longer than the dashboard. A typical contents list (<strong>typical practice; confirm with your controller</strong>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+<th>Source document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Executive summary</td>
+<td>One page: position against appetite, key movements, breaches, decisions needed</td>
+<td>This document</td>
+</tr>
+<tr>
+<td>2. LCR</td>
+<td>Month-end and average LCR; HQLA by class; outflows and inflows by category; range during the month; forward-looking projection</td>
+<td>Document <a href="08_LCR_Production_End_to_End.html">08</a></td>
+</tr>
+<tr>
+<td>3. NSFR</td>
+<td>Month-end NSFR; ASF and RSF by category; movement from last month</td>
+<td>Document <a href="09_NSFR_Production_End_to_End.html">09</a></td>
+</tr>
+<tr>
+<td>4. Movement analysis</td>
+<td>Line-by-line explanation of changes in both ratios</td>
+<td>Documents <a href="08_LCR_Production_End_to_End.html">08</a>, 09</td>
+</tr>
+<tr>
+<td>5. Maturity ladder</td>
+<td>Contractual, behavioural and liquidity-adjusted; cumulative gaps against limits</td>
+<td>Section 2</td>
+</tr>
+<tr>
+<td>6. Funding profile</td>
+<td>Funding by product, market and currency; wholesale maturities for the next 12 months</td>
+<td>Sections 3 and 6</td>
+</tr>
+<tr>
+<td>7. Concentration</td>
+<td>Top funders; HHI; significant funders</td>
+<td>Section 3</td>
+</tr>
+<tr>
+<td>8. Limits and indicators</td>
+<td>Every limit, usage, status; every early warning indicator trend; breaches and plans of action</td>
+<td>Section 4</td>
+</tr>
+<tr>
+<td>9. Stress testing</td>
+<td>Latest scenario results; survival horizons; vulnerabilities and proposed actions</td>
+<td>Section 5</td>
+</tr>
+<tr>
+<td>10. Funding strategy and issuance</td>
+<td>Progress against the plan; planned issuance; market access</td>
+<td>Section 6</td>
+</tr>
+<tr>
+<td>11. Collateral and encumbrance</td>
+<td>Encumbered assets; margin; downgrade collateral</td>
+<td>Section 9</td>
+</tr>
+<tr>
+<td>12. Intraday</td>
+<td>Peak usage and trends</td>
+<td>Section 8</td>
+</tr>
+<tr>
+<td>13. Contingency funding plan</td>
+<td>Status; any testing; data pack readiness</td>
+<td>Section 7</td>
+</tr>
+<tr>
+<td>14. Regulatory items</td>
+<td>Returns submitted or due; notifications made; APRA requests open; changes to APS 210 or reporting standards</td>
+<td>Document <a href="11_APRA_Returns_and_Disclosures.html">11</a></td>
+</tr>
+<tr>
+<td>15. Data quality and control</td>
+<td>Errors found, adjustments, open issues, control exceptions</td>
+<td>Document <a href="12_Controls_Incidents_and_Escalation.html">12</a></td>
+</tr>
+<tr>
+<td>16. Decisions and actions</td>
+<td>Items for decision and open actions from last month</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Procedure.</strong>
+<em>Trigger:</em> the working calendar (about five business days before the ALCO meeting).
+<em>Inputs:</em> signed month-end LCR and NSFR; daily dashboard series; ladder; concentration; stress results; funding forecast.
+<em>Steps:</em> (1) Freeze the month-end position. (2) Refresh each section from its source. (3) Reconcile every figure that appears twice. (4) Write the executive summary last. (5) Peer review. (6) Controller review and sign. (7) Send to the secretary by the deadline. (8) Record decisions and actions after the meeting.
+<em>Controls:</em> figures agree to signed daily and monthly outputs; no unexplained difference between sections; limits table is the approved version.
+<em>Outputs:</em> the pack; minutes and action log.
+<em>Who reviews:</em> second analyst; controller; Liquidity Risk review of risk sections.
+<em>Evidence kept:</em> pack version as sent, the working files, minutes.</p>
+<hr />
+<h2 id="13-level-1-and-level-2">13. Level 1 and Level 2</h2>
+<h3 id="131-what-the-words-mean">13.1 What the words mean</h3>
+<p>A bank can be one company, or a <strong>group</strong> of companies (a parent and its subsidiaries, which may include securitisation vehicles and offshore banks).</p>
+<ul>
+<li><strong>Level 1</strong> means the bank on its own as a single legal entity (the ADI itself).</li>
+<li><strong>Level 2</strong> means the <strong>consolidated group</strong> of which the ADI is a member: all the companies added together, as if one.</li>
+</ul>
+<p>The standard says that a reference to an ADI means both: "an ADI on a Level 1 basis" and "a group of which an ADI is a member on a Level 2 basis" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 para 3</a>). Where an ADI is the holding company of a group, it "must ensure that the requirements in this Prudential Standard are met on a Level 2 basis, where applicable" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p4">APS 210 para 4</a>). Where the ADI is a subsidiary of an authorised non-operating holding company (NOHC), the NOHC must ensure Level 2 compliance (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p4">APS 210 para 4</a>).</p>
+<p><strong>Example Bank has one legal entity and one currency, so Level 1 equals Level 2</strong> (and the AUD LCR equals the all-currencies LCR). You will compute one set of numbers. A bank with subsidiaries computes two sets, and the Level 2 numbers need extra care.</p>
+<h3 id="132-what-differs-at-level-2-for-the-lcr">13.2 What differs at Level 2 for the LCR</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Rule</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Both levels</td>
+<td>The LCR must be met on both Level 1 and Level 2</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a>)</td>
+</tr>
+<tr>
+<td>Offshore branch or subsidiary</td>
+<td>Apply the standard's requirements, except host supervisor outflow assumptions for retail and SME deposits, and alternative liquid assets allowed by the host</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a>)</td>
+</tr>
+<tr>
+<td>Offshore host does not follow the Basel framework</td>
+<td>Apply APS 210 cash flow assumptions</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p27">Att A para 27</a>)</td>
+</tr>
+<tr>
+<td>Material offshore banking subsidiary</td>
+<td>The subsidiary must keep an LCR of at least 100%; APRA may accept assets formally recognised by the local regulator</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p28">Att A para 28</a>)</td>
+</tr>
+<tr>
+<td>Transferability</td>
+<td>Account for restrictions on moving liquid assets across borders; excess liquidity counts only with reasonable certainty of availability</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p29">Att A para 29</a>)</td>
+</tr>
+<tr>
+<td>Liquid assets held in a legal entity</td>
+<td>May be included at Level 2 if held to meet legal entity requirements and the related outflows are also counted; surplus counts only if freely available to the parent in stress</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p24">Att A para 24</a>)</td>
+</tr>
+<tr>
+<td>Securitisation</td>
+<td>The originating ADI's securitisation vehicles' cash flows are included in the LCR amounts; for the NSFR and MLH they may be excluded if the operational requirements for capital relief are met</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="133-why-this-matters-for-the-other-topics-in-this-document">13.3 Why this matters for the other topics in this document</h3>
+<ul>
+<li><strong>Stress tests</strong> must show impact on Level 1 and Level 2 positions and on business lines (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p64">APS 210 para 64</a>).</li>
+<li><strong>The liquidity risk management framework</strong> must set out the organisational structure at both levels (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p25">APS 210 para 25</a>).</li>
+<li><strong>Returns to APRA</strong> are made at Level 1 and at Level 2 (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</li>
+<li><strong>Limits</strong> should be set at each level where cash can be trapped.</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Intragroup balances must be eliminated at Level 2 but remain at Level 1. A deposit from a subsidiary is a financial institution deposit at Level 1 and disappears at Level 2. If you are ever on a team that produces both, a reconciliation between the levels is a standard control.</p>
+</blockquote>
+<hr />
+<h2 id="14-the-minimum-liquidity-holdings-regime-in-brief">14. The minimum liquidity holdings regime, in brief</h2>
+<p>Example Bank is an <strong>LCR ADI</strong>, so this regime does not apply to it. APRA decides which locally incorporated ADIs are LCR ADIs and which are <strong>MLH ADIs</strong> (minimum liquidity holdings ADIs) (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p52">APS 210 para 52</a>). You still need to know the basics, because you may meet an MLH ADI (a smaller bank, a customer or a counterparty), because APRA's forms include MLH items, and because an ADI's classification can change.</p>
+<h3 id="141-the-rule">14.1 The rule</h3>
+<p>An MLH ADI "must maintain a minimum holding of nine per cent of its liabilities in specified liquid assets, in accordance with Attachment B" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p57">APS 210 para 57</a>). APRA may require a higher holding if it has concerns about the ADI's liquidity risk profile or the quality of its liquidity risk management (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p58">APS 210 para 58</a>). The ADI must meet the requirement "on a continuous basis, absent a situation of financial stress" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p54">APS 210 para 54</a>).</p>
+<pre><code>MLH ratio = Liquid assets (market value) / Liabilities
+Requirement: at least 9%
+</code></pre>
+<h3 id="142-what-counts-attachment-b">14.2 What counts (Attachment B)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Rule</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Liabilities</td>
+<td>Total on-balance sheet liabilities plus irrevocable commitments, unless APRA approves otherwise for a prudential purpose</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p1">Att B para 1</a>)</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>Liquid assets are included at <strong>market value</strong> (the July 2025 version added this for MLH ADIs)</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p2">Att B para 2</a>)</td>
+</tr>
+<tr>
+<td>Free of encumbrance</td>
+<td>Assets must be free of encumbrances, unless APRA approves for a prudential purpose</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p2">Att B para 2</a>)</td>
+</tr>
+<tr>
+<td>Eligible assets</td>
+<td>(a) notes and coin and settlement funds; (b) Commonwealth Government and semi-government securities; (c) debt securities guaranteed by the Australian Government or foreign sovereign governments; (d) debt securities issued by supranationals and foreign governments; (e) bank bills, certificates of deposit and debt securities issued by ADIs; (f) deposits at call or readily convertible into cash within two business days with other ADIs, net of placements by other ADIs; (g) other securities approved by APRA</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p2">Att B para 2</a>)</td>
+</tr>
+<tr>
+<td>Debt securities</td>
+<td>Must be eligible for repurchase agreement with the RBA and must not be subordinated</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p3">Att B para 3</a>)</td>
+</tr>
+<tr>
+<td>Operational capacity</td>
+<td>Must be able to liquidate any securities held as liquid assets within two business days</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p4">Att B para 4</a>)</td>
+</tr>
+<tr>
+<td>Trigger ratio</td>
+<td>Must set a trigger ratio above the requirement and manage to it</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p5">Att B para 5</a>)</td>
+</tr>
+<tr>
+<td>Notification</td>
+<td>Inform APRA immediately when aware that liquid assets may fall below the requirement, and advise the remedial action</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p6">Att B para 6</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the full paragraph-by-paragraph treatment see document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (APS 210 companion: Attachments B and C) and Chapter 7 of the guide (<a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a>).</p>
+<h3 id="143-a-short-worked-example">14.3 A short worked example</h3>
+<p>An MLH ADI has total on-balance sheet liabilities of A$1,800m and irrevocable commitments of A$200m. Liabilities for MLH purposes (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p1">Att B para 1</a>): 1,800 + 200 = 2,000m. Requirement: 9% x 2,000 = A$180m. It holds eligible liquid assets at market value of A$210m. Ratio = 210 / 2,000 = 10.5%. Headroom = 210 - 180 = A$30m. If its trigger ratio is 11% (it must be set above 9%) (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p5">Att B para 5</a>), the ADI is below its trigger: 11% x 2,000 = 220m, so it is A$10m short of the trigger even though it meets the requirement. It manages to the trigger, and prepares to tell APRA immediately if the liquid assets may fall below the requirement (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p6">Att B para 6</a>).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> There is no 30-day outflow scenario in the MLH regime. It is a simple stock test. That makes it easy to compute and easy to game with timing. APRA's form for it (ARF 210.2) is listed in document <a href="11_APRA_Returns_and_Disclosures.html">11</a>.</p>
+</blockquote>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>
+<p><strong>What is the difference between a contractual and a behavioural maturity ladder, and which one is shown to a Treasurer when he asks "what do we expect?"</strong>
+   <strong>Answer:</strong> The contractual ladder places each cash flow at its contractual date (an at-call deposit is in the first bucket). The behavioural ladder places each cash flow where management expects it to happen, based on observed customer behaviour. The Treasurer asking "what do we expect" wants the behavioural ladder, but should also see the contractual one to understand how much judgement is in the numbers (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>).</p>
+</li>
+<li>
+<p><strong>A bank has the following in four buckets (A$bn): assets 10, 8, 6, 76; liabilities and equity 50, 14, 8, 28. Calculate the net gap and cumulative gap in each bucket.</strong>
+   <strong>Answer:</strong> Net gaps: 10 - 50 = -40; 8 - 14 = -6; 6 - 8 = -2; 76 - 28 = +48. Cumulative: -40; -46; -48; 0. The last figure is zero because assets (100) equal liabilities and equity (100).</p>
+</li>
+<li>
+<p><strong>Explain the difference between a limit, a trigger and an early warning indicator.</strong>
+   <strong>Answer:</strong> A limit is a line the bank agrees not to cross; a breach requires a plan of action to reduce the exposure (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>). A trigger is a lower, earlier line (typically set by management) that starts escalation before the limit is reached. An early warning indicator is a measure designed to move before trouble arrives, to identify and escalate negative trends (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>). The levels are the bank's choice.</p>
+</li>
+<li>
+<p><strong>Example Bank's HQLA is A$17.0bn and net cash outflows are A$11.55bn. The amber trigger is 125%. How much headroom is there to the trigger?</strong>
+   <strong>Answer:</strong> HQLA needed at 125% = 1.25 x 11.55 = 14.4375. Headroom = 17.0 - 14.4375 = A$2.5625bn, about A$2.56bn. (The LCR is 17.0 / 11.55 = 147.2%.)</p>
+</li>
+<li>
+<p><strong>Three funders supply 50%, 30% and 20% of a bank's wholesale funding. Calculate the HHI and say what number it would be if the shares were equal.</strong>
+   <strong>Answer:</strong> HHI = 50^2 + 30^2 + 20^2 = 2,500 + 900 + 400 = 3,800. With equal shares of 33.3% each, HHI = 3 x 33.3^2 = 3 x 1,111 = 3,333 (about 3,333). The actual figure is higher, which shows concentration.</p>
+</li>
+<li>
+<p><strong>HQLA is A$17.0bn. An internal scenario produces net outflows of A$20.4bn over 30 days. What is the straight-line survival horizon, and how much HQLA is needed for 30 days?</strong>
+   <strong>Answer:</strong> Daily outflow = 20.4 / 30 = 0.68. Horizon = 17.0 / 0.68 = 25 days. HQLA needed for 30 days = 20.4, so the shortfall is 20.4 - 17.0 = A$3.4bn.</p>
+</li>
+<li>
+<p><strong>Which APS 210 paragraphs require (a) the three-year funding strategy to be provided to APRA on request, (b) advice to APRA of material changes to the strategy, and (c) stress test results to be reported to the Board and APRA?</strong>
+   <strong>Answer:</strong> (a) (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 para 44</a>(a)); (b) (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p46">APS 210 para 46</a>); (c) (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>).</p>
+</li>
+<li>
+<p><strong>What must a retail run plan within the contingency funding plan not rely on?</strong>
+   <strong>Answer:</strong> It must not rely upon closing distribution channels to retail depositors. It must include measures to repay retail depositors as soon as practicable (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p50">APS 210 para 50</a>).</p>
+</li>
+<li>
+<p><strong>A bank has A$3,000m of liabilities and no irrevocable commitments, and is an MLH ADI. How much must it hold, and when must it tell APRA?</strong>
+   <strong>Answer:</strong> 9% x 3,000 = A$270m (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p57">APS 210 para 57</a>) (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p1">Att B para 1</a>). It must inform APRA immediately when it becomes aware that its liquid assets may fall below the requirement, and advise the remedial action (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#b-p6">Att B para 6</a>).</p>
+</li>
+<li>
+<p><strong>Example Bank's government bonds of A$2.0bn are pledged to a counterparty and the collateral team forgot to tell you. What is the true LCR, and what error would the reported LCR show?</strong>
+    <strong>Answer:</strong> True HQLA = 17.0 - 2.0 = 15.0 (encumbered assets do not count). True LCR = 15.0 / 11.55 = 129.9%. Reported (wrong) LCR = 17.0 / 11.55 = 147.2%, an overstatement of 17.3 percentage points (147.2 - 129.9). (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p38">APS 210 para 38</a>) (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>).</p>
+</li>
+</ol>
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>The LCR and NSFR are snapshots; the maturity ladder, stress tests and indicators show timing and resilience (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>).</li>
+<li>Always label a ladder contractual, behavioural or liquidity-adjusted, and show which assumptions it uses.</li>
+<li>Limits, triggers and early warning indicators stack: regulatory minimum, Board appetite, management trigger. A breach of a limit needs a plan of action (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</li>
+<li>Stress tests are regular, varied (institution-specific, market-wide, combined) and their results feed limits, strategy and the contingency funding plan (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 paras 62 to 66</a>).</li>
+<li>The funding strategy is three years, Board-approved at least annually, provided to APRA on request, with material changes advised (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 paras 44 to 46</a>).</li>
+<li>The contingency funding plan must be tested and approved by the Board at least annually, and must plan for a retail run without closing channels (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p50">APS 210 paras 50 and 51</a>).</li>
+<li>Collateral: always separate encumbered from unencumbered, and know where it is and how fast it moves (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p38">APS 210 para 38</a>).</li>
+<li>Management information must be reliable, timely and forward-looking, and every report needs a reader and a decision (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p40">APS 210 para 40</a>).</li>
+<li>Example Bank is single-entity and single-currency, so Level 1 equals Level 2 and the AUD LCR equals the all-currencies LCR; the MLH regime does not apply to it.</li>
+<li>Limits, triggers, cut-off times and dashboard layouts are the bank's own choices: typical practice, confirm with your controller.</li>
+</ul></main><footer><a href="09_NSFR_Production_End_to_End.html">&#9664; 09 Producing the NSFR, end to end</a><a href="11_APRA_Returns_and_Disclosures.html">11 Returns to APRA and public disclosure &#9654;</a></footer></body></html>

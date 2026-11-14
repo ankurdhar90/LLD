@@ -1,0 +1,1736 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>09 Producing the NSFR, end to end | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="08_LCR_Production_End_to_End.html" title="08 Producing the daily LCR, end to end">&#9664; 08</a><span class="t">09 Producing the NSFR, end to end</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#1-what-you-are-producing-and-why">1. What you are producing and why</option><option value="#2-the-procedure-at-a-glance">2. The procedure at a glance</option><option value="#3-timetable">3. Timetable</option><option value="#4-inputs-what-you-need-and-where-it-comes-from">4. Inputs: what you need and where it comes from</option><option value="#5-the-ten-steps">5. The ten steps</option><option value="#6-classifying-liabilities-and-equity-asf">6. Classifying liabilities and equity (ASF)</option><option value="#7-classifying-assets-and-off-balance-sheet-items-rsf">7. Classifying assets and off-balance sheet items (RSF)</option><option value="#8-the-example-bank-nsfr-working-paper">8. The Example Bank NSFR working paper</option><option value="#9-controls-and-reconciliation">9. Controls and reconciliation</option><option value="#10-reasonableness-checks">10. Reasonableness checks</option><option value="#11-month-on-month-movement-analysis">11. Month-on-month movement analysis</option><option value="#12-common-errors">12. Common errors</option><option value="#13-review-checklist">13. Review checklist</option><option value="#14-sign-off-reporting-to-alco-and-escalation">14. Sign-off, reporting to ALCO and escalation</option><option value="#15-how-the-nsfr-feeds-the-apra-return">15. How the NSFR feeds the APRA return</option><option value="#16-forecasting-the-nsfr">16. Forecasting the NSFR</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="10_Monitoring_Beyond_the_Ratios.html" title="10 Monitoring beyond the two ratios">10 &#9654;</a></header>
+<main><h1 id="09-producing-the-nsfr-end-to-end">09 Producing the NSFR, end to end</h1>
+<p><strong>Purpose:</strong> Give you a complete, step-by-step procedure for producing Example Bank's monthly Net Stable Funding Ratio (NSFR), from the first data extract to the signed working paper, the ALCO (asset and liability committee) pack and the feed to the APRA return.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Run the monthly NSFR timetable and say what must be true at each step before you move on.</li>
+<li>Classify every liability and equity line into the right available stable funding (ASF) category, and every asset and off-balance sheet item into the right required stable funding (RSF) category, using the decision tables in this document.</li>
+<li>Build the full NSFR working paper for Example Bank and reproduce 136.3 per cent exactly.</li>
+<li>Reconcile the NSFR inputs to the general ledger and run reasonableness checks that catch errors before a reviewer does.</li>
+<li>Explain a month-on-month movement line by line, and forecast the NSFR for the coming months.</li>
+<li>Review a colleague's NSFR using the checklist, and prepare the sign-off and ALCO report.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) for the idea of a balance sheet and the first narrated NSFR; document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (APS 210 companion: Attachments B and C) for the rules, paragraph by paragraph; and document <a href="07_Data_and_Classification.html">07</a> (Data: where the numbers come from and how each balance is classified) for the source systems and data fields. Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR) is useful for comparison but is not required.</p>
+<p><strong>Time:</strong> About 2 hours to read; about 6 hours to work through once with the Example Bank data; about 1 working day each month to produce the real thing (Example Bank convention; typical practice; confirm with your controller).</p>
+<hr />
+<h2 id="1-what-you-are-producing-and-why">1. What you are producing and why</h2>
+<p>The NSFR asks one question: <strong>over the next year, does the bank have enough steady, dependable funding to support the assets it holds and the promises it has made?</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p1">Att C para 1</a>). The standard answers it with a ratio:</p>
+<pre><code>NSFR = Available stable funding (ASF) / Required stable funding (RSF)
+</code></pre>
+<p>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p3">Att C para 3</a>). The minimum for a locally incorporated LCR ADI (liquidity coverage ratio authorised deposit-taking institution) is 100 per cent (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 and 60</a>). An ADI must also hold a buffer above that minimum "at all times" in line with its risk tolerance (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p4">Att C para 4</a>).</p>
+<ul>
+<li><strong>ASF</strong> is each funding source (a deposit, a bond, equity) multiplied by a percentage showing how reliably it will stay for one year (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p6">Att C paras 6 and 7</a>).</li>
+<li><strong>RSF</strong> is each asset or promise multiplied by a percentage showing how much stable funding it ties up (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p16">Att C paras 16 and 17</a>).</li>
+</ul>
+<p>Example Bank is a single legal entity in a single currency, so Level 1 (the bank alone) and Level 2 (the bank and its subsidiaries together) are the same here. The figures in this document are in A$ billions (A$bn).</p>
+<p><strong>Example Bank's position, at a glance:</strong> ASF 79.75; RSF 58.50; NSFR 136.3 per cent. Board risk appetite is 110 per cent and the amber early-warning trigger is 115 per cent (both are Example Bank conventions; typical practice; confirm with your controller). They are not in APS 210.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The NSFR moves slowly compared with the LCR, which is why we produce it monthly rather than daily. But it can still move sharply when a big funding line crosses the six-month or one-year boundary, or when someone pledges a large asset for a long time. Most of your work is making sure each line is in the right bucket, so spend your time on classification.</p>
+</blockquote>
+<hr />
+<h2 id="2-the-procedure-at-a-glance">2. The procedure at a glance</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>Month-end close of business (the last business day of the calendar month), after the general ledger month-end close has produced a balanced trial balance.</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Balance sheet by product, counterparty type and residual maturity; encumbrance and collateral data; derivatives valuations and margin; off-balance sheet commitments; trade finance and guarantee flows; classification rules; prior month's working paper.</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>Section 5: ten steps from data load to ALCO pack.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>Completeness and reconciliation to the ledger; classification checks; calculation checks; reasonableness and movement checks; four-eyes review. Section 9.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Signed NSFR working paper (ASF table, RSF table, ratio); movement analysis; ALCO report; data feed to the APRA return (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Second person in Liquidity Reporting reviews; the controller signs (the four-eyes rule: one prepares, a second reviews, the controller signs). Liquidity Risk (independent oversight, <a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>) receives the result.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Frozen data extracts, ledger reconciliation, working paper with formulas, exception log, review checklist, sign-off record, ALCO pack. Kept as the controller directs (typical practice: at least the period your record-keeping policy requires; confirm with your controller).</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="who-does-what-example-bank-convention-typical-practice-confirm-with-your-controller">Who does what (Example Bank convention; typical practice; confirm with your controller)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Part in the NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Liquidity Reporting (you and the controller, in Finance)</td>
+<td>Prepare, review, sign, report.</td>
+</tr>
+<tr>
+<td>Finance (general ledger team)</td>
+<td>Month-end close, trial balance, ledger balances.</td>
+</tr>
+<tr>
+<td>Treasury</td>
+<td>Securities, repos, derivatives, collateral, funding data; explains large movements; owns funding plan.</td>
+</tr>
+<tr>
+<td>Liquidity Risk</td>
+<td>Independent oversight (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>); sees the result and challenges it.</td>
+</tr>
+<tr>
+<td>Credit risk</td>
+<td>Non-performing loan flag and risk weight confirmations (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f27">Att C footnote 27</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>).</td>
+</tr>
+<tr>
+<td>ALCO (monthly)</td>
+<td>Receives the review pack; decides on actions if triggers are hit.</td>
+</tr>
+<tr>
+<td>Board Risk Committee (quarterly)</td>
+<td>Receives the summary against risk appetite.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="3-timetable">3. Timetable</h2>
+<p>Month-end is day 0. "BD" means business day after month-end. This is the Example Bank convention (typical practice; confirm with your controller). APRA's return due dates are in document <a href="11_APRA_Returns_and_Disclosures.html">11</a> and are not repeated here.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>When</th>
+<th>Task</th>
+<th>Owner</th>
+<th>Gate: do not move on until...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BD0 evening</td>
+<td>General ledger close; trial balance produced</td>
+<td>Finance</td>
+<td>Trial balance balances (assets equal liabilities plus equity)</td>
+</tr>
+<tr>
+<td>BD1 morning</td>
+<td>Data extracts frozen: deposits, loans, securities, repos, derivatives, collateral, facilities, trade finance</td>
+<td>Treasury and source system owners</td>
+<td>Each feed has a row count and total that agree with the source system</td>
+</tr>
+<tr>
+<td>BD1</td>
+<td>Load, completeness and ledger reconciliation (steps 1 to 3)</td>
+<td>Preparer</td>
+<td>Total assets and total liabilities plus equity agree to the ledger</td>
+</tr>
+<tr>
+<td>BD2</td>
+<td>Classification (steps 4 to 6) and calculation (step 7)</td>
+<td>Preparer</td>
+<td>No unclassified lines; exception log complete</td>
+</tr>
+<tr>
+<td>BD2</td>
+<td>Reasonableness and movement checks (step 8)</td>
+<td>Preparer</td>
+<td>Every movement above tolerance explained</td>
+</tr>
+<tr>
+<td>BD3</td>
+<td>Independent review (step 9)</td>
+<td>Reviewer</td>
+<td>Checklist in section 13 complete; questions cleared</td>
+</tr>
+<tr>
+<td>BD4</td>
+<td>Controller sign-off; result sent to Liquidity Risk</td>
+<td>Controller</td>
+<td>Signed</td>
+</tr>
+<tr>
+<td>BD5</td>
+<td>ALCO pack issued (step 10)</td>
+<td>Controller</td>
+<td>Pack reviewed</td>
+</tr>
+<tr>
+<td>Monthly (ALCO meeting)</td>
+<td>Present NSFR, movement and forecast</td>
+<td>Controller</td>
+<td>Minutes record actions</td>
+</tr>
+<tr>
+<td>Per APRA calendar</td>
+<td>Data feeds the return (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>)</td>
+<td>Preparer</td>
+<td>Return reconciles to this working paper</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> If the ledger has not closed, you must not start. A prepared NSFR on a pre-close ledger will have to be redone, and the redo is when mistakes happen.</p>
+</blockquote>
+<hr />
+<h2 id="4-inputs-what-you-need-and-where-it-comes-from">4. Inputs: what you need and where it comes from</h2>
+<p>Everything the NSFR needs is a balance, plus a handful of attributes that decide which factor applies. Document <a href="07_Data_and_Classification.html">07</a> explains each source system and the data fields. The table below lists what the NSFR specifically needs.</p>
+<h3 id="41-liabilities-and-equity-for-asf">4.1 Liabilities and equity (for ASF)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Why the NSFR needs it</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carrying value of each liability and equity balance</td>
+<td>The amount to weight (before regulatory deductions)</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p7">Att C para 7</a> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f9">Att C footnote 9</a>)</td>
+</tr>
+<tr>
+<td>Product type (demand deposit, term deposit, debt security, other)</td>
+<td>Chooses the category</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C paras 11 to 15</a></td>
+</tr>
+<tr>
+<td>Customer type: retail (natural person), SME, non-financial corporate, financial institution, sovereign, public sector entity (PSE), multilateral development bank (MDB), central bank</td>
+<td>Different providers have different stability</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 to 15</a></td>
+</tr>
+<tr>
+<td>Stable or less stable flag (retail)</td>
+<td>95 per cent or 90 per cent</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 and 13</a> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f13">Att C footnote 13</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f15">Att C footnote 15</a>)</td>
+</tr>
+<tr>
+<td>Operational deposit flag</td>
+<td>50 per cent</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f16">Att C footnote 16</a>)</td>
+</tr>
+<tr>
+<td>Intermediated deposit flag and notice period</td>
+<td>95, 90 or 50 per cent</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 to 14</a></td>
+</tr>
+<tr>
+<td>Contractual maturity, earliest redemption date (including put options and notice periods)</td>
+<td>Residual maturity for funding is to the earliest date</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a></td>
+</tr>
+<tr>
+<td>Regulatory capital before adjustments; Tier 2 instruments under one year</td>
+<td>100 per cent, with the Tier 2 carve-out</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a)</td>
+</tr>
+<tr>
+<td>Derivative liabilities (negative replacement cost), netting sets, variation margin posted</td>
+<td>NSFR derivative liabilities</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C paras 9 and 10</a></td>
+</tr>
+<tr>
+<td>Variation margin and initial margin received</td>
+<td>Not offset against derivative assets; zero ASF where not qualifying</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="42-assets-for-rsf">4.2 Assets (for RSF)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Why the NSFR needs it</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carrying value of each asset</td>
+<td>The amount to weight</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p17">Att C para 17</a></td>
+</tr>
+<tr>
+<td>Asset type and counterparty type</td>
+<td>Chooses the category</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C paras 29 to 37</a></td>
+</tr>
+<tr>
+<td>HQLA class before LCR caps and operational tests (HQLA1, HQLA2A, HQLA2B, not HQLA)</td>
+<td>Securities factors</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C paras 30, 33, 34 and 36</a> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f20">Att C footnote 20</a>)</td>
+</tr>
+<tr>
+<td>Final possible maturity date, including extension options; amortisation schedule if used</td>
+<td>Residual maturity bucket for assets</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C paras 20 to 22</a></td>
+</tr>
+<tr>
+<td>Encumbrance flag and the remaining encumbrance period</td>
+<td>Raises the factor</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f21">Att C footnote 21</a>)</td>
+</tr>
+<tr>
+<td>Beneficial ownership of securities in repos and securities lending</td>
+<td>Includes or excludes the security</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a></td>
+</tr>
+<tr>
+<td>For mortgages: standard or not, borrower is a natural person, loan-to-valuation ratio (LVR), risk weight</td>
+<td>65 or 85 per cent</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C paras 35 and 36</a></td>
+</tr>
+<tr>
+<td>Performing or non-performing flag</td>
+<td>85 or 100 per cent</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C paras 36 and 37</a> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f27">Att C footnote 27</a>)</td>
+</tr>
+<tr>
+<td>Initial margin posted; default fund contributions</td>
+<td>85 per cent</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(a)</td>
+</tr>
+<tr>
+<td>Derivative assets (positive replacement cost)</td>
+<td>100 per cent of the net amount</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p27">Att C paras 27, 28 and 37</a>(b)</td>
+</tr>
+<tr>
+<td>Unsettled purchases and sales at month-end</td>
+<td>Purchases included</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p19">Att C para 19</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="43-off-balance-sheet-exposures">4.3 Off-balance sheet exposures</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Why</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undrawn committed credit and liquidity facilities, split by revocability: irrevocable, conditionally revocable, unconditionally revocable</td>
+<td>5 per cent or 1 per cent</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p41">Att C para 41</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a></td>
+</tr>
+<tr>
+<td>Actual net outflows over the most recent 12 months on trade finance obligations, guarantees and letters of credit</td>
+<td>100 per cent of the 12-month amount</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="44-reference-data">4.4 Reference data</h3>
+<ul>
+<li>The classification rulebook (document <a href="07_Data_and_Classification.html">07</a>): the approved mapping of each ledger account and product code to an ASF or RSF category.</li>
+<li>The prior month's signed NSFR working paper.</li>
+<li>The list of eligible netting agreements (from Legal and Treasury).</li>
+<li>The current factor table (the "NSFR factor card" in document <a href="13_Job_Aids_and_Checklists.html">13</a>, and the "at a glance" tables in document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a>).</li>
+</ul>
+<hr />
+<h2 id="5-the-ten-steps">5. The ten steps</h2>
+<h3 id="step-1-load-the-data">Step 1: Load the data</h3>
+<ol>
+<li>Confirm the ledger has closed and the trial balance balances.</li>
+<li>Load each frozen extract into the NSFR working area: one tab per source (deposits, wholesale debt, loans, securities, repos and securities financing, derivatives, collateral, facilities, trade finance).</li>
+<li>For each extract, record: source system, extract date and time, row count and control total. Compare with the source system's own control total.</li>
+</ol>
+<p><strong>Control:</strong> Row counts and totals agree to the source. If they do not, stop and ask the system owner.</p>
+<h3 id="step-2-check-completeness-of-attributes">Step 2: Check completeness of attributes</h3>
+<p>For every line, check that each attribute in section 4 is present and valid (a customer type from the approved list, a maturity date that is a real date on or after month-end, an encumbrance flag of yes or no).</p>
+<p>When an attribute is missing, take the conservative category and record it. Conservative means the one that makes the NSFR lower:</p>
+<ul>
+<li>for a liability, the lower ASF factor;</li>
+<li>for an asset, the higher RSF factor.</li>
+</ul>
+<p>Record each case in the exception log with the item, the missing attribute, the treatment applied, and who is chasing the data. For example, a corporate deposit with no operational flag is treated as non-operational (50 per cent either way) but a retail deposit with no stable flag is treated as less stable (90 per cent, not 95).</p>
+<h3 id="step-3-reconcile-to-the-general-ledger">Step 3: Reconcile to the general ledger</h3>
+<p>Compare totals from the extracts with the ledger:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total assets in the NSFR data = total assets in the ledger</td>
+<td>Difference must be nil, or explained and within the tolerance you have been told (typical practice: nil for the total, with timing items explained individually; confirm with your controller).</td>
+</tr>
+<tr>
+<td>Total liabilities plus equity in the NSFR data = total liabilities plus equity in the ledger</td>
+<td>As above.</td>
+</tr>
+<tr>
+<td>Total assets = total liabilities plus equity</td>
+<td>Must hold. If the ledger balances but the data does not, one extract is incomplete.</td>
+</tr>
+<tr>
+<td>Each product total agrees to its ledger account group</td>
+<td>Differences logged and explained.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Section 9.1 has a template. <strong>Never plug a difference into "other assets" or "other liabilities" to force agreement.</strong></p>
+<h3 id="step-4-classify-liabilities-and-equity-into-asf-categories">Step 4: Classify liabilities and equity into ASF categories</h3>
+<p>Use the decision table in section 6. Record, for each line, the category, the factor and the paragraph.</p>
+<h3 id="step-5-classify-assets-into-rsf-categories">Step 5: Classify assets into RSF categories</h3>
+<p>Use the decision table in section 7. Apply the encumbrance rule (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>) before you choose the final factor.</p>
+<h3 id="step-6-classify-off-balance-sheet-exposures">Step 6: Classify off-balance sheet exposures</h3>
+<p>Apply <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a> to undrawn facilities, and <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a> to trade finance, guarantees and letters of credit. Add the derivative items (section 7.4).</p>
+<h3 id="step-7-calculate">Step 7: Calculate</h3>
+<p>For each line: weighted amount = carrying value x factor. Sum the ASF lines to get total ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p7">Att C para 7</a>). Sum the RSF lines to get total RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p17">Att C para 17</a>). Then:</p>
+<pre><code>NSFR = total ASF / total RSF
+</code></pre>
+<p>Round the ratio to one decimal place for reporting. Keep the working paper unrounded.</p>
+<p>Checks on the calculation: (a) re-add the totals by a second method (for example, a pivot by factor); (b) check that every weighted amount is between zero and the carrying value; (c) check the ratio against a calculator.</p>
+<h3 id="step-8-reasonableness-and-movement-checks">Step 8: Reasonableness and movement checks</h3>
+<p>Sections 10 and 11 set out the checks and the movement analysis.</p>
+<h3 id="step-9-independent-review">Step 9: Independent review</h3>
+<p>The reviewer uses the checklist in section 13, re-performs a sample of classifications and recalculates the totals. Questions go back to the preparer in writing and are cleared before sign-off.</p>
+<h3 id="step-10-sign-off-report-and-archive">Step 10: Sign-off, report and archive</h3>
+<ol>
+<li>The controller signs the working paper.</li>
+<li>Send the result to Liquidity Risk (independent oversight, <a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>).</li>
+<li>Issue the ALCO pack (section 14).</li>
+<li>Archive the frozen data, the working paper, the review checklist, the exception log and the sign-off.</li>
+<li>Make the figures available for the APRA return (section 15).</li>
+</ol>
+<hr />
+<h2 id="6-classifying-liabilities-and-equity-asf">6. Classifying liabilities and equity (ASF)</h2>
+<h3 id="61-the-order-of-questions">6.1 The order of questions</h3>
+<p>Ask these questions in this order and stop at the first "yes".</p>
+<ol>
+<li><strong>Is it regulatory capital, or a capital instrument?</strong> Regulatory capital before regulatory adjustments (excluding Tier 2 under one year) gets 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a)). Another capital instrument with effective residual maturity of one year or more, with no option that could shorten it below one year, gets 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(b)).</li>
+<li><strong>Is the residual maturity one year or more?</strong> Residual maturity for funding is measured to the earliest date the funds may be redeemed (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>). Any borrowing, liability or term deposit with an effective residual maturity of one year or more gets 100 per cent, whoever provided it (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c)). Only the part of the cash flows falling on or after the one-year point counts.</li>
+<li><strong>Is it a retail or SME deposit with residual maturity under one year?</strong> Stable gets 95 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a)); less stable gets 90 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)). Use the same stable or less stable split as the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p38">Att A para 38</a>).</li>
+<li><strong>Is it an intermediated deposit?</strong> Test the conditions in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a> first. If they are met: 95 per cent for stable with at least 12 months' notice (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(b)); 90 per cent for less stable with at least 12 months' notice (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(b)); 50 per cent where the intermediary needs at least six months' notice (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(d)). If the conditions are not met, the deposit is treated as from a financial institution (go to question 7).</li>
+<li><strong>Is it an operational deposit?</strong> 50 per cent, including superannuation fund deposits that meet the operational definition (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b) and (c)). The operational tests are in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>.</li>
+<li><strong>Is it funding under one year from a non-financial corporate, or a sovereign, PSE or MDB?</strong> 50 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a) and (e)).</li>
+<li><strong>Is it funding from a financial institution or a central bank?</strong> Residual maturity six months to under one year: 50 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f)). Under six months: zero (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)).</li>
+<li><strong>Is it a liability with no stated maturity, a derivative liability, or a trade date payable?</strong> Zero (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b), (c) and (d)), except deferred tax liabilities and minority interests, which follow their effective maturity: 100 per cent if one year or more, 50 per cent if six months to under one year (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b)).</li>
+<li><strong>Anything else:</strong> zero (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)).</li>
+</ol>
+<h3 id="62-the-decision-table-counterparty-by-residual-maturity">6.2 The decision table: counterparty by residual maturity</h3>
+<p>This table shows the factor for the main funding types. "Residual maturity" is measured to the earliest date the funds can be redeemed (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Funding provider and type</th>
+<th>Under 6 months</th>
+<th>6 months to under 1 year</th>
+<th>1 year or more</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory capital (before adjustments)</td>
+<td>100%</td>
+<td>100%</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a))</td>
+</tr>
+<tr>
+<td>Retail and SME, stable</td>
+<td>95% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a))</td>
+<td>95% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a))</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>Retail and SME, less stable</td>
+<td>90% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a))</td>
+<td>90% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a))</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>Operational deposit (including super funds)</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b), (c))</td>
+<td>50%</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>Non-financial corporate, non-operational</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a))</td>
+<td>50%</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>Sovereign, PSE, MDB, national development bank</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(e))</td>
+<td>50%</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>Financial institution or central bank</td>
+<td>0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f))</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+<tr>
+<td>Liability with no stated maturity</td>
+<td>0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b))</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Net derivative liabilities over assets</td>
+<td>0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(c))</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Trade date payables settling normally</td>
+<td>0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(d))</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A few cells need care. (1) Retail and SME deposits are 95 or 90 per cent for under one year, not split by six months, and move to 100 per cent at one year. (2) The two columns "under 6 months" and "6 months to under 1 year" differ only for financial institutions and central banks. (3) Retail "at call" deposits count as under six months because they can be withdrawn at once.</p>
+</blockquote>
+<h3 id="63-the-maturity-buckets-and-how-to-measure-them">6.3 The maturity buckets and how to measure them</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>Meaning for funding</th>
+<th>Where it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Under 6 months</td>
+<td>Earliest redemption date is within 6 months of the reporting date</td>
+<td>Financial institution and central bank funding scores 0 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+</tr>
+<tr>
+<td>6 months to under 1 year</td>
+<td>Earliest redemption date is 6 months or more, but less than 1 year, away</td>
+<td>Financial institution funding scores 50 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f))</td>
+</tr>
+<tr>
+<td>1 year or more</td>
+<td>Earliest redemption date is 1 year or more away</td>
+<td>100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c))</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules to apply:</p>
+<ul>
+<li><strong>Earliest redemption date</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>). For a bond the holder can put back to us after nine months, the maturity is nine months, not the five-year final maturity. For a deposit with a 31-day notice period, the maturity is 31 days from the reporting date at the earliest.</li>
+<li><strong>Cash flows split</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>). For a long-dated liability that pays in instalments, only the cash flows falling on or after the six-month and one-year points count as six months or more, and one year or more, respectively. Cash flows due in less than one year from a longer liability do not get 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c)).</li>
+<li><strong>Term deposits.</strong> A retail term deposit with eight months to run is under one year (90 per cent if less stable). The LCR's "no early withdrawal" feature (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A paras 41 and 42</a>) does not change the NSFR factor; the NSFR depends on residual maturity.</li>
+</ul>
+<h3 id="64-special-points">6.4 Special points</h3>
+<ul>
+<li><strong>Carrying value, not the regulatory number.</strong> Use the balance sheet amount before regulatory deductions or filters (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f9">Att C footnote 9</a>).</li>
+<li><strong>Tier 2 instruments</strong> with under one year to maturity are excluded from the 100 per cent for regulatory capital (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a)). They then fall into the maturity table above (financial institution or other holder and bucket).</li>
+<li><strong>Cooperative network deposits</strong> have a special rule that does not apply to Example Bank (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f18">Att C footnote 18</a>).</li>
+</ul>
+<hr />
+<h2 id="7-classifying-assets-and-off-balance-sheet-items-rsf">7. Classifying assets and off-balance sheet items (RSF)</h2>
+<h3 id="71-the-order-of-questions">7.1 The order of questions</h3>
+<p>Ask these in order and stop at the first "yes".</p>
+<ol>
+<li><strong>Is the asset on our balance sheet and ours?</strong> Exclude borrowed securities where we have no beneficial ownership (for example, securities received under a reverse repo or collateral swap that are not on our balance sheet). Include securities lent or repo'd where we keep beneficial ownership (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>). Include purchases that have been executed but not yet settled; sales executed may be excluded if the conditions are met (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p19">Att C para 19</a>).</li>
+<li><strong>Is it encumbered?</strong> Apply the encumbrance rule (section 7.2) and use the result as a floor if it gives a higher factor than the asset's own category.</li>
+<li><strong>Is it cash or an RBA balance, or a trade date receivable?</strong> Zero (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>).</li>
+<li><strong>Is it unencumbered HQLA1, or an equivalent sovereign security?</strong> 5 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a>).</li>
+<li><strong>Is it a short loan to a financial institution?</strong> Under six months: 10 per cent if secured by freely re-usable HQLA1 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C para 31</a>), otherwise 15 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(b)). Six months to under one year: 50 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(c)). One year or more: 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c)).</li>
+<li><strong>Is it HQLA2A?</strong> 15 per cent. <strong>HQLA2B?</strong> 50 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C paras 33</a>(a) and 34(a)). (No Australian dollar asset currently qualifies as HQLA2, so you will rarely use these for Example Bank.)</li>
+<li><strong>Is it a loan or other non-HQLA asset with residual maturity under one year (not a financial institution)?</strong> 50 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f)).</li>
+<li><strong>Is it a standard residential mortgage to a natural person, LVR 80 per cent or below, one year or more?</strong> 65 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a)). Another loan of one year or more with a risk weight of 35 per cent or lower, not to a financial institution: 65 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(b)).</li>
+<li><strong>Is it a performing loan of one year or more that does not qualify at 65 per cent, or a non-HQLA security of one year or more, or initial margin or a default fund contribution, or a physical commodity?</strong> 85 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>).</li>
+<li><strong>Anything else, including non-performing loans, fixed assets, goodwill, intangibles, non-exchange-traded equities:</strong> 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c)).</li>
+</ol>
+<h3 id="72-encumbrance-the-rule-from-att-c-para-23">7.2 Encumbrance: the rule from Att C para 23</h3>
+<p>Find the assets that are pledged, backing covered bonds or securitisations, posted as collateral, or otherwise tied up (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f21">Att C footnote 21</a>). Take the <strong>remaining</strong> encumbrance period and apply:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Remaining encumbrance period</th>
+<th>RSF factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Less than 6 months</td>
+<td>Same as an equivalent unencumbered asset</td>
+</tr>
+<tr>
+<td>6 months to under 1 year, and the unencumbered factor is 50% or lower</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>6 months to under 1 year, and the unencumbered factor is above 50%</td>
+<td>The higher unencumbered factor</td>
+</tr>
+<tr>
+<td>1 year or more</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(a))</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Worked example.</strong> Example Bank pledges A$2.0bn of its Australian Government bonds (unencumbered factor 5 per cent):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Remaining pledge</th>
+<th>Factor</th>
+<th>RSF</th>
+<th>Change from unencumbered (0.10)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14 days</td>
+<td>5%</td>
+<td>0.10</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>9 months</td>
+<td>50%</td>
+<td>1.00</td>
+<td>+0.90</td>
+</tr>
+<tr>
+<td>2 years</td>
+<td>100%</td>
+<td>2.00</td>
+<td>+1.90</td>
+</tr>
+</tbody>
+</table></div>
+<p>Encumbrance can move the ratio noticeably. In the 9-month case, total RSF would move from 58.50 to 59.40 and the NSFR from 136.3 per cent to 134.3 per cent (79.75 / 59.40 = 1.3426), looking at this effect alone and ignoring any funding raised by the repo itself.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The rule uses the remaining period of the encumbrance, not the asset's own maturity. A ten-year bond pledged for 14 days is "less than six months". Also, a repo that is routinely rolled needs judgement: if the bank expects to keep rolling it, ask the controller whether to measure the term of the arrangement; treat the doubt conservatively (typical practice; confirm with your controller).</p>
+</blockquote>
+<h3 id="73-the-decision-table-asset-type-by-maturity">7.3 The decision table: asset type by maturity</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Under 6 months</th>
+<th>6 months to under 1 year</th>
+<th>1 year or more</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notes and coin; RBA balances</td>
+<td>0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>)</td>
+<td>0% for reserves and balances (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>(b)); central bank loans 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(c))</td>
+<td>0% for balances; central bank loans 100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>HQLA1 securities, unencumbered</td>
+<td>5% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a>)</td>
+<td>5%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>HQLA2A, unencumbered</td>
+<td>15% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(a))</td>
+<td>15%</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>HQLA2B, unencumbered</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(a))</td>
+<td>50%</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>Loans to financial institutions, secured by freely re-usable HQLA1</td>
+<td>10% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C para 31</a>)</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(c))</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Other loans to financial institutions</td>
+<td>15% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(b))</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(c))</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Loans to retail, SME, non-financial corporates, sovereigns, PSEs</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f))</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f))</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>Standard residential mortgages, natural persons, LVR 80% or below</td>
+<td>50% if under 1 year (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f))</td>
+<td>50%</td>
+<td>65% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a))</td>
+</tr>
+<tr>
+<td>Other loans, risk weight 35% or lower, not financial institutions</td>
+<td>50%</td>
+<td>50%</td>
+<td>65% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(b))</td>
+</tr>
+<tr>
+<td>Other performing loans, not financial institutions</td>
+<td>50%</td>
+<td>50%</td>
+<td>85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(b))</td>
+</tr>
+<tr>
+<td>Non-HQLA securities, unencumbered, not in default</td>
+<td>50% if under 1 year (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f))</td>
+<td>50%</td>
+<td>85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(c))</td>
+</tr>
+<tr>
+<td>Non-performing loans, defaulted securities, fixed assets, other</td>
+<td>100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Physical traded commodities, including gold</td>
+<td>85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(d))</td>
+<td>85%</td>
+<td>85%</td>
+</tr>
+<tr>
+<td>Initial margin posted; default fund contributions</td>
+<td>85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(a))</td>
+<td>85%</td>
+<td>85%</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="74-derivatives-and-the-off-balance-sheet-items">7.4 Derivatives and the off-balance sheet items</h3>
+<p><strong>Derivatives</strong> (the Example Bank base case ignores them; the full rule is below).</p>
+<ol>
+<li>Take the replacement cost (current market value) of each contract. Negative values are liabilities; positive values are assets. Net within eligible netting sets (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C paras 9 and 27</a>).</li>
+<li>NSFR derivative liabilities = derivative liabilities minus variation margin posted (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p10">Att C para 10</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f11">Att C footnote 11</a>). Do not also count the variation margin asset in RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f12">Att C footnote 12</a>).</li>
+<li>NSFR derivative assets = positive replacement cost, not reduced by collateral received unless it is qualifying cash variation margin in the same currency of settlement (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>). Leftover collateral liabilities and any initial margin received get zero ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>).</li>
+<li>If NSFR derivative liabilities exceed NSFR derivative assets, the excess gets zero ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(c)). If assets exceed liabilities, the excess gets 100 per cent RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(b); <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f29">Att C footnote 29</a>).</li>
+<li>Add 20 per cent of derivative liabilities, before deducting variation margin posted, to RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(d)).</li>
+</ol>
+<p>Worked example (invented numbers, A$bn): derivative liabilities after netting 2.0; variation margin posted 0.5; derivative assets 1.2.</p>
+<ul>
+<li>NSFR derivative liabilities = 2.0 - 0.5 = 1.5.</li>
+<li>1.5 is greater than 1.2, so no 100 per cent RSF on the net asset (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(b)) and the excess 0.3 gets zero ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(c)).</li>
+<li>RSF add-on = 20% x 2.0 = 0.40 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(d)).</li>
+<li>RSF contribution from derivatives = 0.40.</li>
+</ul>
+<p>If instead derivative assets were 1.8: NSFR derivative assets 1.8 minus NSFR derivative liabilities 1.5 = 0.3 at 100% = 0.30, plus 0.40, giving 0.70.</p>
+<p><strong>Undrawn facilities.</strong> Use <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>: irrevocable and conditionally revocable credit and liquidity facilities to any client 5 per cent; unconditionally revocable 1 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p41">Att C para 41</a>). In the NSFR the rate does not depend on whether the customer is retail, corporate or a financial institution. When unsure whether a facility can be cancelled unconditionally, use 5 per cent and record the doubt.</p>
+<p><strong>Trade finance, guarantees, letters of credit.</strong> 100 per cent of the actual net outflows over the most recent 12 months (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a>). Example: if trade finance has net outflows of 0.02 each month, the 12-month total is 0.24 and RSF is 0.24. (In the LCR the corresponding treatment uses different rules; do not copy the LCR figure across.)</p>
+<h3 id="75-other-points">7.5 Other points</h3>
+<ul>
+<li><strong>Maturity of assets</strong> is measured to the latest possible date, assuming any extension option is exercised (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>). If there is no defined maturity, or maturity is under periodic review, treat the residual maturity as one year or more (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p21">Att C para 21</a>). An amortising loan may be split so that the part due within one year is included in the under one year category (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p22">Att C para 22</a>); check with the controller whether Example Bank does this.</li>
+<li><strong>HQLA for the NSFR</strong> is determined before the LCR caps and operational requirements (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f20">Att C footnote 20</a>). An asset that the LCR cap stops us counting still gets its HQLA factor in the NSFR.</li>
+<li><strong>Non-maturity reverse repos</strong> take 100 per cent unless APRA agrees otherwise (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f28">Att C footnote 28</a>).</li>
+<li><strong>Interdependent assets and liabilities</strong> are only treated as zero where APRA has made a determination (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p38">Att C paras 38 to 40</a>). We never apply this ourselves.</li>
+<li><strong>Committed Liquidity Facility (CLF).</strong> The 10 per cent factor for CLF-eligible assets applies only up to the CLF amount (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p32">Att C para 32</a>). The aggregate CLF was phased out to zero as at 1 January 2023, so for Example Bank the line is nil; confirm it each month.</li>
+</ul>
+<hr />
+<h2 id="8-the-example-bank-nsfr-working-paper">8. The Example Bank NSFR working paper</h2>
+<p>This is the full working paper for Example Bank at the base position. All amounts are A$bn. Every line is shown, so you can follow it with the balance sheet in document <a href="02_Liquidity_From_Zero.html">02</a>. The ledger account references would be filled from your chart of accounts (they are not shown here).</p>
+<h3 id="81-part-a-available-stable-funding-asf">8.1 Part A: available stable funding (ASF)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ref</th>
+<th>Funding line</th>
+<th>Carrying value</th>
+<th>Residual maturity and provider</th>
+<th>ASF category</th>
+<th>Factor</th>
+<th>Weighted ASF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>Shareholders' equity (equals regulatory capital)</td>
+<td>8.0</td>
+<td>Capital</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a)</td>
+<td>100%</td>
+<td>8.00</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Wholesale debt, 1 year or more</td>
+<td>15.0</td>
+<td>1 year or more</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c)</td>
+<td>100%</td>
+<td>15.00</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>Retail deposits, stable (at call)</td>
+<td>25.0</td>
+<td>Retail, stable</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a)</td>
+<td>95%</td>
+<td>23.75</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>Retail deposits, less stable (at call)</td>
+<td>15.0</td>
+<td>Retail, less stable</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)</td>
+<td>90%</td>
+<td>13.50</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>Retail term deposits (over 30 days, under 1 year)</td>
+<td>10.0</td>
+<td>Retail, less stable, under 1 year</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)</td>
+<td>90%</td>
+<td>9.00</td>
+</tr>
+<tr>
+<td>A6</td>
+<td>SME deposits (qualifying, less stable)</td>
+<td>5.0</td>
+<td>SME, less stable</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)</td>
+<td>90%</td>
+<td>4.50</td>
+</tr>
+<tr>
+<td>A7</td>
+<td>Corporate operational deposits</td>
+<td>4.0</td>
+<td>Operational</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b)</td>
+<td>50%</td>
+<td>2.00</td>
+</tr>
+<tr>
+<td>A8</td>
+<td>Corporate non-operational deposits</td>
+<td>6.0</td>
+<td>Non-financial corporate, under 1 year</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)</td>
+<td>50%</td>
+<td>3.00</td>
+</tr>
+<tr>
+<td>A9</td>
+<td>Financial institution deposits (at call)</td>
+<td>4.0</td>
+<td>Financial institution, under 6 months</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)</td>
+<td>0%</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>A10</td>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>Under 6 months</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)</td>
+<td>0%</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>A11</td>
+<td>Wholesale debt, 30 days to under 6 months</td>
+<td>3.0</td>
+<td>Under 6 months</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)</td>
+<td>0%</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>A12</td>
+<td>Wholesale debt, 6 months to under 1 year</td>
+<td>2.0</td>
+<td>6 months to under 1 year</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f)</td>
+<td>50%</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>A13</td>
+<td>Other liabilities (no stated maturity)</td>
+<td>2.0</td>
+<td>No stated maturity</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b)</td>
+<td>0%</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>100.0</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>79.75</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Sum check:</strong> 8.00 + 15.00 = 23.00; + 23.75 = 46.75; + 13.50 = 60.25; + 9.00 = 69.25; + 4.50 = 73.75; + 2.00 = 75.75; + 3.00 = 78.75; + 1.00 = 79.75.</p>
+<p><strong>Assumptions recorded on the working paper:</strong></p>
+<ul>
+<li>The short wholesale debt lines (A10, A11, A12) are held by financial institutions and the market generally, not by non-financial corporates, sovereigns, PSEs or MDBs. If a holder were a non-financial corporate, funding under one year would score 50 per cent rather than 0 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)).</li>
+<li>A5: the "no early withdrawal" feature matters for the LCR, not the NSFR factor, which depends on residual maturity under one year (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)).</li>
+<li>A8 is assumed to have residual maturity under one year (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)).</li>
+<li>No Tier 2 instrument has under one year to run, and regulatory capital equals the equity line (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a)).</li>
+</ul>
+<h3 id="82-part-b-required-stable-funding-rsf">8.2 Part B: required stable funding (RSF)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ref</th>
+<th>Asset or exposure</th>
+<th>Carrying value</th>
+<th>Attributes</th>
+<th>RSF category</th>
+<th>Factor</th>
+<th>Weighted RSF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Cash and balances with the RBA</td>
+<td>5.0</td>
+<td>Notes, coin, Exchange Settlement Account</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>(a), (b)</td>
+<td>0%</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>HQLA1, unencumbered</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a>(a)</td>
+<td>5%</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Other debt securities (non-HQLA, over 1 year)</td>
+<td>3.0</td>
+<td>Not HQLA, 1 year or more, not in default</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(c)</td>
+<td>85%</td>
+<td>2.55</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Loans to other banks (under 6 months, unsecured)</td>
+<td>2.0</td>
+<td>Financial institution, under 6 months, unsecured</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(b)</td>
+<td>15%</td>
+<td>0.30</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Residential mortgages (standard, LVR 80% or below, over 1 year)</td>
+<td>50.0</td>
+<td>Natural persons, standard, unencumbered</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a)</td>
+<td>65%</td>
+<td>32.50</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Business loans (over 1 year)</td>
+<td>15.0</td>
+<td>Performing, not standard residential</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(b)</td>
+<td>85%</td>
+<td>12.75</td>
+</tr>
+<tr>
+<td>B7</td>
+<td>Personal and business loans (under 1 year)</td>
+<td>8.0</td>
+<td>Retail, SME and corporate, under 1 year</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f)</td>
+<td>50%</td>
+<td>4.00</td>
+</tr>
+<tr>
+<td>B8</td>
+<td>Other assets (premises, goodwill, tax assets)</td>
+<td>5.0</td>
+<td>Fixed and other assets</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c)</td>
+<td>100%</td>
+<td>5.00</td>
+</tr>
+<tr>
+<td>B9</td>
+<td>Undrawn facilities (10.0 + 5.0 + 1.0)</td>
+<td>16.0</td>
+<td>Treated as irrevocable or conditionally revocable</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p41">Att C para 41</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a></td>
+<td>5%</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>58.50</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Balance sheet assets total 100.0 (B1 to B8: 5.0 + 12.0 + 3.0 + 2.0 + 50.0 + 15.0 + 8.0 + 5.0 = 100.0). B9 is off-balance sheet, so it is not in the 100.0.</p>
+<p><strong>Sum check:</strong> 0 + 0.60 + 2.55 + 0.30 = 3.45; + 32.50 = 35.95; + 12.75 = 48.70; + 4.00 = 52.70; + 5.00 = 57.70; + 0.80 = 58.50.</p>
+<p><strong>Assumptions recorded on the working paper:</strong></p>
+<ul>
+<li>Derivatives are ignored for simplicity. A full calculation would add 20 per cent of derivative liabilities (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(d)) and any net derivative asset (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(b)). The A$0.3bn of net derivative outflows in the LCR data is an LCR input, not an NSFR one.</li>
+<li>Business loans take 85 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(b)) because they are not standard residential loans and are assumed to have a risk weight above 35 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(b) does not apply).</li>
+<li>All assets are unencumbered. Encumbrance would raise factors (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>).</li>
+<li>No trade finance, guarantees or letters of credit are modelled (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a>).</li>
+<li>The Committed Liquidity Facility is nil (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p32">Att C para 32</a>).</li>
+</ul>
+<h3 id="83-part-c-the-ratio-and-the-comparison-with-limits">8.3 Part C: the ratio and the comparison with limits</h3>
+<pre><code>NSFR = ASF / RSF = 79.75 / 58.50 = 1.3632 = 136.3%
+Surplus of ASF over RSF = 79.75 - 58.50 = 21.25
+</code></pre>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Level</th>
+<th>Example Bank NSFR</th>
+<th>Result</th>
+<th>Headroom in ASF terms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory minimum (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>)</td>
+<td>100%</td>
+<td>136.3%</td>
+<td>Pass</td>
+<td>79.75 - 58.50 = 21.25</td>
+</tr>
+<tr>
+<td>Board risk appetite (Example Bank convention)</td>
+<td>110%</td>
+<td>136.3%</td>
+<td>Pass</td>
+<td>79.75 - (58.50 x 1.10) = 79.75 - 64.35 = 15.40</td>
+</tr>
+<tr>
+<td>Management amber trigger (Example Bank convention)</td>
+<td>115%</td>
+<td>136.3%</td>
+<td>Pass</td>
+<td>79.75 - (58.50 x 1.15) = 79.75 - 67.275 = 12.475</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What drives the result?</strong> Mortgages contribute 32.50 of the 58.50 RSF (55.6 per cent). Retail deposits (stable, less stable and term) provide 23.75 + 13.50 + 9.00 = 46.25 of the 79.75 ASF (58.0 per cent). That is why a retail-funded mortgage lender usually has a comfortable NSFR.</p>
+<h3 id="84-part-d-how-the-working-paper-is-laid-out">8.4 Part D: how the working paper is laid out</h3>
+<p>Keep these tabs in the file, in this order (typical practice; confirm with your controller):</p>
+<ol>
+<li><strong>Cover and sign-off:</strong> month, preparer, reviewer, controller, dates, version.</li>
+<li><strong>Summary:</strong> ASF, RSF, ratio, comparison with limits, movement from last month.</li>
+<li><strong>ASF lines:</strong> as in 8.1.</li>
+<li><strong>RSF lines:</strong> as in 8.2.</li>
+<li><strong>Data tabs:</strong> the frozen extracts, unaltered.</li>
+<li><strong>Reconciliation:</strong> to the ledger (section 9.1).</li>
+<li><strong>Exception log:</strong> missing attributes, judgements, overrides.</li>
+<li><strong>Movement analysis:</strong> section 11.</li>
+<li><strong>Checklist:</strong> the review checklist from section 13, completed.</li>
+</ol>
+<hr />
+<h2 id="9-controls-and-reconciliation">9. Controls and reconciliation</h2>
+<h3 id="91-reconciliation-to-the-general-ledger">9.1 Reconciliation to the general ledger</h3>
+<p>The balance sheet in the NSFR data must agree with the ledger. The two totals that must agree are <strong>total assets</strong> and <strong>total liabilities and equity</strong>, and they must also agree with each other.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Reconciliation</th>
+<th>NSFR data</th>
+<th>General ledger</th>
+<th>Difference</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total assets</td>
+<td>100.0</td>
+<td>100.0</td>
+<td>0.0</td>
+<td>None needed</td>
+</tr>
+<tr>
+<td>Total liabilities and equity</td>
+<td>100.0</td>
+<td>100.0</td>
+<td>0.0</td>
+<td>None needed</td>
+</tr>
+<tr>
+<td>Total assets minus total liabilities and equity</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>Balance sheet balances</td>
+</tr>
+<tr>
+<td>Off-balance sheet facilities (memo; not in the ledger totals)</td>
+<td>16.0</td>
+<td>Facilities register 16.0</td>
+<td>0.0</td>
+<td>Agree to the register</td>
+</tr>
+</tbody>
+</table></div>
+<p>Also reconcile at product level: for each line in 8.1 and 8.2, the carrying value agrees to a ledger account or group of accounts. Record any difference and its cause (timing, mapping, error). Anything over the tolerance (typical practice: nil on totals, and A$0.01bn on a line, with explanation; confirm with your controller) goes to the controller before you continue.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> If assets and liabilities do not balance, do not "fix" it in the NSFR. It means the data are incomplete or duplicated. Go back to the extract and find the cause. A plug hides an error that will come back.</p>
+</blockquote>
+<h3 id="92-the-control-set">9.2 The control set</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it prevents</th>
+<th>Type</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frozen extracts with row counts and control totals</td>
+<td>Missing or changed data</td>
+<td>Preventive</td>
+<td>Extract log</td>
+</tr>
+<tr>
+<td>Reconciliation to the ledger</td>
+<td>Incomplete or duplicated balances</td>
+<td>Detective</td>
+<td>Reconciliation tab</td>
+</tr>
+<tr>
+<td>Attribute completeness check</td>
+<td>Wrong factor from missing data</td>
+<td>Detective</td>
+<td>Exception log</td>
+</tr>
+<tr>
+<td>Mapping table under change control</td>
+<td>Silent changes to classification</td>
+<td>Preventive</td>
+<td>Mapping version and approval</td>
+</tr>
+<tr>
+<td>Formula protection and a locked template</td>
+<td>Accidental overwrites</td>
+<td>Preventive</td>
+<td>Template version</td>
+</tr>
+<tr>
+<td>Re-addition of totals by a second method</td>
+<td>Arithmetic errors</td>
+<td>Detective</td>
+<td>Check cells</td>
+</tr>
+<tr>
+<td>Reasonableness checks</td>
+<td>Implausible results</td>
+<td>Detective</td>
+<td>Section 10</td>
+</tr>
+<tr>
+<td>Movement analysis with explanations</td>
+<td>Unexplained changes</td>
+<td>Detective</td>
+<td>Section 11</td>
+</tr>
+<tr>
+<td>Independent review with checklist</td>
+<td>Errors missed by the preparer</td>
+<td>Detective</td>
+<td>Completed checklist</td>
+</tr>
+<tr>
+<td>Controller sign-off</td>
+<td>Unapproved numbers leaving the team</td>
+<td>Preventive</td>
+<td>Signed cover</td>
+</tr>
+<tr>
+<td>Comparison with the daily LCR data and the APRA return</td>
+<td>Inconsistent figures across reports</td>
+<td>Detective</td>
+<td>Return reconciliation</td>
+</tr>
+</tbody>
+</table></div>
+<p>Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation) sets out the full framework and the incident procedures if you find an error after distribution.</p>
+<hr />
+<h2 id="10-reasonableness-checks">10. Reasonableness checks</h2>
+<p>After the calculation, test whether the result makes sense before anyone else sees it. For Example Bank at the base position:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Calculation</th>
+<th>Base result</th>
+<th>Rule of thumb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total ASF as a share of total liabilities and equity</td>
+<td>79.75 / 100.0</td>
+<td>79.75%</td>
+<td>Should not move by more than a few points in a month without a reason</td>
+</tr>
+<tr>
+<td>Balance sheet RSF as a share of total assets</td>
+<td>57.70 / 100.0</td>
+<td>57.7%</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Average ASF factor on retail deposits</td>
+<td>(23.75 + 13.50 + 9.00) / (25.0 + 15.0 + 10.0) = 46.25 / 50.0</td>
+<td>92.5%</td>
+<td>Must lie between 90% and 95%</td>
+</tr>
+<tr>
+<td>Average RSF factor on loans</td>
+<td>(32.50 + 12.75 + 4.00) / (50.0 + 15.0 + 8.0) = 49.25 / 73.0</td>
+<td>67.5%</td>
+<td>Must lie between 50% and 85% for performing loans</td>
+</tr>
+<tr>
+<td>Cash and HQLA1 as a share of total assets</td>
+<td>(5.0 + 12.0) / 100.0</td>
+<td>17.0%</td>
+<td>Compare with the HQLA in the daily LCR (17.0): they should agree in total</td>
+</tr>
+<tr>
+<td>Mortgage share of RSF</td>
+<td>32.50 / 58.50</td>
+<td>55.6%</td>
+<td>Should be stable</td>
+</tr>
+<tr>
+<td>Total ASF must not exceed total funding</td>
+<td>79.75 versus 100.0</td>
+<td>Pass</td>
+<td>ASF is always at most the carrying value</td>
+</tr>
+<tr>
+<td>No factor outside the standard's set</td>
+<td>List of factors used</td>
+<td>RSF: 0, 5, 15, 50, 65, 85, 100. ASF: 0, 50, 90, 95, 100</td>
+<td>Any factor outside the standard (RSF 0, 1, 5, 10, 15, 50, 65, 85, 100; ASF 0, 50, 90, 95, 100) is an error</td>
+</tr>
+<tr>
+<td>Consistency with the LCR</td>
+<td>Same customer and stable tags as the daily LCR</td>
+<td>Agree</td>
+<td>Differences must be explained</td>
+</tr>
+<tr>
+<td>Reasonable direction</td>
+<td>If assets grew, RSF should grow</td>
+<td>Agree</td>
+<td>A fall in RSF when assets grew needs an explanation</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Tolerance for investigation</strong> (typical practice; confirm with your controller): investigate and explain any line that moves by more than 5 per cent of its prior balance or A$0.5bn, and any change of more than 2 percentage points in the NSFR.</p>
+<hr />
+<h2 id="11-month-on-month-movement-analysis">11. Month-on-month movement analysis</h2>
+<h3 id="111-method">11.1 Method</h3>
+<ol>
+<li>Place last month's and this month's working papers side by side, line by line.</li>
+<li>For each line, calculate the change in carrying value, the change in factor (if the classification moved) and the change in weighted amount.</li>
+<li>Total the changes: change in ASF and change in RSF.</li>
+<li>Explain the ratio change by recalculating in two steps: first change only ASF, then change RSF. This shows how much each side contributed.</li>
+<li>For each large change ask: what transaction caused this, who knows (usually Treasury), and is it permanent?</li>
+<li>Record the explanation in plain language, with the paragraph if a factor changed.</li>
+</ol>
+<h3 id="112-worked-example-lending-cash-as-mortgages">11.2 Worked example: lending cash as mortgages</h3>
+<p>Example Bank lends A$3.0bn of its cash as new standard residential mortgages (LVR 80 per cent or below, one year or more).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Last month</th>
+<th>This month</th>
+<th>Change in carrying value</th>
+<th>Factor</th>
+<th>Change in weighted amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1 Cash and RBA balances</td>
+<td>5.0</td>
+<td>2.0</td>
+<td>-3.0</td>
+<td>0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>)</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>B5 Residential mortgages</td>
+<td>50.0</td>
+<td>53.0</td>
+<td>+3.0</td>
+<td>65% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a))</td>
+<td>+1.95</td>
+</tr>
+<tr>
+<td>All ASF lines</td>
+<td>79.75</td>
+<td>79.75</td>
+<td>0.0</td>
+<td>various</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Total RSF: 58.50 + 1.95 = <strong>60.45</strong>.</li>
+<li>Total ASF: <strong>79.75</strong> (no liability changed).</li>
+<li>NSFR: 79.75 / 60.45 = 1.3193 = <strong>131.9%</strong>.</li>
+<li>Change in the ratio: 136.3% to 131.9%, a fall of about 4.4 percentage points. The whole fall comes from RSF: ASF contributed nothing.</li>
+</ul>
+<p><strong>Plain-language explanation for the pack:</strong> "The NSFR fell 4.4 percentage points because A$3.0bn of cash, which needs no stable funding, was lent as mortgages, which need 65 per cent. RSF rose by 1.95. Funding was unchanged. The ratio remains above the 110 per cent Board appetite and the 115 per cent amber trigger."</p>
+<p>Compare the LCR effect of the same transaction in document <a href="08_LCR_Production_End_to_End.html">08</a>: the LCR falls to 121.2 per cent, because the cash was part of the liquid asset buffer. The NSFR was affected through the 65 per cent factor, not through the loss of liquid assets.</p>
+<h3 id="113-other-worked-examples-isolated-effects">11.3 Other worked examples (isolated effects)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Change to ASF</th>
+<th>Change to RSF</th>
+<th>New ASF</th>
+<th>New RSF</th>
+<th>New NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A$2.0bn of at-call financial institution deposits replaced by A$2.0bn of retail term deposits (under 1 year, less stable)</td>
+<td>2.0 x 90% - 2.0 x 0% = +1.80</td>
+<td>0</td>
+<td>81.55</td>
+<td>58.50</td>
+<td>81.55 / 58.50 = <strong>139.4%</strong></td>
+</tr>
+<tr>
+<td>A$1.0bn of new mortgages funded by A$1.0bn of wholesale debt under 6 months from financial institutions</td>
+<td>0</td>
+<td>+0.65</td>
+<td>79.75</td>
+<td>59.15</td>
+<td>79.75 / 59.15 = <strong>134.8%</strong></td>
+</tr>
+<tr>
+<td>A$1.0bn of new mortgages funded by A$1.0bn of wholesale debt of 1 year or more</td>
+<td>+1.00</td>
+<td>+0.65</td>
+<td>80.75</td>
+<td>59.15</td>
+<td>80.75 / 59.15 = <strong>136.5%</strong></td>
+</tr>
+<tr>
+<td>A$2.0bn of Government bonds pledged for 9 months (encumbrance effect only)</td>
+<td>0</td>
+<td>+0.90</td>
+<td>79.75</td>
+<td>59.40</td>
+<td>79.75 / 59.40 = <strong>134.3%</strong></td>
+</tr>
+<tr>
+<td>A$3.0bn of the 1-year-or-more wholesale debt now has 11 months to run</td>
+<td>-1.50 (3.0 x (100% - 50%))</td>
+<td>0</td>
+<td>78.25</td>
+<td>58.50</td>
+<td>78.25 / 58.50 = <strong>133.8%</strong></td>
+</tr>
+<tr>
+<td>The same A$3.0bn now has under 6 months to run (financial institution funding)</td>
+<td>-3.00</td>
+<td>0</td>
+<td>76.75</td>
+<td>58.50</td>
+<td>76.75 / 58.50 = <strong>131.2%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-example"><p><strong>Example:</strong> The second and third rows differ only in the term of the funding. Funding the same mortgages with short money leaves ASF unchanged and the NSFR at 134.8 per cent; funding them with term debt gives 136.5 per cent. This is the whole point of the NSFR: long assets need long funding.</p>
+<p><strong>From the controller:</strong> The last two rows are why we forecast. Debt does not need to be repaid for the NSFR to fall. It only needs to get closer to maturity. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> shows how the maturity ladder helps you see this coming.</p>
+</blockquote>
+<hr />
+<h2 id="12-common-errors">12. Common errors</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Error</th>
+<th>What goes wrong</th>
+<th>How to avoid it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Using final maturity instead of earliest redemption date for liabilities</td>
+<td>ASF overstated</td>
+<td>Check put options and notice periods (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>)</td>
+</tr>
+<tr>
+<td>Using earliest date for assets</td>
+<td>RSF understated</td>
+<td>Use the latest possible date and assume extensions (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>)</td>
+</tr>
+<tr>
+<td>Treating all retail deposits as 95 per cent</td>
+<td>ASF overstated</td>
+<td>Split stable and less stable (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 and 13</a>)</td>
+</tr>
+<tr>
+<td>Giving a financial institution deposit 50 per cent</td>
+<td>ASF overstated</td>
+<td>Financial institution funding under 6 months is zero (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a))</td>
+</tr>
+<tr>
+<td>Assuming a "no early withdrawal" term deposit changes the NSFR factor</td>
+<td>Wrong factor</td>
+<td>That feature affects the LCR; the NSFR depends on residual maturity</td>
+</tr>
+<tr>
+<td>Ignoring encumbrance</td>
+<td>RSF understated</td>
+<td>Check the collateral system every month (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Measuring encumbrance by the asset's maturity</td>
+<td>Wrong bucket</td>
+<td>Use the remaining period of the encumbrance</td>
+</tr>
+<tr>
+<td>Treating HQLA as the LCR-eligible amount after caps</td>
+<td>Wrong factor on capped assets</td>
+<td>NSFR HQLA ignores LCR caps and operational tests (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f20">Att C footnote 20</a>)</td>
+</tr>
+<tr>
+<td>Including securities borrowed under reverse repos</td>
+<td>RSF overstated or wrong</td>
+<td>Check beneficial ownership (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>)</td>
+</tr>
+<tr>
+<td>Missing the 20 per cent derivative add-on</td>
+<td>RSF understated</td>
+<td>Include it in the full calculation (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(d))</td>
+</tr>
+<tr>
+<td>Netting derivatives without an eligible agreement</td>
+<td>Wrong amounts</td>
+<td>Use only agreements confirmed by Legal (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C para 9</a>)</td>
+</tr>
+<tr>
+<td>Using the monthly figure for trade finance instead of 12-month net outflows</td>
+<td>RSF understated</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a></td>
+</tr>
+<tr>
+<td>Applying 1 per cent to facilities that are conditionally revocable</td>
+<td>RSF understated</td>
+<td>Only unconditionally revocable facilities get 1 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>)</td>
+</tr>
+<tr>
+<td>Using the risk-weight test without checking the risk weight</td>
+<td>65 per cent wrongly applied</td>
+<td>Confirm with the credit risk team (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>)</td>
+</tr>
+<tr>
+<td>Treating non-performing loans as 85 per cent</td>
+<td>RSF understated</td>
+<td>Non-performing loans are 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c))</td>
+</tr>
+<tr>
+<td>Plugging a ledger difference</td>
+<td>Hides an error</td>
+<td>Investigate; never plug</td>
+</tr>
+<tr>
+<td>Using regulatory capital after deductions</td>
+<td>ASF understated</td>
+<td>Use carrying value before adjustments (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a); <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f9">Att C footnote 9</a>)</td>
+</tr>
+<tr>
+<td>Copying last month's classification without checking new products</td>
+<td>New products misclassified</td>
+<td>Check the new product list each month</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="13-review-checklist">13. Review checklist</h2>
+<p>The reviewer ticks each item and initials the sheet. If an item fails, return the working paper to the preparer.</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>[ ] The ledger had closed before the extract was taken.</li>
+<li>[ ] Every extract has a row count and control total agreed to the source.</li>
+<li>[ ] Total assets and total liabilities and equity agree to the ledger and to each other.</li>
+<li>[ ] Every attribute needed is present, or the exception log shows the conservative treatment.</li>
+</ul>
+<p><strong>Classification</strong></p>
+<ul>
+<li>[ ] The mapping table version is the approved version; any change has an approval.</li>
+<li>[ ] A sample of at least 10 lines (including the five largest in each of ASF and RSF) has been re-classified independently and agrees.</li>
+<li>[ ] Residual maturity for liabilities uses the earliest redemption date (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>).</li>
+<li>[ ] Residual maturity for assets uses the latest possible date (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>).</li>
+<li>[ ] Stable and less stable tags agree to the daily LCR.</li>
+<li>[ ] Encumbered assets have been identified and the encumbrance rule applied (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>).</li>
+<li>[ ] Securities financing: beneficial ownership checked (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>).</li>
+<li>[ ] Derivative lines calculated, or the exclusion is explained (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C paras 9, 10, 27, 28 and 37</a>).</li>
+<li>[ ] Facilities classified by revocability (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>); trade finance and guarantees use 12-month actual net outflows (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a>).</li>
+</ul>
+<p><strong>Calculation</strong></p>
+<ul>
+<li>[ ] Each weighted amount equals the carrying value times the factor.</li>
+<li>[ ] Totals re-added by a second method.</li>
+<li>[ ] The ratio recomputed independently.</li>
+</ul>
+<p><strong>Reasonableness and movement</strong></p>
+<ul>
+<li>[ ] Reasonableness checks completed (section 10).</li>
+<li>[ ] Every movement over tolerance explained with a cause.</li>
+<li>[ ] Result compared with the minimum, the Board appetite and the amber trigger.</li>
+</ul>
+<p><strong>Sign-off</strong></p>
+<ul>
+<li>[ ] Questions cleared in writing.</li>
+<li>[ ] Working paper saved and locked; version recorded.</li>
+<li>[ ] Controller has signed.</li>
+</ul>
+<hr />
+<h2 id="14-sign-off-reporting-to-alco-and-escalation">14. Sign-off, reporting to ALCO and escalation</h2>
+<h3 id="141-sign-off">14.1 Sign-off</h3>
+<p>The four-eyes rule applies: the preparer signs that the working paper is complete and correct to the best of their knowledge; the reviewer signs that they have performed the checklist; the controller signs that the figure may be released. Each signature is dated. The sign-off record is part of the evidence.</p>
+<h3 id="142-the-alco-nsfr-report">14.2 The ALCO NSFR report</h3>
+<p>Include (typical practice; confirm with your controller):</p>
+<ol>
+<li>The NSFR, ASF and RSF, this month and the last six months.</li>
+<li>Comparison with the 100 per cent minimum, the 110 per cent Board appetite and the 115 per cent amber trigger.</li>
+<li>The movement analysis in plain language, with the three largest drivers.</li>
+<li>The funding mix: ASF by category.</li>
+<li>A note on the largest RSF lines and any change in encumbrance.</li>
+<li>The forecast for the next three to twelve months (section 16) with the key assumptions.</li>
+<li>Exceptions and judgements: missing attributes, manual overrides, items awaiting APRA determinations.</li>
+<li>Actions proposed or in progress.</li>
+</ol>
+<h3 id="143-if-a-threshold-is-hit">14.3 If a threshold is hit</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Below 115 per cent (amber trigger)</td>
+<td>Tell Liquidity Risk and Treasury the same day; include in the ALCO pack with a cause and a forecast.</td>
+</tr>
+<tr>
+<td>Below 110 per cent (Board appetite)</td>
+<td>Escalate to the controller and the head of Treasury immediately; ALCO to decide actions; report to the Board Risk Committee as the risk appetite statement requires.</td>
+</tr>
+<tr>
+<td>Below 100 per cent (regulatory minimum, <a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>)</td>
+<td>Escalate at once to the controller; follow the breach procedure in document <a href="12_Controls_Incidents_and_Escalation.html">12</a>; APRA must be informed (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>; document <a href="11_APRA_Returns_and_Disclosures.html">11</a> lists the notifications).</td>
+</tr>
+</tbody>
+</table></div>
+<p>The thresholds are Example Bank conventions except 100 per cent. Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> sets out the incident procedures in full.</p>
+<hr />
+<h2 id="15-how-the-nsfr-feeds-the-apra-return">15. How the NSFR feeds the APRA return</h2>
+<p>The NSFR is reported to APRA under Reporting Standard ARS 210.0 Liquidity. In the April 2021 version of that standard, the NSFR form is ARF 210.6; the in-force version may differ, and document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure) confirms the current form, its content, the reporting basis and the due dates. Do not rely on this document for those details.</p>
+<p>What you do each reporting period:</p>
+<ol>
+<li>Take the signed NSFR figures at the reporting date from the working paper. Do not recalculate them for the return; use the signed numbers.</li>
+<li>Map each ASF and RSF category to the cell on the form that collects it (document <a href="11_APRA_Returns_and_Disclosures.html">11</a> has the mapping table).</li>
+<li>Reconcile the return totals (total ASF, total RSF and the ratio) to the working paper, line by line.</li>
+<li>Reconcile the return's balance sheet totals to the general ledger.</li>
+<li>If the return and the working paper differ, find the cause before submission. If an error is found in the working paper after sign-off, follow document <a href="12_Controls_Incidents_and_Escalation.html">12</a> and tell the controller at once.</li>
+</ol>
+<p>APS 210 does not set the due dates, so do not state any from memory. Use the calendar in document <a href="11_APRA_Returns_and_Disclosures.html">11</a>.</p>
+<hr />
+<h2 id="16-forecasting-the-nsfr">16. Forecasting the NSFR</h2>
+<p>A forecast tells the controller and ALCO whether the NSFR will stay above the Board appetite. The standard requires a buffer "at all times" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p4">Att C para 4</a>), and a monthly figure alone cannot show what happens between month-ends.</p>
+<h3 id="161-method">16.1 Method</h3>
+<ol>
+<li><strong>Start from the signed position</strong> at the last month-end.</li>
+<li><strong>Roll the maturity profile forward.</strong> For every liability and asset, work out its residual maturity at each future date. Funding crossing the one-year and six-month boundaries changes factor (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C paras 8 and 11 to 15</a>). Assets maturing out of the book drop out; assets nearing maturity may change factor (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C paras 20 to 22</a>).</li>
+<li><strong>Add planned business.</strong> Use the budget or Treasury's plans for loan growth (mortgages, business loans), deposit growth and wholesale issuance and repayments. Ask Treasury for the funding plan (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> covers the three-year funding strategy).</li>
+<li><strong>Add planned encumbrance changes</strong>: new repos, covered bond issues, securitisations (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>).</li>
+<li><strong>Classify each future line</strong> with the same decision tables as for actuals.</li>
+<li><strong>Calculate</strong> projected ASF, RSF and NSFR for each month.</li>
+<li><strong>Test against limits</strong> and run a downside: for example, deposits growing 2 per cent slower, or no wholesale issuance.</li>
+<li><strong>Document the assumptions</strong> and compare the forecast to the actual next month. Explain differences.</li>
+</ol>
+<h3 id="162-worked-mini-forecast">16.2 Worked mini-forecast</h3>
+<p>Start: ASF 79.75; RSF 58.50; NSFR 136.3 per cent.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What happens</th>
+<th>ASF</th>
+<th>RSF</th>
+<th>NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Today</td>
+<td>Signed position</td>
+<td>79.75</td>
+<td>58.50</td>
+<td>136.3%</td>
+</tr>
+<tr>
+<td>1</td>
+<td>A$3.0bn of the A$15.0bn long-dated debt falls to 11 months residual: ASF -1.50</td>
+<td>78.25</td>
+<td>58.50</td>
+<td>133.8%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Treasury issues A$3.0bn of 5-year debt: ASF +3.00 (and the cash received sits at 0 per cent RSF)</td>
+<td>81.25</td>
+<td>58.50</td>
+<td>138.9%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mortgages grow A$4.0bn, funded from the cash raised in step 2: RSF +4.0 x 65% = +2.60, no change in ASF</td>
+<td>81.25</td>
+<td>61.10</td>
+<td>133.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Checks: 78.25 / 58.50 = 1.3376; 81.25 / 58.50 = 1.3889; 81.25 / 61.10 = 1.3298.</p>
+<p>Notice the pattern: the ratio is driven by the maturity of funding and the growth of long assets. In the forecast, the question to ask is whether the funding plan keeps pace with lending.</p>
+<h3 id="163-what-to-give-alco">16.3 What to give ALCO</h3>
+<p>The monthly projections, the lowest point, the month it occurs, the assumptions, and the levers available (issuing term debt, slowing lending, replacing wholesale funding with retail term deposits). Levers are decisions for Treasury and ALCO, not for Liquidity Reporting.</p>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>
+<p><strong>What is the NSFR formula and the regulatory minimum for a locally incorporated LCR ADI?</strong>
+   <strong>Answer:</strong> NSFR = ASF / RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p3">Att C para 3</a>). The minimum is 100 per cent (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 and 60</a>).</p>
+</li>
+<li>
+<p><strong>What ASF factor applies to A$25.0bn of stable retail deposits at call, and what is the weighted amount?</strong>
+   <strong>Answer:</strong> 95 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a)). 25.0 x 0.95 = 23.75.</p>
+</li>
+<li>
+<p><strong>Total ASF is 72.0 and total RSF is 60.0. What is the NSFR, and is it above a 110 per cent Board appetite?</strong>
+   <strong>Answer:</strong> 72.0 / 60.0 = 1.20 = 120.0 per cent. Yes, 120.0 per cent is above 110 per cent.</p>
+</li>
+<li>
+<p><strong>Example Bank pledges A$2.0bn of Australian Government bonds under a repo that has 8 months left. What RSF factor applies, what is the RSF, and by how much does RSF rise compared with unencumbered?</strong>
+   <strong>Answer:</strong> Remaining encumbrance is 6 months to under 1 year and the unencumbered factor (5 per cent) is 50 per cent or lower, so 50 per cent applies (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). RSF = 2.0 x 50% = 1.00. Unencumbered it was 2.0 x 5% = 0.10. The increase is 0.90.</p>
+</li>
+<li>
+<p><strong>Why do deposits from other banks with under six months to run get zero ASF, while the same type of deposit from a non-financial corporate with under one year to run gets 50 per cent?</strong>
+   <strong>Answer:</strong> The standard treats funding from financial institutions as less reliable than funding from non-financial corporates, because financial institutions are likelier to withdraw in stress. Funding under six months from financial institutions gets zero (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)); funding under one year from non-financial corporates gets 50 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)).</p>
+</li>
+<li>
+<p><strong>A A$1.5bn loan to another bank has 5 months left but the bank has an option to extend it to 14 months. What is the RSF?</strong>
+   <strong>Answer:</strong> Assets are measured to the latest possible date and an extension option is assumed to be exercised (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>). 14 months is one year or more, and loans to financial institutions of one year or more take 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c)). RSF = 1.5 x 100% = 1.50. Treated as under 6 months it would have been 15 per cent, or 0.225.</p>
+</li>
+<li>
+<p><strong>Example Bank lends A$3.0bn of cash as standard mortgages. Calculate the new NSFR.</strong>
+   <strong>Answer:</strong> Cash at 0 per cent loses nothing; mortgages gain 3.0 x 65% = 1.95. RSF = 58.50 + 1.95 = 60.45. ASF unchanged at 79.75. NSFR = 79.75 / 60.45 = 131.9 per cent.</p>
+</li>
+<li>
+<p><strong>The ledger shows total assets of 100.0 and total liabilities and equity of 100.0, but your extracts show assets of 100.0 and liabilities and equity of 100.2. What do you do?</strong>
+   <strong>Answer:</strong> Stop. Do not plug the 0.2. Find which liability extract is duplicated or mis-mapped, agree each product to the ledger, fix the data, and record the cause. Tell the controller if it cannot be resolved within the timetable.</p>
+</li>
+<li>
+<p><strong>Derivative liabilities after netting are 2.0, variation margin posted is 0.5, and derivative assets are 1.2. What are NSFR derivative liabilities and the RSF add-on?</strong>
+   <strong>Answer:</strong> NSFR derivative liabilities = 2.0 - 0.5 = 1.5 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p10">Att C para 10</a>). The add-on is 20 per cent of derivative liabilities before deducting variation margin: 20% x 2.0 = 0.40 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(d)). Because 1.5 exceeds the derivative assets of 1.2, there is no 100 per cent charge under <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(b).</p>
+</li>
+<li>
+<p><strong>Example Bank replaces A$2.0bn of at-call financial institution deposits with A$2.0bn of retail term deposits (under 1 year, less stable). What is the new NSFR, and the headroom over the 110 per cent Board appetite in ASF terms?</strong>
+    <strong>Answer:</strong> ASF rises from 2.0 x 0% to 2.0 x 90%, a change of +1.80, so ASF = 81.55 and NSFR = 81.55 / 58.50 = 139.4 per cent. Headroom over 110 per cent: 81.55 - (58.50 x 1.10) = 81.55 - 64.35 = 17.20.</p>
+</li>
+</ol>
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>The NSFR is ASF divided by RSF, with a minimum of 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p3">Att C para 3</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 and 60</a>). Example Bank is at 136.3 per cent: 79.75 over 58.50.</li>
+<li>Funding is measured to the earliest date it can leave; assets to the latest date they can come back (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C paras 8 and 20</a>).</li>
+<li>Retail and SME deposits are 95 per cent (stable) or 90 per cent (less stable); financial institution funding under six months gets zero; equity and funding of one year or more get 100 per cent.</li>
+<li>Mortgages (standard, LVR 80 per cent or below, one year or more) take 65 per cent, other long performing loans 85 per cent, and other assets 100 per cent.</li>
+<li>Encumbrance raises the RSF factor; classify it before you pick the final factor (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>).</li>
+<li>Reconcile to the ledger first. Total assets must equal total liabilities and equity, and neither may be plugged.</li>
+<li>Explain every movement with a transaction, a line and a paragraph. A ratio can fall because funding moves closer to maturity, not only because of new business.</li>
+<li>Missing data means the conservative category, recorded in the exception log.</li>
+<li>The four-eyes rule applies: you prepare, a colleague reviews, the controller signs. Only then does the number go to ALCO and into the APRA return.</li>
+</ul></main><footer><a href="08_LCR_Production_End_to_End.html">&#9664; 08 Producing the daily LCR, end to end</a><a href="10_Monitoring_Beyond_the_Ratios.html">10 Monitoring beyond the two ratios &#9654;</a></footer></body></html>

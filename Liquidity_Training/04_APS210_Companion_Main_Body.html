@@ -1,0 +1,1188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>04 APS 210 companion: the main body | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="03_Your_Role_and_the_Team.html" title="03 Your role, the team and the working year">&#9664; 03</a><span class="t">04 APS 210 companion: the main body</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#how-to-use-this-companion">How to use this companion</option><option value="#front-matter-of-the-standard">Front matter of the standard</option><option value="#authority">Authority</option><option value="#application">Application</option><option value="#interpretation">Interpretation</option><option value="#definitions">Definitions</option><option value="#key-principles">Key principles</option><option value="#board-and-senior-management-responsibilities">Board and senior management responsibilities</option><option value="#liquidity-risk-management-framework">Liquidity risk management framework</option><option value="#management-of-liquidity-risk">Management of liquidity risk</option><option value="#funding-strategy">Funding strategy</option><option value="#contingency-funding-plan">Contingency funding plan</option><option value="#classification-of-adis">Classification of ADIs</option><option value="#liquidity-coverage-ratio-adis">Liquidity coverage ratio ADIs</option><option value="#minimum-liquidity-holdings-adis">Minimum liquidity holdings ADIs</option><option value="#net-stable-funding-ratio">Net stable funding ratio</option><option value="#stress-testing">Stress testing</option><option value="#local-operational-capacity">Local operational capacity</option><option value="#exceptional-liquidity-assistance">Exceptional Liquidity Assistance</option><option value="#adjustments-and-exclusions">Adjustments and exclusions</option><option value="#previous-exercise-of-discretion">Previous exercise of discretion</option><option value="#footnotes">Footnotes</option><option value="#obligation-register">Obligation register</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="05_APS210_Companion_Attachment_A_LCR.html" title="05 APS 210 companion: Attachment A (LCR)">05 &#9654;</a></header>
+<main><h1 id="04-aps-210-companion-the-main-body">04 APS 210 companion: the main body</h1>
+<p><strong>Purpose:</strong> To let you open the main body of APS 210 (Prudential Standard APS 210 Liquidity, July 2025) at any paragraph and find, straight away, what it says in plain English, what it means for our team, and what proof we keep.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Find the training entry for any paragraph from 1 to 72 of APS 210, and for the front pages of the standard.</li>
+<li>Restate each paragraph in your own plain words, including every limb (a), (b), (c).</li>
+<li>Say which duties fall on the Liquidity Reporting team, which fall on Treasury, Liquidity Risk, senior management or the Board, and which fall on APRA.</li>
+<li>Name the evidence the team keeps to show compliance with each duty.</li>
+<li>Use the obligation register at the end to check that every duty has an owner, a frequency and evidence.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) and document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year). You do not need to read this document in order. Use it as a reference beside the standard.</p>
+<p><strong>Time:</strong> About 3 hours to read once through. After that, use it as a look-up.</p>
+<h2 id="how-to-use-this-companion">How to use this companion</h2>
+<p>APS 210 is the rulebook (called a prudential standard) that APRA, the Australian Prudential Regulation Authority, has set for how banks manage liquidity. "Liquidity" means having enough cash, or things quickly turned into cash, to pay what you owe when it falls due. If you have never thought about this, read document <a href="02_Liquidity_From_Zero.html">02</a> first.</p>
+<p>The standard has a main body (paragraphs 1 to 72) and three attachments. This document covers the main body. Document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> covers Attachment A (the liquidity coverage ratio). Document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> covers Attachments B and C.</p>
+<p>Each entry has five parts:</p>
+<ul>
+<li><strong>What it says:</strong> the paragraph restated in plain English, with every limb kept.</li>
+<li><strong>In everyday words:</strong> the idea in the simplest terms.</li>
+<li><strong>What you do about it:</strong> the job this creates for the Liquidity Reporting team, or who owns it if it is not ours.</li>
+<li><strong>Evidence we keep:</strong> what proves we comply.</li>
+<li><strong>Learn more:</strong> the documents in this pack and the chapter of the knowledge guide (called "the Guide", file LIQUIDITY_GUIDE.md) to read next.</li>
+</ul>
+<p>Three terms you will see everywhere:</p>
+<ul>
+<li><strong>Example Bank</strong> is the fictional bank we use for training. It is a locally incorporated Australian ADI with one legal entity and one currency.</li>
+<li><strong>ADI</strong> means authorised deposit-taking institution: a bank, building society or credit union that APRA has allowed to take deposits.</li>
+<li><strong>Board</strong> means the board of directors, the people ultimately responsible for the bank.</li>
+</ul>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Many duties in the main body sit with the Board, senior management or Liquidity Risk, not with us. You still need to know them, because the numbers you produce are what they rely on. When an entry says "No action for our team", it means we do not do the task, not that we can ignore it.</p>
+<p><strong>Typical practice:</strong> Names of teams, committees, deadlines and limits used in the "What you do about it" parts are Example Bank conventions. They are typical practice; confirm with your controller. They are not in APS 210.</p>
+</blockquote>
+<h2 id="front-matter-of-the-standard">Front matter of the standard</h2>
+<h3 id="determination-page-who-made-aps-210-and-what-it-did">Determination page: who made APS 210 and what it did</h3>
+<p><strong>What it says:</strong> The first page is a legal instrument called "Banking (prudential standard) determination No. 3 of 2025". It is made by Sean Carmody, who signs as a delegate of APRA (an Executive Director in the Policy and Advice Division), on 13 April 2025. It does two things. First, under subsection 11AF(3) of the Banking Act 1959 it revokes (cancels) the earlier determination, No. 13 of 2022, including the earlier version of APS 210 made under it. Second, under subsection 11AF(1) of the Banking Act it determines (makes) the new Prudential Standard APS 210 Liquidity, in the form set out in the schedule. The new standard applies to all ADIs and authorised NOHCs to the extent provided in paragraphs 2 to 5 of the standard (<a class="c" href="#m-p2">APS 210 paras 2 to 5</a>). The instrument commences on 1 July 2025. A short interpretation note says that APRA means the Australian Prudential Regulation Authority, and that "ADI", "authorised NOHC" and "prudential standard" have the meanings given in subsection 5(1) of the Banking Act. The schedule says the standard is the document that follows. The page carries the legislation register stamp "Authorised Version F2025L00653 registered 06/06/2025".</p>
+<p><strong>In everyday words:</strong> This page is the legal "stamp" that turns the document into binding law. It cancels the old 2022 version and starts the new July 2025 version on 1 July 2025. An authorised NOHC is a non-operating holding company: a company that sits above a bank group but does not run a bank itself.</p>
+<p><strong>What you do about it:</strong> Make sure that every document we cite, and every procedure we write, refers to the July 2025 version (F2025L00653). When someone quotes APS 210, check they are not quoting the 2022 version, which no longer applies. When APRA issues a new version, your controller will ask you to compare it with this companion and update the entries.</p>
+<p><strong>Evidence we keep:</strong> A copy of the current authorised version from the Federal Register of Legislation (legislation.gov.au), saved with the date we downloaded it, and the version history kept in the policy library.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (How a standard is made: section 11AF).</p>
+<h3 id="objectives-and-key-requirements-box">Objectives and key requirements box</h3>
+<p><strong>What it says:</strong> The box says the standard requires an ADI to adopt prudent practices in managing its liquidity risks and to maintain enough liquidity to meet its obligations as they fall due across a wide range of operating circumstances. It then lists three key requirements. An ADI must: (1) have a risk management framework to measure, monitor and manage liquidity risk that is commensurate with (matches) the nature, scale and complexity of the institution; (2) maintain a portfolio of liquid assets sufficient in size and quality to withstand a severe liquidity stress; and (3) maintain a robust funding structure appropriate for its size, business mix and complexity.</p>
+<p><strong>In everyday words:</strong> The standard asks three things of a bank. Have a sound system for watching liquidity. Hold enough easy-to-sell assets to survive a bad month. Fund yourself in a steady, sensible way. The first is good management, the second is the liquidity coverage ratio (LCR), and the third is the net stable funding ratio (NSFR).</p>
+<p><strong>What you do about it:</strong> Keep these three ideas in mind as the "why" behind every task. The LCR you produce daily supports requirement 2. The NSFR you produce monthly supports requirement 3. The monitoring, limits and reports in paras 36 to 43 support requirement 1 (<a class="c" href="#m-p36">APS 210 paras 36 to 43</a>). Your sign-off pack should make it easy for a reader to see all three.</p>
+<p><strong>Evidence we keep:</strong> The liquidity risk management framework documents, the daily LCR and monthly NSFR records, and the Board and ALCO (asset and liability committee) papers that show each of the three requirements being met.</p>
+<p><strong>Learn more:</strong> Document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Objectives); <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a> (The two Basel ratios on one page).</p>
+<h3 id="table-of-contents-a-map-of-the-standard">Table of contents: a map of the standard</h3>
+<p><strong>What it says:</strong> The contents page lists the sections of the standard and the page where each starts. It is a map of the structure.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Section in the standard</th>
+<th>Paragraphs</th>
+<th>What it covers</th>
+<th>Who mainly acts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authority</td>
+<td>1</td>
+<td>The legal power the standard is made under</td>
+<td>APRA</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>2 to 6</td>
+<td>Who it applies to, Level 1 and Level 2, securitisation, start date</td>
+<td>Controller, Finance</td>
+</tr>
+<tr>
+<td>Interpretation</td>
+<td>7 to 9</td>
+<td>How to read the standard</td>
+<td>Everyone</td>
+</tr>
+<tr>
+<td>Definitions</td>
+<td>10</td>
+<td>Associated entity; financial institution</td>
+<td>Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Key principles</td>
+<td>11 to 14</td>
+<td>The four core duties, including telling APRA</td>
+<td>Board, senior management</td>
+</tr>
+<tr>
+<td>Board and senior management responsibilities</td>
+<td>15 to 20</td>
+<td>Who is responsible for what</td>
+<td>Board, senior management</td>
+</tr>
+<tr>
+<td>Liquidity risk management framework</td>
+<td>21 to 35</td>
+<td>Tolerance, strategy, structure, independent oversight</td>
+<td>Board, Liquidity Risk</td>
+</tr>
+<tr>
+<td>Management of liquidity risk</td>
+<td>36 to 43</td>
+<td>Cash flow projection, limits, collateral, early warnings, management information, intraday, costs, currencies</td>
+<td>Treasury, Liquidity Risk, Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Funding strategy</td>
+<td>44 to 46</td>
+<td>Three-year funding strategy</td>
+<td>Treasury, Board</td>
+</tr>
+<tr>
+<td>Contingency funding plan</td>
+<td>47 to 51</td>
+<td>Plan for a liquidity emergency</td>
+<td>Treasury, Liquidity Risk, Board</td>
+</tr>
+<tr>
+<td>Classification of ADIs</td>
+<td>52 to 54</td>
+<td>LCR ADI or MLH ADI</td>
+<td>APRA</td>
+</tr>
+<tr>
+<td>Liquidity coverage ratio ADIs</td>
+<td>55 to 56</td>
+<td>The 30-day buffer rule (see Attachment A)</td>
+<td>Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Minimum liquidity holdings ADIs</td>
+<td>57 to 58</td>
+<td>The simpler 9% rule (see Attachment B)</td>
+<td>Not Example Bank</td>
+</tr>
+<tr>
+<td>Net stable funding ratio</td>
+<td>59 to 61</td>
+<td>One-year stable funding rule (see Attachment C)</td>
+<td>Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Stress testing</td>
+<td>62 to 66</td>
+<td>Regular stress tests</td>
+<td>Liquidity Risk</td>
+</tr>
+<tr>
+<td>Local operational capacity</td>
+<td>67 to 69</td>
+<td>Foreign ADIs only</td>
+<td>Not Example Bank</td>
+</tr>
+<tr>
+<td>Exceptional Liquidity Assistance</td>
+<td>70</td>
+<td>Asking the RBA for emergency help</td>
+<td>Board, senior management</td>
+</tr>
+<tr>
+<td>Adjustments and exclusions</td>
+<td>71</td>
+<td>APRA may adjust a requirement</td>
+<td>APRA</td>
+</tr>
+<tr>
+<td>Previous exercise of discretion</td>
+<td>72</td>
+<td>Relying on an old APRA exemption</td>
+<td>Controller</td>
+</tr>
+<tr>
+<td>Attachment A</td>
+<td>Att A</td>
+<td>Liquidity coverage ratio (page 13 onward)</td>
+<td>Liquidity Reporting</td>
+</tr>
+<tr>
+<td>Attachment B</td>
+<td>Att B</td>
+<td>Minimum liquidity holdings approach</td>
+<td>Awareness only</td>
+</tr>
+<tr>
+<td>Attachment C</td>
+<td>Att C</td>
+<td>Net stable funding ratio</td>
+<td>Liquidity Reporting</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>In everyday words:</strong> Think of the standard as a house. The main body is the frame: who is in charge, what must be written down, and the two ratio rules. The three attachments are the detailed rooms where the calculations live.</p>
+<p><strong>What you do about it:</strong> Keep a printed copy of this map at your desk for your first month. When a colleague says "the LCR rules", they mean paras 55 and 56 of the main body (<a class="c" href="#m-p55">APS 210 paras 55 to 56</a>) plus Attachment A. When they say "the NSFR rules", they mean paras 59 to 61 (<a class="c" href="#m-p59">APS 210 paras 59 to 61</a>) plus Attachment C.</p>
+<p><strong>Evidence we keep:</strong> Nothing is needed for the map itself. Our compliance mapping (the obligation register at the end of this document) is the evidence that every section has an owner.</p>
+<p><strong>Learn more:</strong> Document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (The structure of APS 210).</p>
+<h2 id="authority">Authority</h2>
+<h3 id="m-p1" class="entry">APS 210 para 1: Authority</h3>
+<p><strong>What it says:</strong> This prudential standard is made under section 11AF of the Banking Act 1959 (the Banking Act) (<a class="c" href="#m-p1">APS 210 para 1</a>).</p>
+<p><strong>In everyday words:</strong> The Banking Act is the law. Section 11AF gives APRA the power to write binding standards like this one. That is why the standard is not just advice: breaking it is breaking a legal requirement.</p>
+<p><strong>What you do about it:</strong> No action for our team; owned by APRA, which makes the standard. Know that APS 210 has legal force, so errors in the numbers we report can have regulatory consequences.</p>
+<p><strong>Evidence we keep:</strong> A copy of the authorised standard from legislation.gov.au (see the determination page entry above).</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (The Banking Act 1959 and what an ADI is).</p>
+<h2 id="application">Application</h2>
+<h3 id="m-p2" class="entry">APS 210 para 2: Who the standard applies to</h3>
+<p><strong>What it says:</strong> APS 210 applies to all authorised deposit-taking institutions (ADIs) under the Banking Act (<a class="c" href="#m-p2">APS 210 para 2</a>).</p>
+<p><strong>In everyday words:</strong> Every bank, building society and credit union that takes deposits under an APRA licence must follow it. Example Bank is one of them.</p>
+<p><strong>What you do about it:</strong> No action for our team beyond knowing that Example Bank is in scope. Example Bank is a locally incorporated ADI. That matters later, because some rules apply only to locally incorporated ADIs and some only to foreign ADIs (a foreign ADI is a branch in Australia of an overseas bank).</p>
+<p><strong>Evidence we keep:</strong> Example Bank's authorisation to carry on banking business, held by Compliance.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (The Banking Act 1959 and what an ADI is).</p>
+<h3 id="m-p3" class="entry">APS 210 para 3: Level 1 and Level 2</h3>
+<p><strong>What it says:</strong> A reference to an ADI in the standard means two things (<a class="c" href="#m-p3">APS 210 para 3</a>):</p>
+<ul>
+<li>(a) the ADI on a Level 1 basis, which means the ADI by itself; and</li>
+<li>(b) a group of which the ADI is a member, on a Level 2 basis, which means the whole group added together.</li>
+</ul>
+<p><strong>In everyday words:</strong> The standard is applied twice: once to the bank alone, and once to the bank plus its subsidiaries as one big picture. Example Bank has one legal entity, so its Level 1 and Level 2 numbers are the same.</p>
+<p><strong>What you do about it:</strong> For Example Bank, run one calculation and label it as both Level 1 and Level 2. State on each report that Level 1 equals Level 2 because there are no subsidiaries. If Example Bank ever acquires or sets up a subsidiary, tell your controller at once, because we would then need two sets of numbers.</p>
+<p><strong>Evidence we keep:</strong> The entity structure chart, and a note on each LCR and NSFR working paper confirming the basis (Level 1 equals Level 2).</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Level 1 versus Level 2).</p>
+<h3 id="m-p4" class="entry">APS 210 para 4: Who ensures Level 2 compliance</h3>
+<p><strong>What it says:</strong> If an ADI to which the standard applies is (<a class="c" href="#m-p4">APS 210 para 4</a>):</p>
+<ul>
+<li>(a) the holding company of a group of bodies corporate, the ADI must make sure the standard's requirements are met on a Level 2 basis, where applicable; or</li>
+<li>(b) a subsidiary of an authorised NOHC, the authorised NOHC must make sure the requirements are met on a Level 2 basis, where applicable.</li>
+</ul>
+<p><strong>In everyday words:</strong> Someone at the top of the group must make sure the whole group meets the rules, not just the bank. If the top is a bank, the bank does it. If the top is a non-operating holding company, that company does it.</p>
+<p><strong>What you do about it:</strong> For Example Bank (single entity), no extra work. If the structure changes, the controller will decide who prepares the Level 2 consolidation, and we would need group-wide data feeds.</p>
+<p><strong>Evidence we keep:</strong> The group structure chart and the Board-approved statement of which entity carries the Level 2 duty.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Authorised NOHC).</p>
+<h3 id="m-p5" class="entry">APS 210 para 5: Securitisation carve-out</h3>
+<p><strong>What it says:</strong> Take an ADI, or a member of its Level 2 group, that is the originating ADI in a securitisation and meets the operational requirements for regulatory capital relief under Prudential Standard APS 120 Securitisation (APS 120). That ADI may leave out the assets and liabilities of the relevant special purpose vehicles (SPVs) when it calculates its minimum liquidity holdings (MLH) and its net stable funding ratio (NSFR), as applicable. But for the liquidity coverage ratio (LCR), the ADI must include the cash flows from the SPVs' assets and liabilities related to its securitisation activities in its reported amounts (<a class="c" href="#m-p5">APS 210 para 5</a>).</p>
+<p><strong>In everyday words:</strong> A securitisation is when a bank bundles loans (such as mortgages), sells them to a separate company (a special purpose vehicle) and that company raises money from investors. If the bank has properly passed the risk on, it may ignore that company's balance sheet for the NSFR. For the 30-day LCR it must still count the cash going in and out, because that cash can still affect the bank in a stress.</p>
+<p><strong>What you do about it:</strong> Example Bank has no securitisation in the base position. If we ever have one, ask the controller to confirm in writing whether it meets the APS 120 operational requirements. Then build two treatments into the calculations: leave the SPV out of the NSFR, but keep its cash flows in the LCR.</p>
+<p><strong>Evidence we keep:</strong> The written APS 120 assessment and the Board or ALCO approval of the treatment; a note on each working paper showing how the SPV was treated in the LCR and the NSFR.</p>
+<p><strong>Learn more:</strong> Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); <a href="../LIQUIDITY_GUIDE.html#chapter-4-instruments-and-market-terms">Guide Ch 4</a> (Securitisation); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (The securitisation carve-out).</p>
+<h3 id="m-p6" class="entry">APS 210 para 6: Commencement</h3>
+<p><strong>What it says:</strong> The standard commences (starts) on 1 July 2025 (<a class="c" href="#m-p6">APS 210 para 6</a>).</p>
+<p><strong>In everyday words:</strong> The July 2025 rules have applied since 1 July 2025.</p>
+<p><strong>What you do about it:</strong> Use the July 2025 rules for every calculation from that date. If you are asked to recalculate a period before 1 July 2025, check which version applied then and tell your controller.</p>
+<p><strong>Evidence we keep:</strong> The version of the standard that was in force on each reporting date, kept in the policy library.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (A short history, and the structure of APS 210).</p>
+<h2 id="interpretation">Interpretation</h2>
+<h3 id="m-p7" class="entry">APS 210 para 7: Defined terms in bold</h3>
+<p><strong>What it says:</strong> Terms defined in Prudential Standard CPS 001 Defined terms appear in bold the first time they are used in the standard (<a class="c" href="#m-p7">APS 210 para 7</a>).</p>
+<p><strong>In everyday words:</strong> APRA keeps one shared dictionary (CPS 001) for all its standards. A word in bold means "look it up in that dictionary".</p>
+<p><strong>What you do about it:</strong> When a bold term is unclear, check CPS 001 before assuming a meaning. Keep the bank's own glossary aligned with CPS 001 for terms that affect classification.</p>
+<p><strong>Evidence we keep:</strong> The glossary or data dictionary, with a note of the CPS 001 version it follows.</p>
+<p><strong>Learn more:</strong> Document <a href="02_Liquidity_From_Zero.html">02</a> (the glossary of the 40 words); <a href="../LIQUIDITY_GUIDE.html#chapter-10-glossary-acronyms-and-common-confusions">Guide Ch 10</a> (Glossary).</p>
+<h3 id="m-p8" class="entry">APS 210 para 8: APRA's powers are exercised in writing</h3>
+<p><strong>What it says:</strong> Whenever the standard lets APRA use a power or discretion, APRA must use it in writing (<a class="c" href="#m-p8">APS 210 para 8</a>).</p>
+<p><strong>In everyday words:</strong> If APRA gives us a concession or sets a higher requirement, it will be a written document. A phone call or a chat in a meeting does not count.</p>
+<p><strong>What you do about it:</strong> If anyone says "APRA told us we could treat this differently", ask for the written determination. Do not change any classification or rate until the controller has seen the letter. File each written decision where the whole team can find it.</p>
+<p><strong>Evidence we keep:</strong> A register of all written APRA decisions, exemptions and higher-minimum requirements, with the letters.</p>
+<p><strong>Learn more:</strong> Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (APRA's powers under the standard).</p>
+<h3 id="m-p9" class="entry">APS 210 para 9: References to laws and standards are to the current version</h3>
+<p><strong>What it says:</strong> Unless the standard says otherwise, a reference in it to an Act, Regulations or Prudential Standard means that instrument as in force from time to time (<a class="c" href="#m-p9">APS 210 para 9</a>).</p>
+<p><strong>In everyday words:</strong> When APS 210 mentions another rule, such as CPS 220 or APS 120, it means the latest version of that rule, even if it changes after July 2025.</p>
+<p><strong>What you do about it:</strong> When a linked standard changes, tell the controller so we can check whether our treatment changes. Keep a list of the linked standards (CPS 001, CPS 220, APS 120, the Banking Act, the Corporations Act 2001).</p>
+<p><strong>Evidence we keep:</strong> The list of linked instruments and the date each was last checked.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (The standards that touch liquidity).</p>
+<h2 id="definitions">Definitions</h2>
+<h3 id="m-p10" class="entry">APS 210 para 10: Associated entity and financial institution</h3>
+<p><strong>What it says:</strong> Two definitions apply (<a class="c" href="#m-p10">APS 210 para 10</a>):</p>
+<ul>
+<li>(a) an associated entity is an associated entity within the meaning of section 50AAA of the Corporations Act 2001; and</li>
+<li>(b) a financial institution, for the avoidance of doubt, includes a money market corporation, a finance company, a friendly society and the trustee of a superannuation or pension fund, of a public unit trust or mutual fund, or of a cash management trust.</li>
+</ul>
+<p><strong>In everyday words:</strong> "Associated entity" is a company closely tied to the bank under the Corporations Act. A "financial institution" is wider than just a bank. It includes super funds, managed funds, cash management trusts, finance companies, friendly societies and money market firms. This matters because deposits from financial institutions are treated as less reliable in a stress, so they run off faster in the LCR and earn less stable funding in the NSFR.</p>
+<p><strong>What you do about it:</strong> Make sure the customer master data has a field that flags each wholesale customer as a financial institution or not, using this list. Check new customer types against it. A superannuation fund's at-call deposit is a financial institution deposit, not a corporate one. Review the flag whenever a customer's business description changes.</p>
+<p><strong>Evidence we keep:</strong> The customer classification rules and a sample test showing financial institutions are flagged correctly; the list of associated entities.</p>
+<p><strong>Learn more:</strong> Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); <a href="../LIQUIDITY_GUIDE.html#chapter-4-instruments-and-market-terms">Guide Ch 4</a> (Counterparty types used in APS 210); <a href="../LIQUIDITY_GUIDE.html#chapter-10-glossary-acronyms-and-common-confusions">Guide Ch 10</a> (Glossary).</p>
+<h2 id="key-principles">Key principles</h2>
+<h3 id="m-p11" class="entry">APS 210 para 11: Sound management and a robust framework</h3>
+<p><strong>What it says:</strong> An ADI is responsible for the sound management of its liquidity risk. It must have a robust (strong, dependable) framework to manage that risk accordingly (<a class="c" href="#m-p11">APS 210 para 11</a>).</p>
+<p><strong>In everyday words:</strong> The bank cannot hand this problem to anyone else. It must have a proper, written, working system for managing liquidity.</p>
+<p><strong>What you do about it:</strong> Treat our daily LCR and monthly NSFR production as a part of that framework. That means documented procedures, a second-person review and saved evidence. Keep our procedure documents current and tell Liquidity Risk if any step is manual or fragile.</p>
+<p><strong>Evidence we keep:</strong> Procedure documents (documents <a href="08_LCR_Production_End_to_End.html">08</a> and 09 are the pack's versions), review sign-offs, and the framework document approved by the Board.</p>
+<p><strong>Learn more:</strong> Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p12" class="entry">APS 210 para 12: Enough liquidity at all times, and a survival buffer</h3>
+<p><strong>What it says:</strong> An ADI must at all times keep enough liquidity to meet its obligations as they fall due. It must also hold a minimum level of liquid assets to survive a severe liquidity stress (<a class="c" href="#m-p12">APS 210 para 12</a>).</p>
+<p><strong>In everyday words:</strong> The bank must always be able to pay what is due today and must also keep a safety stock of easy-to-sell assets in case a bad month hits. The LCR measures the safety stock.</p>
+<p><strong>What you do about it:</strong> Produce the LCR every business day so management knows the buffer is there "at all times" (<a class="c" href="#m-p55">APS 210 para 55</a>). Flag any day on which the ratio moves toward an early-warning level so Treasury can act before the minimum is reached.</p>
+<p><strong>Evidence we keep:</strong> Signed daily LCR working papers for every business day, and a log of days on which a trigger level was reached.</p>
+<p><strong>Learn more:</strong> Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR); <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> (What the LCR is, who must meet it).</p>
+<h3 id="m-p13" class="entry">APS 210 para 13: Stable funding on an ongoing basis</h3>
+<p><strong>What it says:</strong> An ADI must make sure its activities are funded with stable sources of funding on an ongoing basis (<a class="c" href="#m-p13">APS 210 para 13</a>).</p>
+<p><strong>In everyday words:</strong> Do not fund long-term loans with money that can disappear next week. Long-term lending should be matched with money that stays put. The NSFR measures this.</p>
+<p><strong>What you do about it:</strong> Produce the NSFR monthly and compare it with the Board appetite (Example Bank convention: at least 110%) and the early-warning trigger (Example Bank convention: 115% amber). Report month-on-month movements and explain them.</p>
+<p><strong>Evidence we keep:</strong> Signed monthly NSFR working papers and the movement analysis.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR, end to end); <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> (NSFR).</p>
+<h3 id="m-p14" class="entry">APS 210 para 14: Telling APRA about liquidity concerns</h3>
+<p><strong>What it says:</strong> An ADI must inform APRA as soon as possible of any concerns it has about its current or future liquidity position, and of its plans to address those concerns. In particular, if an ADI experiences a severe liquidity stress, it must notify APRA immediately and say what action is being taken (<a class="c" href="#m-p14">APS 210 para 14</a>).</p>
+<p><strong>In everyday words:</strong> No surprises. If the bank is worried, even about the future, it tells its regulator early and says what it is doing. In a real crisis it tells APRA at once.</p>
+<p><strong>What you do about it:</strong> If your numbers show a forecast breach, a sharp fall in the ratio or a failed reconciliation that could hide a breach, escalate to the controller immediately. The controller will take it to Liquidity Risk and the senior management who contact APRA. Do not contact APRA yourself. Our job is to make sure the facts reach decision-makers fast and are right.</p>
+<p><strong>Evidence we keep:</strong> Escalation emails and incident log entries with times; the notification to APRA (kept by whoever sent it) and the action plan.</p>
+<p><strong>Learn more:</strong> Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Notification duties).</p>
+<h2 id="board-and-senior-management-responsibilities">Board and senior management responsibilities</h2>
+<h3 id="m-p15" class="entry">APS 210 para 15: The Board is ultimately responsible</h3>
+<p><strong>What it says:</strong> The Board of directors is ultimately responsible for the sound and prudent management of the ADI's liquidity risk. The ADI must keep a liquidity risk management framework that matches the level and extent of liquidity risk it faces from its activities. For a foreign ADI, the Board's responsibilities in the standard are carried out by the senior officer outside Australia (<a class="c" href="#m-p15">APS 210 para 15</a>).</p>
+<p><strong>In everyday words:</strong> The directors carry the final responsibility. For a foreign bank branch there are no local directors, so the senior officer overseas takes that role. Example Bank has a Board.</p>
+<p><strong>What you do about it:</strong> Make sure our reports reach the Board clearly. Check that the numbers sent to the Board Risk Committee (quarterly, Example Bank convention) match the signed daily and monthly figures.</p>
+<p><strong>Evidence we keep:</strong> Board and Board Risk Committee papers and minutes showing liquidity reports were received.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p16" class="entry">APS 210 para 16: What the framework must contain</h3>
+<p><strong>What it says:</strong> The framework must include at least (<a class="c" href="#m-p16">APS 210 para 16</a>):</p>
+<ul>
+<li>(a) a statement of the ADI's liquidity risk tolerance, approved by the Board;</li>
+<li>(b) the liquidity management strategy and policy, approved by the Board;</li>
+<li>(c) operating standards (for example policies, procedures and controls) for identifying, measuring, monitoring and controlling liquidity risk in line with the risk tolerance;</li>
+<li>(d) the funding strategy, approved by the Board; and</li>
+<li>(e) a contingency funding plan.</li>
+</ul>
+<p><strong>In everyday words:</strong> There are five building blocks: how much risk we accept, how we plan to manage liquidity, the day-to-day rules, how we fund ourselves, and the emergency plan. We sit mainly in block (c): the procedures that measure and monitor.</p>
+<p><strong>What you do about it:</strong> Hold a map of which of our procedures and reports serve each building block. For block (c) the daily LCR, monthly NSFR and their controls are ours. For blocks (a), (b), (d) and (e) we supply data when asked and check that our limits and triggers match what the Board has approved.</p>
+<p><strong>Evidence we keep:</strong> The five framework documents with approval dates, and our procedure set.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p17" class="entry">APS 210 para 17: Board duties on people and annual review</h3>
+<p><strong>What it says:</strong> The Board must ensure that (<a class="c" href="#m-p17">APS 210 para 17</a>):</p>
+<ul>
+<li>(a) senior management and other relevant personnel have the necessary experience to manage liquidity risk; and</li>
+<li>(b) the liquidity risk management framework and the liquidity risk management practices are documented and reviewed at least annually.</li>
+</ul>
+<p><strong>In everyday words:</strong> The right people, and written down, checked at least once a year.</p>
+<p><strong>What you do about it:</strong> Complete your training and competency sign-off (document <a href="14_Exercises_and_Assessments.html">14</a>). Make sure our procedures are reviewed and re-dated at least once a year and that changes are recorded. Support the annual review by listing any control weaknesses and process changes during the year.</p>
+<p><strong>Evidence we keep:</strong> Training and competency records; version-controlled procedures with the annual review date; the Board's annual framework review minute.</p>
+<p><strong>Learn more:</strong> Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); Document <a href="14_Exercises_and_Assessments.html">14</a> (Exercises and assessments); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p18" class="entry">APS 210 para 18: Board reviews liquidity reports</h3>
+<p><strong>What it says:</strong> The Board must review regular reports on the ADI's liquidity position and, where necessary, information on new or emerging liquidity risks (<a class="c" href="#m-p18">APS 210 para 18</a>).</p>
+<p><strong>In everyday words:</strong> The directors must actually look at the numbers regularly, and be told early about anything new that could cause trouble.</p>
+<p><strong>What you do about it:</strong> Produce the data for the Board report on time and accurately: the LCR, NSFR, their trends, buffers against appetite and early-warning flags. Include a clear short commentary when a number moves or a trigger is hit.</p>
+<p><strong>Evidence we keep:</strong> The Board liquidity report pack for each meeting, with our signed supporting working papers.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p19" class="entry">APS 210 para 19: What senior management must do</h3>
+<p><strong>What it says:</strong> Senior management must, at a minimum (<a class="c" href="#m-p19">APS 210 para 19</a>):</p>
+<ul>
+<li>(a) develop a liquidity management strategy, policies and processes in line with the Board-approved liquidity tolerance;</li>
+<li>(b) ensure the ADI maintains sufficient liquidity at all times;</li>
+<li>(c) decide the structure, responsibilities and controls for managing liquidity risk and for overseeing the liquidity positions of all legal entities, branches and subsidiaries in the jurisdictions where the ADI is active, and set these out clearly in the liquidity policies;</li>
+<li>(d) ensure the ADI has adequate internal controls to protect the integrity of its liquidity risk management processes;</li>
+<li>(e) ensure stress tests, contingency funding plans and holdings of liquid assets are effective and appropriate for the ADI;</li>
+<li>(f) establish reporting criteria stating the scope, manner and frequency of reporting for each recipient (such as the Board, senior management and the asset and liability committee), including who is responsible for preparing each report;</li>
+<li>(g) set the procedures and approvals for exceptions to policies and limits, including escalation procedures and follow-up actions for breaches of limits;</li>
+<li>(h) closely monitor current trends and market developments that may bring significant, unprecedented and complex challenges, so that the liquidity management strategy can be changed in good time; and</li>
+<li>(i) continuously review information on liquidity developments and report to the Board regularly.</li>
+</ul>
+<p><strong>In everyday words:</strong> Senior managers run the machine. They write the policies, make sure there is enough liquidity, set who does what, make sure controls work, decide who gets which report and how often, decide how exceptions are approved, watch the outside world, and keep the Board informed.</p>
+<p><strong>What you do about it:</strong> Limb (f) names the preparer of each report, and that is often us. Check that our production schedule matches the written reporting criteria, and tell the controller if it does not. For limb (g), follow the written escalation steps when a limit is breached and keep a record. For limb (d), keep our own controls (reconciliations, review, change control) working and evidenced.</p>
+<p><strong>Evidence we keep:</strong> The reporting criteria matrix; our delivery log showing each report was produced on time; the exceptions and breaches register with approvals.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p20" class="entry">APS 210 para 20: Understanding links between risks</h3>
+<p><strong>What it says:</strong> Senior management and the Board must be able to show a thorough understanding of the links between funding liquidity risk and market liquidity risk, and of how other risks (credit, market, operational and reputation risks) affect the ADI's overall liquidity risk management strategy. Funding liquidity risk is the risk that an ADI may not be able to meet its financial obligations as they fall due. Market liquidity risk is the risk that liquidity in financial markets, such as the market for debt securities, may reduce significantly (<a class="c" href="#m-p20">APS 210 para 20</a>).</p>
+<p><strong>In everyday words:</strong> Two ways to get stuck. Funding liquidity risk: the money we owe falls due and we cannot pay. Market liquidity risk: we try to sell assets to raise cash but the market is too thin, so we get a poor price or no buyer. The two feed each other, and other risks such as bad loans, a system failure or damage to our reputation make both worse.</p>
+<p><strong>What you do about it:</strong> When you comment on a ratio move, explain it in terms of both: did funding change (outflows) or did the asset buffer change (value or eligibility)? Highlight where a fall in market prices cut the value of our liquid assets. Include a line on external market conditions in the monthly pack if Liquidity Risk asks.</p>
+<p><strong>Evidence we keep:</strong> Movement analyses and ALCO papers that show this reasoning.</p>
+<p><strong>Learn more:</strong> Document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero); Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a> (Funding liquidity risk and market liquidity risk).</p>
+<h2 id="liquidity-risk-management-framework">Liquidity risk management framework</h2>
+<h3 id="m-p21" class="entry">APS 210 para 21: Liquidity risk tolerance</h3>
+<p><strong>What it says:</strong> The liquidity risk tolerance defines how much liquidity risk the ADI is willing to take on. It must be documented and appropriate for the ADI's operations, strategy and role in the financial system (<a class="c" href="#m-p21">APS 210 para 21</a>).</p>
+<p><strong>In everyday words:</strong> The bank decides in writing how much liquidity risk it is prepared to live with. Our internal limits, such as an LCR of at least 120% (Example Bank convention), come from this.</p>
+<p><strong>What you do about it:</strong> Keep a copy of the current Board-approved tolerance statement and the limits derived from it. Check each limit in our reports against the latest approved version before every monthly pack.</p>
+<p><strong>Evidence we keep:</strong> The approved tolerance statement and the limit table showing the approval date.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p22" class="entry">APS 210 para 22: Annual review of tolerance</h3>
+<p><strong>What it says:</strong> The liquidity risk tolerance must be reviewed at least annually, to reflect the ADI's financial condition and funding capacity (<a class="c" href="#m-p22">APS 210 para 22</a>).</p>
+<p><strong>In everyday words:</strong> The tolerance is not set once and forgotten. It is checked at least every year against how the bank is actually doing.</p>
+<p><strong>What you do about it:</strong> Before the annual review, prepare a summary of the year: how often the LCR and NSFR came close to the appetite levels, the lowest and average values, and any breaches. This helps the Board judge whether the tolerance is right.</p>
+<p><strong>Evidence we keep:</strong> The annual summary we supplied, and the Board minute recording the review.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p23" class="entry">APS 210 para 23: Tolerance must allow survival of a prolonged stress</h3>
+<p><strong>What it says:</strong> In setting the tolerance, the Board and senior management must make sure it lets the ADI manage its liquidity position in a way that it can withstand a prolonged period of stress (<a class="c" href="#m-p23">APS 210 para 23</a>).</p>
+<p><strong>In everyday words:</strong> The limits must be tight enough that the bank could get through a long bad patch, not just a day or two.</p>
+<p><strong>What you do about it:</strong> Supply stress test results and survival-horizon data when asked (see <a class="c" href="#m-p62">APS 210 paras 62 to 66</a>), so the Board can judge whether the tolerance is tough enough.</p>
+<p><strong>Evidence we keep:</strong> Stress test results linked to the tolerance review papers.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a> (Stress: idiosyncratic, market-wide and combined).</p>
+<h3 id="m-p24" class="entry">APS 210 para 24: Tolerance states the trade-off between risk and profit</h3>
+<p><strong>What it says:</strong> The tolerance must be set out so that it clearly states the trade-off between risks and profits (<a class="c" href="#m-p24">APS 210 para 24</a>).</p>
+<p><strong>In everyday words:</strong> Holding lots of liquid assets is safe but earns less. The tolerance must say plainly how much profit the bank is giving up for safety.</p>
+<p><strong>What you do about it:</strong> No action for our team beyond supplying data. Owned by the Board and senior management, supported by Treasury and Finance, who work out the cost of holding the buffer. If asked, give the size of the buffer above the minimum (for example, A$5.45bn surplus at 147.2% LCR in the base position), since a large surplus has a cost.</p>
+<p><strong>Evidence we keep:</strong> The tolerance statement showing the trade-off; our buffer data given to Treasury.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p25" class="entry">APS 210 para 25: Organisational structure on Level 1 and Level 2</h3>
+<p><strong>What it says:</strong> The framework must clearly set out the organisational structure for liquidity, on both a Level 1 and a Level 2 basis, and define the responsibilities and roles of the management involved in managing liquidity risk (<a class="c" href="#m-p25">APS 210 para 25</a>).</p>
+<p><strong>In everyday words:</strong> It must be clear who does what, for the bank alone and for the whole group.</p>
+<p><strong>What you do about it:</strong> Keep our role description and the team's responsibilities table up to date. If someone leaves or a task moves, update the "who to ask" list (roles, not names) in document <a href="13_Job_Aids_and_Checklists.html">13</a>.</p>
+<p><strong>Evidence we keep:</strong> The responsibilities matrix and the organisation chart.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); Document <a href="13_Job_Aids_and_Checklists.html">13</a> (Job aids and checklists); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p26" class="entry">APS 210 para 26: A cushion of unencumbered liquid assets</h3>
+<p><strong>What it says:</strong> The framework must be designed so the ADI maintains enough liquidity, including a cushion of unencumbered liquid assets, to withstand a range of stress events, including the loss or impairment of both unsecured and secured funding sources. The stress may be specific to the ADI, market-wide, or a combination (<a class="c" href="#m-p26">APS 210 para 26</a>).</p>
+<p><strong>In everyday words:</strong> The bank needs a pile of liquid assets that are free to sell or repo (not already promised to someone), enough to cope with losing money from lenders who want no collateral and from lenders who take collateral. The trouble might hit only us, or the whole market, or both.</p>
+<p><strong>What you do about it:</strong> Make sure only unencumbered assets count in the HQLA figure. Check the encumbrance flag from the collateral system every day (see <a class="c" href="#m-p38">APS 210 para 38</a>). Report the size of the unencumbered cushion in the daily LCR.</p>
+<p><strong>Evidence we keep:</strong> Daily HQLA listing with the encumbrance check, and the reconciliation to the collateral system.</p>
+<p><strong>Learn more:</strong> Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR); Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a> (Encumbered versus unencumbered).</p>
+<h3 id="m-p27" class="entry">APS 210 para 27: Integrated into overall risk management</h3>
+<p><strong>What it says:</strong> The liquidity risk management framework must be well integrated into the ADI's overall risk management process (<a class="c" href="#m-p27">APS 210 para 27</a>).</p>
+<p><strong>In everyday words:</strong> Liquidity risk must not sit on its own. It must connect to how the bank manages credit, market and operational risk.</p>
+<p><strong>What you do about it:</strong> Share our data with the risk teams on request and use the same customer and product data they use, so numbers agree across reports.</p>
+<p><strong>Evidence we keep:</strong> Reconciliations between liquidity data and risk or finance data; committee papers.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p28" class="entry">APS 210 para 28: Independent oversight function</h3>
+<p><strong>What it says:</strong> The liquidity risk management oversight function must be operationally independent. It must be staffed with people who have the skills and authority to challenge the ADI's treasury and other liquidity risk management businesses (<a class="c" href="#m-p28">APS 210 para 28</a>).</p>
+<p><strong>In everyday words:</strong> Someone independent of Treasury (the people who run the liquid assets and funding) must watch over them and be strong enough to say "no". At Example Bank that is Liquidity Risk.</p>
+<p><strong>What you do about it:</strong> Keep our reporting independent of Treasury. We prepare numbers from source data; Treasury does not edit them. Give Liquidity Risk any data or explanation they ask for without delay. Never change a number because Treasury asks.</p>
+<p><strong>Evidence we keep:</strong> The reporting lines chart; records of Liquidity Risk challenges and our responses.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p29" class="entry">APS 210 para 29: What the liquidity management strategy must cover</h3>
+<p><strong>What it says:</strong> The liquidity management strategy must include specific policies on liquidity management, such as (<a class="c" href="#m-p29">APS 210 para 29</a>):</p>
+<ul>
+<li>(a) the composition and maturity of assets and liabilities;</li>
+<li>(b) the diversity and stability of funding sources;</li>
+<li>(c) the approach to managing liquidity in different currencies, across borders, and across business lines and legal entities; and</li>
+<li>(d) the approach to intraday liquidity management.</li>
+</ul>
+<p><strong>In everyday words:</strong> The strategy must say what the balance sheet should look like, how varied and steady our funding is, how we handle currencies and borders, and how we manage cash within a single day.</p>
+<p><strong>What you do about it:</strong> Provide the data that proves the strategy is followed: maturity profile, funding concentration and the funding mix. For limb (c), Example Bank has one currency, so state that clearly in reports.</p>
+<p><strong>Evidence we keep:</strong> The strategy document; funding mix and concentration reports.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a> (Treasury practice).</p>
+<h3 id="m-p30" class="entry">APS 210 para 30: Normal and stressed conditions; quantitative and qualitative targets</h3>
+<p><strong>What it says:</strong> The strategy must take account of the ADI's liquidity needs in normal conditions and in periods of stress. It must include quantitative targets (numbers) and qualitative targets (descriptions) (<a class="c" href="#m-p30">APS 210 para 30</a>).</p>
+<p><strong>In everyday words:</strong> Plan for both the good days and the bad ones, and set goals you can measure as well as goals you can describe.</p>
+<p><strong>What you do about it:</strong> Our quantitative metrics (LCR, NSFR and other measures) are the numeric targets. Report them against targets every month so management can see whether the strategy is working.</p>
+<p><strong>Evidence we keep:</strong> Monthly report of metrics against the strategy's targets.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p31" class="entry">APS 210 para 31: Appropriate to nature, scale and complexity</h3>
+<p><strong>What it says:</strong> The strategy must suit the nature, scale and complexity of the ADI. In forming it, the ADI must consider its legal structure, key business lines, the breadth and diversity of the markets, products and jurisdictions it operates in, and home and host regulatory requirements (<a class="c" href="#m-p31">APS 210 para 31</a>).</p>
+<p><strong>In everyday words:</strong> A small simple bank and a big complex one need different strategies. The strategy must fit the real bank.</p>
+<p><strong>What you do about it:</strong> No action for our team beyond supplying data. Owned by senior management and Treasury. Tell them if a new product or business changes how our numbers look.</p>
+<p><strong>Evidence we keep:</strong> The strategy document showing the factors considered; a log of new products we have classified.</p>
+<p><strong>Learn more:</strong> Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p32" class="entry">APS 210 para 32: Communicating the strategy</h3>
+<p><strong>What it says:</strong> Senior management must communicate the liquidity management strategy, the key policies for carrying it out, and the liquidity risk management structure, throughout the organisation (<a class="c" href="#m-p32">APS 210 para 32</a>).</p>
+<p><strong>In everyday words:</strong> Everyone must know the plan. It cannot sit in a drawer.</p>
+<p><strong>What you do about it:</strong> Make sure you have read the strategy and the policies that affect our work. If you find an unwritten practice that is not in a policy, tell the controller.</p>
+<p><strong>Evidence we keep:</strong> Records of communications and training; our read-and-acknowledge sign-offs.</p>
+<p><strong>Learn more:</strong> Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p33" class="entry">APS 210 para 33: Telling the Board and senior management immediately</h3>
+<p><strong>What it says:</strong> The ADI must have adequate policies, procedures and controls so the Board and senior management are informed immediately of new and emerging liquidity concerns. These include increasing funding costs or concentrations, increases in any funding requirements, a lack of availability of alternative sources of liquidity, material or persistent breaches of limits, a significant decline in the cushion of unencumbered liquid assets, or changes in external market conditions that could signal future difficulties (<a class="c" href="#m-p33">APS 210 para 33</a>).</p>
+<p><strong>In everyday words:</strong> Bad news must travel fast and upward. The standard gives a list of the warning signs that must be reported straight away.</p>
+<p><strong>What you do about it:</strong> Our early-warning triggers (LCR 125% amber, NSFR 115% amber; Example Bank convention) feed this. If a trigger is hit, a limit is breached repeatedly, or the HQLA cushion drops sharply, follow the escalation ladder in document <a href="12_Controls_Incidents_and_Escalation.html">12</a> the same day.</p>
+<p><strong>Evidence we keep:</strong> Alert and escalation log with time stamps; messages sent; acknowledgement from the recipient.</p>
+<p><strong>Learn more:</strong> Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p34" class="entry">APS 210 para 34: Business units follow the strategy</h3>
+<p><strong>What it says:</strong> Senior management must be satisfied that all business units whose activities affect liquidity are fully aware of the liquidity management strategy and operate in line with the approved policies, procedures, limits and controls (<a class="c" href="#m-p34">APS 210 para 34</a>).</p>
+<p><strong>In everyday words:</strong> Everyone who can affect liquidity, from the retail team to the lending team, must follow the rules.</p>
+<p><strong>What you do about it:</strong> If a data check shows a business unit is booking something outside policy (for example a facility without the right counterparty type), tell the controller and Liquidity Risk. Keep a log of such data-quality exceptions.</p>
+<p><strong>Evidence we keep:</strong> Data-quality exception log and the follow-up.</p>
+<p><strong>Learn more:</strong> Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p35" class="entry">APS 210 para 35: Ongoing and comprehensive review of the framework</h3>
+<p><strong>What it says:</strong> The framework must be reviewed effectively on an ongoing basis, as well as through a comprehensive review as part of the review of the risk management framework under Prudential Standard CPS 220 Risk Management (CPS 220) (<a class="c" href="#m-p35">APS 210 para 35</a>).</p>
+<p><strong>In everyday words:</strong> Keep improving it all year, and give it a big check as part of the bank-wide risk framework review.</p>
+<p><strong>What you do about it:</strong> Record control failures, near misses and lessons learned as they happen, so they are ready for the review. Take part in internal audit and Risk reviews when asked.</p>
+<p><strong>Evidence we keep:</strong> Lessons-learned log; audit and review reports and our responses.</p>
+<p><strong>Learn more:</strong> Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h2 id="management-of-liquidity-risk">Management of liquidity risk</h2>
+<h3 id="m-p36" class="entry">APS 210 para 36: Identify, measure, monitor and control; project cash flows</h3>
+<p><strong>What it says:</strong> An ADI must have a sound process for identifying, measuring, monitoring and controlling liquidity risk. That process must include a robust framework for comprehensively projecting cash flows arising from assets, liabilities and off-balance sheet items over an appropriate set of time horizons (<a class="c" href="#m-p36">APS 210 para 36</a>).</p>
+<p><strong>In everyday words:</strong> Work out, ahead of time, how much cash will come in and go out, from loans, deposits and promises not yet drawn (off-balance sheet items), over days, weeks and months.</p>
+<p><strong>What you do about it:</strong> Produce the maturity ladder and the forward-looking LCR (the next 30 to 90 days), so management can see debt rolling into the 30-day window before it arrives. This is the lesson of the incident scenario in document <a href="12_Controls_Incidents_and_Escalation.html">12</a>, where A$2.8bn of wholesale debt moved inside 30 days and nobody had forecast it.</p>
+<p><strong>Evidence we keep:</strong> Cash flow projection files, forward-looking LCR reports and their assumptions.</p>
+<p><strong>Learn more:</strong> Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR); Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a> (Treasury practice).</p>
+<h3 id="m-p37" class="entry">APS 210 para 37: Setting limits</h3>
+<p><strong>What it says:</strong> An ADI must set limits to control its liquidity risk exposure and vulnerabilities. Limits and their escalation procedures must be reviewed regularly. Limits must suit the business in terms of its location, complexity of activity, nature of products, and currencies and markets served. When a liquidity risk limit is breached, the ADI must put in place a plan of action to review the exposure and reduce it to within the limit (<a class="c" href="#m-p37">APS 210 para 37</a>).</p>
+<p><strong>In everyday words:</strong> Set a ceiling or floor for each key risk. If we cross one, we must have a plan to get back inside it, not just note it.</p>
+<p><strong>What you do about it:</strong> Check each limit every time we produce a number (daily LCR, monthly NSFR and the other indicators). If a limit is crossed, record the breach, tell the controller immediately and make sure a plan of action is opened with an owner and a date. Never adjust a number to avoid a breach.</p>
+<p><strong>Evidence we keep:</strong> Limit table with approval dates; breach register; action plans and their close-out.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p38" class="entry">APS 210 para 38: Collateral and encumbrance</h3>
+<p><strong>What it says:</strong> An ADI must actively manage its collateral positions, telling encumbered assets (pledged, so not free to use) apart from unencumbered assets. It must monitor the legal entity and physical location where collateral is held and how it can be mobilised (made available for use) in a timely manner (<a class="c" href="#m-p38">APS 210 para 38</a>).</p>
+<p><strong>In everyday words:</strong> Know which assets are already promised to someone else, where each asset sits, and how fast we could use it.</p>
+<p><strong>What you do about it:</strong> Reconcile the encumbrance data from the collateral system with the securities list used in HQLA every day. Flag any asset pledged, earmarked or held where it cannot be used. Report collateral by entity and location. Produce the encumbrance report for ALCO.</p>
+<p><strong>Evidence we keep:</strong> Daily encumbrance reconciliation; collateral location report; exceptions list.</p>
+<p><strong>Learn more:</strong> Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a> (Encumbered versus unencumbered).</p>
+<h3 id="m-p39" class="entry">APS 210 para 39: Early warning indicators</h3>
+<p><strong>What it says:</strong> An ADI must design a set of early warning indicators to help its daily liquidity risk management identify rising risk or vulnerabilities in its liquidity position or potential funding needs. The indicators must be built to help identify and escalate negative trends and lead to an assessment, and possibly a response by management, to reduce the ADI's exposure to those trends (<a class="c" href="#m-p39">APS 210 para 39</a>).</p>
+<p><strong>In everyday words:</strong> Like warning lights on a car dashboard. They tell us trouble is coming before we are in trouble.</p>
+<p><strong>What you do about it:</strong> Produce the early warning indicators every day, as Liquidity Risk and the controller specify. Typical ones: LCR level and trend, funding cost, share of funding that is short-term, deposit outflows, falling market prices of our securities. Example Bank convention: amber triggers at LCR 125% and NSFR 115%. When an indicator turns amber or red, escalate that day.</p>
+<p><strong>Evidence we keep:</strong> The daily indicator dashboard; escalation records; the document that defines each indicator.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p40" class="entry">APS 210 para 40: Management information system</h3>
+<p><strong>What it says:</strong> An ADI must have a reliable management information system that gives the Board, senior management and other appropriate personnel timely and forward-looking information on the ADI's liquidity position (<a class="c" href="#m-p40">APS 210 para 40</a>).</p>
+<p><strong>In everyday words:</strong> The reports and tools must be accurate, arrive on time, and look ahead, not only back.</p>
+<p><strong>What you do about it:</strong> Deliver the daily LCR by 10:00 am for the previous business day (Example Bank convention) and the monthly review pack to ALCO. Test and control the spreadsheets and systems we use: access, change control and reconciliation. Report any outage immediately.</p>
+<p><strong>Evidence we keep:</strong> Delivery logs; system and spreadsheet controls records; outage log.</p>
+<p><strong>Learn more:</strong> Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR); Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation).</p>
+<h3 id="m-p41" class="entry">APS 210 para 41: Intraday liquidity</h3>
+<p><strong>What it says:</strong> An ADI must actively manage its intraday liquidity positions and risks so it can meet payment and settlement obligations on time under normal and stressed conditions, thereby contributing to the orderly functioning of payment and settlement systems (<a class="c" href="#m-p41">APS 210 para 41</a>).</p>
+<p><strong>In everyday words:</strong> "Intraday" means within a single business day. During the day the bank pays out large sums before it receives incoming payments. It must have enough cash during the day to settle payments on time.</p>
+<p><strong>What you do about it:</strong> No action for our team for the management of intraday positions; owned by Treasury (payments and settlement) with Liquidity Risk oversight. We help by supplying balance data and, if asked, by including intraday measures in the monitoring pack.</p>
+<p><strong>Evidence we keep:</strong> Intraday reports we receive from Treasury, if included in our pack.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a> (Treasury practice).</p>
+<h3 id="m-p42" class="entry">APS 210 para 42: Costs and benefits allocation</h3>
+<p><strong>What it says:</strong> An ADI must develop and implement a process that allocates the costs and benefits of funding and liquidity so that the costs of prudent liquidity management are apportioned to the sources of liquidity risk and give appropriate incentives to manage liquidity risk (<a class="c" href="#m-p42">APS 210 para 42</a>).</p>
+<p><strong>In everyday words:</strong> The product or business that causes the liquidity risk should bear its cost. Otherwise nobody has a reason to be careful. This is often called funds transfer pricing.</p>
+<p><strong>What you do about it:</strong> No action for our team; owned by Treasury and Finance. We supply product-level LCR and NSFR data if they use it to calculate charges. Make sure the product tags we use match theirs.</p>
+<p><strong>Evidence we keep:</strong> Data supplied to Treasury and Finance for cost allocation, and a record of agreed product mappings.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a> (Treasury practice).</p>
+<h3 id="m-p43" class="entry">APS 210 para 43: Multiple currencies</h3>
+<p><strong>What it says:</strong> An ADI active in multiple currencies must (<a class="c" href="#m-p43">APS 210 para 43</a>):</p>
+<ul>
+<li>(a) maintain liquid assets consistent with the distribution of its liquidity needs by currency;</li>
+<li>(b) assess its aggregate foreign currency liquidity needs and decide an acceptable level of currency mismatches; and</li>
+<li>(c) separately analyse its strategy for each currency in which it has material activities, considering potential constraints in times of stress.</li>
+</ul>
+<p><strong>In everyday words:</strong> If a bank deals in several currencies, it needs liquid assets in the right currencies, because you cannot always swap one for another quickly.</p>
+<p><strong>What you do about it:</strong> Example Bank has one currency (AUD), so these limbs do not apply to it in practice. Note that on every report. If Example Bank ever takes on a foreign currency business, we would need to produce LCR by currency, and the controller will tell us.</p>
+<p><strong>Evidence we keep:</strong> A statement that Example Bank operates in a single currency; the currency analysis if that changes.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-4-instruments-and-market-terms">Guide Ch 4</a> (Currency terms).</p>
+<h2 id="funding-strategy">Funding strategy</h2>
+<h3 id="m-p44" class="entry">APS 210 para 44: Three-year funding strategy and funding markets</h3>
+<p><strong>What it says:</strong> An ADI must (<a class="c" href="#m-p44">APS 210 para 44</a>):</p>
+<ul>
+<li>(a) develop and document a three-year funding strategy, which must be given to APRA on request;</li>
+<li>(b) maintain an ongoing presence in its chosen funding markets and strong relationships with funds providers; and</li>
+<li>(c) regularly gauge its capacity to raise funds quickly, identify the main factors that affect that ability and monitor them closely to ensure its estimates of fund-raising capacity remain valid.</li>
+</ul>
+<p><strong>In everyday words:</strong> Have a written plan for how the bank will fund itself over three years, keep showing up in the markets where it borrows, and keep testing how fast it could raise money.</p>
+<p><strong>What you do about it:</strong> Supply the data the plan needs (the current funding profile, maturity of wholesale debt, NSFR and LCR forecasts). The April 2021 version of the liquidity reporting standard ARS 210.0 listed a three-year funding plan form (ARF 210.4); that is unverified for today, so check the current form list in document <a href="11_APRA_Returns_and_Disclosures.html">11</a>. If APRA asks for the plan, the request goes to Treasury and the controller; we help assemble it.</p>
+<p><strong>Evidence we keep:</strong> The three-year funding strategy; data we supplied; any APRA request and the response.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); <a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a> (Treasury practice).</p>
+<h3 id="m-p45" class="entry">APS 210 para 45: Board review and approval of funding strategy</h3>
+<p><strong>What it says:</strong> The funding strategy must be reviewed and approved by the Board at least annually, and supported by robust assumptions in line with the ADI's liquidity management strategy and business objectives (<a class="c" href="#m-p45">APS 210 para 45</a>).</p>
+<p><strong>In everyday words:</strong> The Board signs off the funding plan every year, and the plan's assumptions must be sound.</p>
+<p><strong>What you do about it:</strong> Make sure the forecasts we supply are based on the same data as our signed positions, and state our assumptions. Keep copies of the version we used.</p>
+<p><strong>Evidence we keep:</strong> Board minute approving the strategy; our forecast files and assumption lists.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a> (Treasury practice).</p>
+<h3 id="m-p46" class="entry">APS 210 para 46: Updating the funding strategy; telling APRA of material changes</h3>
+<p><strong>What it says:</strong> The funding strategy must be reviewed and updated at least annually to account for, at a minimum, changed funding conditions and a change in the ADI's strategy. The ADI must advise APRA of any material changes to its funding strategy (<a class="c" href="#m-p46">APS 210 para 46</a>).</p>
+<p><strong>In everyday words:</strong> Update the plan yearly, and tell APRA if the plan changes in an important way.</p>
+<p><strong>What you do about it:</strong> If our data suggests that funding conditions have shifted materially (for example, a big change in the funding mix), tell the controller so Treasury can consider whether the strategy needs updating. The notice to APRA is not ours to send.</p>
+<p><strong>Evidence we keep:</strong> Notes to the controller; the notice to APRA (kept by Treasury or Compliance).</p>
+<p><strong>Learn more:</strong> Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); <a href="../LIQUIDITY_GUIDE.html#chapter-9-how-treasury-manages-liquidity-day-to-day">Guide Ch 9</a> (Treasury practice).</p>
+<h2 id="contingency-funding-plan">Contingency funding plan</h2>
+<h3 id="m-p47" class="entry">APS 210 para 47: A formal contingency funding plan</h3>
+<p><strong>What it says:</strong> An ADI must have a formal contingency funding plan that clearly sets out the strategies for addressing liquidity shortfalls in stressed situations. The plan must set out policies to manage a range of stress environments, establish clear lines of responsibility and include clear invocation and escalation procedures (<a class="c" href="#m-p47">APS 210 para 47</a>).</p>
+<p><strong>In everyday words:</strong> The bank's emergency plan for running short of cash. It says who does what, and how and when the plan is switched on ("invoked").</p>
+<p><strong>What you do about it:</strong> Know where the plan is and what triggers it. Our role is to give fast, accurate numbers when it is invoked. If the LCR drops below 100%, follow document <a href="12_Controls_Incidents_and_Escalation.html">12</a> and escalate under the plan.</p>
+<p><strong>Evidence we keep:</strong> The plan; our data contribution list; records of any invocation.</p>
+<p><strong>Learn more:</strong> Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p48" class="entry">APS 210 para 48: Content and flexibility of the plan</h3>
+<p><strong>What it says:</strong> The contingency funding plan must match the ADI's complexity, risk profile, scope of operations and role in the financial systems it operates in. It must set out the available contingency funding sources and the amount the ADI estimates it can get from each; clear escalation and prioritisation procedures stating when and how each action can and must be activated; and the lead time needed to tap additional funds from each source. It must give a framework flexible enough for the ADI to respond quickly in a variety of situations (<a class="c" href="#m-p48">APS 210 para 48</a>).</p>
+<p><strong>In everyday words:</strong> The plan lists where emergency money can come from, how much, how quickly, and in what order to use each source.</p>
+<p><strong>What you do about it:</strong> Provide up-to-date figures on the liquid asset portfolio, the unencumbered assets that could be sold or repo-ed, and the funding maturity profile, so the amounts in the plan are realistic.</p>
+<p><strong>Evidence we keep:</strong> The data pack we supply each time the plan is updated or tested.</p>
+<p><strong>Learn more:</strong> Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p49" class="entry">APS 210 para 49: Integrated with stress testing; multiple time horizons</h3>
+<p><strong>What it says:</strong> The plan's design, scope and procedures must be closely integrated with the ADI's ongoing liquidity risk analysis and with the assumptions and results of its stress tests. The plan must address issues over a range of time horizons, including intraday (<a class="c" href="#m-p49">APS 210 para 49</a>).</p>
+<p><strong>In everyday words:</strong> The emergency plan must be built on what the stress tests show, and cover everything from hours to months.</p>
+<p><strong>What you do about it:</strong> Keep our data consistent with the stress tests that Liquidity Risk runs. If the data we give the plan team differs from the data used in stress tests, flag it.</p>
+<p><strong>Evidence we keep:</strong> Reconciliation between our data and stress test inputs.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation).</p>
+<h3 id="m-p50" class="entry">APS 210 para 50: Retail deposit run</h3>
+<p><strong>What it says:</strong> For an ADI that has retail deposits, the plan must address a retail deposit run and must include measures to repay retail depositors as soon as practicable. The retail run contingency plan must not rely on closing distribution channels to retail depositors. It must aim to make sure that, if confidence in the ADI is lost, retail depositors who want their deposits back can get them as quickly and conveniently as practicable in the circumstances, and within the contractual terms and conditions of the deposit products (<a class="c" href="#m-p50">APS 210 para 50</a>).</p>
+<p><strong>In everyday words:</strong> If customers rush to withdraw (a "run"), the bank must pay them quickly, and must not shut branches, ATMs or online banking to slow them down. It can still apply the product's own terms, for example the notice period on a term deposit.</p>
+<p><strong>What you do about it:</strong> Supply retail deposit data (by product, balance and access terms) quickly when the plan is tested or invoked. Know which retail deposits can be withdrawn at call and which cannot.</p>
+<p><strong>Evidence we keep:</strong> Retail deposit data extracts; the plan test results.</p>
+<p><strong>Learn more:</strong> Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a> (Anatomy of a bank run).</p>
+<h3 id="m-p51" class="entry">APS 210 para 51: Annual review and test; Board approval</h3>
+<p><strong>What it says:</strong> The contingency funding plan must be reviewed and tested at least annually to ensure it is effective and workable. The Board must review and approve the plan at least annually, or more often as changing business or market conditions require (<a class="c" href="#m-p51">APS 210 para 51</a>).</p>
+<p><strong>In everyday words:</strong> A fire drill every year, and the Board signs off the plan each year.</p>
+<p><strong>What you do about it:</strong> Take part in the annual test, producing the data at speed. Record any time it took us longer than expected, so the plan's lead-time estimates stay honest.</p>
+<p><strong>Evidence we keep:</strong> Test scripts and results; our timing notes; the Board minute approving the plan.</p>
+<p><strong>Learn more:</strong> Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h2 id="classification-of-adis">Classification of ADIs</h2>
+<h3 id="m-p52" class="entry">APS 210 para 52: APRA classifies locally incorporated ADIs</h3>
+<p><strong>What it says:</strong> For a locally incorporated ADI, APRA decides whether it is classified as a Liquidity Coverage Ratio ADI (LCR ADI) or a Minimum Liquidity Holdings ADI (MLH ADI) (<a class="c" href="#m-p52">APS 210 para 52</a>).</p>
+<p><strong>In everyday words:</strong> APRA, not the bank, chooses which of the two liquidity rulebooks the bank follows. Larger and more complex banks are LCR ADIs. Example Bank is an LCR ADI.</p>
+<p><strong>What you do about it:</strong> Keep the written classification from APRA on file. Make sure our calculations follow the LCR route (Attachment A) and the NSFR (Attachment C), not the MLH route (Attachment B).</p>
+<p><strong>Evidence we keep:</strong> APRA's written classification letter (see <a class="c" href="#m-p8">APS 210 para 8</a>, which says APRA acts in writing).</p>
+<p><strong>Learn more:</strong> Document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (Companion: Attachments B and C); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Classification: LCR ADI or MLH ADI).</p>
+<h3 id="m-p53" class="entry">APS 210 para 53: Foreign ADIs</h3>
+<p><strong>What it says:</strong> A foreign ADI is an LCR ADI unless APRA determines it is an MLH ADI. In deciding, APRA will consider the ADI's size and complexity with respect to liquidity risk (<a class="c" href="#m-p53">APS 210 para 53</a>).</p>
+<p><strong>In everyday words:</strong> The default for a foreign bank's Australian branch is the LCR route, unless APRA says otherwise.</p>
+<p><strong>What you do about it:</strong> No action for our team; Example Bank is locally incorporated. Know the rule because it explains the lower 40% LCR minimum for foreign ADIs in (<a class="c" href="#m-p55">APS 210 para 55</a>).</p>
+<p><strong>Evidence we keep:</strong> Not applicable to Example Bank.</p>
+<p><strong>Learn more:</strong> <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Foreign ADI: branch versus subsidiary).</p>
+<h3 id="m-p54" class="entry">APS 210 para 54: Continuous compliance, absent financial stress</h3>
+<p><strong>What it says:</strong> An ADI must meet the minimum quantitative requirements of its classification on a continuous basis, absent a situation of financial stress (<a class="c" href="#m-p54">APS 210 para 54</a>).</p>
+<p><strong>In everyday words:</strong> The minimums apply every day, not just at month-end. The only allowance is that in a real stress the ratio may be used and may fall (see <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>).</p>
+<p><strong>What you do about it:</strong> Calculate the LCR daily, not only at month-end, and watch the NSFR through the month (the NSFR must be met "at all times": <a class="c" href="#m-p60">APS 210 para 60</a>). Take care that a month-end figure is not window-dressed (nothing may be done only to look better on one date).</p>
+<p><strong>Evidence we keep:</strong> Daily LCR series and the intra-month NSFR estimates.</p>
+<p><strong>Learn more:</strong> Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR); Document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR, end to end); <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> (Using the buffer in stress, and telling APRA).</p>
+<h2 id="liquidity-coverage-ratio-adis">Liquidity coverage ratio ADIs</h2>
+<h3 id="m-p55" class="entry">APS 210 para 55: The LCR minimum</h3>
+<p><strong>What it says:</strong> An LCR ADI must maintain an adequate level of unencumbered high-quality liquid assets (HQLA) to meet its liquidity needs for a 30 calendar day period under a severe stress scenario, in accordance with Attachment A. Absent a situation of financial stress (see <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>) (<a class="c" href="#m-p55">APS 210 para 55</a>):</p>
+<ul>
+<li>(a) for a locally incorporated ADI, the Australian dollar (AUD) LCR and the all currencies LCR must each be at least 100 per cent; and</li>
+<li>(b) for a foreign ADI, the LCR must be at least 40 per cent on an all currencies basis.</li>
+</ul>
+<p><strong>In everyday words:</strong> Hold enough easy-to-sell, unpledged assets to cover the cash that could leave in 30 days of severe stress. The ratio is HQLA divided by net cash outflows, and it must be at least 100%. Example Bank has one currency, so its AUD LCR equals its all-currencies LCR.</p>
+<pre><code>LCR = stock of HQLA / total net cash outflows over the next 30 calendar days
+</code></pre>
+<p><strong>What you do about it:</strong> Produce the AUD and the all-currencies LCR daily, tell the controller whenever either is under the Example Bank early warning trigger (125%) or Board appetite (120%), and escalate immediately if under 100%. Example Bank base position: HQLA 17.0, net outflows 11.55, LCR 147.2%.</p>
+<p><strong>Evidence we keep:</strong> Signed daily LCR working papers, the reconciliation of inputs, and the review sign-off.</p>
+<p><strong>Learn more:</strong> Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR); Document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> (Companion: Attachment A); <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> (The Liquidity Coverage Ratio, line by line).</p>
+<h3 id="m-p56" class="entry">APS 210 para 56: APRA may require a higher LCR</h3>
+<p><strong>What it says:</strong> APRA may require an LCR ADI to hold a higher minimum LCR if APRA has concerns about the ADI's liquidity risk profile or the quality of its liquidity risk management (<a class="c" href="#m-p56">APS 210 para 56</a>).</p>
+<p><strong>In everyday words:</strong> APRA can raise the bar for one bank if it is not happy. The new minimum would be given in writing (<a class="c" href="#m-p8">APS 210 para 8</a>).</p>
+<p><strong>What you do about it:</strong> If a higher minimum is set for Example Bank, change the minimum in our templates, limits and alerts the same day, and tell the controller that it has been done. Do not change limits on a verbal instruction.</p>
+<p><strong>Evidence we keep:</strong> APRA's written requirement; the dated change to our limits and templates.</p>
+<p><strong>Learn more:</strong> Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (APRA's powers under the standard).</p>
+<h2 id="minimum-liquidity-holdings-adis">Minimum liquidity holdings ADIs</h2>
+<h3 id="m-p57" class="entry">APS 210 para 57: The MLH requirement</h3>
+<p><strong>What it says:</strong> An MLH ADI must keep a minimum holding of nine per cent of its liabilities in specified liquid assets, in accordance with Attachment B (<a class="c" href="#m-p57">APS 210 para 57</a>).</p>
+<p><strong>In everyday words:</strong> A simpler rule for smaller banks: hold at least 9% of liabilities in specific liquid assets. Example Bank is an LCR ADI, so this does not apply to it, but you should know it exists.</p>
+<p><strong>What you do about it:</strong> No action for our team. Example Bank is an LCR ADI. If APRA ever reclassified us, the controller would tell us and we would build the Attachment B calculation.</p>
+<p><strong>Evidence we keep:</strong> Not applicable to Example Bank.</p>
+<p><strong>Learn more:</strong> Document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (Companion: Attachments B and C); <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> (Minimum liquidity holdings).</p>
+<h3 id="m-p58" class="entry">APS 210 para 58: APRA may require higher MLH</h3>
+<p><strong>What it says:</strong> APRA may require an MLH ADI to hold higher minimum liquidity holdings if it has concerns about the ADI's liquidity risk profile or the quality of its liquidity risk management (<a class="c" href="#m-p58">APS 210 para 58</a>).</p>
+<p><strong>In everyday words:</strong> The same power as for the LCR, applied to MLH banks.</p>
+<p><strong>What you do about it:</strong> No action for our team; applies to MLH ADIs only.</p>
+<p><strong>Evidence we keep:</strong> Not applicable to Example Bank.</p>
+<p><strong>Learn more:</strong> Document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (Companion: Attachments B and C); <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> (Minimum liquidity holdings).</p>
+<h2 id="net-stable-funding-ratio">Net stable funding ratio</h2>
+<h3 id="m-p59" class="entry">APS 210 para 59: Who must meet the NSFR</h3>
+<p><strong>What it says:</strong> A locally incorporated ADI that is classified as an LCR ADI must meet the NSFR requirements in the standard (<a class="c" href="#m-p59">APS 210 para 59</a>).</p>
+<p><strong>In everyday words:</strong> Example Bank is locally incorporated and an LCR ADI, so the NSFR applies to it.</p>
+<p><strong>What you do about it:</strong> Produce the NSFR every month, using Attachment C and the procedure in document <a href="09_NSFR_Production_End_to_End.html">09</a>.</p>
+<p><strong>Evidence we keep:</strong> Signed monthly NSFR working papers.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR, end to end); Document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (Companion: Attachments B and C); <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> (NSFR).</p>
+<h3 id="m-p60" class="entry">APS 210 para 60: NSFR at least 100 per cent at all times</h3>
+<p><strong>What it says:</strong> A locally incorporated LCR ADI must keep an NSFR of at least 100 per cent at all times (<a class="c" href="#m-p60">APS 210 para 60</a>).</p>
+<p><strong>In everyday words:</strong> The ratio of available stable funding to required stable funding must be at least 100% on every day, not just at month-end.</p>
+<pre><code>NSFR = available stable funding (ASF) / required stable funding (RSF)
+</code></pre>
+<p><strong>What you do about it:</strong> Produce the formal NSFR monthly and watch the trend between month-ends, for example with an estimate after any large transaction. Example Bank base position: ASF 79.75, RSF 58.50, NSFR 136.3%. Compare with the Board appetite (110%, Example Bank convention) and trigger (115% amber, Example Bank convention).</p>
+<p><strong>Evidence we keep:</strong> The monthly working papers, reviews and the intra-month estimates.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR, end to end); Document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (Companion: Attachments B and C); <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> (NSFR).</p>
+<h3 id="m-p61" class="entry">APS 210 para 61: APRA may require a higher NSFR</h3>
+<p><strong>What it says:</strong> APRA may require an LCR ADI to keep a higher minimum NSFR where APRA considers it appropriate, including if it has concerns about the ADI's funding or liquidity risk profile or the quality of its liquidity risk management (<a class="c" href="#m-p61">APS 210 para 61</a>).</p>
+<p><strong>In everyday words:</strong> APRA can raise the NSFR bar for a bank it worries about.</p>
+<p><strong>What you do about it:</strong> As for the LCR: act only on a written requirement (<a class="c" href="#m-p8">APS 210 para 8</a>), update limits and templates, and tell the controller.</p>
+<p><strong>Evidence we keep:</strong> APRA's written requirement and the dated change to limits.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR, end to end); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (APRA's powers under the standard).</p>
+<h2 id="stress-testing">Stress testing</h2>
+<h3 id="m-p62" class="entry">APS 210 para 62: Regular stress tests</h3>
+<p><strong>What it says:</strong> In addition to the requirements in (<a class="c" href="#m-p52">APS 210 paras 52 to 56</a>), an LCR ADI must run stress tests on a regular basis for a variety of short-term and protracted (long-running) institution-specific and market-wide stress scenarios, individually and in combination. The purpose is to identify sources of potential liquidity strain and make sure current exposures stay in line with the ADI's liquidity risk tolerance (<a class="c" href="#m-p62">APS 210 para 62</a>).</p>
+<p><strong>In everyday words:</strong> Ask "what if?" regularly. What if only we get into trouble? What if the whole market does? What if both, for a day or for months? Then check we are still inside our own risk limits.</p>
+<p><strong>What you do about it:</strong> The scenarios are designed and run by Liquidity Risk. We supply the starting position data, with the same classification as the LCR and NSFR, and reconcile it to the signed numbers. We also help check that the LCR's own severe stress assumptions are applied correctly (see document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>).</p>
+<p><strong>Evidence we keep:</strong> The data extracts we gave to Liquidity Risk; the reconciliation of that data to the signed LCR.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a> (Stress: idiosyncratic, market-wide and combined).</p>
+<h3 id="m-p63" class="entry">APS 210 para 63: Using stress test outcomes</h3>
+<p><strong>What it says:</strong> The stress test outcomes must be used to adjust the ADI's liquidity management strategy, policies and positions, and to develop effective contingency plans to deal with liquidity stress events (<a class="c" href="#m-p63">APS 210 para 63</a>).</p>
+<p><strong>In everyday words:</strong> A stress test is only useful if the results change what the bank does.</p>
+<p><strong>What you do about it:</strong> No action for our team beyond supplying data; owned by Liquidity Risk, Treasury and the Board. Ask Liquidity Risk how results change limits, and update the limits in our reports when they change.</p>
+<p><strong>Evidence we keep:</strong> Records showing which limit changes came from which stress test.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p64" class="entry">APS 210 para 64: Level 1, Level 2 and business lines</h3>
+<p><strong>What it says:</strong> Stress tests must let the ADI analyse the effect of stress scenarios on its Level 1 and Level 2 liquidity positions, and on the liquidity positions of individual business lines (<a class="c" href="#m-p64">APS 210 para 64</a>).</p>
+<p><strong>In everyday words:</strong> Test the whole bank, the whole group, and each business line separately.</p>
+<p><strong>What you do about it:</strong> Make sure the position data we give can be cut by business line as well as in total. For Example Bank Level 1 equals Level 2 (see <a class="c" href="#m-p3">APS 210 para 3</a>).</p>
+<p><strong>Evidence we keep:</strong> Business line mapping tables used in our data extracts.</p>
+<p><strong>Learn more:</strong> Document <a href="07_Data_and_Classification.html">07</a> (Data and classification); Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios).</p>
+<h3 id="m-p65" class="entry">APS 210 para 65: Documenting, reporting and using stress test results</h3>
+<p><strong>What it says:</strong> An LCR ADI's stress test scenarios and related assumptions must be well documented and reviewed together with the results. Results, vulnerabilities and any resulting actions must be reported to, and discussed with, the Board and APRA. Results must be built into the ADI's strategic planning process and its day-to-day risk management, and must be explicitly considered when setting internal limits (<a class="c" href="#m-p65">APS 210 para 65</a>).</p>
+<p><strong>In everyday words:</strong> Write down the scenarios and assumptions, report results to the Board and to APRA, and use them in planning and in setting limits.</p>
+<p><strong>What you do about it:</strong> The report to APRA is a notification, owned by Liquidity Risk and senior management (see document <a href="11_APRA_Returns_and_Disclosures.html">11</a>). We make sure the data behind it is accurate and signed. Keep the data version used for each stress test.</p>
+<p><strong>Evidence we keep:</strong> Stress test documentation; Board and APRA reports; data version records.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); <a href="../LIQUIDITY_GUIDE.html#chapter-8-the-rest-of-aps-210-governance-and-risk-management">Guide Ch 8</a> (Governance).</p>
+<h3 id="m-p66" class="entry">APS 210 para 66: Stress tests feed the contingency funding plan</h3>
+<p><strong>What it says:</strong> An LCR ADI must decide how to include the results of stress tests when assessing and planning for potential funding shortfalls in its contingency funding plan (<a class="c" href="#m-p66">APS 210 para 66</a>).</p>
+<p><strong>In everyday words:</strong> If the stress test shows a gap, the emergency plan must say how to fill it.</p>
+<p><strong>What you do about it:</strong> No action for our team beyond data; owned by Liquidity Risk and Treasury. If a stress test result produces a shortfall number, check that it uses the same position data as our signed figures.</p>
+<p><strong>Evidence we keep:</strong> Cross-reference between stress test results and the plan's funding sources.</p>
+<p><strong>Learn more:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation).</p>
+<h2 id="local-operational-capacity">Local operational capacity</h2>
+<h3 id="m-p67" class="entry">APS 210 para 67: Foreign ADI annual LOC assessment</h3>
+<p><strong>What it says:</strong> A foreign ADI must assess its local operational capacity (LOC), meaning its ability to liquidate assets and make or receive payments without help from staff outside Australia. It must do this at least annually and give the results to APRA on request (<a class="c" href="#m-p67">APS 210 para 67</a>).</p>
+<p><strong>In everyday words:</strong> Could the Australian branch of an overseas bank keep working if its overseas head office staff were cut off? Only foreign ADIs must test this.</p>
+<p><strong>What you do about it:</strong> No action for our team; this applies to foreign ADIs only. Example Bank is locally incorporated.</p>
+<p><strong>Evidence we keep:</strong> Not applicable to Example Bank.</p>
+<p><strong>Learn more:</strong> <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Foreign ADI: branch versus subsidiary).</p>
+<h3 id="m-p68" class="entry">APS 210 para 68: LOC scenario</h3>
+<p><strong>What it says:</strong> In its LOC assessment, a foreign ADI must at least consider a scenario combining time zones, different public holidays and an offshore operational risk event, under which it would operate, including making and receiving payments, for at least three business days without help from staff outside Australia. It may assume related-party operations within Australia continue to work normally (<a class="c" href="#m-p68">APS 210 para 68</a>).</p>
+<p><strong>In everyday words:</strong> The test must cover three business days of working alone, with awkward time zones and holidays.</p>
+<p><strong>What you do about it:</strong> No action for our team; applies to foreign ADIs only.</p>
+<p><strong>Evidence we keep:</strong> Not applicable to Example Bank.</p>
+<p><strong>Learn more:</strong> <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Foreign ADI: branch versus subsidiary).</p>
+<h3 id="m-p69" class="entry">APS 210 para 69: APRA may add requirements after an LOC assessment</h3>
+<p><strong>What it says:</strong> APRA may impose additional requirements on a foreign ADI if its LOC assessment highlights issues about its ability to liquidate assets and make or receive payments without help from staff outside Australia (<a class="c" href="#m-p69">APS 210 para 69</a>).</p>
+<p><strong>In everyday words:</strong> If the test shows weakness, APRA can add rules.</p>
+<p><strong>What you do about it:</strong> No action for our team; applies to foreign ADIs only.</p>
+<p><strong>Evidence we keep:</strong> Not applicable to Example Bank.</p>
+<p><strong>Learn more:</strong> <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Foreign ADI: branch versus subsidiary).</p>
+<h2 id="exceptional-liquidity-assistance">Exceptional Liquidity Assistance</h2>
+<h3 id="m-p70" class="entry">APS 210 para 70: Exceptional Liquidity Assistance</h3>
+<p><strong>What it says:</strong> An ADI under severe liquidity stress may ask the Reserve Bank of Australia (RBA) for Exceptional Liquidity Assistance (ELA). Before approaching the RBA, the ADI must notify APRA immediately of its liquidity concerns and its intention to request ELA. It must provide any information APRA or the RBA asks for about its ELA request. It must have the operational capability to provide information with its application for ELA, or within other timeframes APRA sets (<a class="c" href="#m-p70">APS 210 para 70</a>).</p>
+<p><strong>In everyday words:</strong> ELA is the central bank's emergency lending to a bank that has run out of other options. Tell APRA first, then be ready to hand over detailed data fast. The July 2025 version added the requirement to be operationally able to provide information.</p>
+<p><strong>What you do about it:</strong> Be ready to produce a complete, reconciled, as-at-today data set (balance sheet by product and counterparty, unencumbered asset list with valuations, funding maturities, LCR and NSFR) at short notice, possibly within hours. Test this readiness at least once a year, for example during the contingency funding plan test (<a class="c" href="#m-p51">APS 210 para 51</a>). Never send data to APRA or the RBA yourself; senior management decides.</p>
+<p><strong>Evidence we keep:</strong> The ELA data pack template and test results with timings; records of any request and what we supplied.</p>
+<p><strong>Learn more:</strong> Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (Exceptional Liquidity Assistance).</p>
+<h2 id="adjustments-and-exclusions">Adjustments and exclusions</h2>
+<h3 id="m-p71" class="entry">APS 210 para 71: APRA may adjust or exclude requirements</h3>
+<p><strong>What it says:</strong> APRA may adjust or exclude a specific requirement of the standard in relation to an ADI or authorised NOHC (<a class="c" href="#m-p71">APS 210 para 71</a>). The footnote refers to subsection 11AF(2) of the Banking Act (see footnote 1 below).</p>
+<p><strong>In everyday words:</strong> APRA can give one bank a tailored version of a rule, or lift a rule for it. It does this in writing (<a class="c" href="#m-p8">APS 210 para 8</a>).</p>
+<p><strong>What you do about it:</strong> If any adjustment applies to Example Bank, record it in the register of APRA decisions and apply it exactly as written. Never assume an adjustment applies to us because it applies to another bank.</p>
+<p><strong>Evidence we keep:</strong> APRA's written adjustment or exclusion and the dated change to our procedures.</p>
+<p><strong>Learn more:</strong> Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (APRA's powers under the standard).</p>
+<h2 id="previous-exercise-of-discretion">Previous exercise of discretion</h2>
+<h3 id="m-p72" class="entry">APS 210 para 72: Relying on a past exemption</h3>
+<p><strong>What it says:</strong> An ADI must contact APRA if it wants to rely, for the purposes of complying with APS 210, on a previous exemption or other exercise of discretion by APRA under an earlier version of the standard (<a class="c" href="#m-p72">APS 210 para 72</a>).</p>
+<p><strong>In everyday words:</strong> An old permission does not carry over by itself. Before relying on one, ask APRA.</p>
+<p><strong>What you do about it:</strong> List any old APRA permissions the team still relies on (for example, a past classification or concession). Raise each with the controller, who will contact APRA. Until APRA confirms, do not rely on it.</p>
+<p><strong>Evidence we keep:</strong> The list of past permissions and the correspondence with APRA confirming or ending each one.</p>
+<p><strong>Learn more:</strong> Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure); <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (APRA's powers under the standard).</p>
+<h2 id="footnotes">Footnotes</h2>
+<h3 id="m-f1" class="entry">APS 210 footnote 1: Refer to the Banking Act</h3>
+<p><strong>What it says:</strong> Footnote 1, attached to the end of (<a class="c" href="#m-p71">APS 210 para 71</a>), says: refer to subsection 11AF(2) of the Banking Act.</p>
+<p><strong>In everyday words:</strong> It points to the law that lets APRA adjust or exclude parts of a standard for a particular bank.</p>
+<p><strong>What you do about it:</strong> No action for our team; owned by APRA. Know the source of the power if a colleague asks.</p>
+<p><strong>Evidence we keep:</strong> A copy of the Banking Act provision in the policy library.</p>
+<p><strong>Learn more:</strong> <a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a> (How a standard is made: section 11AF).</p>
+<h2 id="obligation-register">Obligation register</h2>
+<p>This register lists every obligation in paragraphs 11 to 72. "Owner at Example Bank" and "Frequency" use Example Bank conventions (typical practice; confirm with your controller) where the standard sets no frequency. Where the standard sets a frequency, it is shown with the paragraph. "LR" means Liquidity Risk (the independent oversight function), "Treasury" runs the liquid assets and funding, "LRep" means Liquidity Reporting (our team), "ALCO" is the asset and liability committee, "BRC" is the Board Risk Committee.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Paragraph</th>
+<th>Obligation</th>
+<th>Owner at Example Bank</th>
+<th>Frequency</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="c" href="#m-p11">APS 210 para 11</a></td>
+<td>Sound management of liquidity risk; robust framework</td>
+<td>Board; senior management</td>
+<td>Continuous</td>
+<td>Framework documents</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p12">APS 210 para 12</a></td>
+<td>Enough liquidity at all times; hold liquid assets to survive severe stress</td>
+<td>Treasury; LRep monitors</td>
+<td>Daily</td>
+<td>Daily LCR working papers</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p13">APS 210 para 13</a></td>
+<td>Fund activities with stable funding on an ongoing basis</td>
+<td>Treasury; LRep monitors</td>
+<td>Monthly (NSFR)</td>
+<td>Monthly NSFR papers</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p14">APS 210 para 14</a></td>
+<td>Tell APRA as soon as possible of liquidity concerns; immediately in a severe stress</td>
+<td>Senior management (CFO or CRO); LRep escalates facts</td>
+<td>As needed</td>
+<td>Notification to APRA; escalation log</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p15">APS 210 para 15</a></td>
+<td>Board ultimately responsible; framework matches risk</td>
+<td>Board</td>
+<td>Continuous</td>
+<td>Board minutes</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p16">APS 210 para 16</a></td>
+<td>Framework includes tolerance, strategy and policy, operating standards, funding strategy, contingency funding plan</td>
+<td>Board; senior management</td>
+<td>Annual review</td>
+<td>Approved documents</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p17">APS 210 para 17</a></td>
+<td>Board ensures experienced people; framework and practices documented and reviewed at least annually</td>
+<td>Board</td>
+<td>At least annual</td>
+<td>Training records; annual review minute</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p18">APS 210 para 18</a></td>
+<td>Board reviews regular liquidity reports and emerging risks</td>
+<td>Board; BRC; LRep supplies data</td>
+<td>Quarterly (BRC); monthly (ALCO)</td>
+<td>Board papers; minutes</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p19">APS 210 para 19</a></td>
+<td>Senior management duties (a) to (i), including reporting criteria and exception procedures</td>
+<td>Senior management; ALCO</td>
+<td>Continuous; reports as scheduled</td>
+<td>Reporting criteria matrix; breach register</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p20">APS 210 para 20</a></td>
+<td>Board and senior management understand links between funding and market liquidity risk and other risks</td>
+<td>Board; senior management</td>
+<td>Ongoing</td>
+<td>Training; paper commentary</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p21">APS 210 para 21</a></td>
+<td>Documented liquidity risk tolerance</td>
+<td>Board</td>
+<td>At setting; annual review</td>
+<td>Tolerance statement</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p22">APS 210 para 22</a></td>
+<td>Review tolerance at least annually</td>
+<td>Board; senior management</td>
+<td>At least annual</td>
+<td>Review minute</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p23">APS 210 para 23</a></td>
+<td>Tolerance allows survival of a prolonged stress</td>
+<td>Board; senior management</td>
+<td>At setting and review</td>
+<td>Stress test links</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p24">APS 210 para 24</a></td>
+<td>Tolerance states risk and profit trade-off</td>
+<td>Board; Finance; Treasury</td>
+<td>At setting and review</td>
+<td>Tolerance statement</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p25">APS 210 para 25</a></td>
+<td>Framework sets organisational structure at Level 1 and Level 2; roles defined</td>
+<td>Senior management</td>
+<td>Annual review</td>
+<td>Org chart; responsibilities matrix</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p26">APS 210 para 26</a></td>
+<td>Cushion of unencumbered liquid assets; withstand unsecured and secured funding loss</td>
+<td>Treasury; LRep measures</td>
+<td>Daily</td>
+<td>Daily HQLA listing</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p27">APS 210 para 27</a></td>
+<td>Framework integrated into overall risk management</td>
+<td>Chief Risk Officer; LR</td>
+<td>Continuous</td>
+<td>Risk framework documents</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p28">APS 210 para 28</a></td>
+<td>Oversight function operationally independent, skilled, able to challenge Treasury</td>
+<td>LR (independent of Treasury)</td>
+<td>Continuous</td>
+<td>Reporting lines; challenge records</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p29">APS 210 para 29</a></td>
+<td>Strategy includes policies on asset and liability composition and maturity, funding diversity, currencies, intraday</td>
+<td>Senior management; Treasury</td>
+<td>Annual review</td>
+<td>Strategy document</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p30">APS 210 para 30</a></td>
+<td>Strategy covers normal and stress conditions; quantitative and qualitative targets</td>
+<td>Senior management; Treasury</td>
+<td>Annual review; monthly reporting against targets</td>
+<td>Strategy; monthly metrics</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p31">APS 210 para 31</a></td>
+<td>Strategy suits nature, scale, complexity; considers structure, markets, home and host rules</td>
+<td>Senior management</td>
+<td>Annual review</td>
+<td>Strategy document</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p32">APS 210 para 32</a></td>
+<td>Communicate strategy, policies and structure across the organisation</td>
+<td>Senior management</td>
+<td>After approval; ongoing</td>
+<td>Communication records</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p33">APS 210 para 33</a></td>
+<td>Policies and controls to inform Board and senior management immediately of emerging concerns</td>
+<td>LR; LRep supplies alerts</td>
+<td>Daily monitoring; immediate when triggered</td>
+<td>Escalation log</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p34">APS 210 para 34</a></td>
+<td>Business units aware of and following strategy, policies, limits</td>
+<td>Senior management; LR</td>
+<td>Ongoing</td>
+<td>Data-quality exception log</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p35">APS 210 para 35</a></td>
+<td>Ongoing effective review; comprehensive review under CPS 220</td>
+<td>LR; Chief Risk Officer; Internal Audit</td>
+<td>Ongoing; at the CPS 220 review</td>
+<td>Review reports</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p36">APS 210 para 36</a></td>
+<td>Process to identify, measure, monitor, control; cash flow projection framework</td>
+<td>Treasury; LR; LRep (forward-looking LCR)</td>
+<td>Daily; forward-looking weekly (typical practice)</td>
+<td>Projection files</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p37">APS 210 para 37</a></td>
+<td>Set limits; review limits and escalation regularly; plan of action on breach</td>
+<td>Board; ALCO; LR; LRep monitors</td>
+<td>Limits reviewed at least annually (typical practice); checked daily</td>
+<td>Limit table; breach register; action plans</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p38">APS 210 para 38</a></td>
+<td>Actively manage collateral; encumbered vs unencumbered; legal entity and location</td>
+<td>Treasury; LRep reconciles</td>
+<td>Daily</td>
+<td>Encumbrance reconciliation</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p39">APS 210 para 39</a></td>
+<td>Design early warning indicators for daily use</td>
+<td>LR; LRep produces</td>
+<td>Daily</td>
+<td>Daily indicator dashboard</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p40">APS 210 para 40</a></td>
+<td>Reliable management information system; timely, forward-looking</td>
+<td>LRep; Finance technology</td>
+<td>Daily; monthly</td>
+<td>Delivery log; control records</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p41">APS 210 para 41</a></td>
+<td>Manage intraday liquidity positions and risks</td>
+<td>Treasury (payments); LR oversight</td>
+<td>Daily (intraday)</td>
+<td>Intraday reports</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p42">APS 210 para 42</a></td>
+<td>Cost and benefit allocation process for funding and liquidity</td>
+<td>Treasury; Finance</td>
+<td>Ongoing; reviewed annually (typical practice)</td>
+<td>Allocation methodology</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p43">APS 210 para 43</a></td>
+<td>Multi-currency: liquid assets by currency; acceptable mismatches; separate currency strategy</td>
+<td>Treasury (does not apply in practice; single currency)</td>
+<td>Not applicable while single currency</td>
+<td>Statement of single currency</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p44">APS 210 para 44</a></td>
+<td>Three-year funding strategy (provide to APRA on request); presence in funding markets; gauge capacity to raise funds</td>
+<td>Treasury; Board</td>
+<td>Ongoing; strategy annual</td>
+<td>Strategy; APRA request records</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p45">APS 210 para 45</a></td>
+<td>Board reviews and approves funding strategy at least annually; robust assumptions</td>
+<td>Board; Treasury</td>
+<td>At least annual</td>
+<td>Board minute</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p46">APS 210 para 46</a></td>
+<td>Review and update strategy at least annually; advise APRA of material changes</td>
+<td>Treasury; senior management</td>
+<td>At least annual; on a material change</td>
+<td>Updated strategy; APRA notice</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p47">APS 210 para 47</a></td>
+<td>Formal contingency funding plan with strategies, responsibilities, invocation and escalation</td>
+<td>Treasury; LR</td>
+<td>Annual review</td>
+<td>The plan</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p48">APS 210 para 48</a></td>
+<td>Plan matches complexity; lists sources, amounts, escalation order and lead times; flexible</td>
+<td>Treasury; LR</td>
+<td>Annual review</td>
+<td>The plan; source estimates</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p49">APS 210 para 49</a></td>
+<td>Plan integrated with liquidity analysis and stress tests; multiple time horizons incl. intraday</td>
+<td>LR; Treasury</td>
+<td>Annual review</td>
+<td>Plan and stress test links</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p50">APS 210 para 50</a></td>
+<td>Retail deposit run plan: repay depositors quickly; no closing of distribution channels</td>
+<td>Treasury; Retail business</td>
+<td>Annual review and test</td>
+<td>Plan; test results</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p51">APS 210 para 51</a></td>
+<td>Review and test plan at least annually; Board reviews and approves at least annually</td>
+<td>Treasury; LR; Board</td>
+<td>At least annual</td>
+<td>Test results; Board minute</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p52">APS 210 para 52</a></td>
+<td>APRA classifies locally incorporated ADIs as LCR ADI or MLH ADI</td>
+<td>APRA; Compliance holds letter</td>
+<td>On classification</td>
+<td>APRA letter</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p53">APS 210 para 53</a></td>
+<td>Foreign ADI is an LCR ADI unless APRA determines MLH</td>
+<td>Not applicable to Example Bank</td>
+<td>Not applicable</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p54">APS 210 para 54</a></td>
+<td>Meet minimum requirements continuously, absent financial stress</td>
+<td>LRep; Treasury</td>
+<td>Daily</td>
+<td>Daily LCR series; NSFR estimates</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p55">APS 210 para 55</a></td>
+<td>LCR at least 100% (AUD and all currencies) for a locally incorporated LCR ADI; HQLA to cover 30 days of severe stress</td>
+<td>LRep calculates; Treasury manages</td>
+<td>Daily</td>
+<td>Signed LCR working papers</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p56">APS 210 para 56</a></td>
+<td>APRA may require a higher LCR; apply if so required</td>
+<td>LRep (update limits); Compliance</td>
+<td>When APRA requires</td>
+<td>APRA letter; limit change record</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p57">APS 210 para 57</a></td>
+<td>MLH ADI holds 9% of liabilities in specified liquid assets</td>
+<td>Not applicable to Example Bank</td>
+<td>Not applicable</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p58">APS 210 para 58</a></td>
+<td>APRA may require higher MLH</td>
+<td>Not applicable to Example Bank</td>
+<td>Not applicable</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p59">APS 210 para 59</a></td>
+<td>Locally incorporated LCR ADI must meet NSFR requirements</td>
+<td>LRep; Treasury</td>
+<td>Monthly (formal)</td>
+<td>Signed NSFR working papers</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p60">APS 210 para 60</a></td>
+<td>NSFR at least 100% at all times</td>
+<td>LRep calculates; Treasury manages</td>
+<td>Monthly; estimates after major transactions (typical practice)</td>
+<td>NSFR papers; estimates</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p61">APS 210 para 61</a></td>
+<td>APRA may require a higher NSFR; apply if so required</td>
+<td>LRep (update limits); Compliance</td>
+<td>When APRA requires</td>
+<td>APRA letter; limit change record</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p62">APS 210 para 62</a></td>
+<td>Regular stress tests of short-term and protracted, specific and market-wide scenarios</td>
+<td>LR; LRep supplies data</td>
+<td>At least quarterly (typical practice)</td>
+<td>Stress test reports; data extracts</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p63">APS 210 para 63</a></td>
+<td>Use stress outcomes to adjust strategy, policies, positions and contingency plans</td>
+<td>Board; senior management; LR</td>
+<td>After each test</td>
+<td>Board and ALCO minutes</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p64">APS 210 para 64</a></td>
+<td>Stress tests cover Level 1, Level 2 and business lines</td>
+<td>LR</td>
+<td>Each test</td>
+<td>Test design</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p65">APS 210 para 65</a></td>
+<td>Document scenarios and assumptions; report results and actions to Board and APRA; integrate into planning; consider when setting limits</td>
+<td>LR; senior management; Board</td>
+<td>Each test; reporting as scheduled (confirm with your controller)</td>
+<td>Test documentation; Board and APRA reports</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p66">APS 210 para 66</a></td>
+<td>Decide how to incorporate stress results in contingency funding plan shortfall planning</td>
+<td>Treasury; LR</td>
+<td>At each plan review</td>
+<td>Plan updates</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p67">APS 210 para 67</a></td>
+<td>Foreign ADI annual LOC assessment</td>
+<td>Not applicable to Example Bank</td>
+<td>Not applicable</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p68">APS 210 para 68</a></td>
+<td>LOC scenario of three business days without offshore staff</td>
+<td>Not applicable to Example Bank</td>
+<td>Not applicable</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p69">APS 210 para 69</a></td>
+<td>APRA may add requirements after LOC assessment</td>
+<td>Not applicable to Example Bank</td>
+<td>Not applicable</td>
+<td>Not applicable</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p70">APS 210 para 70</a></td>
+<td>May request ELA from the RBA after notifying APRA; give information on request; operational capability to provide information</td>
+<td>Senior management; Treasury; LRep produces data</td>
+<td>Readiness tested at least annually (typical practice)</td>
+<td>ELA data pack and tests</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p71">APS 210 para 71</a></td>
+<td>APRA may adjust or exclude requirements; apply any adjustment as written</td>
+<td>Compliance; LRep applies</td>
+<td>When APRA decides</td>
+<td>APRA letter; register</td>
+</tr>
+<tr>
+<td><a class="c" href="#m-p72">APS 210 para 72</a></td>
+<td>Contact APRA before relying on a past exemption or discretion</td>
+<td>Controller; Compliance</td>
+<td>On each reliance</td>
+<td>List of past permissions; APRA correspondence</td>
+</tr>
+</tbody>
+</table></div></main><footer><a href="03_Your_Role_and_the_Team.html">&#9664; 03 Your role, the team and the working year</a><a href="05_APS210_Companion_Attachment_A_LCR.html">05 APS 210 companion: Attachment A (LCR) &#9654;</a></footer></body></html>

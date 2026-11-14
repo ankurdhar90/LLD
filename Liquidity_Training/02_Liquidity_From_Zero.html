@@ -1,0 +1,1967 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>02 Liquidity from zero | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="01_Syllabus.html" title="01 Syllabus and document design">&#9664; 01</a><span class="t">02 Liquidity from zero</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#how-to-use-this-document">How to use this document</option><option value="#1-money-in-and-money-out">1. Money in and money out</option><option value="#2-what-a-bank-actually-is">2. What a bank actually is</option><option value="#3-deposits-are-money-the-bank-owes-loans-are-money-owed-to-the-bank">3. Deposits are money the bank owes. Loans are money owed to the bank.</option><option value="#4-the-balance-sheet-two-lists-that-must-total-the-same">4. The balance sheet: two lists that must total the same</option><option value="#5-why-a-bank-cannot-pay-everyone-at-once">5. Why a bank cannot pay everyone at once</option><option value="#6-what-liquidity-means">6. What &quot;liquidity&quot; means</option><option value="#7-what-a-bank-run-is">7. What a bank run is</option><option value="#8-solvency-liquidity-capital-and-profit-four-different-things">8. Solvency, liquidity, capital and profit: four different things</option><option value="#9-what-stress-means">9. What &quot;stress&quot; means</option><option value="#10-why-regulators-set-rules">10. Why regulators set rules</option><option value="#11-the-three-ideas-of-aps-210-on-one-page">11. The three ideas of APS 210 on one page</option><option value="#12-percentages-ratios-weighted-amounts-and-factors">12. Percentages, ratios, weighted amounts and factors</option><option value="#13-the-30-day-window-and-the-one-year-horizon">13. The 30-day window and the one-year horizon</option><option value="#14-a-first-slow-lcr-for-example-bank">14. A first, slow LCR for Example Bank</option><option value="#15-a-first-slow-nsfr-for-example-bank">15. A first, slow NSFR for Example Bank</option><option value="#16-the-40-words-you-will-hear-in-your-first-week">16. The 40 words you will hear in your first week</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="03_Your_Role_and_the_Team.html" title="03 Your role, the team and the working year">03 &#9654;</a></header>
+<main><h1 id="02-liquidity-from-zero">02 Liquidity from zero</h1>
+<p><strong>Purpose:</strong> To give you, with no background in banking, accounting or liquidity, the picture and the arithmetic you need before you open any other document in this pack. By the end you will have followed a complete liquidity coverage ratio (LCR) and a complete net stable funding ratio (NSFR) for Example Bank, one line at a time.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Explain in everyday words what a bank is, what a deposit and a loan are, and why a bank cannot pay everyone at once.</li>
+<li>Read a simple balance sheet and say why its two sides must total the same.</li>
+<li>Explain liquidity, a liquid asset, a bank run, and how liquidity differs from solvency, capital and profit.</li>
+<li>Do the percentage, ratio and weighted-amount arithmetic used in the LCR and NSFR, and read a figure such as A$5.0bn correctly.</li>
+<li>Walk through Example Bank's LCR (147.2%) and NSFR (136.3%) and say what every line means.</li>
+<li>Recognise the 40 words you will hear in your first week.</li>
+</ul>
+<p><strong>Before you start:</strong> Nothing. This is the first document. If you can add, subtract, multiply and divide, you can follow it. Where the arithmetic may be rusty, it is shown step by step.</p>
+<p><strong>Time:</strong> About 3 to 4 hours, in two sittings. Work through the calculations with a pencil or a calculator beside you. Do not skim the numbers.</p>
+<hr />
+<h2 id="how-to-use-this-document">How to use this document</h2>
+<p>I am your controller, and I will talk to you directly. Everything in this pack is built on the ideas in this document, so it is worth going slowly. Each idea begins with an everyday picture (a household, a shop), then moves to a bank, then to the technical name. You will meet the technical words only after you have seen what they describe.</p>
+<p>Three habits will help.</p>
+<ol>
+<li><strong>Do the sums yourself.</strong> When a calculation is shown, cover the answer, do it, then compare.</li>
+<li><strong>Say it aloud in your own words.</strong> If you cannot explain an idea to a friend who has never worked in a bank, you have not got it yet.</li>
+<li><strong>Keep the Example Bank table (section 4) open.</strong> We use the same numbers throughout the pack.</li>
+</ol>
+<p>The rules of the Australian Prudential Regulation Authority (APRA) are quoted by numbered clause. APRA is the government agency that supervises Australian banks. The rulebook for liquidity is a document called Prudential Standard APS 210 Liquidity. We write "APS 210" for short, and you will see references like (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). Do not worry about the reference numbers yet. They are there so that, later, you can always find the exact words in the standard.</p>
+<p>For deeper reading, I point you to the existing knowledge guide, in the form (<a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a>, "What a bank does"). The guide is the long reference. This pack teaches the job.</p>
+<hr />
+<h2 id="1-money-in-and-money-out">1. Money in and money out</h2>
+<h3 id="11-a-household">1.1 A household</h3>
+<p>Start with your own household. Money comes in and money goes out.</p>
+<p>Suppose a household earns A$6,000 a month after tax. The rent is A$2,200, food is A$900, transport is A$400, the phone, power and internet total A$500, and everything else is A$1,000. Add up what goes out:</p>
+<pre><code>2,200 + 900 + 400 + 500 + 1,000 = 5,000
+</code></pre>
+<p>Money in is 6,000. Money out is 5,000. The difference is 6,000 minus 5,000, which is 1,000 left over. That A$1,000 goes into savings.</p>
+<p>Now ask a different question. It is the 28th of the month. The rent is due on the 1st. The household has A$1,500 in its bank account and A$20,000 in a term deposit that it cannot touch for another 10 months. Can it pay the rent of A$2,200 on the 1st?</p>
+<p>The household is "wealthy" on paper: A$21,500 in total. But the rent is due in three days, and only A$1,500 is available now. The A$20,000 is locked away. Unless the household gets its next pay in time, it may not be able to pay the rent on the day it is due. It is not poor. It is short of <strong>cash at the right time</strong>.</p>
+<p>That, in a sentence, is the whole subject of this pack. <strong>Liquidity is about having the right amount of cash available at the moment a payment is due.</strong> A household can be rich and still be short of cash this week. A bank can be the same, only with billions of dollars instead of thousands.</p>
+<h3 id="12-a-shop">1.2 A shop</h3>
+<p>A shop adds a second idea: it buys things before it sells them.</p>
+<p>A corner shop buys A$10,000 of goods from a supplier on the 1st. The supplier gives it 30 days to pay. The shop sells the goods slowly, over about 60 days, and collects A$14,000 from customers. Over 60 days the shop makes a profit of 14,000 minus 10,000, which is A$4,000.</p>
+<p>But look at the timing. On day 30 the shop must pay the supplier A$10,000. By then, say, it has sold only half of the goods and collected A$7,000. It is short by 10,000 minus 7,000, which is A$3,000, on the day the bill is due. The shop is profitable. It will make A$4,000 in the end. But on day 30 it can be forced to close, or borrow, because it did not have the cash when the bill arrived.</p>
+<p>Two lessons:</p>
+<ul>
+<li><strong>Profit and cash are different things.</strong> A business can be profitable and run out of cash.</li>
+<li><strong>Timing matters.</strong> What counts is not only how much you have, but when the money arrives against when the money must leave.</li>
+</ul>
+<p>The shop might solve the problem by borrowing A$3,000 from its own bank for a few weeks. Keep that thought. Who does the bank borrow from when it has the same problem?</p>
+<h3 id="13-a-bank">1.3 A bank</h3>
+<p>A bank is a business, too. Money comes in (people deposit their pay, the bank collects loan repayments, the bank borrows from investors). Money goes out (customers withdraw, the bank makes loans, the bank repays its own borrowing, the bank pays wages and tax).</p>
+<p>The difference from the shop is the scale and the speed. A bank moves enormous sums every day. Customers can often take their money out the same day. The bank has promised to hand it over. Because so much of what the bank owes can be demanded at short notice, the bank has to think about cash every single day.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> You will hear people in the team say "we are long" or "we are short" of liquidity. Do not worry about the slang yet. Translate it to the household and the shop: it means "do we have enough cash at the right time?"</p>
+</blockquote>
+<hr />
+<h2 id="2-what-a-bank-actually-is">2. What a bank actually is</h2>
+<p>A bank does three simple things:</p>
+<ol>
+<li>It <strong>takes in money</strong> from people who have spare money and want it kept safe (savers).</li>
+<li>It <strong>lends money</strong> to people who need money now and will repay it later (borrowers), such as someone buying a home.</li>
+<li>It <strong>moves money</strong> for customers: pays bills, receives salaries, transfers funds to other banks.</li>
+</ol>
+<p>The bank earns its living from the gap between what it pays for money and what it charges for it. If it pays savers 2% a year and charges home buyers 6% a year, the gap is 4 percentage points. On every A$100 it lends, it earns A$4 a year before costs. (This gap, as a share of the loans, is called the net interest margin. You will meet it again in the guide, <a href="../LIQUIDITY_GUIDE.html#chapter-3-how-to-read-a-bank-balance-sheet">Guide Ch 3</a> s3.7.)</p>
+<p>In Australia, a bank is one of a group of institutions called <strong>authorised deposit-taking institutions</strong>, or <strong>ADIs</strong>. An ADI is a business that APRA has authorised to take deposits from the public under the Banking Act 1959. You will see "ADI" all through APS 210, because the standard applies to every ADI (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p2">APS 210 para 2</a>). Banks, building societies and credit unions are all ADIs. In this pack, "the bank" means an ADI.</p>
+<p>Why does the government watch ADIs so closely? Because the money in them is other people's savings. If a bank fails, ordinary families lose their savings, and the failure can spread to other banks. We come back to this in section 10.</p>
+<hr />
+<h2 id="3-deposits-are-money-the-bank-owes-loans-are-money-owed-to-the-bank">3. Deposits are money the bank owes. Loans are money owed to the bank.</h2>
+<p>This is the single most important idea in the document. Read it twice.</p>
+<h3 id="31-a-deposit-is-a-debt-of-the-bank-to-you">3.1 A deposit is a debt of the bank to you</h3>
+<p>When you put A$1,000 in your bank account, it feels like your money sitting in a safe with your name on it. It is not. The bank takes your A$1,000, uses it (lends it to someone else, buys securities with it), and <strong>promises to give you A$1,000 back when you ask</strong>. Legally, you have lent the bank A$1,000. The bank owes it to you.</p>
+<p>So a deposit is a <strong>liability</strong> of the bank. A liability is simply something the bank owes. Whenever you see the word "liability", think "money the bank owes to someone else".</p>
+<p>Deposits come in kinds, and the differences matter a great deal for liquidity:</p>
+<ul>
+<li><strong>At-call deposits</strong> (also called demand deposits): the customer can take the money out any time, today if they wish. Your everyday transaction account is at call.</li>
+<li><strong>Term deposits</strong>: the customer agrees to leave the money for a fixed time, for example six months, in return for a higher interest rate. Taking it out early usually costs a penalty, or is not allowed.</li>
+</ul>
+<h3 id="32-a-loan-is-a-debt-to-the-bank">3.2 A loan is a debt to the bank</h3>
+<p>When the bank lends A$500,000 to a home buyer, the bank has handed over A$500,000 now and is owed A$500,000 back, plus interest, over perhaps 25 years. That promise is an <strong>asset</strong> of the bank. An asset is something the bank owns or is owed that has value. Whenever you see "asset", think "something that has value to the bank", for example cash, a loan, or a bond.</p>
+<p>Notice the mirror image:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>What it is</th>
+<th>Whose debt?</th>
+<th>Name on the bank's books</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer deposit</td>
+<td>Money the bank must give back</td>
+<td>The bank owes the customer</td>
+<td>Liability</td>
+</tr>
+<tr>
+<td>Home loan</td>
+<td>Money the customer must pay back</td>
+<td>The customer owes the bank</td>
+<td>Asset</td>
+</tr>
+</tbody>
+</table></div>
+<p>A deposit is a liability for the bank, and an asset for you. A loan is an asset for the bank, and a liability for the borrower. It always depends on whose books you are reading. In this pack, you are always reading the bank's books.</p>
+<h3 id="33-securities-and-bonds">3.3 Securities and bonds</h3>
+<p>Banks also hold <strong>securities</strong>: tradeable financial instruments. The most common are <strong>bonds</strong>. A bond is a loan that has been cut into tradeable pieces. When the Australian Government wants to borrow, it issues bonds. An investor who buys a A$1,000 bond is lending the government A$1,000 and will receive interest and then the A$1,000 back on a set date. Because bonds can be sold to someone else before that date, a bond can be turned into cash much faster than a home loan. This is why banks hold government bonds as a cash reserve.</p>
+<p>Banks also <strong>issue</strong> bonds themselves: they sell their own bonds to investors to borrow money. That borrowing is called <strong>wholesale funding</strong>: money borrowed from large investors and businesses rather than from ordinary retail customers. (Retail means individuals; wholesale means large organisations.) A bond the bank issues is a liability, because the bank owes the investor.</p>
+<hr />
+<h2 id="4-the-balance-sheet-two-lists-that-must-total-the-same">4. The balance sheet: two lists that must total the same</h2>
+<h3 id="41-the-idea">4.1 The idea</h3>
+<p>A <strong>balance sheet</strong> is a snapshot, on one date, of two lists:</p>
+<ul>
+<li><strong>Left list: what the bank owns or is owed (assets).</strong></li>
+<li><strong>Right list: where the money came from (liabilities and equity).</strong></li>
+</ul>
+<p>The two lists must always total the same. Here is why, using a house.</p>
+<p>You buy a house for A$800,000. You paid A$100,000 from your own savings and borrowed A$700,000 from a bank.</p>
+<pre><code>Assets (what you own)                       800,000   (the house)
+Liabilities (what you owe)                  700,000   (the home loan)
+Equity (what is left for you)               100,000   (your own savings put in)
+</code></pre>
+<p>Check: liabilities plus equity is 700,000 + 100,000 = 800,000. That equals the assets. Every dollar of asset was paid for by someone: either lenders (a liability) or owners (equity). So:</p>
+<pre><code>Assets = Liabilities + Equity
+</code></pre>
+<p><strong>Equity</strong> is the owners' stake: what would be left for the owners if the bank sold all its assets for their stated value and repaid everything it owes. For a bank, equity is also called <strong>shareholders' equity</strong> because the bank's shareholders own it.</p>
+<p>If the house price rises to A$900,000, assets rise to 900,000, liabilities stay at 700,000, so equity becomes 900,000 minus 700,000, which is A$200,000. If it falls to A$650,000, equity becomes 650,000 minus 700,000, which is minus A$50,000: you owe more than you own. Hold on to that last case. It is what "insolvent" means (section 8).</p>
+<h3 id="42-example-bank-one-line-at-a-time">4.2 Example Bank, one line at a time</h3>
+<p>Throughout this pack we use a fictional bank called <strong>Example Bank</strong>. It is a locally incorporated Australian ADI (set up in Australia, not a branch of an overseas bank), with one legal entity and one currency, the Australian dollar. All figures are in <strong>A$ billions</strong> (A$bn); see section 12.4 for how to read that.</p>
+<p>Here is the full balance sheet. Do not try to remember it; we go through it one line at a time below.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Assets</th>
+<th>A$bn</th>
+<th>Liabilities and equity</th>
+<th>A$bn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and balances with the RBA</td>
+<td>5.0</td>
+<td>Retail deposits, stable (at call)</td>
+<td>25.0</td>
+</tr>
+<tr>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>Retail deposits, less stable (at call, score 0 to 2)</td>
+<td>15.0</td>
+</tr>
+<tr>
+<td>Other debt securities (non-HQLA, over 1 year)</td>
+<td>3.0</td>
+<td>Retail term deposits (over 30 days, under 1 year, no early withdrawal, less stable)</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>Loans to other banks (under 6 months, unsecured)</td>
+<td>2.0</td>
+<td>SME deposits (qualifying, less stable)</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Residential mortgages (standard, LVR 80% or below, over 1 year)</td>
+<td>50.0</td>
+<td>Corporate operational deposits (not fully insured)</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>Business loans (over 1 year)</td>
+<td>15.0</td>
+<td>Corporate non-operational deposits (not fully insured)</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>Personal and business loans (under 1 year)</td>
+<td>8.0</td>
+<td>Financial institution deposits (at call)</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>Other assets</td>
+<td>5.0</td>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Wholesale debt, 30 days to under 6 months</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Wholesale debt, 6 months to under 1 year</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Wholesale debt, 1 year or more</td>
+<td>15.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Other liabilities</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Shareholders' equity (= regulatory capital)</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>100.0</strong></td>
+<td><strong>Total</strong></td>
+<td><strong>100.0</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>The assets column uses new words. Here is each line in everyday terms.</p>
+<p><strong>Assets (what Example Bank owns or is owed)</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>A$bn</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and balances with the RBA</td>
+<td>5.0</td>
+<td>Notes and coin in the bank's vaults and ATMs, plus the bank's own account at the Reserve Bank of Australia (RBA, Australia's central bank). Banks keep an account at the RBA, called an Exchange Settlement Account, to settle payments with each other. Think of it as the bank's own transaction account at the "bank of banks". This is the most liquid thing the bank owns: it is already cash.</td>
+</tr>
+<tr>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>Bonds issued by the Australian Government and by state governments (semi-government means state and territory governments). These can be sold or lent against quickly, even in a crisis, because buyers always want them.</td>
+</tr>
+<tr>
+<td>Other debt securities (non-HQLA, over 1 year)</td>
+<td>3.0</td>
+<td>Bonds issued by other companies or banks that mature in more than a year. "Non-HQLA" means that they do not qualify as high-quality liquid assets (explained in section 6). They can be sold, but not reliably or quickly in a crisis.</td>
+</tr>
+<tr>
+<td>Loans to other banks (under 6 months, unsecured)</td>
+<td>2.0</td>
+<td>Short loans Example Bank has made to other banks. "Unsecured" means no collateral (no asset pledged) backs them, so if the other bank failed, Example Bank would be an ordinary creditor.</td>
+</tr>
+<tr>
+<td>Residential mortgages (standard, LVR 80% or below, over 1 year)</td>
+<td>50.0</td>
+<td>Home loans, the bank's biggest asset. LVR is the <strong>loan-to-valuation ratio</strong>: the loan divided by the value of the home. A A$400,000 loan on a A$500,000 home is 400,000 ÷ 500,000 = 0.80, or 80%. "Standard" and "80% or below" mark a safer kind of mortgage. These loans take many years to repay.</td>
+</tr>
+<tr>
+<td>Business loans (over 1 year)</td>
+<td>15.0</td>
+<td>Loans to companies with more than one year to run.</td>
+</tr>
+<tr>
+<td>Personal and business loans (under 1 year)</td>
+<td>8.0</td>
+<td>Shorter loans (credit cards, personal loans, short business loans) due back within a year.</td>
+</tr>
+<tr>
+<td>Other assets</td>
+<td>5.0</td>
+<td>Everything else: buildings, computers, tax assets, accrued interest. None of it is quickly turned into cash.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Liabilities and equity (where the money came from)</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>A$bn</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail deposits, stable (at call)</td>
+<td>25.0</td>
+<td>Savings and transaction accounts of ordinary individuals, the kind the government guarantees and that customers rarely pull out in a panic. Customers can take the money out at any time.</td>
+</tr>
+<tr>
+<td>Retail deposits, less stable (at call, score 0 to 2)</td>
+<td>15.0</td>
+<td>Retail deposits with features that make customers more likely to leave quickly, for example online-only accounts or accounts above the guaranteed limit. The "score 0 to 2" refers to a points scorecard APS 210 uses (section 11 and document <a href="07_Data_and_Classification.html">07</a>).</td>
+</tr>
+<tr>
+<td>Retail term deposits (over 30 days, under 1 year, no early withdrawal, less stable)</td>
+<td>10.0</td>
+<td>Individuals' money locked in for more than 30 days with no right to withdraw early.</td>
+</tr>
+<tr>
+<td>SME deposits (qualifying, less stable)</td>
+<td>5.0</td>
+<td>Deposits from small and medium enterprises (SMEs): smaller businesses. APS 210 allows qualifying SME deposits to be treated like retail deposits (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>).</td>
+</tr>
+<tr>
+<td>Corporate operational deposits (not fully insured)</td>
+<td>4.0</td>
+<td>Money big companies keep with the bank because they use the bank to run their payroll, receive customer payments and so on. They need it for daily business, so it is "operational".</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits (not fully insured)</td>
+<td>6.0</td>
+<td>Money big companies simply park with the bank. They can move it quickly to somewhere safer or better paying.</td>
+</tr>
+<tr>
+<td>Financial institution deposits (at call)</td>
+<td>4.0</td>
+<td>Money other financial businesses (for example a superannuation fund or another bank) keep with Example Bank, available on demand. These are the quickest to leave in a crisis.</td>
+</tr>
+<tr>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>Money Example Bank borrowed from investors by selling bonds or notes that fall due in the next 30 days.</td>
+</tr>
+<tr>
+<td>Wholesale debt, 30 days to under 6 months</td>
+<td>3.0</td>
+<td>The same, due later.</td>
+</tr>
+<tr>
+<td>Wholesale debt, 6 months to under 1 year</td>
+<td>2.0</td>
+<td>The same, due later still.</td>
+</tr>
+<tr>
+<td>Wholesale debt, 1 year or more</td>
+<td>15.0</td>
+<td>The same, due in a year or longer.</td>
+</tr>
+<tr>
+<td>Other liabilities</td>
+<td>2.0</td>
+<td>Everything else the bank owes: unpaid bills, provisions, tax owing.</td>
+</tr>
+<tr>
+<td>Shareholders' equity (= regulatory capital)</td>
+<td>8.0</td>
+<td>Money put in by the owners, plus profits kept in the business. It is not owed to anyone with a fixed date, and it absorbs losses.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="43-checking-that-it-balances">4.3 Checking that it balances</h3>
+<p>Add the assets:</p>
+<pre><code>5.0 + 12.0 = 17.0
+17.0 +  3.0 = 20.0
+20.0 +  2.0 = 22.0
+22.0 + 50.0 = 72.0
+72.0 + 15.0 = 87.0
+87.0 +  8.0 = 95.0
+95.0 +  5.0 = 100.0
+</code></pre>
+<p>Add the liabilities and equity:</p>
+<pre><code>25.0 + 15.0 = 40.0     retail at-call
+40.0 + 10.0 = 50.0     retail term
+50.0 +  5.0 = 55.0     SME
+55.0 +  4.0 = 59.0     corporate operational
+59.0 +  6.0 = 65.0     corporate non-operational
+65.0 +  4.0 = 69.0     financial institutions
+69.0 +  1.0 = 70.0     wholesale within 30 days
+70.0 +  3.0 = 73.0     wholesale 30 days to 6 months
+73.0 +  2.0 = 75.0     wholesale 6 months to 1 year
+75.0 + 15.0 = 90.0     wholesale 1 year or more
+90.0 +  2.0 = 92.0     other liabilities
+92.0 +  8.0 = 100.0    equity
+</code></pre>
+<p>Both sides total A$100.0bn. The two lists balance.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> In this job you will meet this check every day in a different form. When you build the LCR or NSFR from the bank's data, the total of the assets you have classified must equal the total of the bank's assets in the general ledger (the master accounting record). If it does not, something is missing or counted twice, and you must find it before you do anything else. Documents <a href="08_LCR_Production_End_to_End.html">08</a> and 09 make this a formal control.</p>
+</blockquote>
+<p>Equity of A$8.0bn is 8.0 ÷ 100.0 = 8% of the balance sheet. That is a thin cushion: if losses on the assets exceeded A$8.0bn, equity would be wiped out and the bank would owe more than it owns. Keep this in mind for section 8.</p>
+<hr />
+<h2 id="5-why-a-bank-cannot-pay-everyone-at-once">5. Why a bank cannot pay everyone at once</h2>
+<h3 id="51-borrowing-short-lending-long">5.1 Borrowing short, lending long</h3>
+<p>Look at the balance sheet again from the point of view of <strong>time</strong>.</p>
+<p>On the right side, a large share of what Example Bank owes can be demanded very soon:</p>
+<pre><code>Retail at-call deposits        40.0   (25.0 + 15.0)
+SME deposits                    5.0
+Corporate deposits             10.0   (4.0 + 6.0)
+Financial institution deposits  4.0
+                              -----
+At-call deposits               59.0
+</code></pre>
+<p>A$59.0bn of deposits can legally be withdrawn on demand. (Strictly, the SME and corporate deposits may carry notice periods; for this picture we treat them as available quickly.) Plus A$1.0bn of wholesale debt falls due within 30 days.</p>
+<p>On the left side, look at what the bank has lent:</p>
+<pre><code>Residential mortgages            50.0   (repaid over decades)
+Business loans over 1 year       15.0
+Other debt securities &gt; 1 year    3.0
+                                -----
+Money committed for years        68.0
+</code></pre>
+<p>A$68.0bn of the bank's money is tied up for more than a year. Home loans may take 25 or 30 years to be repaid in full. The bank cannot call in a mortgage on demand just because it needs cash. The home buyer has a contract.</p>
+<p>So Example Bank has A$59.0bn of promises to pay on demand, and only A$17.0bn (cash A$5.0bn plus government securities A$12.0bn) that can be turned into cash quickly. This mismatch, <strong>borrowing short and lending long</strong>, is the basic business of banking. It is called <strong>maturity transformation</strong>: the bank takes money that savers may want back at any time (short maturity) and turns it into long loans that people can repay slowly (long maturity). It is useful: it is how a family gets a 30-year mortgage without needing to find a lender who will lock up cash for 30 years.</p>
+<h3 id="52-the-risk">5.2 The risk</h3>
+<p>The trick works because of statistics. On a normal day, only a small fraction of depositors withdraw. Money that goes out is mostly matched by money coming in (new deposits, loan repayments). The bank needs to keep only a modest amount of cash.</p>
+<p>Suppose, in a normal week, 2% of the at-call deposits are withdrawn and nothing comes in:</p>
+<pre><code>2% of 59.0 = 59.0 × 0.02 = 1.18
+</code></pre>
+<p>A$1.18bn goes out. The bank has A$17.0bn of cash and government securities. No problem at all.</p>
+<p>Now suppose, in a frightening week, 10% are withdrawn:</p>
+<pre><code>10% of 59.0 = 59.0 × 0.10 = 5.90
+</code></pre>
+<p>A$5.90bn goes out. The bank still has A$17.0bn of quick assets, so it can cope. Suppose 30% are withdrawn:</p>
+<pre><code>30% of 59.0 = 59.0 × 0.30 = 17.70
+</code></pre>
+<p>A$17.70bn goes out. Now the bank's quick assets of A$17.0bn are not enough: 17.70 minus 17.00 leaves it A$0.70bn short. It would have to sell loans or borrow, and in a panic it may not be able to. And if 100% were withdrawn, A$59.0bn, the bank could not pay: it only has A$17.0bn of quick assets, and the rest is lent out for years.</p>
+<p>So the bank <strong>cannot pay everyone at once</strong>. This is not a sign of dishonesty. It is how every bank works. It is why a bank has to hold a <strong>buffer</strong> of quick assets, and why regulators set minimum buffers.</p>
+<blockquote class="q-in"><p><strong>In the standard:</strong> APS 210 begins with the principle that an ADI "must at all times maintain sufficient liquidity to meet its obligations as they fall due and hold a minimum level of liquid assets to survive a severe liquidity stress" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p12">APS 210 para 12</a>).</p>
+</blockquote>
+<hr />
+<h2 id="6-what-liquidity-means">6. What "liquidity" means</h2>
+<h3 id="61-two-meanings-both-important">6.1 Two meanings, both important</h3>
+<p>The word "liquid" comes from water: something that flows. In finance, there are two related meanings, and APS 210 deals with both (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p20">APS 210 para 20</a>).</p>
+<p><strong>Funding liquidity</strong> is the bank's ability to pay what it owes when it falls due. It is the household's question: can I pay the rent on the 1st? A bank with funding liquidity can meet withdrawals and repay its debts on time. A bank that cannot, has a funding liquidity problem.</p>
+<p><strong>Market liquidity</strong> is how easily an asset can be turned into cash without losing much value. A government bond can be sold in minutes at close to its stated price. A bespoke loan to a small factory cannot be sold quickly at all.</p>
+<p>The two feed each other. If the bank must sell assets in a hurry because depositors are leaving (a funding problem), it may have to sell at bad prices (a market problem), which cuts its equity and makes depositors more nervous (a funding problem again). (<a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a>, "Funding liquidity risk and market liquidity risk".)</p>
+<p><strong>Liquidity risk</strong> is the risk that a bank will not have enough cash at the right time to meet its obligations.</p>
+<h3 id="62-what-is-a-liquid-asset">6.2 What is a liquid asset?</h3>
+<p>A <strong>liquid asset</strong> is one you can turn into cash quickly, in large amounts, at a price close to its stated value, even when markets are nervous. It is a spectrum. Think of what you could do to pay an urgent A$10,000 bill:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Your asset</th>
+<th>How fast to cash</th>
+<th>What you get</th>
+<th>How liquid?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A$10,000 in your wallet</td>
+<td>Instantly</td>
+<td>A$10,000</td>
+<td>Perfectly liquid (it is cash)</td>
+</tr>
+<tr>
+<td>A$10,000 in your savings account</td>
+<td>Same day</td>
+<td>A$10,000</td>
+<td>Very liquid</td>
+</tr>
+<tr>
+<td>Shares you can sell on the exchange</td>
+<td>Two days to settle</td>
+<td>Maybe A$9,500 to A$10,500, depending on the market</td>
+<td>Fairly liquid, but the price moves</td>
+</tr>
+<tr>
+<td>A rental property you own</td>
+<td>Months</td>
+<td>Maybe A$20,000 less than the value if you must sell fast</td>
+<td>Illiquid</td>
+</tr>
+<tr>
+<td>Your car, if you must sell today</td>
+<td>Days</td>
+<td>A discount</td>
+<td>Illiquid</td>
+</tr>
+</tbody>
+</table></div>
+<p>A bank's version of the list is:</p>
+<ul>
+<li><strong>Notes and coin and money at the RBA:</strong> instantly cash.</li>
+<li><strong>Australian Government and state government bonds:</strong> can be sold, or lent against to borrow cash, in a day or less, even in a crisis.</li>
+<li><strong>Other bonds:</strong> can often be sold, but in a crisis buyers may disappear or demand a big discount.</li>
+<li><strong>Home loans and business loans:</strong> cannot be sold quickly in volume.</li>
+</ul>
+<h3 id="63-high-quality-liquid-assets-hqla">6.3 High-quality liquid assets (HQLA)</h3>
+<p>APS 210 defines a special list of assets that count as <strong>high-quality liquid assets</strong>, or <strong>HQLA</strong>. HQLA are assets that are easy and quick to turn into cash, even under severe stress, and hold their value. There are classes:</p>
+<ul>
+<li><strong>HQLA1</strong> is the best. It includes notes and coin, balances at the RBA (to the extent they can be drawn in times of stress), and certain government securities (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>). HQLA1 counts at its full market value, with no discount.</li>
+<li><strong>HQLA2A</strong> and <strong>HQLA2B</strong> are the lesser classes. They count only after a discount (a "haircut") and are limited in size (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a> and <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>). </li>
+</ul>
+<blockquote class="q-in"><p><strong>In the standard:</strong> In Australian dollars, APRA's liquidity FAQ says that, at present, only notes and coin, balances with the RBA, and Australian Government and semi-government securities are HQLA1, and no Australian dollar assets currently qualify as HQLA2. For Example Bank, which has one currency, everything in the liquid asset stock is therefore HQLA1.</p>
+</blockquote>
+<p>A <strong>haircut</strong> is a percentage cut taken off the value of an asset to allow for the chance that it will sell for less than its stated value in a crisis. A 15% haircut on a A$100 bond means it counts as 100 × (1 − 0.15) = 100 × 0.85 = A$85. We will not need haircuts for Example Bank's numbers, but you will use them in your job (document <a href="08_LCR_Production_End_to_End.html">08</a>).</p>
+<p>An <strong>encumbered</strong> asset is one that is already pledged as security for something else (for example, handed over as collateral for a loan), so the bank cannot freely sell it. An <strong>unencumbered</strong> asset is free. HQLA must be unencumbered to count (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>). A government bond locked away as collateral is a good asset, but it is not available to meet a surprise withdrawal.</p>
+<p>To <strong>monetise</strong> an asset means to turn it into cash, either by selling it or by borrowing against it in a <strong>repurchase agreement</strong> ("repo": you hand over a bond for cash and promise to buy it back later at a slightly higher price).</p>
+<blockquote class="q-example"><p><strong>Example:</strong> Example Bank's A$12.0bn of government and semi-government securities is HQLA1 if it is free (unencumbered) and under the control of the Treasury team. If A$2.0bn of it were pledged to another bank as security for a loan, only A$10.0bn would count.</p>
+</blockquote>
+<hr />
+<h2 id="7-what-a-bank-run-is">7. What a bank run is</h2>
+<p>A <strong>bank run</strong> is when many depositors, fearing the bank may fail, rush to withdraw their money at the same time. It is the nightmare scenario for a bank, and it can happen even to a bank that is perfectly healthy, because of the arithmetic in section 5.</p>
+<p>Here is how it unfolds, in stages.</p>
+<ol>
+<li><strong>A rumour or a bad piece of news.</strong> For example, the bank reports a big loss, or social media says it is in trouble.</li>
+<li><strong>A few depositors withdraw.</strong> They reason: "If I am first in the queue, I get my money; if I am last, there may be none left."</li>
+<li><strong>Others notice and copy.</strong> The more people withdraw, the more worried everyone else becomes.</li>
+<li><strong>The bank sells assets quickly to fund the withdrawals.</strong> It sells government bonds first (the easy ones). When those are gone, it must sell other assets at a discount.</li>
+<li><strong>Losses on the forced sales eat into equity,</strong> which scares more depositors and investors.</li>
+<li><strong>The bank runs out of liquid assets and cannot pay.</strong> Without outside help, it fails.</li>
+</ol>
+<p>The key point: <strong>a run is self-fulfilling.</strong> Even if everyone's money was safe at the start, enough people leaving at once can make the bank unable to pay. This is why confidence matters so much, and why a bank's liquidity position is not only a number but a story that depositors and investors believe (<a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a>, "Anatomy of a bank run").</p>
+<p>Modern runs can be very fast, because customers can move money by phone in seconds. That speed is one reason a bank watches its liquidity every day, not once a month.</p>
+<h3 id="71-three-safety-nets">7.1 Three safety nets</h3>
+<p>Society puts three things in place to reduce the chance of a run:</p>
+<ol>
+<li><strong>Deposit insurance.</strong> In Australia, the <strong>Financial Claims Scheme (FCS)</strong> guarantees deposits up to A$250,000 per account holder per ADI. If an ADI failed, the government would repay each depositor up to that limit. Most households are fully protected, and that is why a small saver does not usually need to run. Large deposits above A$250,000 are not protected, and so those depositors are much more likely to run.</li>
+<li><strong>The lender of last resort.</strong> The RBA can lend to an ADI that is under severe stress and cannot get funds elsewhere. This is called <strong>Exceptional Liquidity Assistance (ELA)</strong> (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>). It is truly a last resort: a bank must notify APRA first (see document <a href="03_Your_Role_and_the_Team.html">03</a> and document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</li>
+<li><strong>Rules that require buffers.</strong> This is APS 210 itself, and the main subject of this pack.</li>
+</ol>
+<hr />
+<h2 id="8-solvency-liquidity-capital-and-profit-four-different-things">8. Solvency, liquidity, capital and profit: four different things</h2>
+<p>People mix these up all the time. Learn the difference now.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>The question it answers</th>
+<th>In one sentence</th>
+<th>A simple sign of trouble</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Liquidity</strong></td>
+<td>Can the bank pay what falls due in the next days and weeks?</td>
+<td>Having enough cash, or assets that quickly become cash, at the right time.</td>
+<td>Depositors are leaving and the bank has no quick assets left.</td>
+</tr>
+<tr>
+<td><strong>Solvency</strong></td>
+<td>Does the bank own more than it owes?</td>
+<td>Assets are worth more than liabilities, so equity is positive.</td>
+<td>Equity falls below zero: the bank owes more than it owns.</td>
+</tr>
+<tr>
+<td><strong>Capital</strong></td>
+<td>How big is the cushion that absorbs losses?</td>
+<td>The owners' money in the bank (equity and similar instruments) that can take losses before depositors are hurt.</td>
+<td>Capital falls below the level APRA requires.</td>
+</tr>
+<tr>
+<td><strong>Profit</strong></td>
+<td>Is the bank earning more than it spends this year?</td>
+<td>Revenue minus costs over a period.</td>
+<td>The bank makes a loss for a period.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="81-three-short-cases">8.1 Three short cases</h3>
+<p><strong>Case 1: solvent but illiquid.</strong> A bank owns A$100bn of assets and owes A$92bn, so equity is A$8bn and it is solvent. But nearly all the assets are long-term loans, and depositors suddenly demand A$30bn. It cannot sell loans fast enough. It runs out of cash and fails, despite being solvent. This is the classic bank run. Liquidity failed first.</p>
+<p><strong>Case 2: liquid but insolvent.</strong> A bank has plenty of cash this week because it has just borrowed a lot, but it has made huge losses on loans and now owes A$95bn against assets worth A$90bn. It is liquid for the moment, but insolvent, and it will not survive once lenders find out.</p>
+<p><strong>Case 3: profitable but short of cash.</strong> The shop in section 1.2. A bank can report a large profit for the year and still have a bad liquidity week if its profits are tied up in long loans.</p>
+<p>The reverse can happen too: a bank can make a loss in a year (a poor profit result) and still hold plenty of capital and liquidity.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Liquidity Reporting looks at liquidity, not at profit or capital. But the three are linked: a loss reduces capital, a fall in capital can scare depositors, and scared depositors create a liquidity problem. So when someone says "the bank is fine", always ask: "fine in which sense?" See <a href="../LIQUIDITY_GUIDE.html#chapter-1-banking-and-liquidity-from-first-principles">Guide Ch 1</a>, "Four different things: liquidity, solvency, capital and profitability".</p>
+</blockquote>
+<hr />
+<h2 id="9-what-stress-means">9. What "stress" means</h2>
+<p>In normal times, a bank's cash flows are predictable. <strong>Stress</strong> means an unusual, adverse situation in which many things go wrong at once. APS 210 asks the bank to hold enough liquidity to survive a defined stress.</p>
+<p>Stress can come from:</p>
+<ul>
+<li><strong>Inside the bank</strong> (<strong>idiosyncratic stress</strong>): a scandal, a big loss, a credit rating downgrade. Depositors lose confidence in this bank specifically.</li>
+<li><strong>The whole market</strong> (<strong>market-wide stress</strong>): a financial crisis in which funding dries up for every bank, and markets for bonds seize up.</li>
+<li><strong>Both together:</strong> the worst case.</li>
+</ul>
+<p>APS 210 requires the bank's framework to cover stress events "including those involving the loss or impairment of both unsecured and secured funding sources" and notes that the source "could be specific to the ADI or market-wide or a combination of the two" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p26">APS 210 para 26</a>).</p>
+<p>In a <strong>severe stress scenario</strong>, the LCR assumes, for the next 30 days:</p>
+<ul>
+<li>some depositors withdraw (different groups at different percentages);</li>
+<li>wholesale investors do not roll over (do not renew) their lending;</li>
+<li>customers draw down credit lines the bank has promised;</li>
+<li>the bank must hand over more collateral on derivatives if its credit rating falls;</li>
+<li>but some money still comes in from loan repayments, although less than usual.</li>
+</ul>
+<p>The regulator sets the percentages. That is the key point: <strong>you do not choose them</strong>. They are written into APS 210 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> for outflows and <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A paras 54 to 66</a> for inflows).</p>
+<hr />
+<h2 id="10-why-regulators-set-rules">10. Why regulators set rules</h2>
+<p>Why can't each bank just decide how much liquidity to hold? Three reasons.</p>
+<ol>
+<li><strong>The cost of failure falls on others.</strong> If a bank fails, depositors, other banks and the government (taxpayers) can bear the cost. The bank's owners may take risks that look good for them (more loans, more profit) because they do not bear the full cost of a failure. Rules make the bank hold more safety than it might choose to alone.</li>
+<li><strong>Banks are linked.</strong> Banks lend to each other and hold each other's bonds. One failure can spread (<strong>contagion</strong>).</li>
+<li><strong>Confidence is fragile.</strong> Customers cannot easily judge a bank's safety. A clear, tough, public rulebook reassures them.</li>
+</ol>
+<p>After the 2007 to 2009 global financial crisis, the international Basel Committee on Banking Supervision (the club of bank regulators, based in Basel, Switzerland) designed two measures of liquidity, the LCR and the NSFR. APRA adopted them for Australia in APS 210. (<a href="../LIQUIDITY_GUIDE.html#chapter-2-who-regulates-australian-banks-and-the-rulebook">Guide Ch 2</a>, "Basel Committee, Basel III and how APRA adapts it".)</p>
+<p>APRA acts under the Banking Act 1959; APS 210 is made under section 11AF of that Act (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p1">APS 210 para 1</a>). APRA can also require a bank to hold more than the minimum if it has concerns about the bank's liquidity profile or risk management: a higher LCR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p56">APS 210 para 56</a>) or a higher NSFR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p61">APS 210 para 61</a>).</p>
+<hr />
+<h2 id="11-the-three-ideas-of-aps-210-on-one-page">11. The three ideas of APS 210 on one page</h2>
+<p>APS 210 is a long document, but it rests on three ideas.</p>
+<h3 id="idea-1-a-30-day-survival-buffer-the-lcr">Idea 1: A 30-day survival buffer (the LCR)</h3>
+<blockquote>
+<p>If the worst were to happen for the next 30 days, would we survive on the liquid assets we hold today, without outside help?</p>
+</blockquote>
+<p>The <strong>liquidity coverage ratio (LCR)</strong> compares the bank's stock of high-quality liquid assets with the cash it would be likely to lose, net, over the next 30 calendar days in a severe stress.</p>
+<pre><code>LCR = Stock of HQLA ÷ Total net cash outflows over the next 30 calendar days
+</code></pre>
+<p>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p3">Att A para 3</a>)</p>
+<p>A locally incorporated ADI must keep its LCR at 100% or more, in Australian dollars and in all currencies together (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). 100% means: liquid assets at least equal to the expected 30-day net loss. A foreign ADI (a branch of an overseas bank) has a lower minimum of 40% on an all-currencies basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). Example Bank is locally incorporated, so 100% applies to it.</p>
+<h3 id="idea-2-stable-long-term-funding-the-nsfr">Idea 2: Stable long-term funding (the NSFR)</h3>
+<blockquote>
+<p>Is the bank funding its long-term lending with long-term, stable money, rather than money that might disappear?</p>
+</blockquote>
+<p>The <strong>net stable funding ratio (NSFR)</strong> compares the stable funding the bank has (<strong>available stable funding</strong>, ASF) with the stable funding its assets and commitments need (<strong>required stable funding</strong>, RSF), over a one-year horizon.</p>
+<pre><code>NSFR = Available stable funding ÷ Required stable funding
+</code></pre>
+<p>(APS 210 <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p3">Att C para 3</a>)</p>
+<p>A locally incorporated LCR ADI must keep its NSFR at 100% or more at all times (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 to 60</a>). If a bank funds 30-year mortgages with money that can leave overnight, its NSFR will be low.</p>
+<h3 id="idea-3-good-management">Idea 3: Good management</h3>
+<p>The numbers are not enough. APS 210 requires the bank to run sound liquidity risk management: a framework approved by the Board, limits, early warning indicators, a contingency funding plan (a ready-made plan for a crisis), stress testing, a three-year funding strategy, and an independent oversight function (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p11">APS 210 paras 11 to 51</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 paras 62 to 66</a>). The key principles say that an ADI is "responsible for the sound management of its liquidity risk" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p11">APS 210 para 11</a>), must fund itself with stable sources (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p13">APS 210 para 13</a>), and must tell APRA as soon as possible of any concern (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>Name</th>
+<th>Time horizon</th>
+<th>What it protects against</th>
+<th>Minimum (locally incorporated LCR ADI)</th>
+<th>Where in APS 210</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>LCR</td>
+<td>30 calendar days</td>
+<td>Running out of cash in a sharp crisis</td>
+<td>100% (AUD and all currencies)</td>
+<td><a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>; Attachment A</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NSFR</td>
+<td>One year</td>
+<td>Funding long assets with flighty money</td>
+<td>100% at all times</td>
+<td><a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 to 60</a>; Attachment C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Good management</td>
+<td>Always</td>
+<td>Poor governance, no plan, ignored warnings</td>
+<td>Not a number: a framework</td>
+<td><a class="c" href="04_APS210_Companion_Main_Body.html#m-p11">APS 210 paras 11 to 51</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>APS 210 also has a third, simpler measure called <strong>minimum liquidity holdings (MLH)</strong>, which is 9% of liabilities held in specified liquid assets (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p57">APS 210 para 57</a>; Attachment B). APRA classifies each locally incorporated ADI as either an LCR ADI or an MLH ADI (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p52">APS 210 para 52</a>). APRA decides which ADIs are MLH ADIs; in practice they are smaller, less complex ones. Example Bank is an LCR ADI, so MLH does not apply to it. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> explains it briefly so that you understand it.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Many banks set an internal target above the regulatory minimum, so there is always headroom. APS 210 expects this: "an ADI must include an appropriate buffer of HQLA over the LCR requirement in line with its liquidity risk tolerance" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p4">Att A para 4</a>), and the same for the NSFR (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p4">Att C para 4</a>). Example Bank convention: the Board's risk appetite is an LCR of at least 120% and an NSFR of at least 110%, and management raises an amber warning if the LCR falls to 125% or the NSFR to 115%. Confirm with your controller.</p>
+</blockquote>
+<hr />
+<h2 id="12-percentages-ratios-weighted-amounts-and-factors">12. Percentages, ratios, weighted amounts and factors</h2>
+<p>Everything in the LCR and the NSFR is built from a few simple operations. If maths has been a while, work through this section slowly. You need nothing beyond primary-school arithmetic and a calculator.</p>
+<h3 id="121-percent-means-out-of-100">12.1 Percent means "out of 100"</h3>
+<p>"Per cent" means "per hundred". So 5% means 5 out of every 100, which is 5/100, which is 0.05 as a decimal.</p>
+<p>To turn a percentage into a decimal, divide by 100: move the decimal point two places left.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Percentage</th>
+<th>Divide by 100</th>
+<th>Decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5%</td>
+<td>5 ÷ 100</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>10 ÷ 100</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>25 ÷ 100</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>40%</td>
+<td>40 ÷ 100</td>
+<td>0.40</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>95 ÷ 100</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>100 ÷ 100</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>147.2%</td>
+<td>147.2 ÷ 100</td>
+<td>1.472</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>0 ÷ 100</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table></div>
+<p>To go the other way, from a decimal to a percentage, multiply by 100. So 0.75 is 75%, and 1.363 is 136.3%.</p>
+<h3 id="122-taking-a-percentage-of-an-amount">12.2 Taking a percentage of an amount</h3>
+<p>To find a percentage of an amount, <strong>multiply the amount by the decimal</strong>.</p>
+<blockquote class="q-example"><p><strong>Example:</strong> Find 5% of A$25.0bn.</p>
+<p>Step 1: Turn 5% into a decimal: 5 ÷ 100 = 0.05.
+Step 2: Multiply: 25.0 × 0.05.
+Step 3: Work it out: 25.0 × 5 = 125, and then divide by 100 to get 1.25.
+Answer: A$1.25bn.</p>
+</blockquote>
+<p>A check you can do in your head: 10% of 25.0 is 2.5 (move the decimal one place left). 5% is half of 10%, so half of 2.5 is 1.25. The two methods agree.</p>
+<p>More examples you will see in this pack:</p>
+<pre><code>10% of 15.0 = 15.0 × 0.10 = 1.50
+10% of  5.0 =  5.0 × 0.10 = 0.50
+25% of  4.0 =  4.0 × 0.25 = 1.00
+40% of  6.0 =  6.0 × 0.40 = 2.40
+95% of 25.0 = 25.0 × 0.95 = 23.75
+90% of 15.0 = 15.0 × 0.90 = 13.50
+50% of  4.0 =  4.0 × 0.50 = 2.00
+</code></pre>
+<p>For 95% of 25.0: 25.0 × 95 = 2,375. Divide by 100 and you get 23.75. Or: 95% is 100% minus 5%, so it is 25.0 minus 1.25, which is 23.75. Same answer.</p>
+<h3 id="123-factors-rates-and-weighted-amounts">12.3 Factors, rates and weighted amounts</h3>
+<p>The standard uses several names for "the percentage you multiply by". They all mean the same operation.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Used for</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Run-off rate</strong></td>
+<td>Liabilities in the LCR</td>
+<td>The share of a balance expected to leave in the 30-day stress</td>
+</tr>
+<tr>
+<td><strong>Inflow rate</strong></td>
+<td>Assets in the LCR</td>
+<td>The share of a receivable expected to arrive in the 30-day stress</td>
+</tr>
+<tr>
+<td><strong>Haircut</strong></td>
+<td>Liquid assets in the LCR</td>
+<td>The share of an asset's market value that is deducted</td>
+</tr>
+<tr>
+<td><strong>ASF factor</strong></td>
+<td>Liabilities and equity in the NSFR</td>
+<td>The share of the balance counted as stable funding</td>
+</tr>
+<tr>
+<td><strong>RSF factor</strong></td>
+<td>Assets and commitments in the NSFR</td>
+<td>The share of the balance that needs stable funding</td>
+</tr>
+</tbody>
+</table></div>
+<p>A <strong>weighted amount</strong> is a balance multiplied by its rate or factor. "Weighting" simply means that some items count fully and others only in part.</p>
+<p>A <strong>balance</strong> (the unweighted amount) is the raw number from the books. A weighted amount is "the part that counts".</p>
+<blockquote class="q-example"><p><strong>Example:</strong> Example Bank has A$25.0bn of stable retail deposits. The standard says the run-off rate is 5%. The <strong>balance</strong> is 25.0. The <strong>weighted amount</strong> (the expected outflow) is 25.0 × 0.05 = 1.25.</p>
+</blockquote>
+<p>A table of balances, factors and weighted amounts is the shape of nearly every working paper you will ever produce. The pattern is always:</p>
+<pre><code>Weighted amount = Balance × Rate (or factor)
+Total weighted amount = sum of all the weighted amounts
+</code></pre>
+<h3 id="124-reading-a-number-like-a50bn">12.4 Reading a number like A$5.0bn</h3>
+<p>"A$" means Australian dollars. "bn" means billion, which here is a thousand million: 1,000,000,000. So:</p>
+<pre><code>A$5.0bn = A$5,000,000,000 = A$5,000 million (A$5,000m)
+</code></pre>
+<p>Another way: 1 billion is 1,000 millions. So A$1.25bn is 1.25 × 1,000 = A$1,250 million. A$0.02bn is 0.02 × 1,000 = A$20 million.</p>
+<p>A useful habit: whenever you see a figure, say its unit, then read it. "A$5.0 billion." Not "five". If a colleague says "the surplus is 5.45", ask "5.45 what?" (here: A$5.45bn, which is A$5,450 million).</p>
+<p>Decimals: A$0.30bn is 30 hundredths of a billion, or A$300 million. Remember that 0.3 and 0.30 are the same number.</p>
+<h3 id="125-a-ratio-compares-two-amounts-by-dividing">12.5 A ratio compares two amounts by dividing</h3>
+<p>A <strong>ratio</strong> is one amount divided by another. In the LCR:</p>
+<pre><code>LCR = HQLA ÷ net cash outflows
+</code></pre>
+<p>Take 17.0 ÷ 11.55. Do the division in steps (or use a calculator and then check it with these steps).</p>
+<ul>
+<li>How many times does 11.55 go into 17.0? Once, with 17.0 − 11.55 = 5.45 left over. So the answer is a bit over 1.</li>
+<li>Try 1.4: 11.55 × 1.4 = 16.17. Remainder 17.0 − 16.17 = 0.83.</li>
+<li>0.83 ÷ 11.55 is about 0.0719. So the answer is about 1.4 + 0.0719 = 1.4719.</li>
+<li>Turn into a percentage: 1.4719 × 100 = 147.19%, which rounds to 147.2%.</li>
+</ul>
+<p>Reading the result: a ratio of 1.0 (or 100%) means the two amounts are equal. Above 100% means the top number is larger. Here, HQLA is 147.2% of net outflows: for every A$1.00 that may leave, the bank holds A$1.47 of liquid assets.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A ratio can fall for two different reasons: the top falls, or the bottom rises. When you explain a movement (documents <a href="08_LCR_Production_End_to_End.html">08</a> and 09), always say which.</p>
+</blockquote>
+<h3 id="126-minimum-maximum-and-caps">12.6 Minimum, maximum and caps</h3>
+<p>Two words from the standard that you will use often:</p>
+<ul>
+<li>A <strong>cap</strong> is an upper limit. "Inflows are capped at 75% of outflows" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>) means that, however large the inflows are, you may count no more than 75% of the outflows.</li>
+<li>"Min" and "max" are the smaller and the larger of two numbers. <code>Min {a; b}</code> means "take whichever is smaller". <code>Max {a; b}</code> means "take whichever is larger".</li>
+</ul>
+<p>The net outflow formula is:</p>
+<pre><code>Total net cash outflows = Total expected cash outflows
+                          − Min { total expected cash inflows ; 75% of total expected cash outflows }
+</code></pre>
+<p>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>)</p>
+<blockquote class="q-example"><p><strong>Example:</strong> A bank has outflows of 100 and inflows of 90. The cap is 75% of 100 = 75. The smaller of 90 and 75 is 75. Net outflows are 100 − 75 = 25. The inflows above 75 are ignored.</p>
+<p>If instead the inflows were 40, the smaller of 40 and 75 is 40. Net outflows would be 100 − 40 = 60. The cap would not bite.</p>
+</blockquote>
+<p>The purpose of the cap is that a bank cannot rely wholly on inflows. At least 25% of the outflows must always be covered by liquid assets.</p>
+<p>There is a second kind of cap on the <strong>numerator</strong>: lower-quality HQLA (HQLA2) may be no more than 40% of the total stock, and HQLA2B no more than 15% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>). Example Bank holds only HQLA1, so the caps do not matter for its numbers, but they matter for the job. Document <a href="08_LCR_Production_End_to_End.html">08</a> shows how they are calculated.</p>
+<h3 id="127-rounding">12.7 Rounding</h3>
+<p>We show ratios to one decimal place: 147.2%, 136.3%. We show amounts to two decimal places in A$bn in working papers, because the individual lines are small (A$0.30bn). Round only at the <strong>end</strong>. If you round each line and then add, the answer can drift by a small amount. Keep the full decimals through the calculation, then round the final ratio.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> When I check your work, I look first at whether your lines add to your total, and whether your ratio recomputes from your totals. Show every line; do not type only the totals.</p>
+</blockquote>
+<hr />
+<h2 id="13-the-30-day-window-and-the-one-year-horizon">13. The 30-day window and the one-year horizon</h2>
+<p>Two clocks run through APS 210. Do not confuse them.</p>
+<h3 id="131-the-30-day-window-lcr">13.1 The 30-day window (LCR)</h3>
+<p>The LCR looks at the <strong>next 30 calendar days</strong>: "30 calendar day period under a severe stress scenario" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p1">Att A para 1</a>). A calendar day is any day, including weekends and holidays, so the window is 30 days on a calendar, not 30 business days.</p>
+<p>What goes in the window?</p>
+<ul>
+<li><strong>Outflows:</strong> money the bank might have to pay in the next 30 days, using the stress assumptions. A deposit is "at risk" in the window if the customer could ask for it within those 30 days. A wholesale bond due on day 25 is in the window. A bond due on day 45 is not.</li>
+<li><strong>Inflows:</strong> money the bank is contractually due to receive within the 30 days (for example loan repayments).</li>
+<li><strong>Assets:</strong> HQLA are those the bank holds on day one, "irrespective of their residual maturity" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>). It does not matter when the government bond matures. What matters is that it is liquid today.</li>
+</ul>
+<p>A rule of thumb for the 30-day window:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Inside the window?</th>
+<th>Counts toward</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A customer account the customer can access at any time</td>
+<td>Yes</td>
+<td>Outflow, at the run-off rate</td>
+</tr>
+<tr>
+<td>A wholesale bond maturing in 12 days</td>
+<td>Yes</td>
+<td>Outflow at 100%</td>
+</tr>
+<tr>
+<td>A wholesale bond maturing in 45 days</td>
+<td>No</td>
+<td>Not in the LCR (but in the NSFR)</td>
+</tr>
+<tr>
+<td>A term deposit with no early-withdrawal right, maturing in 90 days</td>
+<td>No</td>
+<td>Not in the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>)</td>
+</tr>
+<tr>
+<td>A loan repayment due in 10 days</td>
+<td>Yes</td>
+<td>Inflow at the inflow rate</td>
+</tr>
+<tr>
+<td>A loan repayment due in 60 days</td>
+<td>No</td>
+<td>Not in the LCR</td>
+</tr>
+</tbody>
+</table></div>
+<p>The window is <strong>rolling</strong>. Tomorrow's window is a day further on. A bond that is outside today's window may be inside tomorrow's, or next week's. This is why we project forward, and why a surprise (see document <a href="12_Controls_Incidents_and_Escalation.html">12</a>) can happen: a large item rolls into the window and the ratio drops.</p>
+<h3 id="132-the-one-year-horizon-nsfr">13.2 The one-year horizon (NSFR)</h3>
+<p>The NSFR looks at stability over <strong>one year</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p1">Att C para 1</a>). Its question is not "what could leave within a month?" but "how much of this funding will still be here in a year?" and "how much of these assets will still need funding in a year?"</p>
+<p>It uses a few time buckets, and <strong>residual maturity</strong> (the time left until an item falls due) puts each item in one:</p>
+<ul>
+<li>under 6 months</li>
+<li>6 months to under 1 year</li>
+<li>1 year or more</li>
+</ul>
+<p>Rules for the clock are different for liabilities and assets. For liabilities, the maturity date is "the earliest date at which the funds may be redeemed" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>). For assets it is "the latest possible date at which the asset may mature" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>). In both cases the standard is deliberately cautious: it assumes the less favourable date.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>LCR</th>
+<th>NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>Can we survive a severe 30-day shock?</td>
+<td>Is our funding stable over a year?</td>
+</tr>
+<tr>
+<td>Window</td>
+<td>30 calendar days</td>
+<td>One year</td>
+</tr>
+<tr>
+<td>Style</td>
+<td>Stress outflows, partly offset by inflows</td>
+<td>Weighted stability of funding and need</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Reported (Example Bank convention)</td>
+<td>Daily</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="14-a-first-slow-lcr-for-example-bank">14. A first, slow LCR for Example Bank</h2>
+<p>Now we put everything together. We build Example Bank's LCR from the balance sheet in section 4, one line at a time. For each line I first tell you what it is, then what the standard assumes, then the arithmetic. This is a training walk-through. In your job, you will do the same with a working paper (document <a href="08_LCR_Production_End_to_End.html">08</a>).</p>
+<p>Example Bank has one currency and one legal entity, so Level 1 (the bank on its own) and Level 2 (the bank and its subsidiaries together) are the same here, and the Australian dollar LCR equals the all-currencies LCR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 paras 3 to 4</a>).</p>
+<p>The LCR formula, again (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p3">Att A para 3</a>):</p>
+<pre><code>LCR = Stock of HQLA ÷ Total net cash outflows over the next 30 calendar days
+</code></pre>
+<h3 id="141-step-1-the-top-of-the-fraction-the-stock-of-hqla">14.1 Step 1: the top of the fraction, the stock of HQLA</h3>
+<p>We ask: which of Example Bank's assets are high-quality liquid assets?</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Balance (A$bn)</th>
+<th>Is it HQLA?</th>
+<th>Why</th>
+<th>Haircut</th>
+<th>Counted (A$bn)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and balances with the RBA</td>
+<td>5.0</td>
+<td>Yes, HQLA1</td>
+<td>Notes, coin and RBA balances (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(a), 9(b))</td>
+<td>0%</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>Yes, HQLA1</td>
+<td>Marketable securities of governments, if they meet the conditions (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(c))</td>
+<td>0%</td>
+<td>12.0</td>
+</tr>
+<tr>
+<td>Other debt securities (non-HQLA)</td>
+<td>3.0</td>
+<td>No</td>
+<td>Not government paper; not eligible</td>
+<td>n/a</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Loans to other banks</td>
+<td>2.0</td>
+<td>No</td>
+<td>A loan is not a liquid asset</td>
+<td>n/a</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Residential mortgages</td>
+<td>50.0</td>
+<td>No</td>
+<td>Cannot be sold quickly</td>
+<td>n/a</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Business loans</td>
+<td>15.0</td>
+<td>No</td>
+<td>Same</td>
+<td>n/a</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Personal and business loans</td>
+<td>8.0</td>
+<td>No</td>
+<td>Same</td>
+<td>n/a</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Other assets</td>
+<td>5.0</td>
+<td>No</td>
+<td>Not liquid</td>
+<td>n/a</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table></div>
+<p>HQLA1 is included "at market value" with no haircut (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>). We assume market value equals the book value shown.</p>
+<pre><code>HQLA = 5.0 + 12.0 = 17.0
+</code></pre>
+<p>Notice that 17.0 is only 17.0 ÷ 100.0 = 17% of Example Bank's assets. Most of the bank's assets are loans, and they are not in the numerator.</p>
+<p>We also assume the operational requirements are met: the assets are unencumbered, under the control of Treasury, and available to be converted into cash at any time (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>). Document <a href="08_LCR_Production_End_to_End.html">08</a> shows how this is checked.</p>
+<h3 id="142-step-2-the-bottom-of-the-fraction-expected-cash-outflows">14.2 Step 2: the bottom of the fraction, expected cash outflows</h3>
+<p>Now ask: if the worst happened for 30 days, how much cash would leave? The standard gives a percentage for each type of liability or commitment. Each is multiplied by the balance. The result is the stress outflow.</p>
+<p>First, here is what each outflow line means <strong>before any rate is applied</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Balance (A$bn)</th>
+<th>What it is, in everyday words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail deposits, stable</td>
+<td>25.0</td>
+<td>Ordinary customers' accounts that are fully guaranteed by the government scheme and sit in a transaction account where they are likely to stay</td>
+</tr>
+<tr>
+<td>Retail deposits, less stable</td>
+<td>15.0</td>
+<td>Customer accounts more likely to leave (for example online accounts that are easy to move)</td>
+</tr>
+<tr>
+<td>Retail term deposits (over 30 days)</td>
+<td>10.0</td>
+<td>Locked-in customer money that cannot be taken out inside the 30 days</td>
+</tr>
+<tr>
+<td>SME deposits</td>
+<td>5.0</td>
+<td>Small business accounts, treated like retail</td>
+</tr>
+<tr>
+<td>Corporate operational deposits</td>
+<td>4.0</td>
+<td>Big companies' working accounts that they need for daily business</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits</td>
+<td>6.0</td>
+<td>Big companies' spare cash, which can move fast</td>
+</tr>
+<tr>
+<td>Financial institution deposits</td>
+<td>4.0</td>
+<td>Other banks' and funds' money, the most skittish</td>
+</tr>
+<tr>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>Bonds that Example Bank must repay inside the window</td>
+</tr>
+<tr>
+<td>Undrawn facilities, retail and SME</td>
+<td>10.0</td>
+<td>Credit limits (for example overdrafts, credit cards) the customer has not used, but could</td>
+</tr>
+<tr>
+<td>Undrawn credit facilities, corporates</td>
+<td>5.0</td>
+<td>Loan commitments to companies, not yet drawn</td>
+</tr>
+<tr>
+<td>Undrawn liquidity facilities, corporates</td>
+<td>1.0</td>
+<td>Back-up lines to companies so they can repay their own debts, not yet drawn</td>
+</tr>
+<tr>
+<td>Net derivative outflows</td>
+<td>0.3</td>
+<td>Payments the bank expects to make, minus those it expects to receive, on derivative contracts (contracts whose value depends on something else, for example an interest rate)</td>
+</tr>
+<tr>
+<td>Collateral on a 3-notch downgrade</td>
+<td>0.2</td>
+<td>Extra security the bank must hand over if its credit rating is cut by three steps</td>
+</tr>
+</tbody>
+</table></div>
+<p>Other liabilities, equity, wholesale debt beyond 30 days: no stress outflow in the 30-day window, so no rate is needed. Equity is not owed. Debt due after day 30 does not need paying in the window (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>).</p>
+<p>Now apply the rates (<strong>run-off rates</strong>), as set out in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>. Each rate is the share the standard assumes will leave or be drawn.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Line</th>
+<th>Balance (A$bn)</th>
+<th>Run-off rate</th>
+<th>Working</th>
+<th>Outflow (A$bn)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Retail deposits, stable</td>
+<td>25.0</td>
+<td>5%</td>
+<td>25.0 × 0.05</td>
+<td>1.25</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Retail deposits, less stable</td>
+<td>15.0</td>
+<td>10%</td>
+<td>15.0 × 0.10</td>
+<td>1.50</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p38">Att A paras 38 to 40</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Retail term deposits over 30 days</td>
+<td>10.0</td>
+<td>0%</td>
+<td>10.0 × 0.00</td>
+<td>0.00</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>SME deposits, qualifying</td>
+<td>5.0</td>
+<td>10%</td>
+<td>5.0 × 0.10</td>
+<td>0.50</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Corporate operational deposits</td>
+<td>4.0</td>
+<td>25%</td>
+<td>4.0 × 0.25</td>
+<td>1.00</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Corporate non-operational deposits</td>
+<td>6.0</td>
+<td>40%</td>
+<td>6.0 × 0.40</td>
+<td>2.40</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Financial institution deposits</td>
+<td>4.0</td>
+<td>100%</td>
+<td>4.0 × 1.00</td>
+<td>4.00</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>100%</td>
+<td>1.0 × 1.00</td>
+<td>1.00</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Undrawn facilities, retail and SME</td>
+<td>10.0</td>
+<td>5%</td>
+<td>10.0 × 0.05</td>
+<td>0.50</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Undrawn credit facilities, corporates</td>
+<td>5.0</td>
+<td>10%</td>
+<td>5.0 × 0.10</td>
+<td>0.50</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Undrawn liquidity facilities, corporates</td>
+<td>1.0</td>
+<td>30%</td>
+<td>1.0 × 0.30</td>
+<td>0.30</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Net derivative outflows</td>
+<td>0.3</td>
+<td>100%</td>
+<td>0.3 × 1.00</td>
+<td>0.30</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Collateral on a 3-notch downgrade</td>
+<td>0.2</td>
+<td>100%</td>
+<td>0.2 × 1.00</td>
+<td>0.20</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>Why these rates? In very short form (the full reasons are in documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 08, and in <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a>):</p>
+<ul>
+<li><strong>Stable retail 5%:</strong> these customers are fully covered by the A$250,000 Financial Claims Scheme guarantee and have transaction relationships, so they rarely run (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>).</li>
+<li><strong>Less stable retail 10%:</strong> less likely to stay; the scorecard puts Example Bank's deposits at 10% (a score of 0 to 2, see section 14.5 below and <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p38">Att A paras 38 to 40</a>).</li>
+<li><strong>Term deposits over 30 days 0%:</strong> the customer has no legal right to take the money out inside the window, so it cannot run (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>).</li>
+<li><strong>Financial institutions 100%:</strong> other banks and funds will pull their money first and entirely. The standard assumes all of it goes.</li>
+<li><strong>Facilities 5% to 30%:</strong> customers do not draw all their promised credit at once, but some draw. The rate depends on the customer type and kind of facility.</li>
+</ul>
+<p>Add the outflows, one line at a time:</p>
+<pre><code>1.25
+
++ 1.50  = 2.75
++ 0.00  = 2.75
++ 0.50  = 3.25
++ 1.00  = 4.25
++ 2.40  = 6.65
++ 4.00  = 10.65
++ 1.00  = 11.65
++ 0.50  = 12.15
++ 0.50  = 12.65
++ 0.30  = 12.95
++ 0.30  = 13.25
++ 0.20  = 13.45
+</code></pre>
+<p><strong>Total expected cash outflows = A$13.45bn.</strong></p>
+<p>Read that number slowly. It says: in a severe 30-day stress, the standard assumes A$13.45bn of Example Bank's obligations will actually need to be paid in cash.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Look at line 7. Financial institution deposits are only A$4.0bn of the A$100.0bn balance sheet, but they produce A$4.00bn of outflow, nearly 30% of the total of 13.45. Compare line 1: A$25.0bn of stable retail deposits produces only A$1.25bn. Who the money comes from matters more than how big it is. This is why classification (document <a href="07_Data_and_Classification.html">07</a>) is such a large part of your job.</p>
+</blockquote>
+<h3 id="143-step-3-expected-cash-inflows">14.3 Step 3: expected cash inflows</h3>
+<p>Now the other direction. Some money is <strong>contractually due to come in</strong> during the 30 days (for example loan repayments). The standard allows credit for it, but only part, and only for fully performing amounts (those not overdue or in default).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Line</th>
+<th>Balance due within 30 days (A$bn)</th>
+<th>Inflow rate</th>
+<th>Working</th>
+<th>Inflow (A$bn)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Repayments from retail and SME customers</td>
+<td>1.0</td>
+<td>50%</td>
+<td>1.0 × 0.50</td>
+<td>0.50</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Repayments from corporates</td>
+<td>0.8</td>
+<td>50%</td>
+<td>0.8 × 0.50</td>
+<td>0.40</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Money back from other banks</td>
+<td>1.0</td>
+<td>100%</td>
+<td>1.0 × 1.00</td>
+<td>1.00</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>Why only 50% for retail, SME and corporates? Because the bank needs to keep lending to its customers during a stress (it must keep its customers going), so it is assumed to roll over half. Why 100% for loans to other banks? Because this is a short wholesale loan that the other bank is expected to repay.</p>
+<pre><code>Total expected cash inflows = 0.50 + 0.40 + 1.00 = 1.90
+</code></pre>
+<p><strong>Total expected cash inflows = A$1.90bn.</strong></p>
+<p>Do not double-count. A government bond in the HQLA stock cannot also be counted as an inflow when it matures (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>).</p>
+<h3 id="144-step-4-apply-the-75-cap-then-net-the-two">14.4 Step 4: apply the 75% cap, then net the two</h3>
+<p>First, the cap. It allows inflows up to 75% of outflows.</p>
+<pre><code>Cap = 75% × 13.45 = 13.45 × 0.75
+    = 10.0875
+    ≈ 10.09
+</code></pre>
+<p>Compare inflows with the cap: the smaller of 1.90 and 10.09 is <strong>1.90</strong>. The cap is not binding. (It would only bind if the inflows were above 10.09.)</p>
+<p>Now net outflows:</p>
+<pre><code>Total net cash outflows = 13.45 − 1.90 = 11.55
+</code></pre>
+<p><strong>Total net cash outflows = A$11.55bn.</strong></p>
+<h3 id="145-step-5-divide">14.5 Step 5: divide</h3>
+<pre><code>LCR = 17.0 ÷ 11.55 = 1.4719 = 147.2%
+</code></pre>
+<p><strong>Example Bank's LCR is 147.2%.</strong> The surplus is the amount above the minimum. At the 100% minimum, the bank would need HQLA of exactly 11.55. It holds 17.0:</p>
+<pre><code>Surplus = 17.0 − 11.55 = 5.45
+</code></pre>
+<p>A$5.45bn of HQLA above the minimum.</p>
+<h3 id="146-what-the-answer-means">14.6 What the answer means</h3>
+<ul>
+<li><strong>Compliance:</strong> 147.2% is above 100%, so Example Bank meets the minimum on both an Australian dollar basis and an all-currencies basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). Because there is one currency, the two are the same number.</li>
+<li><strong>Headroom:</strong> Example Bank's Board risk appetite (Example Bank convention) is an LCR of at least 120%, and the amber early-warning trigger is 125%. At 147.2% the bank is 27.2 percentage points above the Board appetite. Confirm with your controller.</li>
+<li><strong>Sensitivity:</strong> if the net outflows rose to 17.0 (a rise of 5.45), the LCR would be 17.0 ÷ 17.0 = 100%: exactly on the minimum. This is how to read the surplus: <strong>it is the extra net outflow the bank could absorb before reaching 100%</strong>.</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Never read 147.2% as "the bank is 47.2% too safe". The standard says that the bank must have an "appropriate buffer" over the requirement in line with its risk tolerance (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p4">Att A para 4</a>). The buffer protects against day-to-day swings in the ratio and against mistakes in our own numbers.</p>
+</blockquote>
+<h3 id="147-about-the-rates-for-retail-deposits-the-scorecard">14.7 About the rates for retail deposits: the scorecard</h3>
+<p>You will have noticed that Example Bank's less stable retail deposits are at 10%. The standard has a points system (a <strong>scorecard</strong>) to decide how to treat the less stable portion (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p38">Att A paras 38 to 40</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t1">Att A Table 1</a> and <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t2">Att A Table 2</a>). It is explained in full in document <a href="07_Data_and_Classification.html">07</a>.</p>
+<p>The scorecard in brief (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t1">Att A Table 1</a>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Feature of the deposit</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The balance is above the guarantee limit (or A$250,000)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>It is an on-line account</td>
+<td>2</td>
+</tr>
+<tr>
+<td>There is no established relationship with the customer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>The deposit is heavily rate-driven</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<p>A total of 0 to 2 points gives a 10% run-off rate. A total of 3 or more gives 25%. Example Bank's A$15.0bn is scored 0 to 2, which is why we used 10%.</p>
+<hr />
+<h2 id="15-a-first-slow-nsfr-for-example-bank">15. A first, slow NSFR for Example Bank</h2>
+<p>The NSFR asks a different question, over a different time horizon. It compares <strong>stable funding available</strong> with <strong>stable funding required</strong>.</p>
+<pre><code>NSFR = Available stable funding ÷ Required stable funding
+</code></pre>
+<p>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p3">Att C para 3</a>)</p>
+<p>Think of a household with a 30-year mortgage. The sensible way to fund it is a stable salary, not a credit card that can be cancelled next month. The NSFR asks the same of the bank.</p>
+<h3 id="151-step-1-available-stable-funding-asf">15.1 Step 1: available stable funding (ASF)</h3>
+<p>ASF measures how much of the bank's funding is expected to be there for a year. Each liability and the equity is multiplied by an <strong>ASF factor</strong>. A high factor (up to 100%) means very stable funding. A zero factor means we cannot count on the money being there a year from now (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p6">Att C paras 6 to 7</a>).</p>
+<p>We use each line's balance (<strong>carrying value</strong>, meaning the value in the accounting books) and its residual maturity.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Line</th>
+<th>Balance (A$bn)</th>
+<th>ASF factor</th>
+<th>Working</th>
+<th>Weighted (A$bn)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Shareholders' equity</td>
+<td>8.0</td>
+<td>100%</td>
+<td>8.0 × 1.00</td>
+<td>8.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(a)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Wholesale debt, 1 year or more</td>
+<td>15.0</td>
+<td>100%</td>
+<td>15.0 × 1.00</td>
+<td>15.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>(c)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Retail deposits, stable</td>
+<td>25.0</td>
+<td>95%</td>
+<td>25.0 × 0.95</td>
+<td>23.75</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>(a)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Retail deposits, less stable</td>
+<td>15.0</td>
+<td>90%</td>
+<td>15.0 × 0.90</td>
+<td>13.50</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Retail term deposits (under 1 year)</td>
+<td>10.0</td>
+<td>90%</td>
+<td>10.0 × 0.90</td>
+<td>9.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SME deposits, less stable</td>
+<td>5.0</td>
+<td>90%</td>
+<td>5.0 × 0.90</td>
+<td>4.50</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>(a)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Corporate operational deposits</td>
+<td>4.0</td>
+<td>50%</td>
+<td>4.0 × 0.50</td>
+<td>2.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(b)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Corporate non-operational deposits</td>
+<td>6.0</td>
+<td>50%</td>
+<td>6.0 × 0.50</td>
+<td>3.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(a)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Wholesale debt, 6 months to under 1 year</td>
+<td>2.0</td>
+<td>50%</td>
+<td>2.0 × 0.50</td>
+<td>1.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>(f)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Financial institution deposits</td>
+<td>4.0</td>
+<td>0%</td>
+<td>4.0 × 0.00</td>
+<td>0.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>0%</td>
+<td>1.0 × 0.00</td>
+<td>0.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Wholesale debt, 30 days to under 6 months</td>
+<td>3.0</td>
+<td>0%</td>
+<td>3.0 × 0.00</td>
+<td>0.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(a)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Other liabilities</td>
+<td>2.0</td>
+<td>0%</td>
+<td>2.0 × 0.00</td>
+<td>0.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>(b)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>100.0</strong></td>
+<td></td>
+<td></td>
+<td><strong>79.75</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Check the balances: 8.0 + 15.0 + 25.0 + 15.0 + 10.0 + 5.0 + 4.0 + 6.0 + 2.0 + 4.0 + 1.0 + 3.0 + 2.0 = 100.0. This agrees with the balance sheet total of the right-hand side. (Every liability and equity line is on the list.)</p>
+<p>Add the weighted amounts:</p>
+<pre><code>8.00 + 15.00 = 23.00
+
++ 23.75      = 46.75
++ 13.50      = 60.25
++  9.00      = 69.25
++  4.50      = 73.75
++  2.00      = 75.75
++  3.00      = 78.75
++  1.00      = 79.75
++  0.00 (the four zero-factor lines) = 79.75
+</code></pre>
+<p><strong>ASF = A$79.75bn.</strong></p>
+<p>The pattern is easy to see: the longer and more reliable the funding, the higher the factor. Equity and long-term debt count in full; stable retail deposits almost in full; short money from other financial institutions counts for nothing. Of the A$100.0bn of funding, A$79.75bn counts as stable.</p>
+<h3 id="152-step-2-required-stable-funding-rsf">15.2 Step 2: required stable funding (RSF)</h3>
+<p>RSF measures how much stable funding the bank's <strong>assets and commitments</strong> need. An asset that can be sold at once needs very little stable funding (a government bond: 5%). A 30-year home loan needs a lot (65%). An asset that can never be sold needs all (100%) (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p16">Att C paras 16 to 17</a>). Each asset is multiplied by an <strong>RSF factor</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Line</th>
+<th>Balance (A$bn)</th>
+<th>RSF factor</th>
+<th>Working</th>
+<th>Weighted (A$bn)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Cash and balances with the RBA</td>
+<td>5.0</td>
+<td>0%</td>
+<td>5.0 × 0.00</td>
+<td>0.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>5%</td>
+<td>12.0 × 0.05</td>
+<td>0.60</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Other debt securities (non-HQLA, over 1 year)</td>
+<td>3.0</td>
+<td>85%</td>
+<td>3.0 × 0.85</td>
+<td>2.55</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(c)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Loans to other banks (under 6 months)</td>
+<td>2.0</td>
+<td>15%</td>
+<td>2.0 × 0.15</td>
+<td>0.30</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>(b)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Residential mortgages (standard, LVR 80% or below)</td>
+<td>50.0</td>
+<td>65%</td>
+<td>50.0 × 0.65</td>
+<td>32.50</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>(a)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Business loans (over 1 year)</td>
+<td>15.0</td>
+<td>85%</td>
+<td>15.0 × 0.85</td>
+<td>12.75</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>(b)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Personal and business loans (under 1 year)</td>
+<td>8.0</td>
+<td>50%</td>
+<td>8.0 × 0.50</td>
+<td>4.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>(f)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Other assets</td>
+<td>5.0</td>
+<td>100%</td>
+<td>5.0 × 1.00</td>
+<td>5.00</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>(c)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Undrawn committed facilities (10.0 + 5.0 + 1.0 = 16.0)</td>
+<td>16.0</td>
+<td>5%</td>
+<td>16.0 × 0.05</td>
+<td>0.80</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p41">Att C para 41</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>58.50</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Add up:</p>
+<pre><code>0.00 + 0.60 = 0.60
+
++ 2.55      = 3.15
++ 0.30      = 3.45
++ 32.50     = 35.95
++ 12.75     = 48.70
++  4.00     = 52.70
++  5.00     = 57.70
++  0.80     = 58.50
+</code></pre>
+<p><strong>RSF = A$58.50bn.</strong></p>
+<p>For simplicity in this training, we ignore Example Bank's derivative balance in the NSFR, as the guide does.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Line 9 is not on the balance sheet at all. It is a promise the bank has made (a commitment to lend) that has not been used yet. We call these "off-balance sheet" items. They still need a little stable funding, because the customer may draw them. Many new analysts forget off-balance sheet items. Always ask what the bank has promised, as well as what it holds.</p>
+</blockquote>
+<h3 id="153-step-3-divide">15.3 Step 3: divide</h3>
+<pre><code>NSFR = 79.75 ÷ 58.50 = 1.3633 = 136.3%
+</code></pre>
+<p>Do the division in steps: 58.50 × 1.3 = 76.05. The remainder is 79.75 − 76.05 = 3.70. Then 3.70 ÷ 58.50 = 0.0632. So the answer is 1.3 + 0.0632 = 1.3632, which is 136.3%.</p>
+<p>Surplus of stable funding: 79.75 − 58.50 = A$21.25bn.</p>
+<p><strong>Example Bank's NSFR is 136.3%.</strong> That is above the 100% minimum for a locally incorporated LCR ADI (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 to 60</a>), above the Example Bank Board appetite of 110%, and above the amber trigger of 115% (Example Bank conventions; confirm with your controller).</p>
+<h3 id="154-the-two-ratios-side-by-side">15.4 The two ratios side by side</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>LCR</th>
+<th>NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top</td>
+<td>HQLA 17.0</td>
+<td>ASF 79.75</td>
+</tr>
+<tr>
+<td>Bottom</td>
+<td>Net outflows 11.55</td>
+<td>RSF 58.50</td>
+</tr>
+<tr>
+<td>Result</td>
+<td>147.2%</td>
+<td>136.3%</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Surplus</td>
+<td>5.45</td>
+<td>21.25</td>
+</tr>
+<tr>
+<td>Frequency at Example Bank</td>
+<td>Daily</td>
+<td>Monthly</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notice how different the biggest items are. For the LCR, the largest outflow is financial institution deposits (4.00 of 13.45). For the NSFR, the largest need is residential mortgages (32.50 of 58.50). One ratio looks at the shock; the other looks at the structure. The same balance sheet gives you two different views, and you need both.</p>
+<p>(You will find the same walk-through, with more reasons, in <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> and <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a>.)</p>
+<hr />
+<h2 id="16-the-40-words-you-will-hear-in-your-first-week">16. The 40 words you will hear in your first week</h2>
+<p>Do not memorise this list. Read it once now, and come back to it whenever someone uses a word you do not know. The numbers in brackets are where to learn more.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Word</th>
+<th>One-line meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ADI</td>
+<td>Authorised deposit-taking institution: a bank, building society or credit union authorised by APRA to take deposits (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p2">APS 210 para 2</a>).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>APRA</td>
+<td>The Australian Prudential Regulation Authority: the supervisor of banks, insurers and super funds.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>RBA</td>
+<td>Reserve Bank of Australia: the central bank; keeps banks' settlement accounts; lender of last resort.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>APS 210</td>
+<td>Prudential Standard APS 210 Liquidity: the rulebook for bank liquidity.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Asset</td>
+<td>Something the bank owns or is owed (loans, securities, cash).</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Liability</td>
+<td>Something the bank owes (deposits, bonds it has issued).</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Equity</td>
+<td>Owners' stake: assets minus liabilities.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Balance sheet</td>
+<td>Snapshot of assets, liabilities and equity at one date.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>At-call deposit</td>
+<td>A deposit the customer can withdraw on demand.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Term deposit</td>
+<td>A deposit locked in for a fixed period at a fixed rate.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Retail</td>
+<td>Individuals (households); also, for the LCR, qualifying small businesses (SMEs).</td>
+</tr>
+<tr>
+<td>12</td>
+<td>SME</td>
+<td>Small and medium enterprise.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Wholesale funding</td>
+<td>Money borrowed from large investors and businesses rather than from households.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Operational deposit</td>
+<td>A corporate deposit kept at the bank because the customer needs it for payments and cash management (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>).</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Financial institution</td>
+<td>A bank, fund, super fund, insurer or similar; defined in <a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b); the quickest to run.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Residual maturity</td>
+<td>Time left until an item falls due.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Maturity transformation</td>
+<td>Borrowing short and lending long: the core business of a bank.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Liquidity</td>
+<td>Having cash, or things quickly turned into cash, when payments fall due.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>HQLA</td>
+<td>High-quality liquid assets: the assets that count in the LCR numerator (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 12</a>).</td>
+</tr>
+<tr>
+<td>20</td>
+<td>HQLA1, HQLA2A, HQLA2B</td>
+<td>The three classes of HQLA, best first; 0%, 15% and 25% or 50% haircuts for the lower classes (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a> and <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>).</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Haircut</td>
+<td>A percentage deducted from an asset's market value to allow for a fall in a crisis.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Encumbered</td>
+<td>Pledged as security, so not free to sell.</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Monetise</td>
+<td>Turn an asset into cash by selling it or borrowing against it.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Repo</td>
+<td>Repurchase agreement: sell an asset for cash now with a promise to buy it back later.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Run-off rate</td>
+<td>The share of a liability expected to leave in the 30-day stress.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Inflow rate</td>
+<td>The share of a receivable counted as arriving in the 30-day stress.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Net cash outflows</td>
+<td>Stress outflows minus capped inflows over 30 days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>).</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Cap</td>
+<td>An upper limit, for example inflows are capped at 75% of outflows.</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Buffer</td>
+<td>Headroom held above a minimum.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Stress</td>
+<td>A severe but plausible shock used to test the bank's resilience.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>LCR</td>
+<td>Liquidity coverage ratio: HQLA divided by 30-day net cash outflows; minimum 100%.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>NSFR</td>
+<td>Net stable funding ratio: available stable funding divided by required stable funding; minimum 100%.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>ASF</td>
+<td>Available stable funding: funding expected to stay for a year, after weighting.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>RSF</td>
+<td>Required stable funding: funding that the assets and commitments need, after weighting.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>MLH</td>
+<td>Minimum liquidity holdings: the simpler 9% regime for smaller ADIs (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p57">APS 210 para 57</a>).</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Level 1 and Level 2</td>
+<td>The bank alone, and the bank with its subsidiaries together (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 para 3</a>).</td>
+</tr>
+<tr>
+<td>37</td>
+<td>FCS</td>
+<td>Financial Claims Scheme: the government's guarantee of deposits up to A$250,000 per account holder per ADI.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>ELA</td>
+<td>Exceptional Liquidity Assistance: emergency lending from the RBA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>).</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Contingency funding plan</td>
+<td>The ready-made crisis plan for liquidity shortfalls (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>).</td>
+</tr>
+<tr>
+<td>40</td>
+<td>ALCO</td>
+<td>Asset and Liability Committee: the senior management committee that oversees the balance sheet and liquidity (monthly at Example Bank).</td>
+</tr>
+</tbody>
+</table></div>
+<p>If a word is missing here, check the glossary in the guide (<a href="../LIQUIDITY_GUIDE.html#chapter-10-glossary-acronyms-and-common-confusions">Guide Ch 10</a>) and then ask.</p>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<p>Try each question before reading the answer.</p>
+<p><strong>1. In a bank's books, is a customer's deposit an asset or a liability? Why?</strong></p>
+<p><strong>Answer:</strong> A liability. The deposit is money the bank owes to the customer, who can ask for it back. For the customer it is an asset; for the bank it is a liability.</p>
+<p><strong>2. A bank has assets of A$250bn and liabilities of A$232bn. What is its equity? Is it solvent?</strong></p>
+<p><strong>Answer:</strong> Equity = assets − liabilities = 250 − 232 = A$18bn. Equity is positive, so the bank owns more than it owes and is solvent. (The accounting equation is assets = liabilities + equity: 232 + 18 = 250.)</p>
+<p><strong>3. A bank has A$40bn of at-call deposits and A$9bn of cash and government bonds. In a sudden panic, 12% of the at-call deposits are withdrawn. How much leaves, and can the quick assets cover it?</strong></p>
+<p><strong>Answer:</strong> 12% of 40 = 40 × 0.12 = A$4.8bn leaves. Quick assets are A$9bn, which is more than 4.8, so yes, with 9 − 4.8 = A$4.2bn to spare. (If 25% left, 40 × 0.25 = 10, which is more than 9, and the bank would be A$1bn short.)</p>
+<p><strong>4. Explain the difference between liquidity and solvency in two sentences.</strong></p>
+<p><strong>Answer:</strong> Liquidity is having enough cash, or assets that become cash quickly, to pay what is due in the near term. Solvency is owning more than you owe overall. A bank can be solvent but illiquid (long loans, nervous depositors), or liquid for a time but insolvent.</p>
+<p><strong>5. A bank has HQLA of A$9bn, expected outflows of A$12bn and expected inflows of A$4bn. Calculate the LCR.</strong></p>
+<p><strong>Answer:</strong> Cap on inflows = 75% × 12 = 9. The smaller of 4 and 9 is 4, so the cap does not bind. Net outflows = 12 − 4 = 8. LCR = 9 ÷ 8 = 1.125 = <strong>112.5%</strong>. This is above 100%.</p>
+<p><strong>6. A bank has outflows of A$20bn and inflows of A$18bn. HQLA is A$7bn. Calculate the LCR, and say what the cap does.</strong></p>
+<p><strong>Answer:</strong> Cap = 75% × 20 = 15. The smaller of 18 and 15 is 15, so the cap binds. Net outflows = 20 − 15 = 5. LCR = 7 ÷ 5 = 1.40 = <strong>140%</strong>. Without the cap, net outflows would be 20 − 18 = 2 and the LCR would look like 350%, which overstates the position. The cap ensures that at least 25% of outflows (here 5) must be covered by HQLA.</p>
+<p><strong>7. A bank has A$30bn of funding with an ASF factor of 90%, A$10bn with 50% and A$5bn with 0%. Its RSF is A$34bn. Calculate its ASF and NSFR. Does it meet the minimum?</strong></p>
+<p><strong>Answer:</strong> ASF = 30 × 0.90 + 10 × 0.50 + 5 × 0.00 = 27 + 5 + 0 = A$32bn. NSFR = 32 ÷ 34 = 0.941 = <strong>94.1%</strong>. This is below 100%, so the bank does not meet the minimum (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>). To fix it, the bank would need to raise at least 34 − 32 = A$2bn more of weighted stable funding (for example, by issuing long-term debt with a 100% factor, so about A$2bn of new long-term funding, if its assets do not change).</p>
+<p><strong>8. In Example Bank, a new A$1.0bn of stable retail deposits arrives and is held as RBA balances. Recalculate the LCR. (Other items unchanged; the 5% stable run-off rate applies.)</strong></p>
+<p><strong>Answer:</strong> HQLA rises by 1.0: 17.0 + 1.0 = 18.0. Extra outflow = 1.0 × 0.05 = 0.05, so outflows = 13.45 + 0.05 = 13.50. Cap = 0.75 × 13.50 = 10.125, higher than inflows of 1.90, so it does not bind. Net outflows = 13.50 − 1.90 = 11.60. LCR = 18.0 ÷ 11.60 = 1.5517 = <strong>155.2%</strong>. The ratio rises because the HQLA grows by 1.0 but the outflow grows by only 0.05.</p>
+<p><strong>9. Why does the LCR look at 30 days and the NSFR at one year?</strong></p>
+<p><strong>Answer:</strong> The LCR is about surviving an immediate severe shock without outside help, so it uses a short window of 30 calendar days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p1">Att A para 1</a>). The NSFR is about the structure of funding, whether stable funding supports long assets, so it looks over a year (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p1">Att C para 1</a>).</p>
+<p><strong>10. What are the minimum levels of the LCR and NSFR for a locally incorporated LCR ADI, and where is each stated?</strong></p>
+<p><strong>Answer:</strong> The LCR must be at least 100% on both an Australian dollar and an all-currencies basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). The NSFR must be at least 100% at all times (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>).</p>
+<hr />
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>A deposit is money the bank owes (a liability); a loan is money owed to the bank (an asset). Assets always equal liabilities plus equity.</li>
+<li>A bank borrows short and lends long. It cannot pay everyone at once, so it must hold a buffer of liquid assets.</li>
+<li>Liquidity (cash at the right time), solvency (owning more than owing), capital (the loss-absorbing cushion) and profit (earnings in a period) are four different things.</li>
+<li>The LCR is HQLA divided by 30-day net cash outflows, minimum 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). The NSFR is available stable funding divided by required stable funding over one year, minimum 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>).</li>
+<li>Weighted amount = balance × rate or factor. Inflows are capped at 75% of outflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>).</li>
+<li>Who the money comes from matters more than how much: A$4.0bn from financial institutions produces four times the LCR outflow of A$25.0bn of stable retail deposits.</li>
+<li>Example Bank: HQLA 17.0, outflows 13.45, inflows 1.90, net 11.55, LCR 147.2%; ASF 79.75, RSF 58.50, NSFR 136.3%.</li>
+<li>Show every line, round only at the end, and always say the unit (A$bn).</li>
+<li>Rates and factors come from APS 210. Internal limits, triggers and timings are the bank's own choice; confirm them with your controller.</li>
+</ul></main><footer><a href="01_Syllabus.html">&#9664; 01 Syllabus and document design</a><a href="03_Your_Role_and_the_Team.html">03 Your role, the team and the working year &#9654;</a></footer></body></html>

@@ -1,0 +1,964 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>06 APS 210 companion: Attachments B (MLH) and C (NSFR) | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="05_APS210_Companion_Attachment_A_LCR.html" title="05 APS 210 companion: Attachment A (LCR)">&#9664; 05</a><span class="t">06 APS 210 companion: Attachments B (MLH) and C (NSFR)</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#how-to-use-this-companion">How to use this companion</option><option value="#example-bank-is-an-lcr-adi-so-attachment-b-does-not-apply-to-it">Example Bank is an LCR ADI, so Attachment B does not apply to it</option><option value="#attachment-b-minimum-liquidity-holdings-approach">Attachment B: Minimum liquidity holdings approach</option><option value="#attachment-c-net-stable-funding-ratio">Attachment C: Net stable funding ratio</option><option value="#objective-and-calculation">Objective and calculation</option><option value="#available-stable-funding-asf">Available stable funding (ASF)</option><option value="#maturity-of-funding">Maturity of funding</option><option value="#calculation-of-derivative-liability-amounts">Calculation of derivative liability amounts</option><option value="#liabilities-and-capital-receiving-a-100-per-cent-asf-factor">Liabilities and capital receiving a 100 per cent ASF factor</option><option value="#liabilities-receiving-a-95-per-cent-asf-factor">Liabilities receiving a 95 per cent ASF factor</option><option value="#liabilities-receiving-a-90-per-cent-asf-factor">Liabilities receiving a 90 per cent ASF factor</option><option value="#liabilities-receiving-a-50-per-cent-asf-factor">Liabilities receiving a 50 per cent ASF factor</option><option value="#liabilities-receiving-a-zero-per-cent-asf-factor">Liabilities receiving a zero per cent ASF factor</option><option value="#required-stable-funding-rsf">Required stable funding (RSF)</option><option value="#maturity-of-assets">Maturity of assets</option><option value="#encumbered-assets">Encumbered assets</option><option value="#secured-financing-transactions">Secured financing transactions</option><option value="#calculation-of-derivative-asset-amounts">Calculation of derivative asset amounts</option><option value="#assets-assigned-a-zero-per-cent-rsf-factor">Assets assigned a zero per cent RSF factor</option><option value="#assets-assigned-a-five-per-cent-rsf-factor">Assets assigned a five per cent RSF factor</option><option value="#assets-assigned-a-10-per-cent-rsf-factor">Assets assigned a 10 per cent RSF factor</option><option value="#assets-assigned-a-15-per-cent-rsf-factor">Assets assigned a 15 per cent RSF factor</option><option value="#assets-assigned-a-50-per-cent-rsf-factor">Assets assigned a 50 per cent RSF factor</option><option value="#assets-assigned-a-65-per-cent-rsf-factor">Assets assigned a 65 per cent RSF factor</option><option value="#assets-assigned-an-85-per-cent-rsf-factor">Assets assigned an 85 per cent RSF factor</option><option value="#assets-assigned-a-100-per-cent-rsf-factor">Assets assigned a 100 per cent RSF factor</option><option value="#interdependent-assets-and-liabilities">Interdependent assets and liabilities</option><option value="#off-balance-sheet-exposures">Off-balance sheet exposures</option><option value="#footnotes-to-attachment-c">Footnotes to Attachment C</option><option value="#attachment-c-at-a-glance">Attachment C at a glance</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="07_Data_and_Classification.html" title="07 Data: where the numbers come from and how each balance is classified">07 &#9654;</a></header>
+<main><h1 id="06-aps-210-companion-attachments-b-mlh-and-c-nsfr">06 APS 210 companion: Attachments B (MLH) and C (NSFR)</h1>
+<p><strong>Purpose:</strong> Let you open APS 210 (the Australian Prudential Regulation Authority's liquidity standard) at any paragraph of Attachment B (Minimum liquidity holdings) or Attachment C (Net stable funding ratio) and find, in the same order, a plain-English training entry: what the paragraph says, what it means in everyday words, what our team does about it, what evidence we keep and where to learn more.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Find the training entry for any paragraph, table or footnote of Attachments B and C in seconds.</li>
+<li>Explain, to someone who has never worked in a bank, how the Net Stable Funding Ratio (NSFR) is built from available stable funding (ASF) and required stable funding (RSF).</li>
+<li>Say which ASF factor (the percentage applied to a funding balance) and which RSF factor (the percentage applied to an asset balance) applies to a given item, and quote the paragraph.</li>
+<li>Explain why Example Bank is not subject to Attachment B and still recognise what an MLH regime looks like.</li>
+<li>Use the Attachment C "at a glance" table at the end as a quick reference when you classify items.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) so you know what a balance sheet, a deposit and a ratio are. Keep document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR, end to end) open beside this one: document <a href="09_NSFR_Production_End_to_End.html">09</a> is the monthly procedure, and this document is the line-by-line map of the standard behind it.</p>
+<p><strong>Time:</strong> About 90 minutes to read once; then use it as a reference.</p>
+<hr />
+<h2 id="how-to-use-this-companion">How to use this companion</h2>
+<ol>
+<li>Open the standard (APS 210, July 2025, the version registered as F2025L00653) at the paragraph you are reading.</li>
+<li>Find the heading here that has the same paragraph number, for example <code>### Att C para 23: Encumbered assets</code>.</li>
+<li>Read the five parts in order: <strong>What it says</strong>, <strong>In everyday words</strong>, <strong>What you do about it</strong>, <strong>Evidence we keep</strong>, <strong>Learn more</strong>.</li>
+</ol>
+<p>Every numbered paragraph of Attachment B (paragraphs 1 to 6) and Attachment C (paragraphs 1 to 42) has its own entry. Table 1 of Attachment C has an entry. Every footnote of Attachment C (footnotes 9 to 29) has an entry. Footnotes 1 to 8 belong to the main body and Attachment A and are in documents <a href="04_APS210_Companion_Main_Body.html">04</a> and 05. No entry has been merged with another.</p>
+<p>The entries quote only short phrases from the standard. Always read the paragraph itself as well: the standard is the authority, and this document is a teaching aid.</p>
+<p>Where this companion mentions Example Bank's own practices (who prepares, who reviews, which committee sees it), those are labelled <strong>typical practice; confirm with your controller</strong>. They are not part of APS 210.</p>
+<h3 id="two-terms-you-will-see-in-every-entry">Two terms you will see in every entry</h3>
+<ul>
+<li><strong>ADI</strong> means authorised deposit-taking institution: a bank, building society or credit union that APRA has licensed to take deposits from the public.</li>
+<li><strong>Carrying value</strong> means the amount at which the bank's accounts record an item (<a class="c" href="#c-f9">Att C footnote 9</a> defines it for this attachment).</li>
+</ul>
+<hr />
+<h2 id="example-bank-is-an-lcr-adi-so-attachment-b-does-not-apply-to-it">Example Bank is an LCR ADI, so Attachment B does not apply to it</h2>
+<p>APS 210 sorts every ADI into one of two groups. A <strong>Liquidity Coverage Ratio ADI (LCR ADI)</strong> must meet the LCR (Attachment A) and, if it is locally incorporated, the NSFR (Attachment C). A <strong>Minimum Liquidity Holdings ADI (MLH ADI)</strong> instead holds a simple minimum of liquid assets equal to nine per cent of its liabilities (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p57">APS 210 para 57</a>). APRA decides which group a locally incorporated ADI belongs to (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p52">APS 210 para 52</a>). A foreign ADI is an LCR ADI unless APRA decides otherwise (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p53">APS 210 para 53</a>).</p>
+<p>Example Bank is a locally incorporated LCR ADI. Therefore:</p>
+<ul>
+<li><strong>Attachment B does not apply to Example Bank.</strong> We do not calculate an MLH ratio and we do not report one.</li>
+<li><strong>Attachment C does apply to Example Bank.</strong> The NSFR must be at least 100 per cent (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 and 60</a>). Example Bank's position: ASF 79.75, RSF 58.50, NSFR 136.3 per cent (A$ billions).</li>
+</ul>
+<p><strong>Why you still need to know Attachment B:</strong></p>
+<ol>
+<li><strong>Classification is APRA's decision, not the bank's.</strong> APRA determines the classification (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p52">APS 210 para 52</a>), so you should know what the other regime asks for if the bank's circumstances ever change.</li>
+<li><strong>It is the baseline.</strong> Attachment B shows, in six short paragraphs, the idea behind all liquidity rules: hold assets you can turn into cash quickly. Reading it makes the LCR easier to understand.</li>
+<li><strong>Counterparties and peers.</strong> Some of our counterparties are MLH ADIs. Their behaviour, such as holding bank bills and deposits with other ADIs, affects markets we borrow in.</li>
+<li><strong>Examiners and auditors ask.</strong> A supervisor, internal auditor or board member may ask how our regime differs. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios) gives a short awareness summary.</li>
+<li><strong>Reading the notifications.</strong> <a class="c" href="#b-p6">Att B para 6</a> has the same "inform APRA immediately" duty as <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>. Knowing both helps you spot the pattern.</li>
+</ol>
+<hr />
+<h2 id="attachment-b-minimum-liquidity-holdings-approach">Attachment B: Minimum liquidity holdings approach</h2>
+<p>Attachment B has no sub-headings; it is a single list of six paragraphs under the title "Minimum liquidity holdings approach". Because Example Bank is not an MLH ADI, the "What you do about it" line for each paragraph says "No action for our team" and names what an MLH ADI's team would do.</p>
+<h3 id="b-p1" class="entry">Att B para 1: What counts as liabilities</h3>
+<p><strong>What it says:</strong> For Attachment B, "liabilities" means total on-balance sheet liabilities (everything the bank owes that appears on its balance sheet) plus irrevocable commitments (promises to lend or provide funds that the bank cannot cancel). APRA may approve a different treatment for a prudential purpose.</p>
+<p><strong>In everyday words:</strong> This is the "bottom half" of the sum: the amount the nine per cent is applied to. It includes what you owe now and what you have promised to lend that you cannot take back. A mutual with A$1.0bn of deposits and A$0.1bn of irrevocable loan promises has A$1.1bn of liabilities for this purpose (before any APRA-approved adjustment).</p>
+<p><strong>What you do about it:</strong> No action for our team; Example Bank is an LCR ADI. An MLH ADI's finance team would pull total liabilities from the general ledger and add irrevocable commitments from the facilities register, and would need APRA's written approval for any exclusion.</p>
+<p><strong>Evidence we keep:</strong> For us, none required. (An MLH ADI would keep the reconciliation of liabilities to the ledger and any APRA approval letter.)</p>
+<p><strong>Learn more:</strong> Documents <a href="02_Liquidity_From_Zero.html">02</a> and 10; <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> s7.4.</p>
+<h3 id="b-p2" class="entry">Att B para 2: Eligible liquid assets</h3>
+<p><strong>What it says:</strong> For the MLH requirement, liquid assets are counted at market value (the price they would fetch if sold today). They must be free from encumbrances (not pledged or otherwise tied up), unless APRA approves for a prudential purpose. The list is:</p>
+<ul>
+<li>(a) notes and coin and settlement funds;</li>
+<li>(b) Commonwealth Government and semi-government securities;</li>
+<li>(c) debt securities guaranteed by the Australian Government, or foreign sovereign governments;</li>
+<li>(d) debt securities issued by supranationals and foreign governments;</li>
+<li>(e) bank bills, certificates of deposit (CDs) and debt securities issued by ADIs;</li>
+<li>(f) deposits (at call and any other deposits readily convertible into cash within two business days) held with other ADIs, net of placements by other ADIs; and</li>
+<li>(g) any other securities approved by APRA.</li>
+</ul>
+<p><strong>In everyday words:</strong> The MLH ADI's "safe pile" is cash, government bonds, bonds from other well-rated issuers and money placed with other banks that can be withdrawn within two days. Only assets nobody else has a claim on count. The July 2025 version of the standard added the explicit market-value wording (July 2025 change; see <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> s7.10).</p>
+<p><strong>What you do about it:</strong> No action for our team. Note the contrast with Attachment A: the LCR applies haircuts (discounts) to some assets, whereas this list is valued at market value with no haircut stated here.</p>
+<p><strong>Evidence we keep:</strong> None required for us. (An MLH ADI would keep a daily asset listing with market values, encumbrance flags and the sub-paragraph each asset falls under.)</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> (Attachment A) and 10; <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> s7.5.</p>
+<h3 id="b-p3" class="entry">Att B para 3: Debt securities must be repo-eligible and not subordinated</h3>
+<p><strong>What it says:</strong> All debt securities counted must be eligible for repurchase agreement (repo: a sale with an agreement to buy back, used to borrow against a security) with the Reserve Bank of Australia (RBA), and must not be subordinated (that is, must not rank behind other creditors if the issuer fails).</p>
+<p><strong>In everyday words:</strong> A bond only counts if the central bank would accept it as security for a loan and it is not a "junior" bond. This makes sure the assets can really be turned into cash.</p>
+<p><strong>What you do about it:</strong> No action for our team; Example Bank is an LCR ADI. An MLH ADI's treasury would check each security against the RBA's eligible-securities list and the bond's ranking.</p>
+<p><strong>Evidence we keep:</strong> None required for us. (An MLH ADI would keep the RBA eligibility check and the issuer's ranking terms.)</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 10; <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> s7.5.</p>
+<h3 id="b-p4" class="entry">Att B para 4: Operational capacity to sell within two business days</h3>
+<p><strong>What it says:</strong> An MLH ADI must ensure it has the operational capacity (the people, systems and market access) to liquidate any securities held as liquid assets within two business days.</p>
+<p><strong>In everyday words:</strong> Owning a bond is not enough; you must be able to sell it, and receive the cash, within two working days. A bond you could only sell through a broker you have no account with would not meet this.</p>
+<p><strong>What you do about it:</strong> No action for our team. This is the MLH cousin of the LCR's operational requirements (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 25</a>), which we do check for Example Bank in document <a href="08_LCR_Production_End_to_End.html">08</a>.</p>
+<p><strong>Evidence we keep:</strong> None required for us. (An MLH ADI would keep evidence of dealing arrangements, custody and settlement access, and periodic sale tests.)</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 08 and 10; <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> s7.5.</p>
+<h3 id="b-p5" class="entry">Att B para 5: Trigger ratio above the requirement</h3>
+<p><strong>What it says:</strong> To make sure the MLH requirement is not breached, absent a situation of financial stress, an ADI must set a trigger ratio above its MLH requirement and must manage its liquidity in accordance with that trigger ratio.</p>
+<p><strong>In everyday words:</strong> The ADI must set its own early-warning level above nine per cent and act when it is reached. It is like a fuel gauge warning light that comes on before the tank is empty.</p>
+<p><strong>What you do about it:</strong> No action for our team under this paragraph. The equivalent habit for Example Bank is the buffer above the LCR and NSFR minimums (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p4">Att A para 4</a>; <a class="c" href="#c-p4">Att C para 4</a>) and the Example Bank convention of an amber trigger (LCR 125 per cent, NSFR 115 per cent) and Board risk appetite (LCR 120 per cent, NSFR 110 per cent). Those internal levels are typical practice; confirm with your controller.</p>
+<p><strong>Evidence we keep:</strong> None required for us. (An MLH ADI would keep the approved trigger ratio and records of the daily comparison.)</p>
+<p><strong>Learn more:</strong> Documents <a href="03_Your_Role_and_the_Team.html">03</a>, 10 and 12; <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> s7.6.</p>
+<h3 id="b-p6" class="entry">Att B para 6: Telling APRA immediately</h3>
+<p><strong>What it says:</strong> An ADI must inform APRA immediately when it becomes aware that its liquid assets may fall below its MLH requirement, and must advise APRA of the remedial action taken or planned to restore its liquidity position above the requirement.</p>
+<p><strong>In everyday words:</strong> If you think you might drop below nine per cent, you tell the regulator at once, not after the month ends, and you say what you are doing about it. Notice the word "may": the duty starts before the breach actually happens.</p>
+<p><strong>What you do about it:</strong> No action for our team under Attachment B. Our equivalent is <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a> and <a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a> (inform APRA immediately of a liquidity problem), which sit behind the incident procedure in document <a href="12_Controls_Incidents_and_Escalation.html">12</a>.</p>
+<p><strong>Evidence we keep:</strong> None required for us. (An MLH ADI would keep the notification, time stamped, and the remediation plan.)</p>
+<p><strong>Learn more:</strong> Documents <a href="11_APRA_Returns_and_Disclosures.html">11</a> and 12; <a href="../LIQUIDITY_GUIDE.html#chapter-7-the-minimum-liquidity-holdings-regime">Guide Ch 7</a> s7.7.</p>
+<hr />
+<h2 id="attachment-c-net-stable-funding-ratio">Attachment C: Net stable funding ratio</h2>
+<p>Attachment C has the title "Net stable funding ratio". Its first five paragraphs set the scene; then it is organised under the sub-headings below, which are copied from the standard.</p>
+<h2 id="objective-and-calculation">Objective and calculation</h2>
+<h3 id="c-p1" class="entry">Att C para 1: The objective of the NSFR</h3>
+<p><strong>What it says:</strong> The objective of the NSFR is to reduce the funding risk of an ADI over a one-year time horizon by requiring it to fund its activities with sufficiently stable sources of funding, in order to mitigate the risk of future funding stress.</p>
+<p><strong>In everyday words:</strong> The LCR asks "can we survive the next 30 days?". The NSFR asks "over the next year, is the way we fund ourselves steady enough?". Funding a 25-year mortgage with money that can walk out in a week is risky. The NSFR pushes banks to fund long assets with long, sticky money. For example, a bank that funds A$10bn of long-term loans with A$10bn of overnight borrowing has an NSFR problem even if it has a lot of cash today.</p>
+<p><strong>What you do about it:</strong> Produce the NSFR every month and keep it above the limit and above internal triggers. The procedure is document <a href="09_NSFR_Production_End_to_End.html">09</a>. The 100 per cent minimum is in <a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 and 60</a>.</p>
+<p><strong>Evidence we keep:</strong> The signed monthly NSFR working paper and the review pack to ALCO (the asset and liability committee).</p>
+<p><strong>Learn more:</strong> Documents <a href="02_Liquidity_From_Zero.html">02</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.1.</p>
+<h3 id="c-p2" class="entry">Att C para 2: The two components</h3>
+<p><strong>What it says:</strong> The NSFR has two components: (a) available stable funding (ASF); and (b) required stable funding (RSF).</p>
+<p><strong>In everyday words:</strong> ASF is the stable money the bank has. RSF is the stable money the bank needs, given the assets it holds. The ratio compares the two. Think of ASF as the supply and RSF as the demand.</p>
+<p><strong>What you do about it:</strong> Keep the two calculations in separate, labelled sections of the working paper, so a reviewer can see each total and its lines.</p>
+<p><strong>Evidence we keep:</strong> The working paper showing an ASF total and an RSF total, each with line detail.</p>
+<p><strong>Learn more:</strong> Documents <a href="02_Liquidity_From_Zero.html">02</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.2.</p>
+<h3 id="c-p3" class="entry">Att C para 3: The formula</h3>
+<p><strong>What it says:</strong> The NSFR is calculated as available stable funding divided by required stable funding. (The standard shows the two names stacked, one over the other.)</p>
+<p><strong>In everyday words:</strong> Divide the stable money you have by the stable money you need. Above 100 per cent means you have more than you need.</p>
+<pre><code>NSFR = ASF / RSF
+Example Bank: 79.75 / 58.50 = 136.3%
+</code></pre>
+<p><strong>What you do about it:</strong> Calculate the ratio to at least one decimal place and compare it with 100 per cent (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>), the Board's appetite (110 per cent) and the amber trigger (115 per cent). The two internal levels are Example Bank conventions.</p>
+<p><strong>Evidence we keep:</strong> The working paper formula cell and the comparison to limits, with the reviewer's initials and date.</p>
+<p><strong>Learn more:</strong> Documents <a href="02_Liquidity_From_Zero.html">02</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.2.</p>
+<h3 id="c-p4" class="entry">Att C para 4: Hold a buffer above the requirement, at all times</h3>
+<p><strong>What it says:</strong> An ADI must maintain an appropriate buffer above its required NSFR under this standard, in line with its liquidity risk tolerance, at all times.</p>
+<p><strong>In everyday words:</strong> Meeting 100 per cent exactly is not enough. The bank must keep a cushion, sized by how much risk the Board is willing to take. The words "at all times" mean the ratio must hold every day, not only on the day we report it. For example, if a large deposit might leave next week, the cushion has to cover that.</p>
+<p><strong>What you do about it:</strong> Report the NSFR against the Board's appetite and the amber trigger, not just against 100 per cent. Because we calculate monthly, support "at all times" with the forecast NSFR (document <a href="09_NSFR_Production_End_to_End.html">09</a>) and by flagging any large planned transaction before it happens.</p>
+<p><strong>Evidence we keep:</strong> The Board-approved risk tolerance statement, the monthly ratio against the buffer, and forecasts.</p>
+<p><strong>Learn more:</strong> Documents <a href="03_Your_Role_and_the_Team.html">03</a>, 09 and 12; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.2 and Ch 8 s8.5.</p>
+<h3 id="c-p5" class="entry">Att C para 5: Definitions come from Attachment A</h3>
+<p><strong>What it says:</strong> For this Attachment, the meanings and definitions in Attachment A apply unless otherwise indicated.</p>
+<p><strong>In everyday words:</strong> Terms like "retail deposit", "operational deposit", "HQLA1" and "financial institution" mean the same in Attachment C as in the LCR attachment, unless Attachment C says otherwise. You do not need a second set of definitions.</p>
+<p><strong>What you do about it:</strong> Use one classification of customers and securities for both ratios. Where the NSFR departs from the LCR (for example, HQLA counted without the LCR caps; <a class="c" href="#c-f20">Att C footnote 20</a>), note the difference in the classification rules.</p>
+<p><strong>Evidence we keep:</strong> The classification rulebook showing both ratios using the same definitions, with the approved exceptions listed.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 07 (Data and classification); <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.2.</p>
+<h2 id="available-stable-funding-asf">Available stable funding (ASF)</h2>
+<h3 id="c-p6" class="entry">Att C para 6: What ASF is</h3>
+<p><strong>What it says:</strong> ASF is the portion of capital and liabilities expected to be reliably provided over a one-year time horizon. It is measured from the broad characteristics of how stable each funding source is, including the contractual maturity of liabilities and the differences in how likely different types of funding providers are to withdraw their funds.</p>
+<p><strong>In everyday words:</strong> Not all money is equally dependable. Shareholders' capital stays. A five-year bond stays for five years. A retail customer's salary account usually stays. A large bank's overnight deposit can vanish tomorrow. ASF gives each kind of funding a score for how dependable it is over one year.</p>
+<p><strong>What you do about it:</strong> Classify every liability and equity line by two things: how long until it can be repaid, and who provided it. Document <a href="07_Data_and_Classification.html">07</a> gives the decision trees; document <a href="09_NSFR_Production_End_to_End.html">09</a> gives the monthly steps.</p>
+<p><strong>Evidence we keep:</strong> The mapping of each ledger liability account to an ASF category, approved and reviewed at least annually (typical practice; confirm with your controller).</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3.</p>
+<h3 id="c-p7" class="entry">Att C para 7: How to calculate ASF</h3>
+<p><strong>What it says:</strong> An ADI must calculate ASF as follows:</p>
+<ul>
+<li>(a) assign the carrying value of the ADI's capital and liabilities to the relevant ASF category (refer to paragraphs 11 to 15 of this Attachment);</li>
+<li>(b) multiply the amount assigned to each liability category by the corresponding ASF factor to obtain a weighted amount; and</li>
+<li>(c) sum the weighted amounts.</li>
+</ul>
+<p><strong>In everyday words:</strong> Three steps: sort, multiply, add. Sort each balance into a bucket, multiply by that bucket's percentage, and add up. Example: A$25.0bn of stable retail deposits at 95 per cent gives 23.75 of ASF.</p>
+<p><strong>What you do about it:</strong> Build the ASF table with columns: line, carrying value, ASF category (with paragraph), factor, weighted amount. Use carrying value before regulatory deductions (<a class="c" href="#c-f9">Att C footnote 9</a>). Check the carrying values total to the ledger's total liabilities and equity.</p>
+<p><strong>Evidence we keep:</strong> The ASF table, the reconciliation to the ledger, and the review sign-off.</p>
+<p><strong>Learn more:</strong> Documents <a href="09_NSFR_Production_End_to_End.html">09</a> and 13; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3 and s6.8.1.</p>
+<h2 id="maturity-of-funding">Maturity of funding</h2>
+<h3 id="c-p8" class="entry">Att C para 8: Earliest date funds can be redeemed</h3>
+<p><strong>What it says:</strong> To decide the maturity of a funding instrument with an option, or a deposit with a withdrawal notice period, an ADI must assume the maturity date is the earliest date at which the funds may be redeemed. For long-dated liabilities, only the portion of cash flows falling on or after the six-month and one-year horizons may be treated as having an effective residual maturity of six months or more, and one year or more, respectively.</p>
+<p><strong>In everyday words:</strong> For funding, assume the worst case for the bank: the money leaves at the first moment it legally can. If a five-year bond can be called by the investor after 9 months, treat it as 9 months. And for a long bond, only the cash due after the six-month or one-year marker counts as "six months or more" or "one year or more"; the instalments due earlier do not.</p>
+<p><strong>What you do about it:</strong> Make sure the data feed carries, for every liability, the contractual maturity and any put or call option dates, and compute residual maturity from the earliest redemption date. Compare this with asset maturity (<a class="c" href="#c-p20">Att C para 20</a>), where the rule is the opposite.</p>
+<p><strong>Evidence we keep:</strong> The residual maturity logic documented in the classification rules, plus exception lists for instruments with options.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3.</p>
+<h2 id="calculation-of-derivative-liability-amounts">Calculation of derivative liability amounts</h2>
+<h3 id="c-p9" class="entry">Att C para 9: Derivative liabilities and netting</h3>
+<p><strong>What it says:</strong> An ADI must calculate its derivative liabilities from the replacement cost of derivative contracts (the current market value, obtained by marking-to-market) where the contract has a negative value. Where an eligible bilateral netting contract is in place that meets the conditions in paragraphs 9 to 11 of Attachment H of APS 112 and paragraphs 8 and 9 of the annex of the Basel III leverage ratio framework (<a class="c" href="#c-f10">Att C footnote 10</a>), the replacement cost for the set of exposures covered is the net replacement cost.</p>
+<p><strong>In everyday words:</strong> A derivative is a contract whose value moves with something else, such as interest rates. If today it is worth less than zero to us, we owe, and that amount is a liability. If we have a legal netting agreement with the same counterparty, we may offset winners against losers and count only the net.</p>
+<p><strong>What you do about it:</strong> Obtain from the derivatives system the mark-to-market value of each contract and each netting set, and confirm which counterparties have eligible netting agreements (Treasury and Legal hold this list). Document <a href="07_Data_and_Classification.html">07</a> covers derivative data.</p>
+<p><strong>Evidence we keep:</strong> The valuation report, the list of eligible netting agreements and legal opinions supporting them.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3 and s6.5.</p>
+<h3 id="c-p10" class="entry">Att C para 10: Deduct variation margin posted</h3>
+<p><strong>What it says:</strong> In calculating NSFR derivative liabilities, an ADI must deduct any collateral posted as variation margin (daily top-up collateral) in connection with derivative contracts, regardless of the asset type, from the negative replacement cost amount (<a class="c" href="#c-f11">Att C footnotes 11 and 12</a>).</p>
+<p><strong>In everyday words:</strong> If we owe A$100m on a derivative but have already handed over A$60m of collateral to cover it, our net exposure is A$40m. Only that remaining amount counts as a derivative liability.</p>
+<pre><code>NSFR derivative liabilities = derivative liabilities - variation margin posted
+</code></pre>
+<p><strong>What you do about it:</strong> Take total negative replacement cost and subtract variation margin posted, using the collateral system. Remember the matching rule for assets in <a class="c" href="#c-f12">Att C footnote 12</a>.</p>
+<p><strong>Evidence we keep:</strong> The collateral system report of variation margin posted, matched to the derivative liability valuation.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="liabilities-and-capital-receiving-a-100-per-cent-asf-factor">Liabilities and capital receiving a 100 per cent ASF factor</h2>
+<h3 id="c-p11" class="entry">Att C para 11: 100 per cent ASF</h3>
+<p><strong>What it says:</strong> The following must be assigned a 100 per cent ASF factor:</p>
+<ul>
+<li>(a) the total amount of regulatory capital, before regulatory adjustments, as defined in APS 111 (Capital Adequacy: Measurement of Capital), excluding the proportion of Tier 2 instruments with a residual maturity of less than one year;</li>
+<li>(b) the total amount of any capital instrument not included in paragraph 11(a) that has an effective residual maturity of one year or more, but excluding any instruments with explicit or embedded options that, if exercised, would reduce the expected maturity to less than one year; and</li>
+<li>(c) the total amount of secured and unsecured borrowings and liabilities, including term deposits, with an effective residual maturity of one year or more. Cash flows due in less than one year that arise from liabilities with a final maturity greater than one year are not eligible for the 100 per cent factor.</li>
+</ul>
+<p><strong>In everyday words:</strong> The most reliable funding: shareholders' money (capital), and any borrowing or term deposit that will not be repayable for at least a year. Example Bank's A$8.0bn of equity and A$15.0bn of wholesale debt maturing in one year or more each get 100 per cent: 8.00 and 15.00. If a long bond has an instalment due in six months, that instalment does not get 100 per cent.</p>
+<p><strong>What you do about it:</strong> Take regulatory capital from the capital team before deductions (not after) and check it against the equity line; split long-dated debt so that cash flows due inside a year are carved out (<a class="c" href="#c-p8">Att C para 8</a>). Check that no long bond has an option that shortens it below one year.</p>
+<p><strong>Evidence we keep:</strong> The capital figure agreed to the capital team's report; the long-dated debt schedule with option dates.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3.</p>
+<h2 id="liabilities-receiving-a-95-per-cent-asf-factor">Liabilities receiving a 95 per cent ASF factor</h2>
+<h3 id="c-p12" class="entry">Att C para 12: 95 per cent ASF</h3>
+<p><strong>What it says:</strong> The following must be assigned a 95 per cent ASF factor:</p>
+<ul>
+<li>(a) liabilities classified as stable demand deposits and term deposits with a residual maturity of less than one year provided by retail and SME customers (<a class="c" href="#c-f13">Att C footnotes 13 and 14</a>); and</li>
+<li>(b) intermediated deposits that meet the requirements of paragraph 35 of Attachment A for treatment as stable retail deposits and where the intermediary cannot replace the ADI unless it provides at least 12 months' notice.</li>
+</ul>
+<p><strong>In everyday words:</strong> Everyday customers' money that is fully covered by the Financial Claims Scheme (the government guarantee up to A$250,000 per person per bank) and tied to salary or other products rarely leaves. It keeps 95 per cent. Example Bank's A$25.0bn of stable retail deposits give 23.75. Money placed through an intermediary such as a platform qualifies only if the customer really controls it and the intermediary cannot swap the bank for another without a year's notice.</p>
+<p><strong>What you do about it:</strong> Use the same stable or less stable split as the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a> and the scorecard in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t1">Att A Table 1</a>), so the two ratios agree. For intermediated deposits, confirm each of the four conditions in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a> and the 12-month notice term, in writing.</p>
+<p><strong>Evidence we keep:</strong> The stable deposit tagging report, the contracts showing the notice terms for intermediated deposits, and the <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a> test.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07 and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3 and Ch 5 (retail deposits).</p>
+<h2 id="liabilities-receiving-a-90-per-cent-asf-factor">Liabilities receiving a 90 per cent ASF factor</h2>
+<h3 id="c-p13" class="entry">Att C para 13: 90 per cent ASF</h3>
+<p><strong>What it says:</strong> The following must be assigned a 90 per cent ASF factor:</p>
+<ul>
+<li>(a) liabilities classified as less stable demand deposits and term deposits with a residual maturity of less than one year provided by retail and SME customers (<a class="c" href="#c-f15">Att C footnote 15</a>); and</li>
+<li>(b) intermediated deposits, including member-directed superannuation deposits, that meet the requirements of paragraph 35 of Attachment A for treatment as less stable retail deposits and where the intermediary cannot replace the ADI unless it provides at least 12 months' notice.</li>
+</ul>
+<p><strong>In everyday words:</strong> Same customers as paragraph 12, but the money is not covered or not "sticky" enough: slightly less dependable, so 90 per cent. Example Bank: A$15.0bn less stable at-call retail 13.50; A$10.0bn retail term deposits 9.00; A$5.0bn qualifying SME deposits 4.50. Note that "no early withdrawal" on a term deposit helps the LCR (0 per cent run-off) but not the NSFR factor, which depends on residual maturity under one year.</p>
+<p><strong>What you do about it:</strong> Everything retail or SME with residual maturity under one year that is not stable falls here. Test that the SME deposit qualifies (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>, via <a class="c" href="#c-f14">Att C footnote 14</a>). Do not use this factor for retail term deposits of one year or more; they take 100 per cent (<a class="c" href="#c-p11">Att C para 11</a>(c)).</p>
+<p><strong>Evidence we keep:</strong> The deposit classification report, the SME qualification test and the intermediated deposit contract review.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07 and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3 and s6.8.1.</p>
+<h2 id="liabilities-receiving-a-50-per-cent-asf-factor">Liabilities receiving a 50 per cent ASF factor</h2>
+<h3 id="c-p14" class="entry">Att C para 14: 50 per cent ASF</h3>
+<p><strong>What it says:</strong> The following must be assigned a 50 per cent ASF factor:</p>
+<ul>
+<li>(a) secured and unsecured funding with a residual maturity of less than one year provided by non-financial corporate customers;</li>
+<li>(b) operational deposits (<a class="c" href="#c-f16">Att C footnote 16</a>);</li>
+<li>(c) superannuation fund deposits that meet the definition of operational deposits (<a class="c" href="#c-f17">Att C footnote 17</a>);</li>
+<li>(d) intermediated deposits, including member-directed superannuation deposits, that meet the requirements of paragraph 35 of Attachment A and where the intermediary cannot replace the ADI unless it provides at least six months' notice;</li>
+<li>(e) funding with a residual maturity of less than one year from sovereigns, public sector entities (PSEs) and multilateral development banks (MDBs) and national development banks; and</li>
+<li>(f) other funding, secured and unsecured, not included in the categories above with a residual maturity of between six months to less than one year, including funding from central banks and financial institutions.</li>
+</ul>
+<p><strong>In everyday words:</strong> This is the middle band: businesses' and governments' short-term money, deposits that businesses need for payroll and cash management (operational deposits), and any other wholesale money with six to twelve months to run. Example Bank: A$4.0bn operational deposits 2.00; A$6.0bn corporate non-operational deposits 3.00; A$2.0bn wholesale debt of six months to under one year 1.00.</p>
+<p><strong>What you do about it:</strong> Decide for every wholesale line: who provided it (non-financial corporate, sovereign, PSE, MDB, financial institution) and its residual maturity. Check the operational deposit tests in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>. Money from financial institutions under six months goes to paragraph 15, not here.</p>
+<p><strong>Evidence we keep:</strong> The wholesale funding schedule by counterparty type and maturity; operational deposit test results and customer agreements.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07 and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3.</p>
+<h2 id="liabilities-receiving-a-zero-per-cent-asf-factor">Liabilities receiving a zero per cent ASF factor</h2>
+<h3 id="c-p15" class="entry">Att C para 15: Zero per cent ASF</h3>
+<p><strong>What it says:</strong> The following must be assigned a zero per cent ASF factor:</p>
+<ul>
+<li>(a) all other liabilities and equity categories not included in paragraphs 11 to 14 of this Attachment, including other funding with a residual maturity of less than six months from central banks and financial institutions (<a class="c" href="#c-f18">Att C footnote 18</a>);</li>
+<li>(b) other liabilities without a stated maturity, including short positions and open maturity positions, except for:</li>
+<li>(i) deferred tax liabilities, which are treated according to the nearest possible date on which they could be realised; and</li>
+<li>(ii) minority interests, which are treated according to the term of the instrument, usually in perpetuity.
+  These exceptions are assigned 100 per cent if the effective maturity is one year or greater, or 50 per cent if between six months and less than one year;</li>
+<li>(c) if NSFR derivative liabilities are greater than NSFR derivative assets, NSFR derivative liabilities (paragraphs 9 and 10) net of NSFR derivative assets (paragraphs 27 and 28) (<a class="c" href="#c-f19">Att C footnote 19</a>); and</li>
+<li>(d) trade date payables arising from the purchase of financial instruments, foreign currencies and commodities that (i) are expected to settle within the standard settlement cycle customary for the exchange or type of transaction or (ii) have failed to, but are still expected to, settle.</li>
+</ul>
+<p><strong>In everyday words:</strong> The "catch-all" and the least dependable money. Money from other banks and financial institutions under six months, deposits from other financial institutions, unspecified liabilities, and the net amount of derivatives we owe all score zero. Example Bank: A$4.0bn financial institution deposits 0; A$1.0bn wholesale debt within 30 days 0; A$3.0bn wholesale debt of 30 days to under six months 0; A$2.0bn other liabilities 0. Zero ASF is not "bad": it only means no credit is given.</p>
+<p><strong>What you do about it:</strong> Treat this as the default bucket, but check the two exceptions: deferred tax and minority interests may score 50 or 100 per cent. Confirm the derivative figure uses the net rule (liabilities minus assets, floored at zero; <a class="c" href="#c-f19">Att C footnote 19</a>). Do not confuse a financial institution (zero) with a non-financial corporate (50 per cent).</p>
+<p><strong>Evidence we keep:</strong> The "other liabilities" breakdown, the deferred tax and minority interest analysis, and the derivative netting working.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3.</p>
+<h2 id="required-stable-funding-rsf">Required stable funding (RSF)</h2>
+<h3 id="c-p16" class="entry">Att C para 16: What RSF is</h3>
+<p><strong>What it says:</strong> RSF is the minimum amount of stable funding an ADI is required to hold. It is a function of the liquidity characteristics and residual maturities of the various assets the ADI holds, including off-balance sheet (OBS) exposures (promises and commitments not shown as balance sheet assets).</p>
+<p><strong>In everyday words:</strong> The more illiquid and long-dated an asset, the more stable funding must sit behind it. Cash needs none. A 25-year mortgage needs a lot. Undrawn loan promises need a little, because customers might draw on them.</p>
+<p><strong>What you do about it:</strong> Remember that RSF covers assets and off-balance sheet items. When building the RSF table, always include a section for commitments, guarantees and trade finance (<a class="c" href="#c-p41">Att C paras 41 and 42</a>).</p>
+<p><strong>Evidence we keep:</strong> The RSF working paper showing balance sheet and off-balance sheet sections.</p>
+<p><strong>Learn more:</strong> Documents <a href="02_Liquidity_From_Zero.html">02</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-p17" class="entry">Att C para 17: How to calculate RSF</h3>
+<p><strong>What it says:</strong> An ADI must calculate its RSF as follows:</p>
+<ul>
+<li>(a) assign the ADI's assets, at carrying value, and OBS exposures to the relevant RSF category (refer to paragraphs 29 to 37 of this Attachment);</li>
+<li>(b) multiply the amount assigned to each asset category and OBS exposure (or potential liquidity exposure) by the corresponding RSF factor; and</li>
+<li>(c) sum the weighted amounts (<a class="c" href="#c-f20">Att C footnote 20</a>).</li>
+</ul>
+<p><strong>In everyday words:</strong> The same three steps as ASF: sort, multiply, add. Example: A$50.0bn of standard mortgages at 65 per cent gives 32.50.</p>
+<p><strong>What you do about it:</strong> Build the RSF table with columns: line, carrying value, RSF category (with paragraph), factor, weighted amount. Check the carrying values total to the ledger's total assets. Treat HQLA as defined in footnote 20 (no LCR caps or operational requirements).</p>
+<p><strong>Evidence we keep:</strong> The RSF table, the reconciliation to the ledger's total assets, and sign-off.</p>
+<p><strong>Learn more:</strong> Documents <a href="09_NSFR_Production_End_to_End.html">09</a> and 13; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4 and s6.8.2.</p>
+<h3 id="c-p18" class="entry">Att C para 18: Allocate by residual maturity or liquidity value</h3>
+<p><strong>What it says:</strong> An ADI must allocate assets to the appropriate RSF factor based on the asset's residual maturity or liquidity value as detailed in the attachment.</p>
+<p><strong>In everyday words:</strong> Two things decide an asset's factor: how long until it matures (residual maturity: the time still remaining) and how easily it could be sold or pledged (liquidity value). A government bond and a corporate loan of the same term get different factors for this reason.</p>
+<p><strong>What you do about it:</strong> Every asset record needs a maturity date and a liquidity class. If either is missing, apply the conservative factor and record the gap (document <a href="07_Data_and_Classification.html">07</a> data quality rules).</p>
+<p><strong>Evidence we keep:</strong> The asset data with maturity and class attributes; the log of missing attributes and the conservative treatment applied.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-p19" class="entry">Att C para 19: Trade date and settlement date items</h3>
+<p><strong>What it says:</strong> For RSF, an ADI must include financial instruments, foreign currencies and commodities for which a purchase order has been executed. It may exclude those for which a sales order has been executed, even if not reflected on the balance sheet under a settlement-date accounting model, provided that (i) the transactions are not reflected as derivatives or secured financing transactions on the balance sheet and (ii) the effects will be reflected on the balance sheet when settled.</p>
+<p><strong>In everyday words:</strong> Accounting may record a purchase only on the settlement day, a few days after the deal. For the NSFR, count what we have bought from the day we bought it. We may leave out what we have sold, but only if it will show on the balance sheet when settled. For example, a bond bought on Monday and settling Wednesday counts from Monday.</p>
+<p><strong>What you do about it:</strong> Ask Treasury for the list of unsettled purchases and sales at month-end. Add the purchases to RSF. Decide, with the controller, whether to exclude the sales, and apply the choice consistently.</p>
+<p><strong>Evidence we keep:</strong> The month-end unsettled trades report and the record of the treatment chosen.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h2 id="maturity-of-assets">Maturity of assets</h2>
+<h3 id="c-p20" class="entry">Att C para 20: Latest possible maturity</h3>
+<p><strong>What it says:</strong> To determine the maturity of an asset, an ADI must assume the maturity date is the latest possible date at which the asset may mature. For an asset with an option to extend maturity, it must assume the option will be exercised.</p>
+<p><strong>In everyday words:</strong> For assets, assume the money comes back as late as possible. This is the mirror image of paragraph 8, which assumes liabilities leave as early as possible. Both assumptions are cautious. If a loan can be extended from 11 months to 3 years, treat it as 3 years.</p>
+<p><strong>What you do about it:</strong> Make sure the loan and securities data carry extension options and use the final possible maturity date to pick the bucket (under six months, six months to under one year, one year or more).</p>
+<p><strong>Evidence we keep:</strong> The maturity logic note and the extension-option data field in the classification rules.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-p21" class="entry">Att C para 21: No defined maturity means one year or more</h3>
+<p><strong>What it says:</strong> Where an asset does not have a defined maturity, or the maturity is subject to periodic review, an ADI must classify it for NSFR purposes as having a residual maturity of one year or more and assign the RSF factor on that basis.</p>
+<p><strong>In everyday words:</strong> If you cannot say when the money comes back, treat it as long-term. An overdraft that is "reviewed annually" is treated as one year or more.</p>
+<p><strong>What you do about it:</strong> Set the default for blank or review-based maturities to "one year or more". Report each case in the monthly exception list.</p>
+<p><strong>Evidence we keep:</strong> The exception list and the rule in the classification rulebook.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-p22" class="entry">Att C para 22: Amortising loans</h3>
+<p><strong>What it says:</strong> For an amortising loan (one repaid in instalments), or a loan with minimum contractual payments, the portion that falls due within the one-year horizon may be included in the less than one year residual maturity category.</p>
+<p><strong>In everyday words:</strong> A 20-year mortgage is repaid bit by bit. The slice due in the next 12 months can be treated as a short-term asset, and only the rest as long-term. It says "may", so it is a choice the bank makes.</p>
+<p><strong>What you do about it:</strong> Check with the controller whether Example Bank applies this split. If it does, the data needs a repayment schedule per loan. The base case in document <a href="09_NSFR_Production_End_to_End.html">09</a> treats whole loans by final maturity (typical practice; confirm with your controller).</p>
+<p><strong>Evidence we keep:</strong> The policy decision, and if used, the repayment schedule extract by loan.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h2 id="encumbered-assets">Encumbered assets</h2>
+<h3 id="c-p23" class="entry">Att C para 23: Encumbered assets</h3>
+<p><strong>What it says:</strong> Assets on the balance sheet encumbered (pledged or otherwise tied up) for one year or more must be assigned a 100 per cent RSF factor. Assets encumbered between six months and less than one year that would, if unencumbered, receive an RSF factor lower than or equal to 50 per cent must be assigned 50 per cent. Assets encumbered between six months and less than one year that would, if unencumbered, receive an RSF factor higher than 50 per cent must be assigned the higher factor. Where assets have less than six months remaining in the encumbrance period, the same factor applies as for an equivalent unencumbered asset (<a class="c" href="#c-f21">Att C footnote 21</a>).</p>
+<p><strong>In everyday words:</strong> If an asset is tied up as security, the bank cannot sell it to raise cash, so it needs more stable funding. The longer it is tied up, the higher the factor.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Time left in the encumbrance</th>
+<th>Factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Less than six months</td>
+<td>Same as if unencumbered</td>
+</tr>
+<tr>
+<td>Six months to under one year, and unencumbered factor 50% or lower</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>Six months to under one year, and unencumbered factor above 50%</td>
+<td>The higher unencumbered factor</td>
+</tr>
+<tr>
+<td>One year or more</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Example: Australian Government bonds (unencumbered factor 5 per cent) pledged for 14 days remain at 5 per cent. Pledged for 9 months, they move to 50 per cent. Pledged for two years, they take 100 per cent.</p>
+<p><strong>What you do about it:</strong> Get from the collateral system the remaining encumbrance period of every pledged asset: repos, covered bonds, securitisations, collateral posted. Apply the table. Document <a href="09_NSFR_Production_End_to_End.html">09</a> sets out the steps.</p>
+<p><strong>Evidence we keep:</strong> The encumbrance report with end dates, the factor applied to each, and the reconciliation to the collateral system.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a>, 09 and 10 (collateral and encumbrance); <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-p24" class="entry">Att C para 24: Exceptional central bank operations</h3>
+<p><strong>What it says:</strong> Where an asset is encumbered for exceptional central bank liquidity operations (<a class="c" href="#c-f22">Att C footnote 22</a>), the asset may be given a lower RSF factor if approval is sought from APRA and APRA agrees.</p>
+<p><strong>In everyday words:</strong> In a market-wide crisis the central bank may lend against assets in unusual, temporary ways. The bank should not be penalised unfairly, but only if APRA agrees first. Without approval, the normal factor stays.</p>
+<p><strong>What you do about it:</strong> Do not apply any lower factor yourself. If such an operation ever occurs, tell the controller, who will decide whether to ask APRA (document <a href="11_APRA_Returns_and_Disclosures.html">11</a> lists notifications and approvals).</p>
+<p><strong>Evidence we keep:</strong> If it ever applied, APRA's written approval and the calculation using the agreed factor.</p>
+<p><strong>Learn more:</strong> Documents <a href="09_NSFR_Production_End_to_End.html">09</a>, 11 and 12; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h2 id="secured-financing-transactions">Secured financing transactions</h2>
+<h3 id="c-p25" class="entry">Att C para 25: Securities financing: who owns the securities</h3>
+<p><strong>What it says:</strong> For the NSFR, an ADI must exclude from its assets securities borrowed in securities financing transactions (for example reverse repos and collateral swaps) where it does not retain beneficial ownership. It must include securities lent where it retains beneficial ownership. It must not include securities received through collateral swaps if they do not appear on its balance sheet. If it has encumbered securities in repos or similar transactions but retains beneficial ownership and the assets remain on the balance sheet, it must allocate the security to the appropriate RSF category.</p>
+<p><strong>In everyday words:</strong> Follow ownership. If we borrow a bond and never own it, it is not our asset, so we leave it out. If we lend a bond but still own it economically, we keep it in. A bond we have repo'd out and still own stays on our balance sheet and gets the factor that suits it (with encumbrance under paragraph 23). A repo is a loan secured by a bond; a reverse repo is the other side; a collateral swap exchanges one set of securities for another.</p>
+<p><strong>What you do about it:</strong> For each securities financing trade, identify which securities are on our balance sheet. Exclude borrowed securities we do not own. Keep lent and repo'd securities that we do own, and apply paragraph 23 for their encumbrance.</p>
+<p><strong>Evidence we keep:</strong> The securities financing trade listing with ownership and balance sheet flags.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4 and s6.5.</p>
+<h3 id="c-p26" class="entry">Att C para 26: Netting of securities financing</h3>
+<p><strong>What it says:</strong> An ADI may net securities financing transactions with a single counterparty when calculating its NSFR, provided that the netting conditions in paragraph 38 of Attachment D of APS 110 are met.</p>
+<p><strong>In everyday words:</strong> If we have a repo and a reverse repo with the same counterparty, and a qualifying legal netting agreement, we may offset them and count only the difference.</p>
+<p><strong>What you do about it:</strong> Only net where Legal has confirmed the APS 110 conditions are met for that counterparty. Otherwise show the transactions gross.</p>
+<p><strong>Evidence we keep:</strong> The list of netting-eligible counterparties and the legal confirmation.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h2 id="calculation-of-derivative-asset-amounts">Calculation of derivative asset amounts</h2>
+<h3 id="c-p27" class="entry">Att C para 27: Derivative assets and netting</h3>
+<p><strong>What it says:</strong> An ADI must calculate derivative assets from the replacement cost of contracts that have a positive value. Where an eligible bilateral netting agreement meets the conditions in paragraphs 9 to 11 of Attachment H of APS 112 and paragraphs 8 and 9 of the annex of the Basel III leverage ratio framework (<a class="c" href="#c-f23">Att C footnote 23</a>), the replacement cost for the covered set must be calculated as the net replacement cost.</p>
+<p><strong>In everyday words:</strong> This mirrors paragraph 9 for the contracts that are in our favour. A positive-value contract is one where the other side owes us. Where qualifying netting exists, we have to net.</p>
+<p><strong>What you do about it:</strong> Take the positive mark-to-market values from the derivatives system, grouped by netting set.</p>
+<p><strong>Evidence we keep:</strong> The valuation report and netting set mapping.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-p28" class="entry">Att C para 28: Collateral received does not offset derivative assets</h3>
+<p><strong>What it says:</strong> When calculating NSFR derivative assets, collateral received in connection with derivative contracts must not offset the positive replacement cost, regardless of whether netting is permitted under the ADI's accounting or risk framework, unless it is received as cash variation margin, meets the conditions in paragraph 23 of Attachment D to APS 110, and is in the same currency as the currency of settlement of the derivative contract (<a class="c" href="#c-f24">Att C footnote 24</a>). Any remaining balance sheet liability associated with variation margin received that does not meet these criteria, or initial margin received, must not offset derivative assets and must be assigned a zero per cent ASF factor.</p>
+<p><strong>In everyday words:</strong> Generally, we cannot reduce what counterparties owe us by the collateral they gave us. The only exception is cash, in the right currency, meeting the stated conditions. Leftover collateral liabilities score zero ASF: we cannot count them as stable funding.</p>
+<p><strong>What you do about it:</strong> Split collateral received into qualifying cash variation margin (offsets) and everything else (does not offset; zero ASF).</p>
+<p><strong>Evidence we keep:</strong> The collateral received report, the test against the paragraph 23 conditions and the currency check.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="assets-assigned-a-zero-per-cent-rsf-factor">Assets assigned a zero per cent RSF factor</h2>
+<h3 id="c-p29" class="entry">Att C para 29: Zero per cent RSF</h3>
+<p><strong>What it says:</strong> An ADI must assign zero per cent RSF to:</p>
+<ul>
+<li>(a) notes and coins immediately available to meet obligations;</li>
+<li>(b) central bank reserves and balances (<a class="c" href="#c-f25">Att C footnote 25</a>);</li>
+<li>(c) all claims on central banks with a residual maturity of less than six months; and</li>
+<li>(d) trade date receivables arising from the sale of financial instruments, foreign currencies and commodities that (i) are expected to settle within the standard settlement cycle for the relevant exchange or type of transaction or (ii) have failed to, but are still expected to, settle.</li>
+</ul>
+<p><strong>In everyday words:</strong> The most liquid assets need no stable funding: cash in the vault and the Exchange Settlement Account at the RBA. Example Bank's A$5.0bn cash and RBA balances: RSF 0.</p>
+<p><strong>What you do about it:</strong> Map notes and coin, the Exchange Settlement Account balance and short RBA claims here. Check that only cash we can actually use is included.</p>
+<p><strong>Evidence we keep:</strong> The RBA balance statement and vault cash count reconciled to the ledger.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="assets-assigned-a-five-per-cent-rsf-factor">Assets assigned a five per cent RSF factor</h2>
+<h3 id="c-p30" class="entry">Att C para 30: Five per cent RSF</h3>
+<p><strong>What it says:</strong> An ADI must assign five per cent RSF to the following assets. They include unencumbered HQLA1 assets but exclude assets receiving zero per cent under paragraph 29:</p>
+<ul>
+<li>(a) marketable securities representing claims on or guaranteed by sovereigns, central banks, PSEs, the Bank for International Settlements, the International Monetary Fund, the European Central Bank and EU or MDBs, assigned a zero per cent risk weight under Attachment B of APS 112; and</li>
+<li>(b) certain non-zero per cent risk-weighted sovereign or central bank debt securities as specified in paragraphs 9(d) and (e) of Attachment A.</li>
+</ul>
+<p><strong>In everyday words:</strong> The best government bonds are very easy to sell, so they need only a sliver of stable funding. Example Bank's A$12.0bn of Government and semi-government securities at 5 per cent give 0.60.</p>
+<p><strong>What you do about it:</strong> Apply 5 per cent to unencumbered HQLA1 securities. If any is encumbered, go to paragraph 23 first. Make sure HQLA1 is identified without the LCR caps and operational tests (<a class="c" href="#c-f20">Att C footnote 20</a>).</p>
+<p><strong>Evidence we keep:</strong> The securities listing with HQLA class, encumbrance flags and the factor applied.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07 and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="assets-assigned-a-10-per-cent-rsf-factor">Assets assigned a 10 per cent RSF factor</h2>
+<h3 id="c-p31" class="entry">Att C para 31: Ten per cent RSF: short loans to financial institutions secured by HQLA1</h3>
+<p><strong>What it says:</strong> An ADI must assign 10 per cent RSF to unencumbered loans to financial institutions with a residual maturity of less than six months, where the loan is secured against HQLA1 assets as defined in paragraph 9 of Attachment A, provided the ADI has the ability to freely rehypothecate (re-use as collateral) the received collateral for the life of the loan.</p>
+<p><strong>In everyday words:</strong> A short loan to another bank is safe if the bank gives us top-quality government bonds as security and we are free to use those bonds ourselves. So it needs only 10 per cent.</p>
+<p><strong>What you do about it:</strong> Apply only after confirming three things: counterparty is a financial institution, residual maturity is under six months, and the collateral is HQLA1 that we can freely re-use. If any fails, use paragraph 33(b) (15 per cent).</p>
+<p><strong>Evidence we keep:</strong> Reverse repo and secured loan agreements showing collateral type and re-use rights.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-p32" class="entry">Att C para 32: Ten per cent RSF: CLF-related assets</h3>
+<p><strong>What it says:</strong> An ADI may assign 10 per cent RSF to:</p>
+<ul>
+<li>(a) CLF-eligible third-party debt securities, other jurisdictions' ALA (alternative liquid assets) and assets recognised as eligible liquid assets by a host supervisor that APRA allows to be included in the numerator of the LCR. The 10 per cent may be applied only to the lower of the carrying value of the assets and the amount of the CLF that may be included in the numerator of the LCR; and</li>
+<li>(b) self-securitised assets eligible as CLF collateral. The maximum amount eligible for 10 per cent is the ADI's CLF less eligible third-party debt securities held as collateral for the CLF.</li>
+</ul>
+<p><strong>In everyday words:</strong> The Committed Liquidity Facility (CLF) was an RBA arrangement under which banks could borrow against certain securities in a crisis. APRA phased the aggregate CLF out to zero as at 1 January 2023, so for Example Bank today there is no CLF amount for this paragraph to apply to. The paragraph remains in the standard.</p>
+<p><strong>What you do about it:</strong> Confirm each month that the CLF amount is nil and no assets are being classified here. If a CLF were ever available again, the RSF would be capped at the lower of carrying value and the CLF amount.</p>
+<p><strong>Evidence we keep:</strong> A line in the working paper showing the CLF is nil and the classification checked.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a> (CLF) and Ch 6 s6.5.</p>
+<h2 id="assets-assigned-a-15-per-cent-rsf-factor">Assets assigned a 15 per cent RSF factor</h2>
+<h3 id="c-p33" class="entry">Att C para 33: Fifteen per cent RSF</h3>
+<p><strong>What it says:</strong> An ADI must assign 15 per cent RSF to:</p>
+<ul>
+<li>(a) unencumbered HQLA2A assets as defined in paragraph 10 of Attachment A; and</li>
+<li>(b) all other unencumbered loans to financial institutions with a residual maturity of less than six months not included in paragraph 31.</li>
+</ul>
+<p><strong>In everyday words:</strong> Slightly harder-to-sell high-quality assets, and short loans to banks that do not meet paragraph 31. Example Bank's A$2.0bn of unsecured loans to other banks with under six months to run at 15 per cent give 0.30. No Australian dollar asset currently qualifies as HQLA2, so for us paragraph 33(a) is rarely used.</p>
+<p><strong>What you do about it:</strong> Put short interbank loans here unless they meet paragraph 31. Confirm the counterparty is a financial institution (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>).</p>
+<p><strong>Evidence we keep:</strong> The interbank loan listing with counterparty type, maturity and collateral.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07 and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="assets-assigned-a-50-per-cent-rsf-factor">Assets assigned a 50 per cent RSF factor</h2>
+<h3 id="c-p34" class="entry">Att C para 34: Fifty per cent RSF</h3>
+<p><strong>What it says:</strong> An ADI must assign 50 per cent RSF to:</p>
+<ul>
+<li>(a) unencumbered HQLA2B assets as defined in paragraph 12 of Attachment A;</li>
+<li>(b) any HQLA as defined in Attachment A that are encumbered for a period of between six months and less than one year;</li>
+<li>(c) all loans to financial institutions and central banks with a residual maturity of between six months and less than one year;</li>
+<li>(d) operational deposits held at other ADIs that are subject to a 50 per cent ASF factor in paragraph 14(b);</li>
+<li>(e) Australian equities, other than financial institutions or associated entities (as defined in section 50AAA of the Corporations Act 2001), that trade on the Australian Securities Exchange (ASX) and form part of the S&amp;P/ASX200 stock index; and</li>
+<li>(f) all other non-HQLA not included in the above categories that have a residual maturity of less than one year, including loans to non-financial corporate clients, loans to retail customers (natural persons) and SME customers, and loans to sovereigns and PSEs.</li>
+</ul>
+<p><strong>In everyday words:</strong> The big "short-term lending" bucket. Anything the bank lent for under a year to customers, plus mid-quality securities. Example Bank's A$8.0bn of personal and business loans with under a year to run at 50 per cent give 4.00.</p>
+<p><strong>What you do about it:</strong> Put loans under one year to retail, SME, corporates, sovereigns and PSEs here. Loans to financial institutions of six months to under a year also land here, but those under six months do not (paragraphs 31 and 33). Check the S&amp;P/ASX200 membership list for any equities.</p>
+<p><strong>Evidence we keep:</strong> The loan listing by residual maturity and counterparty, and the equities holding with index membership evidence.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07 and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="assets-assigned-a-65-per-cent-rsf-factor">Assets assigned a 65 per cent RSF factor</h2>
+<h3 id="c-p35" class="entry">Att C para 35: Sixty-five per cent RSF</h3>
+<p><strong>What it says:</strong> An ADI must assign 65 per cent RSF to:</p>
+<ul>
+<li>(a) unencumbered standard residential property loans to an individual (a natural person) or individuals with a residual maturity of one year or more and a loan-to-valuation ratio (LVR) of 80 per cent or below, as defined under APS 112; and</li>
+<li>(b) other unencumbered loans not included in the above categories, excluding loans to financial institutions, with a residual maturity of one year or more that are subject to or would qualify for a 35 per cent or lower risk weight under APS 112.</li>
+</ul>
+<p><strong>In everyday words:</strong> Mainstream home loans with a decent deposit (the LVR is the loan divided by the property value), lasting a year or more. Example Bank's A$50.0bn of standard mortgages at 65 per cent give 32.50: the biggest line in the whole NSFR.</p>
+<p><strong>What you do about it:</strong> Tag each mortgage with LVR, standard or non-standard status, term, borrower type and encumbrance. Only those that pass all tests take 65 per cent; the rest go to paragraph 36(b). Mortgages that are securitised or pledged need paragraph 23.</p>
+<p><strong>Evidence we keep:</strong> The mortgage data extract with the attributes, reconciled to the ledger, and the risk weight confirmation from the credit risk team.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="assets-assigned-an-85-per-cent-rsf-factor">Assets assigned an 85 per cent RSF factor</h2>
+<h3 id="c-p36" class="entry">Att C para 36: Eighty-five per cent RSF</h3>
+<p><strong>What it says:</strong> An ADI must assign 85 per cent RSF to:</p>
+<ul>
+<li>(a) cash, securities or other assets, on or off balance sheet, posted as initial margin for derivative contracts, and cash or other assets provided to contribute to the default fund of a central counterparty (CCP) (<a class="c" href="#c-f26">Att C footnote 26</a>). Where securities or other assets posted as initial margin would otherwise receive a higher factor, they take the higher factor;</li>
+<li>(b) other unencumbered performing loans that do not qualify under paragraph 35 and have residual maturities of one year or more, excluding loans to financial institutions (<a class="c" href="#c-f27">Att C footnote 27</a>);</li>
+<li>(c) unencumbered securities with a remaining maturity of one year or more and exchange-traded equities, that are not in default and do not qualify as HQLA; and</li>
+<li>(d) physical traded commodities, including gold.</li>
+</ul>
+<p><strong>In everyday words:</strong> Long-term business loans, non-standard mortgages, bonds that are not high-quality liquid assets, and margin we have posted to clearing houses. Example Bank: A$15.0bn business loans over one year 12.75; A$3.0bn other debt securities (non-HQLA, over one year) 2.55.</p>
+<p><strong>What you do about it:</strong> "Performing" is determined by APS 220 (<a class="c" href="#c-f27">Att C footnote 27</a>); non-performing loans go to 100 per cent. Mortgages above 80 per cent LVR land here. Pick up initial margin and default fund contributions from the collateral and clearing reports.</p>
+<p><strong>Evidence we keep:</strong> The loan and securities listings with performing status; the margin report.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h2 id="assets-assigned-a-100-per-cent-rsf-factor">Assets assigned a 100 per cent RSF factor</h2>
+<h3 id="c-p37" class="entry">Att C para 37: One hundred per cent RSF</h3>
+<p><strong>What it says:</strong> An ADI must assign 100 per cent RSF to:</p>
+<ul>
+<li>(a) all assets that are encumbered for a period of one year or more (<a class="c" href="#c-f28">Att C footnote 28</a>);</li>
+<li>(b) NSFR derivative assets (paragraphs 27 and 28) net of NSFR derivative liabilities (paragraphs 9 and 10), if NSFR derivative assets are greater than NSFR derivative liabilities (<a class="c" href="#c-f29">Att C footnote 29</a>);</li>
+<li>(c) all other assets not included in the above categories, including non-performing loans, loans to financial institutions with a residual maturity of one year or more, non-exchange-traded equities, fixed assets, items deducted from regulatory capital (as defined in APS 111), retained interest, insurance assets, subsidiary interests and defaulted securities; and</li>
+<li>(d) 20 per cent of derivative liabilities (negative replacement cost amounts) as calculated according to paragraph 9 (before deducting any variation margin posted).</li>
+</ul>
+<p><strong>In everyday words:</strong> The catch-all for assets that cannot be sold readily or whose value is uncertain: bad loans, buildings, equipment, goodwill, long loans to other banks. Plus a 20 per cent charge on derivatives we owe on (a cushion for the risk that margin calls rise). Example Bank's A$5.0bn other assets at 100 per cent give 5.00.</p>
+<p><strong>What you do about it:</strong> Treat this as the default bucket but check items (a), (b) and (d) deliberately each month, because they need data from the collateral and derivative systems. The Example Bank base figures leave derivatives out for simplicity; the practice case in document <a href="14_Exercises_and_Assessments.html">14</a> includes 20 per cent of gross derivative liabilities.</p>
+<p><strong>Evidence we keep:</strong> The other assets breakdown, the non-performing loan report and the derivative working.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5 and s6.8.2.</p>
+<h2 id="interdependent-assets-and-liabilities">Interdependent assets and liabilities</h2>
+<h3 id="c-p38" class="entry">Att C para 38: APRA may treat items as interdependent</h3>
+<p><strong>What it says:</strong> APRA may determine that certain asset and liability items, on the basis of contractual arrangements, are interdependent such that the liability cannot fall due while the asset remains on the balance sheet, the principal payment flows from the asset cannot be used other than for repaying the liability, and the liability cannot be used to fund other assets.</p>
+<p><strong>In everyday words:</strong> Occasionally a bank is a pure pipe: money comes in on one side and must go straight out the other. If the liability cannot be repaid before the asset, it seems pointless to demand extra stable funding.</p>
+<p><strong>What you do about it:</strong> No action by us unless APRA has made a determination for Example Bank (none is assumed). We never decide this ourselves.</p>
+<p><strong>Evidence we keep:</strong> If it ever applied, APRA's written determination.</p>
+<p><strong>Learn more:</strong> Documents <a href="09_NSFR_Production_End_to_End.html">09</a> and 11; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.6.</p>
+<h3 id="c-p39" class="entry">Att C para 39: Only in exceptional circumstances</h3>
+<p><strong>What it says:</strong> For paragraph 38, APRA will only make a determination, case by case, in exceptional circumstances. As part of any determination, the ADI must, at a minimum, be able to demonstrate that the criteria in paragraph 40 are met in full.</p>
+<p><strong>In everyday words:</strong> This is rare. The bank has to prove all four tests in paragraph 40, not most of them.</p>
+<p><strong>What you do about it:</strong> No action for our team; owned by the controller and Treasury, who would approach APRA. Do not net any asset against any liability in the NSFR on your own initiative.</p>
+<p><strong>Evidence we keep:</strong> None unless a request is made; then the application and APRA's reply.</p>
+<p><strong>Learn more:</strong> Documents <a href="09_NSFR_Production_End_to_End.html">09</a> and 11; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.6.</p>
+<h3 id="c-p40" class="entry">Att C para 40: The four criteria</h3>
+<p><strong>What it says:</strong> If APRA determines items to be interdependent, it may, at its discretion, adjust the RSF and ASF factors relating to those items to zero per cent, subject to these criteria:</p>
+<ul>
+<li>(a) the individual interdependent asset and liability items are clearly identifiable;</li>
+<li>(b) the maturity and principal amount of both the liability and its interdependent asset are the same;</li>
+<li>(c) the ADI is acting solely as a pass-through unit to channel the funding received (the interdependent liability) into the corresponding interdependent asset; and</li>
+<li>(d) the counterparties for each pair of interdependent liabilities and assets are not the same.</li>
+</ul>
+<p><strong>In everyday words:</strong> The items must be traceable, match exactly in size and timing, the bank must only be a pipe, and the borrower must not be the lender.</p>
+<p><strong>What you do about it:</strong> No action for our team unless APRA's determination exists; if one does, keep a register of the paired items and test the four criteria monthly.</p>
+<p><strong>Evidence we keep:</strong> If used, the register of pairs and the monthly criteria test.</p>
+<p><strong>Learn more:</strong> Documents <a href="09_NSFR_Production_End_to_End.html">09</a> and 11; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.6.</p>
+<h2 id="off-balance-sheet-exposures">Off-balance sheet exposures</h2>
+<h3 id="c-p41" class="entry">Att C para 41: OBS exposures use Table 1</h3>
+<p><strong>What it says:</strong> An ADI must apply the RSF factor to the RSF category in Table 1 for the OBS exposure categories in the Table.</p>
+<p><strong>In everyday words:</strong> Promises to lend that have not been drawn yet still need some stable funding behind them, because customers might draw. Table 1 gives the rates (5 per cent or 1 per cent).</p>
+<p><strong>What you do about it:</strong> Get the undrawn commitments from the facilities system by type (irrevocable, conditionally revocable, unconditionally revocable) and multiply by the Table 1 rate. Example Bank: A$16.0bn (10.0 + 5.0 + 1.0) at 5 per cent gives 0.80.</p>
+<p><strong>Evidence we keep:</strong> The undrawn facility report reconciled to the facilities register; classification of revocability reviewed by Credit or Legal (typical practice; confirm with your controller).</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.7.</p>
+<h3 id="c-t1" class="entry">Att C Table 1: OBS exposure categories</h3>
+<p><strong>What it says:</strong> Table 1 has two rows:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>RSF factor</th>
+<th>RSF category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5%</td>
+<td>Irrevocable and conditionally revocable credit and liquidity facilities to any client</td>
+</tr>
+<tr>
+<td>1%</td>
+<td>Unconditionally revocable credit and liquidity facilities</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>In everyday words:</strong> If the bank cannot cancel the promise (irrevocable), or can cancel only under conditions (conditionally revocable), it gets 5 per cent. If the bank can cancel at any time without conditions (like many credit card limits), it gets 1 per cent. "Any client" means the counterparty type does not change the rate for NSFR, unlike the LCR where retail, corporate and financial institution facilities differ.</p>
+<p><strong>What you do about it:</strong> Review each product's terms to confirm whether revocation is truly unconditional; when in doubt, use 5 per cent and record the doubt.</p>
+<p><strong>Evidence we keep:</strong> The product terms review and the classification table of facilities.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.7.</p>
+<h3 id="c-p42" class="entry">Att C para 42: Trade finance, guarantees and letters of credit</h3>
+<p><strong>What it says:</strong> An ADI must apply an RSF factor of 100 per cent to trade finance-related obligations, and to guarantees and letters of credit unrelated to trade finance obligations, using the actual net outflows for these obligations in the most recent 12-month period.</p>
+<p><strong>In everyday words:</strong> Look at the actual cash that went out of the bank on these products over the last twelve months (net of what came back) and charge 100 per cent of that. It is based on history, not on the face value of the facilities. For example, if trade finance had net outflows of A$0.02bn per month on average, the 12-month figure is 0.24, and RSF is 0.24.</p>
+<p><strong>What you do about it:</strong> Each month obtain the actual net outflows over the most recent 12 months on trade finance, and on guarantees and letters of credit, and sum them. Use the full 12-month total at 100 per cent.</p>
+<p><strong>Evidence we keep:</strong> The 12-month flow report by product, reconciled to the ledger.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.7.</p>
+<h2 id="footnotes-to-attachment-c">Footnotes to Attachment C</h2>
+<p>Footnotes 9 to 29 appear on the page below the paragraph they explain. Each entry names the paragraph it belongs to. (Footnotes 1 to 8 are in documents <a href="04_APS210_Companion_Main_Body.html">04</a> and 05.)</p>
+<h3 id="c-f9" class="entry">Att C footnote 9: Carrying value</h3>
+<p><strong>What it says:</strong> Attached to paragraph 7(a). The carrying value is the amount of a liability or equity instrument before application of any regulatory deductions, filters or other adjustments.</p>
+<p><strong>In everyday words:</strong> Use the balance sheet number, not the number after capital rules have trimmed it. Regulatory capital, for example, is taken before deductions here.</p>
+<p><strong>What you do about it:</strong> Use ledger balances without capital deductions for the ASF lines. Do not pick up the regulatory capital figure net of deductions.</p>
+<p><strong>Evidence we keep:</strong> Reconciliation of ASF carrying values to the ledger.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a>; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3.</p>
+<h3 id="c-f10" class="entry">Att C footnote 10: Basel III leverage ratio framework</h3>
+<p><strong>What it says:</strong> Attached to paragraph 9. Refers to the Basel III leverage ratio framework and disclosure requirements, January 2014, Basel Committee on Banking Supervision, as it exists at 12 January 2014.</p>
+<p><strong>In everyday words:</strong> The netting conditions are those in the 2014 Basel document as it stood on that date.</p>
+<p><strong>What you do about it:</strong> Use this version when Legal tests the netting agreements.</p>
+<p><strong>Evidence we keep:</strong> The legal opinions that cite the tested conditions.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f11" class="entry">Att C footnote 11: NSFR derivative liabilities formula</h3>
+<p><strong>What it says:</strong> Attached to paragraph 10.</p>
+<pre><code>NSFR derivative liabilities = (derivative liabilities) - (total collateral posted as variation margin on derivative liabilities)
+</code></pre>
+<p><strong>In everyday words:</strong> Start with what we owe on derivatives and subtract the daily margin we have already posted.</p>
+<p><strong>What you do about it:</strong> Build this formula into the derivative section of the working paper.</p>
+<p><strong>Evidence we keep:</strong> The derivative working paper.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a>; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f12" class="entry">Att C footnote 12: No asset for variation margin posted that was deducted</h3>
+<p><strong>What it says:</strong> Attached to paragraph 10. When determining RSF, an ADI must not include an asset on its balance sheet associated with collateral posted as variation margin where the asset is deducted from the replacement cost amount of a derivative contract for the NSFR.</p>
+<p><strong>In everyday words:</strong> Do not count the same margin twice: once as a reduction of the liability and again as an asset needing RSF.</p>
+<p><strong>What you do about it:</strong> Remove the variation margin receivable from the RSF base when it has been deducted under footnote 11's formula.</p>
+<p><strong>Evidence we keep:</strong> The reconciliation showing the variation margin asset excluded from RSF.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f13" class="entry">Att C footnote 13: Stable deposits</h3>
+<p><strong>What it says:</strong> Attached to paragraph 12(a). Refers to paragraph 37 of Attachment A.</p>
+<p><strong>In everyday words:</strong> "Stable" here has the same meaning as in the LCR: fully covered by the Financial Claims Scheme, with other relationships or a transactional account.</p>
+<p><strong>What you do about it:</strong> Use the same stable tag for both ratios.</p>
+<p><strong>Evidence we keep:</strong> The stable deposit tagging rules.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 07; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a>.</p>
+<h3 id="c-f14" class="entry">Att C footnote 14: Retail and SME definitions</h3>
+<p><strong>What it says:</strong> Attached to paragraph 12(a). Refers to paragraph 34 of Attachment A, and to paragraph 46 and footnote 9 of Attachment A for the definition of SME (small and medium-sized enterprise).</p>
+<p><strong>In everyday words:</strong> Retail means individual people. SME depositors are small businesses that meet the SME definition in Attachment A.</p>
+<p><strong>What you do about it:</strong> Use the Attachment A definitions to decide whether a business customer is SME or corporate.</p>
+<p><strong>Evidence we keep:</strong> The SME qualification test.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 07; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a>.</p>
+<h3 id="c-f15" class="entry">Att C footnote 15: Less stable deposits</h3>
+<p><strong>What it says:</strong> Attached to paragraph 13(a). Refers to paragraph 38 of Attachment A.</p>
+<p><strong>In everyday words:</strong> "Less stable" means any retail deposit that is not stable.</p>
+<p><strong>What you do about it:</strong> Everything retail that is not tagged stable is less stable.</p>
+<p><strong>Evidence we keep:</strong> The deposit tagging report.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 07; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a>.</p>
+<h3 id="c-f16" class="entry">Att C footnote 16: Operational deposits</h3>
+<p><strong>What it says:</strong> Attached to paragraph 14(b). Refers to paragraphs 47 to 50 of Attachment A.</p>
+<p><strong>In everyday words:</strong> An operational deposit is money a customer needs to run its payments, clearing, custody or cash management, so it cannot easily be withdrawn.</p>
+<p><strong>What you do about it:</strong> Use the Attachment A tests. Customer agreements and activity evidence are needed.</p>
+<p><strong>Evidence we keep:</strong> Operational deposit tests and customer agreements.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 07; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a>.</p>
+<h3 id="c-f17" class="entry">Att C footnote 17: Superannuation operational deposits</h3>
+<p><strong>What it says:</strong> Attached to paragraph 14(c). Refers to footnote 16.</p>
+<p><strong>In everyday words:</strong> Super funds' deposits that pass the operational tests are treated like other operational deposits.</p>
+<p><strong>What you do about it:</strong> Apply the same tests to deposits from superannuation funds.</p>
+<p><strong>Evidence we keep:</strong> The same evidence as footnote 16, shown per super fund customer.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> and 07; <a href="../LIQUIDITY_GUIDE.html#chapter-5-the-liquidity-coverage-ratio-line-by-line">Guide Ch 5</a>.</p>
+<h3 id="c-f18" class="entry">Att C footnote 18: Deposits within a cooperative network</h3>
+<p><strong>What it says:</strong> Attached to paragraph 15(a). Subject to APRA's approval, deposits between ADIs within the same cooperative network may be excluded from the zero ASF category provided they are either (a) required by law to be placed at the central organisation and legally constrained within the network as minimum deposit requirements; or (b) in the context of common task sharing and legal, statutory or contractual arrangements, as long as the receiving ADI and the depositing ADI participate in the same network's mutual protection scheme against illiquidity and insolvency. Such deposits may be assigned an ASF up to the RSF factor assigned by regulation for the same deposits to the depositing bank, not to exceed 85 per cent.</p>
+<p><strong>In everyday words:</strong> A special rule for networks such as a group of credit unions with a central body. Not relevant to Example Bank, which is a single entity.</p>
+<p><strong>What you do about it:</strong> No action for our team; Example Bank is not part of a cooperative network.</p>
+<p><strong>Evidence we keep:</strong> None for us.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a>; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.3.</p>
+<h3 id="c-f19" class="entry">Att C footnote 19: Zero ASF derivative formula</h3>
+<p><strong>What it says:</strong> Attached to paragraph 15(c).</p>
+<pre><code>ASF = 0% x MAX((NSFR derivative liabilities - NSFR derivative assets), 0)
+</code></pre>
+<p><strong>In everyday words:</strong> The result is always zero. The footnote only makes clear that the net amount of derivative liabilities over assets gets no credit, and cannot go below zero.</p>
+<p><strong>What you do about it:</strong> Show it as a zero line so the reviewer sees derivatives were considered.</p>
+<p><strong>Evidence we keep:</strong> The derivative working paper line.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a>; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f20" class="entry">Att C footnote 20: HQLA for the NSFR and the 20 per cent derivative add-on</h3>
+<p><strong>What it says:</strong> Attached to paragraph 17(c). For the NSFR, HQLA means all HQLA without regard to LCR operational requirements and LCR caps on HQLA2 and HQLA2B that might otherwise limit what counts in the LCR. HQLA is defined in paragraphs 6 to 29 of Attachment A, and the operational requirements in paragraphs 22 to 29 of Attachment A. For the NSFR, assets include 20 per cent of derivative liabilities calculated under paragraph 9.</p>
+<p><strong>In everyday words:</strong> An asset can be "high quality" for the NSFR even if, in the LCR, a cap stops us counting it. Eligibility is about the asset's type, not about whether we passed the LCR's tests that day.</p>
+<p><strong>What you do about it:</strong> Run the HQLA classification before the caps. Use the type-based class for the NSFR (HQLA1 5 per cent, HQLA2A 15 per cent, HQLA2B 50 per cent) even when the LCR cap trims it.</p>
+<p><strong>Evidence we keep:</strong> The securities listing showing class before caps.</p>
+<p><strong>Learn more:</strong> Documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07 and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-f21" class="entry">Att C footnote 21: What encumbered means</h3>
+<p><strong>What it says:</strong> Attached to paragraph 23. Encumbered assets include but are not limited to assets backing securities or covered bonds, and assets pledged in securities financing transactions or collateral swaps.</p>
+<p><strong>In everyday words:</strong> An asset is encumbered when someone else has a claim over it, because it backs a bond we issued or has been pledged for a repo.</p>
+<p><strong>What you do about it:</strong> Treat any asset pledged or set aside as security as encumbered, even if the footnote's list does not name it.</p>
+<p><strong>Evidence we keep:</strong> The encumbrance policy and the encumbrance report.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-f22" class="entry">Att C footnote 22: Exceptional central bank liquidity operations</h3>
+<p><strong>What it says:</strong> Attached to paragraph 24. In general, exceptional central bank liquidity operations are non-standard, temporary operations conducted by a central bank to achieve its mandate in a period of market-wide financial stress or exceptional macroeconomic circumstances.</p>
+<p><strong>In everyday words:</strong> This describes emergency measures, not everyday central bank lending.</p>
+<p><strong>What you do about it:</strong> Treat normal RBA operations as ordinary and use normal factors.</p>
+<p><strong>Evidence we keep:</strong> None unless APRA approves a special treatment.</p>
+<p><strong>Learn more:</strong> Documents <a href="09_NSFR_Production_End_to_End.html">09</a> and 12; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-f23" class="entry">Att C footnote 23: Basel III leverage ratio framework (again)</h3>
+<p><strong>What it says:</strong> Attached to paragraph 27. Refers to the Basel III leverage ratio framework and disclosure requirements, January 2014, as it exists at 12 January 2014.</p>
+<p><strong>In everyday words:</strong> Same document as footnote 10, for derivative assets.</p>
+<p><strong>What you do about it:</strong> Same as footnote 10.</p>
+<p><strong>Evidence we keep:</strong> The netting legal opinions.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f24" class="entry">Att C footnote 24: Currency of settlement</h3>
+<p><strong>What it says:</strong> Attached to paragraph 28. Refers to question 2.1 of the Basel III leverage ratio framework and disclosure requirements, January 2014, for the meaning of the currency of settlement.</p>
+<p><strong>In everyday words:</strong> To offset a derivative asset, the cash margin we received must be in the same currency the derivative settles in.</p>
+<p><strong>What you do about it:</strong> Check the currency of each cash margin against the contract's settlement currency. For Example Bank, which has one currency, this is usually straightforward.</p>
+<p><strong>Evidence we keep:</strong> The currency check in the margin report.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f25" class="entry">Att C footnote 25: Higher RSF for central bank reserves</h3>
+<p><strong>What it says:</strong> Attached to paragraph 29(b). APRA may impose a higher RSF factor after discussing and agreeing with the relevant central bank and taking into consideration whether the reserve requirement must be satisfied at all times and the extent to which the reserve requirement in a particular jurisdiction exists over a longer-term horizon and therefore requires associated stable funding.</p>
+<p><strong>In everyday words:</strong> If a central bank forces banks to hold reserves for a long period, APRA could ask for stable funding behind them. The standard leaves this as a possibility, and Example Bank's factor stays at zero unless APRA says otherwise.</p>
+<p><strong>What you do about it:</strong> No action unless APRA announces a higher factor, in which case the controller will update the factor table.</p>
+<p><strong>Evidence we keep:</strong> APRA's notice, if ever issued.</p>
+<p><strong>Learn more:</strong> Document <a href="09_NSFR_Production_End_to_End.html">09</a>; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f26" class="entry">Att C footnote 26: Initial margin posted for customers</h3>
+<p><strong>What it says:</strong> Attached to paragraph 36(a). An initial margin posted on behalf of a customer, where the ADI does not guarantee performance of the third party, is exempt from this requirement.</p>
+<p><strong>In everyday words:</strong> If we post margin for a customer and are not guaranteeing the customer's performance, that margin does not take the 85 per cent factor.</p>
+<p><strong>What you do about it:</strong> Separate margin posted for our own trades from margin posted for customers, and apply the exemption only if no guarantee exists.</p>
+<p><strong>Evidence we keep:</strong> The margin report by own account and customer account, and the contract terms showing no guarantee.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f27" class="entry">Att C footnote 27: Performing and non-performing loans</h3>
+<p><strong>What it says:</strong> Attached to paragraph 36(b). Whether a loan is performing or non-performing is determined by reference to Prudential Standard APS 220 Credit Risk Management.</p>
+<p><strong>In everyday words:</strong> The credit risk team's definition of "non-performing" (for example, in default) decides which loans go to 100 per cent rather than 85 per cent.</p>
+<p><strong>What you do about it:</strong> Take the non-performing flag from the credit risk system. Do not make your own.</p>
+<p><strong>Evidence we keep:</strong> The credit risk non-performing report matched to the loan listing.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<h3 id="c-f28" class="entry">Att C footnote 28: Non-maturity reverse repos</h3>
+<p><strong>What it says:</strong> Attached to paragraph 37(a). For a non-maturity reverse repo, an RSF of 100 per cent applies, unless an ADI is able to demonstrate to APRA's satisfaction that it would effectively have a different maturity period.</p>
+<p><strong>In everyday words:</strong> A reverse repo with no end date has no safe finish line, so it takes 100 per cent unless APRA agrees to a different treatment.</p>
+<p><strong>What you do about it:</strong> Flag open-ended reverse repos and use 100 per cent.</p>
+<p><strong>Evidence we keep:</strong> The reverse repo listing with maturity types.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.4.</p>
+<h3 id="c-f29" class="entry">Att C footnote 29: RSF for net derivative assets formula</h3>
+<p><strong>What it says:</strong> Attached to paragraph 37(b).</p>
+<pre><code>RSF = 100% x MAX((NSFR derivative assets - NSFR derivative liabilities), 0)
+</code></pre>
+<p><strong>In everyday words:</strong> If the bank is owed more on derivatives than it owes, 100 per cent of the difference needs stable funding. If it owes more, this is zero (and paragraph 15(c) gives zero ASF).</p>
+<p><strong>What you do about it:</strong> Put the formula in the derivative section of the working paper.</p>
+<p><strong>Evidence we keep:</strong> The derivative working paper.</p>
+<p><strong>Learn more:</strong> Documents <a href="07_Data_and_Classification.html">07</a> and 09; <a href="../LIQUIDITY_GUIDE.html#chapter-6-the-net-stable-funding-ratio-line-by-line">Guide Ch 6</a> s6.5.</p>
+<hr />
+<h2 id="attachment-c-at-a-glance">Attachment C at a glance</h2>
+<h3 id="asf-factors-funding">ASF factors (funding)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>ASF factor</th>
+<th>What gets it</th>
+<th>Paragraph</th>
+<th>Example Bank line (A$bn)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100%</td>
+<td>Regulatory capital (before adjustments), excluding Tier 2 under one year</td>
+<td><a class="c" href="#c-p11">Att C para 11</a>(a)</td>
+<td>Equity 8.0 gives 8.00</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>Other capital instruments with effective maturity of one year or more (no shortening options)</td>
+<td><a class="c" href="#c-p11">Att C para 11</a>(b)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>Secured and unsecured borrowings and liabilities, including term deposits, with effective residual maturity of one year or more</td>
+<td><a class="c" href="#c-p11">Att C para 11</a>(c)</td>
+<td>Wholesale debt 1 year or more 15.0 gives 15.00</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>Stable retail and SME demand and term deposits under one year</td>
+<td><a class="c" href="#c-p12">Att C para 12</a>(a)</td>
+<td>Stable retail 25.0 gives 23.75</td>
+</tr>
+<tr>
+<td>95%</td>
+<td>Intermediated stable retail deposits, intermediary notice of at least 12 months</td>
+<td><a class="c" href="#c-p12">Att C para 12</a>(b)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>Less stable retail and SME demand and term deposits under one year</td>
+<td><a class="c" href="#c-p13">Att C para 13</a>(a)</td>
+<td>Less stable 15.0 gives 13.50; retail term 10.0 gives 9.00; SME 5.0 gives 4.50</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>Intermediated less stable deposits, including member-directed super, notice of at least 12 months</td>
+<td><a class="c" href="#c-p13">Att C para 13</a>(b)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Funding under one year from non-financial corporates</td>
+<td><a class="c" href="#c-p14">Att C para 14</a>(a)</td>
+<td>Corporate non-operational 6.0 gives 3.00</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Operational deposits</td>
+<td><a class="c" href="#c-p14">Att C para 14</a>(b)</td>
+<td>Operational 4.0 gives 2.00</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Superannuation fund operational deposits</td>
+<td><a class="c" href="#c-p14">Att C para 14</a>(c)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Intermediated deposits with notice of at least six months</td>
+<td><a class="c" href="#c-p14">Att C para 14</a>(d)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Funding under one year from sovereigns, PSEs, MDBs and national development banks</td>
+<td><a class="c" href="#c-p14">Att C para 14</a>(e)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Other funding of six months to under one year, including central banks and financial institutions</td>
+<td><a class="c" href="#c-p14">Att C para 14</a>(f)</td>
+<td>Wholesale debt 6 months to under 1 year 2.0 gives 1.00</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>All other liabilities and equity, including funding under six months from central banks and financial institutions</td>
+<td><a class="c" href="#c-p15">Att C para 15</a>(a)</td>
+<td>FI deposits 4.0; wholesale under 30 days 1.0; 30 days to under 6 months 3.0 give 0</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>Liabilities without a stated maturity (deferred tax and minority interests excepted: 100% if one year or more, 50% if six months to under one year)</td>
+<td><a class="c" href="#c-p15">Att C para 15</a>(b)</td>
+<td>Other liabilities 2.0 gives 0</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>Net derivative liabilities over derivative assets</td>
+<td><a class="c" href="#c-p15">Att C para 15</a>(c)</td>
+<td>Ignored in base case</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>Trade date payables expected to settle in the normal cycle</td>
+<td><a class="c" href="#c-p15">Att C para 15</a>(d)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>0%</td>
+<td>Variation margin received that does not qualify, and initial margin received</td>
+<td><a class="c" href="#c-p28">Att C para 28</a></td>
+<td>None</td>
+</tr>
+</tbody>
+</table></div>
+<p>Example Bank total ASF: 79.75.</p>
+<h3 id="rsf-factors-assets-and-off-balance-sheet">RSF factors (assets and off-balance sheet)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>RSF factor</th>
+<th>What gets it</th>
+<th>Paragraph</th>
+<th>Example Bank line (A$bn)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0%</td>
+<td>Notes and coin; central bank reserves and balances; central bank claims under six months; trade date receivables</td>
+<td><a class="c" href="#c-p29">Att C para 29</a></td>
+<td>Cash and RBA 5.0 gives 0.00</td>
+</tr>
+<tr>
+<td>1%</td>
+<td>Unconditionally revocable credit and liquidity facilities</td>
+<td><a class="c" href="#c-t1">Att C Table 1</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>5%</td>
+<td>Unencumbered HQLA1 (zero risk-weighted sovereign and similar securities)</td>
+<td><a class="c" href="#c-p30">Att C para 30</a></td>
+<td>Government and semi-government 12.0 gives 0.60</td>
+</tr>
+<tr>
+<td>5%</td>
+<td>Irrevocable and conditionally revocable credit and liquidity facilities</td>
+<td><a class="c" href="#c-t1">Att C Table 1</a></td>
+<td>Undrawn 16.0 gives 0.80</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>Unencumbered loans to financial institutions under six months secured by freely re-usable HQLA1</td>
+<td><a class="c" href="#c-p31">Att C para 31</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>10%</td>
+<td>CLF-eligible assets, up to the CLF amount (nil since 1 January 2023)</td>
+<td><a class="c" href="#c-p32">Att C para 32</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>15%</td>
+<td>Unencumbered HQLA2A</td>
+<td><a class="c" href="#c-p33">Att C para 33</a>(a)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>15%</td>
+<td>Other unencumbered loans to financial institutions under six months</td>
+<td><a class="c" href="#c-p33">Att C para 33</a>(b)</td>
+<td>Interbank loans 2.0 gives 0.30</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Unencumbered HQLA2B</td>
+<td><a class="c" href="#c-p34">Att C para 34</a>(a)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>HQLA encumbered six months to under one year (or the higher unencumbered factor)</td>
+<td><a class="c" href="#c-p23">Att C paras 23 and 34</a>(b)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Loans to financial institutions and central banks, six months to under one year</td>
+<td><a class="c" href="#c-p34">Att C para 34</a>(c)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Operational deposits held at other ADIs</td>
+<td><a class="c" href="#c-p34">Att C para 34</a>(d)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>ASX200 equities (not financials)</td>
+<td><a class="c" href="#c-p34">Att C para 34</a>(e)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>Other non-HQLA under one year, including loans to corporates, retail, SME, sovereigns, PSEs</td>
+<td><a class="c" href="#c-p34">Att C para 34</a>(f)</td>
+<td>Loans under 1 year 8.0 gives 4.00</td>
+</tr>
+<tr>
+<td>65%</td>
+<td>Standard residential mortgages, LVR 80% or below, one year or more</td>
+<td><a class="c" href="#c-p35">Att C para 35</a>(a)</td>
+<td>Mortgages 50.0 gives 32.50</td>
+</tr>
+<tr>
+<td>65%</td>
+<td>Other loans, one year or more, risk weight 35% or lower (not financial institutions)</td>
+<td><a class="c" href="#c-p35">Att C para 35</a>(b)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>85%</td>
+<td>Initial margin posted; CCP default fund contributions</td>
+<td><a class="c" href="#c-p36">Att C para 36</a>(a)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>85%</td>
+<td>Other performing loans one year or more (not financial institutions)</td>
+<td><a class="c" href="#c-p36">Att C para 36</a>(b)</td>
+<td>Business loans 15.0 gives 12.75</td>
+</tr>
+<tr>
+<td>85%</td>
+<td>Non-HQLA securities one year or more; exchange-traded equities not HQLA</td>
+<td><a class="c" href="#c-p36">Att C para 36</a>(c)</td>
+<td>Other debt securities 3.0 gives 2.55</td>
+</tr>
+<tr>
+<td>85%</td>
+<td>Physical traded commodities, including gold</td>
+<td><a class="c" href="#c-p36">Att C para 36</a>(d)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>Assets encumbered one year or more</td>
+<td><a class="c" href="#c-p23">Att C paras 23 and 37</a>(a)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>Net derivative assets over derivative liabilities</td>
+<td><a class="c" href="#c-p37">Att C para 37</a>(b)</td>
+<td>Ignored in base case</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>All other assets: non-performing loans, loans to financial institutions one year or more, fixed assets, and so on</td>
+<td><a class="c" href="#c-p37">Att C para 37</a>(c)</td>
+<td>Other assets 5.0 gives 5.00</td>
+</tr>
+<tr>
+<td>20% of the amount</td>
+<td>Derivative liabilities (before variation margin deduction) are added to RSF at 20%</td>
+<td><a class="c" href="#c-p37">Att C para 37</a>(d)</td>
+<td>Ignored in base case</td>
+</tr>
+<tr>
+<td>100%</td>
+<td>Trade finance, guarantees and letters of credit: actual 12-month net outflows</td>
+<td><a class="c" href="#c-p42">Att C para 42</a></td>
+<td>None</td>
+</tr>
+</tbody>
+</table></div>
+<p>Example Bank total RSF: 58.50. NSFR: 79.75 / 58.50 = 136.3%. Minimum: 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p59">APS 210 paras 59 and 60</a>).</p></main><footer><a href="05_APS210_Companion_Attachment_A_LCR.html">&#9664; 05 APS 210 companion: Attachment A (LCR)</a><a href="07_Data_and_Classification.html">07 Data: where the numbers come from and how each balance is classified &#9654;</a></footer></body></html>

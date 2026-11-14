@@ -1,0 +1,1955 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>08 Producing the daily LCR, end to end | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="07_Data_and_Classification.html" title="07 Data: where the numbers come from and how each balance is classified">&#9664; 07</a><span class="t">08 Producing the daily LCR, end to end</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#1-what-the-daily-lcr-is-in-everyday-words">1. What the daily LCR is, in everyday words</option><option value="#2-the-daily-timetable-roles-and-limits">2. The daily timetable, roles and limits</option><option value="#3-inputs">3. Inputs</option><option value="#4-the-procedure-at-a-glance">4. The procedure at a glance</option><option value="#5-the-procedure-step-by-step">5. The procedure, step by step</option><option value="#6-the-full-example-bank-lcr-working-paper">6. The full Example Bank LCR working paper</option><option value="#7-a-day-in-the-life-of-the-daily-lcr">7. A day in the life of the daily LCR</option><option value="#8-movement-analysis-explaining-the-change-in-the-ratio">8. Movement analysis: explaining the change in the ratio</option><option value="#9-the-forward-looking-lcr">9. The forward-looking LCR</option><option value="#10-controls">10. Controls</option><option value="#11-common-errors">11. Common errors</option><option value="#12-what-to-do-when-the-lcr-is-below-a-limit">12. What to do when the LCR is below a limit</option><option value="#13-review-checklist-sign-off-and-distribution">13. Review checklist, sign-off and distribution</option><option value="#14-month-end-differences-and-the-link-to-the-apra-return">14. Month-end differences and the link to the APRA return</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="09_NSFR_Production_End_to_End.html" title="09 Producing the NSFR, end to end">09 &#9654;</a></header>
+<main><h1 id="08-producing-the-daily-lcr-end-to-end">08 Producing the daily LCR, end to end</h1>
+<p><strong>Purpose:</strong> To give you a complete operating procedure for the daily liquidity coverage ratio (LCR), from the data at close of business to the signed and distributed result, with the Example Bank figures worked line by line so that you can check your own work against them.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Run the daily LCR in the right order, with the checks that belong at each step.</li>
+<li>Value the liquid asset portfolio, confirm eligibility, apply haircuts and caps, and weight outflows and inflows with the correct paragraph for each line.</li>
+<li>Reproduce the Example Bank LCR of 147.2% and explain each line.</li>
+<li>Explain a change in the ratio line by line, and project the ratio forward to spot debt rolling into the 30-day window.</li>
+<li>Know what to do when the ratio is below a trigger, below Board appetite, or below 100%.</li>
+<li>Review and sign off the LCR using the controls and checklist.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) and document <a href="07_Data_and_Classification.html">07</a> (Data and classification). Keep document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> (companion to Attachment A) open as you work. You will use the paragraph references in this document to find the matching entries.</p>
+<p><strong>Time:</strong> About six hours: two to read, two to rebuild the Example Bank working paper by hand, and two for the worked examples and Check yourself questions.</p>
+<hr />
+<h2 id="1-what-the-daily-lcr-is-in-everyday-words">1. What the daily LCR is, in everyday words</h2>
+<p>The LCR asks one question: <em>if the bank were hit by a severe shock for 30 days, would it have enough easy-to-sell assets to pay everything that is likely to leave?</em> The answer is a ratio.</p>
+<pre><code>LCR = Stock of HQLA / Total net cash outflows over the next 30 calendar days
+</code></pre>
+<p>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p3">Att A para 3</a>). HQLA means high-quality liquid assets: assets the bank can turn into cash quickly and reliably. The bank must hold unencumbered HQLA (assets that are not pledged to anyone) to meet its liquidity needs for a 30 calendar day period under a severe stress scenario (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p1">Att A para 1</a>).</p>
+<p>The LCR has two parts (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p2">Att A para 2</a>):</p>
+<ul>
+<li>the <strong>numerator</strong>: the value of the stock of HQLA; and</li>
+<li>the <strong>denominator</strong>: total net cash outflows, calculated using the scenario rates in Attachment A.</li>
+</ul>
+<p>Net cash outflows are expected outflows minus expected inflows, with the inflows capped at 75% of outflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>):</p>
+<pre><code>Total net cash outflows = Total expected cash outflows
+                          - Min { total expected cash inflows ; 75% x total expected cash outflows }
+</code></pre>
+<h3 id="11-the-minimum-and-why-we-compute-it-daily">1.1 The minimum and why we compute it daily</h3>
+<p>A locally incorporated ADI (authorised deposit-taking institution) such as Example Bank must keep both its Australian-dollar (AUD) LCR and its all-currencies LCR at or above <strong>100%</strong> (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>(a)). The bank must meet the minimum on a continuous basis, absent a situation of financial stress (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p54">APS 210 para 54</a>). "Continuous" means every day, not just at month-end. So Example Bank produces the LCR daily.</p>
+<p>The standard also says the ADI must include an appropriate buffer of HQLA over the LCR requirement in line with its liquidity risk tolerance (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p4">Att A para 4</a>). Example Bank's buffer is expressed in two internal levels (section 2.3).</p>
+<h3 id="12-example-bank-simplifications">1.2 Example Bank simplifications</h3>
+<p>Example Bank has one legal entity and one currency. That means:</p>
+<ul>
+<li><strong>Level 1 equals Level 2.</strong> Level 1 is the ADI on its own; Level 2 is the consolidated banking group (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 para 3</a>). With one entity there is one calculation, reported on both bases.</li>
+<li><strong>The AUD LCR equals the all-currencies LCR.</strong> All assets and flows are in Australian dollars (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>(a)).</li>
+<li><strong>There is no Committed Liquidity Facility (CLF).</strong> The CLF was a standby arrangement with the Reserve Bank of Australia (RBA) that could count towards the numerator (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A paras 13 to 21</a>). The aggregate CLF was phased out to zero as at 1 January 2023 (APRA), so no CLF line appears in the numerator.</li>
+</ul>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Even though the two ratios are identical, I want you to compute both every day, as separate columns. If they ever differ for Example Bank, you have a currency flag error in the data. That makes it a free control.</p>
+</blockquote>
+<hr />
+<h2 id="2-the-daily-timetable-roles-and-limits">2. The daily timetable, roles and limits</h2>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The timetable, roles and internal limits below are Example Bank conventions, invented for training. None of them is in APS 210. Confirm with your controller.</p>
+</blockquote>
+<h3 id="21-timetable-example-bank-convention">2.1 Timetable (Example Bank convention)</h3>
+<p>The daily LCR is produced by <strong>10:00 am for the previous business day.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Previous day, close of business</td>
+<td>Systems complete end-of-day processing</td>
+<td>Technology and operations</td>
+</tr>
+<tr>
+<td>06:30 to 07:30</td>
+<td>Feeds from source systems land in staging</td>
+<td>Data owners</td>
+</tr>
+<tr>
+<td>07:30</td>
+<td>Feed arrival check; escalate missing feeds</td>
+<td>Preparer</td>
+</tr>
+<tr>
+<td>07:45</td>
+<td>Load, completeness checks and reconciliation to the general ledger</td>
+<td>Preparer</td>
+</tr>
+<tr>
+<td>08:15</td>
+<td>Treasury confirms market values, eligibility and encumbrance of the liquid asset portfolio</td>
+<td>Treasury</td>
+</tr>
+<tr>
+<td>08:30</td>
+<td>Classification run; exceptions cleared or defaulted</td>
+<td>Preparer</td>
+</tr>
+<tr>
+<td>09:00</td>
+<td>Calculation, limit comparison and movement analysis</td>
+<td>Preparer</td>
+</tr>
+<tr>
+<td>09:20</td>
+<td>Second-person review</td>
+<td>Reviewer</td>
+</tr>
+<tr>
+<td>09:40</td>
+<td>Controller review and sign-off</td>
+<td>Controller</td>
+</tr>
+<tr>
+<td>10:00</td>
+<td>Distribution</td>
+<td>Preparer</td>
+</tr>
+<tr>
+<td>After 10:00</td>
+<td>Evidence filed; log updated; forward-looking update</td>
+<td>Preparer</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="22-roles">2.2 Roles</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Who</th>
+<th>What they do on the daily LCR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preparer</td>
+<td>You, or another Liquidity Reporting analyst</td>
+<td>Loads, reconciles, classifies, calculates, writes commentary, distributes</td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td>A second member of Liquidity Reporting</td>
+<td>Independently checks the preparer's work against the checklist and recomputes key lines</td>
+</tr>
+<tr>
+<td>Approver</td>
+<td>The controller (Finance)</td>
+<td>Reviews, challenges and signs</td>
+</tr>
+<tr>
+<td>Data owners</td>
+<td>Core banking, treasury system, collateral system, customer master, general ledger</td>
+<td>Supply complete and correct data (document <a href="07_Data_and_Classification.html">07</a> section 2)</td>
+</tr>
+<tr>
+<td>Treasury</td>
+<td>Runs the liquid asset portfolio and funding</td>
+<td>Confirms market values and that assets are controlled, unencumbered and available; explains movements; forecasts funding</td>
+</tr>
+<tr>
+<td>Liquidity Risk</td>
+<td>Independent oversight (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>)</td>
+<td>Receives the result; challenges Treasury and Finance; owns the limits and early warning framework</td>
+</tr>
+<tr>
+<td>ALCO</td>
+<td>Asset and liability committee, monthly</td>
+<td>Reviews trends and decisions</td>
+</tr>
+<tr>
+<td>Board Risk Committee</td>
+<td>Quarterly</td>
+<td>Oversees risk appetite and breaches</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is the four-eyes rule: one person prepares, a second reviews, the controller signs. Nobody signs their own work.</p>
+<p>The Board is ultimately responsible for the sound and prudent management of liquidity risk (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p15">APS 210 para 15</a>), and senior management must make sure the bank maintains sufficient liquidity at all times (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(b)). Your daily number is the main way they know that it does.</p>
+<h3 id="23-limits-and-triggers-example-bank-convention">2.3 Limits and triggers (Example Bank convention)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>LCR</th>
+<th>Source</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory minimum</td>
+<td>100%</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>(a))</td>
+<td>Breach is reportable to APRA immediately (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>)</td>
+</tr>
+<tr>
+<td>Board risk appetite</td>
+<td>120%</td>
+<td>Example Bank convention</td>
+<td>Board-approved internal limit (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>(a))</td>
+</tr>
+<tr>
+<td>Management early-warning trigger (amber)</td>
+<td>125%</td>
+<td>Example Bank convention</td>
+<td>Early warning (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year) explains the Board's duties, and document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios) covers limits and early warning indicators.</p>
+<hr />
+<h2 id="3-inputs">3. Inputs</h2>
+<p>The procedure needs the following inputs. Each input has an owner, and each is checked on arrival.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Input</th>
+<th>Contents</th>
+<th>Owner</th>
+<th>Arrives by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Deposit feed</td>
+<td>Every deposit account: balance, customer type, product, maturity or notice, flags for stable and scorecard, operational, FCS cover</td>
+<td>Core banking</td>
+<td>07:00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Loan feed</td>
+<td>Every loan: balance, borrower type, performing status, scheduled repayments in the next 30 days</td>
+<td>Core banking</td>
+<td>07:00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Customer master extract</td>
+<td>Customer type, SME flag, relationship flags</td>
+<td>Data management</td>
+<td>07:00</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Treasury position feed</td>
+<td>Securities held, market values, repos and reverse repos, interbank loans and deposits, wholesale debt, derivatives</td>
+<td>Treasury</td>
+<td>07:15</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Collateral feed</td>
+<td>Encumbered and unencumbered assets, margin posted and received, rating-trigger terms</td>
+<td>Collateral management</td>
+<td>07:30</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Off-balance sheet feed</td>
+<td>Committed and revocable facilities, undrawn amounts, customer type, purpose</td>
+<td>Lending operations</td>
+<td>07:15</td>
+</tr>
+<tr>
+<td>7</td>
+<td>RBA balance and statement</td>
+<td>Exchange Settlement Account balance</td>
+<td>Treasury operations</td>
+<td>07:30</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Market prices and ratings</td>
+<td>Closing market values and credit ratings</td>
+<td>Treasury or Market Risk</td>
+<td>08:00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>General ledger trial balance</td>
+<td>Totals by ledger line for reconciliation</td>
+<td>Finance</td>
+<td>07:30</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Classification rulebook</td>
+<td>The approved rules (document <a href="07_Data_and_Classification.html">07</a> section 11)</td>
+<td>Liquidity Reporting</td>
+<td>Current version</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Prior-day pack</td>
+<td>Yesterday's signed LCR and working paper</td>
+<td>Liquidity Reporting</td>
+<td>Filed</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Limits table</td>
+<td>Minimum, appetite and trigger</td>
+<td>Liquidity Risk</td>
+<td>Current version</td>
+</tr>
+</tbody>
+</table></div>
+<p>If any input is missing at its time, stop and escalate. Do not calculate on a partial feed.</p>
+<hr />
+<h2 id="4-the-procedure-at-a-glance">4. The procedure at a glance</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>Every business day, after the previous business day's close of business, by the timetable in section 2.1. Also run on any other day the controller directs (for example a stress event)</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>The twelve inputs in section 3</td>
+</tr>
+<tr>
+<td><strong>Steps</strong></td>
+<td>Fifteen steps, section 5</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>Feed completeness and arrival; reconciliation to the general ledger; classification exceptions; market value check; eligibility and operational confirmation by Treasury; tolerance and movement checks; AUD equals all-currencies check; second-person review; controller sign-off (section 10)</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>The signed LCR working paper; the daily LCR report; the movement commentary; the exceptions log; the forward-looking projection</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Reviewer (Liquidity Reporting), then the controller signs</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Feed receipts, reconciliation results, classification exceptions, the working paper, commentary, checklist, sign-off, distribution record (section 13)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="5-the-procedure-step-by-step">5. The procedure, step by step</h2>
+<h3 id="step-1-confirm-all-feeds-have-arrived">Step 1: Confirm all feeds have arrived</h3>
+<ol>
+<li>Open the feed arrival checklist. Tick each of the feeds in section 3 as it lands.</li>
+<li>For each feed, compare the record count and the total balance with the control totals in the feed footer.</li>
+<li>If a feed is late, phone the data owner. Note the time. If still missing at 08:00, tell the controller.</li>
+</ol>
+<p><strong>Control:</strong> No calculation starts until all feeds pass the completeness check, or the controller approves an exception.
+<strong>Output:</strong> A completed feed checklist.</p>
+<h3 id="step-2-load-and-reconcile-the-data">Step 2: Load and reconcile the data</h3>
+<ol>
+<li>Load the feeds into staging.</li>
+<li>Reconcile the loaded totals to the general ledger by ledger line. Total assets must equal total liabilities and equity, and each must agree to the trial balance (document <a href="07_Data_and_Classification.html">07</a> section 9).</li>
+<li>Investigate any difference. A small timing difference with a known cause may be accepted by the controller; an unexplained difference is not.</li>
+</ol>
+<p><strong>Control:</strong> Zero unexplained difference between the feeds and the general ledger.
+<strong>Output:</strong> A reconciliation report, kept as evidence.</p>
+<h3 id="step-3-run-the-data-quality-checks-and-classification">Step 3: Run the data quality checks and classification</h3>
+<ol>
+<li>Run the validity, consistency and duplicate checks (document <a href="07_Data_and_Classification.html">07</a> section 9).</li>
+<li>Run the classification rules (document <a href="07_Data_and_Classification.html">07</a> sections 6 and 7). Every record gets an LCR category, rate and paragraph.</li>
+<li>Clear the exceptions. Where a field is missing, take the conservative category and log it (document <a href="07_Data_and_Classification.html">07</a> section 10).</li>
+</ol>
+<p><strong>Control:</strong> The exceptions log is reviewed by the preparer and the reviewer. Defaults are reported in the pack.
+<strong>Output:</strong> A classified dataset and an exceptions log.</p>
+<h3 id="step-4-value-the-liquid-asset-portfolio-at-market-value">Step 4: Value the liquid asset portfolio at market value</h3>
+<ol>
+<li>List the securities in Treasury's liquid asset portfolio with their closing market prices.</li>
+<li>Multiply units by price to get <strong>market value</strong>. HQLA1 is included at market value (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>); HQLA2 is included at current market value after the haircut (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A paras 10 and 12</a>).</li>
+<li>Compare prices with the independent price source. Escalate large differences to Treasury and Market Risk.</li>
+<li>Confirm the Exchange Settlement Account balance with the RBA statement. Notes and coin are taken from the cash balance report.</li>
+</ol>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The NSFR uses accounting carrying value. The LCR numerator uses market value. If an Australian Government bond is carried at A$100.3m but trades at A$98.5m, the LCR counts A$98.5m (document <a href="07_Data_and_Classification.html">07</a> Example 6).</p>
+<p><strong>In the standard:</strong> An ADI with minimum liquidity holdings (MLH) status must value liquid assets at market value under the July 2025 version of the standard. Example Bank is an LCR ADI, so Attachment A already requires market value for the stock of HQLA. See document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> for the MLH regime in brief.</p>
+</blockquote>
+<p><strong>Control:</strong> Prices tie to the independent source; ESA balance ties to the RBA statement.
+<strong>Output:</strong> The valued portfolio.</p>
+<h3 id="step-5-confirm-hqla-eligibility-and-the-operational-requirements">Step 5: Confirm HQLA eligibility and the operational requirements</h3>
+<p>For each asset, confirm that it belongs in the stock of HQLA.</p>
+<ol>
+<li><strong>Eligible class.</strong> Is it in HQLA1 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>), HQLA2A (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a>) or HQLA2B (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>)? For Example Bank, only notes and coin, RBA balances, and Australian Government and semi-government securities are HQLA, all HQLA1; no AUD assets currently qualify as HQLA2 (per APRA's liquidity FAQ). Use the decision tree S in document <a href="07_Data_and_Classification.html">07</a> section 7.1.</li>
+<li><strong>Held on the first day of the stress, whatever the residual maturity.</strong> Assets are in the stock if the bank is holding them on day one, irrespective of residual maturity (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>).</li>
+<li><strong>Operational requirements</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 and 23</a>). Treasury must confirm each of these for every asset in the stock:
+   - the asset is available to be converted into cash at any time (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>(a));
+   - it is unencumbered and under the control of the function charged with managing liquidity risk, which typically is the treasurer, who must have continuous authority, and the legal and operational capability, to monetise it (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>(b));
+   - control is evidenced by holding it in a separate pool managed with the sole intent to use as a source of contingent funds, or by demonstrating that the function can monetise the asset at any point in the 30-day stress period and that the proceeds are available to the function without directly conflicting with a stated business or risk management strategy (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>(c)); and
+   - it is not pledged to secure, collateralise or credit enhance any transaction, and not designated to cover operational costs such as rents and salaries (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>).</li>
+<li><strong>Encumbrance.</strong> Compare the securities list with the collateral feed. Any security pledged (for example in a repo) is removed from the stock. Securities received in a reverse repo or securities financing transaction may be included only if held at the ADI, not rehypothecated, and legally and contractually available for the ADI's use (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>).</li>
+<li><strong>Assets that have become ineligible.</strong> If an asset becomes ineligible (for example through a rating downgrade), the ADI may keep it in the stock for an additional 30 calendar days to adjust or replace it (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>). Record the date the asset became ineligible and the last day it may remain.</li>
+<li><strong>Level 2.</strong> At Level 2, liquid assets held by a legal entity to meet its own requirements may be included only under <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p24">Att A para 24</a>. Example Bank has one entity, so this does not arise.</li>
+<li><strong>No double counting.</strong> An asset in the stock must not also produce an inflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>).</li>
+</ol>
+<p><strong>Control:</strong> Treasury confirms each day, in writing, the list of eligible assets and that the operational requirements are met. The preparer compares it with the collateral feed.
+<strong>Output:</strong> The eligible stock list.</p>
+<h3 id="step-6-apply-haircuts-and-caps">Step 6: Apply haircuts and caps</h3>
+<ol>
+<li><strong>Haircuts</strong> (a haircut reduces market value to allow for a fall in price in a stress): HQLA1 none (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>); HQLA2A 15% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a>); HQLA2B residential mortgage-backed securities 25% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>(a)); other HQLA2B (corporate debt and common equity) 50% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>(b) and (c)).</li>
+<li><strong>Caps</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8</a>):
+   - HQLA2 (A and B together) may be at most 40% of the total stock.
+   - HQLA2B may be at most 15% of the total stock.
+   - The caps are calculated on adjusted amounts, after unwinding secured funding, secured lending and collateral swap transactions maturing within 30 calendar days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A paras 7 and 8</a>).
+   - Maximum adjusted HQLA2 = two-thirds of adjusted HQLA1 after haircuts.
+   - Maximum adjusted HQLA2B = the lower of 15/85 of the sum of adjusted HQLA1 and HQLA2A after haircuts, and (where the 40% cap is binding) one quarter of adjusted HQLA1 after haircuts (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A para 7</a>).</li>
+</ol>
+<pre><code>Max HQLA2  = 2/3  x  adjusted HQLA1
+Max HQLA2B = lower of  [ 15/85 x (adjusted HQLA1 + adjusted HQLA2A) ]
+                  and  [ 1/4 x adjusted HQLA1 ]
+Counted HQLA = HQLA1 + min(HQLA2A + HQLA2B, Max HQLA2) with HQLA2B &lt;= Max HQLA2B
+</code></pre>
+<ol start="3">
+<li><strong>Example Bank:</strong> only HQLA1 is held, so no haircut or cap applies. HQLA = A$17.0bn.</li>
+</ol>
+<blockquote class="q-example"><p><strong>Example (illustration only, not Example Bank, as no AUD HQLA2 currently qualifies):</strong> A bank has HQLA1 of A$60 and HQLA2A with market value A$100. After the 15% haircut, HQLA2A is A$85. The maximum HQLA2 is two-thirds of 60 = A$40. HQLA2A is cut to A$40. Counted HQLA = 60 + 40 = <strong>A$100</strong>. HQLA2 is 40% of the stock, exactly at the cap.</p>
+<p><strong>Example (illustration only):</strong> HQLA1 70, HQLA2A 20 and HQLA2B 20 (all after haircuts). The 15/85 limit is 15/85 x (70 + 20) = 15.88. The one-quarter limit is 70/4 = 17.5. The lower is 15.88, so HQLA2B counted is 15.88. Total HQLA2 is 20 + 15.88 = 35.88, below the 2/3 cap of 46.67. Counted HQLA = 70 + 20 + 15.88 = <strong>105.88</strong>. HQLA2B is 15.88 / 105.88 = 15.0% of the stock.</p>
+</blockquote>
+<p><strong>Control:</strong> The reviewer recomputes the cap formulas independently. Where there is no HQLA2, the reviewer confirms that none has been included.
+<strong>Output:</strong> Counted HQLA, by class.</p>
+<h3 id="step-7-classify-and-weight-the-cash-outflows">Step 7: Classify and weight the cash outflows</h3>
+<p>Use the decision trees in document <a href="07_Data_and_Classification.html">07</a> for each product. The outflow categories and rates are in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>).</p>
+<ol>
+<li><strong>Retail and qualifying SME deposits</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p34">Att A paras 34 to 40 and 46</a>): stable 5%, less stable 10%, or 25% if the scorecard total is 3 or more.</li>
+<li><strong>Term deposits over 30 days with no legal right to withdraw, or a materially penalising early withdrawal:</strong> excluded, 0% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>). If the bank lets depositors out despite the clause, the entire category is demand (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>).</li>
+<li><strong>Operational deposits</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>): 5% if fully insured, 25% if not. Excess balances are non-operational.</li>
+<li><strong>Non-operational deposits from non-financial corporations, sovereigns, central banks, PSEs, MDBs and SMEs above A$2m:</strong> 20% if fully insured, 40% if not.</li>
+<li><strong>All other non-operational deposits</strong> (including financial institutions): 100%.</li>
+<li><strong>Unsecured wholesale debt inside 30 days, including options exercisable by the investor inside 30 days:</strong> 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>; Table 3).</li>
+<li><strong>Secured funding maturing inside 30 days:</strong> by collateral (HQLA1 0%, HQLA2A 15%, and so on, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li><strong>Derivatives and collateral:</strong> net cash outflows by counterparty at 100%; downgrade collateral at 100%; the other collateral lines (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> and footnote 5).</li>
+<li><strong>Committed facilities:</strong> undrawn portion by customer and purpose (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A paras 51 and 52</a>; Table 3).</li>
+<li><strong>Other contingent funding:</strong> trade finance, guarantees, buybacks, and others (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li><strong>Other contractual cash outflows inside 30 days:</strong> 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+</ol>
+<p>Multiply each balance by its rate. Sum.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Not every liability produces an outflow. Anything due after the 30-day window produces nothing today, such as the A$20.0bn of Example Bank's wholesale debt that matures after 30 days. That is why we run the forward-looking LCR in section 9.</p>
+</blockquote>
+<p><strong>Control:</strong> Totals by category reconcile to the classified dataset; the reviewer recomputes the larger lines.
+<strong>Output:</strong> Weighted outflows by line.</p>
+<h3 id="step-8-classify-and-weight-the-cash-inflows">Step 8: Classify and weight the cash inflows</h3>
+<ol>
+<li>Include <strong>only contractual inflows from fully performing exposures</strong> for which no default is expected within 30 days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>).</li>
+<li>Take each inflow at the <strong>latest possible date</strong> based on the counterparty's contractual rights. Loans without a specific maturity give only minimum payments (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>).</li>
+<li>Apply the rates:
+   - retail and SME customers: 50% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>);
+   - financial institutions and central banks: 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>(a));
+   - other entities (non-financial corporates, sovereigns, PSEs, MDBs): 50% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>(b));
+   - maturing securities not in the stock of HQLA: 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>);
+   - maturing secured lending: by the collateral held (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A para 55</a> and Table 4);
+   - derivatives inflows: 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a>);
+   - other contractual inflows: 100%; non-financial revenues are not taken into account (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p66">Att A para 66</a>);
+   - operational deposits held at other financial institutions: 0% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p63">Att A para 63</a>); deposits at the centralised institution of a cooperative network: 0% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p64">Att A para 64</a>);
+   - lines of credit, liquidity facilities and other contingent funding facilities the ADI holds at other institutions: 0% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p57">Att A para 57</a>).</li>
+<li><strong>Do not double count.</strong> If the asset is in the stock of HQLA, its inflow is not counted (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>).</li>
+</ol>
+<p><strong>Control:</strong> Inflow lines are tied to the loan feed's scheduled repayments. A performing flag must be present for every inflow.
+<strong>Output:</strong> Weighted inflows by line.</p>
+<h3 id="step-9-apply-the-75-cap-on-inflows">Step 9: Apply the 75% cap on inflows</h3>
+<pre><code>Cap = 75% x total expected cash outflows
+Inflows counted = Min { total expected inflows ; cap }
+Net cash outflows = total outflows - inflows counted
+</code></pre>
+<p>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). The cap protects the bank from relying on inflows that might not arrive. On Example Bank's base position the cap is 75% x A$13.45bn = A$10.09bn (10.0875), against inflows of A$1.90bn, so the cap does not bite.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> APRA may set a lower limit on inflows if it thinks a bank relies too much on a few wholesale counterparties (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>). Keep the data to show inflows by counterparty.</p>
+</blockquote>
+<p><strong>Control:</strong> Test the cap every day, even when it is not binding. Record the cap value in the working paper.
+<strong>Output:</strong> Net cash outflows.</p>
+<h3 id="step-10-compute-the-aud-and-all-currencies-ratios">Step 10: Compute the AUD and all-currencies ratios</h3>
+<ol>
+<li>Compute the all-currencies LCR = counted HQLA / net cash outflows.</li>
+<li>Compute the AUD LCR using only AUD HQLA and AUD flows. Example Bank has one currency, so both equal the same figure.</li>
+<li>Both must be at least 100% for a locally incorporated ADI (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>(a)). For a foreign ADI the minimum is 40% on an all-currencies basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>(b)), but Example Bank is locally incorporated.</li>
+<li>Compute the <strong>surplus</strong> = HQLA minus net cash outflows. This is the amount of liquid assets above the minimum.</li>
+<li>Check that the AUD and all-currencies results agree; a difference signals a currency flag problem.</li>
+</ol>
+<p><strong>Control:</strong> AUD LCR equals all-currencies LCR. The result is shown to one decimal place.
+<strong>Output:</strong> The LCR and the surplus.</p>
+<h3 id="step-11-compare-with-the-limits">Step 11: Compare with the limits</h3>
+<ol>
+<li>Compare with the regulatory minimum (100%), the Board risk appetite (120%) and the management trigger (125%).</li>
+<li>Compute headroom to each (section 6.4).</li>
+<li>If any line is breached, go to section 12 straight away. Do not wait for the review.</li>
+</ol>
+<p><strong>Output:</strong> A limit status of green, amber, red (appetite breach) or black (regulatory minimum breach). Labels are an Example Bank convention.</p>
+<h3 id="step-12-analyse-the-days-movement">Step 12: Analyse the day's movement</h3>
+<p>Compare today's LCR with yesterday's. Explain the change line by line (section 8). A change that you cannot explain is an unresolved error until proved otherwise.</p>
+<p><strong>Control:</strong> The explained movement must add up to the total movement.
+<strong>Output:</strong> A short written commentary.</p>
+<h3 id="step-13-preparer-self-check-and-second-person-review">Step 13: Preparer self-check and second-person review</h3>
+<ol>
+<li>The preparer completes the checklist (section 13) and passes the working paper to the reviewer.</li>
+<li>The reviewer independently re-performs: the HQLA total, the three or four largest outflow lines, the inflow cap, the ratio, and the movement bridge. The reviewer also confirms the reconciliation was clean and that the exception log has been read.</li>
+<li>Differences are resolved before the controller sees the paper.</li>
+</ol>
+<p><strong>Control:</strong> The reviewer is not the preparer.
+<strong>Output:</strong> A reviewed working paper with reviewer sign-off.</p>
+<h3 id="step-14-controller-review-and-sign-off">Step 14: Controller review and sign-off</h3>
+<ol>
+<li>The controller reads the commentary, challenges any unusual movement, and checks the limit status.</li>
+<li>The controller signs. If the controller is away, the delegate named in the delegations schedule signs (typical practice; confirm with your controller).</li>
+</ol>
+<p><strong>Output:</strong> A signed LCR.</p>
+<h3 id="step-15-distribute-and-file">Step 15: Distribute and file</h3>
+<ol>
+<li>Send the daily LCR report to the distribution list (section 13.2) by 10:00 am.</li>
+<li>Save the evidence pack (section 13.3).</li>
+<li>Update the daily LCR log, which holds the history used for movement analysis and trend charts.</li>
+<li>Run the forward-looking projection (section 9) and send it to Treasury.</li>
+</ol>
+<p><strong>Output:</strong> The distributed report and the filed evidence.</p>
+<hr />
+<h2 id="6-the-full-example-bank-lcr-working-paper">6. The full Example Bank LCR working paper</h2>
+<p>This is the working paper for Example Bank's base position (same as the guide). All figures are A$ billions. Rebuild it yourself from the balance sheet in document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) before you read the answer.</p>
+<h3 id="61-numerator-stock-of-hqla">6.1 Numerator: stock of HQLA</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Item</th>
+<th>Balance</th>
+<th>Class</th>
+<th>Haircut</th>
+<th>Counted</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>Cash and balances with the RBA</td>
+<td>5.0</td>
+<td>HQLA1</td>
+<td>0%</td>
+<td>5.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(a), (b))</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>HQLA1</td>
+<td>0%</td>
+<td>12.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(c))</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total HQLA1</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>17.0</strong></td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td>HQLA2A and HQLA2B</td>
+<td>0.0</td>
+<td></td>
+<td></td>
+<td>0.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A paras 10, 12</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td>CLF recognised</td>
+<td>0.0</td>
+<td></td>
+<td></td>
+<td>0.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Counted stock of HQLA</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>17.0</strong></td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Market value is taken to equal the balance sheet amount in this example. "Other debt securities" of A$3.0bn (non-HQLA, over one year) are excluded: they are not within <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9 to 12</a> and they do not mature inside 30 days. No caps bind: there is no HQLA2.</p>
+<h3 id="62-denominator-cash-outflows">6.2 Denominator: cash outflows</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Category</th>
+<th>Balance</th>
+<th>Rate</th>
+<th>Outflow</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O1</td>
+<td>Retail deposits, stable</td>
+<td>25.0</td>
+<td>5%</td>
+<td>1.25</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>; Table 3)</td>
+</tr>
+<tr>
+<td>O2</td>
+<td>Retail deposits, less stable (score 0 to 2)</td>
+<td>15.0</td>
+<td>10%</td>
+<td>1.50</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p38">Att A paras 38 to 40</a>; Tables 1 and 2; Table 3)</td>
+</tr>
+<tr>
+<td>O3</td>
+<td>Retail term deposits (over 30 days, no early withdrawal)</td>
+<td>10.0</td>
+<td>0%</td>
+<td>0.00</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>)</td>
+</tr>
+<tr>
+<td>O4</td>
+<td>SME deposits (qualifying, less stable)</td>
+<td>5.0</td>
+<td>10%</td>
+<td>0.50</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>; Table 3)</td>
+</tr>
+<tr>
+<td>O5</td>
+<td>Corporate operational deposits, not fully insured</td>
+<td>4.0</td>
+<td>25%</td>
+<td>1.00</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>; Table 3)</td>
+</tr>
+<tr>
+<td>O6</td>
+<td>Corporate non-operational deposits, not fully insured</td>
+<td>6.0</td>
+<td>40%</td>
+<td>2.40</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>O7</td>
+<td>Financial institution deposits (at call)</td>
+<td>4.0</td>
+<td>100%</td>
+<td>4.00</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b))</td>
+</tr>
+<tr>
+<td>O8</td>
+<td>Wholesale debt within 30 days</td>
+<td>1.0</td>
+<td>100%</td>
+<td>1.00</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>; Table 3)</td>
+</tr>
+<tr>
+<td>O9</td>
+<td>Undrawn committed facilities, retail and SME</td>
+<td>10.0</td>
+<td>5%</td>
+<td>0.50</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>O10</td>
+<td>Undrawn committed credit facilities, corporate</td>
+<td>5.0</td>
+<td>10%</td>
+<td>0.50</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>; Table 3)</td>
+</tr>
+<tr>
+<td>O11</td>
+<td>Undrawn committed liquidity facilities, corporate</td>
+<td>1.0</td>
+<td>30%</td>
+<td>0.30</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>; Table 3)</td>
+</tr>
+<tr>
+<td>O12</td>
+<td>Net derivative cash outflows</td>
+<td>0.3</td>
+<td>100%</td>
+<td>0.30</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; footnote 5)</td>
+</tr>
+<tr>
+<td>O13</td>
+<td>Collateral for a 3-notch downgrade</td>
+<td>0.2</td>
+<td>100%</td>
+<td>0.20</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total expected cash outflows</strong></td>
+<td></td>
+<td></td>
+<td><strong>13.45</strong></td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check: 1.25 + 1.50 + 0 + 0.50 + 1.00 + 2.40 + 4.00 + 1.00 + 0.50 + 0.50 + 0.30 + 0.30 + 0.20 = 13.45.</p>
+<p><strong>Lines with no outflow today (memo).</strong> Wholesale debt 30 days to under 6 months A$3.0bn, 6 months to under 1 year A$2.0bn and 1 year or more A$15.0bn (total A$20.0bn) all fall outside the window (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>). Other liabilities A$2.0bn: reviewed, no contractual payment inside 30 days; if one existed it would take 100% as an other contractual cash outflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). Shareholders' equity A$8.0bn: no cash outflow.</p>
+<h3 id="63-denominator-cash-inflows-and-the-cap">6.3 Denominator: cash inflows and the cap</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Category</th>
+<th>Contractual inflow</th>
+<th>Rate</th>
+<th>Inflow</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>Retail and SME, fully performing, within 30 days</td>
+<td>1.0</td>
+<td>50%</td>
+<td>0.50</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>)</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Corporates, fully performing, within 30 days</td>
+<td>0.8</td>
+<td>50%</td>
+<td>0.40</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>(b))</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>Banks (loans to other banks), within 30 days</td>
+<td>1.0</td>
+<td>100%</td>
+<td>1.00</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>(a))</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total expected cash inflows</strong></td>
+<td></td>
+<td></td>
+<td><strong>1.90</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cap on inflows</td>
+<td>75% x 13.45</td>
+<td>10.0875 (10.09)</td>
+</tr>
+<tr>
+<td>Inflows counted</td>
+<td>Min {1.90 ; 10.0875}</td>
+<td>1.90 (cap not binding)</td>
+</tr>
+<tr>
+<td>Total net cash outflows</td>
+<td>13.45 - 1.90</td>
+<td><strong>11.55</strong></td>
+</tr>
+<tr>
+<td>LCR</td>
+<td>17.0 / 11.55</td>
+<td><strong>147.2%</strong></td>
+</tr>
+<tr>
+<td>Surplus over 100%</td>
+<td>17.0 - 11.55</td>
+<td><strong>5.45</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). The AUD LCR and the all-currencies LCR are both 147.2%, and Level 1 equals Level 2.</p>
+<h3 id="64-limit-comparison-and-headroom">6.4 Limit comparison and headroom</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Limit</th>
+<th>Example Bank LCR</th>
+<th>Status</th>
+<th>HQLA you could lose before reaching the limit</th>
+<th>Extra net outflow you could absorb</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory minimum (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>(a))</td>
+<td>100%</td>
+<td>147.2%</td>
+<td>Pass</td>
+<td>17.0 - 11.55 = 5.45</td>
+<td>17.0 / 1.00 - 11.55 = 5.45</td>
+</tr>
+<tr>
+<td>Board appetite (Example Bank convention)</td>
+<td>120%</td>
+<td>147.2%</td>
+<td>Pass</td>
+<td>17.0 - 1.2 x 11.55 = 3.14</td>
+<td>17.0 / 1.2 - 11.55 = 2.62</td>
+</tr>
+<tr>
+<td>Amber trigger (Example Bank convention)</td>
+<td>125%</td>
+<td>147.2%</td>
+<td>Pass</td>
+<td>17.0 - 1.25 x 11.55 = 2.56</td>
+<td>17.0 / 1.25 - 11.55 = 2.05</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both headroom columns answer slightly different questions. The first assumes only the numerator falls. The second assumes the numerator is unchanged and the denominator rises.</p>
+<h3 id="65-why-each-balance-sheet-line-sits-where-it-does">6.5 Why each balance sheet line sits where it does</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Balance sheet line</th>
+<th>In the LCR?</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and balances with the RBA 5.0</td>
+<td>Numerator</td>
+<td>HQLA1 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(a), (b))</td>
+</tr>
+<tr>
+<td>Government and semi-government securities 12.0</td>
+<td>Numerator</td>
+<td>HQLA1 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>(c))</td>
+</tr>
+<tr>
+<td>Other debt securities 3.0</td>
+<td>No</td>
+<td>Non-HQLA; over one year, so no inflow</td>
+</tr>
+<tr>
+<td>Loans to other banks 2.0</td>
+<td>Inflow</td>
+<td>A$1.0bn due within 30 days at 100%</td>
+</tr>
+<tr>
+<td>Residential mortgages 50.0, business loans 15.0, personal and business loans 8.0</td>
+<td>Inflow</td>
+<td>Only the scheduled repayments inside 30 days (retail and SME A$1.0bn, corporates A$0.8bn)</td>
+</tr>
+<tr>
+<td>Other assets 5.0</td>
+<td>No</td>
+<td>No contractual inflow</td>
+</tr>
+<tr>
+<td>Deposits</td>
+<td>Outflow</td>
+<td>O1 to O7</td>
+</tr>
+<tr>
+<td>Wholesale debt</td>
+<td>Outflow (A$1.0bn only)</td>
+<td>O8</td>
+</tr>
+<tr>
+<td>Other liabilities 2.0, equity 8.0</td>
+<td>No</td>
+<td>See memo above</td>
+</tr>
+<tr>
+<td>Off-balance sheet</td>
+<td>Outflow</td>
+<td>O9 to O13</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="7-a-day-in-the-life-of-the-daily-lcr">7. A day in the life of the daily LCR</h2>
+<p>This narrative walks through one Tuesday at Example Bank. The numbers are the base position above, so you can follow with the working paper. The times are the Example Bank convention.</p>
+<p><strong>06:45.</strong> You arrive early to check the batch. The overnight batch has finished. Technology has posted its all-clear message.</p>
+<p><strong>07:15.</strong> You open the feed arrival checklist. Nine of the ten feeds are in. The collateral feed is missing.</p>
+<p><strong>07:30.</strong> You phone collateral management. The feed was delayed by 20 minutes by a file transfer fault. It lands at 07:50. You note the time in the log.</p>
+<p><strong>07:55.</strong> You load all feeds and reconcile to the general ledger. Total assets A$100.0bn and total liabilities and equity A$100.0bn both agree to the trial balance, with zero unexplained difference.</p>
+<p><strong>08:15.</strong> Treasury sends its confirmation: A$17.0bn of eligible HQLA1, all unencumbered, held in the liquid asset pool under the treasurer's control (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>). You compare with the collateral feed: no government securities are pledged. The Exchange Settlement Account balance agrees to the RBA statement.</p>
+<p><strong>08:30.</strong> The classification run finishes. There is one exception: a new corporate deposit of A$12m has no sector code. You default it to financial institution, non-operational at 100% (document <a href="07_Data_and_Classification.html">07</a> section 10) so the calculation can continue, and log it. You ring the relationship manager.</p>
+<p><strong>08:50.</strong> The relationship manager confirms the customer is a non-financial company and the account is not operational. You correct the code at source, reverse the default, and note that the A$12m takes 40%. The base totals are unchanged because the A$12m is already inside the corporate non-operational A$6.0bn line at 40%.</p>
+<p><strong>09:00.</strong> You calculate. HQLA 17.0. Outflows 13.45. Inflows 1.90, cap 10.09 not binding. Net 11.55. LCR 147.2%. Status green: above 125%.</p>
+<p><strong>09:10.</strong> You compare with yesterday. Yesterday's LCR was 146.9% (HQLA A$16.97bn, net outflow A$11.55bn). The change is +0.3 percentage points. You trace it: HQLA is up A$0.03bn because card settlement money arrived in the Exchange Settlement Account. Every outflow and inflow line is unchanged. +0.03 / 11.55 = +0.26 points; 146.93% + 0.26 = 147.19%. The bridge adds up. You write one line of commentary.</p>
+<p><strong>09:20.</strong> You send the working paper and the checklist to the reviewer.</p>
+<p><strong>09:30.</strong> The reviewer recomputes HQLA, the four largest outflow lines (O7, O6, O2, O1), the cap and the ratio. She agrees. She notes the exception log entry and confirms the correction.</p>
+<p><strong>09:40.</strong> The controller reads the commentary, asks one question about the card settlement timing, and signs.</p>
+<p><strong>10:00.</strong> You distribute the daily LCR report to Treasury, Liquidity Risk and the distribution list.</p>
+<p><strong>10:15.</strong> You file the evidence pack, update the log and run the forward-looking projection (section 9), which shows a trough on a date six weeks out where debt rolls into the window. You send that to Treasury with a note.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Notice what happened at 07:30. You did not guess and you did not wait for someone else. You rang the owner, logged the time and carried on with the checks that could proceed. A calm day is mostly small calls like that.</p>
+</blockquote>
+<hr />
+<h2 id="8-movement-analysis-explaining-the-change-in-the-ratio">8. Movement analysis: explaining the change in the ratio</h2>
+<p>Every morning someone senior asks, "Why did it move?" Your commentary should answer before they ask. The method has six steps.</p>
+<ol>
+<li><strong>Compute the total change</strong> in the LCR in percentage points, today minus yesterday.</li>
+<li><strong>Split it into two effects</strong> using the bridge below: the effect of the numerator (HQLA) and the effect of the denominator (net cash outflows).</li>
+<li><strong>Go line by line.</strong> For each HQLA line and each outflow and inflow line, compute today minus yesterday in A$bn.</li>
+<li><strong>Add up.</strong> The line changes must sum to the change in HQLA and to the change in net outflows. If they do not, an error is hiding.</li>
+<li><strong>Find the business cause</strong> for each material line by asking Treasury, the product owner or the data owner. "Balances moved" is not a cause. "A A$2.0bn fixed-term wholesale deposit was repaid" is.</li>
+<li><strong>Write the commentary:</strong> the ratio, the change, the main drivers in order of size, whether any limit status changed, and any action.</li>
+</ol>
+<h3 id="81-the-bridge">8.1 The bridge</h3>
+<pre><code>LCR  = H / N          (H = counted HQLA, N = net cash outflows)
+
+Numerator effect   = (H1 - H0) / N0
+Denominator effect = H1 x ( 1/N1 - 1/N0 )
+Total change       = Numerator effect + Denominator effect
+</code></pre>
+<p>H0 and N0 are yesterday's figures; H1 and N1 today's. The two effects add exactly to the change in the ratio.</p>
+<h3 id="82-worked-example-1-a20bn-of-financial-institution-deposits-replaced-by-retail-term-deposits-over-30-days">8.2 Worked example 1: A$2.0bn of financial institution deposits replaced by retail term deposits over 30 days</h3>
+<p><strong>The event.</strong> A$2.0bn of at-call financial institution deposits leave. Treasury replaces them with A$2.0bn of retail term deposits with residual maturity over 30 days, no legal right to withdraw early and a materially penalising early withdrawal. Cash is neutral: money out and money in are equal, so HQLA is unchanged.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Before</th>
+<th>After</th>
+<th>Rate</th>
+<th>Outflow before</th>
+<th>Outflow after</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O3 Retail term deposits over 30 days</td>
+<td>10.0</td>
+<td>12.0</td>
+<td>0%</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>O7 Financial institution deposits</td>
+<td>4.0</td>
+<td>2.0</td>
+<td>100%</td>
+<td>4.00</td>
+<td>2.00</td>
+<td>-2.00</td>
+</tr>
+<tr>
+<td>All other outflow lines</td>
+<td></td>
+<td></td>
+<td></td>
+<td>9.45</td>
+<td>9.45</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td><strong>Total outflows</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>13.45</strong></td>
+<td><strong>11.45</strong></td>
+<td><strong>-2.00</strong></td>
+</tr>
+<tr>
+<td>Inflows (unchanged)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.90</td>
+<td>1.90</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Cap (75% of outflows)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>10.09</td>
+<td>8.59</td>
+<td>cap not binding</td>
+</tr>
+<tr>
+<td><strong>Net cash outflows</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>11.55</strong></td>
+<td><strong>9.55</strong></td>
+<td><strong>-2.00</strong></td>
+</tr>
+<tr>
+<td>HQLA</td>
+<td></td>
+<td></td>
+<td></td>
+<td>17.0</td>
+<td>17.0</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td><strong>LCR</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td>147.2%</td>
+<td><strong>178.0%</strong></td>
+<td><strong>+30.8 points</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Check: 17.0 / 9.55 = 1.7801, so 178.0%. Cap: 75% x 11.45 = 8.5875, above inflows of 1.90.</p>
+<p><strong>Bridge.</strong> Numerator effect = 0 / 11.55 = 0. Denominator effect = 17.0 x (1/9.55 - 1/11.55) = 17.0 x (0.104712 - 0.086580) = +0.308, that is +30.8 points. Total +30.8 points: 147.2% to 178.0%.</p>
+<p><strong>Commentary.</strong> "LCR rose 30.8 points to 178.0%. A$2.0bn of financial institution deposits (100% run-off) were replaced by retail term deposits over 30 days that qualify for exclusion (0% run-off, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>). HQLA is unchanged at A$17.0bn. Net outflows fell A$2.00bn to A$9.55bn."</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The 0% depends on the retail term deposits really being term. Test the legal right to withdraw and the penalty (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>) and the pool test (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>). If the new deposits had instead been treated as less stable demand deposits at 10%, outflows would be 11.65, net 9.75, and the LCR 17.0 / 9.75 = 174.4%. If they are 0% in the LCR but were in fact withdrawable, the ratio is overstated by 3.6 points.</p>
+<p><strong>From the controller:</strong> The NSFR moves too. Swapping at-call financial institution funding (0% ASF) for less stable retail term deposits (90% ASF) adds A$1.8bn of available stable funding: (79.75 + 1.80) / 58.50 = 139.4%. A funding change often helps both ratios. Document <a href="09_NSFR_Production_End_to_End.html">09</a> shows how to explain it there.</p>
+</blockquote>
+<h3 id="83-worked-example-2-a30bn-of-cash-lent-as-mortgages">8.3 Worked example 2: A$3.0bn of cash lent as mortgages</h3>
+<p><strong>The event.</strong> Example Bank lends A$3.0bn out of its Exchange Settlement Account as new standard residential mortgages. The cash leaves the HQLA stock. Mortgage repayments inside 30 days are assumed to be nil for this example (a real loan would produce a small inflow at 50% once the first repayment falls due).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Before</th>
+<th>After</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1 Cash and balances with the RBA</td>
+<td>5.0</td>
+<td>2.0</td>
+<td>-3.0</td>
+</tr>
+<tr>
+<td>H2 Government and semi-government securities</td>
+<td>12.0</td>
+<td>12.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td><strong>HQLA</strong></td>
+<td><strong>17.0</strong></td>
+<td><strong>14.0</strong></td>
+<td><strong>-3.0</strong></td>
+</tr>
+<tr>
+<td>Total outflows</td>
+<td>13.45</td>
+<td>13.45</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Total inflows</td>
+<td>1.90</td>
+<td>1.90</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td><strong>Net cash outflows</strong></td>
+<td><strong>11.55</strong></td>
+<td><strong>11.55</strong></td>
+<td><strong>0.00</strong></td>
+</tr>
+<tr>
+<td><strong>LCR</strong></td>
+<td>147.2%</td>
+<td><strong>121.2%</strong></td>
+<td><strong>-26.0 points</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Check: 14.0 / 11.55 = 1.2121, so 121.2%.</p>
+<p><strong>Bridge.</strong> Numerator effect = -3.0 / 11.55 = -0.2597, that is -26.0 points. Denominator effect = 0. Total -26.0 points.</p>
+<p><strong>Status.</strong> 121.2% is above the 120% Board appetite but below the 125% amber trigger. The limit status moves from green to <strong>amber</strong>. The headroom to the 100% minimum falls from A$5.45bn to A$2.45bn (14.0 - 11.55). The headroom to Board appetite is 14.0 - 1.2 x 11.55 = A$0.14bn.</p>
+<p><strong>Commentary.</strong> "LCR fell 26.0 points to 121.2% because A$3.0bn of RBA balances were lent as mortgages. HQLA fell to A$14.0bn; outflows and inflows are unchanged. The ratio is now below the 125% amber trigger and A$0.14bn above Board appetite. Treasury and Liquidity Risk have been told."</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The NSFR goes the other way. Cash has an RSF factor of 0% and standard mortgages 65%, so RSF rises by 3.0 x 65% = 1.95 to 60.45, and the NSFR falls to 79.75 / 60.45 = 131.9% (document <a href="09_NSFR_Production_End_to_End.html">09</a>). Lending cash to customers uses up liquidity and also uses up stable funding. Treasury should have known this before approving the lending.</p>
+</blockquote>
+<h3 id="84-a-reusable-movement-template">8.4 A reusable movement template</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Yesterday</th>
+<th>Today</th>
+<th>Change (A$bn)</th>
+<th>Cause</th>
+<th>Source of explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Treasury</td>
+</tr>
+<tr>
+<td>HQLA2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Treasury</td>
+</tr>
+<tr>
+<td>Outflow line O1 to O13 (one row each)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Product owner</td>
+</tr>
+<tr>
+<td>Inflow lines I1 to I3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Lending operations</td>
+</tr>
+<tr>
+<td>Cap</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Net outflow</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LCR, points</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Numerator effect:</td>
+<td>Denominator effect:</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Many banks require a written explanation when any line moves by more than a set A$ amount or percentage, or when the ratio moves by more than a set number of points (for example 3 points). Example Bank's thresholds are in its data quality procedure; confirm with your controller.</p>
+</blockquote>
+<hr />
+<h2 id="9-the-forward-looking-lcr">9. The forward-looking LCR</h2>
+<p>The LCR you compute each morning looks at the next 30 days from yesterday's close. It cannot see a large debt maturity five weeks out. But that maturity will sit inside the window soon, and the bank must have a reliable management information system that provides timely and forward-looking information on the liquidity position (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p40">APS 210 para 40</a>). The bank must also have a robust framework for projecting cash flows arising from assets, liabilities and off-balance sheet items over an appropriate set of time horizons (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>). The forward-looking LCR delivers both.</p>
+<h3 id="91-method">9.1 Method</h3>
+<ol>
+<li><strong>Choose the horizon.</strong> Project the next 30 to 90 days, one projection date per business day (or per week for the outer weeks).</li>
+<li><strong>For each projection date d,</strong> the window is the 30 calendar days from d+1 to d+30.</li>
+<li><strong>Build the contractual maturity ladder</strong> from the daily data: deposits maturing, wholesale debt maturing, repos, derivatives, facilities and loan repayments, by date.</li>
+<li><strong>For each date,</strong> add to the window the outflows that fall inside it and drop those that have passed. Apply the usual Att A rates.</li>
+<li><strong>Update HQLA</strong> for known events: debt repaid reduces cash; issuance and planned asset purchases increase it. Add Treasury's funding plan.</li>
+<li><strong>Compute the LCR</strong> for each projection date and compare with 125%, 120% and 100%.</li>
+<li><strong>Report the dates</strong> on which a trigger would be crossed, so Treasury can act early.</li>
+<li><strong>Refresh daily</strong>, or weekly in calm periods, and keep each projection so it can be compared with what actually happened.</li>
+</ol>
+<p>State the assumptions on the report: for example "static balance sheet except for contractual maturities; no refinancing." A projection with no assumptions is unreadable.</p>
+<h3 id="92-worked-example-debt-rolling-into-the-window">9.2 Worked example: debt rolling into the window</h3>
+<p>Example Bank's base position (HQLA 17.0, outflows 13.45, inflows 1.90) with A$3.0bn of wholesale debt maturing between 30 days and 6 months: A$1.0bn on day 35, A$1.2bn on day 50 and A$0.8bn on day 75. Assume everything else is static, nothing is refinanced and each maturity is paid from the RBA balance.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Projection date</th>
+<th>Window</th>
+<th>Debt in the window</th>
+<th>HQLA</th>
+<th>Outflows</th>
+<th>Net outflows</th>
+<th>LCR</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Day 0</td>
+<td>1 to 30</td>
+<td>none</td>
+<td>17.0</td>
+<td>13.45</td>
+<td>11.55</td>
+<td>147.2%</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>Day 5</td>
+<td>6 to 35</td>
+<td>1.0 (day 35)</td>
+<td>17.0</td>
+<td>14.45</td>
+<td>12.55</td>
+<td>135.5%</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>Day 20</td>
+<td>21 to 50</td>
+<td>1.0 and 1.2</td>
+<td>17.0</td>
+<td>15.65</td>
+<td>13.75</td>
+<td>123.6%</td>
+<td>Amber (below 125%)</td>
+</tr>
+<tr>
+<td>Day 36</td>
+<td>37 to 66</td>
+<td>1.2</td>
+<td>16.0</td>
+<td>14.65</td>
+<td>12.75</td>
+<td>125.5%</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>Day 45</td>
+<td>46 to 75</td>
+<td>1.2 and 0.8</td>
+<td>16.0</td>
+<td>15.45</td>
+<td>13.55</td>
+<td>118.1%</td>
+<td>Below Board appetite</td>
+</tr>
+<tr>
+<td>Day 51</td>
+<td>52 to 81</td>
+<td>0.8</td>
+<td>14.8</td>
+<td>14.25</td>
+<td>12.35</td>
+<td>119.8%</td>
+<td>Below Board appetite</td>
+</tr>
+<tr>
+<td>Day 76</td>
+<td>77 to 106</td>
+<td>none</td>
+<td>14.0</td>
+<td>13.45</td>
+<td>11.55</td>
+<td>121.2%</td>
+<td>Amber</td>
+</tr>
+</tbody>
+</table></div>
+<p>Workings: net outflows = outflows - 1.90 (the cap, 75% of outflows, is always above 1.90 here). Day 5: 17.0 / 12.55 = 1.3546. Day 20: 17.0 / 13.75 = 1.2364. Day 36: 16.0 / 12.75 = 1.2549. Day 45: 16.0 / 13.55 = 1.1808. Day 51: 14.8 / 12.35 = 1.1984. Day 76: 14.0 / 11.55 = 1.2121.</p>
+<p><strong>What the projection shows.</strong> The bank never falls below 100%, but it crosses the amber trigger around day 20 and Board appetite around day 45, purely because debt matures and is paid from liquid assets. Nothing is wrong today. The risk is the plan.</p>
+<p><strong>Action.</strong> Treasury issues A$2.0bn of debt with a term beyond 30 days before day 36 and holds the proceeds as RBA balances. HQLA at day 45 becomes 17.0 + 2.0 - 1.0 (the day-35 maturity paid) = 18.0, outflows still 15.45, net 13.55, LCR = 18.0 / 13.55 = 132.8%. At day 76 HQLA is 18.0 - 1.2 - 0.8 = 16.0, so LCR = 16.0 / 11.55 = 138.5%.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Look again at the day-45 row. A forward projection run six weeks earlier would have shown the dip while there was plenty of time to arrange funding. The incident scenario in document <a href="12_Controls_Incidents_and_Escalation.html">12</a> shows what happens when nobody did.</p>
+</blockquote>
+<h3 id="93-spotting-debt-rolling-in">9.3 Spotting debt rolling in</h3>
+<p>Add these checks to the daily routine:</p>
+<ul>
+<li>Sort the wholesale debt and term deposit ladder by maturity date, and flag any amount over a set size in the 31 to 90 day buckets.</li>
+<li>For each flagged item, check whether Treasury's funding plan replaces it.</li>
+<li>Check investor option dates. A put exercisable by the investor inside the window counts in full, even if the final maturity is years away (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>).</li>
+<li>Watch debt that moves from over 30 days to under 30 days: the first day it is inside the window, the outflow arrives and the LCR drops overnight.</li>
+<li>Compare each projection with the previous one, and say what changed.</li>
+</ul>
+<hr />
+<h2 id="10-controls">10. Controls</h2>
+<p>A control is a check that prevents or detects an error. Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> sets out the full control framework; the daily LCR controls are below. APS 210 expects senior management to ensure adequate internal controls over the integrity of liquidity risk management processes (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>(d)).</p>
+<h3 id="101-control-table">10.1 Control table</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Control</th>
+<th>Type</th>
+<th>When</th>
+<th>Owner</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Feed completeness: record counts and totals agree to the source</td>
+<td>Preventive</td>
+<td>Daily, step 1</td>
+<td>Preparer</td>
+<td>Feed checklist</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Reconciliation of feeds to the general ledger (assets, and liabilities and equity)</td>
+<td>Detective</td>
+<td>Daily, step 2</td>
+<td>Preparer</td>
+<td>Reconciliation report</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Validity checks (domains, dates, signs, flags)</td>
+<td>Preventive</td>
+<td>Daily, step 3</td>
+<td>Preparer</td>
+<td>Check log</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Exceptions log reviewed; defaults applied conservatively</td>
+<td>Detective</td>
+<td>Daily, step 3</td>
+<td>Preparer and reviewer</td>
+<td>Exceptions log</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Market values tied to the independent price source; ESA tied to the RBA statement</td>
+<td>Detective</td>
+<td>Daily, step 4</td>
+<td>Preparer</td>
+<td>Price and RBA reconciliation</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Treasury written confirmation of eligibility, control and encumbrance</td>
+<td>Preventive</td>
+<td>Daily, step 5</td>
+<td>Treasury</td>
+<td>Confirmation message</td>
+</tr>
+<tr>
+<td>C7</td>
+<td>Encumbrance compared between Treasury and collateral systems</td>
+<td>Detective</td>
+<td>Daily, step 5</td>
+<td>Preparer</td>
+<td>Comparison</td>
+</tr>
+<tr>
+<td>C8</td>
+<td>Cap and haircut recomputed independently</td>
+<td>Detective</td>
+<td>Daily, step 13</td>
+<td>Reviewer</td>
+<td>Working paper</td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Inflow cap tested every day</td>
+<td>Detective</td>
+<td>Daily, step 9</td>
+<td>Preparer</td>
+<td>Working paper</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>AUD LCR equals all-currencies LCR for Example Bank</td>
+<td>Detective</td>
+<td>Daily, step 10</td>
+<td>Preparer</td>
+<td>Working paper</td>
+</tr>
+<tr>
+<td>C11</td>
+<td>Movement bridge sums to the total change</td>
+<td>Detective</td>
+<td>Daily, step 12</td>
+<td>Preparer</td>
+<td>Commentary</td>
+</tr>
+<tr>
+<td>C12</td>
+<td>Tolerance check: LCR moved more than the set number of points, or any line more than the set A$ amount</td>
+<td>Detective</td>
+<td>Daily, step 12</td>
+<td>Preparer</td>
+<td>Commentary</td>
+</tr>
+<tr>
+<td>C13</td>
+<td>Four-eyes: independent review</td>
+<td>Detective</td>
+<td>Daily, step 13</td>
+<td>Reviewer</td>
+<td>Signed checklist</td>
+</tr>
+<tr>
+<td>C14</td>
+<td>Controller sign-off</td>
+<td>Detective</td>
+<td>Daily, step 14</td>
+<td>Controller</td>
+<td>Sign-off record</td>
+</tr>
+<tr>
+<td>C15</td>
+<td>Spreadsheet or model change control and locked formulas</td>
+<td>Preventive</td>
+<td>On change</td>
+<td>Liquidity Reporting</td>
+<td>Change log</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="102-reconciliations-in-detail">10.2 Reconciliations in detail</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Reconciliation</th>
+<th>From</th>
+<th>To</th>
+<th>Acceptable difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Staging to source</td>
+<td>Feed totals</td>
+<td>Control totals in the footer</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Assets</td>
+<td>Classified dataset</td>
+<td>General ledger</td>
+<td>None unexplained</td>
+</tr>
+<tr>
+<td>Liabilities and equity</td>
+<td>Classified dataset</td>
+<td>General ledger</td>
+<td>None unexplained</td>
+</tr>
+<tr>
+<td>HQLA to Treasury</td>
+<td>Counted stock</td>
+<td>Treasury position report</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ESA</td>
+<td>Cash and RBA line</td>
+<td>RBA statement</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Outflow lines to sub-ledgers</td>
+<td>Each deposit line</td>
+<td>Deposit sub-ledger totals by product</td>
+<td>None unexplained</td>
+</tr>
+<tr>
+<td>Inflow lines to schedules</td>
+<td>Inflows</td>
+<td>Loan repayment schedule totals</td>
+<td>None unexplained</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="103-tolerance-checks">10.3 Tolerance checks</h3>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The following tolerances are common; Example Bank's are set in its procedure. Confirm with your controller.</p>
+</blockquote>
+<ul>
+<li><strong>Ratio movement:</strong> explain any day-on-day change greater than 3 percentage points.</li>
+<li><strong>Line movement:</strong> explain any outflow line or HQLA line that moves by more than 5% or A$0.2bn, whichever is smaller.</li>
+<li><strong>Reasonableness:</strong> the LCR should stay between recent highs and lows; a number far outside history is guilty until proved innocent.</li>
+<li><strong>Mix:</strong> the share of deposits by category should not shift unless there is a known cause.</li>
+</ul>
+<h3 id="104-the-four-eyes-rule">10.4 The four-eyes rule</h3>
+<p>The preparer cannot review. The reviewer cannot sign. The controller cannot be the preparer. Each person signs with date and time. A review that was not documented did not happen.</p>
+<hr />
+<h2 id="11-common-errors">11. Common errors</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Error</th>
+<th>Effect</th>
+<th>How to avoid it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Counting a pledged security in HQLA</td>
+<td>Overstates HQLA</td>
+<td>Compare the securities list with the collateral feed (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Using accounting value instead of market value</td>
+<td>HQLA misstated</td>
+<td>Take closing market prices (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Counting HQLA that Treasury does not control, or is held to cover costs</td>
+<td>Overstates HQLA</td>
+<td>Obtain Treasury's written confirmation (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Keeping an asset that became ineligible beyond 30 days</td>
+<td>Overstates HQLA</td>
+<td>Record the date (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Counting AUD assets as HQLA2</td>
+<td>Overstates HQLA</td>
+<td>AUD HQLA is HQLA1 only</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Forgetting to apply the 40% and 15% caps</td>
+<td>Overstates HQLA2</td>
+<td>Recompute with the cap formulas (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8</a>)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Classifying a super fund or other trustee as a corporate</td>
+<td>40% instead of 100%</td>
+<td>Check against <a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>(b)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Treating an intermediated deposit as retail without testing all four conditions</td>
+<td>Understates outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Applying the stable rate without FCS cover or a relationship</td>
+<td>Understates outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Forgetting the scorecard, so a high-scoring account gets 10%</td>
+<td>Understates outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Using a term deposit exclusion when depositors can withdraw</td>
+<td>Understates outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A paras 41 and 42</a>)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Not splitting operational balances from excess</td>
+<td>Understates outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p50">Att A para 50</a>)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Classifying a general working capital facility as a liquidity facility, or the reverse</td>
+<td>Wrong rate</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Treating a hedge fund facility as a credit facility</td>
+<td>100% instead of 10% or 40%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Netting derivatives without a valid master netting agreement</td>
+<td>Understates outflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Counting an inflow from a non-performing or overdue loan</td>
+<td>Overstates inflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Counting an inflow on an asset that is also in HQLA</td>
+<td>Double count</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>)</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Missing the 75% cap</td>
+<td>Overstates inflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>)</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Using the contractual maturity of an asset rather than the latest possible date</td>
+<td>Overstates inflow</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A para 60</a>)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Counting the next day's rather than the previous day's close</td>
+<td>Wrong reporting date</td>
+<td>Check the date field in each feed</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Stale prices or a stale feed</td>
+<td>Wrong HQLA or flows</td>
+<td>Check the feed timestamp</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Reporting a rounded ratio without the underlying numbers</td>
+<td>Hard to review</td>
+<td>Keep A$bn to at least two decimals in the working paper</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Overwriting a formula in the spreadsheet</td>
+<td>Hidden error</td>
+<td>Lock cells and use change control</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="12-what-to-do-when-the-lcr-is-below-a-limit">12. What to do when the LCR is below a limit</h2>
+<p>The three levels use Example Bank conventions except the regulatory minimum.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Condition</th>
+<th>Immediate steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amber</td>
+<td>LCR below 125% (management trigger) but at or above 120%</td>
+<td>Tell the controller before distribution. Distribute with the trigger flagged. Controller informs the head of Treasury and Liquidity Risk the same morning. Treasury states what it will do. Include in the next ALCO pack</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>LCR below 120% (Board appetite) but at or above 100%</td>
+<td>Controller informs the head of Treasury, Liquidity Risk, and the executive responsible for Finance immediately. Convene ALCO or its chair. Agree an action plan with a date. Tell the Board Risk Committee in line with the policy. A breach of a limit requires a plan of action to review the exposure and reduce it to within the limit (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>). The Board and senior management must be informed immediately of material and/or persistent breaches of limits and a significant decline in the cushion of unencumbered liquid assets (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>)</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>LCR below 100%, or circumstances that may result in a breach</td>
+<td>Controller informs the head of Treasury, Liquidity Risk and the most senior executives immediately. <strong>Inform APRA immediately</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>). Consider the contingency funding plan (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>). Follow document <a href="12_Controls_Incidents_and_Escalation.html">12</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The standard says an ADI "must inform APRA immediately in the event of an actual breach of its LCR requirement or if it becomes aware of circumstances that may result in a breach" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>). A forward-looking projection that shows a future breach is exactly such a circumstance. <a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a> also says that if an ADI experiences a severe liquidity stress, it must notify APRA immediately and advise the action being taken. Notifications are made by the right people, not by the preparer; but you must make sure the right people know straight away. Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> lists the notifications; document <a href="12_Controls_Incidents_and_Escalation.html">12</a> gives the incident procedure with times and messages.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Never adjust a number to avoid a trigger. If you think a classification is wrong, say so and fix it with the proper change process (document <a href="07_Data_and_Classification.html">07</a> section 11).</p>
+</blockquote>
+<p>Typical remedies Treasury considers: raising term funding beyond 30 days and holding the proceeds as RBA balances; buying HQLA; extending or replacing maturing debt; slowing lending; changing the deposit mix. These are Treasury's decisions, not yours.</p>
+<hr />
+<h2 id="13-review-checklist-sign-off-and-distribution">13. Review checklist, sign-off and distribution</h2>
+<h3 id="131-reviewers-checklist">13.1 Reviewer's checklist</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Done</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>All feeds arrived and completeness checks passed</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Reconciliation to the general ledger clean (assets, and liabilities and equity)</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Exceptions log read; any default reversed or reported</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Treasury eligibility confirmation received; operational requirements met (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 and 23</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>No pledged asset in the stock; ineligible assets within the 30-day grace period (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>HQLA tied to market values and the RBA statement</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Haircuts and caps recomputed (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8, 10, 12</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>The four largest outflow lines recomputed</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Operational deposits split from excess; facilities by purpose and customer</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Inflows only from performing exposures; no double count (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A paras 31 and 54</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>75% cap tested (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>AUD LCR equals all-currencies LCR</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Limit status correct; escalation made if needed</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Movement bridge sums; commentary clear</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Forward-looking projection run and any trigger date flagged</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>Working paper locked and filed</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="132-distribution-example-bank-convention">13.2 Distribution (Example Bank convention)</h3>
+<p>Treasury (head of Treasury and the liquid asset desk), Liquidity Risk, the Chief Financial Officer, the Chief Risk Officer, and the ALCO secretary. Confirm the actual list with your controller.</p>
+<h3 id="133-evidence-kept">13.3 Evidence kept</h3>
+<ul>
+<li>Feed checklist and receipts.</li>
+<li>Reconciliation reports and data quality check log.</li>
+<li>Classification exceptions and the defaults applied.</li>
+<li>Treasury's eligibility confirmation.</li>
+<li>The working paper (all lines and references), the cap calculation and the ratio.</li>
+<li>The commentary and movement bridge.</li>
+<li>Checklist with reviewer and controller sign-off and times.</li>
+<li>Distribution record.</li>
+<li>Forward-looking projection.</li>
+</ul>
+<p>The retention period is set by Example Bank's records policy; confirm with your controller.</p>
+<h3 id="134-sign-off-block">13.4 Sign-off block</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Name</th>
+<th>Date and time</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Preparer</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Controller</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="14-month-end-differences-and-the-link-to-the-apra-return">14. Month-end differences and the link to the APRA return</h2>
+<p>The daily LCR on the last business day of the month is the starting point for the figures in the return to APRA, but month-end is different in several ways.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Daily LCR</th>
+<th>Month-end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source data</td>
+<td>End-of-day feeds, which may not include late accounting entries</td>
+<td>Final ledger after month-end close, including accruals and adjustments</td>
+</tr>
+<tr>
+<td>Reconciliation</td>
+<td>To the trial balance</td>
+<td>To the final ledger and to financial reporting</td>
+</tr>
+<tr>
+<td>Reporting date</td>
+<td>Previous business day</td>
+<td>The calendar month-end date, even if it is not a business day; confirm the treatment with your controller</td>
+</tr>
+<tr>
+<td>Detail</td>
+<td>Aggregated lines</td>
+<td>Detail by the return's categories</td>
+</tr>
+<tr>
+<td>Basis</td>
+<td>One basis for Example Bank</td>
+<td>Level 1 and Level 2, AUD and all currencies as required by the return</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Four-eyes by 10:00</td>
+<td>Extended review, analytical review against last period, and attestation</td>
+</tr>
+<tr>
+<td>Timing</td>
+<td>By 10:00 next business day</td>
+<td>By the due date set in the reporting standard; see document <a href="11_APRA_Returns_and_Disclosures.html">11</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>Any difference between the daily LCR for the month-end date and the figure in the return must be explained and recorded. Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure) explains the forms, the due dates, the submission process and what to do if an error is found after submission. Document <a href="09_NSFR_Production_End_to_End.html">09</a> covers the monthly NSFR.</p>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Example Bank has HQLA of A$17.0bn, outflows of A$13.45bn and inflows of A$1.90bn. Calculate the LCR, the inflow cap and the surplus.</li>
+</ol>
+<p><strong>Answer:</strong> Cap = 75% x 13.45 = 10.0875. Inflows counted = min(1.90 ; 10.0875) = 1.90. Net = 13.45 - 1.90 = 11.55. LCR = 17.0 / 11.55 = 147.2%. Surplus = 17.0 - 11.55 = 5.45.</p>
+<ol start="2">
+<li>A bank has outflows of 100 and inflows of 90. What are net outflows?</li>
+</ol>
+<p><strong>Answer:</strong> Cap = 75 (75% x 100). Inflows counted = min(90 ; 75) = 75. Net = 100 - 75 = 25 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>).</p>
+<ol start="3">
+<li>Example Bank replaces A$1.0bn of at-call financial institution deposits with retail term deposits over 30 days that qualify for exclusion. What is the new LCR?</li>
+</ol>
+<p><strong>Answer:</strong> Outflows fall by 1.0 x 100% = 1.0, to 12.45. Net = 12.45 - 1.90 = 10.55. LCR = 17.0 / 10.55 = 161.1%. (Cap = 9.34, not binding.)</p>
+<ol start="4">
+<li>A bank has HQLA1 of A$90 and HQLA2A with a market value of A$70. How much HQLA counts? What if the market value were A$100?</li>
+</ol>
+<p><strong>Answer:</strong> (a) After a 15% haircut, HQLA2A = 59.5. Cap = 2/3 x 90 = 60. 59.5 is below 60, so the total is 90 + 59.5 = 149.5. (b) At A$100: 85 after haircut, which exceeds 60, so only 60 counts: 90 + 60 = 150. (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6, 7 and 10</a>.)</p>
+<ol start="5">
+<li>Example Bank's ESA balance falls by A$0.5bn to pay a supplier. Nothing else changes. What is the new LCR and the change?</li>
+</ol>
+<p><strong>Answer:</strong> HQLA = 16.5. LCR = 16.5 / 11.55 = 142.9%. Change = -0.5 / 11.55 = -4.3 points (147.2% to 142.9%). It is still above the 125% trigger. A 4.3-point move exceeds the usual tolerance, so explain it.</p>
+<ol start="6">
+<li>By how much can Example Bank's HQLA fall, with nothing else changing, before it reaches the 125% amber trigger?</li>
+</ol>
+<p><strong>Answer:</strong> HQLA at 125% = 1.25 x 11.55 = 14.4375. The fall that can be absorbed = 17.0 - 14.4375 = A$2.56bn.</p>
+<ol start="7">
+<li>A bond issue of A$1.0bn matures on day 35, and nothing else matures. On which projection date does it first enter the LCR window, and what is the projected LCR on that date? (Base position.)</li>
+</ol>
+<p><strong>Answer:</strong> The window on date d covers days d+1 to d+30. It includes day 35 first when d = 5. Outflows = 13.45 + 1.0 = 14.45. Net = 12.55. LCR = 17.0 / 12.55 = 135.5%.</p>
+<ol start="8">
+<li>Why can a reverse repo bond in the HQLA stock not also produce an inflow when it matures?</li>
+</ol>
+<p><strong>Answer:</strong> The ADI must not double count (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>). If the asset is in the stock of HQLA, its associated cash inflows cannot also be counted. Also, reverse repos secured by HQLA1 are assumed to be rolled over and give 0% inflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A para 55</a>).</p>
+<ol start="9">
+<li>The LCR is 98% on the morning's calculation. What do you do?</li>
+</ol>
+<p><strong>Answer:</strong> Tell the controller immediately, before distribution. The Example Bank has breached the 100% minimum (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>(a)), so APRA must be informed immediately (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>), and the contingency funding plan considered (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>). Follow document <a href="12_Controls_Incidents_and_Escalation.html">12</a>. Do not change the number.</p>
+<ol start="10">
+<li>
+<p>A$12m of a customer's deposit has no customer type. What do you do at 08:30, and why?</p>
+<p><strong>Answer:</strong> Apply the conservative default (financial institution, non-operational, 100% outflow), log the exception, and ask the data owner. Fix at source, reverse the default and record the effect. Never leave the field blank or assume the favourable answer (document <a href="07_Data_and_Classification.html">07</a> section 10).</p>
+</li>
+</ol>
+<hr />
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>The LCR is counted HQLA divided by net cash outflows over the next 30 days; the minimum is 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p3">Att A para 3</a>).</li>
+<li>Net outflows = outflows minus the lower of inflows and 75% of outflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). Test the cap daily.</li>
+<li>Example Bank: HQLA 17.0, outflows 13.45, inflows 1.90, net 11.55, LCR 147.2%, surplus 5.45. Learn these numbers.</li>
+<li>The numerator is market value, unencumbered, controlled by Treasury, and has no double counting (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22, 23, 31</a>).</li>
+<li>Only fully performing contractual inflows count, at the latest possible date (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A paras 54 and 60</a>).</li>
+<li>Explain every move: total change = numerator effect + denominator effect, line by line.</li>
+<li>Run the forward-looking LCR. Debt rolling into the window is the most predictable cause of a fall in the ratio.</li>
+<li>Four-eyes always: prepare, review, sign. Never adjust a number to meet a limit.</li>
+<li>Below 125% amber, below 120% Board appetite, below 100%: tell people immediately, and for 100% inform APRA immediately (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>).</li>
+</ul></main><footer><a href="07_Data_and_Classification.html">&#9664; 07 Data: where the numbers come from and how each balance is classified</a><a href="09_NSFR_Production_End_to_End.html">09 Producing the NSFR, end to end &#9654;</a></footer></body></html>

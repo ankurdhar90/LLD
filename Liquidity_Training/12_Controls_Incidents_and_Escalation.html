@@ -1,0 +1,1795 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>12 Controls, incidents and escalation | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="11_APRA_Returns_and_Disclosures.html" title="11 Returns to APRA and public disclosure">&#9664; 11</a><span class="t">12 Controls, incidents and escalation</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#1-why-this-document-exists">1. Why this document exists</option><option value="#2-what-a-control-is-from-the-beginning">2. What a control is, from the beginning</option><option value="#3-the-control-framework-over-liquidity-numbers">3. The control framework over liquidity numbers</option><option value="#4-the-control-matrix">4. The control matrix</option><option value="#5-how-incidents-work">5. How incidents work</option><option value="#6-incident-procedures">6. Incident procedures</option><option value="#7-the-escalation-ladder">7. The escalation ladder</option><option value="#8-activating-the-contingency-funding-plan-aps-210-paras-47-to-51">8. Activating the contingency funding plan (APS 210 paras 47 to 51)</option><option value="#9-exceptional-liquidity-assistance-aps-210-para-70">9. Exceptional Liquidity Assistance (APS 210 para 70)</option><option value="#10-a-specimen-incident-report">10. A specimen incident report</option><option value="#11-the-lessons-learned-process">11. The lessons-learned process</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option></select><a href="15_APS210_Paragraph_Index.html">Index</a><a href="13_Job_Aids_and_Checklists.html" title="13 Job aids and checklists">13 &#9654;</a></header>
+<main><h1 id="12-controls-incidents-and-escalation">12 Controls, incidents and escalation</h1>
+<p><strong>Purpose:</strong> To teach you what a control is, how the checks around Example Bank's liquidity numbers fit together, and exactly what to do, who to tell and how fast when something goes wrong, from a small data error to a breach of the 100% liquidity coverage ratio (LCR) minimum.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>explain what a control is and tell a preventive control from a detective one;</li>
+<li>name the controls that protect a liquidity number from the source data to the Board pack, and say who owns each;</li>
+<li>recognise each type of incident in this document and follow its procedure: trigger, immediate steps, who to tell, deadlines and evidence;</li>
+<li>climb the escalation ladder at the right speed, including when the contingency funding plan and Exceptional Liquidity Assistance come into play;</li>
+<li>write a clear incident report and run a lessons-learned review afterwards.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero), document <a href="03_Your_Role_and_the_Team.html">03</a> (Your role, the team and the working year), document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR, end to end) and document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR, end to end). Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure) is the companion for anything that touches a return.</p>
+<p><strong>Time:</strong> About 3 hours to read, plus 1 hour to work through the case and the questions. Keep it open on the day you first meet a real incident.</p>
+<hr />
+<h2 id="1-why-this-document-exists">1. Why this document exists</h2>
+<p>Most days nothing goes wrong. The data arrives, you produce the daily LCR, a second person checks it, the controller signs, and the number goes to Treasury, Liquidity Risk and the committee papers. That is the good day.</p>
+<p>This document is for the other days. Liquidity numbers are different from most numbers in a bank because they are used to make decisions in hours, not weeks. If the daily LCR says 94.7% and the real figure is 114.7%, the bank may rush to raise funding it does not need. If it says 115% and the real figure is 94.7%, the bank may be in breach of its licence conditions and not know it.</p>
+<p>The Australian Prudential Regulation Authority (APRA) is the bank's prudential regulator. Its standard for liquidity, Prudential Standard APS 210 Liquidity (APS 210), says an authorised deposit-taking institution (ADI) must have "adequate internal controls to ensure the integrity of its liquidity risk management processes" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>). An ADI is a bank, building society or credit union that is allowed to take deposits. Example Bank is one. "Integrity" here means the numbers are complete, accurate and cannot be quietly changed.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> I judge a new analyst by what they do in the first thirty minutes of a bad day, not by how they do on a good one. Tell me early, tell me the facts, keep your evidence, and never touch a number to make a problem go away. Nobody is marked down for raising a flag that turns out to be nothing.</p>
+</blockquote>
+<hr />
+<h2 id="2-what-a-control-is-from-the-beginning">2. What a control is, from the beginning</h2>
+<h3 id="21-an-everyday-picture">2.1 An everyday picture</h3>
+<p>Think of a shop that takes cash. The owner worries about two things: that the till might be short, and that the takings written in the book might be wrong. So the owner puts rules around the cash.</p>
+<ul>
+<li>The till is locked and only the owner and one staff member have the key. That rule stops theft before it happens.</li>
+<li>Every evening a second person counts the till and compares it with the sales report. That rule finds a problem after it has happened.</li>
+<li>The owner keeps the count sheets in a folder. That folder is proof that the checks were done.</li>
+</ul>
+<p>Each of those rules is a <strong>control</strong>: a rule, step or check that reduces the chance of something going wrong, or catches it quickly if it does. Notice that each control has a purpose (what it protects), an owner (who does it), a frequency (how often) and evidence (what proves it happened). Every control in this document has those four things.</p>
+<h3 id="22-preventive-and-detective-controls">2.2 Preventive and detective controls</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it does</th>
+<th>Everyday example</th>
+<th>Liquidity example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preventive</strong></td>
+<td>Stops the error or breach happening in the first place</td>
+<td>A lock on the till</td>
+<td>A drop-down list so a deposit can only be tagged with a valid customer type; access rights that stop you editing the rate table</td>
+</tr>
+<tr>
+<td><strong>Detective</strong></td>
+<td>Finds the error or breach after it has happened, so it can be fixed</td>
+<td>Counting the till at close</td>
+<td>A check that total assets in the LCR file equal the general ledger; a daily movement check that flags a ratio change of more than 5 points</td>
+</tr>
+<tr>
+<td><strong>Corrective</strong></td>
+<td>Fixes the problem and stops it recurring</td>
+<td>Re-keying the sale and training the cashier</td>
+<td>Correcting the data, re-running the LCR, re-issuing it and changing the feed so the fault cannot recur</td>
+</tr>
+</tbody>
+</table></div>
+<p>Good frameworks use all three, but they lean on preventive controls where the cost of an error is high, and on detective controls where prevention is impractical.</p>
+<h3 id="23-manual-and-automated-controls">2.3 Manual and automated controls</h3>
+<p>An <strong>automated control</strong> is done by the system every time, for example a validation rule that rejects a record with a missing maturity date. A <strong>manual control</strong> is done by a person, for example you tick a reconciliation. Automated controls are more reliable but only as good as their design. Manual controls are flexible but depend on attention, which is why Example Bank uses the four-eyes rule: one person prepares, a second person reviews, and the controller signs (Example Bank convention).</p>
+<h3 id="24-inherent-risk-controls-and-residual-risk">2.4 Inherent risk, controls and residual risk</h3>
+<p>The risk that exists before any control is the <strong>inherent risk</strong>. The risk that is left after the controls work is the <strong>residual risk</strong>. A control matrix (section 4 below) lists each risk next to the control that reduces it, so a reviewer can see at a glance whether any risk is left uncovered.</p>
+<h3 id="25-the-three-lines-of-defence">2.5 The three lines of defence</h3>
+<p>Banks organise controls in three layers. Document <a href="03_Your_Role_and_the_Team.html">03</a> explains them in full. In short:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Who</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First line</td>
+<td>The people who do the work and own the risk: Treasury (runs the liquid asset portfolio and funding) and Liquidity Reporting (produces the numbers)</td>
+<td>Run the controls day to day</td>
+</tr>
+<tr>
+<td>Second line</td>
+<td>Liquidity Risk (independent oversight) and Compliance</td>
+<td>Set the standards, challenge, monitor and report on the first line</td>
+</tr>
+<tr>
+<td>Third line</td>
+<td>Internal audit</td>
+<td>Independently test whether the first and second lines are working, and report to the Audit Committee and Board</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="3-the-control-framework-over-liquidity-numbers">3. The control framework over liquidity numbers</h2>
+<p>The standard does not give a list of controls for the numbers. It sets principles and leaves the design to the bank. The principles that matter most are these:</p>
+<ul>
+<li>The ADI must "have a robust framework to manage its liquidity risk" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p11">APS 210 para 11</a>).</li>
+<li>The liquidity risk management framework must include "operating standards (e.g. in the form of policies, procedures and controls) for identifying, measuring, monitoring and controlling its liquidity risk" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>).</li>
+<li>Senior management must "ensure that the ADI has adequate internal controls to ensure the integrity of its liquidity risk management processes" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>).</li>
+<li>Senior management must set out reporting criteria: the scope, manner and frequency of reports, and who prepares them (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>).</li>
+<li>The ADI must have "a reliable management information system" giving timely and forward-looking information (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p40">APS 210 para 40</a>).</li>
+<li>The oversight function must be "operationally independent" and able to challenge Treasury (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>).</li>
+<li>The framework must be reviewed at least annually (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>) and on an ongoing basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p35">APS 210 para 35</a>).</li>
+</ul>
+<p>Example Bank turns these into eight families of control. Work through them in the order the data flows.</p>
+<h3 id="31-data-controls">3.1 Data controls</h3>
+<p>The LCR and the net stable funding ratio (NSFR) are only as good as the data in them. Document <a href="07_Data_and_Classification.html">07</a> (Data) lists the fields. The control families are:</p>
+<ol>
+<li><strong>Completeness:</strong> every account and trade that exists is in the file. Check: record counts and balances in the extract agree to the source system.</li>
+<li><strong>Validity:</strong> every field holds a legal value. Check: automated rules reject blank maturity dates, negative balances where they should not exist, unknown counterparty types, and dates in the wrong order.</li>
+<li><strong>Reconciliation to the general ledger (GL):</strong> the GL is the bank's official accounting record. Total assets and total liabilities and equity in the liquidity file must agree to the GL within a set tolerance, and any difference must be explained (Example Bank convention: zero unexplained difference).</li>
+<li><strong>Timeliness:</strong> the extract arrives by the cut-off. Check: a feed-arrival log, and a rule that a late feed is escalated rather than quietly replaced by yesterday's file.</li>
+<li><strong>Movement checks:</strong> each product's balance is compared with the previous day. A large unexplained move is investigated before the number is used.</li>
+<li><strong>Missing attributes:</strong> if a field the classification needs is blank, you take the conservative category and record it, you do not guess a favourable one (see document <a href="07_Data_and_Classification.html">07</a>).</li>
+</ol>
+<blockquote class="q-typical"><p><strong>Typical practice; confirm with your controller:</strong> Example Bank's tolerances (for instance, investigate any product balance that moves by more than 5% in a day) are internal settings, not APS 210 rules. Ask your controller for the current table.</p>
+</blockquote>
+<h3 id="32-calculation-controls">3.2 Calculation controls</h3>
+<ul>
+<li><strong>Rate tables are locked.</strong> The run-off, inflow, haircut, available stable funding (ASF) and required stable funding (RSF) factors are loaded from a controlled table that mirrors the standard. Only the change-control process (section 3.5) can alter it.</li>
+<li><strong>Independent recomputation.</strong> The reviewer re-performs a sample of lines by hand (for example the three largest outflow lines) and checks the totals.</li>
+<li><strong>Cap checks.</strong> The system must apply the 75% cap on inflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>) and the HQLA2 caps (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>). The reviewer checks the cap was tested and whether it bound. HQLA stands for high-quality liquid assets, the assets that count towards the LCR stock.</li>
+<li><strong>No double counting.</strong> An asset in the HQLA stock cannot also produce an inflow (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>). The reviewer checks that securities financing transactions are not counted in both places.</li>
+<li><strong>Cross-foot checks.</strong> Line totals add to column totals; the ratio recomputed on a calculator from the printed numerators and denominators matches the reported ratio.</li>
+<li><strong>Reasonableness checks.</strong> Ratio, HQLA and net outflow are compared with the last 30 days and with the forward projection. Anything outside the expected band needs a written explanation.</li>
+</ul>
+<h3 id="33-model-and-spreadsheet-controls">3.3 Model and spreadsheet controls</h3>
+<p>Some of the calculation may sit in a purpose-built system, but some will sit in spreadsheets or small scripts, called <strong>end-user computing (EUC)</strong> tools. They are risky because anyone can change a formula without leaving a trace. Typical controls:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it prevents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Register of every spreadsheet and script used in a liquidity output, with an owner and a risk rating</td>
+<td>An unknown spreadsheet quietly feeding a regulatory number</td>
+</tr>
+<tr>
+<td>Locked formula cells, protected sheets and a locked rate-table tab</td>
+<td>Accidental overwriting</td>
+</tr>
+<tr>
+<td>Version control: file name carries date and version; one master copy; old versions archived read-only</td>
+<td>Working from the wrong copy</td>
+</tr>
+<tr>
+<td>Independent review of the formulas whenever the file is changed, and at least once a year</td>
+<td>A formula error that lasts for months</td>
+</tr>
+<tr>
+<td>Test pack: a fixed set of inputs with a known answer (Example Bank's base position gives 147.2%; the practice case gives 115.0%) that is re-run after every change</td>
+<td>A change that breaks the calculation silently</td>
+</tr>
+<tr>
+<td>No hard-coded numbers in formulas; no manual overwrites of calculated cells without a logged reason</td>
+<td>Hidden plugs</td>
+</tr>
+<tr>
+<td>Backup and recovery tested</td>
+<td>Loss of the file on a reporting day</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> An "adjustment" typed over a calculated cell is the most dangerous thing in a liquidity file. If a number looks wrong, fix the source or the rule, record why, and have it reviewed. Never overwrite the result to make a ratio look right.</p>
+</blockquote>
+<h3 id="34-access-controls">3.4 Access controls</h3>
+<ul>
+<li><strong>Least privilege:</strong> you can see what you need and change only what your role requires. Preparers can run the calculation but cannot change the rate table. Reviewers can see everything but do not prepare.</li>
+<li><strong>Segregation of duties:</strong> the person who prepares a number is not the person who reviews or signs it.</li>
+<li><strong>Joiner, mover, leaver:</strong> access is granted when you join, changed when your role changes and removed the day you leave; the list is reviewed at least every six months (Example Bank convention).</li>
+<li><strong>Logging:</strong> the system records who loaded, changed and approved what and when, and the log is kept.</li>
+</ul>
+<h3 id="35-change-control">3.5 Change control</h3>
+<p>A <strong>change</strong> is any modification to something that produces or classifies a number: a rate, a mapping, a formula, a data feed, a system release.</p>
+<ol>
+<li>The requester writes the change down: what, why, which paragraph of the standard, and what numbers will move.</li>
+<li>The change is <strong>tested</strong> in a non-production copy using the test pack, and the impact on the base and practice cases is recorded.</li>
+<li>A person other than the builder <strong>reviews</strong> the change.</li>
+<li>The controller (and, for a change in classification, Liquidity Risk) <strong>approves</strong> it.</li>
+<li>The change goes live on a planned date, not on a reporting morning.</li>
+<li>The change log records the version, the date and the approver. The old version is archived.</li>
+</ol>
+<p>An <strong>emergency change</strong> (for example a rate error found live) follows the same steps in compressed form, with a retrospective review within a set time (Example Bank convention: two business days).</p>
+<h3 id="36-review-and-sign-off">3.6 Review and sign-off</h3>
+<p>The four-eyes rule in practice:</p>
+<ol>
+<li><strong>Preparer</strong> produces the number and completes the checklist (document <a href="13_Job_Aids_and_Checklists.html">13</a>).</li>
+<li><strong>Reviewer</strong> re-performs key checks, reads the movement analysis and records any query. The reviewer must not be the preparer.</li>
+<li><strong>Controller</strong> signs. The signature means: the checks were done, the movement is explained, the number may be distributed.</li>
+<li><strong>Distribution</strong> happens only after sign-off. If a number must go out before sign-off, it is marked "preliminary, unreviewed" and a signed version follows.</li>
+</ol>
+<h3 id="37-independent-oversight-liquidity-risk-aps-210-para-28">3.7 Independent oversight: Liquidity Risk (APS 210 para 28)</h3>
+<p>The standard requires that the liquidity risk management oversight function be "operationally independent and staffed with personnel who have the skills and authority to challenge the ADI's treasury and other liquidity risk management businesses" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>). At Example Bank this is the Liquidity Risk team. In plain words:</p>
+<ul>
+<li>Liquidity Risk does <strong>not</strong> report to the Treasurer.</li>
+<li>Liquidity Risk can ask Treasury awkward questions and has the standing to be heard.</li>
+<li>Liquidity Risk sets and monitors the limits and early-warning indicators, reviews the stress tests, and reports to ALCO and the Board Risk Committee. ALCO is the asset and liability committee, which meets monthly.</li>
+</ul>
+<p>Liquidity Reporting's relationship with Liquidity Risk is one of service and challenge: we give them accurate numbers on time, and they challenge what the numbers mean. If you ever find Liquidity Risk's questions are being deflected or their access to data is limited, tell the controller.</p>
+<h3 id="38-internal-audit">3.8 Internal audit</h3>
+<p>Internal audit is the third line. It tests whether the controls in section 4 exist and work. Expect to be asked to show evidence of last month's review, to walk an auditor through a day's production, and to explain an exception. Keep your evidence folder tidy. An audit finding is not an accusation. It is free advice.</p>
+<h3 id="39-the-annual-framework-review-aps-210-para-17-and-ongoing-review-aps-210-para-35">3.9 The annual framework review (APS 210 para 17) and ongoing review (APS 210 para 35)</h3>
+<p>The Board must ensure that the liquidity risk management framework and practices are "documented and reviewed at least annually" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>). The framework must also be "subject to effective review on an ongoing basis" in addition to a comprehensive review as part of the review of the risk management framework under Prudential Standard CPS 220 Risk Management (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p35">APS 210 para 35</a>). In practice this is a yearly cycle:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Who</th>
+<th>Typical timing (Example Bank convention)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Refresh the liquidity policy, procedures and control descriptions</td>
+<td>Liquidity Risk with Liquidity Reporting and Treasury</td>
+<td>Quarter 1</td>
+</tr>
+<tr>
+<td>Test the controls (sample the evidence for the year)</td>
+<td>Liquidity Risk (second line), then internal audit on its plan</td>
+<td>Quarter 2</td>
+</tr>
+<tr>
+<td>Review the liquidity risk tolerance (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p22">APS 210 para 22</a>), limits and early-warning indicators (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>)</td>
+<td>Liquidity Risk, ALCO</td>
+<td>Quarter 2</td>
+</tr>
+<tr>
+<td>Review and test the contingency funding plan (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>)</td>
+<td>Treasury and Liquidity Risk</td>
+<td>Quarter 3</td>
+</tr>
+<tr>
+<td>Review and approve the funding strategy (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p45">APS 210 paras 45 to 46</a>; see document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>)</td>
+<td>Board</td>
+<td>Quarter 3</td>
+</tr>
+<tr>
+<td>Board Risk Committee approves the reviewed framework</td>
+<td>Board Risk Committee</td>
+<td>Quarter 4</td>
+</tr>
+</tbody>
+</table></div>
+<p>What you contribute: the up-to-date procedures for your outputs, the list of incidents and errors in the year, and the control evidence.</p>
+<hr />
+<h2 id="4-the-control-matrix">4. The control matrix</h2>
+<p>This is the control matrix for the Liquidity Reporting outputs. Read down the risk column and ask: what could go wrong? Then read across: who stops it and what proves they did? Owners and frequencies are Example Bank convention; the paragraph references show where the standard creates the need. "LR" is Liquidity Reporting, "LRisk" is Liquidity Risk, "GL" is general ledger, "CFO" is the chief financial officer, "CRO" the chief risk officer and "CEO" the chief executive officer.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Risk</th>
+<th>Control</th>
+<th>Frequency</th>
+<th>Owner</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Source data incomplete (accounts missing from the extract)</td>
+<td>Record counts and balance totals reconciled from each source system to the extract (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>)</td>
+<td>Daily</td>
+<td>LR preparer</td>
+<td>Signed reconciliation sheet; system log</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Extract late or not received</td>
+<td>Feed-arrival monitor; late feed escalated to the controller by 09:00 (Example Bank convention)</td>
+<td>Daily</td>
+<td>LR preparer</td>
+<td>Feed log; escalation message</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Invalid values in key fields (maturity, counterparty type, encumbrance flag)</td>
+<td>Automated validation rules reject or flag records; exception list worked to zero or accepted in writing (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>)</td>
+<td>Daily</td>
+<td>LR preparer; Data owner</td>
+<td>Exception report with disposition</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Liquidity file does not agree to the GL</td>
+<td>Total assets and total liabilities and equity reconciled to the GL; unexplained differences escalated</td>
+<td>Daily (LCR); monthly (NSFR, return)</td>
+<td>LR preparer; Finance</td>
+<td>Reconciliation with reviewer initials</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Missing attribute silently given a favourable category</td>
+<td>Conservative-category rule; every defaulted record listed and reported</td>
+<td>Daily</td>
+<td>LR preparer</td>
+<td>Defaulted-records list</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Wrong rate or factor applied</td>
+<td>Rate tables locked and mirror the standard ((<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>), (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t4">Att A Table 4</a>) and (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>)); reviewer ticks the rate card</td>
+<td>Daily; on each change</td>
+<td>Controller (table owner)</td>
+<td>Version-stamped table; rate-card tick</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Rate table changed without approval</td>
+<td>Change control with test, review and approval (section 3.5); access limited</td>
+<td>On each change</td>
+<td>Controller; LRisk (for classification)</td>
+<td>Change log; approval email</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Deposit mis-scored on the scorecard (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t1">Att A Table 1</a>)</td>
+<td>Score recomputed from the four criteria for a sample of less stable products; rule-based scoring in the system (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+<td>Daily (system); monthly (sample)</td>
+<td>LR preparer</td>
+<td>Scorecard output; sample test</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Asset wrongly counted as HQLA (encumbered, ineligible, or not under Treasury control)</td>
+<td>Treasury confirms operational requirements; encumbrance list matched to collateral system (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 25</a>)</td>
+<td>Daily</td>
+<td>Treasury; LR reviewer</td>
+<td>Treasury confirmation; HQLA reconciliation</td>
+</tr>
+<tr>
+<td>10</td>
+<td>HQLA2 cap or HQLA2B cap ignored</td>
+<td>Cap calculation shown on the working paper; reviewer confirms cap tested (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8</a>)</td>
+<td>Daily</td>
+<td>LR reviewer</td>
+<td>Working paper with cap lines</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Inflow cap (75%) not applied</td>
+<td>Formula check and reviewer test (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>)</td>
+<td>Daily</td>
+<td>LR reviewer</td>
+<td>Working paper with the cap line</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Double counting between HQLA and inflows</td>
+<td>Reconciliation of secured lending and reverse repo to the stock (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>)</td>
+<td>Daily</td>
+<td>LR reviewer</td>
+<td>Reconciliation note</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Spreadsheet formula broken or overwritten</td>
+<td>Locked cells; test pack re-run after changes; annual formula review; EUC register</td>
+<td>On change; annually</td>
+<td>Controller</td>
+<td>Test pack results; register</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Calculation arithmetic wrong</td>
+<td>Reviewer recomputes the three largest lines and the final ratio independently</td>
+<td>Daily</td>
+<td>LR reviewer</td>
+<td>Reviewer sign-off</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Unexplained movement in ratio</td>
+<td>Movement analysis explains change line by line; threshold for a mandatory explanation (Example Bank convention: more than 5 points in a day)</td>
+<td>Daily</td>
+<td>LR preparer; reviewer</td>
+<td>Movement analysis sheet</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Forward-looking roll-in of maturing debt missed</td>
+<td>Forward-looking LCR for the next 30 to 90 days produced and reviewed (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p40">APS 210 para 40</a>)</td>
+<td>Weekly (daily when LCR below trigger)</td>
+<td>LR preparer; Treasury</td>
+<td>Forward projection; review note</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Early-warning trigger or limit hit but not escalated</td>
+<td>Automatic comparison of the ratio with triggers, appetite and minimum; breach escalated within the agreed time (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>)</td>
+<td>Daily</td>
+<td>LR preparer; LRisk</td>
+<td>Trigger report; escalation message</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Board and senior management not told of new and emerging concerns</td>
+<td>Escalation procedure; ALCO and Board packs include a standing section on triggers (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>)</td>
+<td>Monthly; as needed</td>
+<td>LRisk; Controller</td>
+<td>Pack; minutes</td>
+</tr>
+<tr>
+<td>19</td>
+<td>LCR below 100% not notified to APRA</td>
+<td>Incident procedure in section 6.3; named person authorised to call APRA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>)</td>
+<td>As needed</td>
+<td>Head of Liquidity Risk; CFO</td>
+<td>Notification log; copy of any written notice</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Number distributed before review</td>
+<td>Distribution released only on sign-off; "preliminary" label rule</td>
+<td>Daily</td>
+<td>Controller</td>
+<td>Distribution log</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Error found after distribution not corrected for users</td>
+<td>Correction procedure (section 6.6): notify users, reissue, log</td>
+<td>As needed</td>
+<td>Controller</td>
+<td>Correction notice; incident log</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Return to APRA wrong or late</td>
+<td>Return calendar; validation; reconciliation to daily LCR and GL; sign-off before submission (see document <a href="11_APRA_Returns_and_Disclosures.html">11</a>)</td>
+<td>Per return period</td>
+<td>Controller; CFO</td>
+<td>Submission confirmation; sign-off pack</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Unauthorised access to or change of liquidity data</td>
+<td>Role-based access; six-monthly access review; change logging</td>
+<td>Six-monthly; continuous</td>
+<td>System owner; LRisk</td>
+<td>Access review sign-off; logs</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Key person absent on a reporting day</td>
+<td>Documented procedures, trained backup, handover note (document <a href="13_Job_Aids_and_Checklists.html">13</a>)</td>
+<td>Ongoing</td>
+<td>Controller</td>
+<td>Training record; handover notes</td>
+</tr>
+<tr>
+<td>25</td>
+<td>System outage prevents production</td>
+<td>Outage procedure (section 6.9); manual fallback pack; tested recovery</td>
+<td>Annual test</td>
+<td>Controller; Technology</td>
+<td>Test report; outage log</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Stress test results not reflected in limits or the contingency funding plan</td>
+<td>Stress test results reviewed and fed to limit setting and the plan (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 paras 62 to 66</a>)</td>
+<td>At each stress test</td>
+<td>LRisk; Treasury</td>
+<td>Stress test report; limit paper</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Contingency funding plan out of date or never tested</td>
+<td>Annual review, test and Board approval (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>)</td>
+<td>Annually</td>
+<td>Treasury; LRisk; Board</td>
+<td>Test report; Board minute</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Framework and procedures not reviewed</td>
+<td>Annual documented review of the framework and practices (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p35">APS 210 para 35</a>)</td>
+<td>Annually</td>
+<td>LRisk; Board Risk Committee</td>
+<td>Review paper; approval</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Oversight function not independent</td>
+<td>Reporting lines and reviewer standing confirmed (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>)</td>
+<td>Annually</td>
+<td>Board Risk Committee</td>
+<td>Governance review</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Weak audit trail: cannot show how a number was built</td>
+<td>Evidence folder per run; retention rule</td>
+<td>Daily; per run</td>
+<td>LR preparer</td>
+<td>Archived pack</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-from"><p><strong>From the controller:</strong> If you can only remember five of these, remember 4, 6, 11, 15 and 20: it ties to the ledger, the rates are right, the cap is applied, the movement is explained, and nothing goes out unsigned.</p>
+</blockquote>
+<hr />
+<h2 id="5-how-incidents-work">5. How incidents work</h2>
+<h3 id="51-what-an-incident-is">5.1 What an incident is</h3>
+<p>An <strong>incident</strong> is any event that stops a liquidity number being right, on time or properly escalated, or that shows the bank's liquidity position is worse than planned. Some incidents are about the bank's position (the LCR falls). Some are about our numbers (we find an error). Some are about our processes (a system is down). Treat all of them the same way at the start: stop, secure the facts, tell the right person.</p>
+<h3 id="52-severity-levels-example-bank-convention">5.2 Severity levels (Example Bank convention)</h3>
+<p>The standard requires that limits have "corresponding escalation procedures" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>), that senior management set up "specific procedures and approvals necessary for exceptions to policies and limits, including escalation procedures and follow-up actions" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>), and that the Board and senior management are "informed immediately of new and emerging liquidity concerns" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>). Example Bank uses the following levels.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Meaning</th>
+<th>Example (LCR)</th>
+<th>Example (NSFR)</th>
+<th>Who must be told</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 Amber</strong></td>
+<td>Management early-warning trigger hit</td>
+<td>LCR below 125%</td>
+<td>NSFR below 115%</td>
+<td>Controller, Liquidity Risk, Treasury</td>
+<td>Same day</td>
+</tr>
+<tr>
+<td><strong>2 Red</strong></td>
+<td>Board risk appetite breached</td>
+<td>LCR below 120%</td>
+<td>NSFR below 110%</td>
+<td>Add: CFO, CRO, ALCO chair; Board Risk Committee chair informed</td>
+<td>Within 2 hours of sign-off</td>
+</tr>
+<tr>
+<td><strong>3 Critical</strong></td>
+<td>Regulatory minimum breached, or about to be</td>
+<td>LCR below 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>)</td>
+<td>NSFR below 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>)</td>
+<td>Add: CEO; APRA notified; Board informed</td>
+<td>Immediately</td>
+</tr>
+<tr>
+<td><strong>4 Severe stress</strong></td>
+<td>The bank is in, or heading into, severe liquidity stress</td>
+<td>A run, loss of market access</td>
+<td>A run, loss of market access</td>
+<td>Add: crisis committee, APRA, possibly the Reserve Bank of Australia (RBA)</td>
+<td>Immediately</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 125%/120% (LCR) and 115%/110% (NSFR) figures are Example Bank's own risk appetite and early-warning settings. They are not in APS 210. The 100% minimums are in the standard (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>) and (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>).</p>
+<h3 id="53-the-six-habits-for-every-incident">5.3 The six habits for every incident</h3>
+<ol>
+<li><strong>Stop and keep the facts.</strong> Do not change anything yet. Save the files as they are.</li>
+<li><strong>Say what you know and what you do not.</strong> "LCR 94.7% for yesterday's close, caused by A$2.8bn of wholesale debt entering the 30-day window. I have not yet confirmed whether the data is complete."</li>
+<li><strong>Tell the controller first</strong>, in person or by phone, then in writing. Use the written message to create the record.</li>
+<li><strong>Never fix quietly.</strong> If the number is wrong, we correct it in the open with a record. We never overwrite and hope.</li>
+<li><strong>Keep a time-stamped log</strong> of who knew what and when, who decided what.</li>
+<li><strong>Do not speak to APRA, the media or customers</strong> unless you have been told to. Notification to APRA is made by a named, authorised person (typical practice; confirm with your controller).</li>
+</ol>
+<h3 id="54-one-template-for-every-incident-procedure">5.4 One template for every incident procedure</h3>
+<p>Each procedure below states: <strong>trigger</strong>, <strong>inputs</strong>, <strong>immediate steps</strong>, <strong>who to tell</strong>, <strong>deadlines</strong>, <strong>controls (checks)</strong>, <strong>outputs</strong>, <strong>who reviews</strong> and <strong>evidence kept</strong>. A "deadline" is an Example Bank convention unless it quotes the standard.</p>
+<hr />
+<h2 id="6-incident-procedures">6. Incident procedures</h2>
+<h3 id="61-an-early-warning-trigger-is-hit-amber">6.1 An early-warning trigger is hit (Amber)</h3>
+<p>An <strong>early-warning indicator</strong> is a measure designed to show trouble before a limit is reached (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>). A <strong>trigger</strong> is the level at which that indicator calls for action. At Example Bank the first management trigger is LCR 125% and NSFR 115%.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>The signed daily LCR is below 125%, or the monthly NSFR is below 115%, or any other early-warning indicator in the dashboard turns amber. The forward-looking projection reaching the trigger within 30 days counts too.</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>The signed LCR or NSFR pack, the movement analysis, the trigger table, the last 30 days of ratios, the forward projection.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Confirm the number is right (reconciliation and reviewer checks complete; the data is not the cause). 2. Run the movement analysis: which lines moved? 3. Look forward: is the ratio heading lower in the next 30 days? 4. Prepare a one-page trigger note: what happened, why, expected path.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller (immediately). Then Head of Liquidity Risk and Treasurer by message the same day (the indicator must lead to "an assessment and potential response by management", (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>)). ALCO is told at its next meeting, or sooner if the trend is down.</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>Controller: as soon as the signed number shows amber. Liquidity Risk and Treasury: same business day. ALCO: next meeting (monthly) or an out-of-cycle note.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>A second person confirms the trigger calculation; the trigger table version is checked.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Trigger note; an assessment by Treasury and Liquidity Risk and a recorded management response (act, watch, or accept for a stated reason).</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Liquidity Risk. ALCO notes the item in its minutes.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Signed pack, trigger note, message log, ALCO minute.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> An amber trigger is not a failure. It exists so that management has time to act while the problem is small. Do not leave a trigger unreported because "it will probably recover tomorrow".</p>
+</blockquote>
+<h3 id="62-board-risk-appetite-is-breached-red">6.2 Board risk appetite is breached (Red)</h3>
+<p>The Board approves a statement of the ADI's liquidity risk tolerance (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 para 16</a>), which defines the level of risk it is willing to take (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p21">APS 210 para 21</a>). Example Bank's appetite is LCR at least 120% and NSFR at least 110% (Example Bank convention). Breaching appetite is a breach of the Board's own limit, even though the bank is still above the regulatory minimum. A limit breach needs "a plan of action to review the exposure and reduce it to a level that is within the limit" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>Signed LCR below 120% or NSFR below 110%, or a forward projection showing this within 30 days.</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>As in 6.1, plus the Board's risk appetite statement, the limit framework and the current funding plan.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Everything in 6.1. 2. Compute the gap to appetite: for LCR the HQLA needed is 120% x net outflows less HQLA held. 3. Prepare options with Treasury (term funding, shifting assets into HQLA, reducing undrawn commitments or lending). 4. Draft the breach notice.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller, Head of Liquidity Risk, Treasurer, CFO, CRO and ALCO chair immediately after sign-off; Board Risk Committee chair informed by the CRO (material or persistent breaches of limits are among the concerns to be raised "immediately", (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>)).</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>Executives within 2 hours of sign-off (Example Bank convention). A written plan of action within 1 business day. Board Risk Committee at its next meeting, or by out-of-cycle note.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>Second-person check of the gap calculation; Liquidity Risk confirms the breach is real before escalation to the Board.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Breach notice; plan of action with owner and date; daily monitoring until restored.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>ALCO approves the plan; Board Risk Committee oversees.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Breach notice, plan, minutes, daily tracking until return to appetite, closure note.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-the-lcr-falls-below-100-a-full-worked-case-critical">6.3 The LCR falls below 100%: a full worked case (Critical)</h3>
+<h4 id="631-what-the-standard-says">6.3.1 What the standard says</h4>
+<p>The LCR must be at least 100% for a locally incorporated ADI on both an Australian dollar (AUD) and an all-currencies basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). Example Bank has one legal entity and one currency, so Level 1 equals Level 2 and the AUD LCR equals the all-currencies LCR. The minimum applies "on a continuous basis, absent a situation of financial stress" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p54">APS 210 para 54</a>).</p>
+<p>The standard gives two duties that matter now:</p>
+<ul>
+<li>"An ADI must inform APRA immediately in the event of an actual breach of its LCR requirement or if it becomes aware of circumstances that may result in a breach of its LCR requirement" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>).</li>
+<li>The ADI must tell APRA "as soon as possible of any concerns it has about its current or future liquidity position, and its plans to address those concerns"; and "if an ADI experiences a severe liquidity stress, it must notify APRA immediately" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>).</li>
+</ul>
+<p>Look at the second limb of the first duty: <strong>"or if it becomes aware of circumstances that may result in a breach"</strong>. A forward-looking projection that shows the LCR will fall below 100% inside the next 30 days is an awareness of circumstances that may result in a breach. Do not wait for the actual breach to raise the alarm.</p>
+<p>APRA may also require a higher minimum for a particular ADI (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p56">APS 210 para 56</a>). That would change the number in the test, not the procedure.</p>
+<h4 id="632-the-procedure">6.3.2 The procedure</h4>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>The signed daily LCR is below 100%, or the forward projection shows it falling below 100% within the projection horizon, or anyone becomes aware of circumstances that may result in a breach (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>).</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Signed LCR pack and working paper; the line-by-line movement analysis; the forward-looking projection; the list of maturing wholesale funding; Treasury's funding plan; the contingency funding plan; the APRA notification template.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Re-verify the calculation (data complete, rates correct, caps tested). 2. Identify the cause line by line. 3. Compute the shortfall: net cash outflows less HQLA. 4. Tell the controller, then escalate up the ladder (section 7). 5. Treasury and Liquidity Risk assess remedies. 6. The authorised person notifies APRA immediately. 7. Invoke the contingency funding plan (CFP) escalation (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>). 8. Compute and publish LCR daily, and intraday where the system allows, until restored.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller; Head of Liquidity Risk; Treasurer; CFO; CRO; CEO; ALCO chair; Board (chair of the Board Risk Committee, then the Board); APRA.</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>APRA: immediately (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>). Board and senior management: immediately (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>). All other internal steps: within the hour.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>Four-eyes on the breach calculation; the notification text checked against the facts; a second person keeps the incident log.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Breach notice; APRA notification; remediation plan with dated actions; daily tracking; incident report.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>CFO and CRO approve the notice; Board Risk Committee reviews the incident and the report.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Signed packs before and after, movement analysis, projection, notification record with time and name of the person who made it, funding transaction confirmations, minutes, incident report.</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="633-the-case-example-bank-at-a-later-month-end">6.3.3 The case: Example Bank at a later month-end</h4>
+<p>We use the practice case from document <a href="14_Exercises_and_Assessments.html">14</a>. Example Bank has A$15.0bn of HQLA, and its signed LCR for the previous business day is <strong>115.0%</strong>. Here is how that number is built.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>A$bn</th>
+<th>How it is made up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA</td>
+<td>15.0</td>
+<td>Notes and coin 0.2; balance at the RBA 3.8; Australian Government bonds, unencumbered 8.0; semi-government bonds 3.0 (the pledged Government bonds of 2.0 are not HQLA because they are encumbered)</td>
+</tr>
+<tr>
+<td>Cash outflows</td>
+<td>15.44</td>
+<td>Retail, small and medium enterprise (SME) and corporate deposit run-off, financial institution deposits, commercial paper, committed facilities, derivative and collateral lines, trade finance and guarantees (document <a href="14_Exercises_and_Assessments.html">14</a> lists every line)</td>
+</tr>
+<tr>
+<td>Cash inflows</td>
+<td>2.40</td>
+<td>Contractual loan repayments 0.45 + 0.35; loans to other banks 1.50; derivative inflows 0.10</td>
+</tr>
+<tr>
+<td>Inflow cap</td>
+<td>11.58</td>
+<td>75% of outflows 15.44 (not binding)</td>
+</tr>
+<tr>
+<td>Net cash outflows</td>
+<td>13.04</td>
+<td>15.44 less 2.40</td>
+</tr>
+<tr>
+<td>LCR</td>
+<td>115.0%</td>
+<td>15.0 / 13.04</td>
+</tr>
+<tr>
+<td>Surplus over 100%</td>
+<td>1.96</td>
+<td>15.0 less 13.04</td>
+</tr>
+</tbody>
+</table></div>
+<p>The ratio is <strong>already below</strong> Example Bank's 120% Board appetite and 125% early-warning trigger. So the amber and red procedures (6.1 and 6.2) were already in progress on the previous day. Treasury had a plan. This is where the incident starts.</p>
+<p>Among the liabilities is A$2.8bn of wholesale debt (line n in the practice case) with 30 days to under 6 months to run. It sits at a 0% run-off rate because it does not fall due inside the 30-day window. On the day of the incident, it moves inside 30 days. Under the table, "unsecured debt issuance" runs off at 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>), and wholesale funding that has its earliest contractual maturity inside 30 days must be included (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p45">Att A para 45</a>). Nobody had forecast this.</p>
+<h4 id="634-the-numbers-on-the-day">6.3.4 The numbers on the day</h4>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Before (previous day)</th>
+<th>After (incident day)</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA</td>
+<td>15.00</td>
+<td>15.00</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Cash outflows</td>
+<td>15.44</td>
+<td>18.24</td>
+<td>+2.80 (wholesale debt now at 100%)</td>
+</tr>
+<tr>
+<td>Cash inflows</td>
+<td>2.40</td>
+<td>2.40</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Inflow cap, 75% of outflows</td>
+<td>11.58</td>
+<td>13.68</td>
+<td>not binding either day</td>
+</tr>
+<tr>
+<td>Net cash outflows</td>
+<td>13.04</td>
+<td>15.84</td>
+<td>+2.80</td>
+</tr>
+<tr>
+<td><strong>LCR</strong></td>
+<td><strong>115.0%</strong></td>
+<td><strong>94.7%</strong></td>
+<td><strong>minus 20.3 points</strong></td>
+</tr>
+<tr>
+<td>Surplus or shortfall against 100%</td>
+<td>surplus 1.96</td>
+<td><strong>shortfall 0.84</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Arithmetic: 15.44 + 2.80 = 18.24 outflows. 18.24 less 2.40 = 15.84 net. 15.0 / 15.84 = 0.9470, which is 94.7%. Shortfall = 15.84 less 15.0 = 0.84. The inflow cap is 75% x 18.24 = 13.68, and inflows of 2.40 are below it, so the cap does not bind.</p>
+<p>What about the NSFR? The debt is still less than 6 months from maturity, so its ASF factor stays at 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>). The NSFR does not move. This is a good reminder that LCR and NSFR look at the same bank through different windows: the NSFR looks one year ahead and cares about 6-month and 1-year lines, whereas the LCR looks at a 30-day window and cares about what is inside it.</p>
+<h4 id="635-the-timeline-and-messages">6.3.5 The timeline and messages</h4>
+<p>All times are for the incident day, which is a Tuesday. Times are Example Bank convention. People are roles, not names.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Who</th>
+<th>What happens</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T minus 30 days (hypothetical)</td>
+<td>Preparer</td>
+<td>A forward-looking LCR, if it had been produced, would have shown the A$2.8bn entering the window about 30 days later and the ratio falling to 94.7%. It was not produced, so nobody saw it.</td>
+<td>Lesson-learned item</td>
+</tr>
+<tr>
+<td>07:30</td>
+<td>Preparer</td>
+<td>Previous day's data loaded. Reconciliations tie to the general ledger.</td>
+<td>Reconciliation sheet</td>
+</tr>
+<tr>
+<td>08:45</td>
+<td>Preparer</td>
+<td>Calculation run. LCR shows 94.7%. The preparer does not overwrite or adjust anything. Reruns with the saved inputs: same answer.</td>
+<td>Run log</td>
+</tr>
+<tr>
+<td>08:55</td>
+<td>Preparer to Reviewer</td>
+<td>"LCR for yesterday shows 94.7% against 115.0% the day before. Movement is entirely line n, wholesale debt A$2.8bn now inside 30 days. Please review urgently."</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>09:15</td>
+<td>Reviewer</td>
+<td>Re-performs the calculation, checks rate table version, checks inflow cap, confirms data completeness. Same result.</td>
+<td>Reviewer checklist</td>
+</tr>
+<tr>
+<td>09:20</td>
+<td>Reviewer to Controller (phone, then written)</td>
+<td>"LCR 94.7%, shortfall 0.84 against 100%. Cause: A$2.8bn wholesale debt, maturity date now 27 days away, was not in the forward projection. Reviewed and confirmed. Need you now."</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>09:30</td>
+<td>Controller</td>
+<td>Signs the number marked "breach". Checks the scenario against the previous forecast. Calls Head of Liquidity Risk and Treasurer.</td>
+<td>Signed pack; call log</td>
+</tr>
+<tr>
+<td>09:40</td>
+<td>Controller to Head of Liquidity Risk, Treasurer, CFO, CRO</td>
+<td>Message (see below).</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>09:45</td>
+<td>Head of Liquidity Risk</td>
+<td>Independently confirms the numbers (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>). Reads the notification template.</td>
+<td>Confirmation</td>
+</tr>
+<tr>
+<td>09:50</td>
+<td>CFO and CRO</td>
+<td>Decide: notify APRA now; call a crisis meeting for 10:30; inform the CEO.</td>
+<td>Decision note</td>
+</tr>
+<tr>
+<td>10:00</td>
+<td>Authorised person (CFO or Head of Liquidity Risk)</td>
+<td>Notifies APRA by phone, then in writing: breach of LCR minimum; amount; cause; actions; next update.</td>
+<td>Notification record</td>
+</tr>
+<tr>
+<td>10:30</td>
+<td>Crisis meeting: CFO, CRO, Treasurer, Head of Liquidity Risk, Controller</td>
+<td>See decisions below.</td>
+<td>Minutes</td>
+</tr>
+<tr>
+<td>11:00</td>
+<td>Treasurer</td>
+<td>Starts raising funds.</td>
+<td>Deal tickets</td>
+</tr>
+<tr>
+<td>11:30</td>
+<td>CRO</td>
+<td>Informs the chair of the Board Risk Committee and the CEO.</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>14:00</td>
+<td>Treasurer</td>
+<td>Funding agreed, settling at close of day or next day.</td>
+<td>Confirmations</td>
+</tr>
+<tr>
+<td>16:00</td>
+<td>Controller</td>
+<td>Intraday projection: LCR after settlement.</td>
+<td>Projection</td>
+</tr>
+<tr>
+<td>17:30</td>
+<td>Controller</td>
+<td>Update to APRA and Board chair.</td>
+<td>Message</td>
+</tr>
+<tr>
+<td>Next day 10:00</td>
+<td>Preparer</td>
+<td>Daily LCR shows the position after settlement: 101.0%.</td>
+<td>Signed pack</td>
+</tr>
+<tr>
+<td>Next 5 business days</td>
+<td>Controller</td>
+<td>Daily update to APRA and executives until the plan is complete; the CFP monitoring group meets daily.</td>
+<td>Updates</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Specimen message from the Controller (09:40):</strong></p>
+<blockquote>
+<p>To: Head of Liquidity Risk, Treasurer, CFO, CRO
+Subject: LCR BREACH, 94.7% (signed), action needed now</p>
+<p>The signed LCR for last night's close is 94.7%, below the 100% minimum (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). HQLA 15.00; net cash outflows 15.84; shortfall A$0.84bn. The previous day was 115.0%. The whole movement is A$2.8bn of wholesale debt that is now due inside 30 days and now runs off at 100%. It was not in the forward projection. The calculation has been re-performed and reviewed by a second person and Liquidity Risk. The NSFR is unchanged. Under (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>) and (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>) we must inform APRA immediately. I recommend a crisis meeting at 10:30. Treasury, please bring funding options.</p>
+</blockquote>
+<h4 id="636-decisions-made-at-the-crisis-meeting">6.3.6 Decisions made at the crisis meeting</h4>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Decision</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who tells APRA and when?</td>
+<td>The CFO has already done so at 10:00 and will give an update at 17:30.</td>
+<td>Immediate notification (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>).</td>
+</tr>
+<tr>
+<td>Is this a severe liquidity stress needing the RBA?</td>
+<td>No. The bank is not facing a run; this is a funding-timing gap of A$0.84bn. No request for Exceptional Liquidity Assistance.</td>
+<td>ELA is for an ADI under severe liquidity stress (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>).</td>
+</tr>
+<tr>
+<td>Which remedy?</td>
+<td>Raise at least A$0.84bn of funding that matures well beyond 30 days, and keep the cash as balances at the RBA.</td>
+<td>New funding with a term beyond 30 days adds to HQLA (cash at the RBA is HQLA1, (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)) without adding to the 30-day outflows.</td>
+</tr>
+<tr>
+<td>How much?</td>
+<td>A$1.0bn.</td>
+<td>HQLA becomes 16.0. 16.0 / 15.84 = 101.0%, above the minimum with a small buffer.</td>
+</tr>
+<tr>
+<td>What does not work?</td>
+<td>Repo of existing bonds.</td>
+<td>Pledging unencumbered HQLA makes it encumbered and removes it from the stock (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>), so HQLA falls by the same amount; it does not fix the shortfall.</td>
+</tr>
+<tr>
+<td>Is 101.0% enough?</td>
+<td>No. It restores the regulatory minimum only.</td>
+<td>Example Bank's appetite is 120% and the trigger is 125%. A further plan follows.</td>
+</tr>
+<tr>
+<td>Plan of action under (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>)</td>
+<td>See below.</td>
+<td>A limit breach needs a plan to reduce the exposure to within the limit.</td>
+</tr>
+</tbody>
+</table></div>
+<p>What would it take to get back to Board appetite of 120%? Net cash outflows of 15.84 x 1.20 = 19.008, so HQLA of A$19.01bn, which is A$4.01bn more than the current A$15.0bn. To reach the 125% early-warning trigger: 15.84 x 1.25 = 19.80, an extra A$4.80bn. At 101.0% (with A$1.0bn raised) the gap to appetite is A$3.01bn, and to the trigger is A$3.80bn. Treasury proposes to issue further term funding over the following weeks (Treasury's funding plan) and to refinance the maturing A$2.8bn at a term beyond 30 days when it falls due, which would remove the outflow again.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Do not use a repo against HQLA, or lend the new cash out, or let the A$1.0bn "go into the loan book". The LCR fix only works if the cash stays as HQLA. Treasury must confirm that the new cash is held as RBA balances and is not committed elsewhere.</p>
+</blockquote>
+<h4 id="637-after-the-incident-day">6.3.7 After the incident day</h4>
+<ul>
+<li><strong>Restored:</strong> next day's signed LCR is 101.0% (16.0 / 15.84 = 1.0101).</li>
+<li><strong>Contingency funding plan:</strong> the first stage is activated and the monitoring group meets until the ratio is back above the early-warning trigger and stays there (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>).</li>
+<li><strong>Daily reporting to APRA</strong> continues as APRA requires. Follow its direction on frequency.</li>
+<li><strong>Incident report</strong> within 5 business days (section 10).</li>
+<li><strong>Lessons-learned review</strong> (section 11). The core lesson: a forward-looking LCR would have shown the roll-in about a month before. The control gap is control 16 in the matrix.</li>
+</ul>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The most expensive words in liquidity are "we did not see that coming". Wholesale debt does not appear without warning. It has a maturity date. Your forward projection is the single most useful thing you can build to avoid being on the receiving end of the 94.7%.</p>
+</blockquote>
+<h3 id="64-the-nsfr-falls-below-100-critical">6.4 The NSFR falls below 100% (Critical)</h3>
+<p>The locally incorporated LCR ADI must maintain an NSFR of at least 100% at all times (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>). The standard does not set a special notification time limit for an NSFR breach, but the general duty applies: the ADI "must inform APRA as soon as possible of any concerns it has about its current or future liquidity position, and its plans to address those concerns" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>). Example Bank treats an NSFR breach with the same urgency as an LCR breach (typical practice; confirm with your controller). APRA can also require a higher minimum NSFR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p61">APS 210 para 61</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>Signed NSFR below 100%, or a forecast showing this within the planning horizon.</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Signed NSFR pack, ASF and RSF working paper, month-on-month movement analysis, forecast, funding plan, the lending pipeline.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Re-verify classification, maturity buckets and encumbrance (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p8">Att C para 8</a>), (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>) and (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). 2. Explain the movement: ASF down (stable funding left, or stable funding moved into a shorter maturity bucket) or RSF up (lending, longer assets). 3. Compute the shortfall in ASF: the gap equals RSF x 100% less ASF. 4. Treasury proposes fixes: raise funding of one year or more (100% ASF, (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>)), or retail and SME deposits (90 to 95% ASF, (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 to 13</a>)); slow lending that carries high RSF; move assets into lower-RSF categories. 5. Notify APRA through the authorised person without delay.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>As for 6.3, in the same order.</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>APRA: as soon as possible (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>); Example Bank applies the "immediately" standard. Others as in 6.3.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>Four-eyes on the shortfall; classification review by Liquidity Risk.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Breach notice, remediation plan, weekly forecast until restored, incident report.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>CFO, CRO; Board Risk Committee.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Signed pack, working paper, movement analysis, notification record, funding confirmations, report.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-example"><p><strong>Example:</strong> Suppose Example Bank's practice-case NSFR were 129.3% (ASF 79.45, RSF 61.44). To fall to 100%, RSF would need to rise to 79.45. That is an extra A$18.0bn of required funding, or ASF would need to fall by A$18.0bn at the same RSF. A single month rarely does this, so NSFR breaches usually build slowly. Your forecast is the control.</p>
+</blockquote>
+<p>The NSFR moves slowly because it uses a one-year view (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p1">Att C para 1</a>). That is why the monthly cycle suits it, but also why a downward trend over several months is the thing to catch.</p>
+<h3 id="65-a-limit-is-breached-aps-210-para-37">6.5 A limit is breached (APS 210 para 37)</h3>
+<p>A <strong>limit</strong> is a boundary the Board or ALCO sets on a liquidity measure, such as the maximum share of funding from any one counterparty, the maximum wholesale debt maturing in a week, or the minimum survival horizon in a stress test. The standard says: "Where a liquidity risk limit is breached, an ADI must implement a plan of action to review the exposure and reduce it to a level that is within the limit" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>). Limits and escalation procedures "must be reviewed regularly" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>Any measure in the limit framework exceeds its limit in a signed report, or Treasury or Liquidity Risk tells you of a breach.</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Limit table (with approval date and owner); the signed measure; the exposure detail; any approved exception.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Confirm the breach is real, not a data error. 2. Check whether an approved exception exists (senior management must set "specific procedures and approvals necessary for exceptions", (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p19">APS 210 para 19</a>)). 3. Log the breach: limit, actual, size of excess, date, cause, owner. 4. Notify the limit owner and Liquidity Risk. 5. The owner prepares the plan of action.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Limit owner and Liquidity Risk the same day. Senior management and the Board are informed "immediately" if the breach is material or persistent (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>).</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>Same day to the owner and Liquidity Risk; plan of action within the time set by the limit policy (Example Bank convention: 2 business days); material or persistent breaches go to the Board Risk Committee without waiting for the next meeting.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>A breach register is reviewed by Liquidity Risk each month; no breach is closed without evidence that the exposure is back within the limit.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Breach register entry; plan of action; closure note.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Liquidity Risk; ALCO; Board Risk Committee for material breaches.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Breach register, plan, approvals, closure evidence.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A <strong>soft</strong> breach (inside an approved tolerance) and a <strong>hard</strong> breach (outside) are treated differently, but both are logged. Persistent soft breaches become a hard breach in the register. Example Bank's definition is internal (confirm with your controller).</p>
+<h3 id="66-a-data-or-calculation-error-is-found-after-distribution">6.6 A data or calculation error is found after distribution</h3>
+<p>This is the commonest serious incident. Someone finds that yesterday's LCR, sent to Treasury, Liquidity Risk and the ALCO pack, was wrong.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>You, a reviewer, Treasury, Liquidity Risk or audit finds that a distributed number was wrong (for example a deposit tagged to the wrong counterparty type, a rate table error, a missed encumbrance).</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>The distributed pack; source data; the rate table version; the corrected data or rule.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Tell the controller at once. Do not quietly correct and move on. 2. Freeze: keep the original pack untouched. 3. Find the cause: data, classification, rate table, formula, or process. 4. Re-perform the calculation with the fix and measure the effect: the difference in HQLA, outflows, inflows and ratio. 5. Decide materiality (see below). 6. Issue a correction notice to everyone who received the original. 7. Re-issue a signed corrected pack, clearly marked "corrects" with the original reference. 8. Find out whether anything was relied on: a decision, a return, a Board paper, a notification to APRA. 9. Fix the root cause under change control.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller immediately. Liquidity Risk and Treasury the same day. If the error moves the ratio across a trigger, appetite or the 100% minimum, escalate as 6.1, 6.2 or 6.3 immediately. If the error affected a return, go to 6.7 as well.</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>Controller: immediately. Users: same day. Corrected pack: as soon as it can be reviewed and signed. Root-cause fix: within the period set by the controller.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>The corrected pack is reviewed by a person who did not prepare it; the correction notice is checked against the facts.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Correction notice; corrected pack; incident log entry; root-cause note; control fix.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Controller; Liquidity Risk. Internal audit sees the log.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Original and corrected packs, calculations of the difference, notices, approvals, root-cause note.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Materiality (Example Bank convention):</strong> a change is material if it moves the LCR or NSFR by 1 percentage point or more, crosses a trigger, appetite or the 100% minimum, or affects a regulatory return. All errors are logged, even small ones, because a pattern of small errors points to a weak control.</p>
+<blockquote class="q-example"><p><strong>Example:</strong> On review you find that A$0.5bn of corporate non-operational deposits (40% run-off) were wrongly classed as operational (25% run-off, not fully insured). Effect on outflows: 0.5 x (40% less 25%) = 0.075. Net cash outflows rise by 0.075. At the practice-case LCR that moves 15.0 / 13.04 to 15.0 / 13.115, which is 114.4% instead of 115.0%. Less than 1 point, so not material by our convention, but still logged, corrected and the rule fixed.</p>
+</blockquote>
+<h3 id="67-an-error-is-found-in-a-submitted-return">6.7 An error is found in a submitted return</h3>
+<p>A <strong>return</strong> is a set of regulatory forms sent to APRA. Document <a href="11_APRA_Returns_and_Disclosures.html">11</a> (Returns to APRA and public disclosure) explains how they work, the forms, due dates and submission system, and what can and cannot be verified. Use this procedure alongside it.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>You find that a figure in a return already submitted to APRA is wrong, whether from an error in the daily or monthly calculation or in the return itself.</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>The submitted return and its confirmation; the working papers; the corrected calculation; APRA's current instructions on resubmission (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Tell the controller at once. 2. Keep the submitted version unaltered. 3. Quantify the error: which form and cells, size, effect on the reported ratio. 4. If the corrected ratio is below a minimum, treat as an LCR or NSFR breach too (6.3 or 6.4). 5. Controller agrees with the CFO whether to resubmit and how to contact APRA; the contact is made by the authorised person. 6. Prepare the corrected return, review and attest it as for a normal return. 7. Resubmit using the approved system and keep the confirmation. 8. Fix the root cause.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller immediately; CFO the same day; Head of Liquidity Risk; APRA through the authorised person.</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>APRA's instructions on resubmission and timing apply. Verify in document <a href="11_APRA_Returns_and_Disclosures.html">11</a>; where in doubt ask the controller. Example Bank aims to inform APRA the same day an error is confirmed (typical practice).</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>Corrected return reviewed by a second person and attested as normal; reconciliation to the corrected daily or monthly number.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Corrected return; confirmation; error note; root cause and fix.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Controller; CFO attests; Liquidity Risk informed; internal audit sees the log.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Original and corrected returns, confirmations, correspondence with APRA, root-cause note.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="68-a-return-is-late">6.8 A return is late</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>A return due date is at risk (data not ready, review not complete, system problem) or has passed.</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>The return calendar; the status of each step; the system status. Due dates are in document <a href="11_APRA_Returns_and_Disclosures.html">11</a> and in the reporting standard; check the current version.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. As soon as you think the date is at risk (not after it passes), tell the controller. 2. Identify the blocker and the earliest realistic submission time. 3. Controller tells the CFO and the authorised contact. 4. The authorised person contacts APRA to explain and ask for the process to follow (do not assume an extension). 5. Do not cut the review to save time: a rushed return with an error is worse than an agreed short delay. 6. If submission is blocked by the system, follow 6.9. 7. Submit as soon as it is signed, and confirm receipt.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller (at risk); CFO and Head of Liquidity Risk (same day); APRA (through the authorised person, before the due time if possible).</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>The due date in the reporting standard. Escalation to the controller the moment it is at risk.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>A return calendar with early warning dates (for example two business days before the due date); an at-risk check at each milestone.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Submitted return; late-return note with cause and fix.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Controller; CFO; Liquidity Risk.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Calendar and status log, messages, APRA correspondence, submission confirmation, lessons-learned note.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="69-a-system-outage-on-a-reporting-day">6.9 A system outage on a reporting day</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>A system you need is not working (the data feed, calculation engine, reporting platform, the regulator's submission portal, the network).</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>The outage notice from Technology; the fallback pack; the last signed position; the manual calculation file.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Confirm scope and likely duration with Technology. 2. Tell the controller. 3. Assess what is at risk: today's daily LCR (10:00), a return, an ALCO pack. 4. Decide on the fallback: use the manual fallback pack with the most recent complete data, adjusted for known large movements from Treasury (for example maturities and issuance); label it "estimate, system outage". 5. Tell Treasury and Liquidity Risk the estimate is approximate and give a range. 6. Add the margin of error to the ratio compared with triggers: if the estimate is near a trigger, treat it as if it breached. 7. When the system returns, run the full calculation, compare it with the estimate and issue the signed number.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller; Treasury; Liquidity Risk; for a return, CFO and APRA through the authorised person (6.8).</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>Controller immediately; users by the normal delivery time (10:00) with the estimate label; return deadlines as in 6.8.</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>The fallback file is tested at least yearly; the estimate has a second-person review; every estimate is replaced by a signed number.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Estimate pack; the signed number once recovered; outage note.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Controller; Technology reports the cause.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Outage log, estimate, comparison with the signed number, messages.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> An outage is the most likely time for a hidden breach. Treasury does not stop trading because the report is late. Ask Treasury for a quick list of big movements so your estimate is not blind.</p>
+</blockquote>
+<h3 id="610-an-asset-becomes-ineligible-as-hqla-att-a-para-25">6.10 An asset becomes ineligible as HQLA (Att A para 25)</h3>
+<p>An HQLA asset may lose its eligibility (for example because of a rating downgrade, loss of market depth, or an operational failure). The standard gives a short grace period: "if an eligible HQLA or eligible CLF liquid asset becomes ineligible (e.g. due to rating downgrade), an ADI may keep the asset in its stock of liquid assets for an additional 30 calendar days. This allows the ADI time to adjust its stock as needed or replace the asset" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>). CLF is the Committed Liquidity Facility, which the RBA phased out to zero from 1 January 2023, so for Example Bank the practical case is HQLA.</p>
+<p>The grace period applies to ineligibility, such as a downgrade. It does not turn an encumbered asset into HQLA: assets that are pledged are not eligible (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>Treasury, Liquidity Risk, a ratings feed or a market event shows that an HQLA holding no longer meets the criteria in (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9 to 12</a>), or the operational requirements in (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 25</a>).</td>
+</tr>
+<tr>
+<td><strong>Inputs</strong></td>
+<td>Eligibility rule that has failed; the date it failed; the security and amount; the effect on the stock and on the HQLA2 caps; Treasury's replacement plan.</td>
+</tr>
+<tr>
+<td><strong>Immediate steps</strong></td>
+<td>1. Confirm the facts with Treasury and Liquidity Risk. 2. Record the <strong>day it became ineligible</strong>. Day 30 of the grace period is 30 calendar days after that date. 3. Keep the asset in the stock for up to 30 calendar days. Put a visible flag on the position. 4. Compute the LCR with and without the asset so everyone sees the cliff on day 31. 5. Treasury replaces the asset or raises other HQLA before the end of the period. 6. If the asset is replaced early, remove it at once. 7. If anything else (encumbrance) also fails, there is no grace for that: it is out now. 8. For the NSFR, which has its own definition of HQLA (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C para 20</a>), use the new classification from the date of ineligibility; ask the controller to confirm.</td>
+</tr>
+<tr>
+<td><strong>Who to tell</strong></td>
+<td>Controller; Treasury; Liquidity Risk the same day. If the ratio without the asset crosses a trigger or a limit, escalate as 6.1 to 6.3.</td>
+</tr>
+<tr>
+<td><strong>Deadlines</strong></td>
+<td>Same day to the team. Replacement or removal no later than 30 calendar days after the date of ineligibility (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>).</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>A grace-period register with start date, end date and owner; daily check of the register; a second person confirms the removal date.</td>
+</tr>
+<tr>
+<td><strong>Outputs</strong></td>
+<td>Register entry; the LCR shown with and without the asset; removal on day 31 at the latest.</td>
+</tr>
+<tr>
+<td><strong>Who reviews</strong></td>
+<td>Liquidity Risk; ALCO sees the register.</td>
+</tr>
+<tr>
+<td><strong>Evidence kept</strong></td>
+<td>Eligibility evidence, register, packs showing the asset in and out, replacement trade confirmation.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-example"><p><strong>Example:</strong> Suppose A$0.5bn of an asset in the Example Bank stock (practice case, HQLA 15.0, net cash outflows 13.04) becomes ineligible on 1 March. It may stay in the stock until 30 March. Before removal LCR = 15.0 / 13.04 = 115.0%. After removal, with no replacement, HQLA = 14.5 and LCR = 14.5 / 13.04 = 111.2%. Treasury must have replacement HQLA of A$0.5bn in hand before the end of the grace period, or the LCR drops by 3.8 points and moves further below the 120% appetite.</p>
+</blockquote>
+<hr />
+<h2 id="7-the-escalation-ladder">7. The escalation ladder</h2>
+<p>Escalation means passing a problem to someone with more authority to act, at the speed it demands. Section 5.2 gave the levels. This table shows who is on each rung. The standard requires the ADI to have "clear invocation and escalation procedures" in its contingency funding plan (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 para 47</a>) and escalation procedures tied to limits (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rung</th>
+<th>Role</th>
+<th>Informed or decides</th>
+<th>When</th>
+<th>Typical channel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>You (preparer) and the reviewer</td>
+<td>Find the problem; keep facts</td>
+<td>Immediately</td>
+<td>Face to face, then message</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Controller (Liquidity Reporting)</td>
+<td>Confirms the problem and the number; decides what is signed or marked</td>
+<td>Immediately</td>
+<td>Phone, then message</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Head of Liquidity Risk and Treasurer</td>
+<td>Independently challenge; assess options; start remediation</td>
+<td>Same day (amber), within the hour (red and above)</td>
+<td>Phone, then message</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CFO, CRO; ALCO chair</td>
+<td>Decide to escalate to Board and APRA; approve the plan</td>
+<td>Within the hour for red and critical</td>
+<td>Phone, crisis meeting</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CEO; Board Risk Committee chair; Board</td>
+<td>Informed and oversee; approve major actions</td>
+<td>Immediately for critical (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p33">APS 210 para 33</a>)</td>
+<td>Phone, then written paper</td>
+</tr>
+<tr>
+<td>5</td>
+<td>APRA</td>
+<td>Notified by an authorised person: immediately for an LCR breach or likely breach (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>) and for severe stress (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>)</td>
+<td>Immediately</td>
+<td>Phone, then written</td>
+</tr>
+<tr>
+<td>6</td>
+<td>RBA</td>
+<td>Approached for ELA only after APRA is notified (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>)</td>
+<td>Only in severe stress</td>
+<td>Board-authorised, with APRA's knowledge</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rules of the ladder (Example Bank convention):</strong></p>
+<ol>
+<li>Go up one rung at a time, but if the person above you is unreachable within 15 minutes, go to the next rung.</li>
+<li>You may always escalate; you may never delay a critical item to "finish checking".</li>
+<li>A rung that receives an escalation acknowledges it in writing.</li>
+<li>Escalation is a duty, not a judgment about blame.</li>
+<li>De-escalate in writing too. Say when the matter is closed and why.</li>
+</ol>
+<blockquote class="q-from"><p><strong>From the controller:</strong> If you are ever unsure whether something is a "3" or a "4", treat it as the higher one. The cost of an unnecessary call is small. The cost of a late call to APRA is not.</p>
+</blockquote>
+<hr />
+<h2 id="8-activating-the-contingency-funding-plan-aps-210-paras-47-to-51">8. Activating the contingency funding plan (APS 210 paras 47 to 51)</h2>
+<h3 id="81-what-the-plan-is">8.1 What the plan is</h3>
+<p>A <strong>contingency funding plan (CFP)</strong> is the bank's written playbook for finding cash fast when something goes wrong. The standard requires "a formal contingency funding plan that clearly sets out the strategies for addressing liquidity shortfalls in stressed situations" and says it must "outline policies to manage a range of stress environments, establish clear lines of responsibility and include clear invocation and escalation procedures" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 para 47</a>). It must name the available contingency funding sources, the amount each can raise, when and how each action is activated, and the lead time to get the money (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p48">APS 210 para 48</a>). It must be tied to the stress tests (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p49">APS 210 para 49</a>) and must cover a retail deposit run, with measures to repay retail depositors as soon as practicable and without closing distribution channels (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p50">APS 210 para 50</a>). It must be reviewed and tested at least annually and approved by the Board at least annually (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>).</p>
+<h3 id="82-when-it-is-invoked-example-bank-convention">8.2 When it is invoked (Example Bank convention)</h3>
+<p>Example Bank's plan has four stages. The staging is typical practice; your copy of the plan is the authority.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Typical entry point</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Monitor</td>
+<td>Amber trigger; a forecast shortfall</td>
+<td>The CFP monitoring group (Treasury, Liquidity Risk, Liquidity Reporting) meets and reviews the contingency sources.</td>
+</tr>
+<tr>
+<td>2 Prepare</td>
+<td>Red (Board appetite breached) or LCR near 100%</td>
+<td>Treasury checks that contingency sources can be reached, confirms lead times and starts conversations with funding providers.</td>
+</tr>
+<tr>
+<td>3 Act</td>
+<td>LCR below 100%; a market-wide disruption; a significant deposit outflow</td>
+<td>Crisis committee convened; contingency funding sources drawn; APRA updated daily; Board informed.</td>
+</tr>
+<tr>
+<td>4 Crisis</td>
+<td>A severe liquidity stress, or a retail run</td>
+<td>Full crisis management; retail run plan; APRA continuously informed; consideration of ELA.</td>
+</tr>
+</tbody>
+</table></div>
+<p>In the worked case in section 6.3, the bank moved to stage 3 for a single day, because it needed an unplanned funding action and a notification to APRA, then stepped down to stage 2 as the ratio recovered.</p>
+<h3 id="83-what-liquidity-reporting-does-in-the-plan">8.3 What Liquidity Reporting does in the plan</h3>
+<p>The CFP is Treasury's plan, owned with Liquidity Risk. Our role is to supply fast, correct numbers. When the plan is invoked:</p>
+<ol>
+<li>Produce the LCR and NSFR more often than daily if asked (for example intraday after major flows), with the same controls.</li>
+<li>Maintain the <strong>forward projection</strong> by day for the next 30 days, showing HQLA, outflows, inflows and the ratio.</li>
+<li>Produce a <strong>contingency sources table</strong>: the amount of each source, how much is available now, the lead time, and the effect on the LCR (an increase in HQLA, or a reduction in outflows).</li>
+<li>Provide a <strong>stress overlay</strong>: the ratio if run-off rates were 5 or 10 points higher (internal analysis, not a regulatory number).</li>
+<li>Keep the <strong>incident log</strong> going from the first minute.</li>
+<li>Prepare the data APRA asks for, in the format and by the time it asks.</li>
+</ol>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> In a crisis the temptation is to build a new, clever report. Do not. Use the controlled files and add a "crisis" tab. A new, untested calculation is the likeliest source of a new error.</p>
+</blockquote>
+<hr />
+<h2 id="9-exceptional-liquidity-assistance-aps-210-para-70">9. Exceptional Liquidity Assistance (APS 210 para 70)</h2>
+<h3 id="91-what-it-is">9.1 What it is</h3>
+<p><strong>Exceptional Liquidity Assistance (ELA)</strong> is emergency cash that the Reserve Bank of Australia (RBA) may lend to an ADI that is under severe liquidity stress and cannot raise funds in the market. It is not a normal funding source. It is the last resort of the system.</p>
+<h3 id="92-what-the-standard-requires">9.2 What the standard requires</h3>
+<blockquote class="q-in"><p><strong>In the standard:</strong> "An ADI under severe liquidity stress may request Exceptional Liquidity Assistance (ELA) from the Reserve Bank of Australia (RBA). Prior to approaching the RBA, the ADI must notify APRA immediately of the ADI's liquidity concerns and its intention to request ELA. An ADI must provide any information requested by APRA or the RBA in relation to the ADI's ELA request. An ADI must have the operational capability to provide information along with its application for ELA or within other timeframes specified by APRA." (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>)</p>
+</blockquote>
+<p>Three duties follow:</p>
+<ol>
+<li><strong>Notify APRA first</strong>, immediately, of the concerns and of the intention to ask for ELA.</li>
+<li><strong>Provide any information requested</strong> by APRA or the RBA.</li>
+<li><strong>Be operationally able to provide it</strong>, with the application or within the time APRA sets. This is the part added in the July 2025 version of the standard.</li>
+</ol>
+<h3 id="93-what-that-means-for-the-team">9.3 What that means for the team</h3>
+<p>This is why our data matters on the worst day. If Example Bank ever needed ELA, APRA and the RBA would want a fast and accurate picture: the liquidity position, the asset base available as collateral, the funding profile, the maturity ladder and stress results. The <strong>operational capability</strong> to provide it means the data, owners and process are ready before the day:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Readiness item</th>
+<th>Owner</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A tested "ELA information pack" template listing the data APRA and the RBA are likely to ask for, with the source for each item</td>
+<td>Liquidity Risk with Treasury</td>
+<td>The template; the date it was last tested</td>
+</tr>
+<tr>
+<td>A named data owner for each item and a backup</td>
+<td>Controller</td>
+<td>Roles table</td>
+</tr>
+<tr>
+<td>Ability to produce the pack within hours (the speed is set by the bank and APRA) from controlled data</td>
+<td>Liquidity Reporting</td>
+<td>Test run time</td>
+</tr>
+<tr>
+<td>Encumbrance and collateral position by asset, ready to show which assets could be pledged</td>
+<td>Treasury</td>
+<td>Collateral report</td>
+</tr>
+<tr>
+<td>Contact list for APRA and RBA liaison (roles, not names, in the plan)</td>
+<td>Head of Liquidity Risk</td>
+<td>Contact sheet</td>
+</tr>
+<tr>
+<td>Annual test of the pack as part of the CFP test (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>)</td>
+<td>Treasury; Liquidity Risk</td>
+<td>Test report</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Do not discuss ELA with anyone outside the crisis committee, and never mention it to APRA or the RBA yourself. The decision to approach the RBA is a Board-level decision, taken after APRA is told. Your job is to have the data ready if you are asked for it.</p>
+</blockquote>
+<hr />
+<h2 id="10-a-specimen-incident-report">10. A specimen incident report</h2>
+<p>Use this layout. It is concise, factual and signed. Below is the report for the worked case in section 6.3.</p>
+<p><strong>Incident report: LCR below the regulatory minimum</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reference</td>
+<td>LIQ-INC-001 (Example Bank convention)</td>
+</tr>
+<tr>
+<td>Date and time detected</td>
+<td>Tuesday, 08:45 (daily run for the previous close)</td>
+</tr>
+<tr>
+<td>Reported by</td>
+<td>Liquidity Reporting preparer</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>3 Critical (LCR below 100%, (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>))</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Restored to 101.0% after funding settled; monitoring continues</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Summary.</strong> Example Bank's LCR for the previous close was 94.7%, a shortfall of A$0.84bn against the 100% minimum. The previous day it was 115.0%.</p>
+<p><strong>Facts.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Previous day</th>
+<th>Incident day</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA (A$bn)</td>
+<td>15.00</td>
+<td>15.00</td>
+</tr>
+<tr>
+<td>Cash outflows (A$bn)</td>
+<td>15.44</td>
+<td>18.24</td>
+</tr>
+<tr>
+<td>Cash inflows (A$bn)</td>
+<td>2.40</td>
+<td>2.40</td>
+</tr>
+<tr>
+<td>Net cash outflows (A$bn)</td>
+<td>13.04</td>
+<td>15.84</td>
+</tr>
+<tr>
+<td>LCR</td>
+<td>115.0%</td>
+<td>94.7%</td>
+</tr>
+<tr>
+<td>NSFR</td>
+<td>129.3%</td>
+<td>129.3% (unchanged)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cause.</strong> A$2.8bn of wholesale debt, which had been 30 days to under 6 months from maturity, entered the 30-day window. It runs off at 100% inside the window (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). The roll-in was foreseeable from the maturity date but was not in a forward projection.</p>
+<p><strong>Detection.</strong> The daily LCR. The movement analysis attributed the whole change to this one line.</p>
+<p><strong>Timeline.</strong> As in section 6.3.5: detected 08:45; reviewed 09:15; controller 09:20; executives told 09:40; APRA notified 10:00 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>); crisis meeting 10:30; funding raised; restored next day.</p>
+<p><strong>Actions taken.</strong> Calculation re-performed and independently confirmed; APRA notified; CFP stage 3 invoked (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>); Treasury raised A$1.0bn of funding with a term beyond 30 days, held as balances at the RBA; HQLA 16.0 and LCR 101.0%.</p>
+<p><strong>Impact.</strong> Breach of the regulatory minimum for one day. No customer impact. No ELA request. The ratio remains below Board appetite of 120% and the early-warning trigger of 125%.</p>
+<p><strong>Controls that worked.</strong> Reconciliation to the ledger; reviewer re-performance; four-eyes sign-off; rapid escalation.</p>
+<p><strong>Controls that failed or were missing.</strong> No forward-looking LCR. The existing weekly view did not look 30 days ahead for maturing wholesale debt. The ratio was already below appetite when the incident occurred.</p>
+<p><strong>Root cause.</strong> Process gap: no forward projection of wholesale maturities entering the 30-day window.</p>
+<p><strong>Corrective actions.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Action</th>
+<th>Owner</th>
+<th>Due</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Build and run a forward-looking LCR (30 to 90 days), daily while below trigger and weekly otherwise</td>
+<td>Liquidity Reporting</td>
+<td>10 business days</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Add a wholesale maturity profile and a "debt entering the window" indicator to the dashboard</td>
+<td>Liquidity Reporting; Liquidity Risk</td>
+<td>20 business days</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Restore LCR to at least the 120% appetite via the funding plan</td>
+<td>Treasury</td>
+<td>By date set in the plan of action (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>)</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Review the early-warning indicators for forward-looking coverage (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>)</td>
+<td>Liquidity Risk</td>
+<td>Next ALCO</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Test the APRA notification procedure and ELA information pack</td>
+<td>Liquidity Risk</td>
+<td>30 business days</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Sign-off.</strong> Prepared by Controller; reviewed by Head of Liquidity Risk; approved by CFO and CRO; noted by Board Risk Committee.</p>
+<hr />
+<h2 id="11-the-lessons-learned-process">11. The lessons-learned process</h2>
+<p>An incident that is fixed but not learned from will return. Example Bank runs this process after every Level 2 incident and above, and a sample of Level 1 (Example Bank convention).</p>
+<ol>
+<li><strong>Hold the review soon.</strong> Within 5 business days, while memories are fresh. Invite everyone involved, including Treasury and Liquidity Risk.</li>
+<li><strong>Keep it blame-free.</strong> Ask "what let this happen?" not "who did it?"</li>
+<li><strong>Rebuild the timeline</strong> from the log, not from memory.</li>
+<li><strong>Find the root cause</strong> with the "five whys". Example: Why did LCR fall? Debt entered the window. Why was this a surprise? No forward projection. Why none? It was never specified. Why? The procedure covered only the day's position. Why? The procedure was written for the minimum, not for the risk tolerance. The root cause is the specification, not a person.</li>
+<li><strong>List what worked and what did not.</strong></li>
+<li><strong>Agree corrective actions</strong> with an owner, a date and a measure of success. Link each to a control in the matrix (section 4), whether a new one or a strengthened one.</li>
+<li><strong>Track to closure.</strong> Liquidity Risk keeps an actions register and reports overdue actions to ALCO.</li>
+<li><strong>Share the learning.</strong> Update the procedures, the test pack and the training in this pack.</li>
+<li><strong>Report trends.</strong> Each quarter, summarise incidents by type and cause. Repeats show a control that does not work.</li>
+<li><strong>Feed the annual framework review</strong> (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p35">APS 210 para 35</a>).</li>
+</ol>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The best liquidity teams treat near misses as incidents. If you almost sent a wrong number and a reviewer caught it, log it. The log is how we see weak spots before they cost us.</p>
+</blockquote>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>In your own words, what is a control? Give one preventive and one detective example from the LCR process.</li>
+</ol>
+<p><strong>Answer:</strong> A control is a rule, step or check that reduces the chance of something going wrong or catches it quickly if it does. Preventive example: locked rate tables, or a drop-down list that stops a deposit being given an invalid customer type. Detective example: reconciling the liquidity file's total assets to the general ledger, or a movement check that flags a large daily change.</p>
+<ol start="2">
+<li>What does APS 210 say about the independence of the liquidity risk oversight function?</li>
+</ol>
+<p><strong>Answer:</strong> It must be "operationally independent" and staffed with people who have the skills and authority to challenge Treasury and the other liquidity risk management businesses (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>).</p>
+<ol start="3">
+<li>The daily LCR is 123% and Example Bank's early-warning trigger is 125%. What severity level is this, and who do you tell first?</li>
+</ol>
+<p><strong>Answer:</strong> Level 1 Amber (below the 125% trigger but above the 120% appetite). Tell the controller first, then Liquidity Risk and Treasury the same day. Document the trigger note (section 6.1).</p>
+<ol start="4">
+<li>HQLA is A$15.0bn, outflows are A$15.44bn and inflows are A$2.40bn. Calculate the LCR. Is the inflow cap binding?</li>
+</ol>
+<p><strong>Answer:</strong> Net outflows = 15.44 less 2.40 = 13.04. LCR = 15.0 / 13.04 = 115.0%. The cap is 75% x 15.44 = 11.58. Inflows of 2.40 are below it, so it is not binding (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>).</p>
+<ol start="5">
+<li>In the incident case, A$2.8bn of debt moves inside the 30-day window. Recalculate the LCR and the shortfall against 100%.</li>
+</ol>
+<p><strong>Answer:</strong> Outflows 15.44 + 2.80 = 18.24; cap 75% x 18.24 = 13.68 (not binding); net = 18.24 less 2.40 = 15.84. LCR = 15.0 / 15.84 = 94.7%. Shortfall = 15.84 less 15.0 = A$0.84bn.</p>
+<ol start="6">
+<li>Treasury raises A$1.0bn of funding with a term beyond 30 days and holds it as RBA balances. What is the new LCR? What would it take to reach the 120% appetite?</li>
+</ol>
+<p><strong>Answer:</strong> HQLA 16.0; LCR = 16.0 / 15.84 = 101.0%. For 120%: HQLA needed = 15.84 x 1.20 = 19.008, which is A$4.01bn more than 15.0 (or A$3.01bn more than 16.0).</p>
+<ol start="7">
+<li>When must APRA be told about an LCR breach, and by whom?</li>
+</ol>
+<p><strong>Answer:</strong> Immediately for an actual breach, or if the ADI becomes aware of circumstances that may result in a breach (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>); and immediately if it experiences severe liquidity stress (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>). By a named, authorised person such as the CFO or Head of Liquidity Risk (typical practice; confirm with your controller), not by the analyst.</p>
+<ol start="8">
+<li>Why would a repo of unencumbered Government bonds not fix the shortfall?</li>
+</ol>
+<p><strong>Answer:</strong> Pledged assets are encumbered and cannot be counted in the stock of HQLA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>). HQLA would fall by the amount pledged, cancelling the cash raised, apart from any further effect on outflows.</p>
+<ol start="9">
+<li>An asset in the HQLA stock is downgraded below the required rating on 1 March. How long may Example Bank keep it in the stock, and what must the team do?</li>
+</ol>
+<p><strong>Answer:</strong> For an additional 30 calendar days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p25">Att A para 25</a>). The team records the date, sets a flag and end date in the register, shows the LCR with and without the asset, and makes sure Treasury replaces it before day 30 ends.</p>
+<ol start="10">
+<li>
+<p>What must an ADI do before approaching the RBA for Exceptional Liquidity Assistance?</p>
+<p><strong>Answer:</strong> Notify APRA immediately of its liquidity concerns and its intention to request ELA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>). It must also be operationally able to provide information with the application or within APRA's timeframe.</p>
+</li>
+</ol>
+<hr />
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>A control is a rule or check that stops or catches a problem. Every control has an owner, a frequency and evidence.</li>
+<li>The four-eyes rule (prepare, review, sign) and independent oversight (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>) are the backbone of the liquidity controls.</li>
+<li>Never overwrite a calculated number to make a problem disappear. Fix the source, record the reason and get it reviewed.</li>
+<li>Amber at 125% LCR and 115% NSFR, red at 120% and 110%, critical below the 100% minimum (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>) and (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p60">APS 210 para 60</a>). The 125%, 120%, 115% and 110% settings are Example Bank's own.</li>
+<li>For an actual or likely LCR breach, APRA must be told immediately (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>), and a limit breach needs a plan of action (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</li>
+<li>The incident case: LCR 115.0% to 94.7%, shortfall A$0.84bn; the remedy was term funding beyond 30 days held at the RBA; a forward-looking LCR would have shown it a month earlier.</li>
+<li>The contingency funding plan (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>) is Treasury's playbook; our job is fast, accurate numbers. ELA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>) is a last resort that needs APRA told first.</li>
+<li>Log everything, including near misses, and run a blame-free lessons-learned review within five business days.</li>
+</ul></main><footer><a href="11_APRA_Returns_and_Disclosures.html">&#9664; 11 Returns to APRA and public disclosure</a><a href="13_Job_Aids_and_Checklists.html">13 Job aids and checklists &#9654;</a></footer></body></html>
