@@ -1,0 +1,254 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>16 Knowledge graph: where each number comes from and where it goes | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="15_APS210_Paragraph_Index.html" title="15 APS 210 paragraph index">&#9664; 15</a><span class="t">16 Knowledge graph: where each number comes from and where it goes</span><a href="15_APS210_Paragraph_Index.html">Index</a></header>
+<main><style>
+main{max-width:none}
+#kg{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:10px;align-items:start}
+#kgbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0;font-size:13px}
+#kgbar input,#kgbar button{font:inherit;padding:3px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+#kgbar button{cursor:pointer}#kgbar button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#kgbar .lg{display:inline-flex;align-items:center;gap:4px;color:var(--ink2);white-space:nowrap}
+#kgbar .sw{width:10px;height:10px;border-radius:50%;display:inline-block}
+#kgbar .ln{width:18px;height:0;border-top:3px solid;display:inline-block}
+#kgsvg{width:100%;height:calc(100vh - 150px);min-height:480px;border:1px solid var(--line);border-radius:8px;background:var(--bar);touch-action:none;display:block}
+#kgsvg text{font:11px system-ui,-apple-system,"Segoe UI",sans-serif;fill:var(--ink);pointer-events:none;paint-order:stroke;stroke:var(--bar);stroke-width:3px}
+#kgsvg .n{cursor:pointer;stroke:var(--bar);stroke-width:1.5}
+#kgsvg .n:focus{outline:none;stroke:var(--ink);stroke-width:2.5}
+#kgsvg .e{stroke:var(--muted);stroke-opacity:.28;stroke-width:1}
+#kgsvg .dim{opacity:.1}#kgsvg .e.up{stroke:var(--up);stroke-opacity:.95;stroke-width:2}#kgsvg .e.down{stroke:var(--down);stroke-opacity:.95;stroke-width:2}
+#kgsvg .sel{stroke:var(--ink);stroke-width:3}
+#kgpanel{border:1px solid var(--line);border-radius:8px;padding:8px 10px;max-height:calc(100vh - 110px);overflow:auto;font-size:13.5px;position:sticky;top:44px}
+#kgpanel h2{margin:0 0 2px;padding:0;border:0;font-size:16px}#kgpanel h3{margin:8px 0 2px;font-size:13px;color:var(--ink2)}
+#kgpanel ul{margin:2px 0;padding-left:16px}#kgpanel button.lk{font:inherit;background:none;border:0;padding:0;color:var(--accent);cursor:pointer;text-align:left}
+#kgpanel .tag{display:inline-block;font-size:12px;color:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:0 8px;margin-bottom:4px}
+#kgpanel .rule{background:var(--wash);border-radius:6px;padding:4px 8px;margin:4px 0}
+:root{--up:#2a78d6;--down:#eb6834;--l0:#898781;--l1:#2a78d6;--l2:#1baf7a;--l3:#eda100;--l4:#e87ba4;--l5:#6250d6}
+@media (prefers-color-scheme:dark){:root{--up:#3987e5;--down:#d95926;--l1:#3987e5;--l2:#199e70;--l3:#c98500;--l4:#d55181;--l5:#9085e9}}
+@media(max-width:900px){#kg{grid-template-columns:1fr}#kgsvg{height:62vh}#kgpanel{position:static;max-height:none}}
+</style>
+<h1 id="top">16 Knowledge graph: where each number comes from and where it goes</h1>
+<p><strong>Purpose:</strong> See the whole chain in one picture: source systems, the data they supply, how each balance is classified, the totals those build, the ratios and measures, and every report and return they end up in. Select any item to see everything it depends on (blue) and everything that depends on it (orange).</p>
+<div id="kgbar">
+  <input id="kgq" list="kglist" placeholder="Find an item, e.g. LCR" aria-label="Find an item"><datalist id="kglist"></datalist>
+  <button id="kgflow" aria-pressed="true">Flow</button><button id="kgorb" aria-pressed="false">Orb</button><button id="kgclear">Clear selection</button>
+  <span id="kglegend"></span>
+  <span class="lg"><span class="ln" style="border-color:var(--up)"></span>comes from</span>
+  <span class="lg"><span class="ln" style="border-color:var(--down)"></span>goes to</span>
+</div>
+<div id="kg">
+  <svg id="kgsvg" viewBox="0 0 1400 860" role="img" aria-label="Graph of liquidity data lineage"></svg>
+  <aside id="kgpanel" aria-live="polite"></aside>
+</div>
+<p style="font-size:13px;color:var(--ink2)">Flow lays the chain out left to right. Orb lets the items settle into one connected cluster so that heavily used items sit in the middle. Drag any item to move it. Source systems, cut-off times and report names are Example Bank conventions; the rates and rules are from APS 210 and link to their companion entries.</p>
+
+<script>
+(function(){
+const DOCS={"00": "00_Start_Here.html", "01": "01_Syllabus.html", "02": "02_Liquidity_From_Zero.html", "03": "03_Your_Role_and_the_Team.html", "04": "04_APS210_Companion_Main_Body.html", "05": "05_APS210_Companion_Attachment_A_LCR.html", "06": "06_APS210_Companion_Attachments_B_and_C.html", "07": "07_Data_and_Classification.html", "08": "08_LCR_Production_End_to_End.html", "09": "09_NSFR_Production_End_to_End.html", "10": "10_Monitoring_Beyond_the_Ratios.html", "11": "11_APRA_Returns_and_Disclosures.html", "12": "12_Controls_Incidents_and_Escalation.html", "13": "13_Job_Aids_and_Checklists.html", "14": "14_Exercises_and_Assessments.html", "15": "15_APS210_Paragraph_Index.html"};
+const LAYERS=["Source system","Data set","Classification","Total","Ratio or measure","Report or return"];
+// id, label, layer, description, rule, references (m-/a-/b-/c- = APS 210 companion anchors; two digits = training document)
+const N=[
+["s_core","Core banking system",0,"Holds every deposit account: balance, product, rate, maturity, how it was opened.","","07"],
+["s_loan","Loan system",0,"Holds every loan: balance, repayment schedule, security, valuation, arrears status.","","07"],
+["s_tsy","Treasury system",0,"Holds securities, repos, derivatives and the bank's own debt on issue.","","07"],
+["s_coll","Collateral system",0,"Records which assets are pledged, to whom and until when.","","07 m-p38"],
+["s_cust","Customer master",0,"Says who each customer is: person, small business, corporate, financial institution; group; insurance cover.","","07 m-p10"],
+["s_mkt","Market data",0,"Daily prices for securities and exchange rates.","","08"],
+["s_fac","Facilities and limits system",0,"Approved credit limits and how much of each is undrawn.","","07"],
+["s_tf","Trade finance system",0,"Guarantees, letters of credit and trade finance commitments, with payments made under them.","","07"],
+["s_gl","General ledger",0,"The accounting record. Every balance used for liquidity must agree with it.","","09 12"],
+
+["d_dep","Deposits",1,"One row per account with the attributes needed to classify it.","","07 a-p34"],
+["d_loan","Loans",1,"Loan balances, plus the repayments contractually due in the next 30 days.","","07 a-p54"],
+["d_sec","Securities holdings",1,"Each security held, at market value, with issuer type and rating.","HQLA is counted at market value","07 a-p9"],
+["d_enc","Encumbrance",1,"Which securities and loans are pledged, and for how long.","Pledged assets cannot be HQLA","07 a-p23 c-p23"],
+["d_repo","Repos and reverse repos",1,"Secured borrowing and lending, with collateral class and maturity.","","07 a-p55"],
+["d_der","Derivatives and margin",1,"Net amounts payable and receivable, collateral posted and received, downgrade triggers.","","07 a-f5"],
+["d_debt","Wholesale debt on issue",1,"The bank's bonds and short-term paper by remaining maturity.","","07 a-p45"],
+["d_cap","Capital and other balances",1,"Regulatory capital, other assets and other liabilities from the ledger.","","09 c-p11"],
+["d_fac","Undrawn facilities",1,"Undrawn amounts by customer type, committed or revocable, credit or liquidity.","","07 a-p51"],
+["d_tf","Trade finance and guarantees",1,"Outstanding obligations and the net amounts actually paid out each month.","","07 c-p42"],
+["d_gl","Ledger control totals",1,"Total assets and total liabilities and equity, used to prove nothing was dropped.","","09 12"],
+
+["c_h1","HQLA1",2,"Cash, balances at the RBA, and Australian Government and semi-government securities, unencumbered.","LCR: 100% of market value. NSFR: 0% (cash, RBA) or 5% required funding","a-p9 a-p22 c-p29 c-p30"],
+["c_h2a","HQLA2A",2,"High-grade securities one step below HQLA1. No Australian dollar assets currently qualify.","LCR: 85% of market value. NSFR: 15%","a-p10 c-p33"],
+["c_h2b","HQLA2B",2,"Eligible RMBS, lower-rated corporate debt and listed shares. No Australian dollar assets currently qualify.","LCR: 75% (RMBS) or 50%. NSFR: 50%","a-p12 c-p34"],
+["c_nonh","Non-HQLA and pledged securities",2,"Securities that fail the HQLA tests, or are encumbered.","LCR: no value. NSFR: 5% to 100% by type and period pledged","a-p23 c-p23 c-p36 c-p37"],
+["c_rs","Stable retail and SME deposits",2,"Fully insured, with an established relationship or a transaction account.","LCR: 5% leaves. NSFR: 95% counts as stable","a-p37 c-p12"],
+["c_rl","Less stable retail deposits",2,"Retail deposits that fail the stable test, scored on four warning signs.","LCR: 10% (score 0 to 2) or 25% (3 or more). NSFR: 90%","a-p40 a-t1 a-t2 c-p13"],
+["c_td","Term deposits beyond 30 days",2,"Term deposits the customer cannot withdraw within 30 days.","LCR: excluded (0%). NSFR: 90% to 100%","a-p41 c-p11 c-p13"],
+["c_op","Operational deposits",2,"Balances customers must keep with the bank for payments, clearing or custody.","LCR: 25% (5% if insured). NSFR: 50%","a-p47 a-t3 c-p14"],
+["c_corp","Non-financial corporate deposits",2,"Other deposits from companies, governments and public bodies.","LCR: 40% (20% if insured). NSFR: 50%","a-t3 c-p14"],
+["c_fi","Financial institution deposits",2,"Deposits from banks, funds, insurers and superannuation trustees.","LCR: 100% leaves. NSFR: 0% under 6 months","m-p10 a-t3 c-p15"],
+["c_d30","Debt maturing within 30 days",2,"Bonds and paper that fall due inside the LCR window.","LCR: 100% must be repaid. NSFR: 0%","a-p45 a-t3 c-p15"],
+["c_dlong","Debt beyond 30 days",2,"Debt outside the LCR window, bucketed by remaining maturity.","LCR: none. NSFR: 0% under 6 months, 50% to 1 year, 100% beyond","c-p11 c-p14 c-p15"],
+["c_cap","Regulatory capital",2,"Shareholders' funds and qualifying capital instruments.","NSFR: 100%, the most stable funding","c-p11"],
+["c_repo","Secured funding within 30 days",2,"Repos falling due, grouped by the quality of collateral given.","LCR: 0% (HQLA1) to 100% (other). NSFR: by maturity","a-t3 c-p15"],
+["c_rrepo","Secured lending within 30 days",2,"Reverse repos falling due, grouped by collateral received.","LCR inflow: 0% (HQLA1) to 100%. NSFR: 10% or 15%","a-p55 a-t4 c-p31 c-p33"],
+["c_der","Derivative cash flows",2,"Net payments and receipts due within 30 days.","LCR: 100% out, 100% in","a-t3 a-p65 a-f5"],
+["c_coll","Collateral calls",2,"Extra collateral the bank may have to post: downgrade, valuation moves, substitution.","LCR: 100% (20% for posted non-HQLA1 collateral)","a-t3 a-f6"],
+["c_fac","Undrawn committed facilities",2,"Promises to lend that customers can call on.","LCR: 5% retail to 100% financial institutions. NSFR: 5%","a-p51 a-p52 a-t3 c-t1"],
+["c_rev","Revocable facilities",2,"Limits the bank can cancel at any time.","LCR: 5%. NSFR: 1%","a-t3 c-t1"],
+["c_tf","Trade finance and guarantees",2,"Contingent obligations measured by what was actually paid.","LCR: average monthly outflow (50% for guarantees). NSFR: 100% of 12-month outflows","a-t3 c-p42"],
+["c_due","Loan repayments due within 30 days",2,"Contractual inflows from performing loans.","LCR inflow: 50% retail and corporate, 100% financial institutions","a-p54 a-p61 a-p62"],
+["c_lbal","Loan balances by type and maturity",2,"Mortgages, business loans, short loans, non-performing loans.","NSFR: 15% to 100% required funding","c-p33 c-p34 c-p35 c-p36 c-p37"],
+["c_oth","Other assets and liabilities",2,"Premises, intangibles, tax and sundry items.","NSFR: assets 100% required; liabilities 0% available","c-p15 c-p37"],
+
+["x_hqla","Stock of HQLA",3,"Liquid assets after haircuts and caps: the top of the LCR.","HQLA2 at most 40% of the stock; HQLA2B at most 15%","a-p6 a-p7 08"],
+["x_out","Total cash outflows",3,"Every liability and commitment times its run-off rate.","Sum of balance x rate","a-p30 a-t3 08"],
+["x_in","Total cash inflows",3,"Contractual receipts times their inflow rate.","Counted only up to 75% of outflows","a-p30 a-p54 08"],
+["x_net","Net cash outflows",3,"The bottom of the LCR.","Outflows less the smaller of inflows and 75% of outflows","a-p30 08"],
+["x_asf","Available stable funding",3,"Capital and liabilities weighted by how reliably they stay for a year.","Sum of balance x ASF factor","c-p6 c-p7 09"],
+["x_rsf","Required stable funding",3,"Assets and commitments weighted by how much lasting funding they need.","Sum of balance x RSF factor","c-p16 c-p17 09"],
+
+["r_lcr","LCR",4,"Liquidity Coverage Ratio: can the bank survive 30 days of severe stress? Example Bank: 147.2%.","Stock of HQLA / net cash outflows; at least 100%","m-p55 a-p3 08"],
+["r_nsfr","NSFR",4,"Net Stable Funding Ratio: are long-term assets funded by money that stays? Example Bank: 136.3%.","Available / required stable funding; at least 100%","m-p60 c-p3 09"],
+["r_surp","HQLA surplus",4,"How far above the minimum the bank sits, in dollars.","Stock of HQLA less net cash outflows","a-p4 08"],
+["r_ladder","Maturity ladder",4,"Cash due in and out in each time bucket, and the running gap.","Contractual, then behavioural","m-p36 10"],
+["r_conc","Funding concentration",4,"Reliance on the largest depositors, products and markets.","","m-p29 m-p33 10"],
+["r_fwd","Forward-looking LCR",4,"The LCR projected over coming weeks, to see debt rolling into the 30-day window.","","m-p36 08"],
+["r_ewi","Limits and early warning indicators",4,"Board appetite, management triggers and warning signs checked daily.","","m-p37 m-p39 10"],
+["r_stress","Stress tests",4,"The bank's own scenarios and survival horizon.","","m-p62 m-p65 10"],
+["r_recon","Ledger reconciliation",4,"Proof that the balances used equal the accounting record.","Total assets and total liabilities and equity must agree","09 12"],
+
+["o_daily","Daily liquidity report",5,"Goes to Treasury, Liquidity Risk and the controller each morning.","","m-p40 08"],
+["o_alco","ALCO pack",5,"Monthly pack to the asset and liability committee.","","m-p19 10"],
+["o_board","Board Risk Committee report",5,"The Board reviews regular reports on the liquidity position.","","m-p18 03"],
+["o_1a","ARF 210.1A: LCR, all currencies",5,"Quarterly return to APRA.","","11 m-p55"],
+["o_1b","ARF 210.1B: LCR, Australian dollars",5,"Quarterly return to APRA.","","11 m-p55"],
+["o_6","ARF 210.6: NSFR",5,"Quarterly return to APRA.","","11 m-p60"],
+["o_31","ARF 210.3.1: maturity of assets",5,"Quarterly return: contractual maturity profile of assets.","","11"],
+["o_32","ARF 210.3.2: maturity of funding",5,"Quarterly return: contractual maturity profile of liabilities and capital.","","11"],
+["o_4","ARF 210.4: three-year funding plan",5,"Annual return of the funding strategy in numbers.","","11 m-p44"],
+["o_5","ARF 210.5: daily report to APRA",5,"Daily liquidity position, when APRA asks for it.","","11"],
+["o_330","Public disclosure",5,"LCR and NSFR published under APS 330.","","11"],
+["o_apra","Notification to APRA",5,"Telling APRA of liquidity concerns or a breach.","As soon as possible; immediately for an LCR breach","m-p14 a-p5 12"],
+["o_cfp","Contingency funding plan",5,"The plan for a liquidity shortfall, and its triggers.","Reviewed and tested at least annually","m-p47 m-p51 12"],
+["o_fund","Funding strategy",5,"The Board-approved three-year plan for raising funds.","Reviewed at least annually","m-p44 m-p45 10"]];
+const E=`s_core>d_dep s_cust>d_dep s_loan>d_loan s_cust>d_loan s_tsy>d_sec s_mkt>d_sec s_coll>d_enc s_tsy>d_repo s_coll>d_repo s_tsy>d_der s_mkt>d_der s_tsy>d_debt s_gl>d_cap s_fac>d_fac s_cust>d_fac s_tf>d_tf s_gl>d_gl
+d_sec>c_h1 d_enc>c_h1 d_sec>c_h2a d_enc>c_h2a d_sec>c_h2b d_enc>c_h2b d_sec>c_nonh d_enc>c_nonh
+d_dep>c_rs d_dep>c_rl d_dep>c_td d_dep>c_op d_dep>c_corp d_dep>c_fi d_debt>c_d30 d_debt>c_dlong d_cap>c_cap d_cap>c_oth
+d_repo>c_repo d_repo>c_rrepo d_der>c_der d_der>c_coll d_fac>c_fac d_fac>c_rev d_tf>c_tf d_loan>c_due d_loan>c_lbal d_enc>c_lbal
+c_h1>x_hqla c_h2a>x_hqla c_h2b>x_hqla
+c_rs>x_out c_rl>x_out c_td>x_out c_op>x_out c_corp>x_out c_fi>x_out c_d30>x_out c_repo>x_out c_der>x_out c_coll>x_out c_fac>x_out c_rev>x_out c_tf>x_out
+c_due>x_in c_rrepo>x_in c_der>x_in x_out>x_net x_in>x_net
+c_rs>x_asf c_rl>x_asf c_td>x_asf c_op>x_asf c_corp>x_asf c_fi>x_asf c_d30>x_asf c_dlong>x_asf c_cap>x_asf c_repo>x_asf c_oth>x_asf
+c_h1>x_rsf c_h2a>x_rsf c_h2b>x_rsf c_nonh>x_rsf c_lbal>x_rsf c_oth>x_rsf c_fac>x_rsf c_rev>x_rsf c_tf>x_rsf c_der>x_rsf c_rrepo>x_rsf
+x_hqla>r_lcr x_net>r_lcr x_asf>r_nsfr x_rsf>r_nsfr x_hqla>r_surp x_net>r_surp
+d_dep>r_ladder d_loan>r_ladder d_sec>r_ladder d_debt>r_ladder d_repo>r_ladder d_dep>r_conc d_debt>r_conc d_repo>r_conc
+r_lcr>r_fwd r_ladder>r_fwd r_lcr>r_ewi r_nsfr>r_ewi r_conc>r_ewi r_ladder>r_ewi r_fwd>r_ewi r_ladder>r_stress x_hqla>r_stress d_fac>r_stress
+d_gl>r_recon x_asf>r_recon x_rsf>r_recon x_hqla>r_recon
+r_lcr>o_daily r_surp>o_daily r_ewi>o_daily r_fwd>o_daily r_recon>o_daily
+r_lcr>o_alco r_nsfr>o_alco r_ladder>o_alco r_conc>o_alco r_ewi>o_alco r_stress>o_alco r_lcr>o_board r_nsfr>o_board r_stress>o_board
+r_lcr>o_1a x_hqla>o_1a x_out>o_1a x_in>o_1a r_recon>o_1a r_lcr>o_1b x_hqla>o_1b x_out>o_1b x_in>o_1b
+r_nsfr>o_6 x_asf>o_6 x_rsf>o_6 r_recon>o_6 r_ladder>o_31 r_ladder>o_32 r_lcr>o_5 x_hqla>o_5 r_lcr>o_330 r_nsfr>o_330
+r_lcr>o_apra r_nsfr>o_apra r_ewi>o_apra r_stress>o_cfp r_ewi>o_cfp r_nsfr>o_fund r_ladder>o_fund r_stress>o_fund o_fund>o_4`
+ .split(/\s+/).map(s=>s.split(">"));
+
+const W=1400,H=860,svg=document.getElementById("kgsvg"),panel=document.getElementById("kgpanel"),NS="http://www.w3.org/2000/svg";
+const nodes=N.map(([id,label,layer,desc,rule,refs])=>({id,label,layer,desc,rule,refs:refs.split(" ").filter(Boolean),x:0,y:0,vx:0,vy:0,in:[],out:[]}));
+const by=Object.fromEntries(nodes.map(n=>[n.id,n]));
+const edges=E.map(([a,b])=>{if(!by[a]||!by[b])throw new Error("bad edge "+a+">"+b);by[a].out.push(by[b]);by[b].in.push(by[a]);return{s:by[a],t:by[b]}});
+const perLayer=LAYERS.map((_,l)=>nodes.filter(n=>n.layer===l));
+const lx=l=>70+l*(W-330)/5, R=n=>n.layer===4?9:n.layer===3?8:6;
+function place(){perLayer.forEach((arr,l)=>arr.forEach((n,i)=>{n.x=lx(l);n.y=n.y0=(i+1)*H/(arr.length+1);n.vx=n.vy=0}))}
+place();
+
+const gE=document.createElementNS(NS,"g"),gN=document.createElementNS(NS,"g");svg.append(gE,gN);
+edges.forEach(e=>{e.el=document.createElementNS(NS,"line");e.el.setAttribute("class","e");gE.append(e.el)});
+nodes.forEach(n=>{
+  n.g=document.createElementNS(NS,"g");
+  n.c=document.createElementNS(NS,"circle");n.c.setAttribute("r",R(n));n.c.setAttribute("class","n");n.c.setAttribute("fill",`var(--l${n.layer})`);
+  n.c.setAttribute("tabindex","0");n.c.setAttribute("role","button");n.c.setAttribute("aria-label",n.label+", "+LAYERS[n.layer]);
+  n.t=document.createElementNS(NS,"text");n.t.textContent=n.label;n.t.setAttribute("dx",R(n)+4);n.t.setAttribute("dy","0.32em");
+  n.g.append(n.c,n.t);gN.append(n.g);
+  n.c.addEventListener("click",()=>{if(!moved)select(n)});
+  n.c.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();select(n)}});
+  n.c.addEventListener("pointerdown",ev=>{drag=n;moved=false;n.c.setPointerCapture(ev.pointerId);alpha=Math.max(alpha,.3);run()});
+  n.c.addEventListener("pointermove",ev=>{if(drag!==n)return;const p=pt(ev);if(Math.hypot(p.x-n.x,p.y-n.y)>3)moved=true;n.x=p.x;n.y=p.y;n.vx=n.vy=0;alpha=Math.max(alpha,.3)});
+  n.c.addEventListener("pointerup",()=>{drag=null});
+});
+document.getElementById("kglegend").innerHTML=LAYERS.map((t,l)=>`<span class="lg"><span class="sw" style="background:var(--l${l})"></span>${t}</span>`).join(" ");
+document.getElementById("kglist").innerHTML=nodes.map(n=>`<option value="${n.label}">`).join("");
+
+let mode="flow",alpha=1,drag=null,moved=false,raf=0,selected=null;
+function pt(ev){const r=svg.getBoundingClientRect(),s=Math.min(r.width/W,r.height/H),ox=(r.width-W*s)/2,oy=(r.height-H*s)/2;return{x:(ev.clientX-r.left-ox)/s,y:(ev.clientY-r.top-oy)/s}}
+function tick(){
+  for(let i=0;i<nodes.length;i++){const a=nodes[i];
+    for(let j=i+1;j<nodes.length;j++){const b=nodes[j];let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+.01,d=Math.sqrt(d2);
+      const rep=(mode==="orb"?26000:1500)/d2*alpha;dx/=d;dy/=d;a.vx+=dx*rep;a.vy+=dy*rep;b.vx-=dx*rep;b.vy-=dy*rep}}
+  edges.forEach(e=>{const dx=e.t.x-e.s.x,dy=e.t.y-e.s.y,d=Math.hypot(dx,dy)+.01,L=mode==="orb"?130:190,k=(mode==="orb"?.02:.004)*alpha*(d-L)/d;
+    e.s.vx+=dx*k;e.s.vy+=dy*k;e.t.vx-=dx*k;e.t.vy-=dy*k});
+  nodes.forEach(n=>{
+    if(mode==="flow"){n.vx+=(lx(n.layer)-n.x)*.25*alpha;n.vy+=(n.y0-n.y)*.12*alpha}
+    else{n.vx+=(W/2-70-n.x)*.004*alpha;n.vy+=(H/2-n.y)*.007*alpha}
+    if(n===drag){n.vx=n.vy=0;return}
+    n.vx*=.8;n.vy*=.8;n.x=Math.max(14,Math.min(W-150,n.x+n.vx));n.y=Math.max(14,Math.min(H-14,n.y+n.vy))});
+}
+function draw(){edges.forEach(e=>{e.el.setAttribute("x1",e.s.x);e.el.setAttribute("y1",e.s.y);e.el.setAttribute("x2",e.t.x);e.el.setAttribute("y2",e.t.y)});
+  nodes.forEach(n=>n.g.setAttribute("transform",`translate(${n.x.toFixed(1)},${n.y.toFixed(1)})`))}
+function frame(){tick();draw();alpha*=.985;raf=(alpha>.02||drag)?requestAnimationFrame(frame):0}
+function run(){if(!raf)raf=requestAnimationFrame(frame)}
+
+function reach(n,dir){const seen=new Set(),st=[n];while(st.length){const c=st.pop();for(const m of c[dir])if(!seen.has(m)){seen.add(m);st.push(m)}}return seen}
+function refLink(r){
+  if(/^\d\d$/.test(r))return `<a href="${DOCS[r]||"index.html"}">Document ${r}</a>`;
+  const [k,rest]=r.split("-"),file={m:"04_APS210_Companion_Main_Body.html",a:"05_APS210_Companion_Attachment_A_LCR.html",b:"06_APS210_Companion_Attachments_B_and_C.html",c:"06_APS210_Companion_Attachments_B_and_C.html"}[k];
+  const src={m:"APS 210",a:"Att A",b:"Att B",c:"Att C"}[k],kind={p:"para",t:"Table",f:"footnote"}[rest[0]];
+  return `<a href="${file}#${r}">${src} ${kind} ${rest.slice(1)}</a>`}
+const btn=n=>`<li><button class="lk" data-id="${n.id}">${n.label}</button></li>`;
+function select(n){
+  selected=n;
+  if(!n){svg.querySelectorAll(".dim,.up,.down,.sel").forEach(el=>el.classList.remove("dim","up","down","sel"));
+    panel.innerHTML=`<h2>How to read this</h2><p>Each dot is one thing in the chain. Lines run from where a number comes from to where it goes.</p>
+    <p>Select a dot, or type its name in the box. Everything it depends on turns blue; everything that depends on it turns orange. This panel then lists both, with links to the rule in APS 210 and to the training document.</p>
+    <h3>Start with</h3><ul>${["r_lcr","r_nsfr","d_dep","c_fi","o_1a","s_cust"].map(i=>btn(by[i])).join("")}</ul>
+    <p>${nodes.length} items, ${edges.length} connections, ${LAYERS.length} stages.</p>`;return}
+  const up=reach(n,"in"),down=reach(n,"out");
+  nodes.forEach(m=>{m.g.classList.toggle("dim",m!==n&&!up.has(m)&&!down.has(m));m.c.classList.toggle("sel",m===n)});
+  edges.forEach(e=>{const u=(up.has(e.s)||e.s===n)&&(up.has(e.t)||e.t===n)&&e.s!==n,d=(down.has(e.t)||e.t===n)&&(down.has(e.s)||e.s===n)&&e.t!==n;
+    e.el.classList.toggle("up",u&&(e.t===n||up.has(e.t)));e.el.classList.toggle("down",!u&&d);e.el.classList.toggle("dim",!u&&!d)});
+  const srcs=[...up].filter(m=>m.layer===0),dests=[...down].filter(m=>m.layer===5);
+  const list=(t,arr)=>arr.length?`<h3>${t}</h3><ul>${arr.sort((a,b)=>a.layer-b.layer||a.label.localeCompare(b.label)).map(btn).join("")}</ul>`:"";
+  panel.innerHTML=`<span class="tag">${LAYERS[n.layer]}</span><h2>${n.label}</h2><p>${n.desc}</p>${n.rule?`<div class="rule"><strong>Rule:</strong> ${n.rule}</div>`:""}
+    ${list("Comes directly from",[...n.in])}${list("Goes directly to",[...n.out])}
+    ${n.layer>0?list("Original source systems",srcs):""}${n.layer<5?list("Ends up in these reports and returns",dests):""}
+    <h3>Read more</h3><ul>${n.refs.map(r=>`<li>${refLink(r)}</li>`).join("")}</ul>
+    <p style="color:var(--ink2)">${up.size} item${up.size===1?"":"s"} upstream, ${down.size} downstream.</p>`;
+}
+panel.addEventListener("click",ev=>{const b=ev.target.closest("button.lk");if(b)select(by[b.dataset.id])});
+document.getElementById("kgq").addEventListener("change",ev=>{const v=ev.target.value.trim().toLowerCase(),n=nodes.find(m=>m.label.toLowerCase()===v)||nodes.find(m=>m.label.toLowerCase().includes(v));if(n&&v)select(n)});
+document.getElementById("kgclear").addEventListener("click",()=>{document.getElementById("kgq").value="";select(null)});
+function setMode(m){mode=m;document.getElementById("kgflow").setAttribute("aria-pressed",m==="flow");document.getElementById("kgorb").setAttribute("aria-pressed",m==="orb");
+  if(m==="flow")place();alpha=1;run()}
+document.getElementById("kgflow").addEventListener("click",()=>setMode("flow"));
+document.getElementById("kgorb").addEventListener("click",()=>setMode("orb"));
+select(null);draw();run();
+window.__kg={nodes,edges,by,select,setMode};
+})();
+</script>
+</main><footer><a href="15_APS210_Paragraph_Index.html">&#9664; 15 APS 210 paragraph index</a><span></span></footer></body></html>
