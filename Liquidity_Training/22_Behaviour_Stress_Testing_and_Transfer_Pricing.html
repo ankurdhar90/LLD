@@ -1,0 +1,2467 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>22 Behaviour, stress testing and funds transfer pricing: the methods | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="21_Advanced_Worked_Examples.html" title="21 Advanced worked examples: currencies, groups, caps and derivatives">&#9664; 21</a><span class="t">22 Behaviour, stress testing and funds transfer pricing: the methods</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#0-how-to-read-this-document">0. How to read this document</option><option value="#1-contractual-and-behavioural-cash-flows">1. Contractual and behavioural cash flows</option><option value="#2-measuring-deposit-stickiness-from-history">2. Measuring deposit stickiness from history</option><option value="#3-early-withdrawal-of-term-deposits-and-drawdown-of-facilities">3. Early withdrawal of term deposits and drawdown of facilities</option><option value="#4-prepayment-and-rollover-of-loans">4. Prepayment and rollover of loans</option><option value="#5-building-a-behavioural-maturity-ladder-from-a-contractual-one">5. Building a behavioural maturity ladder from a contractual one</option><option value="#6-designing-stress-scenarios">6. Designing stress scenarios</option><option value="#7-setting-and-documenting-assumptions">7. Setting and documenting assumptions</option><option value="#8-survival-horizon-and-the-counterbalancing-capacity-table">8. Survival horizon and the counterbalancing capacity table</option><option value="#9-reverse-stress-testing">9. Reverse stress testing</option><option value="#10-sensitivity-analysis-of-the-lcr-to-each-assumption">10. Sensitivity analysis of the LCR to each assumption</option><option value="#11-using-results-limits-and-the-contingency-funding-plan">11. Using results: limits and the contingency funding plan</option><option value="#12-early-warning-indicator-calibration">12. Early warning indicator calibration</option><option value="#13-funds-transfer-pricing-from-basics">13. Funds transfer pricing from basics</option><option value="#14-common-failures">14. Common failures</option><option value="#15-model-governance-and-validation">15. Model governance and validation</option><option value="#16-where-each-method-sits">16. Where each method sits</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option><option value="#sources">Sources</option></select><a href="search.html">Search</a><a href="15_APS210_Paragraph_Index.html">Index</a><a href="23_Glossary.html" title="23 Glossary, acronyms and common confusions">23 &#9654;</a></header>
+<main><h1 id="22-behaviour-stress-testing-and-funds-transfer-pricing-the-methods">22 Behaviour, stress testing and funds transfer pricing: the methods</h1>
+<p><strong>Purpose:</strong> To teach you the methods behind three things that document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios) only describes: how customers' behaviour is measured and turned into cash flow assumptions, how a stress test is designed, run and used, and how the cost of liquidity is charged back to the products that cause it. Every method starts with a very small example and then runs on Example Bank.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Explain why the standard needs both contractual and behavioural cash flows, and build a behavioural maturity ladder from a contractual one, step by step.</li>
+<li>Measure deposit stickiness from history (run-off rates, cohorts, core versus volatile balances, decay curves, concentration) and model early withdrawal, facility drawdown, prepayment and rollover.</li>
+<li>Design stress scenarios (name-specific, market-wide, combined, short and protracted), set and document the assumptions, and compute a survival horizon and a counterbalancing capacity table.</li>
+<li>Run a reverse stress test and a sensitivity analysis of the LCR, and say how results feed limits, early warning indicators and the contingency funding plan.</li>
+<li>Price a mortgage, a term deposit and a committed facility with matched-maturity funds transfer pricing, a liquidity premium curve and a charge for contingent liquidity.</li>
+<li>Describe what model governance and validation should look like for these methods.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) and document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios), especially its sections 2 (the maturity ladder), 4 (limits and early warning indicators), 5 (stress testing) and 7 (contingency funding plan). Document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR) explains the LCR figures used here.</p>
+<p><strong>Time:</strong> About four hours to read and another four to repeat the calculations by hand or in a spreadsheet.</p>
+<hr />
+<h2 id="0-how-to-read-this-document">0. How to read this document</h2>
+<p><strong>What is a source and what is a method.</strong> Two kinds of statement appear below, and they are labelled so you can tell them apart.</p>
+<ul>
+<li><strong>Rules and supervisory expectations</strong> come from APS 210 (the standard, which binds the bank) or from APG 210 (APRA's practice guide, which does not bind but shows what APRA expects to see) or from the Basel Committee papers. They carry a citation such as (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>) or (<a class="c" href="17_APG210_Companion.html#g-p16">APG 210 para 16</a>) or a source mark such as <code>[S2]</code>.</li>
+<li><strong>Methods</strong> (how to calculate a decay rate, how to build a liquidity premium curve) are <em>not</em> set by any of those documents. They are labelled <strong>Typical practice</strong>. Every percentage, curve and scenario shock in this document is <strong>invented for training</strong>. None of them is an Example Bank policy or an APRA number. Confirm real figures with your controller.</li>
+</ul>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The methods in sections 2 to 13 are what banks commonly do. APRA does not prescribe a method for measuring stickiness, building a decay curve, setting an early warning band or pricing liquidity. It prescribes outcomes: sound processes, documented assumptions, limits, a cost allocation process, and use of the results (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p42">APS 210 para 42</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 paras 62 to 66</a>).</p>
+</blockquote>
+<p><strong>The numbers.</strong> A script, <code>check22.py</code>, recomputes every figure in this document using the Example Bank position in document <a href="02_Liquidity_From_Zero.html">02</a> and document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>. Amounts are A$ billions (A$bn) unless a small example says otherwise. Example Bank has one legal entity and one currency, so Level 1 equals Level 2 and the AUD LCR equals the all-currencies LCR.</p>
+<p><strong>Where the supervisory sources are used.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What it is</th>
+<th>Status</th>
+<th>Mark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APS 210 Liquidity (July 2025)</td>
+<td>The prudential standard</td>
+<td>Binding on the bank</td>
+<td>cited as (APS 210 para N)</td>
+</tr>
+<tr>
+<td>APG 210 Liquidity (July 2025)</td>
+<td>APRA's prudential practice guide. It states APRA's view of prudent practice and, in its own words, is not legal advice</td>
+<td>Guidance, not binding</td>
+<td><code>[S2]</code>, cited as (APG 210 para N)</td>
+</tr>
+<tr>
+<td>Basel Committee, Principles for Sound Liquidity Risk Management and Supervision (September 2008)</td>
+<td>International principles that sit behind the standard</td>
+<td>International guidance</td>
+<td><code>[S4]</code></td>
+</tr>
+<tr>
+<td>Basel Committee, Monitoring tools for intraday liquidity management (April 2013)</td>
+<td>Intraday monitoring tools</td>
+<td>International standard for monitoring</td>
+<td><code>[S5]</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-in"><p><strong>In the standard:</strong> APG 210 says of itself that it "is not legal advice" and that users should "exercise their own skill and care" <code>[S2]</code>. A practice guide is read as "this is how a prudent bank would meet the standard". Treat it as strong evidence of what APRA expects, but not as a rule. Document <a href="17_APG210_Companion.html">17</a> (APG 210 companion) covers every paragraph of it.</p>
+<p><strong>Watch out:</strong> APG 210 was renumbered when the July 2025 version added a section on Exceptional Liquidity Assistance. Its stress testing paragraphs are numbered 78 to 86 in the July 2025 version <code>[S2]</code> and were numbered 75 to 83 in the July 2024 version <code>[S3]</code>. This document uses the July 2025 numbers. Paragraphs 1 to 74 are numbered the same in both versions, as far as the paragraphs I compared go.</p>
+</blockquote>
+<hr />
+<h2 id="1-contractual-and-behavioural-cash-flows">1. Contractual and behavioural cash flows</h2>
+<h3 id="11-the-idea-in-everyday-words">1.1 The idea in everyday words</h3>
+<p>Imagine a friend lends you A$100 "whenever you need it back". In the contract, the A$100 is repayable the moment your friend asks. In practice your friend has not asked for it in three years, and is unlikely to, unless they lose their job. The <strong>contractual</strong> view says "A$100 can leave tomorrow". The <strong>behavioural</strong> view says "A$100 will probably stay for years, but we should plan for the chance it leaves".</p>
+<p>A bank has millions of these relationships. Its deposits are written as "repayable on demand", but the balance as a whole stays for years.</p>
+<ul>
+<li>A <strong>contractual cash flow</strong> is the cash that the legal terms say must be paid or received on a given date, or at the earliest date the other party can demand it.</li>
+<li>A <strong>behavioural cash flow</strong> is the cash the bank <em>expects</em> to be paid or received, based on how customers actually act: how many leave early, how many renew, how many repay a loan ahead of schedule.</li>
+</ul>
+<h3 id="12-why-the-standard-needs-both">1.2 Why the standard needs both</h3>
+<p>APS 210 requires "a sound process for identifying, measuring, monitoring and controlling liquidity risk", including "a robust framework for comprehensively projecting cash flows arising from assets, liabilities and off-balance sheet items over an appropriate set of time horizons" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>). The paragraph does not say contractual or behavioural. It needs both, for two different jobs.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>View that answers it</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What is the worst case if every customer exercises every right on day one?</td>
+<td>Contractual</td>
+<td>Objective, auditable, comparable. It is the legal truth</td>
+</tr>
+<tr>
+<td>What will probably happen on an ordinary day or month?</td>
+<td>Behavioural</td>
+<td>Realistic, so funding plans and prices are not absurdly expensive</td>
+</tr>
+<tr>
+<td>What happens when behaviour turns bad?</td>
+<td>Behavioural <em>plus a stress overlay</em></td>
+<td>A stress test starts from behaviour and shocks it</td>
+</tr>
+<tr>
+<td>What does APRA's own LCR assume?</td>
+<td>A prescribed stress, not either view</td>
+<td>Fixed run-off rates (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>APG 210 reinforces the point. It expects cash flow forecasts "with sufficient granularity such that they capture all material sources of potential liquidity risk" (<a class="c" href="17_APG210_Companion.html#g-p11">APG 210 para 11</a>), expects a bank to estimate flows "under normal conditions and for a range of stress scenarios" (<a class="c" href="17_APG210_Companion.html#g-p9">APG 210 para 9</a>), and says the assumptions for "assets, liabilities and off-balance sheet items with uncertain cash flows" are "of particular importance" in stress (<a class="c" href="17_APG210_Companion.html#g-p37">APG 210 para 37</a>) <code>[S2]</code>.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> If someone shows you a ladder, ask two questions before you read a number. Is it contractual, behavioural or stressed? And which assumption version is it using? Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 2 makes the same point with Example Bank's ladders, and this document explains where the behavioural assumptions come from.</p>
+</blockquote>
+<p>The Basel Committee's principles say the same in international terms. Principle 5 is that a bank should have a sound process for identifying, measuring, monitoring and controlling liquidity risk <code>[S4]</code>. The first sentence of <a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a> uses the same words.</p>
+<h3 id="13-the-three-behaviours-you-must-model">1.3 The three behaviours you must model</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Behaviour</th>
+<th>Everyday picture</th>
+<th>Direction</th>
+<th>Section</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stickiness of at-call deposits</td>
+<td>A bill-paying account most people never empty</td>
+<td>Liability stays longer than the contract says</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Early withdrawal of term deposits</td>
+<td>A customer breaks a 12-month deposit after 5 months and pays a penalty</td>
+<td>Liability leaves earlier than the contract says</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Drawdown of facilities</td>
+<td>A business draws its overdraft in a crisis</td>
+<td>Off-balance sheet becomes outflow</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Prepayment of loans</td>
+<td>A borrower pays off the mortgage early</td>
+<td>Asset returns earlier than the contract says</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Rollover (renewal)</td>
+<td>A short business loan is renewed at maturity</td>
+<td>Asset returns later (or never)</td>
+<td>4</td>
+</tr>
+</tbody>
+</table></div>
+<p>The rest of this document works through each in order.</p>
+<hr />
+<h2 id="2-measuring-deposit-stickiness-from-history">2. Measuring deposit stickiness from history</h2>
+<h3 id="21-start-with-one-account">2.1 Start with one account</h3>
+<p>A customer has A$10,000 in an at-call account. Over six month-ends the balance is 10,000, 9,800, 10,100, 9,900, 10,050 and 9,950. Contractually, all A$10,000 can leave tomorrow. The lowest balance in the history is A$9,800, so 98% of the starting balance never left. One account tells you little, but the same arithmetic on millions of accounts is the method.</p>
+<h3 id="22-the-run-off-rate">2.2 The run-off rate</h3>
+<p>A <strong>run-off rate</strong> is the share of a balance that leaves in a period.</p>
+<pre><code>Run-off rate = (Opening balance - Closing balance) / Opening balance
+</code></pre>
+<p>A pool opens at A$100 and closes 30 days later at A$94. The run-off rate is (100 - 94) / 100 = <strong>6.0%</strong>. Looking at a pool over its first ten days, balances of 100.0, 99.6, 99.5, 99.0, 98.9, 98.2, 97.9, 97.0, 96.2, 95.4 and 95.0 give a ten-day run-off of 5.0% and a worst single day of 0.9% of the opening balance.</p>
+<p>Two things matter beyond the average.</p>
+<ol>
+<li><strong>The distribution.</strong> Take the monthly net outflow of a stable pool over 12 months (as a percentage of the pool): 0.6, 0.8, 0.7, 0.9, 1.1, 0.7, 0.8, 1.3, 0.9, 0.7, 0.8 and 1.0. The mean is 0.858% and the standard deviation 0.198%. The worst month was 1.3%. Mean plus two standard deviations is 1.253%. A bank that plans for the average will be caught in the bad months, so it also records the worst month and a high percentile.</li>
+<li><strong>The data window.</strong> APG 210 warns that "historical analysis of ADI deposit loss is informative", but available Australian data "is unlikely to represent a stress event at the severity required for prudent liquidity risk management" (<a class="c" href="17_APG210_Companion.html#g-p18">APG 210 para 18</a>) <code>[S2]</code>. Normal-time history sets the <em>behavioural</em> base. It does not set stress run-off. Stress assumptions are judgement, informed by history from other places and times.</li>
+</ol>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Banks measure run-off over several windows (1 day, 5 days, 30 days, 90 days) and for each product and customer segment, because a single average hides the segments that leave first.</p>
+</blockquote>
+<h3 id="23-why-some-deposits-are-stickier-than-others">2.3 Why some deposits are stickier than others</h3>
+<p>APG 210 lists factors that influence stickiness: "size, interest-rate sensitivity and the nature of the deposit channel, e.g. direct, internet or broker" (<a class="c" href="17_APG210_Companion.html#g-p16">APG 210 para 16</a>) <code>[S2]</code>. The LCR itself encodes the same idea in the scorecard (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t1">Att A Table 1</a>): a balance above the guarantee limit scores 2, an on-line account 2, no established relationship 1, a heavily rate-driven deposit 1. A total of 0 to 2 gives a 10% run-off and 3 or more gives 25% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t1">Att A Table 1</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p36">Att A paras 36 to 40</a>). Your own history is how you test whether those regulatory splits fit your customers.</p>
+<h3 id="24-vintage-cohort-analysis">2.4 Vintage (cohort) analysis</h3>
+<p>A <strong>cohort</strong> (or vintage) is a group of accounts that opened in the same period. Track each cohort's balance over time, indexed to 100 at the start. It answers a question that an average cannot: do customers who join in a rate promotion leave faster than customers who join for a salary account?</p>
+<p>Three cohorts, month by month (index; 100 at month 0):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Month</th>
+<th>Jan cohort</th>
+<th>Apr cohort</th>
+<th>Jul cohort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>1</td>
+<td>97</td>
+<td>96</td>
+<td>94</td>
+</tr>
+<tr>
+<td>2</td>
+<td>95</td>
+<td>93</td>
+<td>90</td>
+</tr>
+<tr>
+<td>3</td>
+<td>93.5</td>
+<td>91</td>
+<td>87</td>
+</tr>
+<tr>
+<td>4</td>
+<td>92</td>
+<td>89.5</td>
+<td>85</td>
+</tr>
+<tr>
+<td>5</td>
+<td>91</td>
+<td>88</td>
+<td>83</td>
+</tr>
+<tr>
+<td>6</td>
+<td>90</td>
+<td>87</td>
+<td>82</td>
+</tr>
+<tr>
+<td><strong>Run-off by month 6</strong></td>
+<td><strong>10%</strong></td>
+<td><strong>13%</strong></td>
+<td><strong>18%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Each later cohort is leaving faster. The average of the three at month 6 is 86.33, which would hide the trend. A reader sees that the newest money is the least sticky, and that a bank growing quickly through promotions is quietly adding the least stable kind of funding. (APG 210 lists "rapid asset growth, especially when funded with potentially less stable liabilities" as an early warning indicator, <a class="c" href="17_APG210_Companion.html#g-p38">APG 210 para 38</a>.)</p>
+<h3 id="25-decay-curves">2.5 Decay curves</h3>
+<p>A <strong>decay curve</strong> describes how a balance falls over time with a simple formula. The commonest is exponential decay:</p>
+<pre><code>Surviving share at month t = exp(-lambda x t)
+Half-life (months)          = ln(2) / lambda
+</code></pre>
+<p>Here <code>lambda</code> is the monthly decay rate, <code>exp</code> is the exponential function and <code>ln</code> the natural logarithm. A way to estimate lambda from a cohort is to fit a line through the logarithm of the surviving share. The least squares estimate through the origin is <code>lambda = - sum(t x ln S(t)) / sum(t squared)</code>, using months 1 to 6.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Cohort</th>
+<th>lambda per month</th>
+<th>Half-life (months)</th>
+<th>Predicted survival after 1 month</th>
+<th>after 12 months</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jan</td>
+<td>0.0195</td>
+<td>35.6</td>
+<td>98.1%</td>
+<td>79.2%</td>
+</tr>
+<tr>
+<td>Apr</td>
+<td>0.0262</td>
+<td>26.4</td>
+<td>97.4%</td>
+<td>73.0%</td>
+</tr>
+<tr>
+<td>Jul</td>
+<td>0.0381</td>
+<td>18.2</td>
+<td>96.3%</td>
+<td>63.3%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Read the Jul row: the model says that after a year only 63.3% of that cohort's balance would still be here, and half would be gone by month 18. You can now test the number a Treasury profile uses. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>'s behavioural profile for stable retail deposits (A$25.0bn) puts 1.0 in the first 30 days, 1.5 in the next bucket, 2.5 in the next and 20.0 beyond a year. That profile implies cumulative leaving of <strong>4.0%, 10.0% and 20.0%</strong> at the end of the first three buckets, which is the kind of figure a decay curve fitted to a very sticky cohort would give.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Exponential decay is easy to fit and explain but assumes the rate of leaving never changes. Many banks use two or three curves (a fast, a medium and a slow part of the same pool) or a floor (a core amount that never leaves in the model). Whatever the choice, state it, validate it (section 15) and record the fit period.</p>
+<p><strong>Watch out:</strong> A short history flatters. Six months of cohort data cannot show what happens at month 18 and cannot show a crisis. The curve extrapolates the past. Label the data window on every curve.</p>
+</blockquote>
+<h3 id="26-core-versus-volatile-balances">2.6 Core versus volatile balances</h3>
+<p>The <strong>core</strong> part of a pool is the amount that has stayed for a long time. The <strong>volatile</strong> part is the amount that comes and goes. Month-end balances of a pool (A$m) over 12 months: 1,000, 1,040, 1,010, 985, 1,020, 1,075, 1,060, 990, 1,005, 1,030, 1,090, 1,045.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Core</th>
+<th>Volatile</th>
+<th>Core share of the average</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Floor method: core = lowest balance in the window</td>
+<td>985.0</td>
+<td>average 1,029.17 less 985 = 44.17</td>
+<td>95.7%</td>
+</tr>
+<tr>
+<td>Statistical method: core = average less two standard deviations (sd 33.70)</td>
+<td>961.77</td>
+<td>1,029.17 less 961.77 = 67.40</td>
+<td>93.5%</td>
+</tr>
+</tbody>
+</table></div>
+<p>The largest one-month fall in the series is A$70m. The floor method is simple but one unusual low month sets the answer. The statistical method adapts but depends on the assumed spread. Both give the same message: about 94 to 96% of this pool behaves as core.</p>
+<h3 id="27-concentration">2.7 Concentration</h3>
+<p>A deposit pool with a few giant depositors is stickier on paper than in practice, because one decision removes a large piece. Take a A$600m pool whose ten largest depositors hold (A$m) 60, 45, 40, 30, 25, 20, 18, 15, 12 and 10.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Largest depositor</td>
+<td>60 (10.0% of the pool)</td>
+</tr>
+<tr>
+<td>Top 5</td>
+<td>200 (33.3%)</td>
+</tr>
+<tr>
+<td>Top 10</td>
+<td>275 (45.8%)</td>
+</tr>
+<tr>
+<td>Herfindahl-Hirschman index of the top ten (shares of the whole pool, squared and added)</td>
+<td>276.2</td>
+</tr>
+<tr>
+<td>Loss if the top 3 leave</td>
+<td>145 (24.2% of the pool)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 3 explains the index and the reporting procedure. For behaviour, the lesson is this: model large depositors <strong>by name</strong> (<a class="c" href="17_APG210_Companion.html#g-p13">APG 210 para 13</a> asks a bank to watch the concentration of expected inflows, and the standard's liquidity strategy covers "diversity and stability of funding sources", <a class="c" href="04_APS210_Companion_Main_Body.html#m-p29">APS 210 para 29</a>), and do not let a pool average hide them.</p>
+<hr />
+<h2 id="3-early-withdrawal-of-term-deposits-and-drawdown-of-facilities">3. Early withdrawal of term deposits and drawdown of facilities</h2>
+<h3 id="31-term-deposits-the-contract-says-no-the-bank-sometimes-says-yes">3.1 Term deposits: the contract says no, the bank sometimes says yes</h3>
+<p>A <strong>term deposit</strong> is a deposit locked for a fixed time, with a penalty for early withdrawal. In the LCR, deposits with more than 30 days left are excluded from outflows only if "the depositor has no legal right to withdraw deposits within the 30-day horizon", or if early withdrawal "results in a significant penalty that is materially greater than the loss of interest" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>). If the bank lets customers withdraw anyway, "the entire category of these funds must be treated as demand deposits" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>). A bank may allow withdrawal for hardship under a hardship policy without losing the treatment (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p43">Att A para 43</a>).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> That is why a behavioural early-withdrawal model must never be used to <em>allow</em> routine breaks. The data tells you what customers <em>try</em>. The bank's practice (and what the data records as hardship) decides whether the entire pool falls under <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>.</p>
+</blockquote>
+<p><strong>Method.</strong> Measure the share of original balances broken before maturity, by period. Example: a A$50m book of 12-month deposits. The share of original balances broken early, by quarter, is 0.5%, 0.8%, 1.2% and 1.5%. Cumulative early breaks over the year are <strong>4.0%</strong>, or A$2.0m.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observed early breaks over 12 months</td>
+<td>0.5 + 0.8 + 1.2 + 1.5</td>
+<td>4.0% = A$2.0m</td>
+</tr>
+<tr>
+<td>Stress: four times the first quarter's rate</td>
+<td>4 x 0.5%</td>
+<td>2.0% = A$1.0m in the first quarter</td>
+</tr>
+<tr>
+<td>Stress: four times the whole year</td>
+<td>4 x 4.0%</td>
+<td>16.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>A stress multiple of 4 is <strong>invented for training</strong> (Typical practice). It is a judgement about severity.</p>
+<h3 id="32-facilities-how-much-of-the-undrawn-is-drawn">3.2 Facilities: how much of the undrawn is drawn</h3>
+<p>An <strong>undrawn committed facility</strong> is a promise to lend that the customer has not yet used. In a crisis customers draw on it. APG 210 says the bank should "ascertain a level of expected cash outflows under normal conditions and then estimate the scope for an increase in these flows during periods of stress" (<a class="c" href="17_APG210_Companion.html#g-p26">APG 210 para 26</a>), and that management must analyse trigger events "even if there has been no historical evidence of such flows" (<a class="c" href="17_APG210_Companion.html#g-p21">APG 210 para 21</a>) <code>[S2]</code>. The LCR uses fixed rates (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a> for the NSFR; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> for the LCR; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A paras 51 to 52</a> for liquidity facilities).</p>
+<p>Example pool: limits A$1,000m, drawn A$400m, <strong>undrawn A$600m</strong>. In the worst month of history customers drew 6.0% of the undrawn amount.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worst month of history</td>
+<td>6.0% of undrawn</td>
+<td>A$36m</td>
+</tr>
+<tr>
+<td>Stress multiple (invented)</td>
+<td>6.0% x 2.5</td>
+<td>15.0% of undrawn</td>
+</tr>
+<tr>
+<td>Stress draw</td>
+<td>15.0% x 600</td>
+<td>A$90m</td>
+</tr>
+<tr>
+<td>LCR rate for a corporate credit facility</td>
+<td>10% x 600</td>
+<td>A$60m</td>
+</tr>
+<tr>
+<td>Use the higher for the internal stress</td>
+<td>max(90, 60)</td>
+<td>A$90m</td>
+</tr>
+</tbody>
+</table></div>
+<p>The lesson is that history sets a floor for the internal stress and the regulatory rate sets another. The internal stress uses whichever is more severe, and the bank documents why.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Draw behaviour differs by type: a corporate liquidity back-stop is drawn when markets close; a retail credit card limit is drawn slowly; an undrawn facility to a hedge fund or a securitisation vehicle must be treated "in their entirety as a liquidity facility to a financial institution" in the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>), so assume 100% in your own stress too.</p>
+</blockquote>
+<hr />
+<h2 id="4-prepayment-and-rollover-of-loans">4. Prepayment and rollover of loans</h2>
+<h3 id="41-prepayment">4.1 Prepayment</h3>
+<p>A <strong>prepayment</strong> is a borrower repaying part or all of a loan ahead of the contract schedule. It brings asset cash flows forward. The usual measure is the <strong>conditional prepayment rate (CPR)</strong>, the share of the balance prepaid in a year, and its monthly form, the <strong>single monthly mortality (SMM)</strong>:</p>
+<pre><code>SMM = 1 - (1 - CPR) ^ (1/12)
+</code></pre>
+<p>Example: a A$1,000m mortgage pool with a CPR of 10% and a scheduled principal repayment of 0.35% of the balance each month.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMM for a CPR of 10%</td>
+<td>0.8742% a month</td>
+</tr>
+<tr>
+<td>Balance after 12 months with scheduled principal and prepayments</td>
+<td>A$862.9m</td>
+</tr>
+<tr>
+<td>Repaid over 12 months</td>
+<td>A$137.1m (13.71%)</td>
+</tr>
+<tr>
+<td>Repaid by the schedule alone</td>
+<td>A$41.2m</td>
+</tr>
+</tbody>
+</table></div>
+<p>Prepayment is more than three times the scheduled repayment. The contractual ladder understates inflows from mortgages.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Prepayment is helpful for liquidity only if the bank would <em>let</em> the customer leave. In a stress, borrowers do not repay early: they are more likely to be stuck. The LCR gives no credit for prepayment: it counts only contractual inflows from fully performing loans (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A paras 60 to 62</a>), and it assumes the bank keeps lending (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>). Use prepayment in the behavioural ladder, not in a stress.</p>
+</blockquote>
+<h3 id="42-rollover">4.2 Rollover</h3>
+<p><strong>Rollover</strong> means a short loan is renewed at maturity so the cash does not come back. A business loan of A$100m falls due. If 70% of such loans renew on the bank's history, the behavioural inflow is only A$30m. The LCR makes the same kind of assumption in a prescribed way: it counts 100% of fully performing contractual inflows but assumes the bank keeps lending, 50% of inflows to retail, SME and most corporate customers, so net inflow is 50% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>). For an interbank loan the LCR assumes no new lending, so the inflow is 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>).</p>
+<h3 id="43-what-the-team-measures">4.3 What the team measures</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Behaviour</th>
+<th>Data needed</th>
+<th>Common measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deposit stickiness</td>
+<td>Daily balances by account, product, segment, channel</td>
+<td>Run-off, cohort survival, decay curve</td>
+</tr>
+<tr>
+<td>Early withdrawal</td>
+<td>Term deposit breaks with date, penalty, reason</td>
+<td>Share of balance broken by quarter</td>
+</tr>
+<tr>
+<td>Facility drawdown</td>
+<td>Limit and drawn by facility, daily</td>
+<td>Maximum monthly draw as % of undrawn</td>
+</tr>
+<tr>
+<td>Prepayment</td>
+<td>Loan balance, scheduled and actual repayments</td>
+<td>CPR, SMM</td>
+</tr>
+<tr>
+<td>Rollover</td>
+<td>Maturing loans and whether renewed</td>
+<td>Renewal rate</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="5-building-a-behavioural-maturity-ladder-from-a-contractual-one">5. Building a behavioural maturity ladder from a contractual one</h2>
+<p>Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 2 built Example Bank's contractual and behavioural ladders. This section shows <strong>how</strong> the behavioural one is made, then extends it with the behaviours from sections 3 and 4. The buckets are the document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> buckets: <strong>B1</strong> at call to 30 days, <strong>B2</strong> 31 days to under 6 months, <strong>B3</strong> 6 months to under 1 year, <strong>B4</strong> 1 year or more.</p>
+<p><strong>Procedure.</strong></p>
+<p><em>Trigger:</em> quarterly refresh of assumptions, and whenever Treasury or Liquidity Risk asks for a new version.
+<em>Inputs:</em> the contractual ladder; the approved behavioural assumption table (with version and date); the history behind each assumption (sections 2 to 4).
+<em>Steps:</em></p>
+<ol>
+<li>Take the contractual ladder and check that assets equal liabilities and equity (A$100.0bn).</li>
+<li>For each at-call deposit line, replace the single "at call" entry with the behavioural profile (cumulative share leaving by bucket).</li>
+<li>For term deposits, apply early withdrawal and then the renewal rate.</li>
+<li>For loans, apply the renewal rate to short loans and prepayment to long ones.</li>
+<li>Keep wholesale debt, other liabilities and equity contractual unless the policy says otherwise.</li>
+<li>Check that each line still sums to its balance and that the ladder still closes to zero.</li>
+<li>Add off-balance sheet draws below the closing line as a memo (they are not balance sheet items yet).</li>
+<li>Compare the cumulative gap with its limit and write the commentary.
+<em>Controls:</em> every line sums to its balance; the ladder closes to zero; the assumption version matches the approved one; a second person recomputes one line by hand.
+<em>Outputs:</em> the behavioural ladder and a one-line statement of every assumption changed.
+<em>Who reviews:</em> second analyst; Treasury confirms the assumptions; Liquidity Risk challenges.
+<em>Evidence kept:</em> the contractual input, the assumption table with version, the calculation file, the sign-off.</li>
+</ol>
+<h3 id="51-step-1-to-2-the-deposit-profiles">5.1 Step 1 to 2: the deposit profiles</h3>
+<p>The profile is a cumulative share leaving by the end of each bucket. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>'s profile (A$bn per bucket) implies these cumulative shares.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>At-call deposit line</th>
+<th>Balance</th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+<th>Cumulative leaving by end of B1, B2, B3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail, stable</td>
+<td>25.0</td>
+<td>1.0</td>
+<td>1.5</td>
+<td>2.5</td>
+<td>20.0</td>
+<td>4.0%, 10.0%, 20.0%</td>
+</tr>
+<tr>
+<td>Retail, less stable</td>
+<td>15.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>6.0</td>
+<td>20.0%, 40.0%, 60.0%</td>
+</tr>
+<tr>
+<td>SME</td>
+<td>5.0</td>
+<td>1.5</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.5</td>
+<td>30.0%, 50.0%, 70.0%</td>
+</tr>
+<tr>
+<td>Corporate operational</td>
+<td>4.0</td>
+<td>1.0</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>2.0</td>
+<td>25.0%, 37.5%, 50.0%</td>
+</tr>
+<tr>
+<td>Corporate non-operational</td>
+<td>6.0</td>
+<td>3.0</td>
+<td>1.5</td>
+<td>0.5</td>
+<td>1.0</td>
+<td>50.0%, 75.0%, 83.3%</td>
+</tr>
+<tr>
+<td>Financial institutions (kept contractual)</td>
+<td>4.0</td>
+<td>4.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%, 100%, 100%</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>59.0</strong></td>
+<td><strong>13.5</strong></td>
+<td><strong>7.5</strong></td>
+<td><strong>7.5</strong></td>
+<td><strong>30.5</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Behavioural liabilities are these deposits plus the other liabilities (unchanged): B1 13.5 + 1.0 = 14.5, B2 7.5 + 9.0 = 16.5, B3 7.5 + 6.0 = 13.5 and B4 30.5 + 25.0 = 55.5, total 100.0. With contractual assets of 8.3, 9.3, 8.4 and 74.0:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net gap</td>
+<td>-6.2</td>
+<td>-7.2</td>
+<td>-5.1</td>
+<td>+18.5</td>
+</tr>
+<tr>
+<td>Cumulative gap</td>
+<td>-6.2</td>
+<td>-13.4</td>
+<td>-18.5</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is exactly document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>'s behavioural ladder, and the cumulative gap to one year (B3) is -18.5% of total assets, 92.5% of the illustrative -20% trigger. Everything that follows keeps those figures unchanged as the starting point.</p>
+<h3 id="52-step-3-to-7-the-extension">5.2 Step 3 to 7: the extension</h3>
+<p>The extension below is <strong>new in this document</strong>. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> kept term deposits contractual and loans contractual. Here we add the behaviours from sections 3 and 4. All assumptions are <strong>invented for training (Typical practice)</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal and business loans (8.0): share renewed at maturity</td>
+<td>70% (renewed money moves to B4)</td>
+</tr>
+<tr>
+<td>Mortgages (50.0): annual prepayment (simple, not compounded)</td>
+<td>10% of 50.0 = 5.0 a year, spread evenly: 0.4167 per month</td>
+</tr>
+<tr>
+<td>Retail term deposits (10.0): early withdrawal</td>
+<td>2% = 0.2, all in B2, taken from the B3 maturities</td>
+</tr>
+<tr>
+<td>Retail term deposits: renewal of what remains</td>
+<td>80%</td>
+</tr>
+<tr>
+<td>Undrawn facilities (16.0): expected normal draws</td>
+<td>1% in B1, 2% in B2, 2% in B3</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Assets.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personal and business loans, contractual</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>0</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>Personal and business loans, 30% inflow</td>
+<td>0.3</td>
+<td>1.2</td>
+<td>0.9</td>
+<td>5.6</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>Mortgages, contractual</td>
+<td>0.6</td>
+<td>2.0</td>
+<td>2.4</td>
+<td>45.0</td>
+<td>50.0</td>
+</tr>
+<tr>
+<td>Prepayment added (1, 5 and 6 months of 0.4167)</td>
+<td>0.417</td>
+<td>2.083</td>
+<td>2.5</td>
+<td>-5.0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Mortgages, behavioural</td>
+<td>1.017</td>
+<td>4.083</td>
+<td>4.9</td>
+<td>40.0</td>
+<td>50.0</td>
+</tr>
+<tr>
+<td><strong>All assets, behavioural</strong></td>
+<td><strong>8.02</strong></td>
+<td><strong>8.58</strong></td>
+<td><strong>8.8</strong></td>
+<td><strong>74.6</strong></td>
+<td><strong>100.0</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Retail term deposits.</strong> Contractual: B2 6.0 and B3 4.0. Early withdrawals of 0.2 fall in B2 and are taken from B3, leaving B2 6.0 and B3 3.8 of maturities. Of those maturities 80% renew. Behavioural outflow: B2 = 0.2 + 6.0 x 0.2 = 1.4; B3 = 3.8 x 0.2 = 0.76; the rest, 10.0 - 1.4 - 0.76 = 7.84, is still here beyond a year (B4).</p>
+<p><strong>Liabilities and the extended ladder.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>B4</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deposits (behavioural, section 5.1)</td>
+<td>13.5</td>
+<td>7.5</td>
+<td>7.5</td>
+<td>30.5</td>
+<td>59.0</td>
+</tr>
+<tr>
+<td>Retail term deposits (behavioural)</td>
+<td>0</td>
+<td>1.4</td>
+<td>0.76</td>
+<td>7.84</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>Wholesale debt, other liabilities, equity (contractual)</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>25.0</td>
+<td>31.0</td>
+</tr>
+<tr>
+<td><strong>Liabilities and equity</strong></td>
+<td><strong>14.5</strong></td>
+<td><strong>11.9</strong></td>
+<td><strong>10.26</strong></td>
+<td><strong>63.34</strong></td>
+<td><strong>100.0</strong></td>
+</tr>
+<tr>
+<td>Assets (behavioural)</td>
+<td>8.02</td>
+<td>8.58</td>
+<td>8.8</td>
+<td>74.6</td>
+<td>100.0</td>
+</tr>
+<tr>
+<td>Net gap</td>
+<td>-6.48</td>
+<td>-3.32</td>
+<td>-1.46</td>
+<td>+11.26</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Cumulative gap</td>
+<td>-6.48</td>
+<td>-9.80</td>
+<td>-11.26</td>
+<td>0.0</td>
+<td></td>
+</tr>
+<tr>
+<td>Expected facility draws (memo)</td>
+<td>0.16</td>
+<td>0.32</td>
+<td>0.32</td>
+<td></td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>Cumulative gap after draws</td>
+<td>-6.64</td>
+<td>-10.28</td>
+<td>-12.06</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>As % of total assets</td>
+<td>-6.6%</td>
+<td>-10.3%</td>
+<td>-12.1%</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>At one year the extended behavioural gap is -12.1%, against -18.5% in document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>, a difference of 6.44 percentage points of total assets before draws. Against the illustrative -20% trigger the utilisation falls from 92.5% to 60.3%. <strong>Both pictures are legitimate. The difference is the cost of the extra assumptions.</strong> A reader who sees -12.1% must be told that 70% loan renewal, 10% prepayment and 80% term deposit rollover sit behind it. If any fail (section 6 shows how), the gap goes back toward -18.5%.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> In a stress, prepayment slows and renewals are pressed. Do not carry the extended ladder's <em>inflow</em> assumptions into a stress test. Start the stress from the contractual or LCR-style inflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A paras 60 to 62</a>).</p>
+<p><strong>From the controller:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a>'s ladder is the one that goes to ALCO unless Treasury and Liquidity Risk approve the extension. Treat section 5.2 as the method you will be asked to build and test, not a replacement for what is in the pack.</p>
+</blockquote>
+<hr />
+<h2 id="6-designing-stress-scenarios">6. Designing stress scenarios</h2>
+<h3 id="61-what-the-standard-requires">6.1 What the standard requires</h3>
+<p>An LCR ADI must conduct stress tests "on a regular basis for a variety of short-term and protracted institution-specific and market-wide stress scenarios (individually and in combination)" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 para 62</a>). Results must adjust strategy, policies and positions and feed contingency plans (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p63">APS 210 para 63</a>). The tests must show the effect on the Level 1 and Level 2 positions and on the positions of individual business lines (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p64">APS 210 para 64</a>). Scenarios and assumptions must be "well documented and reviewed together with the stress test results" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>).</p>
+<p>APG 210 adds what APRA would expect to see <code>[S2]</code>:</p>
+<ul>
+<li>Stress tests analyse effects on "cash flows, liquidity position, profitability and solvency" (<a class="c" href="17_APG210_Companion.html#g-p79">APG 210 para 79</a>).</li>
+<li>A "broad range of scenarios" at different levels, including "firm-wide, as well as customer type, product, business, currency and entity-specific stress events" (<a class="c" href="17_APG210_Companion.html#g-p83">APG 210 para 83</a>).</li>
+<li>Forward-looking scenarios, not only a replay of past episodes (<a class="c" href="17_APG210_Companion.html#g-p82">APG 210 para 82</a>), and a warning against a "failure of imagination" (<a class="c" href="17_APG210_Companion.html#g-p81">APG 210 para 81</a>).</li>
+<li>Longer horizons, noting "the increased importance of assumptions as the time horizon of a scenario is lengthened" (<a class="c" href="17_APG210_Companion.html#g-p84">APG 210 para 84</a>).</li>
+<li>A list of adverse assumptions to include where relevant, among them erosion in the value of liquid assets, run-off of retail funding, secured and unsecured wholesale funding availability, margin calls, draws on committed lines, rating triggers, access to central bank facilities and "the operational ability of the ADI to monetise assets" (<a class="c" href="17_APG210_Companion.html#g-p86">APG 210 para 86</a>).</li>
+</ul>
+<p>The Basel Committee's Principle 10 is the international source: a bank "should conduct stress tests on a regular basis for a variety of short-term and protracted" scenarios <code>[S4]</code>. Principle 12 asks for "a cushion of unencumbered, high quality liquid assets" held as insurance <code>[S4]</code>, which is the counterbalancing capacity in section 8.</p>
+<h3 id="62-the-four-families">6.2 The four families</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>What happens</th>
+<th>Example Bank picture</th>
+<th>Effect on the model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name-specific (institution-specific, idiosyncratic)</td>
+<td>Trouble at this bank only</td>
+<td>A credit rating downgrade plus bad press</td>
+<td>Depositors and funders leave; collateral is called; markets still work for others</td>
+</tr>
+<tr>
+<td>Market-wide</td>
+<td>Trouble everywhere</td>
+<td>Funding markets close; bond prices fall</td>
+<td>Wholesale funding cannot be rolled; asset values fall; selling is slow</td>
+</tr>
+<tr>
+<td>Combined</td>
+<td>Both at once</td>
+<td>Downgrade while markets are shut</td>
+<td>All of the above; the most severe</td>
+</tr>
+<tr>
+<td>Short or protracted</td>
+<td>A shock lasting days, or a squeeze lasting months</td>
+<td>30 days versus 90 days</td>
+<td>Longer horizons need more assumptions (<a class="c" href="17_APG210_Companion.html#g-p84">APG 210 para 84</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-example-banks-six-scenarios">6.3 Example Bank's six scenarios</h3>
+<p>The scenarios below are <strong>invented for training (Typical practice)</strong>. They run on the document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> position: balance A$100.0bn; undrawn facilities retail and SME 10.0, corporate credit 5.0, corporate liquidity 1.0; wholesale debt within 30 days 1.0; 30 days to under 6 months 3.0; gross contractual 30-day inflows 2.8 (retail and SME 1.0, corporates 0.8, banks 1.0).</p>
+<p><strong>Shocks to balances, as a percentage of the opening balance leaving in each 30-day month.</strong> Month 1 is front-loaded (section 6.5).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line (balance)</th>
+<th>Name-specific m1 / m2 / m3</th>
+<th>Market-wide m1 / m2 / m3</th>
+<th>Combined m1 / m2 / m3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail stable (25.0)</td>
+<td>6 / 3 / 2</td>
+<td>3 / 1 / 1</td>
+<td>8 / 4 / 2</td>
+</tr>
+<tr>
+<td>Retail less stable (15.0)</td>
+<td>15 / 6 / 3</td>
+<td>6 / 3 / 2</td>
+<td>18 / 8 / 4</td>
+</tr>
+<tr>
+<td>Retail term, early break and non-renewal (10.0)</td>
+<td>3 / 6 / 6</td>
+<td>1 / 1 / 1</td>
+<td>4 / 5 / 5</td>
+</tr>
+<tr>
+<td>SME (5.0)</td>
+<td>15 / 6 / 3</td>
+<td>8 / 3 / 2</td>
+<td>18 / 8 / 4</td>
+</tr>
+<tr>
+<td>Corporate operational (4.0)</td>
+<td>30 / 10 / 5</td>
+<td>15 / 5 / 3</td>
+<td>35 / 12 / 6</td>
+</tr>
+<tr>
+<td>Corporate non-operational (6.0)</td>
+<td>55 / 15 / 5</td>
+<td>25 / 8 / 4</td>
+<td>60 / 12 / 6</td>
+</tr>
+<tr>
+<td>Financial institutions (4.0)</td>
+<td>100 / 0 / 0</td>
+<td>100 / 0 / 0</td>
+<td>100 / 0 / 0</td>
+</tr>
+<tr>
+<td>Undrawn retail and SME (10.0)</td>
+<td>8 / 2 / 1</td>
+<td>5 / 2 / 1</td>
+<td>10 / 3 / 1</td>
+</tr>
+<tr>
+<td>Undrawn corporate credit (5.0)</td>
+<td>15 / 5 / 2</td>
+<td>15 / 5 / 2</td>
+<td>20 / 6 / 2</td>
+</tr>
+<tr>
+<td>Undrawn corporate liquidity (1.0)</td>
+<td>40 / 10 / 5</td>
+<td>30 / 10 / 5</td>
+<td>50 / 15 / 5</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Other assumptions.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Name-specific</th>
+<th>Market-wide</th>
+<th>Combined</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wholesale debt within 30 days (1.0)</td>
+<td>Not rolled (100% out)</td>
+<td>Not rolled</td>
+<td>Not rolled</td>
+</tr>
+<tr>
+<td>Wholesale debt 30 days to under 6 months (3.0): split into three equal lumps assumed to fall on days 45, 75 and 135</td>
+<td>Not rolled</td>
+<td>Not rolled</td>
+<td>Not rolled</td>
+</tr>
+<tr>
+<td>Net derivative outflows</td>
+<td>0.3</td>
+<td>0.3</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>Downgrade collateral (3-notch trigger, as in the LCR)</td>
+<td>0.2 on day 1</td>
+<td>0</td>
+<td>0.2 on day 1</td>
+</tr>
+<tr>
+<td>Extra margin calls on market volatility</td>
+<td>0</td>
+<td>0.2 on day 1</td>
+<td>0.2 on day 1</td>
+</tr>
+<tr>
+<td>Share of the 2.8 contractual inflows received</td>
+<td>60%</td>
+<td>80%</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>Fall in value of government and semi-government securities</td>
+<td>0%</td>
+<td>4%</td>
+<td>4%</td>
+</tr>
+<tr>
+<td>Other debt securities (3.0): value when sold or repoed, and from what day</td>
+<td>80% from day 5</td>
+<td>70% from day 31</td>
+<td>70% from day 31</td>
+</tr>
+</tbody>
+</table></div>
+<p>The three lumps of the 3.0 are an assumption added for this method. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> shows only the total in B2.</p>
+<p><strong>Short and protracted.</strong> The three scenarios above run for 30 days (the first column of each set) and for 90 days (all three months). Combined with the three families that gives six runs.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Horizon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 name-specific, short</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td>S2 market-wide, short</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td>S3 combined, short</td>
+<td>30 days</td>
+</tr>
+<tr>
+<td>S4 name-specific, protracted</td>
+<td>90 days</td>
+</tr>
+<tr>
+<td>S5 market-wide, protracted</td>
+<td>90 days</td>
+</tr>
+<tr>
+<td>S6 combined, protracted</td>
+<td>90 days</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="64-what-30-days-of-each-scenario-costs">6.4 What 30 days of each scenario costs</h3>
+<p>Month-1 gross outflows add the balance shocks, the facility draws, wholesale debt of 1.0, derivatives and collateral.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>S1 name-specific</th>
+<th>S2 market-wide</th>
+<th>S3 combined</th>
+<th>LCR (reference)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deposits (all lines)</td>
+<td>13.30</td>
+<td>8.25</td>
+<td>15.00</td>
+<td>10.65</td>
+</tr>
+<tr>
+<td>Facility draws</td>
+<td>1.95</td>
+<td>1.55</td>
+<td>2.50</td>
+<td>1.30</td>
+</tr>
+<tr>
+<td>Wholesale debt within 30 days</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>Derivatives, collateral and margin</td>
+<td>0.50</td>
+<td>0.50</td>
+<td>0.70</td>
+<td>0.50</td>
+</tr>
+<tr>
+<td><strong>Gross outflows</strong></td>
+<td><strong>16.75</strong></td>
+<td><strong>11.30</strong></td>
+<td><strong>19.20</strong></td>
+<td><strong>13.45</strong></td>
+</tr>
+<tr>
+<td>Inflows</td>
+<td>1.68</td>
+<td>2.24</td>
+<td>1.40</td>
+<td>1.90</td>
+</tr>
+<tr>
+<td><strong>Net outflows</strong></td>
+<td><strong>15.07</strong></td>
+<td><strong>9.06</strong></td>
+<td><strong>17.80</strong></td>
+<td><strong>11.55</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>The LCR column uses the prescribed rates (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 5.3 uses the same 11.55). The combined scenario is 54% more severe than the LCR in net terms (17.80 / 11.55 = 1.541), and the market-wide one is milder. That is normal: the LCR is built as a prescribed severe market and name-specific stress, and the bank's own combined test is built to be harsher in the places where Example Bank is most exposed.</p>
+<h3 id="65-the-daily-path">6.5 The daily path</h3>
+<p>A total is not enough, because liquidity runs out on a <strong>day</strong>. Outflows are front-loaded: customers who are going to leave tend to leave early. A simple shape for month 1 is a declining weight on each day: <code>weight(day) = exp(-0.10 x day)</code>, scaled so the 30 weights add to 1. Day 1 gets 10.0% of the month's outflow, day 30 gets 0.55%, and the first seven days carry 53.0%. Months 2 and 3 are spread evenly. Wholesale debt due within 30 days is spread evenly over days 1 to 30. The three later lumps fall on their dates. Inflows are spread evenly.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> The decay rate of 0.10 a day is invented. Banks calibrate the front-loading from past events, from the stress periods of other banks, and from judgement.</p>
+</blockquote>
+<hr />
+<h2 id="7-setting-and-documenting-assumptions">7. Setting and documenting assumptions</h2>
+<p>The standard requires scenarios and assumptions to be "well documented and reviewed together with the stress test results" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>). Treat each assumption as a small contract with an owner.</p>
+<p><strong>An assumption register.</strong> One row per assumption, with at least these columns.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Example row: retail less stable, combined scenario, month 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID and name</td>
+<td>A-RL-S3-M1</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>18% of balance leaves</td>
+</tr>
+<tr>
+<td>Basis</td>
+<td>Judgement: twice the name-specific rate seen at peer events; floor from the LCR rate of 10% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t1">Att A Table 1</a>)</td>
+</tr>
+<tr>
+<td>Data and window</td>
+<td>Daily balances, 36 months; worst observed 30-day run-off 4.1% (invented)</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Head of Treasury</td>
+</tr>
+<tr>
+<td>Challenge</td>
+<td>Liquidity Risk</td>
+</tr>
+<tr>
+<td>Approved by and date</td>
+<td>ALCO, version and date</td>
+</tr>
+<tr>
+<td>Next review</td>
+<td>Annual, or on a market event</td>
+</tr>
+<tr>
+<td>Sensitivity</td>
+<td>Moving 18% to 22% changes the 30-day survival by N days (section 10)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rules for good assumptions</strong> (Typical practice):</p>
+<ol>
+<li>Never less severe than the regulatory rate for the same item, unless a written reason and approval exist.</li>
+<li>A base value, a severe value and the source of each.</li>
+<li>Every number traced to a version, so a result can be reproduced.</li>
+<li>Reviewed after any stress event, any product change and at least annually (limits and escalation are reviewed "regularly", <a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</li>
+<li>A record of who challenged it and what changed.</li>
+</ol>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> An assumption without an owner is a rumour. If you find a shock in a model with no row in the register, stop and ask.</p>
+</blockquote>
+<hr />
+<h2 id="8-survival-horizon-and-the-counterbalancing-capacity-table">8. Survival horizon and the counterbalancing capacity table</h2>
+<h3 id="81-basics">8.1 Basics</h3>
+<p>The <strong>survival horizon</strong> is the number of days a bank can pay everything that falls due before its liquid resources run out (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 5.2). The <strong>counterbalancing capacity</strong> (CBC) is the set of resources the bank can turn into cash, after haircuts and after the time it takes. The horizon is the first day the cumulative net outflow is greater than the CBC available on that day.</p>
+<p>Small example 1: CBC is 100 and outflows are a flat 10 a day: horizon 10 days. If 4 a day comes in, the net is 6 and the horizon is 100 / 6 = 16.7 days.</p>
+<p>Small example 2 (front-loaded): CBC is 100 and daily outflows are 35, 25, 15, 10, 8, 6, 5, 4 and 2 (total 110). The cumulative outflow is 35, 60, 75, 85, 93, 99, 104 and so on. It passes 100 on day 7. A flat average of 110 / 9 = 12.2 a day would have said 8.2 days. Both are wrong in different ways, which is why the path method is used.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 5.3 shows a straight-line horizon of 29.4 days for a simple multiple of the LCR. It is called a teaching shortcut there. The path method in this section is the proper form, and the scenarios in section 6 are different scenarios from that example, so the two numbers do not conflict.</p>
+</blockquote>
+<h3 id="82-the-counterbalancing-capacity-table-for-example-bank">8.2 The counterbalancing capacity table for Example Bank</h3>
+<p>Resources and when they become cash (stated per scenario in section 6.3). HQLA are cash and balances 5.0 plus government and semi-government securities 12.0, total 17.0.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Face</th>
+<th>Combined (S3, S6)</th>
+<th>Name-specific (S1, S4)</th>
+<th>Time to cash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash and RBA balances</td>
+<td>5.0</td>
+<td>5.00</td>
+<td>5.00</td>
+<td>Day 1</td>
+</tr>
+<tr>
+<td>Government and semi-government securities</td>
+<td>12.0</td>
+<td>11.52 (4% fall)</td>
+<td>12.00</td>
+<td>From day 2</td>
+</tr>
+<tr>
+<td>Other debt securities (non-HQLA)</td>
+<td>3.0</td>
+<td>2.10 (70%)</td>
+<td>2.40 (80%)</td>
+<td>Day 31 combined; day 5 name-specific</td>
+</tr>
+<tr>
+<td><strong>CBC available</strong></td>
+<td></td>
+<td><strong>5.00 on day 1; 16.52 from day 2; 18.62 from day 31</strong></td>
+<td><strong>5.00 on day 1; 17.00 from day 2; 19.40 from day 5</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>In the market-wide scenarios the figures are the same as the combined: 5.00, 16.52 and 18.62.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The securities that are in the LCR as HQLA are used up by the stress. After the stress the LCR is lower. The CBC table must show the same assets as the LCR's HQLA at their stressed value, not a second copy of them (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a> forbids double counting).</p>
+</blockquote>
+<h3 id="83-results">8.3 Results</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Horizon</th>
+<th>Cumulative net outflow at the end</th>
+<th>CBC at the end</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 name-specific, short</td>
+<td>30</td>
+<td>15.07</td>
+<td>19.40</td>
+<td>Survives; lowest headroom 3.29 (day 1)</td>
+</tr>
+<tr>
+<td>S2 market-wide, short</td>
+<td>30</td>
+<td>9.06</td>
+<td>16.52</td>
+<td>Survives; lowest headroom 3.85 (day 1)</td>
+</tr>
+<tr>
+<td>S3 combined, short</td>
+<td>30</td>
+<td>17.80</td>
+<td>16.52</td>
+<td><strong>Fails on day 22</strong>; short 1.28 on day 30</td>
+</tr>
+<tr>
+<td>S4 name-specific, protracted</td>
+<td>90</td>
+<td>20.56</td>
+<td>19.40</td>
+<td><strong>Fails on day 75</strong>; short 1.16 on day 90</td>
+</tr>
+<tr>
+<td>S5 market-wide, protracted</td>
+<td>90</td>
+<td>10.12</td>
+<td>18.62</td>
+<td>Survives; the market-wide scenario is mild</td>
+</tr>
+<tr>
+<td>S6 combined, protracted</td>
+<td>90</td>
+<td>24.70</td>
+<td>18.62</td>
+<td><strong>Fails on day 22</strong>; short 6.08 on day 90</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cumulative net outflow of the three short scenarios at days 1, 5, 10, 20 and 30:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Day</th>
+<th>S1</th>
+<th>S2</th>
+<th>S3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.71</td>
+<td>1.15</td>
+<td>2.15</td>
+</tr>
+<tr>
+<td>5</td>
+<td>6.45</td>
+<td>4.10</td>
+<td>7.63</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10.22</td>
+<td>6.41</td>
+<td>12.01</td>
+</tr>
+<tr>
+<td>20</td>
+<td>13.82</td>
+<td>8.49</td>
+<td>16.26</td>
+</tr>
+<tr>
+<td>30</td>
+<td>15.07</td>
+<td>9.06</td>
+<td>17.80</td>
+</tr>
+</tbody>
+</table></div>
+<p>Month-by-month deposit and facility outflows in S6 are 17.50, 5.05 and 2.65, plus wholesale lumps of 1.0 on day 45 and 1.0 on day 75 (and the 1.0 within 30 days).</p>
+<p><strong>What this tells management.</strong> The LCR is 147.2% and the LCR is a pass. The bank's own combined stress fails on day 22. That is not a contradiction. The LCR is APRA's scenario. The combined test is the bank's own, with harsher corporate and facility behaviour. <a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 para 62</a> says tests exist "to ensure that current exposures remain in accordance with the ADI's liquidity risk tolerance", and the answer for this scenario is "not in accordance, by 1.28 within 30 days".</p>
+<hr />
+<h2 id="9-reverse-stress-testing">9. Reverse stress testing</h2>
+<h3 id="91-basics">9.1 Basics</h3>
+<p>A forward stress test chooses the shock and finds the result. A <strong>reverse stress test</strong> chooses the result ("the buffer is gone by day 30" or "the LCR falls to 100%") and asks what shock would cause it. It finds the cliff edge.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Reverse stress testing is a common way for banks to examine how bad things must get. APS 210 and APG 210 do not use the words "reverse stress test" in the paragraphs read for this document, so this section is method, not a rule. <a class="c" href="17_APG210_Companion.html#g-p81">APG 210 para 81</a> (a "failure of imagination" gives "a false sense of security") is the nearest supervisory support <code>[S2]</code>.</p>
+</blockquote>
+<h3 id="92-example-bank-results">9.2 Example Bank: results</h3>
+<p><strong>Question 1: how much worse than the LCR scenario can outflows be before the LCR reaches 100%?</strong> Leave the items that are already at 100% (financial institutions, wholesale debt within 30 days, derivatives and downgrade collateral, total 5.5) unchanged. Scale the rest (7.95) by a multiple m so that HQLA equals net outflows: 17.0 = (5.5 + 7.95 m) - 1.9, giving <strong>m = 1.686</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>LCR rate</th>
+<th>Rate that breaks the LCR (x 1.686)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail stable</td>
+<td>5%</td>
+<td>8.4%</td>
+</tr>
+<tr>
+<td>Retail less stable</td>
+<td>10%</td>
+<td>16.9%</td>
+</tr>
+<tr>
+<td>SME</td>
+<td>10%</td>
+<td>16.9%</td>
+</tr>
+<tr>
+<td>Corporate operational</td>
+<td>25%</td>
+<td>42.1%</td>
+</tr>
+<tr>
+<td>Corporate non-operational</td>
+<td>40%</td>
+<td>67.4%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Question 2: could any one line break the LCR on its own?</strong> The surplus over 100% is 5.45. The run-off rate on a single line needed to use it up:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Needed run-off</th>
+<th>Possible?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail stable (25.0)</td>
+<td>26.8%</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Retail less stable (15.0)</td>
+<td>46.3%</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>SME (5.0)</td>
+<td>119.0%</td>
+<td>No: more than the whole balance</td>
+</tr>
+<tr>
+<td>Corporate operational (4.0)</td>
+<td>161.3%</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Corporate non-operational (6.0)</td>
+<td>130.8%</td>
+<td>No</td>
+</tr>
+</tbody>
+</table></div>
+<p>So the LCR can be broken by a retail run, not by any single wholesale line. That is a reverse stress finding: <strong>the vulnerability is retail, because it is the large pool.</strong></p>
+<p><strong>Question 3 (the one document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> raises): how far would corporate non-operational (6.0) and financial institution (4.0) deposits have to fall?</strong> Net outflows without those two lines are 5.15 (11.55 less 2.4 and 4.0). If both lost 100%, net outflows would be 15.15. HQLA of 17.0 exceeds that by 1.85, and the LCR would be 112.2%. Even a total loss of both pools does not break the 100% LCR, because the LCR already counts 4.0 for financial institutions in full and 2.4 of the 6.0.</p>
+<p><strong>Question 4: how much can the internal combined scenario (S3) be softened, or how much worse can the name-specific scenario (S1) become?</strong> Scale all deposit and facility shocks by a multiple. For S3 the 30-day horizon is just met at <strong>0.905</strong> (90.5% of the assumed shocks); at 1.0 it fails on day 22. For S1 the CBC is first exhausted within 30 days at a multiple of <strong>1.385</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>S1 shock multiple</th>
+<th>Survival day</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Survives 30 days</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>Day 22</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>Day 13</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>Day 10</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>Day 8</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reading: shocks 38.5% worse than S1 are enough to exhaust the buffer within the month. At three times, the bank would be out of liquidity in 8 days. Management should ask whether a 38.5% worse outcome is plausible. If so, it is a limit, a funding plan and a CFP issue (section 11).</p>
+<hr />
+<h2 id="10-sensitivity-analysis-of-the-lcr-to-each-assumption">10. Sensitivity analysis of the LCR to each assumption</h2>
+<p>A <strong>sensitivity analysis</strong> changes one input at a time and records the effect on the answer. It tells you which assumption you must get right. Starting from LCR 147.2% (HQLA 17.0 over net outflows 11.55; one percentage point of LCR is A$0.1155bn of HQLA):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Change (one at a time)</th>
+<th>New LCR</th>
+<th>Change in LCR (percentage points)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail stable run-off +5 points (5% to 10%)</td>
+<td>132.8%</td>
+<td>-14.37</td>
+</tr>
+<tr>
+<td>Financial institution deposits 4.0 up to 5.0</td>
+<td>135.5%</td>
+<td>-11.73</td>
+</tr>
+<tr>
+<td>All inflow rates halved</td>
+<td>136.0%</td>
+<td>-11.19</td>
+</tr>
+<tr>
+<td>Retail less stable run-off +5 points</td>
+<td>138.2%</td>
+<td>-8.97</td>
+</tr>
+<tr>
+<td>Undrawn retail and SME facility rate +5 points</td>
+<td>141.1%</td>
+<td>-6.11</td>
+</tr>
+<tr>
+<td>Inflow rate on bank loans 100% down to 50%</td>
+<td>141.1%</td>
+<td>-6.11</td>
+</tr>
+<tr>
+<td>Government securities (12.0) lose 5% of value (0.6)</td>
+<td>142.0%</td>
+<td>-5.19</td>
+</tr>
+<tr>
+<td>Corporate non-operational run-off +5 points</td>
+<td>143.5%</td>
+<td>-3.73</td>
+</tr>
+<tr>
+<td>SME run-off +5 points</td>
+<td>144.1%</td>
+<td>-3.12</td>
+</tr>
+<tr>
+<td>Undrawn corporate credit facility rate +5 points</td>
+<td>144.1%</td>
+<td>-3.12</td>
+</tr>
+<tr>
+<td>Corporate operational run-off +5 points</td>
+<td>144.7%</td>
+<td>-2.51</td>
+</tr>
+<tr>
+<td>Net derivative outflow +0.1</td>
+<td>145.9%</td>
+<td>-1.26</td>
+</tr>
+<tr>
+<td>Undrawn corporate liquidity facility rate +5 points</td>
+<td>146.6%</td>
+<td>-0.63</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>How to read it.</strong> The top of the list is where a small error in the assumption does the most damage. For Example Bank, the stable retail pool is large (25.0), so a small change in its rate matters more than a large change in a small item. This is the reason to spend validation effort on the assumptions at the top. The same method on the survival horizon of a scenario tells you how many days one assumption is worth. <a class="c" href="17_APG210_Companion.html#g-p5">APG 210 para 5</a> says liquidity risk tolerance "is required to be subject to sensitivity analysis" <code>[S2]</code>.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> One-at-a-time changes hide interaction. A stable retail run and a closing market usually happen together. Always add a combined case alongside the table.</p>
+</blockquote>
+<hr />
+<h2 id="11-using-results-limits-and-the-contingency-funding-plan">11. Using results: limits and the contingency funding plan</h2>
+<h3 id="111-what-the-standard-requires">11.1 What the standard requires</h3>
+<ul>
+<li>Stress test results "must be explicitly considered in the setting of internal limits" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>), and the bank "must set limits to control its liquidity risk exposure and vulnerabilities" and review them regularly (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</li>
+<li>Outcomes "must be used to adjust the ADI's liquidity management strategy, policies and positions and to develop effective contingency plans" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p63">APS 210 para 63</a>).</li>
+<li>The contingency funding plan "must be closely integrated with the ADI's ongoing analysis of liquidity risk and with the assumptions used in its stress tests and the results of those stress tests" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p49">APS 210 para 49</a>), and the ADI "must decide how to incorporate the results of stress tests in assessing and planning for related potential funding shortfalls" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p66">APS 210 para 66</a>).</li>
+<li>Results, vulnerabilities and resulting actions "must be reported to, and discussed with, the Board and APRA" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>).</li>
+<li>The plan must state each source, the amount, "the lead time needed to tap additional funds from each", and be reviewed and tested at least annually (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p48">APS 210 para 48</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>).</li>
+<li>The funding strategy, an "ongoing" plan of three years, rests on "robust assumptions" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p44">APS 210 paras 44 to 46</a>). APG 210 expects it to include sensitivity analysis and second-order effects (<a class="c" href="17_APG210_Companion.html#g-p50">APG 210 para 50</a>; <a class="c" href="17_APG210_Companion.html#g-p52">APG 210 para 52</a>) <code>[S2]</code>.</li>
+<li>APG 210 adds that a bank would "regularly test key assumptions, such as the ability to sell or repo certain assets" and review the plan after each exercise (<a class="c" href="17_APG210_Companion.html#g-p58">APG 210 para 58</a>), and that realistic timelines for transferring liquidity and collateral are built into modelling (<a class="c" href="17_APG210_Companion.html#g-p56">APG 210 para 56</a>) <code>[S2]</code>.</li>
+</ul>
+<h3 id="112-from-a-result-to-a-limit-example-bank-convention-invented">11.2 From a result to a limit (Example Bank convention, invented)</h3>
+<p>A limit turns a stress result into a number someone can be held to.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Stress result (section 8.3)</th>
+<th>Possible limit</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 survives 30 days with 4.33 headroom at day 30 (19.40 less 15.07)</td>
+<td>Minimum survival 30 days in a name-specific stress</td>
+<td>Met</td>
+</tr>
+<tr>
+<td>S2 survives 30 days with 7.46 headroom</td>
+<td>Minimum survival 30 days in a market-wide stress</td>
+<td>Met</td>
+</tr>
+<tr>
+<td>S3 fails on day 22</td>
+<td>Minimum survival 30 days in a combined stress</td>
+<td><strong>Not met. Plan of action required (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>)</strong></td>
+</tr>
+<tr>
+<td>S4 fails on day 75</td>
+<td>Minimum survival 90 days in a protracted name-specific stress</td>
+<td>Not met</td>
+</tr>
+<tr>
+<td>Wholesale debt falls due on days 45 and 75 (1.0 each)</td>
+<td>Maximum wholesale maturing in any 30-day window</td>
+<td>Review with the funding plan</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-example"><p><strong>Example:</strong> Suppose the Board's tolerance is "30 days in a combined stress". S3 shows 22 days. Management must "implement a plan of action to review the exposure and reduce it to a level that is within the limit" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>). The options are to hold more HQLA, push out wholesale debt, tighten the design of facilities, or accept and record the tolerance change with Board approval.</p>
+</blockquote>
+<h3 id="113-sizing-the-contingency-funding-plan">11.3 Sizing the contingency funding plan</h3>
+<p>The CFP table in document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 7.3 lists sources. A stress result tells you how big the actions must be and <strong>when</strong> the money is needed. Take S6 (combined, protracted). The shortfall appears on day 22 and grows to 6.08 on day 90. Example Bank's actions (invented sizes and lead times, <strong>Typical practice; confirm with Treasury</strong>; see also document <a href="20_The_RBA_and_the_Payments_System.html">20</a> on RBA facilities):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Amount</th>
+<th>Available from day</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repo a self-securitised mortgage pool of 6.0 at 60%</td>
+<td>3.6</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Curtail new lending and manage draws</td>
+<td>0.5</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Retail deposit rate response</td>
+<td>1.0</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Sell business loans</td>
+<td>1.0</td>
+<td>60</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>6.1</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Shortfall in S6</th>
+<th>Actions available</th>
+<th>Headroom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>none (CBC exceeds outflows by 4.51)</td>
+<td>3.6</td>
+<td>8.11</td>
+</tr>
+<tr>
+<td>22</td>
+<td>0.18</td>
+<td>3.6</td>
+<td>3.42</td>
+</tr>
+<tr>
+<td>30</td>
+<td>1.28</td>
+<td>4.1</td>
+<td>2.82</td>
+</tr>
+<tr>
+<td>45</td>
+<td>2.01</td>
+<td>5.1</td>
+<td>3.10</td>
+</tr>
+<tr>
+<td>60</td>
+<td>3.83</td>
+<td>6.1</td>
+<td>2.27</td>
+</tr>
+<tr>
+<td>90</td>
+<td>6.08</td>
+<td>6.1</td>
+<td>0.02</td>
+</tr>
+</tbody>
+</table></div>
+<p>The plan covers the protracted combined stress, but by day 90 only by 0.02. Two readings. First, the plan is <strong>just</strong> enough, so any slip in a lead time or a haircut leaves a gap, and Treasury should know that. Second, the plan covers the stress only if each action works as described. <a class="c" href="04_APS210_Companion_Main_Body.html#m-p48">APS 210 para 48</a> asks for the lead time of each source, and <a class="c" href="17_APG210_Companion.html#g-p58">APG 210 para 58</a> asks that key assumptions be tested.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> The CFP must not rely on actions that the stress itself switches off. If the combined stress closes repo markets, a repo-based action cannot be counted at full value. Ask, for each action, "does this still work in the scenario I am sizing against?"</p>
+</blockquote>
+<p><strong>The retail run plan.</strong> The plan for a retail run must repay depositors as soon as practicable and "must not rely upon closing distribution channels" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p50">APS 210 para 50</a>). The stress data tells the plan how much cash and what channel capacity are needed: for S3 the retail pools lose A$5.1bn (stable 2.0, less stable 2.7, term 0.4) in the first 30 days, and the front-loaded path means 53.0% of that in the first seven days.</p>
+<h3 id="114-reporting">11.4 Reporting</h3>
+<p>Results, vulnerabilities and actions go to the Board and to APRA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>). APRA's liquidity FAQ states that APRA does not require regular reporting of stress test results but may request them at any time (as cited in document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 5.5). So keep a current, ready-to-send summary.</p>
+<hr />
+<h2 id="12-early-warning-indicator-calibration">12. Early warning indicator calibration</h2>
+<h3 id="121-basics">12.1 Basics</h3>
+<p>An early warning indicator (EWI) is a measure that moves before trouble (document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 4.4). <a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a> requires a set "to aid its daily liquidity risk management processes" that helps to identify negative trends and leads "to an assessment and potential response by management". <a class="c" href="17_APG210_Companion.html#g-p38">APG 210 para 38</a> lists examples, among them "a reduction in the rate of deposit growth, unusual deposit loss or a material increase in notices given on minimum notice deposit periods", "a decrease in the weighted-average maturity of liabilities" and "negative publicity" <code>[S2]</code>.</p>
+<p><strong>Calibration</strong> means choosing the amber and red lines. A line set too close to normal rings every week and people stop listening. A line set too far gives no warning. Calibration balances false alarms against lead time.</p>
+<h3 id="122-a-worked-example">12.2 A worked example</h3>
+<p>The indicator is the five-day net change in retail deposits, as a percentage of the balance, observed weekly. Twenty weeks of normal history (the calibration window) and then six weeks leading up to a run (the "event" is week 26):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Weeks 1 to 10</th>
+<th>0.12, -0.05, 0.20, -0.18, 0.08, -0.10, 0.15, -0.22, 0.05, -0.12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weeks 11 to 20</td>
+<td>0.18, -0.08, -0.15, 0.10, -0.25, 0.02, 0.14, -0.20, 0.06, -0.09</td>
+</tr>
+<tr>
+<td>Weeks 21 to 26</td>
+<td>-0.35, -0.90, -1.40, -2.20, -3.50, -5.00</td>
+</tr>
+</tbody>
+</table></div>
+<p>Over weeks 1 to 20 the mean is -0.017% and the standard deviation is 0.1439%. Candidate amber lines at the mean less k standard deviations:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Amber line</th>
+<th>Level</th>
+<th>False alarms in weeks 1 to 20</th>
+<th>First breach</th>
+<th>Weeks of warning before week 26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k = 1.0</td>
+<td>-0.161%</td>
+<td>4</td>
+<td>Week 21</td>
+<td>5</td>
+</tr>
+<tr>
+<td>k = 1.5</td>
+<td>-0.233%</td>
+<td>1</td>
+<td>Week 21</td>
+<td>5</td>
+</tr>
+<tr>
+<td>k = 2.0</td>
+<td>-0.305%</td>
+<td>0</td>
+<td>Week 21</td>
+<td>5</td>
+</tr>
+<tr>
+<td>k = 3.0</td>
+<td>-0.449%</td>
+<td>0</td>
+<td>Week 22</td>
+<td>4</td>
+</tr>
+</tbody>
+</table></div>
+<p>The worst calibration week was -0.25%. A line at 2 standard deviations (-0.305%) gives no false alarm in the history and the same five weeks of warning as the tighter lines. A line at 1 standard deviation rings four times in 20 weeks. A fixed rule instead, amber at -0.5% and red at -1.5%, would have gone amber in week 22 and red in week 24. Over weeks 21 to 26 the indicator summed to -13.35%.</p>
+<p><strong>Method</strong> (Typical practice):</p>
+<ol>
+<li>Collect at least a year of history for the indicator, including any stress episode you have.</li>
+<li>Compute the mean and spread in normal times. Do not include the episode in the baseline.</li>
+<li>Try several lines and count false alarms and lead time on past episodes.</li>
+<li>Choose a line; add the red line from the CFP triggers or from a stress result (for example, the daily outflow at which survival falls below tolerance).</li>
+<li>Record the calibration window, the line and the date. Review at least annually (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>).</li>
+<li>Give each indicator a named owner, an escalation path, and an "as at" time.</li>
+</ol>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> History here has a single episode, so the calibration is <strong>weak evidence</strong>. Add judgement from stress results: for example, if S1 says the bank survives only if retail outflows stay below some daily level, that level becomes the red line.</p>
+<p><strong>Typical practice:</strong> An indicator can be turned from a statistic into a stress-linked trigger: choose the daily outflow rate at which the survival horizon in the combined scenario would fall below the Board's tolerance, and use that as the red line.</p>
+</blockquote>
+<hr />
+<h2 id="13-funds-transfer-pricing-from-basics">13. Funds transfer pricing from basics</h2>
+<h3 id="131-why-it-exists">13.1 Why it exists</h3>
+<p>Imagine a family business with a shop, a bakery and a delivery van. The bakery is paid up front by customers in cash. The shop buys stock and waits months to be paid. If the family ignores the timing, the bakery looks poor and the shop looks rich, when really the bakery is lending cash to the shop. A fair accounts system <strong>charges the shop for the cash it uses and credits the bakery for the cash it supplies</strong>.</p>
+<p>A bank is the same. Deposit-gathering teams supply money. Lending teams use money. Without an internal price, the lender looks profitable on loans funded by cheap short-term money, and the gatherer looks unprofitable on deposits that fund the whole bank.</p>
+<p><strong>Funds transfer pricing (FTP)</strong> is the internal system that charges each use of funds, and credits each source of funds, at an internal rate. The standard requires it in outcome form: "a costs and benefits allocation process for funding and liquidity that appropriately apportions the costs of prudent liquidity management to the sources of liquidity risk and provides appropriate incentives to manage liquidity risk" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p42">APS 210 para 42</a>).</p>
+<p>APG 210 describes what APRA expects to see <code>[S2]</code>:</p>
+<ul>
+<li>The process "will seek to align the risk-taking incentives of individual business lines with the liquidity risk exposures their activities create for the ADI as a whole", including for new product approvals, on and off balance sheet (<a class="c" href="17_APG210_Companion.html#g-p43">APG 210 para 43</a>).</li>
+<li>Senior management incorporates funding and liquidity costs, benefits and risks "in the internal pricing, performance measurement and new product approval process for all significant business activities" (<a class="c" href="17_APG210_Companion.html#g-p44">APG 210 para 44</a>).</li>
+<li>Costs are "explicitly attributed" with "a liquidity charge assigned, as appropriate, to positions, portfolios or individual transactions", reflecting "anticipated holding periods of assets and liabilities, their market liquidity risk characteristics" (<a class="c" href="17_APG210_Companion.html#g-p45">APG 210 para 45</a>).</li>
+<li>When modelling the cost of a liquidity buffer, assets are costed "on a basis that reflects prudent funding over a longer term" (<a class="c" href="17_APG210_Companion.html#g-p46">APG 210 para 46</a>).</li>
+<li>The framework is reviewed periodically, and "for larger, more complex ADIs this review is expected to be conducted on at least an annual basis" (<a class="c" href="17_APG210_Companion.html#g-p47">APG 210 para 47</a>).</li>
+</ul>
+<p>The Basel Committee's Principle 4 is the international source: a bank "should incorporate liquidity costs, benefits and risks in the internal pricing, performance measurement" and new product approval <code>[S4]</code>.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> FTP is not a Liquidity Reporting task. Treasury (or a funding and pricing team) runs it, Finance books it, and Liquidity Risk challenges it. You will meet it because the buffer cost it needs comes from your LCR and NSFR numbers, and because management reports are built on it.</p>
+</blockquote>
+<h3 id="132-the-first-building-block-matched-maturity-transfer-pricing">13.2 The first building block: matched-maturity transfer pricing</h3>
+<p><strong>Matched maturity</strong> means that each loan is charged the cost of borrowing for the same length of time that the loan is expected to last, and each deposit is credited for the same length of time it is expected to stay. A five-year fixed loan is funded in the model with five-year money, so a swing in short-term rates does not make the loan look better or worse than it is.</p>
+<p>The price has two parts:</p>
+<pre><code>FTP rate = Base rate for the tenor + Liquidity premium for the tenor
+</code></pre>
+<ul>
+<li>The <strong>base rate</strong> is a market curve for the tenor with no bank credit or liquidity cost in it (for example a swap curve).</li>
+<li>The <strong>liquidity premium</strong> is the extra cost a bank pays to borrow for that tenor in unsecured wholesale funding (and the extra it would earn for supplying long money). It rises with the tenor, because lenders ask for more to lock money up.</li>
+</ul>
+<h3 id="133-the-liquidity-premium-curve">13.3 The liquidity premium curve</h3>
+<p>A <strong>liquidity premium curve</strong> gives the premium for each tenor. <strong>Typical practice:</strong> it is built from the bank's own cost of raising term funding, for example the spreads paid on its recent senior bonds and term deposits over the base curve, adjusted for market conditions, and then smoothed. It is approved by ALCO and refreshed regularly (at least annually, <a class="c" href="17_APG210_Companion.html#g-p47">APG 210 para 47</a>).</p>
+<p>Example Bank's curves (<strong>invented for training</strong>; percent a year):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tenor</th>
+<th>Base rate</th>
+<th>Liquidity premium</th>
+<th>FTP rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 month</td>
+<td>4.00</td>
+<td>0.05</td>
+<td>4.05</td>
+</tr>
+<tr>
+<td>3 months</td>
+<td>4.05</td>
+<td>0.10</td>
+<td>4.15</td>
+</tr>
+<tr>
+<td>1 year</td>
+<td>4.20</td>
+<td>0.30</td>
+<td>4.50</td>
+</tr>
+<tr>
+<td>3 years</td>
+<td>4.40</td>
+<td>0.60</td>
+<td>5.00</td>
+</tr>
+<tr>
+<td>5 years</td>
+<td>4.60</td>
+<td>0.80</td>
+<td>5.40</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tenors between the points are read by straight-line interpolation. Beyond five years the curve is capped at the five-year point.</p>
+<h3 id="134-the-second-building-block-charging-for-contingent-liquidity">13.4 The second building block: charging for contingent liquidity</h3>
+<p>Matched maturity covers <strong>funding</strong> cost. It does not cover the cost of the buffer the bank must hold against products that can leave or be drawn quickly. Holding HQLA costs money: the bank borrows for longer than 30 days, holds low-yield liquid assets, and earns less than it pays. This negative carry is the <strong>cost of the buffer</strong>.</p>
+<p>Example Bank: term funding at 3 years costs 5.00 (from the table). HQLA yield (invented) 3.90. Negative carry = 5.00 - 3.90 = <strong>1.10% a year</strong> (consistent with costing the buffer "on a basis that reflects prudent funding over a longer term", <a class="c" href="17_APG210_Companion.html#g-p46">APG 210 para 46</a>). On the HQLA of 17.0:</p>
+<pre><code>Annual cost of the buffer = 17.0 x 1.10% = A$0.187bn = A$187.0m
+</code></pre>
+<p>The question for FTP is <strong>which products should pay for that buffer</strong>. Banks commonly allocate it in proportion to each product's contribution to the stressed outflows. One way, using the LCR's weighted outflows (13.45 in total, document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> section 4.2 and document <a href="08_LCR_Production_End_to_End.html">08</a>):</p>
+<pre><code>Cost per A$ of weighted outflow = 187.0m / 13.45bn = 1.3903%
+Charge on a product             = its LCR outflow rate x 1.3903%
+</code></pre>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Product</th>
+<th>LCR rate</th>
+<th>Charge (bp a year of the balance)</th>
+<th>Allocated cost (A$m)</th>
+<th>Share of buffer cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail stable deposits (25.0)</td>
+<td>5%</td>
+<td>7.0</td>
+<td>17.4</td>
+<td>9.3%</td>
+</tr>
+<tr>
+<td>Retail less stable deposits (15.0)</td>
+<td>10%</td>
+<td>13.9</td>
+<td>20.9</td>
+<td>11.2%</td>
+</tr>
+<tr>
+<td>SME deposits (5.0)</td>
+<td>10%</td>
+<td>13.9</td>
+<td>7.0</td>
+<td>3.7%</td>
+</tr>
+<tr>
+<td>Corporate operational deposits (4.0)</td>
+<td>25%</td>
+<td>34.8</td>
+<td>13.9</td>
+<td>7.4%</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits (6.0)</td>
+<td>40%</td>
+<td>55.6</td>
+<td>33.4</td>
+<td>17.8%</td>
+</tr>
+<tr>
+<td>Financial institution deposits (4.0)</td>
+<td>100%</td>
+<td>139.0</td>
+<td>55.6</td>
+<td>29.7%</td>
+</tr>
+<tr>
+<td>Wholesale debt within 30 days (1.0)</td>
+<td>100%</td>
+<td>139.0</td>
+<td>13.9</td>
+<td>7.4%</td>
+</tr>
+<tr>
+<td>Undrawn retail and SME facilities (10.0)</td>
+<td>5%</td>
+<td>7.0 of undrawn</td>
+<td>7.0</td>
+<td>3.7%</td>
+</tr>
+<tr>
+<td>Undrawn corporate credit (5.0)</td>
+<td>10%</td>
+<td>13.9 of undrawn</td>
+<td>7.0</td>
+<td>3.7%</td>
+</tr>
+<tr>
+<td>Undrawn corporate liquidity (1.0)</td>
+<td>30%</td>
+<td>41.7 of undrawn</td>
+<td>4.2</td>
+<td>2.2%</td>
+</tr>
+<tr>
+<td>Facilities to a hedge fund or similar</td>
+<td>100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>)</td>
+<td>139.0 of undrawn</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Derivatives and downgrade collateral (0.5)</td>
+<td>100%</td>
+<td></td>
+<td></td>
+<td>3.7%</td>
+</tr>
+</tbody>
+</table></div>
+<p>The three facility rows together carry 9.7% of the cost (rounded rows add to 9.6%). The financial institution deposits and the corporate non-operational deposits together carry 47.6% of the buffer cost, although they are only 14.5% of the deposit balances (10.0 of 69.0). A product with a 0% run-off, such as a retail term deposit beyond 30 days, carries <strong>no</strong> buffer charge.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> There is no single standard way to allocate the buffer cost. Some banks use the LCR run-off rates as above, some use their own stress scenario shocks (so section 6 feeds pricing), and some split the cost between the stressed outflow and the NSFR's stable funding need. Whatever the choice, it must be explained and reviewed. Allocating the cost of the <em>whole</em> HQLA, including the surplus above the requirement (5.45 here), is a choice: some banks charge only the part needed for the requirement and treat the surplus as a head office cost.</p>
+</blockquote>
+<h3 id="135-worked-example-1-pricing-a-mortgage">13.5 Worked example 1: pricing a mortgage</h3>
+<p>A new standard residential mortgage of A$500,000 is priced at <strong>6.10%</strong>. The contract is 25 years, but the bank's behavioural analysis (prepayment, section 4.1) says the average life is about <strong>4 years</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Pick the tenor</td>
+<td>Behavioural life, not the contract</td>
+<td>4 years</td>
+</tr>
+<tr>
+<td>2. Base rate at 4 years</td>
+<td>Halfway between 4.40 (3y) and 4.60 (5y)</td>
+<td>4.50</td>
+</tr>
+<tr>
+<td>3. Liquidity premium at 4 years</td>
+<td>Halfway between 0.60 and 0.80</td>
+<td>0.70</td>
+</tr>
+<tr>
+<td>4. FTP charge</td>
+<td>4.50 + 0.70</td>
+<td>5.20</td>
+</tr>
+<tr>
+<td>5. Margin over funding</td>
+<td>6.10 - 5.20</td>
+<td>0.90 (A$4,500 a year on A$500,000)</td>
+</tr>
+<tr>
+<td>6. Contingent liquidity charge</td>
+<td>A mortgage does not run off within 30 days in the LCR, so nil (Att A)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>If the contractual 25 years were used instead, the curve is capped at five years (FTP 5.40) and the margin would be 0.70. The difference of 20 basis points shows why the choice of life matters. After this the business adds credit costs, operating costs and capital to see whether the loan is worth writing.</p>
+<h3 id="136-worked-example-2-pricing-a-term-deposit-and-an-at-call-deposit">13.6 Worked example 2: pricing a term deposit and an at-call deposit</h3>
+<p>A customer places a 12-month term deposit at <strong>4.10%</strong>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FTP credit at 1 year</td>
+<td>4.20 + 0.30</td>
+<td>4.50</td>
+</tr>
+<tr>
+<td>Customer rate</td>
+<td></td>
+<td>4.10</td>
+</tr>
+<tr>
+<td>Margin to the deposit-gathering team</td>
+<td>4.50 - 4.10</td>
+<td>0.40</td>
+</tr>
+<tr>
+<td>Contingent liquidity charge</td>
+<td>A term deposit beyond 30 days with no early withdrawal right: 0% run-off (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Early withdrawal</td>
+<td>Observed 4.0% over a year (section 3.1); priced as a small option cost</td>
+<td>Not computed here</td>
+</tr>
+</tbody>
+</table></div>
+<p>Now an at-call, less stable retail deposit paying <strong>2.00%</strong>. Behavioural life is taken as 6 months (0.5 years).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Working</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base rate at 0.5 years</td>
+<td>Between 4.05 (3m) and 4.20 (1y)</td>
+<td>4.10</td>
+</tr>
+<tr>
+<td>Liquidity premium at 0.5 years</td>
+<td>Between 0.10 and 0.30</td>
+<td>0.167</td>
+</tr>
+<tr>
+<td>FTP credit</td>
+<td>4.10 + 0.167</td>
+<td>4.267</td>
+</tr>
+<tr>
+<td>Buffer charge</td>
+<td>10% x 1.3903%</td>
+<td>0.139</td>
+</tr>
+<tr>
+<td>Net credit</td>
+<td>4.267 - 0.139</td>
+<td>4.128</td>
+</tr>
+<tr>
+<td>Margin</td>
+<td>4.128 - 2.00</td>
+<td>2.128</td>
+</tr>
+</tbody>
+</table></div>
+<p>The at-call deposit earns the bank more margin because its customer is paid so little, but it carries a buffer charge and a shorter credited life. A financial institution deposit of three months at 4.10 shows the opposite: FTP credit 4.15, less the 139.0 basis point buffer charge, leaves a margin of -1.34. The model is saying that a 100% run-off deposit costs more to hold than it earns. This is why such funding is priced and managed carefully. (Whether a 139 basis point charge is realistic depends on the allocation choice in section 13.4.)</p>
+<h3 id="137-worked-example-3-pricing-a-committed-facility">13.7 Worked example 3: pricing a committed facility</h3>
+<p>A committed facility has <strong>no balance</strong> until it is drawn. Matched-maturity funding cost applies only once money is drawn. But the bank must hold liquid assets against the chance of a draw. APG 210 treats this as the "creation of contingent exposures" that need a liquidity charge (<a class="c" href="17_APG210_Companion.html#g-p45">APG 210 para 45</a>) <code>[S2]</code>.</p>
+<p>A A$100m undrawn facility, 12 months, with a <strong>commitment fee of 0.30% a year</strong> on the undrawn amount (A$0.300m):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Facility type</th>
+<th>LCR rate</th>
+<th>Buffer charge (% a year of the undrawn)</th>
+<th>Charge (A$m a year)</th>
+<th>Fee (A$m)</th>
+<th>Net (A$m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corporate credit (general working capital)</td>
+<td>10%</td>
+<td>0.139</td>
+<td>0.139</td>
+<td>0.300</td>
+<td>+0.161</td>
+</tr>
+<tr>
+<td>Corporate liquidity (back-stop to maturing debt)</td>
+<td>30%</td>
+<td>0.417</td>
+<td>0.417</td>
+<td>0.300</td>
+<td>-0.117</td>
+</tr>
+<tr>
+<td>Hedge fund or a vehicle that finances the bank's own assets (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>)</td>
+<td>100%</td>
+<td>1.390</td>
+<td>1.390</td>
+<td>0.300</td>
+<td>-1.090</td>
+</tr>
+</tbody>
+</table></div>
+<p>On these inputs the 0.30% fee covers the buffer cost of a credit facility, does not cover a liquidity facility, and falls far short of a facility to a hedge fund. That is the information a pricing decision needs. Note the classification rules: a facility is a liquidity facility only for the amount of the customer's debt maturing within 30 days that it backstops, and a general working capital or revolving facility is a credit facility (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A second charge sometimes added is for the NSFR, where a loan or commitment needs stable funding (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>: 5% of undrawn committed facilities). Matched-maturity pricing already charges the term cost of funding for the balance. If you also charge the NSFR on top of a term FTP rate, the bank pays twice. With the curve above, the cost gap between 3-year and 3-month funding is 0.85 percentage points. A 65% required stable funding factor applied again on a mortgage would add 55.3 basis points of double count; a 5% factor on an undrawn facility adds 4.25 basis points. Decide which method the bank uses and apply it once.</p>
+</blockquote>
+<hr />
+<h2 id="14-common-failures">14. Common failures</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Failure</th>
+<th>What goes wrong</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Behaviour</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>History from a calm period used as stress</td>
+<td>Stress run-off is understated (<a class="c" href="17_APG210_Companion.html#g-p18">APG 210 para 18</a>)</td>
+<td>Show the window; add judgement</td>
+</tr>
+<tr>
+<td>One average for a mixed pool</td>
+<td>Segments that leave first are hidden</td>
+<td>Cohorts and segments (section 2.4)</td>
+</tr>
+<tr>
+<td>Early withdrawals allowed routinely</td>
+<td>The whole term deposit category counts as demand (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>)</td>
+<td>Hardship policy and break log</td>
+</tr>
+<tr>
+<td>Prepayment carried into a stress</td>
+<td>Inflows overstated</td>
+<td>Use contractual inflows for stress (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A paras 60 to 62</a>)</td>
+</tr>
+<tr>
+<td>Assumption with no owner or date</td>
+<td>Stale numbers</td>
+<td>Register (section 7)</td>
+</tr>
+<tr>
+<td><strong>Stress testing</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Only the regulatory scenario</td>
+<td>Vulnerabilities specific to the bank are missed</td>
+<td>Six runs, section 6.3</td>
+</tr>
+<tr>
+<td>Only 30 days</td>
+<td>A wall of debt in month 3 is missed (S4 fails on day 75)</td>
+<td>A 90-day run</td>
+</tr>
+<tr>
+<td>Counting the same HQLA twice</td>
+<td>CBC overstated (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>)</td>
+<td>Reconcile CBC to the LCR</td>
+</tr>
+<tr>
+<td>CBC without lead times or haircuts</td>
+<td>Survival overstated</td>
+<td>Time-phased table (section 8.2)</td>
+</tr>
+<tr>
+<td>Results not reaching limits or the CFP</td>
+<td>The tests are decoration (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p63">APS 210 para 63</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p66">APS 210 para 66</a>)</td>
+<td>Link table (section 11)</td>
+</tr>
+<tr>
+<td><strong>Funds transfer pricing</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>One flat rate for all products</td>
+<td>Cross-subsidy; wrong incentives</td>
+<td>Matched maturity</td>
+</tr>
+<tr>
+<td>Contractual life used for long, prepaid loans</td>
+<td>Margin on loans misstated</td>
+<td>Behavioural life (section 13.5)</td>
+</tr>
+<tr>
+<td>No charge for contingent liquidity</td>
+<td>Facilities and wholesale deposits look free</td>
+<td>Buffer charge (section 13.4)</td>
+</tr>
+<tr>
+<td>Double counting the NSFR</td>
+<td>Overcharged lending</td>
+<td>One method (section 13.7)</td>
+</tr>
+<tr>
+<td>Curve not refreshed</td>
+<td>Stale prices (<a class="c" href="17_APG210_Companion.html#g-p47">APG 210 para 47</a>)</td>
+<td>Annual review at least</td>
+</tr>
+<tr>
+<td>Charges not used</td>
+<td>Pricing and bonuses ignore them</td>
+<td>Link to performance measures (<a class="c" href="17_APG210_Companion.html#g-p44">APG 210 para 44</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="15-model-governance-and-validation">15. Model governance and validation</h2>
+<p>Everything in sections 2 to 13 is a model: inputs, assumptions and a calculation that produces a decision number. A model can be wrong without a single arithmetic mistake, because the assumption is wrong. APS 210 does not have a model chapter for liquidity, and the APG 210 paragraphs I read do not use the word "validation". What they do require is process: a sound process for measuring risk (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>), regular review of limits and procedures (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>), documented and reviewed stress scenarios and assumptions (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>), testing of key assumptions (<a class="c" href="17_APG210_Companion.html#g-p58">APG 210 para 58</a>), and a review of the framework at least annually (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p35">APS 210 para 35</a>; see document <a href="12_Controls_Incidents_and_Escalation.html">12</a>). The rest is <strong>Typical practice</strong>.</p>
+<h3 id="151-the-governance-framework">15.1 The governance framework</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>What it means</th>
+<th>Example Bank (convention)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventory</td>
+<td>A list of every model: ladder, decay curves, scenarios, CBC, FTP curve</td>
+<td>Owned by Liquidity Risk</td>
+</tr>
+<tr>
+<td>Ownership</td>
+<td>A named owner for each model and each assumption</td>
+<td>Treasury owns behaviour and FTP; Liquidity Reporting owns data and calculation files</td>
+</tr>
+<tr>
+<td>Approval</td>
+<td>Assumptions and curves approved by the right body</td>
+<td>ALCO approves; Board Risk Committee informed</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Purpose, method, data, limits of use, known weaknesses</td>
+<td>One document per model</td>
+</tr>
+<tr>
+<td>Change control</td>
+<td>Any change to code, assumption or curve is versioned and approved</td>
+<td>Same process as the LCR (document <a href="12_Controls_Incidents_and_Escalation.html">12</a>)</td>
+</tr>
+<tr>
+<td>Use</td>
+<td>The result is used in limits, the CFP and pricing</td>
+<td>Section 11</td>
+</tr>
+<tr>
+<td>Independent challenge</td>
+<td>Oversight separate from the builder (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>)</td>
+<td>Liquidity Risk</td>
+</tr>
+<tr>
+<td>Review cycle</td>
+<td>At least annually and after a market event</td>
+<td>Annual, plus event-driven</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="152-validation-five-questions">15.2 Validation: five questions</h3>
+<p>Validation is an independent check that a model is fit for its use. Five questions, <strong>Typical practice</strong>:</p>
+<ol>
+<li><strong>Is the idea sound?</strong> Does the method suit the product? (Is exponential decay right for a rate-driven pool?)</li>
+<li><strong>Is the data right?</strong> Complete, accurate, reconciled to the ledger, and the window long enough?</li>
+<li><strong>Is the calculation right?</strong> An independent person (or script) recomputes the results from the inputs. This document's <code>check22.py</code> is an example of the habit.</li>
+<li><strong>Does it work against what actually happened?</strong> Back-testing (section 15.3).</li>
+<li><strong>How much does it matter?</strong> Sensitivity (section 10) and benchmarking against another method, another bank's disclosed figure or the LCR.</li>
+</ol>
+<h3 id="153-a-back-testing-example">15.3 A back-testing example</h3>
+<p>The stable retail pool (25.0) is modelled with a behavioural net outflow of <strong>1.0% a month</strong> (A$0.25bn). Over the next 12 months the actual net outflows were (percent): 0.6, 0.8, 0.7, 0.9, 1.1, 0.7, 0.8, 1.3, 0.9, 0.7, 0.8 and 1.0.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Months in which the actual exceeded the assumption</td>
+<td>2 of 12 (1.1 and 1.3)</td>
+</tr>
+<tr>
+<td>Average actual</td>
+<td>0.858%</td>
+</tr>
+<tr>
+<td>Bias (assumption less actual)</td>
+<td>+0.142 points (the assumption was cautious on average)</td>
+</tr>
+<tr>
+<td>Mean absolute error</td>
+<td>0.208 points</td>
+</tr>
+<tr>
+<td>Worst month against the assumption</td>
+<td>0.3 points over (1.3% against 1.0%)</td>
+</tr>
+<tr>
+<td>Worst month in A$</td>
+<td>0.325bn against 0.25bn assumed; 0.075bn over</td>
+</tr>
+</tbody>
+</table></div>
+<p>Invented tolerance rule: "three or more exceedances in 12 months triggers a review". Two exceedances is a pass with a note. The worst month matters more for stress: the monthly figure is for ordinary behaviour and the LCR's 5% over 30 days (1.25bn on this pool) is the stress.</p>
+<p><strong>Procedure for the annual validation</strong> (Typical practice):
+<em>Trigger:</em> annual cycle, a material model change, or a back-test breach.
+<em>Inputs:</em> model documentation, data extract, results, back-test history.
+<em>Steps:</em> review the design; recompute results independently; run the back-test; run sensitivities; compare with a benchmark; write findings with ratings; agree actions.
+<em>Controls:</em> the validator is not the builder; findings tracked to closure.
+<em>Outputs:</em> a validation report and an action list.
+<em>Who reviews:</em> Liquidity Risk; report to ALCO and the Board Risk Committee.
+<em>Evidence kept:</em> report, recomputation files, the action tracker.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> A model that "passed" last year can fail this year, because customers change. If a competitor launches a high-rate on-line saver and your cohorts start leaving faster (section 2.4), re-validate now.</p>
+</blockquote>
+<hr />
+<h2 id="16-where-each-method-sits">16. Where each method sits</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Section</th>
+<th>Supports</th>
+<th>Source of the expectation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contractual and behavioural flows</td>
+<td>1, 5</td>
+<td>Projecting cash flows</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>); (<a class="c" href="17_APG210_Companion.html#g-p9">APG 210 para 9</a>; <a class="c" href="17_APG210_Companion.html#g-p11">APG 210 para 11</a>; <a class="c" href="17_APG210_Companion.html#g-p37">APG 210 para 37</a>)</td>
+</tr>
+<tr>
+<td>Run-off, cohort, decay, core, concentration</td>
+<td>2</td>
+<td>Behavioural assumptions</td>
+<td>(<a class="c" href="17_APG210_Companion.html#g-p14">APG 210 para 14</a>; <a class="c" href="17_APG210_Companion.html#g-p16">APG 210 para 16</a>; <a class="c" href="17_APG210_Companion.html#g-p18">APG 210 para 18</a>)</td>
+</tr>
+<tr>
+<td>Early withdrawal and facility drawdown</td>
+<td>3</td>
+<td>Term deposits, off-balance sheet</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A paras 41 to 43</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>); (<a class="c" href="17_APG210_Companion.html#g-p19">APG 210 para 19</a>; <a class="c" href="17_APG210_Companion.html#g-p21">APG 210 para 21</a>; <a class="c" href="17_APG210_Companion.html#g-p26">APG 210 para 26</a>)</td>
+</tr>
+<tr>
+<td>Prepayment and rollover</td>
+<td>4</td>
+<td>Asset inflows</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A paras 60 to 62</a>)</td>
+</tr>
+<tr>
+<td>Scenarios</td>
+<td>6</td>
+<td>Stress testing</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 paras 62 to 64</a>); (<a class="c" href="17_APG210_Companion.html#g-p78">APG 210 paras 78 to 86</a>)</td>
+</tr>
+<tr>
+<td>Assumption register</td>
+<td>7</td>
+<td>Documentation</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>)</td>
+</tr>
+<tr>
+<td>Survival horizon and CBC</td>
+<td>8</td>
+<td>Liquidity tolerance</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 para 62</a>)</td>
+</tr>
+<tr>
+<td>Reverse stress, sensitivity</td>
+<td>9, 10</td>
+<td>Understanding limits of the tests</td>
+<td>(<a class="c" href="17_APG210_Companion.html#g-p5">APG 210 para 5</a>; <a class="c" href="17_APG210_Companion.html#g-p81">APG 210 para 81</a>)</td>
+</tr>
+<tr>
+<td>Limits and CFP</td>
+<td>11</td>
+<td>Use of results</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p63">APS 210 para 63</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p66">APS 210 para 66</a>)</td>
+</tr>
+<tr>
+<td>EWI calibration</td>
+<td>12</td>
+<td>Daily early warning</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>); (<a class="c" href="17_APG210_Companion.html#g-p38">APG 210 para 38</a>)</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>13, 14</td>
+<td>Cost allocation</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p42">APS 210 para 42</a>); (<a class="c" href="17_APG210_Companion.html#g-p42">APG 210 paras 42 to 47</a>)</td>
+</tr>
+<tr>
+<td>Governance and validation</td>
+<td>15</td>
+<td>Sound process</td>
+<td>(<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p35">APS 210 paras 35 to 37</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>For intraday liquidity, which this document does not model, the Basel Committee's monitoring tools are the international reference. The paper lists seven tools for banks to monitor intraday liquidity, and I confirmed from its summaries three of them: daily maximum intraday liquidity usage, available intraday liquidity at the start of the business day, and time-specific obligations, together with a total payments tool <code>[S5]</code>. The standard's requirement is in <a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>. Document <a href="20_The_RBA_and_the_Payments_System.html">20</a> covers settlement.</p>
+<blockquote>
+<p><strong>Unverified:</strong> I did not read the full text of the 2013 intraday paper, so I do not list all seven tools or its stress scenarios. Check the paper at bis.org/publ/bcbs248.pdf before you cite them.</p>
+</blockquote>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>A pool opens at A$100m and is A$94m after 30 days. What is the run-off rate, and why is one pool-wide rate not enough? <strong>Answer:</strong> (100 - 94) / 100 = 6.0%. Different segments and cohorts leave at different speeds, and the early leavers are hidden in an average (section 2.4).</li>
+<li>Cash and liquid assets available are A$100m. Outflows are 12 a day and inflows 3 a day, flat. How many days does the bank survive? <strong>Answer:</strong> 100 / (12 - 3) = 11.1 days.</li>
+<li>The July cohort has a monthly decay rate of 0.0381. What are its half-life and survival after 12 months? <strong>Answer:</strong> Half-life ln 2 / 0.0381 = 18.2 months. Survival after 12 months exp(-12 x 0.0381) = 63.3%.</li>
+<li>A mortgage pool has a prepayment rate of 10% a year. What is the monthly rate, and why should it not be used in a stress? <strong>Answer:</strong> 1 - (0.90)^(1/12) = 0.8742% a month. In a stress customers do not repay early, and the LCR counts only contractual inflows from fully performing loans (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p60">Att A paras 60 to 62</a>).</li>
+<li>In the worst month of history 6% of undrawn commitments were drawn. The stress uses 2.5 times that. Undrawn is A$600m and the LCR rate is 10%. What does the internal stress use? <strong>Answer:</strong> 6% x 2.5 = 15%, A$90m, higher than the LCR's A$60m, so use A$90m.</li>
+<li>Using the Example Bank curves, a mortgage with a 4-year behavioural life is priced at 6.10%. What is the margin over the FTP rate? <strong>Answer:</strong> FTP = 4.50 + 0.70 = 5.20, margin 0.90 percentage points.</li>
+<li>A bank charges 0.30% a year on an undrawn A$100m corporate liquidity facility. The buffer charge is 0.4171%. Is the facility profitable on liquidity grounds? <strong>Answer:</strong> No. Net = 0.30 - 0.4171 = -0.117% of 100m, a loss of A$0.117m a year before other costs.</li>
+<li>Why can no single wholesale line break Example Bank's 100% LCR, but a retail line can? <strong>Answer:</strong> The surplus over 100% is 5.45. Retail stable would need a 26.8% run-off and retail less stable 46.3%. SME, corporate operational and corporate non-operational would need more than 100% of their balances (119.0%, 161.3% and 130.8%) (section 9.2).</li>
+<li>A back-test shows 2 months in 12 above the assumed 1.0% outflow. The average actual is 0.858%. What does it say, and what does it not say? <strong>Answer:</strong> The assumption was cautious on average by 0.142 points and passed the invented 3-in-12 rule, but it does not show how the pool behaves in a crisis, because history from calm periods is not a stress (<a class="c" href="17_APG210_Companion.html#g-p18">APG 210 para 18</a>).</li>
+<li>Which paragraph of APS 210 says stress results must be considered in setting limits, and which paragraph says the funding shortfall planning in the contingency funding plan must use them? <strong>Answer:</strong> (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>) for limits; (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p66">APS 210 para 66</a>) for the contingency funding plan.</li>
+</ol>
+<hr />
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>The standard needs both contractual and behavioural cash flows. Contractual is the legal worst case. Behavioural is the expected case. Label every ladder (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p36">APS 210 para 36</a>).</li>
+<li>Measure behaviour from history using run-off rates, cohorts, decay curves, core and volatile balances and concentration. But normal-time history is not a stress (<a class="c" href="17_APG210_Companion.html#g-p18">APG 210 para 18</a>).</li>
+<li>Never use prepayment or renewal inflows in a stress. Never let early withdrawal become routine for term deposits (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p42">Att A para 42</a>).</li>
+<li>A stress scenario is a story, a duration, a set of shocks and a counterbalancing capacity. Run name-specific, market-wide and combined cases over short and protracted horizons (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 para 62</a>).</li>
+<li>The survival horizon is read from a daily path, not a straight line. The LCR can pass while the bank's own combined stress fails.</li>
+<li>Reverse stress and sensitivity tell you which assumptions matter most. For Example Bank the large stable retail pool is the biggest single sensitivity.</li>
+<li>Stress results must reach limits, the contingency funding plan and the Board (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p63">APS 210 para 63</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p65">APS 210 para 65</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p66">APS 210 para 66</a>). A plan is only as good as its lead times.</li>
+<li>Funds transfer pricing credits sources and charges uses at matched maturity plus a liquidity premium, and adds a charge for contingent liquidity (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p42">APS 210 para 42</a>). Apply each charge once.</li>
+<li>Every behavioural, stress and pricing model needs an owner, a version, independent validation and a back-test. Every number in this document is invented for training and rebuilt by <code>check22.py</code>.</li>
+</ul>
+<hr />
+<h2 id="sources">Sources</h2>
+<p>Date accessed for every item: 14 November 2026.</p>
+<ol>
+<li><code>[S1]</code> <strong>APS 210 Liquidity</strong>, Prudential Standard, July 2025, Authorised Version F2025L00653 registered 6 June 2025 (the authority for this pack). Read from the saved text: main body paras 36 to 51 and 62 to 66, and Attachment A paras 31, 41 to 43, 51, 52, 60 to 62 and Tables 1 and 3. Cited in the text as (an APS 210 paragraph) and (an Attachment A paragraph).</li>
+<li><code>[S2]</code> <strong>Prudential Practice Guide APG 210 Liquidity</strong>, APRA, July 2025 version (page shows status "Current", date 1 July 2025). https://www.apra.gov.au/practice-guides/apg-210 and the PDF https://www.apra.gov.au/system/files/2025-07/Prudential%20practice%20guide%20APG%20210%20-%20Liquidity%20-%20Clean.pdf . Paragraphs cited: 3 to 7, 9, 11, 13, 14, 16, 18, 19, 21, 26, 37, 38, 42 to 47, 50, 52, 56, 58, 78 to 86. The copyright line reads 2024.</li>
+<li><code>[S3]</code> <strong>Prudential Practice Guide APG 210 Liquidity</strong>, APRA, July 2024 version (superseded by S2; read only to compare paragraph numbers). https://www.apra.gov.au/system/files/2024-07/Prudential%20practice%20guide%20APG%20210%20-%20Liquidity%20clean.pdf . Stress testing paragraphs were numbered 75 to 83 in this version.</li>
+<li><code>[S4]</code> <strong>Principles for Sound Liquidity Risk Management and Supervision</strong>, Basel Committee on Banking Supervision, September 2008. Publication page https://www.bis.org/publ/bcbs138.htm (the 2008 document; the PDF is https://www.bis.org/publ/bcbs144.pdf) and the consolidated Basel Framework chapter "Liquidity risk management and supervision" (LQY10), https://www.bis.org/committees/bcbs/basel-consolidated-guidelines/module/lqy/10 . <strong>Limitation:</strong> the PDF itself would not download as text, so I read the wording of Principles 1 to 9 and the opening words of Principles 10 to 12 from the consolidated chapter, which is based on the 2008 paper. Principle wordings are therefore quoted only in part.</li>
+<li><code>[S5]</code> <strong>Monitoring tools for intraday liquidity management</strong>, Basel Committee on Banking Supervision, April 2013. https://www.bis.org/publ/bcbs248.htm , the PDF https://www.bis.org/publ/bcbs248.pdf , and its place in the Basel Framework, SRP50 "Liquidity monitoring metrics", https://www.bis.org/basel_framework/chapter/SRP/50.htm (effective 15 December 2019). <strong>Limitation:</strong> read as page summaries and search summaries, not the full PDF text.</li>
+<li>Not a mark: document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios) and document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) in this pack, for the Example Bank position and ladders.</li>
+</ol></main><footer><a href="21_Advanced_Worked_Examples.html">&#9664; 21 Advanced worked examples: currencies, groups, caps and derivatives</a><a href="23_Glossary.html">23 Glossary, acronyms and common confusions &#9654;</a></footer></body></html>

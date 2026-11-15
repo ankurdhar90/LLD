@@ -1,0 +1,2432 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>21 Advanced worked examples: currencies, groups, caps and derivatives | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="20_The_RBA_and_the_Payments_System.html" title="20 The Reserve Bank, settlement and where cash actually moves">&#9664; 20</a><span class="t">21 Advanced worked examples: currencies, groups, caps and derivatives</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#how-to-use-this-document">How to use this document</option><option value="#case-1-a-two-currency-bank-an-aud-lcr-and-an-all-currencies-lcr">Case 1: A two-currency bank, an AUD LCR and an all-currencies LCR</option><option value="#case-2-a-banking-group-with-an-offshore-subsidiary-and-a-securitisation-vehicle">Case 2: A banking group, with an offshore subsidiary and a securitisat</option><option value="#case-3-the-hqla-caps-with-all-three-classes-with-and-without-the-unwind">Case 3: The HQLA caps with all three classes, with and without the unw</option><option value="#case-4-the-75-inflow-cap-binding">Case 4: The 75% inflow cap binding</option><option value="#case-5-derivative-outflows-in-the-lcr">Case 5: Derivative outflows in the LCR</option><option value="#case-6-derivatives-in-the-nsfr">Case 6: Derivatives in the NSFR</option><option value="#case-7-encumbrance-in-the-nsfr">Case 7: Encumbrance in the NSFR</option><option value="#case-8-secured-funding-and-lending-by-collateral-class-through-both-ratios">Case 8: Secured funding and lending by collateral class, through both </option><option value="#case-9-intermediated-and-superannuation-deposits-through-both-ratios">Case 9: Intermediated and superannuation deposits through both ratios</option><option value="#case-10-a-committed-facility-portfolio-including-hedge-fund-and-special-purpose-vehicle-facilities">Case 10: A committed facility portfolio, including hedge fund and spec</option><option value="#case-11-the-historical-committed-liquidity-facility-illustration-only">Case 11: The historical Committed Liquidity Facility (illustration onl</option><option value="#summary-of-the-eleven-cases">Summary of the eleven cases</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option><option value="#sources">Sources</option></select><a href="search.html">Search</a><a href="15_APS210_Paragraph_Index.html">Index</a><a href="22_Behaviour_Stress_Testing_and_Transfer_Pricing.html" title="22 Behaviour, stress testing and funds transfer pricing: the methods">22 &#9654;</a></header>
+<main><h1 id="21-advanced-worked-examples-currencies-groups-caps-and-derivatives">21 Advanced worked examples: currencies, groups, caps and derivatives</h1>
+<p><strong>Purpose:</strong> To take you beyond the single-currency, single-entity Example Bank of documents <a href="08_LCR_Production_End_to_End.html">08</a> and 09 and show you, with full arithmetic, the eleven situations where the liquidity rules get tricky: more than one currency, a banking group, caps that bite, derivatives, pledged assets, repos, intermediated deposits, unusual facilities and the old Committed Liquidity Facility.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>Build an Australian dollar (AUD) LCR and an all-currencies LCR from one position table, and explain how a foreign exchange swap moves each ratio.</li>
+<li>Explain why the Level 2 (group) LCR can be lower than the Level 1 (single entity) LCR, and what "trapped liquidity" means.</li>
+<li>Apply the HQLA caps and the 75% inflow cap, and show when each one actually binds.</li>
+<li>Compute derivative outflows for the LCR and the derivative charges for the NSFR, step by step.</li>
+<li>Classify pledged assets, repos, reverse repos, intermediated and superannuation deposits and committed facilities for both ratios, with the right paragraph for each.</li>
+<li>Read the old Committed Liquidity Facility paragraphs and know why they no longer add anything to a ratio today.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero), document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> (APS 210 companion: Attachment A), document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (companion: Attachments B and C), document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR) and document <a href="09_NSFR_Production_End_to_End.html">09</a> (Producing the NSFR). You should already be comfortable with run-off rates, inflow rates, ASF and RSF factors. Document <a href="07_Data_and_Classification.html">07</a> (Data and classification) is the place to look when a classification question arises.</p>
+<p><strong>Time:</strong> About eight hours: one hour per case on average. Do not read all eleven in one sitting. Recompute each case by hand first, then check yourself against the script <code>check21.py</code> that goes with this document.</p>
+<hr />
+<h2 id="how-to-use-this-document">How to use this document</h2>
+<p>Each case follows the same pattern: (1) the idea from the very basics, (2) the data, (3) the working, step by step, (4) the result and what it teaches, and (5) what to watch out for. Every number in every table was produced by the script <code>check21.py</code> (run it with <code>python -I check21.py</code>); if you change a number, change it in the script first.</p>
+<h3 id="ground-rules-for-all-cases">Ground rules for all cases</h3>
+<ul>
+<li>Amounts are in A$ billions (A$bn) unless a case says A$ millions (A$m). A$1.0bn = A$1,000m.</li>
+<li>"Example Bank" is the fictional bank used throughout this pack: one legal entity, one currency, HQLA 17.0, outflows 13.45, inflows 1.90, LCR 147.2%, ASF 79.75, RSF 58.50, NSFR 136.3%. Several cases start from it and change it. Every other bank, counterparty, host country and exchange rate in this document is invented for training. They are not market data and not rules.</li>
+<li>Rates are from APS 210 (July 2025) [S1]: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> (outflows), <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t4">Att A Table 4</a> (secured lending inflows), <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A paras 61 to 66</a> (other inflows), <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C paras 11 to 37</a> (NSFR factors).</li>
+<li>Percentages are rounded to one decimal place. Amounts are rounded to the figure shown; the script keeps full precision.</li>
+<li>Where the standard does not tell us exactly how to do something, the working is labelled <strong>Interpretation</strong> and the assumptions are listed. In real work you would agree these with your controller and record them in the methodology note (document <a href="12_Controls_Incidents_and_Escalation.html">12</a> explains why).</li>
+<li>One fact that matters in several cases: in Australian dollars, only notes and coin, balances with the RBA, and Australian Government and semi-government securities are HQLA1, and no AUD assets currently qualify as HQLA2 [S3]. So any case that holds HQLA2 assets (Cases 3 and 8) describes a bank holding them in a foreign currency or an illustration. Example Bank itself holds none.</li>
+</ul>
+<p>A word on two ideas you will need again and again.</p>
+<p><strong>Level 1 and Level 2.</strong> A bank can be one company, or a parent with subsidiaries. Level 1 means the ADI (authorised deposit-taking institution, a bank) on its own. Level 2 means the whole banking group added together (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 para 3</a>). The LCR must be met on both (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a>).</p>
+<p><strong>Netting.</strong> If you owe a counterparty 10 and it owes you 6 under one legal agreement that allows the amounts to be set off, you can treat it as owing 4. That is netting. It matters wherever you see derivatives (Cases 1, 5 and 6).</p>
+<hr />
+<h2 id="case-1-a-two-currency-bank-an-aud-lcr-and-an-all-currencies-lcr">Case 1: A two-currency bank, an AUD LCR and an all-currencies LCR</h2>
+<h3 id="11-the-idea-from-the-basics">1.1 The idea from the basics</h3>
+<p>Money in a bank is held in currencies. A dollar of Australian cash cannot pay a US dollar (USD) bill without first being exchanged, and in a crisis the exchange market may not work. APS 210 therefore does two things.</p>
+<ol>
+<li>A locally incorporated ADI must keep an LCR of at least 100% <strong>on an AUD basis</strong> and <strong>on an all-currencies basis</strong> (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). The AUD LCR uses the AUD liquid assets against the AUD cash flows. The all-currencies LCR converts everything to Australian dollars and adds it up.</li>
+<li>An ADI active in several currencies must hold liquid assets consistent with where its liquidity needs are by currency, decide how much currency mismatch is acceptable, and analyse each material currency separately, thinking about stress (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 para 43</a>). There is no published minimum for a "USD LCR" in these paragraphs. The USD figure below is an internal <strong>coverage ratio</strong> that the team calculates the same way, to see whether USD needs are covered by USD assets.</li>
+</ol>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> <a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a> does not spell out how the AUD LCR is assembled. I read it as: AUD-denominated HQLA over net cash outflows from AUD-denominated items. Foreign currency HQLA cannot be counted in the AUD ratio. The inflow cap (75% of outflows, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>) is applied separately to each basis. Confirm the treatment with your controller before you rely on it.</p>
+</blockquote>
+<p>An FX swap is two trades in one. Today you swap one currency for another (the near leg). On a later date you swap back (the far leg). It is how a bank moves liquidity between currencies without taking currency risk.</p>
+<h3 id="12-the-data">1.2 The data</h3>
+<p>Exchange rate (invented): A$1.00 = US$0.65, so US$3.25bn = A$5.0bn. All USD items below are already shown in A$ equivalents. Example Bank is imagined here as having a USD business. USD Treasury securities are HQLA1 because they are claims on a sovereign with a zero per cent risk weight that meet the conditions in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Currency</th>
+<th>Balance A$bn</th>
+<th>Treatment</th>
+<th>Rate</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1 (cash at the RBA and Australian Government securities)</td>
+<td>AUD</td>
+<td>9.0</td>
+<td>HQLA1</td>
+<td>n/a</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>HQLA1 (US Treasury securities)</td>
+<td>USD</td>
+<td>10.0</td>
+<td>HQLA1</td>
+<td>n/a</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>Retail stable deposits</td>
+<td>AUD</td>
+<td>20.0</td>
+<td>outflow</td>
+<td>5%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>)</td>
+</tr>
+<tr>
+<td>Retail less stable deposits (score 0 to 2)</td>
+<td>AUD</td>
+<td>10.0</td>
+<td>outflow</td>
+<td>10%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits, not fully insured</td>
+<td>AUD</td>
+<td>5.0</td>
+<td>outflow</td>
+<td>40%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Corporate non-operational deposits, not fully insured</td>
+<td>USD</td>
+<td>6.0</td>
+<td>outflow</td>
+<td>40%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Financial institution deposits, at call</td>
+<td>AUD</td>
+<td>3.0</td>
+<td>outflow</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Financial institution deposits, at call</td>
+<td>USD</td>
+<td>3.0</td>
+<td>outflow</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Wholesale debt maturing within 30 days</td>
+<td>AUD</td>
+<td>0.5</td>
+<td>outflow</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Wholesale debt maturing within 30 days</td>
+<td>USD</td>
+<td>1.0</td>
+<td>outflow</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Undrawn committed corporate credit facilities</td>
+<td>AUD</td>
+<td>4.0</td>
+<td>outflow</td>
+<td>10%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Undrawn committed corporate credit facilities</td>
+<td>USD</td>
+<td>4.0</td>
+<td>outflow</td>
+<td>10%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Loans to banks maturing within 30 days</td>
+<td>AUD</td>
+<td>1.0</td>
+<td>inflow</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Loans to banks maturing within 30 days</td>
+<td>USD</td>
+<td>0.8</td>
+<td>inflow</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Corporate loan repayments within 30 days</td>
+<td>AUD</td>
+<td>1.0</td>
+<td>inflow</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Corporate loan repayments within 30 days</td>
+<td>USD</td>
+<td>0.6</td>
+<td>inflow</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="13-working-the-three-ratios-from-one-table">1.3 Working: the three ratios from one table</h3>
+<p><strong>Step 1. Weight each currency's outflows and inflows.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>AUD</th>
+<th>USD</th>
+<th>All currencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA</td>
+<td>9.0</td>
+<td>10.0</td>
+<td>19.0</td>
+</tr>
+<tr>
+<td>Outflows: retail stable 20.0 x 5%</td>
+<td>1.0</td>
+<td>n/a</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Retail less stable 10.0 x 10%</td>
+<td>1.0</td>
+<td>n/a</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Corporate non-operational (AUD 5.0, USD 6.0) x 40%</td>
+<td>2.0</td>
+<td>2.4</td>
+<td>4.4</td>
+</tr>
+<tr>
+<td>Financial institution deposits x 100%</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>Wholesale debt within 30 days x 100%</td>
+<td>0.5</td>
+<td>1.0</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Undrawn credit facilities x 10%</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td><strong>Total outflows</strong></td>
+<td><strong>7.9</strong></td>
+<td><strong>6.8</strong></td>
+<td><strong>14.7</strong></td>
+</tr>
+<tr>
+<td>Inflows: banks x 100%</td>
+<td>1.0</td>
+<td>0.8</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>Corporates x 50%</td>
+<td>0.5</td>
+<td>0.3</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td><strong>Total inflows before cap</strong></td>
+<td><strong>1.5</strong></td>
+<td><strong>1.1</strong></td>
+<td><strong>2.6</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Step 2. Apply the 75% inflow cap on each basis</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). AUD cap = 0.75 x 7.9 = 5.925; inflows 1.5 are below it. USD cap = 0.75 x 6.8 = 5.1; inflows 1.1 below. All currencies cap = 0.75 x 14.7 = 11.025; inflows 2.6 below. No cap binds.</p>
+<p><strong>Step 3. Net outflows and ratios.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>AUD</th>
+<th>USD (coverage)</th>
+<th>All currencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net outflows (outflows less inflows)</td>
+<td>6.4</td>
+<td>5.7</td>
+<td>12.1</td>
+</tr>
+<tr>
+<td>HQLA / net outflows</td>
+<td>9.0 / 6.4 = <strong>140.6%</strong></td>
+<td>10.0 / 5.7 = <strong>175.4%</strong></td>
+<td>19.0 / 12.1 = <strong>157.0%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Both required ratios (AUD and all currencies) are above 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). Notice the shape: the bank is richer in USD liquidity than it needs and tighter in AUD. That is the kind of imbalance para 43 asks Treasury to manage.</p>
+<h3 id="14-working-a-three-month-fx-swap-moves-liquidity">1.4 Working: a three-month FX swap moves liquidity</h3>
+<p>Treasury wants more AUD liquidity. It swaps A$5.0bn of USD (US$3.25bn) for AUD today, and agrees to swap back in three months, which is outside the 30-day window.</p>
+<ul>
+<li>Near leg today: USD HQLA falls by 5.0 (the Treasuries or the cash are sold or lent), AUD cash at the RBA rises by 5.0.</li>
+<li>Far leg: due in three months. It is not a cash flow inside 30 days, so it adds no outflow or inflow.</li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Ratio</th>
+<th>Before</th>
+<th>After the 3-month swap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUD: HQLA 9.0 to 14.0, net outflows 6.4</td>
+<td>140.6%</td>
+<td>14.0 / 6.4 = <strong>218.8%</strong></td>
+</tr>
+<tr>
+<td>USD coverage: HQLA 10.0 to 5.0, net outflows 5.7</td>
+<td>175.4%</td>
+<td>5.0 / 5.7 = <strong>87.7%</strong></td>
+</tr>
+<tr>
+<td>All currencies: HQLA 19.0 (unchanged), net outflows 12.1</td>
+<td>157.0%</td>
+<td><strong>157.0%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Result:</strong> the swap leaves the all-currencies ratio exactly where it was, lifts the AUD ratio by 78.1 percentage points and pushes the USD coverage below 100%. The USD coverage is not a regulatory minimum, but para 43 expects the bank to have thought about it, and this is the kind of mismatch it must "determine an acceptable level" for (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 para 43</a>).</p>
+<h3 id="15-working-a-20-day-swap-does-not-help">1.5 Working: a 20-day swap does not help</h3>
+<p>Now suppose the same swap comes back in 20 days. The far leg is inside the 30-day window: the bank pays AUD 5.0 and receives USD (A$5.0bn).</p>
+<ul>
+<li>AUD LCR: HQLA is 14.0 as before, but there is now an AUD outflow of 5.0 on the far leg (100%, as a derivative payable: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>). Outflows 7.9 + 5.0 = 12.9; inflows 1.5; net 11.4; <strong>AUD LCR = 14.0 / 11.4 = 122.8%</strong>. The benefit has gone from 218.8% to 122.8% because the bank has to give the AUD back inside the window.</li>
+<li>USD: the far leg is an inflow of 5.0 in USD. Raw inflows 1.1 + 5.0 = 6.1, but the cap is 0.75 x 6.8 = 5.1, so only 5.1 counts. Net outflows 6.8 - 5.1 = 1.7; <strong>USD coverage = 5.0 / 1.7 = 294.1%</strong>. This looks wonderful and is misleading: it is the inflow cap doing its job and the swap simply reversing.</li>
+<li>All currencies: the two legs of one FX swap involve a full exchange of principal on the same day, so they may be shown as a net figure (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>). Converted to AUD at the same rate they cancel, so the all-currencies LCR stays at <strong>157.0%</strong>. Even if you showed them gross (outflow 5.0 and inflow 5.0), the answer is also 157.0% because the inflow cap (14.775) does not bind.</li>
+</ul>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> Footnote 5 lets "cash flows arising from FX derivative transactions that involve a full exchange of principal amounts on a simultaneous basis (or within the same day)" be shown net. I apply it to the all-currencies basis, where both legs are converted to AUD and can be netted. On the single-currency AUD basis I show the AUD leg alone, because the USD leg does not exist in the AUD ratio. This is the conservative reading. Confirm it with your controller.</p>
+</blockquote>
+<h3 id="16-result-and-what-it-teaches">1.6 Result and what it teaches</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Position</th>
+<th>AUD LCR</th>
+<th>USD coverage</th>
+<th>All-currencies LCR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>140.6%</td>
+<td>175.4%</td>
+<td>157.0%</td>
+</tr>
+<tr>
+<td>After 3-month FX swap</td>
+<td>218.8%</td>
+<td>87.7%</td>
+<td>157.0%</td>
+</tr>
+<tr>
+<td>After 20-day FX swap</td>
+<td>122.8%</td>
+<td>294.1%</td>
+<td>157.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>An FX swap re-allocates liquidity between currencies; it does not create any. A swap that runs beyond 30 days improves the ratio of the currency you receive. A swap that comes back inside 30 days improves nothing in the currency you receive, and the inflow cap can distort the other currency.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Always check the far leg date. A "liquidity management" swap that closes on day 29 is a liquidity illusion. Also check that the all-currencies and AUD ratios use the same cut-off date and exchange rate. A rate mismatch between the two ratios is a classic reconciliation break (document <a href="08_LCR_Production_End_to_End.html">08</a>).</p>
+</blockquote>
+<hr />
+<h2 id="case-2-a-banking-group-with-an-offshore-subsidiary-and-a-securitisation-vehicle">Case 2: A banking group, with an offshore subsidiary and a securitisation vehicle</h2>
+<h3 id="21-the-idea-from-the-basics">2.1 The idea from the basics</h3>
+<p>Example Bank is one company. Now imagine "Group Example", whose parent is Example Bank, with two additions.</p>
+<ul>
+<li>An <strong>offshore banking subsidiary</strong> ("Hostland Bank") in a country with its own bank regulator, the "host supervisor", which applies the Basel framework.</li>
+<li>A <strong>securitisation special purpose vehicle</strong> (SPV). A securitisation is when a bank bundles loans (here, A$4.0bn of mortgages) and sells them to a separate company, the SPV, which pays for them by issuing notes to investors. The bank is the "originating ADI".</li>
+</ul>
+<p>APS 210 says:</p>
+<ul>
+<li>The LCR is met on both a Level 1 and a Level 2 basis (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a>). The subsidiary's own LCR is calculated using APS 210 rules, with two exceptions: the host supervisor's outflow rates apply to retail and small and medium enterprise (SME) deposits, and alternative liquid assets allowed by the host may be included (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a>).</li>
+<li>If the host does not apply the Basel framework, APS 210's own rates apply instead (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p27">Att A para 27</a>).</li>
+<li>A material offshore banking subsidiary must keep an LCR of at least 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p28">Att A para 28</a>).</li>
+<li>At Level 2, liquid assets held to meet the subsidiary's own legal entity requirements count, <strong>if</strong> the related risks (the subsidiary's net outflows) are also in the LCR. A surplus at the subsidiary counts only if it would be freely available to the parent in times of stress (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p24">Att A para 24</a>).</li>
+<li>Restrictions on moving liquid assets across borders must be taken into account. Excess liquidity is not recognised unless there is reasonable certainty it is available (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p29">Att A para 29</a>). That unrecognised excess is called <strong>trapped liquidity</strong>.</li>
+<li>The SPV: if the ADI is the originating ADI and meets the operational requirements for capital relief under APS 120, it may exclude the SPV's assets and liabilities from its minimum liquidity holdings and NSFR. For the LCR it <strong>must include</strong> the cash flows of the SPV's assets and liabilities (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a>).</li>
+</ul>
+<h3 id="22-the-data">2.2 The data</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Item</th>
+<th>A$bn</th>
+<th>Rate</th>
+<th>Source of the rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parent (Example Bank)</td>
+<td>HQLA</td>
+<td>17.0</td>
+<td>n/a</td>
+<td>brief section 4.1</td>
+</tr>
+<tr>
+<td>Parent</td>
+<td>Outflows</td>
+<td>13.45</td>
+<td>various</td>
+<td>brief section 4.1</td>
+</tr>
+<tr>
+<td>Parent</td>
+<td>Inflows</td>
+<td>1.90</td>
+<td>various</td>
+<td>brief section 4.1</td>
+</tr>
+<tr>
+<td>SPV</td>
+<td>Notes maturing within 30 days that cannot be refinanced</td>
+<td>0.30</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>SPV</td>
+<td>Mortgage repayments due within 30 days, all fully performing retail loans</td>
+<td>0.20</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>)</td>
+</tr>
+<tr>
+<td>Hostland Bank</td>
+<td>HQLA (host government securities, HQLA1)</td>
+<td>6.0</td>
+<td>n/a</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>Hostland Bank</td>
+<td>Retail deposits</td>
+<td>20.0</td>
+<td>8% (host rate, invented)</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a>)</td>
+</tr>
+<tr>
+<td>Hostland Bank</td>
+<td>Corporate non-operational deposits, not fully insured</td>
+<td>3.0</td>
+<td>40%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Hostland Bank</td>
+<td>Wholesale debt maturing within 30 days</td>
+<td>0.4</td>
+<td>100%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+</tr>
+<tr>
+<td>Hostland Bank</td>
+<td>Retail and SME loan repayments within 30 days</td>
+<td>0.8</td>
+<td>50%</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The host supervisor's 8% for retail deposits is invented for the example. Under APS 210 the same deposits (say A$12.0bn stable and A$8.0bn less stable) would carry 5% and 10%, giving 1.4 instead of 1.6.</p>
+<h3 id="23-working-level-1">2.3 Working: Level 1</h3>
+<p><strong>Step 1. Add the SPV cash flows.</strong> <a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a> does not distinguish between levels, so I include the SPV in both.</p>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> I include the SPV flows at both Level 1 and Level 2. The wording "the ADI's reported amounts" applies to an ADI on either basis (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 para 3</a>). Confirm with your controller how the return treats this (document <a href="11_APRA_Returns_and_Disclosures.html">11</a>).</p>
+</blockquote>
+<ul>
+<li>SPV outflow: 0.30 x 100% = 0.30</li>
+<li>SPV inflow: 0.20 x 50% = 0.10 (retail borrowers repay, but the SPV, like any lender, is assumed to keep lending at 50%: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>)</li>
+</ul>
+<p><strong>Step 2. Level 1 totals.</strong> Outflows 13.45 + 0.30 = 13.75. Inflows 1.90 + 0.10 = 2.00. Cap = 0.75 x 13.75 = 10.3125; not binding. Net = 13.75 - 2.00 = 11.75.</p>
+<p><strong>Step 3. Ratio.</strong> Level 1 LCR = 17.0 / 11.75 = <strong>144.7%</strong>.</p>
+<h3 id="24-working-the-offshore-subsidiary-on-its-own">2.4 Working: the offshore subsidiary on its own</h3>
+<ul>
+<li>Retail 20.0 x 8% (host rate) = 1.60</li>
+<li>Corporate 3.0 x 40% = 1.20</li>
+<li>Wholesale debt 0.4 x 100% = 0.40</li>
+<li>Outflows = 3.20. Inflows 0.8 x 50% = 0.40. Net = 2.80.</li>
+<li>Hostland LCR = 6.0 / 2.80 = <strong>214.3%</strong> (above the 100% needed: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p28">Att A para 28</a>).</li>
+<li>Surplus HQLA = 6.0 - 2.80 = <strong>3.20</strong>.</li>
+</ul>
+<h3 id="25-working-level-2-naive-and-correct">2.5 Working: Level 2, naive and correct</h3>
+<p><strong>Naive (wrong) approach: add everything.</strong> HQLA 17.0 + 6.0 = 23.0. Outflows 13.75 + 3.20 = 16.95. Inflows 2.00 + 0.40 = 2.40 (cap 12.7125; not binding). Net = 14.55. LCR = 23.0 / 14.55 = <strong>158.1%</strong>. This assumes the 3.20 surplus in Hostland can be moved to the parent.</p>
+<p><strong>Correct approach when the surplus is trapped.</strong> Suppose Hostland's rules stop it sending liquidity to the parent, so there is no reasonable certainty it is available (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p29">Att A para 29</a>). Hostland's HQLA counts only up to its own net outflows (2.80).</p>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p24">Att A para 24</a> admits subsidiary liquid assets "held to meet legal entity requirements" and excludes a surplus unless it is freely available. I measure the legal entity requirement as the subsidiary's net outflows (a 100% LCR, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p28">Att A para 28</a>). If the host sets a higher minimum, use that figure instead. The 3.20 surplus is then excluded.</p>
+</blockquote>
+<p>Recognised HQLA = 17.0 + 2.80 = 19.80. Outflows and inflows are still all included (the subsidiary's risks stay in). Net 14.55. <strong>Level 2 LCR = 19.80 / 14.55 = 136.1%.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Basis</th>
+<th>HQLA</th>
+<th>Net outflows</th>
+<th>LCR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Level 1 (parent plus SPV)</td>
+<td>17.00</td>
+<td>11.75</td>
+<td>144.7%</td>
+</tr>
+<tr>
+<td>Level 2, naive (everything freely transferable)</td>
+<td>23.00</td>
+<td>14.55</td>
+<td>158.1%</td>
+</tr>
+<tr>
+<td>Level 2, trapped surplus excluded</td>
+<td>19.80</td>
+<td>14.55</td>
+<td><strong>136.1%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="26-working-the-host-rate-and-the-host-without-basel">2.6 Working: the host rate and the host without Basel</h3>
+<p>If Hostland's supervisor did not apply Basel (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p27">Att A para 27</a>), you would use APS 210's own rates for retail: 12.0 x 5% + 8.0 x 10% = 1.4. Hostland outflows would be 1.4 + 1.2 + 0.4 = 3.0, net 2.6, standalone LCR 230.8%. Under <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a> you use the host rate even though it is higher: the group LCR is more cautious (the host knows its local depositors).</p>
+<h3 id="27-working-the-spv-in-the-nsfr">2.7 Working: the SPV in the NSFR</h3>
+<p>For the NSFR (not the LCR), the originating ADI may exclude the SPV if it meets the APS 120 conditions for capital relief (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a>). Suppose the SPV holds A$4.0bn of standard mortgages (RSF 65%: <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>) funded by A$3.7bn of notes with 12 months or more to run (ASF 100%: <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>) and A$0.3bn of shorter notes (ASF 0%: <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>).</p>
+<ul>
+<li>Excluded (the conditions are met): ASF 79.75 / RSF 58.50 = <strong>136.3%</strong>.</li>
+<li>Wrongly included: ASF 79.75 + 3.70 = 83.45; RSF 58.50 + 2.60 = 61.10; <strong>136.6%</strong>.</li>
+</ul>
+<p>The difference is 0.3 percentage points here, but a bank with a large securitisation programme would see a bigger difference. The important point is that the <strong>LCR includes</strong> the SPV and the <strong>NSFR excludes</strong> it. If the capital relief conditions are not met, the assets and liabilities stay on the bank's balance sheet and the NSFR includes them.</p>
+<h3 id="28-result-and-what-it-teaches">2.8 Result and what it teaches</h3>
+<ul>
+<li>The Level 2 LCR (136.1%) is lower than Level 1 (144.7%) because a subsidiary's surplus liquidity is not available to the group, while its risks are.</li>
+<li>A bank that satisfies the minimum at Level 1 has not necessarily satisfied it at Level 2, and the reverse. Both must be 100% or more.</li>
+<li>Host supervisor rates replace APS 210 rates for retail and SME deposits only.</li>
+<li>The SPV is in the LCR, out of the NSFR (when relief conditions are met).</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Intragroup balances (a deposit the parent holds at the subsidiary, say) must be eliminated at Level 2. Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the two ratios) covers the Level 1 and Level 2 structure. Also keep the evidence for the "freely available" judgement: legal advice, host regulator correspondence and the date it was last reviewed (typical practice; confirm with your controller).</p>
+</blockquote>
+<hr />
+<h2 id="case-3-the-hqla-caps-with-all-three-classes-with-and-without-the-unwind">Case 3: The HQLA caps with all three classes, with and without the unwind</h2>
+<h3 id="31-the-idea-from-the-basics">3.1 The idea from the basics</h3>
+<p>HQLA comes in classes. HQLA1 (cash, central bank balances, top government securities) can make up any share of the stock. HQLA2A (for example certain very highly rated corporate and covered bonds) takes a 15% haircut (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a>). HQLA2B takes a 25% haircut for eligible residential mortgage-backed securities (RMBS) and 50% for other corporate debt and shares (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>). A <strong>haircut</strong> is a cut to the market value, because in a crisis you would not get full price.</p>
+<p>Even after haircuts, the lower-quality classes are capped (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>):</p>
+<ul>
+<li>HQLA2 (A and B together) may be at most 40% of the stock.</li>
+<li>HQLA2B may be at most 15% of the stock, and sits inside the 40%.</li>
+</ul>
+<p><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A para 7</a> turns these percentages into amounts. Maximum adjusted HQLA2 is two-thirds of adjusted HQLA1. Maximum adjusted HQLA2B is the lower of 15/85 of (adjusted HQLA1 plus adjusted HQLA2A), or, where the 40% cap is binding, one quarter of adjusted HQLA1.</p>
+<p>Why "adjusted"? Without a safeguard, a bank could swap its HQLA2 bonds for government bonds for 29 days and look as if it held only HQLA1. <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A paras 7 and 8</a> say the caps must be tested after <strong>unwinding</strong> short-term transactions, that is, treating secured funding (repos), secured lending (reverse repos) and collateral swaps that mature within 30 calendar days as if they had already finished and each side had its assets back. "Short-term" means a maturity up to and including 30 calendar days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p8">Att A para 8</a>).</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Because no AUD asset is HQLA2 (see the ground rules), this case imagines a bank holding foreign-currency HQLA2, or is an illustration. It is not Example Bank.</p>
+</blockquote>
+<h3 id="32-the-data-held-on-the-first-day-of-the-stress">3.2 The data (held on the first day of the stress)</h3>
+<p>HQLA is counted at market value less the haircut, for assets the bank holds on the first day, whatever their residual maturity (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A para 6</a>). Only unencumbered assets in the stock count (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Market value A$bn</th>
+<th>Haircut</th>
+<th>After haircut A$bn</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1: cash and government securities</td>
+<td>50.0</td>
+<td>0%</td>
+<td>50.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>HQLA2A: highly rated corporate bonds</td>
+<td>30.0</td>
+<td>15%</td>
+<td>25.5</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p10">Att A para 10</a>)</td>
+</tr>
+<tr>
+<td>HQLA2B: eligible RMBS</td>
+<td>8.0</td>
+<td>25%</td>
+<td>6.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>)</td>
+</tr>
+<tr>
+<td>HQLA2B: other corporate bonds</td>
+<td>14.0</td>
+<td>50%</td>
+<td>7.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p12">Att A para 12</a>)</td>
+</tr>
+<tr>
+<td><strong>Total HQLA2B</strong></td>
+<td></td>
+<td></td>
+<td>13.0</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Reported total before caps</strong></td>
+<td></td>
+<td></td>
+<td><strong>88.5</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Short-term secured transactions (all in the stock figures above as indicated):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Transaction</th>
+<th>Maturity</th>
+<th>What happened</th>
+<th>In the reported stock above?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Repo (secured funding): the bank pledged HQLA2A with market value 10.0 (8.5 after haircut) and borrowed cash of 8.5</td>
+<td>20 days</td>
+<td>The pledged bonds left the stock (encumbered, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>). The cash is held at the RBA.</td>
+<td>Cash 8.5 is in HQLA1. Bonds are not in HQLA2A.</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Reverse repo (secured lending): the bank lent cash of 3.0 and received RMBS with market value 4.0 (3.0 after haircut)</td>
+<td>25 days</td>
+<td>The RMBS is unencumbered and not rehypothecated, so it counts (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>).</td>
+<td>RMBS 3.0 is in HQLA2B.</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Collateral swap: the bank gave HQLA2A with market value 6.0 (5.1 after haircut) and received HQLA1 government bonds of 5.0</td>
+<td>28 days</td>
+<td>The received bonds count; the given bonds do not.</td>
+<td>Bonds 5.0 are in HQLA1.</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Repo of HQLA2A market value 4.0 (3.4 after haircut) for cash of 3.4</td>
+<td>45 days</td>
+<td>Not short-term.</td>
+<td>Not unwound.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="33-working-part-a-caps-without-the-unwind">3.3 Working, part A: caps without the unwind</h3>
+<p><strong>Step 1. Test the HQLA2B cap.</strong></p>
+<ul>
+<li>15/85 x (50.0 + 25.5) = 13.3235</li>
+<li>one quarter equivalent (15/60 x 50.0) = 12.5</li>
+<li>The lower is <strong>12.5</strong>. HQLA2B is 13.0, so <strong>0.5</strong> is above the cap.</li>
+</ul>
+<p><strong>Step 2. Test the HQLA2 cap.</strong></p>
+<ul>
+<li>Maximum HQLA2 = two-thirds x 50.0 = 33.3333.</li>
+<li>HQLA2A + HQLA2B less the 0.5 already excess = 25.5 + 13.0 - 0.5 = 38.0.</li>
+<li>Excess = 38.0 - 33.3333 = <strong>4.6667</strong>.</li>
+</ul>
+<p><strong>Step 3. Counted stock</strong> = 88.5 - 0.5 - 4.6667 = <strong>83.3333</strong>. HQLA2 counted = 33.3333, which is exactly 40% of the stock. Both caps bite.</p>
+<h3 id="34-working-part-b-the-unwind">3.4 Working, part B: the unwind</h3>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> APS 210 tells us what to unwind but does not give a formula or say how the capped result feeds back into the stock. Below is the approach I would put in a methodology note (called Method 1), with a second reading (Method 2) shown for comparison. It is not prescribed. Confirm which approach your controller has agreed with APRA.</p>
+</blockquote>
+<p><strong>Assumptions</strong> (state them in the methodology note):</p>
+<ol>
+<li>Adjusted amounts are measured after haircuts (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A para 7</a>).</li>
+<li>When a repo or reverse repo unwinds, cash returns at its face amount. For simplicity the cash equals the collateral value after haircut.</li>
+<li>Collateral that returns would "meet, or would meet if held unencumbered," the operational requirements (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p8">Att A para 8</a>), so it is added back at its haircut value.</li>
+<li>Only transactions maturing on or before day 30 are unwound (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p8">Att A para 8</a>). T4 stays as it is.</li>
+<li>The adjusted amounts are used to <strong>test</strong> the caps. The excess measured on them is removed from the <strong>reported</strong> stock (Method 1).</li>
+</ol>
+<p><strong>Step 1. Unwind each transaction.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>HQLA1</th>
+<th>HQLA2A</th>
+<th>HQLA2B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reported</td>
+<td>50.0</td>
+<td>25.5</td>
+<td>13.0</td>
+</tr>
+<tr>
+<td>T1 repo unwinds: cash goes back; HQLA2A comes back</td>
+<td>-8.5</td>
+<td>+8.5</td>
+<td></td>
+</tr>
+<tr>
+<td>T2 reverse repo unwinds: RMBS goes back; cash comes back</td>
+<td>+3.0</td>
+<td></td>
+<td>-3.0</td>
+</tr>
+<tr>
+<td>T3 swap unwinds: the HQLA1 goes back; the HQLA2A comes back</td>
+<td>-5.0</td>
+<td>+5.1</td>
+<td></td>
+</tr>
+<tr>
+<td>T4 (45 days)</td>
+<td>not unwound</td>
+<td>not unwound</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Adjusted</strong></td>
+<td><strong>39.5</strong></td>
+<td><strong>39.1</strong></td>
+<td><strong>10.0</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Step 2. Test the caps on the adjusted amounts.</strong></p>
+<ul>
+<li>HQLA2B cap = lower of 15/85 x (39.5 + 39.1) = 13.8706 and 15/60 x 39.5 = 9.875. The lower is <strong>9.875</strong>. Adjusted HQLA2B is 10.0, so <strong>0.125</strong> is excess.</li>
+<li>HQLA2 cap = two-thirds x 39.5 = 26.3333. HQLA2 after removing the 0.125 = 39.1 + 10.0 - 0.125 = 48.975. Excess = 48.975 - 26.3333 = <strong>22.6417</strong>.</li>
+</ul>
+<p><strong>Step 3. Counted stock (Method 1)</strong> = reported 88.5 - 0.125 - 22.6417 = <strong>65.7333</strong>. HQLA2 counted is 38.5 less 22.7667, or 15.7333, which is 23.9% of the stock.</p>
+<p><strong>Method 2 (comparison).</strong> Take the maximum HQLA2 from the adjusted amounts (26.3333) and apply it to the reported HQLA2 (38.5): counted HQLA2 = 26.3333, stock = 50.0 + 26.3333 = <strong>76.3333</strong>. It is less cautious. It lets the bank keep borrowed cash and swapped-in bonds in HQLA1 while using the smaller adjusted HQLA1 only to set the limit.</p>
+<h3 id="35-result">3.5 Result</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Counted stock</th>
+<th>LCR if net outflows are 40.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No unwind (Part A)</td>
+<td>83.3333</td>
+<td>208.3%</td>
+</tr>
+<tr>
+<td>With unwind, Method 1</td>
+<td>65.7333</td>
+<td>164.3%</td>
+</tr>
+<tr>
+<td>With unwind, Method 2</td>
+<td>76.3333</td>
+<td>190.8%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What it teaches:</strong> the bank "owns" 50.0 of HQLA1 but 8.5 is cash borrowed for 20 days against HQLA2A and 5.0 is bonds that exist in HQLA1 only because of a 28-day swap. Strip these out and its true HQLA1 is 39.5, so the two-thirds limit on HQLA2 falls from 33.3 to 26.3. The unwind cut the stock by 17.6 (Method 1), so the LCR dropped 44.0 percentage points in this example.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The standard's wording does not make Method 1 or Method 2 obviously right. The safe course: use the more conservative method until APRA or your controller says otherwise, document the choice, and keep the transaction list used (document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p8">Att A para 8</a>, "Evidence we keep"). Also remember day 30 is inside "up to and including 30 calendar days"; day 31 is not.</p>
+</blockquote>
+<hr />
+<h2 id="case-4-the-75-inflow-cap-binding">Case 4: The 75% inflow cap binding</h2>
+<h3 id="41-the-idea-from-the-basics">4.1 The idea from the basics</h3>
+<p>The LCR lets a bank count cash it expects to receive in the 30 days, but with a limit. A bank cannot rely entirely on money coming in during a crisis, because borrowers may not repay on time and because the bank must keep lending. So total inflows counted are limited to 75% of total outflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>):</p>
+<pre><code>Net outflows = Outflows - Min { Inflows ; 75% x Outflows }
+</code></pre>
+<p>That means net outflows can never be less than 25% of outflows. The cap "binds" when weighted inflows are bigger than 75% of outflows. Example Bank's cap is 0.75 x 13.45 = 10.0875 and its inflows are 1.90, so it is nowhere near binding. A bank with a large book of short-term lending to other banks can be.</p>
+<h3 id="42-the-data-a-different-lending-heavy-bank">4.2 The data (a different, lending-heavy bank)</h3>
+<p>Total weighted outflows are 20.0. HQLA is 6.5. The inflow lines:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Inflow line</th>
+<th>Contractual amount A$bn</th>
+<th>Rate</th>
+<th>Weighted A$bn</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail and SME loan repayments (fully performing)</td>
+<td>5.0</td>
+<td>50%</td>
+<td>2.5</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p61">Att A para 61</a>)</td>
+</tr>
+<tr>
+<td>Corporate loan repayments</td>
+<td>6.0</td>
+<td>50%</td>
+<td>3.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Loans to banks maturing</td>
+<td>8.0</td>
+<td>100%</td>
+<td>8.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Maturing securities not in the HQLA stock</td>
+<td>3.0</td>
+<td>100%</td>
+<td>3.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p62">Att A para 62</a>)</td>
+</tr>
+<tr>
+<td>Reverse repo maturing, secured by HQLA2A</td>
+<td>2.0</td>
+<td>15%</td>
+<td>0.3</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t4">Att A Table 4</a>)</td>
+</tr>
+<tr>
+<td>Reverse repo maturing, secured by HQLA1</td>
+<td>5.0</td>
+<td>0%</td>
+<td>0.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A para 55</a>)</td>
+</tr>
+<tr>
+<td>Derivative receivables, net</td>
+<td>1.0</td>
+<td>100%</td>
+<td>1.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a>)</td>
+</tr>
+<tr>
+<td>Back-up lines the bank holds at other banks</td>
+<td>3.0</td>
+<td>0%</td>
+<td>0.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p57">Att A para 57</a>)</td>
+</tr>
+<tr>
+<td>Operational deposits the bank holds at other institutions</td>
+<td>2.0</td>
+<td>0%</td>
+<td>0.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p63">Att A para 63</a>)</td>
+</tr>
+<tr>
+<td>Repayments from non-performing loans</td>
+<td>0.4</td>
+<td>excluded</td>
+<td>0.0</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>)</td>
+</tr>
+<tr>
+<td><strong>Total weighted inflows</strong></td>
+<td></td>
+<td></td>
+<td><strong>17.8</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Note the three zero-rate lines and the excluded line: they look like inflows in the ledger and do not count.</p>
+<h3 id="43-working">4.3 Working</h3>
+<ol>
+<li>Cap = 75% x 20.0 = <strong>15.0</strong>.</li>
+<li>Weighted inflows 17.8 exceed 15.0 by <strong>2.8</strong>. The cap binds.</li>
+<li>Counted inflows = 15.0. Net outflows = 20.0 - 15.0 = <strong>5.0</strong>.</li>
+<li>LCR = 6.5 / 5.0 = <strong>130.0%</strong>.</li>
+<li>If there were no cap, net outflows would be 20.0 - 17.8 = 2.2 and the LCR would be 295.5%. The cap removes 165.5 percentage points.</li>
+<li>The highest LCR this bank can ever show is HQLA / (25% x outflows) = 6.5 / 5.0 = 130.0%, however large inflows become.</li>
+</ol>
+<h3 id="44-sensitivity-the-value-of-an-extra-inflow-above-the-cap-is-nil">4.4 Sensitivity: the value of an extra inflow above the cap is nil</h3>
+<p>Reduce the loans to banks line and see what happens:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Loans to banks maturing</th>
+<th>Weighted inflows</th>
+<th>Cap (15.0) binding?</th>
+<th>Net outflows</th>
+<th>LCR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8.0</td>
+<td>17.8</td>
+<td>yes</td>
+<td>5.0</td>
+<td>130.0%</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td>15.8</td>
+<td>yes</td>
+<td>5.0</td>
+<td>130.0%</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>14.8</td>
+<td>no</td>
+<td>5.2</td>
+<td>125.0%</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>12.8</td>
+<td>no</td>
+<td>7.2</td>
+<td>90.3%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cutting bank loans from 8.0 to 6.0 did nothing to the ratio. Cutting further starts to hurt. At 3.0 the LCR is below 100%.</p>
+<h3 id="45-result-and-what-it-teaches">4.5 Result and what it teaches</h3>
+<ul>
+<li>Count every inflow properly first, then apply the cap once, at the total level. Do not cap line by line.</li>
+<li>When the cap binds, extra inflows do not help, and net outflows are simply 25% of outflows. Each extra 1.0 of outflow then adds only 0.25 to net outflows (it also raises the cap by 0.75). In the uncapped zone each extra 1.0 of outflow adds the full 1.0. So the cap also softens new outflows, which is a reason the reviewer must know which zone the bank is in.</li>
+<li>A reviewer should always look at the "cap binding" flag on the daily LCR. A bank near the cap should be watching its outflows, not its inflows (document <a href="08_LCR_Production_End_to_End.html">08</a>).</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> APRA may set a lower limit on inflows if it sees an ADI relying on a few wholesale counterparties (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A para 54</a>). Also do not count an inflow from an asset already in the HQLA stock (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>).</p>
+</blockquote>
+<hr />
+<h2 id="case-5-derivative-outflows-in-the-lcr">Case 5: Derivative outflows in the LCR</h2>
+<h3 id="51-the-idea-from-the-basics">5.1 The idea from the basics</h3>
+<p>A <strong>derivative</strong> is a contract whose value depends on something else, such as an interest rate or an exchange rate. The two sides make payments to each other. A bank may owe money to one counterparty and be owed money by another, and it posts or receives <strong>collateral</strong> (assets as security) as values move. <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> has several lines for "increased liquidity needs related to derivatives and other transactions". Work through them one by one, in A$ millions.</p>
+<ol>
+<li><strong>Derivative cash outflows</strong>, net by counterparty where a valid master netting agreement exists (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>), rate 100%.</li>
+<li><strong>Collateral to post on a 3-notch downgrade</strong> of the ADI's own credit rating (100%).</li>
+<li><strong>Excess non-segregated collateral</strong> the counterparty may call (100%) and <strong>contractually required collateral not yet demanded</strong> (100%).</li>
+<li><strong>Collateral outflows from market valuation changes</strong>: 100% of the largest absolute net 30-day collateral flow realised in the past 24 months (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f6">Att A footnote 6</a> lets APRA approve an alternative method).</li>
+<li><strong>Valuation changes on posted non-HQLA1 collateral</strong>: 20%.</li>
+</ol>
+<p>Inflows from derivatives get 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a>), and the netting in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a> applies.</p>
+<h3 id="52-the-data">5.2 The data</h3>
+<p><strong>Cash flows within 30 days by netting set</strong> (A$m):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Counterparty</th>
+<th>Legal basis</th>
+<th>We pay</th>
+<th>We receive</th>
+<th>HQLA collateral held from them, not in the stock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Valid master netting agreement</td>
+<td>300</td>
+<td>180</td>
+<td>20</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Valid master netting agreement</td>
+<td>90</td>
+<td>140</td>
+<td>0</td>
+</tr>
+<tr>
+<td>C</td>
+<td>No netting agreement (not FX)</td>
+<td>60</td>
+<td>40</td>
+<td>0</td>
+</tr>
+<tr>
+<td>D</td>
+<td>FX swap, full exchange of principal on the same day, no netting agreement</td>
+<td>500</td>
+<td>490</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Other terms:</strong> collateral to post on a 3-notch downgrade: A 40, B 25, C 10, D 0. Collateral we have posted: HQLA1 300, HQLA2A 400, HQLA2B 100, other non-HQLA 200. Excess collateral the counterparty could call: 30. Collateral required by contract but not yet demanded: 15.</p>
+<p><strong>Daily net collateral flow series</strong> (A$m; positive means net collateral posted to counterparties, negative means net collateral received). To keep the table small, the data shown is a 60-day excerpt. A real calculation runs the same method over the full 24 months (about 730 days) using the daily series from the collateral system (document <a href="07_Data_and_Classification.html">07</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Days</th>
+<th>Daily net flows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 to 10</td>
+<td>5, -3, 8, 12, -4, 6, 0, 9, 15, -2</td>
+</tr>
+<tr>
+<td>11 to 20</td>
+<td>20, 18, -6, 10, 25, 30, -8, 12, 14, 7</td>
+</tr>
+<tr>
+<td>21 to 30</td>
+<td>22, 16, 9, -5, 11, 35, 28, 4, -3, 13</td>
+</tr>
+<tr>
+<td>31 to 40</td>
+<td>-15, -25, -30, -12, -40, -22, -18, -35, -28, -20</td>
+</tr>
+<tr>
+<td>41 to 50</td>
+<td>-33, -24, -16, -45, -10, -26, -19, -14, -38, -21</td>
+</tr>
+<tr>
+<td>51 to 60</td>
+<td>-9, -13, 6, 3, -7, 4, 10, -2, 8, 5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="53-working">5.3 Working</h3>
+<p><strong>Step 1. Net cash flows by netting set.</strong></p>
+<ul>
+<li><strong>A</strong> (netting applies): pay 300 less receive 180 = net payable 120. Less HQLA1 collateral held, not already in the stock, 20 = <strong>100 outflow</strong>.</li>
+<li><strong>B</strong> (netting applies): pay 90 less receive 140 = net receivable 50 = <strong>50 inflow</strong>.</li>
+<li><strong>C</strong> (no netting): the amounts may not be offset. Pay 60 is an <strong>outflow of 60</strong>; receive 40 is an <strong>inflow of 40</strong>.</li>
+<li><strong>D</strong> (FX swap with full simultaneous exchange): footnote 5 allows a net figure even without a master netting agreement. 500 - 490 = <strong>10 outflow</strong>.</li>
+</ul>
+<p>Total derivative cash outflows = 100 + 60 + 10 = <strong>170</strong>. Total derivative inflows = 50 + 40 = <strong>90</strong> (100%: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a>).</p>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> Footnote 5 says amounts "must also be net of HQLA1 and HQLA2 collateral, to the extent that this collateral is not already counted in the stock of HQLA". I read this as: eligible collateral we hold against a net payable reduces that payable, but only if it is not also counted in the HQLA stock (no double counting: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>). If the collateral were in the stock, the 20 would not be deducted.</p>
+</blockquote>
+<p><strong>Step 2. The 3-notch downgrade.</strong> 40 + 25 + 10 + 0 = <strong>75</strong> at 100%.</p>
+<p><strong>Step 3. The largest absolute net 30-day collateral flow.</strong> Sum every rolling 30-day window of the daily series. With 60 days there are 31 windows: days 1 to 30, 2 to 31, and so on up to 31 to 60.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Window</th>
+<th>Net collateral flow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Days 1 to 30</td>
+<td>+298 (largest net posting)</td>
+</tr>
+<tr>
+<td>Days 11 to 40</td>
+<td>+7</td>
+</tr>
+<tr>
+<td>Days 21 to 50</td>
+<td>-361</td>
+</tr>
+<tr>
+<td>Days 29 to 58</td>
+<td><strong>-489</strong> (largest net receipt)</td>
+</tr>
+<tr>
+<td>Days 31 to 60</td>
+<td>-486</td>
+</tr>
+</tbody>
+</table></div>
+<p>The largest positive window is +298, the most negative is -489. "Largest absolute" means ignoring the sign, so the answer is <strong>489</strong>, at 100% = <strong>489</strong>. A bank that looked only at postings would have used 298 and understated the outflow by 191.</p>
+<p><strong>Step 4. Valuation change on posted non-HQLA1 collateral.</strong> Non-HQLA1 posted = 400 + 100 + 200 = 700. HQLA1 (300) is excluded. 700 x 20% = <strong>140</strong>.</p>
+<p><strong>Step 5. Other collateral lines.</strong> Excess non-segregated collateral callable: 30 x 100% = <strong>30</strong>. Required but not demanded: 15 x 100% = <strong>15</strong>.</p>
+<h3 id="54-result">5.4 Result</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>A$m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Derivative cash outflows (net by set)</td>
+<td>170</td>
+</tr>
+<tr>
+<td>3-notch downgrade collateral</td>
+<td>75</td>
+</tr>
+<tr>
+<td>Largest absolute net 30-day collateral flow</td>
+<td>489</td>
+</tr>
+<tr>
+<td>Valuation change on posted non-HQLA1 collateral (20%)</td>
+<td>140</td>
+</tr>
+<tr>
+<td>Excess collateral callable</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Required collateral not yet demanded</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Total derivative-related outflows</strong></td>
+<td><strong>919</strong></td>
+</tr>
+<tr>
+<td>Derivative inflows (100%)</td>
+<td>90</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Effect on Example Bank.</strong> The base LCR has two derivative outflow lines: net derivative outflows 0.30 and 3-notch downgrade collateral 0.20, together 0.50. Replace them with 0.919 and add inflows of 0.090.</p>
+<ul>
+<li>Outflows: 13.45 - 0.50 + 0.919 = <strong>13.869</strong>. Inflows: 1.90 + 0.09 = <strong>1.99</strong> (cap 10.40, not binding). Net <strong>11.879</strong>.</li>
+<li>LCR = 17.0 / 11.879 = <strong>143.1%</strong>, down from 147.2%.</li>
+</ul>
+<p><strong>What it teaches:</strong> the derivative lines are many and each one has its own data feed. The valuation-change line is driven by history, not by today's positions. If a quiet 24 months replaced a volatile one, that line would shrink (and then grow back when volatility returned).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Netting without a valid master netting agreement is the commonest error. Keep the legal opinion or confirmation for each agreement (document <a href="12_Controls_Incidents_and_Escalation.html">12</a> control matrix). Also confirm that the HQLA collateral you net is not also sitting in the stock.</p>
+</blockquote>
+<hr />
+<h2 id="case-6-derivatives-in-the-nsfr">Case 6: Derivatives in the NSFR</h2>
+<h3 id="61-the-idea-from-the-basics">6.1 The idea from the basics</h3>
+<p>The NSFR asks whether long-term assets are funded by long-term funding over a one-year horizon. Derivatives are awkward here because a contract can be an asset (it is worth money to us today) or a liability (it costs us money today), and the position moves every day. The standard handles this with a few simple rules.</p>
+<ol>
+<li><strong>Replacement cost</strong> is what it would cost to replace the contract today at market value. Where a contract has a negative value, it is a derivative liability; positive, a derivative asset. Where an eligible bilateral netting agreement exists, the set of contracts is treated as one net replacement cost (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C para 9</a> for liabilities, and <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p27">Att C para 27</a> for assets).</li>
+<li><strong>Variation margin (VM)</strong> is the collateral that changes hands daily as values move. VM <strong>posted</strong> is deducted from derivative liabilities, whatever the asset type (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p10">Att C para 10</a>; see also <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f11">Att C footnote 11</a>). The balance sheet asset for that posted VM is then left out of the RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f12">Att C footnote 12</a>). For derivative <strong>assets</strong>, collateral received does <strong>not</strong> offset the amount, unless it is cash VM, meets the conditions in APS 110, and is in the same currency as the settlement of the contract (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>). Initial margin received never offsets and gets a 0% ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>).</li>
+<li><strong>RSF on derivatives.</strong> (a) 100% of the net derivative asset: NSFR derivative assets less NSFR derivative liabilities, if positive (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>; see also <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f29">Att C footnote 29</a>). (b) A further 20% of the gross derivative liabilities, before deducting any VM posted (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>; see also <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f20">Att C footnote 20</a>). (c) 85% of initial margin posted, and of contributions to a central counterparty default fund (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>).</li>
+<li><strong>ASF.</strong> If derivative liabilities exceed derivative assets, the excess gets 0% ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>). So there is a charge on the asset side and never a credit on the liability side.</li>
+</ol>
+<h3 id="62-the-data-am">6.2 The data (A$m)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Netting set</th>
+<th>Eligible netting?</th>
+<th>Positive contracts</th>
+<th>Negative contracts</th>
+<th>VM posted (cash)</th>
+<th>Cash VM received, qualifying</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Yes</td>
+<td>500</td>
+<td>800</td>
+<td>220</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Yes</td>
+<td>700</td>
+<td>400</td>
+<td>0</td>
+<td>100</td>
+</tr>
+<tr>
+<td>3</td>
+<td>No</td>
+<td>200</td>
+<td>250</td>
+<td>30</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Also: in set 2 the bank received a further 40 of non-qualifying VM and 50 of initial margin (no offset, 0% ASF). The bank has posted initial margin of 80 in cash.</p>
+<h3 id="63-working">6.3 Working</h3>
+<p><strong>Step 1. Replacement cost by set.</strong></p>
+<ul>
+<li>Set 1 (netted): 500 - 800 = -300, so a <strong>derivative liability of 300</strong>.</li>
+<li>Set 2 (netted): 700 - 400 = +300, so a <strong>derivative asset of 300</strong>.</li>
+<li>Set 3 (not eligible for netting): asset 200 and liability 250, each kept separately.</li>
+</ul>
+<p><strong>Step 2. Take off the collateral.</strong></p>
+<ul>
+<li>Set 1 liability: 300 - 220 VM posted = <strong>80</strong>.</li>
+<li>Set 2 asset: 300 - 100 qualifying cash VM received = <strong>200</strong>. The extra 40 of non-qualifying VM and 50 of initial margin do not offset; they stay as liabilities with 0% ASF.</li>
+<li>Set 3 liability: 250 - 30 VM posted = <strong>220</strong>; asset <strong>200</strong> (no offset).</li>
+</ul>
+<p><strong>Step 3. Totals.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>A$m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Derivative liabilities before VM (300 + 250)</td>
+<td>550</td>
+</tr>
+<tr>
+<td>VM posted (220 + 30)</td>
+<td>250</td>
+</tr>
+<tr>
+<td>NSFR derivative liabilities (550 - 250)</td>
+<td><strong>300</strong></td>
+</tr>
+<tr>
+<td>NSFR derivative assets (200 + 200)</td>
+<td><strong>400</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Step 4. The RSF charges.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Charge</th>
+<th>Working</th>
+<th>A$m</th>
+<th>Paragraph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net derivative asset at 100%</td>
+<td>400 - 300 = 100</td>
+<td>100</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>)</td>
+</tr>
+<tr>
+<td>20% of gross derivative liabilities</td>
+<td>20% x 550</td>
+<td>110</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>)</td>
+</tr>
+<tr>
+<td>Initial margin posted at 85%</td>
+<td>85% x 80</td>
+<td>68</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>)</td>
+</tr>
+<tr>
+<td><strong>Total derivative RSF</strong></td>
+<td></td>
+<td><strong>278</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>The 250 of VM posted sits on the balance sheet as an asset. Do not also put it in the RSF base (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f12">Att C footnote 12</a>). A common error is to count it twice.</p>
+<p><strong>Step 5. ASF.</strong> NSFR liabilities (300) are below NSFR assets (400), so there is no excess liability. ASF from derivatives = 0. The 40 and 50 received also get 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>).</p>
+<h3 id="64-a-variation-liabilities-larger-than-assets">6.4 A variation: liabilities larger than assets</h3>
+<p>Suppose set 2's asset were smaller, so that NSFR derivative assets were 250 against liabilities of 300. The net asset charge is max(250 - 300, 0) = <strong>0</strong>. The 20% charge stays at 110, so total RSF = 0 + 110 + 68 = <strong>178</strong>. The excess liability (50) attracts 0% ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>), so there is no credit. The asymmetry is deliberate: a net liability earns nothing, a net asset costs 100%.</p>
+<h3 id="65-effect-on-example-bank">6.5 Effect on Example Bank</h3>
+<p>The base NSFR working paper ignored derivatives (RSF 58.50). Adding this book's RSF of 0.278 gives RSF 58.778 and the NSFR becomes 79.75 / 58.778 = <strong>135.7%</strong>, down from 136.3%.</p>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> In a real working paper, derivative assets and liabilities are already on the ledger, so total assets and total liabilities reconcile (document <a href="09_NSFR_Production_End_to_End.html">09</a>). This illustration adds the charge on top of the base for clarity.</p>
+</blockquote>
+<h3 id="66-result-and-what-it-teaches">6.6 Result and what it teaches</h3>
+<p>Three separate numbers drive the derivative RSF, and each uses a different base: net replacement cost after VM (100%), gross replacement cost before VM (20%), and initial margin (85%). The 20% charge is on the gross liabilities <strong>before</strong> variation margin, so it does not fall when the bank posts more VM.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The cash VM received that meets APS 110 conditions and the same-currency test is the only collateral that offsets an asset. Check each condition; if one fails, the asset stays whole and the bank gets 0% ASF on the liability that matches the margin (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p28">Att C para 28</a>).</p>
+</blockquote>
+<hr />
+<h2 id="case-7-encumbrance-in-the-nsfr">Case 7: Encumbrance in the NSFR</h2>
+<h3 id="71-the-idea-from-the-basics">7.1 The idea from the basics</h3>
+<p>An asset is <strong>encumbered</strong> when it is pledged as security, so the bank cannot freely sell it. Encumbered assets include assets backing securities or covered bonds and assets pledged in repos or collateral swaps (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f21">Att C footnote 21</a>). For the LCR, an encumbered asset is simply not in the HQLA stock (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>). For the NSFR the question is for how long, because a long-pledged asset cannot be used to meet needs over the year.</p>
+<p><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>, in plain words:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Period the asset is encumbered</th>
+<th>RSF factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One year or more</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Six months to less than one year, and unencumbered it would have an RSF of 50% or less</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>Six months to less than one year, and unencumbered it would have an RSF above 50%</td>
+<td>the higher unencumbered factor</td>
+</tr>
+<tr>
+<td>Less than six months remaining</td>
+<td>the same as an equivalent unencumbered asset</td>
+</tr>
+</tbody>
+</table></div>
+<p><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a> adds that HQLA encumbered for six months to less than one year gets 50%. I use "remaining" because para 23 says "less than six months remaining in the encumbrance period".</p>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> Para 23 speaks of the period an asset "is encumbered", then of "remaining" encumbrance in its last sentence. I test the <strong>remaining</strong> period at each reporting date, so a bond pledged for 18 months moves down the table as time passes. This is the usual reading, but confirm it with your controller.</p>
+</blockquote>
+<h3 id="72-the-data">7.2 The data</h3>
+<p>Take A$1.0bn of each of four assets, each pledged for 3 months, 9 months and 18 months remaining. Unencumbered RSF factors: Government bond (HQLA1) 5% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p30">Att C para 30</a>); HQLA2A bond 15% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>); standard mortgage (LVR 80% or less, one year or more) 65% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p35">Att C para 35</a>); corporate bond (non-HQLA, one year or more remaining) 85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C para 36</a>).</p>
+<h3 id="73-working">7.3 Working</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Asset (A$1.0bn)</th>
+<th>Unencumbered</th>
+<th>Pledged 3 months</th>
+<th>Pledged 9 months</th>
+<th>Pledged 18 months</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Government bond (HQLA1)</td>
+<td>5% = 0.05</td>
+<td>5% = 0.05</td>
+<td><strong>50% = 0.50</strong></td>
+<td><strong>100% = 1.00</strong></td>
+</tr>
+<tr>
+<td>HQLA2A bond</td>
+<td>15% = 0.15</td>
+<td>15% = 0.15</td>
+<td><strong>50% = 0.50</strong></td>
+<td><strong>100% = 1.00</strong></td>
+</tr>
+<tr>
+<td>Standard mortgage</td>
+<td>65% = 0.65</td>
+<td>65% = 0.65</td>
+<td>65% = 0.65 (higher factor kept)</td>
+<td><strong>100% = 1.00</strong></td>
+</tr>
+<tr>
+<td>Corporate bond, one year or more</td>
+<td>85% = 0.85</td>
+<td>85% = 0.85</td>
+<td>85% = 0.85 (higher factor kept)</td>
+<td><strong>100% = 1.00</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Reading across for the government bond: 3 months is under six months remaining, so it is treated as unencumbered, 0.05. At 9 months it falls in the six to under twelve month band, and as HQLA it takes 50%. At 18 months it is encumbered for a year or more, so 100%.</p>
+<h3 id="74-the-same-bond-as-time-passes">7.4 The same bond as time passes</h3>
+<p>An A$1.0bn government bond pledged for 18 months, tested at each remaining period:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Months remaining</th>
+<th>18</th>
+<th>12</th>
+<th>11</th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RSF factor</td>
+<td>100%</td>
+<td>100%</td>
+<td>50%</td>
+<td>50%</td>
+<td>50%</td>
+<td>5%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>RSF A$bn</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>0.50</td>
+<td>0.50</td>
+<td>0.50</td>
+<td>0.05</td>
+<td>0.05</td>
+</tr>
+</tbody>
+</table></div>
+<p>The factor steps down at 12 months remaining (to 50%) and again at 5 months remaining (to 5%). Treasury should know about these cliffs when it plans a pledge.</p>
+<h3 id="75-effect-on-example-banks-nsfr">7.5 Effect on Example Bank's NSFR</h3>
+<p>Example Bank holds government and semi-government securities of 12.0 at 5% (RSF 0.60). Pledge A$1.0bn of them.</p>
+<p><strong>One-sided view (the asset only).</strong> The extra RSF compared with unencumbered:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pledge</th>
+<th>Extra RSF</th>
+<th>RSF</th>
+<th>NSFR (ASF 79.75)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 months</td>
+<td>0.00</td>
+<td>58.50</td>
+<td>136.3%</td>
+</tr>
+<tr>
+<td>9 months</td>
+<td>0.45</td>
+<td>58.95</td>
+<td>135.3%</td>
+</tr>
+<tr>
+<td>18 months</td>
+<td>0.95</td>
+<td>59.45</td>
+<td>134.1%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Two-sided view (what really happens).</strong> The pledge is the security for a repo that raises A$1.0bn of cash. The cash is held at the RBA (RSF 0%: <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>). The repo is secured funding from a bank, so its ASF depends on its remaining term: under six months from a financial institution 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>); six months to under one year from a financial institution 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>); one year or more 100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p11">Att C para 11</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Repo term</th>
+<th>ASF added</th>
+<th>RSF added</th>
+<th>NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 months</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>136.3%</td>
+</tr>
+<tr>
+<td>9 months</td>
+<td>0.50</td>
+<td>0.45</td>
+<td>136.1%</td>
+</tr>
+<tr>
+<td>18 months</td>
+<td>1.00</td>
+<td>0.95</td>
+<td>135.8%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Result:</strong> funding raised against long-pledged assets carries its own ASF, which almost cancels the extra RSF. The one-sided view makes pledging look expensive; the two-sided view shows the true cost is small (0.5 percentage points for 18 months). An analyst who tests only the asset side will overstate the damage.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Check the <strong>remaining</strong> encumbrance period on each reporting date, not the original term. And remember the LCR effect is immediate and independent of term: a pledged bond is out of the HQLA stock from day one (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p23">Att A para 23</a>). See also <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p24">Att C para 24</a>: APRA may approve a lower factor for assets encumbered in exceptional central bank liquidity operations.</p>
+</blockquote>
+<hr />
+<h2 id="case-8-secured-funding-and-lending-by-collateral-class-through-both-ratios">Case 8: Secured funding and lending by collateral class, through both ratios</h2>
+<h3 id="81-the-idea-from-the-basics">8.1 The idea from the basics</h3>
+<p>A <strong>repurchase agreement (repo)</strong> is a loan secured by assets: the borrower sells securities and agrees to buy them back later, which in effect is borrowing cash against collateral. From the bank's side a repo is <strong>secured funding</strong> (it borrows). A <strong>reverse repo</strong> is the opposite: the bank lends cash and takes securities as collateral (<strong>secured lending</strong>). The key idea in APS 210 is that <strong>the quality of the collateral decides the rate</strong>, because good collateral lets the borrower roll the deal over even in a crisis.</p>
+<p>For maturing repos (borrowing), the bank loses funding according to the collateral class (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Collateral</th>
+<th>Run-off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1 (any counterparty)</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>CLF-eligible debt securities, where the ADI has a CLF (now zero)</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>HQLA2A</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Other collateral, where the counterparty is a domestic sovereign, public sector entity (PSE; not the RBA) or multilateral development bank with a risk weight of 20% or lower</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>RMBS eligible as HQLA2B</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>All other</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+<p>For maturing reverse repos (lending), the inflow depends on the collateral held (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A paras 55 to 56</a>, with <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t4">Att A Table 4</a>):</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Collateral</th>
+<th>Inflow rate</th>
+<th>Inflow rate if the collateral is re-used to cover short positions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1</td>
+<td>0%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>HQLA2A</td>
+<td>15%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>RMBS eligible as HQLA2B</td>
+<td>25%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>50%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Margin lending against securities that are not HQLA</td>
+<td>50%</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>All other collateral</td>
+<td>100%</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the NSFR, the funding side gets ASF according to counterparty and remaining term; an encumbered asset keeps its own RSF according to Case 7; and a reverse repo is a loan, whose RSF depends on the borrower and term (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C paras 31 to 34</a>). Securities received in a reverse repo that the bank does not own beneficially are <strong>excluded</strong> from assets (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>).</p>
+<h3 id="82-the-data-abn-all-repos-and-reverse-repos-mature-within-30-days-counterparties-are-banks-unless-stated">8.2 The data (A$bn; all repos and reverse repos mature within 30 days; counterparties are banks unless stated)</h3>
+<p><strong>Repos the bank has done (secured funding):</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Collateral class</th>
+<th>Cash borrowed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1 bonds</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>HQLA2A bonds</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Other bonds, with a domestic semi-government PSE as counterparty (risk weight 20%)</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>RMBS eligible as HQLA2B</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>All other collateral (corporate bonds)</td>
+<td>3.0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Reverse repos the bank has done (secured lending):</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Collateral class</th>
+<th>Cash lent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>HQLA2A</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>RMBS eligible as HQLA2B</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>Margin loan to a client against shares (not HQLA)</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>All other collateral</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>HQLA2A re-used for 30 days or more to cover short positions</td>
+<td>0.8</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="83-working-the-lcr">8.3 Working: the LCR</h3>
+<p><strong>Outflows from repos.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Amount</th>
+<th>Run-off</th>
+<th>Outflow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1</td>
+<td>6.0</td>
+<td>0%</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>HQLA2A</td>
+<td>2.0</td>
+<td>15%</td>
+<td>0.300</td>
+</tr>
+<tr>
+<td>PSE counterparty</td>
+<td>1.0</td>
+<td>25%</td>
+<td>0.250</td>
+</tr>
+<tr>
+<td>RMBS</td>
+<td>1.5</td>
+<td>25%</td>
+<td>0.375</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>0.8</td>
+<td>50%</td>
+<td>0.400</td>
+</tr>
+<tr>
+<td>All other</td>
+<td>3.0</td>
+<td>100%</td>
+<td>3.000</td>
+</tr>
+<tr>
+<td><strong>Total (14.3 borrowed)</strong></td>
+<td></td>
+<td></td>
+<td><strong>4.325</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Inflows from reverse repos.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Amount</th>
+<th>Inflow</th>
+<th>Inflow weighted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1</td>
+<td>5.0</td>
+<td>0%</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>HQLA2A</td>
+<td>1.0</td>
+<td>15%</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td>RMBS</td>
+<td>0.6</td>
+<td>25%</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>0.4</td>
+<td>50%</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>Margin lending</td>
+<td>0.5</td>
+<td>50%</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>All other</td>
+<td>2.0</td>
+<td>100%</td>
+<td>2.00</td>
+</tr>
+<tr>
+<td>HQLA2A re-used for shorts</td>
+<td>0.8</td>
+<td>0%</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td><strong>Total (10.3 lent)</strong></td>
+<td></td>
+<td></td>
+<td><strong>2.75</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Effect on the Example Bank LCR.</strong> Add these on top of the base outflows 13.45 and inflows 1.90, and assume (to isolate the rates) the net cash from the deals is used outside the HQLA stock so that HQLA stays at 17.0:</p>
+<ul>
+<li>Outflows = 13.45 + 4.325 = <strong>17.775</strong>.</li>
+<li>Inflows = 1.90 + 2.75 = <strong>4.65</strong> (cap 13.3313; not binding).</li>
+<li>Net = 13.125. <strong>LCR = 17.0 / 13.125 = 129.5%</strong>, down from 147.2%.</li>
+</ul>
+<p><strong>The same A$1.0bn through different collateral:</strong> the repo costs 0, 0.15, 0.25, 0.25, 0.50 or 1.00 of outflow, and the reverse repo returns 0, 0.15, 0.25, 0.50, 0.50 or 1.00 of inflow. In the daily LCR, the collateral class on each trade is a mandatory field (document <a href="07_Data_and_Classification.html">07</a>).</p>
+<h3 id="84-working-the-nsfr">8.4 Working: the NSFR</h3>
+<p><strong>Repo liabilities.</strong> All 14.3 are from banks (financial institutions) maturing within 30 days: ASF 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>). No ASF from the repos.</p>
+<p><strong>Assets pledged in the repos.</strong> Each is encumbered for under six months, so it carries the same RSF as an equivalent unencumbered asset (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). The repos change nothing:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pledged asset</th>
+<th>Amount</th>
+<th>RSF</th>
+<th>Weighted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HQLA1 bonds</td>
+<td>6.0</td>
+<td>5%</td>
+<td>0.300</td>
+</tr>
+<tr>
+<td>HQLA2A bonds</td>
+<td>2.0</td>
+<td>15%</td>
+<td>0.300</td>
+</tr>
+<tr>
+<td>3-year bonds (the PSE-counterparty repo)</td>
+<td>1.0</td>
+<td>85%</td>
+<td>0.850</td>
+</tr>
+<tr>
+<td>RMBS (HQLA2B)</td>
+<td>1.5</td>
+<td>50%</td>
+<td>0.750</td>
+</tr>
+<tr>
+<td>Other HQLA2B</td>
+<td>0.8</td>
+<td>50%</td>
+<td>0.400</td>
+</tr>
+<tr>
+<td>2-year corporate bonds</td>
+<td>3.0</td>
+<td>85%</td>
+<td>2.550</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>14.3</td>
+<td></td>
+<td><strong>5.150</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Reverse repos.</strong> The securities received are not on the balance sheet and so are excluded (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>); the bank holds a <strong>loan</strong> instead.</p>
+<ul>
+<li>To a financial institution, unencumbered, under six months, secured by HQLA1 with free rehypothecation: 10% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p31">Att C para 31</a>). 5.0 x 10% = 0.50.</li>
+<li>Other loans to financial institutions under six months: 15% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p33">Att C para 33</a>). (1.0 + 0.6 + 0.4 + 2.0 + 0.8) = 4.8 x 15% = 0.72.</li>
+<li>The margin loan of 0.5 is to a client (not a financial institution), under one year: 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p34">Att C para 34</a>). 0.5 x 50% = 0.25.</li>
+<li>Total reverse repo RSF = <strong>1.47</strong>.</li>
+</ul>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> I treat the reverse repo cash as a loan to the counterparty and the 0.8 loan against re-used collateral as a loan to a financial institution at 15%. APS 210 does not give separate rules for re-used collateral in the NSFR, so check with your controller.</p>
+</blockquote>
+<p><strong>Effect on the Example Bank NSFR</strong> (adding the reverse repo RSF to the base; repo RSF already exists on the balance sheet): RSF 58.50 + 1.47 = <strong>59.97</strong>; NSFR = 79.75 / 59.97 = <strong>133.0%</strong>.</p>
+<h3 id="85-result-and-what-it-teaches">8.5 Result and what it teaches</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Repo (borrowing)</th>
+<th>Reverse repo (lending)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LCR</td>
+<td>Outflow 0% to 100% by collateral class</td>
+<td>Inflow 0% to 100% by collateral class</td>
+</tr>
+<tr>
+<td>NSFR</td>
+<td>ASF 0% to 100% by counterparty and term; collateral RSF by encumbrance period</td>
+<td>RSF 10%, 15% or 50% by counterparty, collateral and term</td>
+</tr>
+<tr>
+<td>Collateral not on balance sheet</td>
+<td>n/a</td>
+<td>Excluded from assets (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>The <strong>quality of collateral</strong> drives the LCR, the <strong>term and counterparty</strong> drive the NSFR. The same trade has different effects in the two ratios.</li>
+<li>A short repo (under six months) against government bonds costs nothing in the NSFR and nothing in the LCR. A short repo against poor collateral costs 100% in the LCR.</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> For the LCR, assets that are pledged are not in the stock, but the cash raised may be. Do not count the cash and the pledged bonds both as HQLA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p31">Att A para 31</a>). Collateral swaps are in the unwind (Case 3) and APRA can require a method for them (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p33">Att A para 33</a>).</p>
+</blockquote>
+<hr />
+<h2 id="case-9-intermediated-and-superannuation-deposits-through-both-ratios">Case 9: Intermediated and superannuation deposits through both ratios</h2>
+<h3 id="91-the-idea-from-the-basics">9.1 The idea from the basics</h3>
+<p>Sometimes a customer does not deal with the bank directly. A person puts money into an investment platform or a superannuation (retirement savings) fund, and that intermediary places the money with the bank. Who is the depositor? If the bank treats it as a deposit from the person, it gets the gentler retail run-off rates. If it treats it as a deposit from a financial institution (the intermediary), it gets 100%. APS 210 sets four tests. A deposit placed through an intermediary is a deposit <strong>from a financial institution</strong>, unless during the next 30 days all of these are true (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>):</p>
+<ul>
+<li>(a) the person keeps all legal rights over withdrawal or other movement of the funds;</li>
+<li>(b) the person actually exercises those rights and cannot transfer them to the intermediary;</li>
+<li>(c) the person is clearly and prominently told the funds will be placed with the ADI; and</li>
+<li>(d) the intermediary or an associated entity cannot make investment decisions about the deposit for the person, or withdraw funds without the person's specific direction (apart from fees, expenses and taxes).</li>
+</ul>
+<p>If all four are met, the ADI may treat the funds as if they are from the person, and must be able to demonstrate how (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>). Trustees of superannuation funds are named as financial institutions in the definition (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>).</p>
+<p>For the NSFR, the person-level treatment also needs the intermediary to be unable to replace the ADI unless it gives enough notice:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Deposit</th>
+<th>Notice needed</th>
+<th>ASF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intermediated, meets <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>, treated as <strong>stable</strong> retail</td>
+<td>At least 12 months</td>
+<td>95% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>)</td>
+</tr>
+<tr>
+<td>Intermediated, including member-directed superannuation, treated as <strong>less stable</strong> retail</td>
+<td>At least 12 months</td>
+<td>90% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p13">Att C para 13</a>)</td>
+</tr>
+<tr>
+<td>Intermediated, including member-directed superannuation, meets <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a></td>
+<td>At least 6 months</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>)</td>
+</tr>
+<tr>
+<td>Superannuation fund deposits that are operational deposits</td>
+<td>n/a</td>
+<td>50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>)</td>
+</tr>
+<tr>
+<td>Deposits from financial institutions (including those failing para 35), less than 6 months</td>
+<td>n/a</td>
+<td>0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="92-the-data-abn">9.2 The data (A$bn)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tranche</th>
+<th>Description</th>
+<th>Balance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Member-directed superannuation money via a platform. All four tests met. Fully covered by the Financial Claims Scheme and members have other established relationships with the bank (stable). The platform cannot replace the bank without 12 months' notice.</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Member-directed superannuation via a platform. All four tests met. Less stable: the accounts are on-line (score 2: <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>). Notice needed to replace the bank: 6 months.</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Pooled superannuation fund money. The trustee decides where it is held and can withdraw without member direction (test (d) fails). At call.</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>A superannuation fund's operational deposit linked to custody services, not fully covered by deposit insurance (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>).</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>10.5</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="93-working">9.3 Working</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Tranche</th>
+<th>LCR classification and rate</th>
+<th>LCR outflow</th>
+<th>NSFR classification and ASF factor</th>
+<th>ASF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Retail, stable: 5% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+<td>0.100</td>
+<td>Intermediated, stable, 12 months: 95% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C para 12</a>)</td>
+<td>1.900</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Retail, less stable, score 2: 10% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+<td>0.300</td>
+<td>Intermediated, 6 months' notice: 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>)</td>
+<td>1.500</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Financial institution, non-operational: 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+<td>4.000</td>
+<td>Financial institution at call: 0% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>)</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Operational deposit, not fully insured: 25% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>)</td>
+<td>0.375</td>
+<td>Operational, superannuation: 50% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>)</td>
+<td>0.750</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>4.775</strong></td>
+<td></td>
+<td><strong>4.150</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>If all 10.5 had been treated as financial institution deposits, the outflow would be <strong>10.5</strong> and the ASF <strong>0</strong>.</p>
+<p><strong>Difference.</strong> Correct classification lowers outflows by 5.725 (10.5 - 4.775) and adds ASF of 4.15. All of the saving comes from T1, T2 and T4 (balances of 6.5 in total, outflow 0.775 instead of 6.5), the balances that pass the para 35 or operational tests. T3 is 4.0 at 100% either way.</p>
+<h3 id="94-result-and-what-it-teaches">9.4 Result and what it teaches</h3>
+<ul>
+<li>Each of the four conditions in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a> is a yes or no that the bank must be able to prove. If one fails, the whole deposit is a financial institution deposit.</li>
+<li>The same deposit can be 5% in the LCR and 95% in the NSFR (T1), or 100% and 0% (T3).</li>
+<li>Notice period matters only to the NSFR. Check the contract, not the product name.</li>
+</ul>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 to 14</a> list intermediated deposits only where the intermediary needs 12 months' or 6 months' notice. The standard does not say what ASF applies if para 35 is met but the notice is shorter than six months. The conservative reading is the 0% category for "all other liabilities" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>). I have not used it above. Confirm the treatment with your controller before booking such a product.</p>
+<p><strong>Watch out:</strong> Document <a href="14_Exercises_and_Assessments.html">14</a>'s practice case treats at-call superannuation fund money as a financial institution deposit (100% and 0%). That is T3 above. Only evidence of all four tests moves a balance out of that category.</p>
+</blockquote>
+<hr />
+<h2 id="case-10-a-committed-facility-portfolio-including-hedge-fund-and-special-purpose-vehicle-facilities">Case 10: A committed facility portfolio, including hedge fund and special purpose vehicle facilities</h2>
+<h3 id="101-the-idea-from-the-basics">10.1 The idea from the basics</h3>
+<p>A <strong>committed facility</strong> is a promise to lend up to a limit. The <strong>undrawn</strong> part is the room the customer has not yet used. In a crisis customers draw on it, and the bank must pay out. The LCR therefore applies a rate to each undrawn amount (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>), and the rate depends on <strong>who</strong> the customer is and on whether it is a <strong>credit</strong> facility (to fund the customer's business) or a <strong>liquidity</strong> facility.</p>
+<p>A liquidity facility is a committed, undrawn back-up facility used to refinance a customer's debt when the customer cannot roll it over in the market. Only the amount of the customer's outstanding debt maturing within 30 days that the facility backs is a liquidity facility. Any extra capacity is a credit facility. General working capital facilities for corporates, such as a revolving credit facility, must not be classed as liquidity facilities (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>).</p>
+<p>There is one trap. Any facility to a hedge fund, money market fund, special purpose funding vehicle or other vehicle used to finance the ADI's own assets must be captured <strong>in its entirety</strong> as a liquidity facility to a financial institution (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>), at 100%.</p>
+<p>Rates (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>), for the undrawn portion: retail and SME 5%; non-financial corporates, sovereigns, central banks and PSEs: credit 10%, liquidity 30%; banks and other prudentially supervised ADIs 40%; other financial institutions: credit 40%, liquidity 100%; other legal entity customers 100%. Revocable credit and liquidity facilities: 5%.</p>
+<p>NSFR: irrevocable and conditionally revocable facilities 5% RSF; unconditionally revocable facilities 1% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>).</p>
+<h3 id="102-the-data-and-working-undrawn-amounts-abn">10.2 The data and working (undrawn amounts, A$bn)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Facility</th>
+<th>Undrawn</th>
+<th>Classification</th>
+<th>Rate</th>
+<th>LCR outflow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Retail facilities (home equity lines, overdrafts)</td>
+<td>8.0</td>
+<td>Retail</td>
+<td>5%</td>
+<td>0.400</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Qualifying SME facilities (aggregate funding under A$2m per customer)</td>
+<td>2.0</td>
+<td>SME</td>
+<td>5%</td>
+<td>0.100</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Corporate revolving credit facility for working capital</td>
+<td>2.0</td>
+<td>Corporate credit (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A para 51</a>)</td>
+<td>10%</td>
+<td>0.200</td>
+</tr>
+<tr>
+<td>4a</td>
+<td>Corporate back-up facility for commercial paper, A$1.5bn commitment: paper maturing within 30 days backed by it is 0.6</td>
+<td>0.6</td>
+<td>Corporate liquidity</td>
+<td>30%</td>
+<td>0.180</td>
+</tr>
+<tr>
+<td>4b</td>
+<td>The same facility, remaining capacity</td>
+<td>0.9</td>
+<td>Corporate credit</td>
+<td>10%</td>
+<td>0.090</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Credit facility to a sovereign-owned PSE</td>
+<td>0.6</td>
+<td>PSE credit</td>
+<td>10%</td>
+<td>0.060</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Credit facility to another bank</td>
+<td>0.8</td>
+<td>Bank</td>
+<td>40%</td>
+<td>0.320</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Credit facility to a non-bank financial institution (insurer)</td>
+<td>0.7</td>
+<td>Other FI credit</td>
+<td>40%</td>
+<td>0.280</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Hedge fund facility</td>
+<td>0.5</td>
+<td>Entire amount as liquidity facility to an FI (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>)</td>
+<td>100%</td>
+<td>0.500</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Money market fund facility</td>
+<td>0.3</td>
+<td>Entire amount, para 52</td>
+<td>100%</td>
+<td>0.300</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Funding vehicle used to finance the ADI's own assets, outside the consolidated group</td>
+<td>1.2</td>
+<td>Entire amount, para 52</td>
+<td>100%</td>
+<td>1.200</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Facility to another legal entity customer (not in any category above)</td>
+<td>0.4</td>
+<td>Other legal entity</td>
+<td>100%</td>
+<td>0.400</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Unconditionally revocable card limits, undrawn</td>
+<td>6.0</td>
+<td>Revocable</td>
+<td>5%</td>
+<td>0.300</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total undrawn</strong></td>
+<td><strong>24.0</strong></td>
+<td></td>
+<td></td>
+<td><strong>4.330</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="q-in"><p><strong>Interpretation:</strong> Row 10 assumes the funding vehicle is not consolidated into the group. If it were consolidated (as the securitisation SPV in Case 2 is, for the LCR), the facility would be a balance inside the group and would not be an external outflow, although the vehicle's own loss of funding would be (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p53">Att A para 53</a>). Row 11 is a catch-all: place a customer here only after confirming it fits no other category.</p>
+</blockquote>
+<h3 id="103-the-nsfr">10.3 The NSFR</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Undrawn</th>
+<th>Factor</th>
+<th>RSF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Irrevocable and conditionally revocable facilities (rows 1 to 11)</td>
+<td>18.0</td>
+<td>5%</td>
+<td>0.900</td>
+</tr>
+<tr>
+<td>Unconditionally revocable (row 12)</td>
+<td>6.0</td>
+<td>1%</td>
+<td>0.060</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>24.0</td>
+<td></td>
+<td><strong>0.960</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>The hedge fund and vehicle facilities get <strong>only</strong> 5% in the NSFR (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>). Their severe LCR treatment does not carry over.</p>
+<h3 id="104-effect-on-example-bank">10.4 Effect on Example Bank</h3>
+<p>The base has facility outflows of 0.50 (retail and SME), 0.50 (corporate credit) and 0.30 (corporate liquidity) = 1.30. Replace these with 4.33.</p>
+<ul>
+<li>Outflows = 13.45 - 1.30 + 4.33 = <strong>16.48</strong>. Inflows 1.90. Net <strong>14.58</strong>.</li>
+<li><strong>LCR = 17.0 / 14.58 = 116.6%</strong>, down from 147.2%.</li>
+<li><strong>NSFR:</strong> base facility RSF is 16.0 x 5% = 0.80 (document <a href="09_NSFR_Production_End_to_End.html">09</a>). Replace with 0.96: RSF = 58.50 - 0.80 + 0.96 = 58.66. NSFR = 79.75 / 58.66 = <strong>136.0%</strong>.</li>
+</ul>
+<h3 id="105-the-cost-of-getting-para-52-wrong">10.5 The cost of getting para 52 wrong</h3>
+<p>If the three para 52 facilities (rows 8, 9 and 10, total 2.0) were treated as ordinary corporate credit facilities at 10%, their outflow would be 0.20, not 2.00. Total outflows from facilities would fall to 2.53, outflows to 14.68 and net outflows to 12.78. The LCR would read <strong>133.0%</strong> instead of 116.6%, an <strong>overstatement of 16.4 percentage points</strong>, with an understated outflow of 1.8.</p>
+<h3 id="106-result-and-what-it-teaches">10.6 Result and what it teaches</h3>
+<ul>
+<li>Classify by <strong>customer type first</strong>, then by credit or liquidity.</li>
+<li>A single facility can be part liquidity and part credit (row 4).</li>
+<li>Facilities to hedge funds, money market funds and funding vehicles carry 100% in full, whatever the contract calls them.</li>
+<li>The NSFR treats all irrevocable facilities alike at 5%.</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Customers move categories. A corporate that becomes a financial institution (say after a restructure) needs a new classification, and your static data must carry a customer type that is kept current (document <a href="07_Data_and_Classification.html">07</a>). Annual review of facility classification belongs in your control matrix (document <a href="12_Controls_Incidents_and_Escalation.html">12</a>).</p>
+</blockquote>
+<hr />
+<h2 id="case-11-the-historical-committed-liquidity-facility-illustration-only">Case 11: The historical Committed Liquidity Facility (illustration only)</h2>
+<h3 id="111-the-idea-from-the-basics">11.1 The idea from the basics</h3>
+<p>Before 2023 there were not enough Australian government securities for banks to meet the LCR with HQLA alone. The Reserve Bank of Australia (RBA) therefore offered a <strong>Committed Liquidity Facility (CLF)</strong>: for a fee, it promised to lend (against collateral) up to an agreed amount in a crisis, and APRA let that promised amount count towards the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A para 13</a>). The aggregate CLF was phased out to zero as at 1 January 2023 [S3]. The paragraphs remain in the standard (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A paras 13 to 25</a>), and you will meet them in older files, in the NSFR (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p32">Att C para 32</a>) and in the CLF-eligible rows of the secured-funding and secured-lending tables. <strong>Today a bank's CLF is zero, so nothing in this case adds to a current ratio.</strong> This is a worked illustration of the mechanics.</p>
+<p>The rules you need (Att A):</p>
+<ul>
+<li>Only for AUD shortfalls: the CLF "must only be used by an ADI to manage any shortfall in Australian dollars" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p14">Att A para 14</a>).</li>
+<li>An ADI had to apply to APRA before establishing the CLF, show it in its funding strategy, try balance sheet management first, reapply each year and could ask for a change if circumstances changed unforeseeably (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p17">Att A paras 17 to 20</a>). Senior management had to attest to the use of drawn proceeds, other than intraday or the funding of end-of-day balances at the RBA, and APRA had to be told of such a drawdown (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p21">Att A para 21</a>).</li>
+<li>The numerator of the LCR was HQLA after haircuts <strong>plus the lowest of three amounts</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a>):</li>
+<li>(a) the contractual amount of the CLF, approved by APRA for LCR purposes;</li>
+<li>(b) that amount, <strong>less</strong> the market value (after RBA margins) of eligible CLF securities pledged in maturing secured funding with a zero per cent run-off, <strong>plus</strong> the market value (after RBA margins) of eligible CLF securities received in maturing secured lending with a zero per cent inflow, where the collateral is not used to cover short positions; or</li>
+<li>(c) the market value, after RBA margins, of the assets the ADI holds as CLF collateral.</li>
+</ul>
+<h3 id="112-the-data-abn-imagined-bank-before-2023">11.2 The data (A$bn, imagined bank before 2023)</h3>
+<p>HQLA after haircuts: 12.0. Net cash outflows over 30 days: 20.0. So before the CLF the LCR is 12.0 / 20.0 = 60.0%, a shortfall of 8.0.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Scenario 1</th>
+<th>Scenario 2</th>
+<th>Scenario 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(a) Approved CLF amount</td>
+<td>9.0</td>
+<td>9.0</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>CLF securities pledged in maturing zero per cent secured funding</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>CLF securities received in maturing zero per cent secured lending</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>(c) CLF collateral held, after RBA margins</td>
+<td>9.6</td>
+<td>7.5</td>
+<td>9.6</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="113-working">11.3 Working</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Scenario 1</th>
+<th>Scenario 2</th>
+<th>Scenario 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(a)</td>
+<td>9.0</td>
+<td>9.0</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>(b) = (a) - pledged + received</td>
+<td>9.0 - 1.0 + 0.4 = 8.4</td>
+<td>8.4</td>
+<td>9.0 - 0.2 + 0.6 = 9.4</td>
+</tr>
+<tr>
+<td>(c)</td>
+<td>9.6</td>
+<td>7.5</td>
+<td>9.6</td>
+</tr>
+<tr>
+<td><strong>Lowest</strong></td>
+<td><strong>8.4</strong> (test b)</td>
+<td><strong>7.5</strong> (test c)</td>
+<td><strong>9.0</strong> (test a)</td>
+</tr>
+<tr>
+<td>Numerator = 12.0 + lowest</td>
+<td>20.4</td>
+<td>19.5</td>
+<td>21.0</td>
+</tr>
+<tr>
+<td><strong>LCR</strong> (net outflows 20.0)</td>
+<td><strong>102.0%</strong></td>
+<td><strong>97.5%</strong></td>
+<td><strong>105.0%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="114-result-and-what-it-teaches">11.4 Result and what it teaches</h3>
+<ul>
+<li>Each of the three tests can be the binding one. Scenario 2 breaches 100% only because the bank held too little eligible collateral, even though APRA had approved 9.0.</li>
+<li>The CLF counts only up to the collateral the bank really has available after pledges (test (b)) and after RBA margins (test (c)).</li>
+<li>The CLF assets also had to meet the HQLA operational requirements and be well diversified (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p16">Att A para 16</a>).</li>
+<li>Today the same bank would show 12.0 / 20.0 = <strong>60.0%</strong>. The CLF was a way of counting an RBA promise, and with the promise gone, the bank must hold real HQLA.</li>
+<li>A related NSFR point: CLF-eligible third-party securities could attract RSF of 10% up to the lower of carrying value and the CLF amount in the numerator (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p32">Att C para 32</a>). With a CLF of zero that limit is zero.</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Do not "revive" the CLF in a calculation by following an old template. Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> and the control matrix should show the CLF row set to zero with a note, and an unexpected non-zero value there is a data error.</p>
+</blockquote>
+<hr />
+<h2 id="summary-of-the-eleven-cases">Summary of the eleven cases</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Case</th>
+<th>Paragraphs tested</th>
+<th>Headline result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Two-currency bank, FX swaps</td>
+<td><a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 para 43</a>; <a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a></td>
+<td>AUD 140.6%, USD cover 175.4%, all currencies 157.0%. A 3-month swap: AUD 218.8%, USD 87.7%, all 157.0%. A 20-day swap: AUD 122.8%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Banking group</td>
+<td><a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p24">Att A paras 24, 26 to 29</a></td>
+<td>Level 1 144.7%; Level 2 naive 158.1%; Level 2 with trapped 3.20 excluded 136.1%; NSFR excluding the SPV 136.3%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>HQLA caps and the unwind</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8</a></td>
+<td>Stock 83.33 without unwind; 65.73 (Method 1) or 76.33 (Method 2) with unwind</td>
+</tr>
+<tr>
+<td>4</td>
+<td>75% inflow cap</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A paras 30, 54 to 66</a></td>
+<td>Inflows 17.8 against a cap of 15.0; net 5.0; LCR 130.0% instead of 295.5%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Derivative outflows</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f6">Att A footnote 6</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p65">Att A para 65</a></td>
+<td>Total outflows A$919m, inflows A$90m; largest absolute 30-day flow 489 (a net receipt); LCR 143.1%</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NSFR derivatives</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p9">Att C paras 9, 10, 27, 28, 36, 37</a></td>
+<td>Derivative RSF A$278m (100 + 110 + 68); NSFR 135.7%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Encumbrance</td>
+<td><a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a></td>
+<td>A$1.0bn government bond RSF 0.05, 0.50, 1.00 for 3, 9 and 18 months; with repo funding NSFR 136.3%, 136.1%, 135.8%</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Secured funding and lending by class</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t4">Att A Table 4</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p55">Att A paras 55, 56</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C paras 23, 25, 31, 33</a></td>
+<td>Repo outflows 4.325; reverse repo inflows 2.75; LCR 129.5%; reverse repo RSF 1.47; NSFR 133.0%</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Intermediated and superannuation deposits</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 to 15</a></td>
+<td>Outflow 4.775 against 10.5; ASF 4.15 against 0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Committed facilities</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A paras 51, 52</a>; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>; <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a></td>
+<td>Outflow 4.33; LCR 116.6%; mistreating para 52 vehicles overstates the LCR by 16.4 points; RSF 0.96</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Historical CLF</td>
+<td><a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A paras 13 to 21</a> (para 15 tested)</td>
+<td>LCR 102.0%, 97.5%, 105.0% in three scenarios; 60.0% with no CLF</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>
+<p>A bank has AUD HQLA of 10.0 and AUD net cash outflows of 12.0. Its all-currencies LCR is 120%. Does it meet <a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>? <strong>Answer:</strong> No. The AUD LCR is 10.0 / 12.0 = 83.3%, below 100%. Both the AUD and all-currencies ratios must be at least 100% (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>).</p>
+</li>
+<li>
+<p>HQLA1 is 30. HQLA2A has a market value of 50. Ignoring any secured transactions, what HQLA is counted? <strong>Answer:</strong> HQLA2A after the 15% haircut = 42.5. The cap on HQLA2 is two-thirds x 30 = 20. Counted stock = 30 + 20 = <strong>50</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A paras 7 to 10</a>). The excess 22.5 is dropped.</p>
+</li>
+<li>
+<p>Outflows 40, weighted inflows 36, HQLA 15. What is the LCR? <strong>Answer:</strong> Cap = 75% x 40 = 30. Counted inflows = 30. Net = 40 - 30 = 10. LCR = 15 / 10 = <strong>150%</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). Without the cap it would have been 15 / 4 = 375%.</p>
+</li>
+<li>
+<p>A bank swaps A$5.0bn of USD for AUD with the far leg in 20 days. Does the AUD LCR improve? <strong>Answer:</strong> No. The AUD HQLA rises by 5.0 but the far leg is an AUD outflow of 5.0 inside 30 days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). In Case 1 the AUD ratio is 218.8% after a three-month swap but only 122.8% after a 20-day swap.</p>
+</li>
+<li>
+<p>Counterparty pays 70, receives 50 under a valid master netting agreement. Another counterparty has no netting agreement and the same flows (not FX). What are the LCR derivative flows? <strong>Answer:</strong> First: net outflow of <strong>20</strong>. Second: an outflow of <strong>70</strong> and an inflow of <strong>50</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f5">Att A footnote 5</a>).</p>
+</li>
+<li>
+<p>A bank's daily net collateral flows give a largest 30-day window of +120 posted and a smallest of -200 received over 24 months. What goes into the LCR? <strong>Answer:</strong> <strong>200</strong>. The largest <strong>absolute</strong> value counts, at 100% (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</p>
+</li>
+<li>
+<p>A bank has gross derivative liabilities (negative replacement costs) of 300 before variation margin, and posted VM of 100. What is the 20% charge in the NSFR? <strong>Answer:</strong> 20% x 300 = <strong>60</strong>. The charge is on the amount before deducting VM (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p37">Att C para 37</a>).</p>
+</li>
+<li>
+<p>A corporate bond with a one-year-plus maturity (unencumbered RSF 85%), A$2bn, is encumbered with eight months remaining. What is its RSF? <strong>Answer:</strong> It is in the six to under twelve month band. Its unencumbered factor (85%) is above 50%, so the higher factor applies: 2 x 85% = <strong>1.70</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). A$2bn of HQLA2A in the same position would be 2 x 50% = <strong>1.00</strong>.</p>
+</li>
+<li>
+<p>A hedge fund has an undrawn committed facility of A$0.4bn. What are the LCR outflow and NSFR RSF? <strong>Answer:</strong> LCR: the whole amount as a liquidity facility to a financial institution at 100% = <strong>0.40</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>). NSFR: 5% x 0.4 = <strong>0.02</strong> (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-t1">Att C Table 1</a>).</p>
+</li>
+<li>
+<p>(Historical.) A bank's approved CLF is 5.0; it pledged 1.0 and received 0.2 of CLF securities in maturing zero per cent deals; it holds CLF collateral of 6.0 after margins. How much does the CLF add to the numerator? <strong>Answer:</strong> (a) 5.0; (b) 5.0 - 1.0 + 0.2 = 4.2; (c) 6.0. The lowest is <strong>4.2</strong> (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a>).</p>
+</li>
+</ol>
+<hr />
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>The AUD LCR and the all-currencies LCR are two separate tests (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 para 55</a>). An FX swap moves liquidity between them but creates none. Always check the far leg date.</li>
+<li>Level 2 includes the subsidiary's risks in full but its surplus liquidity only if it is freely available (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p24">Att A paras 24 to 29</a>). Host supervisors set retail and SME run-off rates for offshore subsidiaries (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p26">Att A para 26</a>).</li>
+<li>The SPV is in the LCR and, if capital relief conditions are met, out of the NSFR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a>).</li>
+<li>Caps are tested on <strong>adjusted</strong> amounts after unwinding secured transactions of 30 days or less (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8</a>). The standard does not give a formula: label your method, state your assumptions, and document it.</li>
+<li>Net outflows can never be less than 25% of outflows (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). When the cap binds, extra inflows are worth nothing.</li>
+<li>For derivatives, net only under a valid master netting agreement (or a same-day exchange FX trade), and take the largest <strong>absolute</strong> 30-day collateral flow from 24 months of history (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-f6">Att A footnote 6</a>).</li>
+<li>In the NSFR, the net derivative asset costs 100%, the gross liabilities 20% (before VM), and initial margin 85% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p36">Att C paras 36 to 37</a>).</li>
+<li>An encumbered asset is excluded from the LCR at once, but in the NSFR it matters only by the remaining encumbrance period: under six months, no change; six to twelve months, at least 50% (higher where its normal factor is higher); a year or more, 100% (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>).</li>
+<li>Collateral class decides the LCR rate for repos and reverse repos; term and counterparty decide the NSFR factor.</li>
+<li>Intermediated deposits need four proofs (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>) and, for the better NSFR factors, a long notice period (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p12">Att C paras 12 to 14</a>).</li>
+<li>Facilities to hedge funds, money market funds and funding vehicles are 100% in the LCR in full (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p52">Att A para 52</a>), but only 5% in the NSFR.</li>
+<li>The CLF is zero today. Its mechanics (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a>) are history.</li>
+</ul>
+<hr />
+<h2 id="sources">Sources</h2>
+<ol>
+<li><strong>[S1]</strong> Australian Prudential Regulation Authority, <em>Prudential Standard APS 210 Liquidity</em>, July 2025, Federal Register of Legislation authorised version F2025L00653, registered 6 June 2025, commencing 1 July 2025. Read in full for the paragraphs cited (main body paras 3 to 5, 43, 55; Attachment A paras 6 to 8, 13 to 29, 30 to 66, Tables 1 to 4 and footnotes 5 and 6; Attachment C paras 9 to 37 and Table 1), read from the published PDF, with Tables 3 and 4 read by the position of each rate on the page. Date accessed 14 November 2026.</li>
+<li><strong>[S2]</strong> The existing pack documents <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a>, 07, 08, 11, 13 and 14 (searched for the cap and unwind wording, to keep this document consistent with them; not read in full). Documents <a href="09_NSFR_Production_End_to_End.html">09</a>, 10 and 12 are named only as pointers. No external facts are taken from them other than the Example Bank figures.</li>
+<li><strong>[S3]</strong> APRA, <em>Liquidity: frequently asked questions</em> (https://www.apra.gov.au/liquidity-frequently-asked-questions), for the statement that in Australian dollars only notes and coin, balances with the RBA and Australian Government and semi-government securities are HQLA1 and no AUD assets currently qualify as HQLA2; and APRA, <em>APRA phases out aggregate Committed Liquidity Facility</em> (https://www.apra.gov.au/news-and-publications/apra-phases-out-aggregate-committed-liquidity-facility), for the phase-out to zero as at 1 January 2023. Both were checked by the controller when the pack was built.</li>
+</ol>
+<blockquote>
+<p><strong>Unverified:</strong> The Method 1 and Method 2 approaches to the unwind in Case 3 and the Case 7 "remaining" reading of <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a> are my interpretations. Neither is set out in the text of APS 210. Check against APRA's liquidity FAQ and any methodology agreed with APRA.</p>
+</blockquote></main><footer><a href="20_The_RBA_and_the_Payments_System.html">&#9664; 20 The Reserve Bank, settlement and where cash actually moves</a><a href="22_Behaviour_Stress_Testing_and_Transfer_Pricing.html">22 Behaviour, stress testing and funds transfer pricing: the methods &#9654;</a></footer></body></html>

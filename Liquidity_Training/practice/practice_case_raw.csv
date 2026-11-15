@@ -1,0 +1,47 @@
+id,section,item,amount_aud_bn
+1,Assets,Notes and coin,0.2
+2,Assets,Exchange Settlement Account balance at the RBA,3.8
+3,Assets,"Australian Government bonds, unencumbered",8.0
+4,Assets,"Semi-government bonds, unencumbered",3.0
+5,Assets,Australian Government bonds pledged under a repo maturing in 14 days,2.0
+6,Assets,"Senior bonds issued by other banks, 3 years to maturity",2.5
+7,Assets,Unsecured loans to other banks maturing in 20 days,1.5
+8,Assets,"Standard mortgages, LVR 80% or below, over 1 year",48.0
+9,Assets,"Mortgages with LVR above 80%, over 1 year",6.0
+10,Assets,Business loans over 1 year,14.0
+11,Assets,"Loans under 1 year to retail, SME and corporates",7.0
+12,Assets,Non-performing loans,0.5
+13,Assets,Other assets,4.5
+a,Liabilities and equity,"Retail transaction accounts, fully FCS-covered, salary credited",24.0
+b,Liabilities and equity,"Retail bonus-rate savings opened in branch (not on-line), under A$250,000, no other products with the bank",12.0
+c,Liabilities and equity,"Retail on-line savings on a promotional rate, no other relationship",3.0
+d,Liabilities and equity,Retail term deposits maturing within 30 days (score 0 to 2),2.0
+e,Liabilities and equity,"Retail term deposits over 30 days and under 1 year, no early withdrawal, less stable",9.0
+f,Liabilities and equity,Retail term deposits of 1 year or more,1.0
+g,Liabilities and equity,"Qualifying SME deposits, less stable",5.0
+h,Liabilities and equity,"Corporate operational deposits (cash management), not fully insured",4.0
+i,Liabilities and equity,Corporate non-operational deposits at call,5.5
+j,Liabilities and equity,"At-call deposits from superannuation funds, not operational",3.0
+k,Liabilities and equity,At-call deposits from other banks,1.5
+l,Liabilities and equity,"Repo borrowing from a bank against item 5, 14 days",2.0
+m,Liabilities and equity,Commercial paper maturing within 30 days,1.2
+n,Liabilities and equity,"Wholesale debt, 30 days to under 6 months",2.8
+o,Liabilities and equity,"Wholesale debt, 6 months to under 1 year",2.0
+p,Liabilities and equity,"Wholesale debt, 1 year or more",14.0
+q,Liabilities and equity,Other liabilities,1.0
+r,Liabilities and equity,Shareholders' equity,8.0
+s,Off-balance sheet and flows,"Undrawn committed facilities, retail and SME",9.0
+t,Off-balance sheet and flows,"Undrawn committed credit facilities, corporates",5.0
+u,Off-balance sheet and flows,"Undrawn committed liquidity facilities, corporates",1.0
+v,Off-balance sheet and flows,Undrawn committed credit facility to a hedge fund,0.2
+w,Off-balance sheet and flows,"Unconditionally revocable credit card limits, undrawn",6.0
+x,Off-balance sheet and flows,Net derivative cash outflows within 30 days,0.4
+y,Off-balance sheet and flows,Net derivative cash inflows within 30 days,0.1
+z,Off-balance sheet and flows,Collateral to post on a 3-notch downgrade,0.3
+aa,Off-balance sheet and flows,Largest absolute net 30-day collateral flow in the past 24 months,0.2
+ab,Off-balance sheet and flows,"Trade finance: average monthly net outflow, last 12 months",0.02
+ac,Off-balance sheet and flows,"Guarantees: average monthly net outflow, last 12 months",0.04
+ad,Off-balance sheet and flows,"Contractual loan repayments within 30 days, retail and SME",0.9
+ae,Off-balance sheet and flows,"Contractual loan repayments within 30 days, corporates",0.7
+af,Off-balance sheet and flows,Gross derivative liabilities before variation margin,1.0
+ag,Off-balance sheet and flows,Trade finance and guarantees: net outflows over the last 12 months,0.72

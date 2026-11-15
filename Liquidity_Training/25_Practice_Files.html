@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>25 Practice files | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="24_Your_Bank_Worksheet.html" title="24 Your bank: the worksheet that replaces Example Bank">&#9664; 24</a><span class="t">25 Practice files</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#the-files">The files</option><option value="#what-you-should-get">What you should get</option><option value="#how-the-columns-work">How the columns work</option><option value="#three-exercises-to-try-in-the-workbook">Three exercises to try in the workbook</option></select><a href="search.html">Search</a><a href="15_APS210_Paragraph_Index.html">Index</a></header>
+<main><h1 id="25-practice-files">25 Practice files</h1>
+<p><strong>Purpose:</strong> Give you the practice case as data you can work in, not just read.</p>
+<p><strong>Before you start:</strong> Document <a href="14_Exercises_and_Assessments.html">14</a> (Exercises and assessments), Level 3.</p>
+<p><strong>Time:</strong> 2 to 3 hours for a first attempt.</p>
+<h2 id="the-files">The files</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it is</th>
+<th>Use it to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="practice/practice_case.xlsx">practice_case.xlsx</a></td>
+<td>A workbook with three sheets: Exercise (blank classification columns, live formulas), Answers (fully classified) and How to use</td>
+<td>Do the Level 3 exercise in a spreadsheet and see the LCR and NSFR calculate as you classify</td>
+</tr>
+<tr>
+<td><a href="practice/practice_case_raw.csv">practice_case_raw.csv</a></td>
+<td>The 46 raw items: id, section, item, amount in A$ billions</td>
+<td>Load into a database or script and build the calculation yourself</td>
+</tr>
+<tr>
+<td><a href="practice/practice_case_answers.csv">practice_case_answers.csv</a></td>
+<td>The same items with LCR role and rate, NSFR role and factor, and the APS 210 reference for each</td>
+<td>Check your own classification line by line</td>
+</tr>
+</tbody>
+</table></div>
+<p>The files open from this folder; keep the <code>practice</code> folder next to the pages.</p>
+<h2 id="what-you-should-get">What you should get</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total assets = total liabilities and equity</td>
+<td>101.00</td>
+</tr>
+<tr>
+<td>Stock of HQLA</td>
+<td>15.00</td>
+</tr>
+<tr>
+<td>Total cash outflows</td>
+<td>15.44</td>
+</tr>
+<tr>
+<td>Total cash inflows (cap not binding)</td>
+<td>2.40</td>
+</tr>
+<tr>
+<td>Net cash outflows</td>
+<td>13.04</td>
+</tr>
+<tr>
+<td><strong>LCR</strong></td>
+<td><strong>115.0%</strong></td>
+</tr>
+<tr>
+<td>Available stable funding</td>
+<td>79.45</td>
+</tr>
+<tr>
+<td>Required stable funding</td>
+<td>61.44</td>
+</tr>
+<tr>
+<td><strong>NSFR</strong></td>
+<td><strong>129.3%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>15.00 / 13.04 = 115.0% and 79.45 / 61.44 = 129.3%.</p>
+<h2 id="how-the-columns-work">How the columns work</h2>
+<ul>
+<li><strong>LCR role</strong> is one of <code>HQLA1</code>, <code>HQLA2A</code>, <code>HQLA2B</code>, <code>Outflow</code>, <code>Inflow</code> or <code>None</code>.</li>
+<li><strong>LCR rate</strong> means different things by role: for HQLA it is the share of market value that counts after the haircut (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A paras 9 to 12</a>); for an outflow it is the run-off rate (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>); for an inflow it is the inflow rate (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p54">Att A paras 54 to 66</a>).</li>
+<li><strong>NSFR role</strong> is <code>ASF</code> (available stable funding: liabilities and equity), <code>RSF</code> (required stable funding: assets and commitments) or <code>None</code>.</li>
+<li>A loan balance and the repayments due on it within 30 days are separate rows on purpose: the balance drives the NSFR, the repayments drive the LCR.</li>
+<li>Trade finance and guarantees also appear twice: the monthly average drives the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>) and the 12-month total drives the NSFR (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p42">Att C para 42</a>).</li>
+</ul>
+<h2 id="three-exercises-to-try-in-the-workbook">Three exercises to try in the workbook</h2>
+<ol>
+<li><strong>The incident.</strong> On the Answers sheet, change the LCR rate of item n (wholesale debt, 30 days to under 6 months) from 0% to 100%, as if it had moved inside the 30-day window. The LCR falls to 94.7%, a breach (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>). Document <a href="12_Controls_Incidents_and_Escalation.html">12</a> (Controls, incidents and escalation) walks through what happens next.</li>
+<li><strong>Fix it.</strong> With the incident still applied, add A$1.0bn to item 2 (the RBA balance) and A$1.0bn to item p (debt of 1 year or more). The LCR recovers to 101.0%.</li>
+<li><strong>A classification error.</strong> Change item j (superannuation fund deposits) to a 40% rate, as if someone had treated the funds as corporates rather than financial institutions (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p10">APS 210 para 10</a>). See how much the LCR is overstated, and why that mistake matters.</li>
+</ol>
+<blockquote class="q-from"><p><strong>From the controller:</strong> Build the calculation yourself from the raw file at least once before you rely on anyone's spreadsheet, including this one. You only understand a ratio once you have rebuilt it.</p>
+</blockquote></main><footer><a href="24_Your_Bank_Worksheet.html">&#9664; 24 Your bank: the worksheet that replaces Example Bank</a><span></span></footer></body></html>

@@ -1,0 +1,47 @@
+id,section,item,amount_aud_bn,lcr_role,lcr_rate,nsfr_role,nsfr_factor,lcr_reference,nsfr_reference
+1,Assets,Notes and coin,0.2,HQLA1,1.0,RSF,0.0,Att A para 9,Att C para 29
+2,Assets,Exchange Settlement Account balance at the RBA,3.8,HQLA1,1.0,RSF,0.0,Att A para 9,Att C para 29
+3,Assets,"Australian Government bonds, unencumbered",8.0,HQLA1,1.0,RSF,0.05,Att A para 9,Att C para 30
+4,Assets,"Semi-government bonds, unencumbered",3.0,HQLA1,1.0,RSF,0.05,Att A para 9,Att C para 30
+5,Assets,Australian Government bonds pledged under a repo maturing in 14 days,2.0,None,0,RSF,0.05,Att A para 23,Att C para 23
+6,Assets,"Senior bonds issued by other banks, 3 years to maturity",2.5,None,0,RSF,0.85,Att A para 9,Att C para 36
+7,Assets,Unsecured loans to other banks maturing in 20 days,1.5,Inflow,1.0,RSF,0.15,Att A para 62,Att C para 33
+8,Assets,"Standard mortgages, LVR 80% or below, over 1 year",48.0,None,0,RSF,0.65,,Att C para 35
+9,Assets,"Mortgages with LVR above 80%, over 1 year",6.0,None,0,RSF,0.85,,Att C para 36
+10,Assets,Business loans over 1 year,14.0,None,0,RSF,0.85,,Att C para 36
+11,Assets,"Loans under 1 year to retail, SME and corporates",7.0,None,0,RSF,0.5,,Att C para 34
+12,Assets,Non-performing loans,0.5,None,0,RSF,1.0,Att A para 54,Att C para 37
+13,Assets,Other assets,4.5,None,0,RSF,1.0,,Att C para 37
+a,Liabilities and equity,"Retail transaction accounts, fully FCS-covered, salary credited",24.0,Outflow,0.05,ASF,0.95,Att A para 37,Att C para 12
+b,Liabilities and equity,"Retail bonus-rate savings opened in branch (not on-line), under A$250,000, no other products with the bank",12.0,Outflow,0.1,ASF,0.9,Att A para 40,Att C para 13
+c,Liabilities and equity,"Retail on-line savings on a promotional rate, no other relationship",3.0,Outflow,0.25,ASF,0.9,Att A para 40,Att C para 13
+d,Liabilities and equity,Retail term deposits maturing within 30 days (score 0 to 2),2.0,Outflow,0.1,ASF,0.9,Att A para 40,Att C para 13
+e,Liabilities and equity,"Retail term deposits over 30 days and under 1 year, no early withdrawal, less stable",9.0,Outflow,0.0,ASF,0.9,Att A para 41,Att C para 13
+f,Liabilities and equity,Retail term deposits of 1 year or more,1.0,Outflow,0.0,ASF,1.0,Att A para 41,Att C para 11
+g,Liabilities and equity,"Qualifying SME deposits, less stable",5.0,Outflow,0.1,ASF,0.9,Att A para 46,Att C para 13
+h,Liabilities and equity,"Corporate operational deposits (cash management), not fully insured",4.0,Outflow,0.25,ASF,0.5,Att A Table 3,Att C para 14
+i,Liabilities and equity,Corporate non-operational deposits at call,5.5,Outflow,0.4,ASF,0.5,Att A Table 3,Att C para 14
+j,Liabilities and equity,"At-call deposits from superannuation funds, not operational",3.0,Outflow,1.0,ASF,0.0,APS 210 para 10,Att C para 15
+k,Liabilities and equity,At-call deposits from other banks,1.5,Outflow,1.0,ASF,0.0,Att A Table 3,Att C para 15
+l,Liabilities and equity,"Repo borrowing from a bank against item 5, 14 days",2.0,Outflow,0.0,ASF,0.0,Att A Table 3,Att C para 15
+m,Liabilities and equity,Commercial paper maturing within 30 days,1.2,Outflow,1.0,ASF,0.0,Att A Table 3,Att C para 15
+n,Liabilities and equity,"Wholesale debt, 30 days to under 6 months",2.8,Outflow,0.0,ASF,0.0,Att A para 45,Att C para 15
+o,Liabilities and equity,"Wholesale debt, 6 months to under 1 year",2.0,Outflow,0.0,ASF,0.5,Att A para 45,Att C para 14
+p,Liabilities and equity,"Wholesale debt, 1 year or more",14.0,Outflow,0.0,ASF,1.0,Att A para 45,Att C para 11
+q,Liabilities and equity,Other liabilities,1.0,Outflow,0.0,ASF,0.0,,Att C para 15
+r,Liabilities and equity,Shareholders' equity,8.0,None,0,ASF,1.0,,Att C para 11
+s,Off-balance sheet and flows,"Undrawn committed facilities, retail and SME",9.0,Outflow,0.05,RSF,0.05,Att A Table 3,Att C Table 1
+t,Off-balance sheet and flows,"Undrawn committed credit facilities, corporates",5.0,Outflow,0.1,RSF,0.05,Att A Table 3,Att C Table 1
+u,Off-balance sheet and flows,"Undrawn committed liquidity facilities, corporates",1.0,Outflow,0.3,RSF,0.05,Att A Table 3,Att C Table 1
+v,Off-balance sheet and flows,Undrawn committed credit facility to a hedge fund,0.2,Outflow,1.0,RSF,0.05,Att A para 52,Att C Table 1
+w,Off-balance sheet and flows,"Unconditionally revocable credit card limits, undrawn",6.0,Outflow,0.05,RSF,0.01,Att A Table 3,Att C Table 1
+x,Off-balance sheet and flows,Net derivative cash outflows within 30 days,0.4,Outflow,1.0,None,0,Att A Table 3,
+y,Off-balance sheet and flows,Net derivative cash inflows within 30 days,0.1,Inflow,1.0,None,0,Att A para 65,
+z,Off-balance sheet and flows,Collateral to post on a 3-notch downgrade,0.3,Outflow,1.0,None,0,Att A Table 3,
+aa,Off-balance sheet and flows,Largest absolute net 30-day collateral flow in the past 24 months,0.2,Outflow,1.0,None,0,Att A Table 3,
+ab,Off-balance sheet and flows,"Trade finance: average monthly net outflow, last 12 months",0.02,Outflow,1.0,None,0,Att A Table 3,
+ac,Off-balance sheet and flows,"Guarantees: average monthly net outflow, last 12 months",0.04,Outflow,0.5,None,0,Att A Table 3,
+ad,Off-balance sheet and flows,"Contractual loan repayments within 30 days, retail and SME",0.9,Inflow,0.5,None,0,Att A para 61,
+ae,Off-balance sheet and flows,"Contractual loan repayments within 30 days, corporates",0.7,Inflow,0.5,None,0,Att A para 62,
+af,Off-balance sheet and flows,Gross derivative liabilities before variation margin,1.0,None,0,RSF,0.2,,Att C para 37
+ag,Off-balance sheet and flows,Trade finance and guarantees: net outflows over the last 12 months,0.72,None,0,RSF,1.0,,Att C para 42

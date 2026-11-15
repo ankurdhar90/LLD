@@ -1,0 +1,1366 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>20 The Reserve Bank, settlement and where cash actually moves | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="19_Related_Standards_and_Accountability.html" title="19 The standards around APS 210, accountability and what is changing">&#9664; 19</a><span class="t">20 The Reserve Bank, settlement and where cash actually moves</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#1-what-a-central-bank-does">1 What a central bank does</option><option value="#2-exchange-settlement-accounts-the-purest-liquid-asset">2 Exchange Settlement Accounts: the purest liquid asset</option><option value="#3-how-payments-settle-rits-real-time-gross-settlement-and-the-others">3 How payments settle: RITS, real-time gross settlement and the others</option><option value="#4-intraday-liquidity-what-the-intraday-requirement-means-in-practice">4 Intraday liquidity: what the intraday requirement means in practice</option><option value="#5-a-day-in-the-life-of-a-settlement-account">5 A day in the life of a settlement account</option><option value="#6-the-cash-rate-interest-on-settlement-balances-and-the-monetary-policy-implementation-system">6 The cash rate, interest on settlement balances and the monetary poli</option><option value="#7-open-market-operations-and-repos">7 Open market operations and repos</option><option value="#8-standing-facilities">8 Standing facilities</option><option value="#9-eligible-collateral-margins-and-self-securitised-assets">9 Eligible collateral, margins and self-securitised assets</option><option value="#10-the-committed-liquidity-facility-history-mechanics-and-why-it-ended">10 The Committed Liquidity Facility: history, mechanics and why it end</option><option value="#11-the-term-funding-facility">11 The Term Funding Facility</option><option value="#12-exceptional-liquidity-assistance">12 Exceptional Liquidity Assistance</option><option value="#13-the-council-of-financial-regulators-and-a-crisis">13 The Council of Financial Regulators and a crisis</option><option value="#14-how-all-this-shows-up-in-our-numbers">14 How all this shows up in our numbers</option><option value="#15-rba-facility-purpose-who-can-use-it-collateral-effect-on-lcr">15 RBA facility, purpose, who can use it, collateral, effect on LCR</option><option value="#16-what-to-re-check-and-what-i-could-not-confirm">16 What to re-check, and what I could not confirm</option><option value="#check-yourself">Check yourself</option><option value="#what-to-remember">What to remember</option><option value="#sources">Sources</option></select><a href="search.html">Search</a><a href="15_APS210_Paragraph_Index.html">Index</a><a href="21_Advanced_Worked_Examples.html" title="21 Advanced worked examples: currencies, groups, caps and derivatives">21 &#9654;</a></header>
+<main><h1 id="20-the-reserve-bank-settlement-and-where-cash-actually-moves">20 The Reserve Bank, settlement and where cash actually moves</h1>
+<p><strong>Purpose:</strong> To explain, from the very basics, what the Reserve Bank of Australia (RBA) does for a bank like ours, how money really moves between banks each day, which RBA facilities exist, how they appear in the liquidity coverage ratio (LCR) and net stable funding ratio (NSFR) numbers you produce, and what we must be able to do if we ever ask for emergency help.</p>
+<p><strong>You will be able to:</strong></p>
+<ul>
+<li>explain what an Exchange Settlement Account (ESA) is and why a balance in it is the most liquid asset a bank can hold (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>);</li>
+<li>describe how a payment settles in the RBA's real-time gross settlement system, and what "intraday liquidity" means in practice (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>);</li>
+<li>name each RBA facility (open market operations, intraday, overnight and open standing facility repos, term repos, Exceptional Liquidity Assistance), who can use it, what collateral it takes and how it changes the LCR;</li>
+<li>explain why the Committed Liquidity Facility existed and why it ended (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A paras 13 to 21</a>);</li>
+<li>state what an ADI must be able to provide if it asks for Exceptional Liquidity Assistance (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>);</li>
+<li>recompute the two worked Example Bank repo calculations in section 14.</li>
+</ul>
+<p><strong>Before you start:</strong> Read document <a href="02_Liquidity_From_Zero.html">02</a> (Liquidity from zero) and document <a href="08_LCR_Production_End_to_End.html">08</a> (Producing the daily LCR). Document <a href="05_APS210_Companion_Attachment_A_LCR.html">05</a> (APS 210 companion: Attachment A) and document <a href="06_APS210_Companion_Attachments_B_and_C.html">06</a> (Attachments B and C) give the paragraph detail this document points to. Document <a href="17_APG210_Companion.html">17</a> (APG 210 companion) covers APRA's practice guide.</p>
+<p><strong>Time:</strong> About 3 hours to read; allow another hour for the worked calculations.</p>
+<blockquote>
+<p><strong>How to read this document.</strong> Every fact that comes from outside APS 210 carries a source tag such as [S4]; the numbered list is at the end. Where I could not confirm something I say so under a label: <code>Unverified</code>, <code>Typical practice</code> or <code>Interpretation</code>. Several RBA arrangements are changing in 2026 and 2027, so section 16 lists what to re-check and when. All RBA pages were read on 14 November 2026.</p>
+</blockquote>
+<hr />
+<h2 id="1-what-a-central-bank-does">1 What a central bank does</h2>
+<p>Start with an everyday picture. You bank with a commercial bank. That bank in turn needs a bank of its own, for two jobs: a place to keep its own spare cash safely, and a way to pay other banks. In Australia the bank of the banks is the Reserve Bank of Australia, the central bank.</p>
+<p>The RBA does four things that matter to us:</p>
+<ol>
+<li><strong>It sets the price of overnight money.</strong> The Monetary Policy Board sets a target for the <em>cash rate</em>, which is the interest rate on unsecured overnight loans between banks. A change takes effect the day after the decision is announced, and the decision is released at 2.30 pm on the day of each Board meeting [S2]. On the RBA's cash rate page the target was 4.85 per cent from 4 November 2026 [S30]. (That number moves; never hard-code it. See section 16.)</li>
+<li><strong>It runs the settlement system.</strong> The RBA owns and operates the Reserve Bank Information and Transfer System (RITS), Australia's high-value payment settlement system [S12].</li>
+<li><strong>It lends to banks against collateral.</strong> Through its market operations and standing facilities it lends cash to eligible banks against securities (section 7 and section 8) [S2].</li>
+<li><strong>It is the ultimate provider of liquidity.</strong> The Council of Financial Regulators describes the RBA as "the ultimate provider of liquidity to the financial system" [S26].</li>
+</ol>
+<p>The RBA is <em>not</em> our prudential supervisor. The Australian Prudential Regulation Authority (APRA) supervises banks and wrote APS 210. The RBA's own page says that eligible counterparties "are not prudentially supervised by the Reserve Bank" and that eligible status gives no entitlement to obtain liquidity [S10].</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> When someone says "the RBA", ask which hat: monetary policy (the cash rate), payments (RITS and the ESAs), or market operations (repos and facilities). Our numbers touch the second and third most.</p>
+</blockquote>
+<hr />
+<h2 id="2-exchange-settlement-accounts-the-purest-liquid-asset">2 Exchange Settlement Accounts: the purest liquid asset</h2>
+<h3 id="21-what-an-esa-is">2.1 What an ESA is</h3>
+<p>An Exchange Settlement Account is a bank account that a bank holds <em>at the RBA</em>. Banks use it to settle their payment obligations to each other. The RBA describes final settlement of interbank obligations in Australian dollars as occurring "across ESAs held at the Reserve Bank" [S12]. The money in these accounts is also called <em>exchange settlement (ES) balances</em> or <em>reserves</em> [S2].</p>
+<p>Three rules about ESAs [S12] [S13]:</p>
+<ul>
+<li>an ESA must be kept <strong>in credit at all times</strong>; it cannot go overdrawn;</li>
+<li>ESAs are mandatory for any ADI whose wholesale RTGS transactions are 0.25 per cent or more of the total value of wholesale RITS RTGS transactions; smaller ADIs may settle through an agent bank, or apply for their own ESA;</li>
+<li>the RBA "does not guarantee that an ESA holder will be able to meet its settlement obligations" [S13].</li>
+</ul>
+<p>An ADI that wants to operate its own ESA for the first time must obtain APRA's non-objection [S13].</p>
+<h3 id="22-why-an-esa-balance-is-the-best-liquid-asset">2.2 Why an ESA balance is the best liquid asset</h3>
+<p>An asset is liquid when you can turn it into the thing you need, cash that settles payments, quickly and without losing value. A balance in an ESA <em>is</em> settlement money already. There is nothing to sell, no price to fall, and no counterparty other than the RBA. A government bond must first be sold or lent against, and its price can move.</p>
+<p>APS 210 reflects this in three ways:</p>
+<ul>
+<li>HQLA1 includes "central bank balances, to the extent that these balances may be drawn down in times of stress" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>). HQLA1 is counted at market value with no haircut (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>).</li>
+<li>In the NSFR, central bank reserves and balances receive a zero per cent required stable funding (RSF) factor (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>).</li>
+<li>APRA's liquidity FAQ states that the only Australian dollar assets that qualify as HQLA1 are notes and coin, balances held with the RBA, and Australian Government and semi-government securities, and that no Australian dollar assets currently qualify as HQLA2 [S29]. That FAQ was published on 9 December 2021 and shows no later update date [S29]; the standard itself is the authority.</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> The words "to the extent that these balances may be drawn down in times of stress" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>) matter. If a balance at the RBA is tied to a requirement, for example a minimum balance the RBA expects us to hold to support after-hours payments (section 8.4), ask Treasury and your controller whether APRA would treat it as drawable. See the Unverified note in section 8.4.</p>
+</blockquote>
+<h3 id="23-where-our-figure-comes-from">2.3 Where our figure comes from</h3>
+<p>In Example Bank's base position, "Cash and balances with the RBA" is A$5.0bn. That line combines notes and coin with the ESA balance. For the practice case in document <a href="12_Controls_Incidents_and_Escalation.html">12</a>, the ESA balance is its own line (A$3.8bn). Document <a href="07_Data_and_Classification.html">07</a> (Data and classification) explains the source system for each.</p>
+<hr />
+<h2 id="3-how-payments-settle-rits-real-time-gross-settlement-and-the-others">3 How payments settle: RITS, real-time gross settlement and the others</h2>
+<h3 id="31-the-idea-in-everyday-words">3.1 The idea in everyday words</h3>
+<p>When you pay a friend at another bank, your bank owes their bank money. Banks do not hand over notes. Instead, at the end of the chain, the RBA reduces one bank's ESA and increases the other's by the same amount. That is <em>settlement</em>: the point at which the debt between the banks is finally extinguished.</p>
+<p><em>Real-time gross settlement</em> (RTGS) means each payment is settled <strong>one by one, in full, as it arrives</strong>, out of money the payer already has in its ESA. "Gross" means not netted against other payments; "real time" means not held to the end of the day. The RBA says settlement through RITS "is achieved by the simultaneous crediting and debiting of Exchange Settlement Accounts" and RTGS transactions settled through RITS "are final and irrevocable" [S12]. RTGS was introduced in Australia on 22 June 1998 to reduce the risk of deferred high-value payments [S12].</p>
+<h3 id="32-the-channels-that-end-in-rits">3.2 The channels that end in RITS</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>What it carries</th>
+<th>How it settles</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wholesale RTGS (the "System Queue")</td>
+<td>High-value payments between banks: SWIFT payments (largely the Australian dollar leg of cross-border payments and interbank customer payments), securities settlements from Austraclear, RITS cash transfers</td>
+<td>One by one, in real time, in a queue that tests each payment for sufficient funds</td>
+<td>[S12]</td>
+</tr>
+<tr>
+<td>Fast Settlement Service (FSS)</td>
+<td>Payments made through the New Payments Platform (NPP), including payments by consumers and businesses</td>
+<td>One by one, 24 hours a day, 7 days a week; it "tests that the paying ESA holder has sufficient funds" and either settles or rejects the payment; it has no queue and no liquidity-saving features</td>
+<td>[S12] [S14]</td>
+</tr>
+<tr>
+<td>Low Value Settlement Service (LVSS)</td>
+<td>Obligations from cheques, direct entry (bulk electronic) payments and some retail card payments</td>
+<td>Multilateral net settlement. Most direct entry obligations settle same day in five net settlements during the RITS business day; others around 9.00 am the next business day</td>
+<td>[S12]</td>
+</tr>
+<tr>
+<td>Batches</td>
+<td>Equity settlement (CHESS), property settlements (PEXA and others), Mastercard and eftpos obligations</td>
+<td>Netted outside RITS by an approved batch administrator and submitted for simultaneous settlement across ESAs</td>
+<td>[S12]</td>
+</tr>
+</tbody>
+</table></div>
+<p>"Multilateral net" means every bank's many payments to and from all the others are added up, and each bank settles only its single net position once.</p>
+<h3 id="33-the-queue-and-its-liquidity-saving-tools">3.3 The queue and its liquidity-saving tools</h3>
+<p>If a payer has too little in its ESA, the payment waits on the System Queue. RITS tests transactions "as they are received", settles those that pass, and keeps testing the rest in a loop [S12]. Two features save liquidity [S12]:</p>
+<ul>
+<li><strong>Auto-offset:</strong> if a payment has waited one minute or more, RITS looks for an offsetting payment going the other way between the same two banks and, if both can settle together leaving both in credit, settles them at once;</li>
+<li><strong>Targeted bilateral offset:</strong> two members can pick transactions to offset against each other.</li>
+</ul>
+<p>Unsettled transactions are removed from the queue at the end of each day [S12].</p>
+<h3 id="34-the-rits-day">3.4 The RITS day</h3>
+<p>RITS settles most transaction types from 7:30 am to 10:00 pm on business days, closed on weekends and certain public holidays [S14]; the FSS runs all day every day [S14]. The detailed session times below come from the RBA's CLS operational paper of July 2015, which is old; the RBA's liquidity facilities page quotes the same close times, so they were still in use in 2026, but confirm on the current RITS page before relying on them (see section 16) [S15] [S4].</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Time (Sydney, AEST and AEDT alike)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Morning Settlement Session</td>
+<td>07:30 to 08:45</td>
+<td>[S15]</td>
+</tr>
+<tr>
+<td>9am Processing</td>
+<td>08:45 to 09:15</td>
+<td>[S15]</td>
+</tr>
+<tr>
+<td>Daily Settlement Session</td>
+<td>09:15 to 16:30</td>
+<td>[S15]</td>
+</tr>
+<tr>
+<td>Settlement Close Session</td>
+<td>16:30 to 17:15</td>
+<td>[S15]</td>
+</tr>
+<tr>
+<td>Evening Settlement Session</td>
+<td>about 17:20 to 22:00</td>
+<td>[S15]</td>
+</tr>
+<tr>
+<td>SWIFT End Session (no new SWIFT payments)</td>
+<td>18:05 to 18:30 (winter); 20:05 to 20:30 (summer)</td>
+<td>[S15]</td>
+</tr>
+</tbody>
+</table></div>
+<p>The standing facility pages quote the close of the SWIFT End Session as 6.30 pm AEST and 8.30 pm AEDT [S4] [S11].</p>
+<hr />
+<h2 id="4-intraday-liquidity-what-the-intraday-requirement-means-in-practice">4 Intraday liquidity: what the intraday requirement means in practice</h2>
+<h3 id="41-the-requirement">4.1 The requirement</h3>
+<blockquote class="q-in"><p><strong>In the standard:</strong> "An ADI must actively manage its intraday liquidity positions and risks in order to meet payment and settlement obligations on a timely basis under both normal and stressed conditions, thus contributing to the orderly functioning of payment and settlement systems." (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>)</p>
+</blockquote>
+<h3 id="42-in-everyday-words">4.2 In everyday words</h3>
+<p><em>Intraday liquidity</em> is the money a bank needs <strong>during the day</strong> to make payments before its incoming payments arrive. Because RTGS settles each payment in full and the ESA cannot go overdrawn, a bank that pays out A$1bn at 10:00 am but is not due to receive A$1bn until 2:00 pm must either already have A$1bn in its ESA, or borrow it for those four hours. The overdraft is not allowed, so the borrowing is done by an <em>intraday repo</em> with the RBA (section 8.1), or the bank holds more balance overnight.</p>
+<p>The RBA states the point directly: ESA holders "must have sufficient funds in their ESA to ensure that their own payments and those of their customers are able to proceed throughout the day", and there are "two main sources of liquidity: overnight ESA balances and borrowing funds from the Reserve Bank under its Liquidity Facilities" [S12].</p>
+<h3 id="43-what-apras-guide-adds">4.3 What APRA's guide adds</h3>
+<p>APRA's practice guide (guidance, not a rule) expects management to understand the rules of every payment and settlement system the ADI uses, identify the counterparties that are the main source of large flows, and identify "key times, days and circumstances where liquidity flows and possible intraday credit needs might be particularly high" (<a class="c" href="17_APG210_Companion.html#g-p40">APG 210 para 40</a>). It also says the tools should suit the ADI's business model and notes that an ADI relying heavily on collateralised funding markets may need to watch securities settlement systems as closely as RTGS positions (<a class="c" href="17_APG210_Companion.html#g-p41">APG 210 para 41</a>).</p>
+<h3 id="44-what-our-team-does">4.4 What our team does</h3>
+<p>Document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a> (Monitoring beyond the ratios) already lists intraday liquidity among the things monitored. For this document the team's part is:</p>
+<ul>
+<li>know which of our payments run through which channel (section 3.2);</li>
+<li>know who in Treasury or Payments operations runs the intraday position and what MI they produce;</li>
+<li>be able to evidence that the ADI's intraday management exists and is reviewed (a policy, a daily report, a stress case).</li>
+</ul>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Banks track the intraday low point of the ESA balance, the time of day it occurs, the largest single payments, the peak use of intraday repo, and the time by which a given share of daily payments has settled. These measures are described in the Basel Committee's paper "Monitoring tools for intraday liquidity management". <code>Unverified:</code> I did not read that paper for this document. Writer 14 cites it; check the paper on bis.org before quoting any measure.</p>
+</blockquote>
+<hr />
+<h2 id="5-a-day-in-the-life-of-a-settlement-account">5 A day in the life of a settlement account</h2>
+<p>This is a teaching example with invented numbers for Example Bank. The sessions and rules are the RBA's [S4] [S12] [S15]; the amounts are <strong>not</strong> real.</p>
+<p><strong>Opening position:</strong> ESA balance A$3.8bn at the start of the day (the practice-case figure from document <a href="12_Controls_Incidents_and_Escalation.html">12</a>).</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Time (Sydney)</th>
+<th>What happens</th>
+<th>ESA balance after (A$bn)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>07:30</td>
+<td>RITS opens. Morning Settlement Session settles early items; under normal operations the eftpos batch is submitted for this session [S12]</td>
+<td>3.80</td>
+</tr>
+<tr>
+<td>09:00</td>
+<td>Cheque and retail card obligations from yesterday's clearing settle in one multilateral net amount: Example Bank is a net payer of 0.05</td>
+<td>3.75</td>
+</tr>
+<tr>
+<td>09:20</td>
+<td>The RBA announces its weekly open market operation (a Wednesday). Treasury decides it needs no extra reserves</td>
+<td>3.75</td>
+</tr>
+<tr>
+<td>10:30</td>
+<td>Treasury repays maturing wholesale funding of 1.20 over the SWIFT channel; the payment settles at once because funds are available</td>
+<td>2.55</td>
+</tr>
+<tr>
+<td>11:00</td>
+<td>Customers' large corporate payments leave: net 0.90 more than arrives so far</td>
+<td>1.65</td>
+</tr>
+<tr>
+<td>12:30</td>
+<td>A 1.70 outgoing payment is entered but only 1.65 is available. It waits on the System Queue (a payment that cannot settle yet is held, not rejected)</td>
+<td>1.65</td>
+</tr>
+<tr>
+<td>12:35</td>
+<td>Treasury contracts an <strong>intraday repo</strong> with the RBA for 0.50 against Australian Government securities. It carries no interest charge [S4]. Cash enters the ESA and the queued payment settles</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>14:00</td>
+<td>Large incoming payments of 2.30 from other banks arrive</td>
+<td>2.75</td>
+</tr>
+<tr>
+<td>15:30</td>
+<td>Treasury unwinds the intraday repo: pays back 0.50 and gets its securities back</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td>16:30</td>
+<td>Daily Settlement Session ends; Settlement Close Session begins. Direct entry obligations are netted and settle</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td>17:15 to 22:00</td>
+<td>Evening session: only "Evening Agreed" banks settle</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td>After 16:45</td>
+<td>After-hours direct entry and NPP payments continue to settle across the ESA. The RBA calculates net after-hours receipts for interest purposes [S4]</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td>Midnight</td>
+<td>The balance at midnight, 2.25 in this example, earns the ES rate to the extent it is at or above the bank's minimum balance (section 8.4)</td>
+<td>2.25</td>
+</tr>
+</tbody>
+</table></div>
+<p>What this example shows:</p>
+<ul>
+<li>the account never went negative (the intraday repo covered the gap);</li>
+<li>the same bank can swing by billions inside a day, but the end-of-day figure is the one reported in the daily LCR (document <a href="08_LCR_Production_End_to_End.html">08</a>);</li>
+<li>intraday repos must be unwound the same day or they roll into an overnight position priced at 25 basis points over the cash rate target [S4].</li>
+</ul>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> Our daily LCR uses the end-of-day ESA balance. A low point at 12:30 does not change the LCR, but it is the number that tells the Board whether our payments are at risk. Do not treat the two as interchangeable.</p>
+</blockquote>
+<hr />
+<h2 id="6-the-cash-rate-interest-on-settlement-balances-and-the-monetary-policy-implementation-system">6 The cash rate, interest on settlement balances and the monetary policy implementation system</h2>
+<h3 id="61-the-basics">6.1 The basics</h3>
+<p>The RBA wants the cash rate to sit near the target the Monetary Policy Board sets. To do that it must control the price at which banks trade ES balances. The system it uses to do this is called the <em>monetary policy implementation system</em>.</p>
+<p>Before 2020, the RBA kept reserves scarce, so banks borrowed from each other and from the RBA often (a "corridor" with a ceiling and a floor around the target). After the pandemic response (bond purchases and term funding) the supply of reserves swelled: the RBA says those operations "injected nearly $500 billion of reserves into the banking system", and reserves "have since fallen by more than half" as the assets matured [S3].</p>
+<h3 id="62-the-current-arrangements-as-read-on-14-november-2026">6.2 The current arrangements (as read on 14 November 2026)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>What the RBA says</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name of the system</td>
+<td>A demand-driven "ample reserves" system: "the supply of reserves rises and falls in response to changes in demand"</td>
+<td>[S2]</td>
+</tr>
+<tr>
+<td>How reserves are supplied</td>
+<td>"as many reserves as banks demand via full allotment repurchase agreement (repo) auctions at its open market operations (OMO)"</td>
+<td>[S2]</td>
+</tr>
+<tr>
+<td>Interest paid on reserves (the ES rate)</td>
+<td>"currently set at 10 basis points below the cash rate target"; the RBA "may adjust this spread" from time to time</td>
+<td>[S2]</td>
+</tr>
+<tr>
+<td>Price of reserves from OMO (the OMO rate)</td>
+<td>10 basis points above the cash rate target, effective 9 April 2025 (up from 5 basis points)</td>
+<td>[S17] [S3]</td>
+</tr>
+<tr>
+<td>Overnight standing facility</td>
+<td>25 basis points above the cash rate target</td>
+<td>[S4]</td>
+</tr>
+<tr>
+<td>Where we are now</td>
+<td>"At present, the supply of reserves is greater than banks' demand"; the RBA says "We are not yet at ample reserves"</td>
+<td>[S2] [S3]</td>
+</tr>
+</tbody>
+</table></div>
+<p>A <em>basis point</em> is one hundredth of a percentage point. So 10 basis points is 0.10 percentage points.</p>
+<p>How the three rates fit together. A bank with spare reserves can leave them at the RBA and earn the ES rate, so no bank will lend in the cash market below that rate: it is a <strong>floor</strong>. A bank short of reserves can obtain them from OMO at the OMO rate, so no bank will pay much more than that in the market: it is a <strong>soft ceiling</strong> [S2]. The cash rate trades between the two and near the target.</p>
+<h3 id="63-illustration-with-todays-target-do-not-hard-code">6.3 Illustration with today's target (do not hard-code)</h3>
+<p>If the target is 4.85 per cent [S30], the settings in the table above imply an ES rate of 4.75 per cent, an OMO rate of 4.95 per cent and an overnight standing facility rate of 5.10 per cent. <code>Interpretation:</code> I derived these by adding the published spreads to the published target. The RBA publishes the spreads and the target; I did not find a single page that lists all three rates side by side. Confirm with Treasury before using them in any pricing.</p>
+<h3 id="64-what-changed-in-2025-and-2026">6.4 What changed in 2025 and 2026</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>March 2024</td>
+<td>Reserve Bank Board endorsed the "ample reserves with full allotment" system</td>
+<td>[S17]</td>
+</tr>
+<tr>
+<td>June 2024</td>
+<td>Final repayment of the Term Funding Facility (section 11) took reserves down</td>
+<td>[S17]</td>
+</tr>
+<tr>
+<td>2 April 2025</td>
+<td>RBA announced operational changes effective 9 April 2025: OMO repo price raised 5 basis points to 10 over the target, and a seven-day term added alongside the 28-day term at each weekly OMO</td>
+<td>[S17]</td>
+</tr>
+<tr>
+<td>2 April 2025</td>
+<td>Joint RBA and APRA statement: use of the overnight standing facility is "consistent with routine liquidity management activities"</td>
+<td>[S18]</td>
+</tr>
+<tr>
+<td>25 August 2026</td>
+<td>RBA announced that <strong>open standing facility repos will be discontinued in early 2027</strong>; effective date "will be announced in the coming months"; no increases in open repo limits accepted from the announcement</td>
+<td>[S1] [S2] [S3]</td>
+</tr>
+<tr>
+<td>2027 (expected)</td>
+<td>Term Repo Operations (TROs) at three and six months expected to start; "further legal and operational details" to be published in advance</td>
+<td>[S1] [S6]</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Unverified:</strong> the effective date for the end of open repo and the detailed TRO terms were not published on the pages I read. Check the RBA market operations page before each quarterly review (section 16).</p>
+</blockquote>
+<p>Why this matters to us: the RBA states that banks "should be prepared to again manage their liquidity positions more actively", and that "our overnight and intraday standing facilities remain very much open for business" [S3]. In the RBA's words, being prepared means monitoring and forecasting liquidity needs, being ready to source liquidity through money markets, and having the operational arrangements in place [S3]. That is the same discipline APS 210 asks of us in (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>), (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>) and (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>).</p>
+<hr />
+<h2 id="7-open-market-operations-and-repos">7 Open market operations and repos</h2>
+<h3 id="71-what-a-repo-is">7.1 What a repo is</h3>
+<p>A <em>repurchase agreement</em> (repo) is a loan secured by securities, written as a sale and a promised buy-back. The RBA explains: "Under a repo, the seller agrees to repurchase an equivalent security at a future time and at a pre-agreed price. The transaction is similar to a secured loan, with the difference between the purchase and repurchase prices (the price differential) akin to the interest earned on a secured loan" [S2].</p>
+<p>From the bank's side, the bank <em>sells</em> securities to the RBA now and receives cash in its ESA, then <em>buys them back</em> later at a higher price. The RBA calls the operation a "reverse repo" from its own side, because it is the buyer [S5].</p>
+<h3 id="72-how-the-weekly-open-market-operation-works-s5">7.2 How the weekly open market operation works [S5]</h3>
+<ol>
+<li><strong>Announcement.</strong> Each Wednesday (or the next good business day) at 9.20 am the RBA announces its dealing intentions on market data services. Terms are typically 7 and 28 days; longer terms may be offered. Repos are normally floating rate, priced as a spread to the cash rate target.</li>
+<li><strong>Approach.</strong> Eligible counterparties approach the RBA, usually by the deadline of 9.35 am. The minimum size per approach and term is A$20 million in increments of A$1 million.</li>
+<li><strong>Allocation.</strong> "Subject to the Reserve Bank's discretion, approaches will be allocated in full." That is what "full allotment" means.</li>
+<li><strong>Notification.</strong> The RBA aims to notify by 10.15 am, but does not guarantee it.</li>
+<li><strong>Confirmation and settlement.</strong> The bank enters the repo details into Austraclear, the securities depository. Settlement is same-day value and transactions are settled before the Daily Settlement Session closes at 4.30 pm.</li>
+</ol>
+<p>The repo price differential on a floating rate repo accrues daily on an actual/365 basis at the cash rate target effective that day plus the agreed spread [S5].</p>
+<h3 id="73-who-can-take-part">7.3 Who can take part</h3>
+<p>Counterparties must be members of both RITS and Austraclear, be subject to an appropriate level of regulation (an APRA-regulated ADI qualifies), and be able to manage transactions efficiently and in a timely way [S10]. Counterparty status is at the RBA's absolute discretion [S10].</p>
+<h3 id="74-margins-haircuts-in-one-paragraph">7.4 Margins (haircuts) in one paragraph</h3>
+<p>The RBA does not lend the full market value of collateral. It divides the market value by a <em>margin ratio</em> to get the cash it pays: "purchase price = market value / margin ratio, where margin ratio = (1 + margin / 100)" [S8]. With a margin of 10 per cent, a security with market value 100 gets a purchase price of 91 (the RBA's own example gives A$90.91) [S8]. APS 210 calls the same idea a <em>haircut</em>; the RBA's word is <em>margin</em>. The two are applied differently (the margin is a percentage of the purchase price, whereas a haircut is usually a percentage of the market value), so never swap one for the other without converting.</p>
+<p>The margin table on the RBA's page (last updated 28 March 2023) includes [S8]:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Security</th>
+<th>Margin by residual maturity (per cent)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Australian Government and semi-government</td>
+<td>1 (0 to 1 years); 2 (1 to 5, 5 to 10 and over 10 years)</td>
+</tr>
+<tr>
+<td>Supranationals, foreign governments (AAA); government-guaranteed</td>
+<td>2, 3, 4, 4</td>
+</tr>
+<tr>
+<td>ADI-issued securities rated AAA</td>
+<td>6, 7, 8, 10</td>
+</tr>
+<tr>
+<td>ADI-issued securities rated AA minus</td>
+<td>10, 12, 14, 16</td>
+</tr>
+<tr>
+<td>ADI-issued securities rated A minus</td>
+<td>12, 14, 16, 18</td>
+</tr>
+<tr>
+<td>ADI-issued securities rated BBB minus</td>
+<td>18, 22, 26, 30</td>
+</tr>
+<tr>
+<td>"Standard" asset-backed securities (mainly residential mortgage collateral)</td>
+<td>10 to 15</td>
+</tr>
+<tr>
+<td>"Other" asset-backed securities</td>
+<td>15 to 40</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the ADI rows the four numbers are for 0 to 1, 1 to 5, 5 to 10 and over 10 years in that order [S8]. The RBA "has discretion to vary its margin ratios at any time" and changes apply to outstanding repos on the next business day [S8].</p>
+<blockquote>
+<p><strong>Unverified:</strong> the margin page was last updated on 28 March 2023 per the page itself. It is the current page on the RBA site as read, but the RBA can change margins at any time and publishes changes only there. For any live decision, use Treasury's current margin schedule.</p>
+</blockquote>
+<h3 id="75-margin-calls">7.5 Margin calls</h3>
+<p>Each business day the RBA revalues the securities it holds. If its net exposure to a counterparty exceeds A$1 million and more than 1 per cent of the net repurchase amounts, it calls for margin equal to its exposure; it also meets such calls from counterparties [S9]. Calls made before 11 am are due the same day; later calls are due the next business day [S9]. The call is met with eligible securities delivered through Austraclear.</p>
+<p><strong>Why we care:</strong> posting margin ties up more securities (encumbrance, document <a href="08_LCR_Production_End_to_End.html">08</a> and <a class="c" href="04_APS210_Companion_Main_Body.html#m-p38">APS 210 para 38</a>). A fall in collateral prices on a day of stress forces more securities out of the liquid asset portfolio on the very day we need them.</p>
+<hr />
+<h2 id="8-standing-facilities">8 Standing facilities</h2>
+<h3 id="81-what-they-are-for">8.1 What they are for</h3>
+<p>"The standing facilities are commonly used to provide payments system participants with liquidity as required to support orderly settlement of payments" [S2]. Unlike OMO (weekly, price set by the RBA), they are available bilaterally, on demand [S3]. In the RITS Regulations, repos under these facilities are called Standing Facility (SF) repos [S4].</p>
+<h3 id="82-the-three-sf-repos-s2-s4">8.2 The three SF repos [S2] [S4]</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Facility</th>
+<th>Term</th>
+<th>Price</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intraday SF repo</td>
+<td>Same day</td>
+<td>No price differential (a settlement fee may adjust the repurchase price)</td>
+<td>Meets payments before funds are received. A repo that runs overnight is repriced at 25 basis points over the cash rate target</td>
+</tr>
+<tr>
+<td>Overnight SF repo</td>
+<td>One night</td>
+<td>25 basis points over the cash rate target</td>
+<td>The RBA "expects and encourages" use "when a RITS member faces unexpected liquidity needs and cannot source liquidity on reasonable terms in private markets"</td>
+</tr>
+<tr>
+<td>Open SF repo (being discontinued)</td>
+<td>No maturity date</td>
+<td>Rate on surplus ES balances (the ES rate)</td>
+<td>Used to hold a minimum ESA balance for after-hours payments; being ended in early 2027 (section 6.4)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="83-who-can-use-them-collateral-and-timing">8.3 Who can use them, collateral and timing</h3>
+<ul>
+<li><strong>Who:</strong> eligible counterparties that settle payments across their own ES account. Other eligible counterparties cannot use SF repos [S4] [S10].</li>
+<li><strong>Collateral:</strong> any securities eligible for OMO can be used for intraday and overnight repos. For open repos, locally incorporated LCR institutions can use any OMO-eligible securities [S4].</li>
+<li><strong>Timing:</strong> counterparties can contract until the close of the SWIFT End Session (6.30 pm AEST, 8.30 pm AEDT unless advised). The Domestic Markets Desk is not staffed beyond that time [S4] [S11].</li>
+<li><strong>Operations:</strong> intraday repos against Australian Government and semi-government securities can be executed unilaterally in Austraclear; other collateral must be arranged with the RBA's Domestic Markets Desk [S4].</li>
+<li><strong>Testing:</strong> the RBA offers test repos (typically about A$1 million face value, overnight) of OMO, ELA and overnight SF "to ensure they are operationally prepared to access RBA facilities" [S31].</li>
+</ul>
+<h3 id="84-interest-on-es-balances-and-the-minimum-balance">8.4 Interest on ES balances and the minimum balance</h3>
+<p>Banks that settle after-hours direct entry or NPP payments across their own ESA must hold a minimum ES balance at close of business, set by the RBA in consultation with the holder [S4]. Interest works like this [S4]:</p>
+<ul>
+<li>the balance at midnight up to the minimum requirement plus net after-hours receipts earns the <strong>rate on surplus ES balances</strong>;</li>
+<li>any shortfall from that level attracts the standing facility rate, <strong>25 basis points above the cash rate target</strong>;</li>
+<li>interest is adjusted in arrears on the first business day of each month.</li>
+</ul>
+<p>The RBA states that holders who keep at least the required balance "are not considered to have received liquidity support from the Reserve Bank" [S4]. The size of the requirement is reviewed at least annually, and "The next regular review of the size of these requirements will occur in the coming months" with new requirements to take effect when open repo ends [S1] [S4].</p>
+<blockquote>
+<p><strong>Unverified:</strong> whether APRA counts a balance held to meet the RBA's minimum ES requirement as freely drawable HQLA1 under (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>) is not stated in any source I read. Ask your controller to confirm with APRA through Treasury; until then record the amount so it can be excluded quickly if required.</p>
+</blockquote>
+<h3 id="85-after-the-open-repo-ends">8.5 After the open repo ends</h3>
+<p>The RBA says that banks "will still be expected to hold minimum ES balances to support after-hours payments" but that "open repos are no longer needed to meet those" [S3]. It also says it "would retain the ability to reintroduce the facility" [S3].</p>
+<hr />
+<h2 id="9-eligible-collateral-margins-and-self-securitised-assets">9 Eligible collateral, margins and self-securitised assets</h2>
+<h3 id="91-what-the-rba-accepts">9.1 What the RBA accepts</h3>
+<p>The RBA publishes its criteria; securities must meet all of them on application and for the term of each transaction, and the RBA can revoke eligibility at any time [S7]. In summary [S7]:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Security</th>
+<th>Eligible for</th>
+<th>Minimum rating or note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Australian Government and semi-government securities</td>
+<td>Automatically eligible</td>
+<td>None</td>
+</tr>
+<tr>
+<td>New Zealand Government and government-guaranteed securities</td>
+<td>Reverse repos (as collateral)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>ADI bonds over one year, including covered bonds</td>
+<td>Reverse repos</td>
+<td>Two ratings, average at least BBB minus</td>
+</tr>
+<tr>
+<td>ADI short-term paper (under one year)</td>
+<td>Reverse repos</td>
+<td>One rating, public rating</td>
+</tr>
+<tr>
+<td>Corporate bonds and commercial paper</td>
+<td>Reverse repos</td>
+<td>BBB (one rating) or BBB minus (two); CP also BBB or A-3</td>
+</tr>
+<tr>
+<td>Asset-backed securities (not self-securitisations), over 12 months</td>
+<td>Reverse repos</td>
+<td>AAA, one rating</td>
+</tr>
+<tr>
+<td>Supranational and foreign-government securities</td>
+<td>Reverse repos</td>
+<td>AAA</td>
+</tr>
+</tbody>
+</table></div>
+<p>Primary criteria include Australian dollar denomination, lodged and active in Austraclear, governed by Australian law, senior and unsubordinated, and <strong>not materially related to the counterparty</strong> [S7]. Subordinated bank debt and senior non-preferred bonds are not eligible [S7].</p>
+<blockquote>
+<p><strong>Why this table matters to the LCR:</strong> being RBA-eligible does <em>not</em> make a security HQLA. Only notes and coin, RBA balances, and Australian Government and semi-government securities are AUD HQLA1, and no AUD assets currently qualify as HQLA2 [S29]. Example Bank's "other debt securities (non-HQLA)" might be RBA-eligible collateral that is not HQLA. They matter for liquidity because they can be turned into HQLA1 (ESA cash) through a repo.</p>
+</blockquote>
+<h3 id="92-self-securitised-assets">9.2 Self-securitised assets</h3>
+<p>A <em>self-securitisation</em> is a pool of the bank's own loans (usually mortgages) packaged into a special purpose vehicle, which issues securities that the bank itself buys. They are not for sale to investors. They exist so that the bank has a security the RBA will lend against. Document <a href="19_Related_Standards_and_Accountability.html">19</a> (The standards around APS 210) covers the securitisation standard, APS 120.</p>
+<p>What the RBA says about them [S7] [S8] [S2]:</p>
+<ul>
+<li>The RBA "considers self-securitised asset-backed securities to be materially related to the ADI whose receivables have been securitised" [S7].</li>
+<li>The RBA's eligible-securities page says it can grant a related-party exemption "in repos contracted under Exceptional Liquidity Assistance, but not in open market operations or under the Reserve Bank's Standing Facilities" [S7].</li>
+<li>Since 1 April 2025 the RBA has required, for new self-securitisations, certificates from a senior officer (Chief Financial Officer, Group Treasurer or equivalent); existing ones need an annual certificate between 31 January and 31 March each year [S7].</li>
+<li>Self-securitisations that report late incur a 15 per cent penalty haircut [S7]. The RBA tells APRA about late reporting and late certificates [S7].</li>
+<li>If collections are not remitted at least weekly, an additional discount applies: 3 percentage points (weekly to monthly), 9 (monthly to quarterly) or 18 (less often than quarterly) [S8].</li>
+<li>The RBA's test repos may include self-securitisations at its discretion [S31].</li>
+</ul>
+<blockquote>
+<p><strong>Conflict between sources, flagged.</strong> The RBA's Term Repo Operations statement says TRO collateral will be "OMO-eligible securities and self-securitised assets" [S6]. The eligible securities page says self-securitisations are available only in ELA repos with a related-party exemption, and the March 2020 TFF notice said that facility accepted self-securitised securities [S7] [S21]. I could not find a page that reconciles these. For present purposes assume self-securitisations can be used <strong>only</strong> in ELA (plus whatever APRA's FAQ 10.0 describes for existing open repos, below), and re-read the TRO details when they are published.</p>
+</blockquote>
+<p>APRA's guidance on size (not a rule): "it would be prudent" for a locally incorporated LCR ADI to hold self-securitised assets with a cash value of at least 30 per cent of Australian dollar net cash outflows as contingency, unencumbered and not held as collateral for any other purpose (<a class="c" href="17_APG210_Companion.html#g-p67">APG 210 para 67</a>). The contingency funding plan should consider the size of self-securitised assets and when they might be used (<a class="c" href="17_APG210_Companion.html#g-p66">APG 210 para 66</a>).</p>
+<p>APRA's liquidity FAQ 10.0 describes the NSFR reporting of open repos against self-securitised assets: the amount borrowed goes in "Funding from central banks" (item 11) with a zero ASF factor; the cash received goes in "Central bank reserves and balances" (item 21) with a zero RSF factor; and the encumbered self-securitised assets go in item 27.2.1, "Encumbered CLF-eligible self-securitised assets" [S29]. The form items are named in the FAQ; I did not check them against the current ARF 210.6 (see document <a href="18_ARS210_Returns_Companion.html">18</a>).</p>
+<blockquote>
+<p><strong>Unverified:</strong> whether any self-securitised asset can be pledged under OMO or SF repos today (the eligibility page says not; the FAQ and the TFF history suggest they could earlier). Check with Treasury, who hold the RBA documentation.</p>
+</blockquote>
+<hr />
+<h2 id="10-the-committed-liquidity-facility-history-mechanics-and-why-it-ended">10 The Committed Liquidity Facility: history, mechanics and why it ended</h2>
+<h3 id="101-the-problem-it-solved">10.1 The problem it solved</h3>
+<p>Under Basel III, banks must hold high-quality liquid assets (HQLA) against 30 days of stress. In Australia the only HQLA securities are Commonwealth and state government bonds. The RBA explains that "the supply of AGS and semis has not been sufficient for banks to meet the LCR requirement"; in 2015, "banks would have had to hold around two-thirds of the value of all AGS and semis outstanding" [S19]. Forcing banks to hold that much "would very likely interfere with the properties of the market that qualified it as HQLA in the first place" [S19].</p>
+<p>The Basel standards allow an <em>alternative treatment</em> where HQLA supply is short. The Committed Liquidity Facility (CLF) was the RBA and APRA's alternative [S19]. The RBA Board approved it in November 2010 and it was announced the following month [S19]. It was available from 2015.</p>
+<h3 id="102-how-it-worked">10.2 How it worked</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Detail</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What it was</td>
+<td>A contractual commitment from the RBA to lend cash against eligible securities, which the ADI could count in the LCR numerator</td>
+<td>[S19] (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A para 13</a>)</td>
+</tr>
+<tr>
+<td>Who</td>
+<td>A locally incorporated LCR ADI, with APRA approval (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A para 13</a>) and (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p17">Att A para 17</a>)</td>
+<td>APS 210</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Covers "any shortfall in Australian dollars between the ADI's holdings of HQLA and net cash outflows" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A para 13</a>). Annual approval by APRA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p19">Att A para 19</a>); mid-year changes by application (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p20">Att A para 20</a>)</td>
+<td>APS 210</td>
+</tr>
+<tr>
+<td>Collateral</td>
+<td>"all assets eligible for repurchase transactions with the RBA under normal market conditions and any other assets nominated by the RBA" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A para 13</a>). Held assets had to meet the operational requirements and be well diversified (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p16">Att A para 16</a>)</td>
+<td>APS 210</td>
+</tr>
+<tr>
+<td>Use</td>
+<td>Only for Australian dollar shortfalls (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p14">Att A para 14</a>). Drawdowns other than intraday or end-of-day ESA funding needed senior management attestation and advising APRA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p21">Att A para 21</a>)</td>
+<td>APS 210</td>
+</tr>
+<tr>
+<td>Numerator amount</td>
+<td>Market value of HQLA after haircuts plus the <strong>lowest</strong> of the three limbs in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a>: the contractual amount approved, that amount adjusted for maturing secured funding and lending, or the market value of the collateral after RBA margins</td>
+<td>APS 210</td>
+</tr>
+<tr>
+<td>Fee</td>
+<td>15 basis points a year on the commitment for 2015 to 2019, 17 from 1 January 2020 and 20 from 1 January 2021, whether drawn or not</td>
+<td>[S19]</td>
+</tr>
+<tr>
+<td>Pricing if used</td>
+<td>Repo rate 25 basis points above the cash rate target</td>
+<td>[S19]</td>
+</tr>
+<tr>
+<td>Conditions to draw</td>
+<td>APRA did not object and the RBA assessed the ADI as having positive net worth</td>
+<td>[S19]</td>
+</tr>
+</tbody>
+</table></div>
+<p>Because the RBA applied haircuts, "ADIs needed to hold securities with a higher value than the size of the CLF" [S19]. APRA's guide (<a class="c" href="17_APG210_Companion.html#g-p92">APG 210 paras 92 to 105</a>, July 2025 version) still carries the old guidance on applying, using and reporting a CLF, and notes that APRA monitored "the proportion of self-securitised assets" in the CLF-eligible stock (<a class="c" href="17_APG210_Companion.html#g-p102">APG 210 para 102</a>).</p>
+<h3 id="103-size-over-time">10.3 Size over time</h3>
+<p>The RBA published projections of government bond supply and an assessment of how many bonds banks could reasonably hold. The CLF amount each year was APRA's assessed LCR requirement less that reasonable holding [S19].</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Year end</th>
+<th>CLF amount (A$bn)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>274</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>246</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>217</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>248</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>243</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>188 (initially set at 223, revised down in late 2020)</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>136</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>These come from Table 2 of the RBA's CLF page [S19]. The RBA's bulletin of January 2024 reviews the facility's life [S33].</p>
+<h3 id="104-why-it-ended">10.4 Why it ended</h3>
+<p>Government bond issuance rose sharply during the pandemic. APRA wrote to all locally incorporated LCR ADIs on 4 January 2023: "the final reduction of the Committed Liquidity Facility (CLF) has occurred as scheduled, and therefore as at 1 January 2023 the aggregate CLF has been fully phased-out to zero". It added that "APRA and the RBA now consider there to be sufficient high-quality liquid assets (HQLA) for locally incorporated LCR ADIs to meet LCR requirements, and therefore use of the CLF is no longer required" [S20]. The RBA's page repeats that it "was fully phased-out to zero as at 1 January 2023" [S19].</p>
+<h3 id="105-what-is-left-in-aps-210">10.5 What is left in APS 210</h3>
+<p>The paragraphs stay in the July 2025 standard (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>) and (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A paras 13 to 21</a>) and the CLF-linked rows stay in the tables (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> secured funding at 0 per cent; <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t4">Att A Table 4</a> inflow rows). Because the aggregate CLF is zero, none of these paths produces a number today. In practice:</p>
+<ul>
+<li>the numerator counts HQLA only; the CLF limb of <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a> adds nothing;</li>
+<li>secured funding "backed by CLF-eligible debt securities, where the ADI pledging assets has a CLF with the RBA" has a 0 per cent run-off rate (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>), but without a CLF that row is not available. <code>Interpretation:</code> secured funding transactions then fall into the other rows according to their collateral;</li>
+</ul>
+<blockquote>
+<p><strong>Unverified:</strong> the 2021 APRA letter said the CLF "will remain available should it need to be reactivated" if HQLA supply falls short. I read this only in a search summary of the letter, not in the letter itself. I read the 4 January 2023 letter in full. Check APRA's 2021 letter before telling anyone the CLF could return.</p>
+<p><strong>Typical practice:</strong> Banks keep the CLF paragraphs in their liquidity policy as a "dormant" arrangement and do not refer to it in management reporting. Confirm with your controller whether Example Bank's policy does so.</p>
+</blockquote>
+<hr />
+<h2 id="11-the-term-funding-facility">11 The Term Funding Facility</h2>
+<h3 id="111-what-it-was">11.1 What it was</h3>
+<p>The Term Funding Facility (TFF) was a pandemic-era RBA scheme announced on 19 March 2020. It offered three-year funding to ADIs through repurchase transactions, with two objectives: to lower ADIs' funding costs and so borrowers' interest rates, and to give ADIs access to extra low-cost funding if they expanded lending to businesses, with stronger incentives for small and medium-sized enterprises [S21].</p>
+<h3 id="112-key-terms-s21-s22">11.2 Key terms [S21] [S22]</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Term</td>
+<td>Three years for each drawing</td>
+</tr>
+<tr>
+<td>Rate</td>
+<td>25 basis points, fixed for the term; from 4 November 2020 new drawings were priced at 10 basis points</td>
+</tr>
+<tr>
+<td>Collateral</td>
+<td>"all collateral currently eligible for the Reserve Bank's domestic market operations", which "will include self-securitised asset-backed securities"; haircuts applied through margin ratios</td>
+</tr>
+<tr>
+<td>Allowance</td>
+<td>An Initial Allowance of 3 per cent of an ADI's credit to Australian households and businesses, plus an Additional Allowance linked to growth in business lending (one times the increase in large business credit and five times the increase in SME credit)</td>
+</tr>
+<tr>
+<td>Closing</td>
+<td>Closed to new drawdowns on 30 June 2021; the last possible maturity date was 30 June 2024</td>
+</tr>
+</tbody>
+</table></div>
+<p>The September 2020 expansion added a A$57 billion supplementary allowance and moved the last drawdown date to 30 June 2021 [S24]. The RBA's research paper reports that banks drew 88 per cent of the total funding available and that 92 banks used the facility [S23]. An RBA bulletin reports the initial allowance was A$84 billion, of which A$81 billion (97 per cent) was drawn [S34].</p>
+<h3 id="113-why-a-liquidity-team-still-cares">11.3 Why a liquidity team still cares</h3>
+<ol>
+<li><strong>It filled reserves.</strong> The RBA says its bond purchases and term funding operations "injected nearly $500 billion of reserves" and that reserves rose and then fell as these matured; reserves fell by around A$110 billion over the year to early 2025, and the RBA says most of this was the final repayment of the TFF in June 2024 [S3] [S17].</li>
+<li><strong>It changed how banks think about RBA funding.</strong> The TFF showed that RBA funding against self-securitised assets was usable in practice, which is part of why APRA asks banks to hold a pool of them (<a class="c" href="17_APG210_Companion.html#g-p67">APG 210 para 67</a>).</li>
+<li><strong>It is in the data.</strong> Historical ratios and funding mixes from 2020 to 2024 include TFF funding. Where you compare Example Bank's NSFR with history, check whether TFF repayment explains a step change. The NSFR counted funding from central banks with a residual maturity of 6 to under 12 months at 50 per cent ASF and under 6 months at zero (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>) and (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>).</li>
+</ol>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> If your team keeps long time series, annotate the dates the TFF was drawn and repaid.</p>
+</blockquote>
+<hr />
+<h2 id="12-exceptional-liquidity-assistance">12 Exceptional Liquidity Assistance</h2>
+<h3 id="121-what-it-is-in-everyday-words">12.1 What it is, in everyday words</h3>
+<p>Exceptional Liquidity Assistance (ELA) is emergency cash from the central bank to a bank that has run out of other options. The word "exceptional" is deliberate: it is meant to be very rare.</p>
+<h3 id="122-what-the-rba-says-s2-s4-s16">12.2 What the RBA says [S2] [S4] [S16]</h3>
+<ul>
+<li>"In exceptionally rare circumstances, when an Eligible Counterparty is experiencing acute liquidity difficulties, but is solvent, the Reserve Bank may provide ELA if it is judged to be needed to contribute to the stability of the Australian financial system." [S4]</li>
+<li>It would "generally be done through a term ELA repo for a short period of time", and the provision and the terms, "including acceptable collateral, is at the absolute discretion of the Reserve Bank" [S4] [S2].</li>
+<li>Any eligible counterparty, including those that do not settle across their own ESA, may <em>request</em> ELA, but each ELA repo needs the RBA's agreement [S4].</li>
+<li>Collateral: securities eligible for the RBA's domestic market operations would be acceptable; exemptions from the related-party guidelines (for example for self-securitisations) "would be considered on a case-by-case basis" [S4] [S7].</li>
+<li>Minutes of the Monetary Policy Board of 3 and 4 November 2025 record that "the provision of ELA is envisaged to be exceptionally rare", that "the operational arrangements for ELA would remain as before", and that a key criterion would be the Board's judgement that ELA "was needed to contribute to the stability of the Australian financial system" [S16].</li>
+</ul>
+<h3 id="123-what-the-rba-expects-from-the-bank-asking">12.3 What the RBA expects from the bank asking</h3>
+<p>In support of a request, the RBA says an entity would be expected to [S4]:</p>
+<ol>
+<li>"inform their regulator immediately of any liquidity concerns and their intention to request ELA, prior to approaching the Reserve Bank";</li>
+<li>"have already made reasonable efforts to access private sector sources of liquidity"; and</li>
+<li>"present evidence of their solvency, including an attestation of solvency or positive net worth".</li>
+</ol>
+<p>For testing, the RBA runs test ELA repos, and for those tests "the attestation and documentation requirements are waived" [S4].</p>
+<h3 id="124-what-aps-210-and-apra-add">12.4 What APS 210 and APRA add</h3>
+<blockquote class="q-in"><p><strong>In the standard:</strong> "An ADI under severe liquidity stress may request Exceptional Liquidity Assistance (ELA) from the Reserve Bank of Australia (RBA). Prior to approaching the RBA, the ADI must notify APRA immediately of the ADI's liquidity concerns and its intention to request ELA. An ADI must provide any information requested by APRA or the RBA in relation to the ADI's ELA request. An ADI must have the operational capability to provide information along with its application for ELA or within other timeframes specified by APRA." (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>)</p>
+</blockquote>
+<p>The four duties in that paragraph:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Duty</th>
+<th>Who owns it at Example Bank (Typical practice; confirm)</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notify APRA immediately before approaching the RBA</td>
+<td>Chief Financial Officer or Treasurer, under the contingency funding plan</td>
+<td>Notification log and the escalation record (document <a href="12_Controls_Incidents_and_Escalation.html">12</a>)</td>
+</tr>
+<tr>
+<td>Provide any information APRA or the RBA asks for in relation to the request</td>
+<td>Treasury leads, Liquidity Reporting supplies data</td>
+<td>Information pack and sign-offs</td>
+</tr>
+<tr>
+<td>Have the operational capability to provide information with the application or within APRA's timeframe</td>
+<td>Liquidity Reporting maintains the data process; Liquidity Risk challenges</td>
+<td>Documented procedure, annual test result</td>
+</tr>
+</tbody>
+</table></div>
+<p>APRA's practice guide expects: the nature, form and timing of the information may be specified before or after APRA is notified; the ADI should have "procedures in place to provide accurate information to APRA and the RBA" and meet the quality control requirements of ARS 210.0 (<a class="c" href="17_APG210_Companion.html#g-p75">APG 210 para 75</a>). The footnote adds that, given the short timeframe in a liquidity stress, an ADI "may provide information using approximation where necessary" (<a class="c" href="17_APG210_Companion.html#g-p75">APG 210 para 75</a>). APRA "expects an ADI to test its operational capability at least annually" and may ask the ADI to demonstrate it (<a class="c" href="17_APG210_Companion.html#g-p76">APG 210 para 76</a>). The quality-control requirements APG 210 mentions are in ARS 210.0 (ARS 210.0 clause 15) and (ARS 210.0 clause 16); document <a href="18_ARS210_Returns_Companion.html">18</a> covers them.</p>
+<p>APRA's response to submissions on the July 2025 changes says the ELA requirements are "consistent with the RBA's process for requesting ELA", that "the ELA data request template will need to be completed to support the RBA's positive net worth attestation requirement", that the data "may be provided using approximation, as clarified in APG 210", and that branches of foreign ADIs complete it on a domestic books consolidation basis without capital ratios [S27]. The requirement commenced on 1 July 2025 after APRA deferred it by six months [S27] [S32].</p>
+<blockquote>
+<p><strong>Unverified:</strong> the contents of APRA's ELA data request template. A search summary of APRA's liquidity page listed a final revised template (an XLSX file dated 23 July 2024), but APRA's liquidity page returned an error when I tried to read it directly, and I did not open the file. Obtain the current template from APRA, put a copy in the team's evidence folder, and check the items against our data sources. I have not described what the template asks for, and no field in it is claimed here.</p>
+</blockquote>
+<h3 id="125-what-our-team-should-have-ready">12.5 What our team should have ready</h3>
+<blockquote class="q-typical"><p><strong>Typical practice:</strong> Because the information must be provided "within other timeframes specified by APRA" (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>), which may be hours, banks usually:</p>
+<ol>
+<li>keep a named owner for the ELA data pack and a named deputy;</li>
+<li>map each template item to a source system and a query that already exists;</li>
+<li>keep a list of the securities the RBA would accept (Treasury), with the latest margin schedule, so the available collateral value and the likely cash can be estimated quickly;</li>
+<li>run an annual rehearsal under time pressure, and save the results as evidence for <a class="c" href="17_APG210_Companion.html#g-p76">APG 210 para 76</a>;</li>
+<li>include the ELA step in the contingency funding plan (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p47">APS 210 paras 47 to 51</a>) so that it sits after private-market options, because the RBA expects reasonable efforts to use them first [S4].</li>
+</ol>
+</blockquote>
+<h3 id="126-how-ela-affects-our-numbers">12.6 How ELA affects our numbers</h3>
+<ul>
+<li><strong>LCR.</strong> ELA is not HQLA. It is a secured loan that, if drawn, becomes an ordinary secured funding outflow for the term of the transaction. If the term extends beyond 30 days it does not fall in the LCR window. The <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a> statement about drawing on the CLF to cover outflows applies to the CLF only, which is zero.</li>
+<li><strong>NSFR.</strong> Assets encumbered for exceptional central bank liquidity operations may be given a lower RSF factor "if approval is sought from APRA and APRA agrees" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p24">Att C para 24</a>). The standard describes exceptional operations as "non-standard, temporary operations conducted by a central bank ... in a period of market-wide financial stress and/or exceptional macroeconomic circumstances" (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-f22">Att C footnote 22</a>). The ELA test repo and other routine repos are not exceptional operations.</li>
+</ul>
+<hr />
+<h2 id="13-the-council-of-financial-regulators-and-a-crisis">13 The Council of Financial Regulators and a crisis</h2>
+<h3 id="131-who-they-are">13.1 Who they are</h3>
+<p>The Council of Financial Regulators (CFR) is "the main coordinating body for Australia's financial regulators". It has four members: the RBA, APRA, the Australian Securities and Investments Commission (ASIC) and the Treasury [S26]. It coordinates; it does not itself lend or supervise.</p>
+<h3 id="132-its-role-in-a-crisis">13.2 Its role in a crisis</h3>
+<p>A Memorandum of Understanding on crisis management, agreed by the Council on 24 July 2025, replaced the 2008 version [S25]. Its main points [S25]:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Agency</th>
+<th>Lead responsibility in a stress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RBA</td>
+<td>Monitoring systemic risk (financial markets, clearing and settlement facilities, and the payments system). Assessing the scale of stress there, and "evaluating and, where appropriate, implementing response options that involve liquidity support and financial market intervention"</td>
+</tr>
+<tr>
+<td>APRA</td>
+<td>Prudentially supervising banks, insurers and superannuation funds; assessing stress in a supervised institution; deciding any supervisory response or resolution, including directions, appointing a statutory manager to a bank, and administering the Financial Claims Scheme if invoked</td>
+</tr>
+<tr>
+<td>ASIC</td>
+<td>Regulatory implications for markets and investors, disclosure, liaising with market operators</td>
+</tr>
+<tr>
+<td>Treasury</td>
+<td>Advising the Treasurer and the Government, coordinating collective advice on any response including Government action</td>
+</tr>
+</tbody>
+</table></div>
+<p>Principles: "Private sector or market-based solutions are generally the Council's preferred means of crisis management", although a public response may be needed where systemic risk could materialise; communication is coordinated; the Council maintains "playbooks and protocols" for collective responses [S25].</p>
+<h3 id="133-what-it-means-for-us">13.3 What it means for us</h3>
+<ul>
+<li>The first call in our own crisis is to APRA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>) and (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p5">Att A para 5</a>), not to the RBA.</li>
+<li>APRA's practice guide expects APRA and the RBA to be notified "as soon as practicable" if the ADI is facing or considers it is about to face a retail run (<a class="c" href="17_APG210_Companion.html#g-p74">APG 210 para 74</a>).</li>
+<li>The RBA provides liquidity; APRA decides on supervisory action; the Treasurer decides on Government action. A bank's request for ELA does not decide any of those.</li>
+</ul>
+<blockquote>
+<p><strong>Unverified:</strong> I did not read the RBA and APRA bilateral memorandum of understanding. Its content, and any liquidity-specific protocol in the CFR playbooks, is not public in what I read. Ask the controller if our crisis playbook cites either.</p>
+</blockquote>
+<hr />
+<h2 id="14-how-all-this-shows-up-in-our-numbers">14 How all this shows up in our numbers</h2>
+<h3 id="141-which-balances-are-hqla1-australian-dollars">14.1 Which balances are HQLA1 (Australian dollars)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>HQLA1?</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Notes and coin</td>
+<td>Yes, at market value, no haircut</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>Balance in the ESA at the RBA</td>
+<td>Yes, "to the extent that these balances may be drawn down in times of stress"</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>Cash received from an RBA repo, sitting in the ESA</td>
+<td>Yes, it is an ESA balance</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+</tr>
+<tr>
+<td>Australian Government and semi-government securities, unencumbered and under treasury control</td>
+<td>Yes</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>) and (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>); [S29]</td>
+</tr>
+<tr>
+<td>The same securities after being pledged to the RBA</td>
+<td>No; they are encumbered</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>)</td>
+</tr>
+<tr>
+<td>Other RBA-eligible securities (ADI bonds, corporate bonds, RMBS, self-securitisations)</td>
+<td>No; no AUD HQLA2 exists</td>
+<td>[S29]</td>
+</tr>
+</tbody>
+</table></div>
+<p>The operational requirements still apply: assets in the stock must be "available for the ADI to convert into cash at any time", unencumbered and under the control of the function that manages liquidity risk, and must not be pledged "to secure, collateralise or credit enhance any transactions" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A paras 22 to 23</a>).</p>
+<h3 id="142-how-a-repo-with-the-rba-moves-the-lcr">14.2 How a repo with the RBA moves the LCR</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Repo type</th>
+<th>Collateral</th>
+<th>Effect on the numerator</th>
+<th>Effect on the denominator</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Matures after 30 days</td>
+<td>Anything RBA-eligible</td>
+<td>Cash lands in the ESA: HQLA rises. Collateral that was not HQLA does not reduce it</td>
+<td>No outflow inside the window</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p1">Att A para 1</a>) for the 30-day window and (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+<tr>
+<td>Matures within 30 days</td>
+<td>HQLA1 (Australian Government or semi-government)</td>
+<td>Cash lands in the ESA; the pledged securities leave the unencumbered stock. Net change is the margin. For the cap calculation the transaction is unwound (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p7">Att A paras 7 to 8</a>)</td>
+<td>0 per cent run-off (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Matures within 30 days</td>
+<td>Other collateral, including self-securitised RMBS</td>
+<td>HQLA rises by the cash</td>
+<td>100 per cent of the funds raised (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>, "All other secured funding transactions")</td>
+<td></td>
+</tr>
+<tr>
+<td>Matures within 30 days</td>
+<td>HQLA2A-type collateral</td>
+<td>Not applicable now (no AUD HQLA2A)</td>
+<td>15 per cent</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two points about the table:</p>
+<ol>
+<li>The row in <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a> for secured funding "where the counterparties are domestic sovereigns, PSEs (but not the RBA) or MDBs" at 25 per cent expressly excludes the RBA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). A repo with the RBA against non-HQLA collateral therefore does <strong>not</strong> receive the 25 per cent rate.</li>
+<li><code>Interpretation:</code> the run-off is applied to the cash received from the RBA (the "funds raised"), not to the collateral value, and the self-securitised RMBS falls into "All other secured funding transactions" because no AUD asset is HQLA2B. Check with APRA through your controller if a large self-securitisation repo is planned.</li>
+</ol>
+<h3 id="143-how-a-repo-with-the-rba-moves-the-nsfr">14.3 How a repo with the RBA moves the NSFR</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Treatment</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funding from the RBA with residual maturity under 6 months</td>
+<td>0 per cent ASF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>)</td>
+</tr>
+<tr>
+<td>Funding from the RBA with residual maturity 6 months to under 1 year</td>
+<td>50 per cent ASF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>)</td>
+</tr>
+<tr>
+<td>Cash in the ESA from the repo</td>
+<td>0 per cent RSF</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>)</td>
+</tr>
+<tr>
+<td>Collateral encumbered for under 6 months</td>
+<td>Same RSF factor as if unencumbered</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Collateral encumbered 6 months to under 1 year</td>
+<td>The higher of 50 per cent and the unencumbered factor</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Collateral encumbered 1 year or more</td>
+<td>100 per cent</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+</tr>
+<tr>
+<td>Security stays on balance sheet while pledged</td>
+<td>Allocate it to its normal RSF category</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>APRA's FAQ on open repos with the RBA gives the same pattern for reporting: borrowing in "Funding from central banks" at 0 per cent ASF, cash in "Central bank reserves and balances" at 0 per cent RSF [S29].</p>
+<h3 id="144-worked-calculation-1-the-lcr-effect-of-an-rba-repo">14.4 Worked calculation 1: the LCR effect of an RBA repo</h3>
+<p><strong>Setup.</strong> Start with Example Bank's base position from the original brief: HQLA A$17.0bn (cash and RBA balances 5.0 plus government and semi-government securities 12.0), outflows 13.45, inflows 1.90, net outflows 11.55, LCR 147.2%, surplus 5.45.</p>
+<p>Treasury is considering raising A$2.0bn of cash from the RBA. All margins below are <strong>assumptions chosen for the example</strong>.</p>
+<p><strong>Case A: 28-day OMO repo against non-HQLA bonds.</strong></p>
+<ol>
+<li>Collateral: Example Bank's A$3.0bn of "other debt securities" are assumed to be ADI-issued, rated A minus, with 1 to 5 years to maturity, and RBA-eligible. Margin from the RBA's table: 14 per cent [S8].</li>
+<li>To receive A$2.0bn the bank pledges market value of 2.0 x 1.14 = A$2.28bn.</li>
+<li>HQLA: 17.0 + 2.0 = <strong>19.0</strong> (the bonds were not HQLA before, so nothing leaves the stock).</li>
+<li>Outflows: secured funding that is not backed by HQLA at 100 per cent of 2.0 = 2.00, because the repo matures within 30 days (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). Total outflows 13.45 + 2.00 = 15.45.</li>
+<li>Inflow cap: 75 per cent of 15.45 = 11.5875, which is far above inflows of 1.90, so inflows stay 1.90 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p30">Att A para 30</a>). Net outflows = 15.45 − 1.90 = <strong>13.55</strong>.</li>
+<li>LCR = 19.0 / 13.55 = <strong>140.2%</strong>. Surplus = 19.0 − 13.55 = 5.45.</li>
+</ol>
+<p>Result: the ratio falls from 147.2% to 140.2% while the dollar surplus is unchanged at A$5.45bn. Short repo adds to both the numerator and the denominator by the same amount, which moves any ratio above 100 per cent towards 100.</p>
+<p><strong>Case B: the same A$2.0bn raised for 90 days</strong> (hypothetical; today's regular OMO terms are 7 and 28 days, and RBA TROs at three and six months are expected in 2027 [S5] [S6]).</p>
+<ol>
+<li>HQLA: 17.0 + 2.0 = <strong>19.0</strong>.</li>
+<li>Outflows inside the 30-day window: none from this repo. Outflows 13.45; net 13.45 − 1.90 = <strong>11.55</strong>.</li>
+<li>LCR = 19.0 / 11.55 = <strong>164.5%</strong>. Surplus 7.45.</li>
+</ol>
+<p>Result: term funding that matures outside the window improves the ratio, which is the whole idea behind the NSFR (document <a href="09_NSFR_Production_End_to_End.html">09</a>).</p>
+<p><strong>Case C: 28-day repo against Australian Government bonds (HQLA1).</strong></p>
+<ol>
+<li>Margin for Australian Government bonds, 1 to 5 years: 2 per cent [S8]. To receive 2.0 the bank pledges market value 2.0 x 1.02 = <strong>A$2.04bn</strong>.</li>
+<li>HQLA: cash and RBA balances 5.0 + 2.0 = 7.0; government and semi-government securities 12.0 − 2.04 = 9.96; total <strong>16.96</strong>.</li>
+<li>Outflows: HQLA1-backed secured funding at 0 per cent (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>). Net outflows stay <strong>11.55</strong>.</li>
+<li>LCR = 16.96 / 11.55 = <strong>146.8%</strong>.</li>
+</ol>
+<p>Result: the ratio falls only by the cost of the margin (2.04 − 2.00 = 0.04), because both the cash received and the securities pledged are HQLA1 and there is no outflow.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>HQLA</th>
+<th>Net outflows</th>
+<th>LCR</th>
+<th>Surplus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>17.00</td>
+<td>11.55</td>
+<td>147.2%</td>
+<td>5.45</td>
+</tr>
+<tr>
+<td>A: 28 days, non-HQLA collateral</td>
+<td>19.00</td>
+<td>13.55</td>
+<td>140.2%</td>
+<td>5.45</td>
+</tr>
+<tr>
+<td>B: 90 days, non-HQLA collateral</td>
+<td>19.00</td>
+<td>11.55</td>
+<td>164.5%</td>
+<td>7.45</td>
+</tr>
+<tr>
+<td>C: 28 days, Australian Government bonds</td>
+<td>16.96</td>
+<td>11.55</td>
+<td>146.8%</td>
+<td>5.41</td>
+</tr>
+</tbody>
+</table></div>
+<p>All three stay above Example Bank's Board appetite of 120% and amber trigger of 125% (Example Bank conventions, original brief section 4.2).</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> In Case A the surplus is unchanged but the ratio falls. If someone argues "we got A$2bn of cash from the RBA, so our liquidity improved", check the maturity. A repo that must be repaid in 28 days does not add to 30-day survival.</p>
+</blockquote>
+<h3 id="145-worked-calculation-2-the-nsfr-effect-of-an-rba-repo">14.5 Worked calculation 2: the NSFR effect of an RBA repo</h3>
+<p>Base NSFR: ASF A$79.75bn, RSF A$58.50bn, NSFR 136.3% (original brief section 4.1). The "other debt securities" of A$3.0bn carry 85 per cent RSF, so 2.55 of RSF, and the pledged part of them is the A$2.28bn from Case A.</p>
+<p><strong>Case A: 28-day repo against non-HQLA bonds.</strong></p>
+<ol>
+<li>ASF: funding from a central bank with residual maturity under six months is 0 per cent ASF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p15">Att C para 15</a>). ASF stays 79.75.</li>
+<li>RSF: the cash in the ESA is 0 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>). The pledged bonds are encumbered for under six months, so they keep their normal 85 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). The bonds remain on the balance sheet (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>). RSF stays 58.50.</li>
+<li>NSFR = 79.75 / 58.50 = <strong>136.3%</strong>. No change.</li>
+</ol>
+<p><strong>Case B: a six-month repo against the same bonds</strong> (hypothetical: <a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a> gives the 50 per cent ASF to funding with residual maturity "between six months to less than one year"; I take a six-month term at inception to fall in this band).</p>
+<ol>
+<li>ASF: 2.0 x 50 per cent = 1.00, so ASF = 79.75 + 1.00 = <strong>80.75</strong>.</li>
+<li>RSF: the bonds are encumbered for six months to under a year. They would receive 85 per cent unencumbered, which is higher than 50 per cent, so they keep 85 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). The ESA cash is 0 per cent. RSF stays <strong>58.50</strong>.</li>
+<li>NSFR = 80.75 / 58.50 = <strong>138.0%</strong>.</li>
+</ol>
+<p><strong>Case C: a repo against Australian Government bonds, 28 days.</strong> The bonds stay on balance sheet at 5 per cent RSF (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p25">Att C para 25</a>) and (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>), the cash in the ESA has 0 per cent RSF, funding is 0 per cent ASF. NSFR stays 136.3%.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>ASF</th>
+<th>RSF</th>
+<th>NSFR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>79.75</td>
+<td>58.50</td>
+<td>136.3%</td>
+</tr>
+<tr>
+<td>A: 28 days, non-HQLA</td>
+<td>79.75</td>
+<td>58.50</td>
+<td>136.3%</td>
+</tr>
+<tr>
+<td>B: 6 months, non-HQLA</td>
+<td>80.75</td>
+<td>58.50</td>
+<td>138.0%</td>
+</tr>
+<tr>
+<td>C: 28 days, AGS</td>
+<td>79.75</td>
+<td>58.50</td>
+<td>136.3%</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>Interpretation:</code> the NSFR applies its factors to carrying value; I used market value as a stand-in, which does not matter in Cases A and B because the factor on the bonds stays at 85 per cent either way. A one-year repo would raise the RSF on the encumbered bonds to 100 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>) while giving 100 per cent ASF on the funding, which shows why the longer repos do not automatically improve the ratio. No such RBA term exists today.</p>
+<h3 id="146-two-small-cost-calculations">14.6 Two small cost calculations</h3>
+<p>Using the settings in section 6 and a cash rate target of 4.85% [S30] (illustration only):</p>
+<ul>
+<li><strong>Interest on a balance.</strong> On an ESA balance of A$4.0bn at the ES rate of 4.75%, one day of interest is 4,000,000,000 x 4.75% / 365 = <strong>A$520,548</strong>.</li>
+<li><strong>Overnight standing facility.</strong> Borrowing A$1.0bn overnight at 5.10% costs 1,000,000,000 x 5.10% / 365 = <strong>A$139,726</strong> for one night [S4].</li>
+<li><strong>28-day OMO repo.</strong> A$2.0bn at the OMO rate of 4.95% for 28 days costs 2,000,000,000 x 4.95% x 28 / 365 = <strong>A$7,594,521</strong>, so the repurchase price is A$2,007,594,521 [S5].</li>
+</ul>
+<p>The RBA's own worked example for an OMO repo confirms the method (daily accrual on an actual/365 basis, with the rate changing if the target changes mid-term) [S5].</p>
+<hr />
+<h2 id="15-rba-facility-purpose-who-can-use-it-collateral-effect-on-lcr">15 RBA facility, purpose, who can use it, collateral, effect on LCR</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Facility</th>
+<th>Purpose</th>
+<th>Who can use it</th>
+<th>Collateral</th>
+<th>Effect on LCR</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESA balance</td>
+<td>Settle payments and hold reserves</td>
+<td>ESA holders (compulsory for large ADIs) [S12] [S13]</td>
+<td>None; it is cash</td>
+<td>HQLA1 (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>)</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>Intraday SF repo</td>
+<td>Bridge intraday payment gaps</td>
+<td>Eligible counterparties settling across own ESA [S4]</td>
+<td>OMO-eligible securities</td>
+<td>None at end of day if unwound; no charge</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>Overnight SF repo</td>
+<td>Overnight liquidity at 25 basis points over target</td>
+<td>Same</td>
+<td>OMO-eligible securities</td>
+<td>Cash adds to HQLA; 100 per cent outflow if against non-HQLA (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>Open SF repo</td>
+<td>Fund the minimum ESA balance at the ES rate</td>
+<td>Same; limits per participant</td>
+<td>OMO-eligible (LCR ADIs)</td>
+<td>As above; APRA FAQ 10.0 for reporting</td>
+<td><strong>Ends early 2027</strong> [S2]</td>
+</tr>
+<tr>
+<td>Weekly OMO (full allotment)</td>
+<td>Supply reserves; control cash rate</td>
+<td>Eligible counterparties (RITS and Austraclear members) [S10]</td>
+<td>OMO-eligible securities</td>
+<td>As above; terms 7 and 28 days</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>Term Repo Operations</td>
+<td>Longer term reserves, 3 or 6 months, fixed-size auctions</td>
+<td>"eligible financial institutions" [S6]</td>
+<td>OMO-eligible and self-securitised assets [S6]</td>
+<td>Term beyond 30 days gives no outflow in the window</td>
+<td><strong>Expected 2027</strong></td>
+</tr>
+<tr>
+<td>Exceptional Liquidity Assistance</td>
+<td>Emergency liquidity for a solvent bank</td>
+<td>Any eligible counterparty may request; RBA's absolute discretion [S4]</td>
+<td>OMO-eligible; related-party exemptions case by case</td>
+<td>Not HQLA; secured funding outflow by term</td>
+<td>Current; very rare</td>
+</tr>
+<tr>
+<td>Committed Liquidity Facility</td>
+<td>Alternative treatment for scarce HQLA</td>
+<td>Locally incorporated LCR ADIs, APRA-approved (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p17">Att A para 17</a>)</td>
+<td>CLF-eligible securities</td>
+<td>Counted in the numerator up to the <a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p15">Att A para 15</a> limit</td>
+<td><strong>Zero since 1 Jan 2023</strong></td>
+</tr>
+<tr>
+<td>Term Funding Facility</td>
+<td>Pandemic term funding</td>
+<td>All ADIs that extend credit [S21]</td>
+<td>OMO-eligible, including self-securitised</td>
+<td>Matured funding; no longer relevant</td>
+<td><strong>Closed 30 June 2021; matured by 30 June 2024</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="16-what-to-re-check-and-what-i-could-not-confirm">16 What to re-check, and what I could not confirm</h2>
+<p>The RBA's arrangements are moving. Put these on the controller's quarterly checklist and look at the RBA market operations page each time.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Where to look</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Effective date for the end of open SF repos; new minimum ES balance requirements</td>
+<td>RBA market operations and Liquidity Facilities pages [S1] [S4]</td>
+<td>Announced 25 August 2026 for "early 2027"; date not yet published</td>
+</tr>
+<tr>
+<td>Term Repo Operations: legal and operational detail, collateral, start date</td>
+<td>RBA Term Repo Operations page [S6]</td>
+<td>"expected" in 2027</td>
+</tr>
+<tr>
+<td>ES rate, OMO and overnight spreads; cash rate target</td>
+<td>RBA market operations; cash rate target page [S2] [S30]</td>
+<td>The RBA "may adjust this spread" and the target changes</td>
+</tr>
+<tr>
+<td>Margin ratios</td>
+<td>RBA Margin Ratios page [S8]</td>
+<td>Can change at any time; page last updated 28 March 2023</td>
+</tr>
+<tr>
+<td>Self-securitisation eligibility and certificates</td>
+<td>RBA Eligible Securities page [S7]</td>
+<td>Conditions changed on 1 April 2025 and the TRO statement differs</td>
+</tr>
+<tr>
+<td>ELA data request template</td>
+<td>APRA liquidity page</td>
+<td>Not read (see section 12.4)</td>
+</tr>
+<tr>
+<td>RITS session times</td>
+<td>RBA RITS pages</td>
+<td>My source for detailed sessions is a 2015 paper [S15]</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="things-i-could-not-confirm">Things I could not confirm</h3>
+<blockquote>
+<p><strong>Unverified:</strong> the current size of aggregate ES balances. I read the RBA's description (reserves "have since fallen by more than half" from a pandemic peak, and bank surveys imply ample reserves of A$70 to 100 billion) but did not fetch the statistical series [S3]. Do not quote a balance from this document.</p>
+<p><strong>Unverified:</strong> the content of the APRA ELA data request template; whether APRA counts the RBA's minimum ES balance as drawable HQLA1; whether self-securitised assets can be used in OMO or standing facility repos today; whether the 2021 APRA letter said the CLF could be reactivated (I saw it only in a search summary); the RBA and APRA bilateral memorandum of understanding; the Basel Committee paper "Monitoring tools for intraday liquidity management" (cited by name only; not read).</p>
+<p><strong>Unverified:</strong> APRA's liquidity FAQ is dated 9 December 2021 and I did not check it against the current ARF 210.6 item numbers. Document <a href="18_ARS210_Returns_Companion.html">18</a> covers the form.</p>
+</blockquote>
+<h3 id="differences-between-sources-and-with-the-rest-of-the-pack">Differences between sources and with the rest of the pack</h3>
+<ul>
+<li>The RBA's TRO statement lists self-securitised assets as collateral; its eligible securities page says they are accepted only in ELA with a related-party exemption (section 9.2).</li>
+<li>The original brief says the CLF was phased out to zero "as at 1 January 2023 (APRA)". APRA's letter is dated 4 January 2023; the effective date is 1 January 2023 [S20]. No conflict.</li>
+<li>APG 210 July 2025 still has the CLF paragraphs, numbered differently from the July 2024 draft I also read (CLF at paras 92 to 105 in the July 2025 version) [S28].</li>
+</ul>
+<hr />
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>
+<p>What is an Exchange Settlement Account, and why does APS 210 treat a balance in it as HQLA1?
+   <strong>Answer:</strong> It is an account a bank holds at the RBA to settle payments with other banks. A balance in it is settlement money already, with no price risk, so it is HQLA1 "to the extent that these balances may be drawn down in times of stress" (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>). It also has a zero RSF factor (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>).</p>
+</li>
+<li>
+<p>Why must an ESA never be overdrawn, and what does a bank do when it is short for part of a day?
+   <strong>Answer:</strong> RTGS settles each payment in full from funds already held, and ESAs must be in credit at all times [S12] [S13]. The bank holds more balance, or contracts an intraday SF repo with the RBA, which has no price differential [S4]. This is the practical meaning of <a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>.</p>
+</li>
+<li>
+<p>If the cash rate target is 4.85 per cent, the ES rate is 10 basis points below it and the overnight standing facility is 25 basis points above it, what are those two rates, and what is one day's interest on A$4.0bn at the ES rate?
+   <strong>Answer:</strong> ES rate 4.75 per cent; overnight facility 5.10 per cent. Interest = 4,000,000,000 x 4.75% / 365 = A$520,548 (sections 6 and 14.6).</p>
+</li>
+<li>
+<p>A repo of Australian Government bonds with market value A$2.04bn at a 2 per cent margin: how much cash does the bank receive?
+   <strong>Answer:</strong> Cash = market value / (1 + margin) = 2.04 / 1.02 = A$2.0bn [S8].</p>
+</li>
+<li>
+<p>Example Bank raises A$2.0bn from the RBA for 28 days against non-HQLA bonds. Start from HQLA 17.0 and net outflows 11.55. What is the new LCR and the surplus?
+   <strong>Answer:</strong> HQLA 17.0 + 2.0 = 19.0; outflows rise by 100 per cent of 2.0, so net outflows are 11.55 + 2.0 = 13.55 (the inflow cap is not binding: 75 per cent of 15.45 = 11.59). LCR = 19.0 / 13.55 = 140.2%; surplus = 5.45, unchanged (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</p>
+</li>
+<li>
+<p>The same A$2.0bn is raised for 90 days instead. What is the LCR, and why does it differ from question 5?
+   <strong>Answer:</strong> 19.0 / 11.55 = 164.5%. No outflow arises inside the 30-day window, so the denominator is unchanged.</p>
+</li>
+<li>
+<p>Using the NSFR base (ASF 79.75, RSF 58.50), what happens if the RBA repo in question 5 is a six-month repo and the pledged bonds carry an 85 per cent RSF factor?
+   <strong>Answer:</strong> ASF rises by 2.0 x 50 per cent = 1.00 to 80.75 (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p14">Att C para 14</a>); RSF is unchanged because the cash is 0 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>) and the bonds stay at 85 per cent (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>). NSFR = 80.75 / 58.50 = 138.0%.</p>
+</li>
+<li>
+<p>What must an ADI do under <a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a> before it approaches the RBA for ELA, and what must it be able to do?
+   <strong>Answer:</strong> It must notify APRA immediately of its liquidity concerns and its intention to request ELA; provide any information requested by APRA or the RBA; and have the operational capability to provide information with its application or within APRA's timeframe (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a>). APRA expects annual testing (<a class="c" href="17_APG210_Companion.html#g-p76">APG 210 para 76</a>).</p>
+</li>
+<li>
+<p>Name two things the RBA expects of a bank requesting ELA besides notifying its regulator.
+   <strong>Answer:</strong> That it has already made reasonable efforts to access private sector sources of liquidity, and that it presents evidence of solvency, including an attestation of solvency or positive net worth [S4].</p>
+</li>
+<li>
+<p>Why did the CLF end, and what remains in APS 210?
+    <strong>Answer:</strong> APRA and the RBA considered that there were enough HQLA for locally incorporated LCR ADIs, so the aggregate CLF was reduced to zero as at 1 January 2023 [S20]. The paragraphs (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A paras 13 to 21</a>) remain in the standard.</p>
+</li>
+</ol>
+<h2 id="what-to-remember">What to remember</h2>
+<ul>
+<li>An ESA balance is settlement money at the RBA: HQLA1, zero RSF, and never allowed to go overdrawn (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p9">Att A para 9</a>) and (<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p29">Att C para 29</a>).</li>
+<li>RTGS settles payments one at a time and in full; intraday liquidity is the cash needed to bridge gaps during the day (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p41">APS 210 para 41</a>).</li>
+<li>The RBA now supplies reserves through full-allotment weekly OMOs at 10 basis points over the cash rate target, pays the ES rate 10 basis points below it, and lends overnight at 25 basis points over it [S2] [S4] [S17].</li>
+<li>Open SF repos end in early 2027; Term Repo Operations are expected in 2027. Re-check both (section 16).</li>
+<li>Being RBA-eligible does not make a security HQLA; the only AUD HQLA1 are notes and coin, RBA balances, and Australian Government and semi-government securities [S29].</li>
+<li>A short repo adds the same amount to HQLA and to outflows, so the LCR falls toward 100 per cent while the surplus is unchanged; a repo beyond 30 days improves the LCR (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>).</li>
+<li>The CLF is zero since 1 January 2023 but its paragraphs remain (<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p13">Att A paras 13 to 21</a>).</li>
+<li>ELA is emergency, discretionary and rare. <a class="c" href="04_APS210_Companion_Main_Body.html#m-p70">APS 210 para 70</a> requires immediate notice to APRA and an operational capability to provide information; test it at least annually (<a class="c" href="17_APG210_Companion.html#g-p76">APG 210 para 76</a>).</li>
+<li>The Council of Financial Regulators coordinates a crisis; the RBA leads on liquidity support and APRA on supervision.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>All pages were accessed on 14 November 2026 unless stated. The date shown is the document's own date or last-updated date where the page gives one.</p>
+<ol>
+<li>RBA, "Market Operations" (rba.gov.au/mkt-operations/). Banner dated from 25 August 2026; no page date.</li>
+<li>RBA, "Domestic Market Operations and Liquidity Facilities" (rba.gov.au/mkt-operations/domestic-market-ops-and-standing-facilities.html). No page date; banner refers to 25 August 2026.</li>
+<li>David Jacobs, RBA Head of Domestic Markets, speech "The Road to Ample: Towards a Demand-driven Liquidity Regime", 25 August 2026 (rba.gov.au/speeches/2026/sp-so-2026-08-25.html).</li>
+<li>RBA, "Liquidity Facilities" technical note (rba.gov.au/mkt-operations/resources/tech-notes/standing-facilities.html). Last updated 25 August 2026.</li>
+<li>RBA, "Open Market Operations" technical note (rba.gov.au/mkt-operations/resources/tech-notes/open-market-operations.html). Last updated 30 June 2026.</li>
+<li>RBA, "Term Repo Operations" (rba.gov.au/mkt-operations/resources/tech-notes/term-repo-operations.html). Undated information statement.</li>
+<li>RBA, "Eligible Securities" (rba.gov.au/mkt-operations/resources/tech-notes/eligible-securities.html). Last updated 4 September 2026.</li>
+<li>RBA, "Margin Ratios" (rba.gov.au/mkt-operations/resources/tech-notes/margin-ratios.html). Last updated 28 March 2023.</li>
+<li>RBA, "Margin Maintenance and Substitutions on Repurchase Agreements" (rba.gov.au/mkt-operations/resources/tech-notes/margins.html). Last updated 4 February 2025.</li>
+<li>RBA, "Eligible Counterparties" (rba.gov.au/mkt-operations/resources/tech-notes/eligible-counterparties.html). Last updated 5 June 2020.</li>
+<li>RBA, "Settlement Procedures" (rba.gov.au/mkt-operations/resources/tech-notes/settlement-procedures.html). Last updated 16 July 2024.</li>
+<li>RBA, "About RITS" (rba.gov.au/payments-and-infrastructure/rits/about.html). No page date.</li>
+<li>RBA, "Exchange Settlement Account Policy" (rba.gov.au/payments-and-infrastructure/esa/). No page date.</li>
+<li>RBA, "RITS Business Hours" (rba.gov.au/payments-and-infrastructure/rits/business-hours.html). No page date.</li>
+<li>RBA, "Continuous Linked Settlement: RITS Session Times and Operational Arrangements", section 4 (rba.gov.au/payments-and-infrastructure/rits/information-papers/cls-rits-session-times-and-operational-arrangements/details-of-session-times.html). July 2015.</li>
+<li>RBA, "Minutes of the Monetary Policy Board Meeting, 3 and 4 November 2025" (rba.gov.au/monetary-policy/rba-board-minutes/2025/2025-11-04.html).</li>
+<li>Christopher Kent, RBA Assistant Governor, speech "The RBA's Monetary Policy Implementation System: Some Important Updates", 2 April 2025 (rba.gov.au/speeches/2025/sp-ag-2025-04-02.html).</li>
+<li>RBA and APRA, "Joint APRA-RBA Statement on Use of the RBA's Overnight Standing Facility", Media Release 2025-11, 2 April 2025 (rba.gov.au/media-releases/2025/mr-25-11.html).</li>
+<li>RBA, "Committed Liquidity Facility" (rba.gov.au/mkt-operations/committed-liquidity-facility.html). Page states the facility was phased out to zero as at 1 January 2023.</li>
+<li>APRA, "Letter to all locally incorporated LCR ADIs: Aggregate Committed Liquidity Facility", 4 January 2023 (handbook.apra.gov.au/letter/996/letter-locally-incorporated-lcr-adis-aggregate-committed-liquidity-facility), and APRA's news item "APRA phases out aggregate Committed Liquidity Facility" (apra.gov.au/news-and-publications/apra-phases-out-aggregate-committed-liquidity-facility).</li>
+<li>RBA, "Term Funding Facility to Support Lending to Australian Businesses", announcement of 19 March 2020 (rba.gov.au/mkt-operations/term-funding-facility/announcement-2020-03-19.html).</li>
+<li>RBA, "Term Funding Facility Notifications", last updated 3 November 2020 (rba.gov.au/mkt-operations/term-funding-facility/notifications.html).</li>
+<li>RBA, Research Discussion Paper 2022-07, "The Term Funding Facility: Has It Encouraged Business Lending?", December 2022 (rba.gov.au/publications/rdp/2022/2022-07/full.html).</li>
+<li>RBA, Annual Report 2021, "Operations in Financial Markets" (rba.gov.au/publications/annual-reports/rba/2021/operations-in-financial-markets.html).</li>
+<li>Council of Financial Regulators, "Memorandum of Understanding on Crisis Management", agreed 24 July 2025 (cfr.gov.au/cfr-program/crisis-management/memorandum-of-understanding-on-crisis-management.html).</li>
+<li>Council of Financial Regulators, "Charter" (cfr.gov.au/charter-and-mous/cfr-charter/). No page date.</li>
+<li>APRA, "Response to submissions: Targeted changes to ADI liquidity and capital standards" (apra.gov.au/response-submissions-targeted-changes-adi-liquidity-and-capital-standards). Read through a page-summary fetch; no page date seen.</li>
+<li>APRA, Prudential Practice Guide APG 210 Liquidity, July 2025 (apra.gov.au/system/files/2025-07/Prudential practice guide APG 210 - Liquidity - Clean.pdf; APRA's page lists it as current from 1 July 2025). I also read the July 2024 PDF.</li>
+<li>APRA, "Liquidity: frequently asked questions" (apra.gov.au/liquidity-frequently-asked-questions), FAQ 10.0 and FAQ 18.0. Published 9 December 2021 per the page.</li>
+<li>RBA, "Cash Rate Target" (rba.gov.au/statistics/cash-rate/). Table showing target 4.85 per cent from 4 November 2026.</li>
+<li>RBA, "Test Repo Facilities" (rba.gov.au/mkt-operations/resources/tech-notes/test-repo-facilities.html). No page date.</li>
+<li>APRA, "APS 210 Liquidity" (apra.gov.au/standards/aps-210). Page lists the standard as in force, commencing 1 July 2025 (read through a page-summary fetch). The standard text used is F2025L00653.</li>
+<li>RBA, Bulletin, "The Committed Liquidity Facility: 2015 to 2022", 25 January 2024 (rba.gov.au/publications/bulletin/2024/jan/the-committed-liquidity-facility-2015-2022.html). Fetched but read only in part; no fact in this document depends on it alone.</li>
+<li>RBA, Bulletin December 2020, "The Term Funding Facility" (rba.gov.au/publications/bulletin/2020/dec/the-term-funding-facility.html).</li>
+</ol></main><footer><a href="19_Related_Standards_and_Accountability.html">&#9664; 19 The standards around APS 210, accountability and what is changing</a><a href="21_Advanced_Worked_Examples.html">21 Advanced worked examples: currencies, groups, caps and derivatives &#9654;</a></footer></body></html>

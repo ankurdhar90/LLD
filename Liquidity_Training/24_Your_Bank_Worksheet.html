@@ -1,0 +1,481 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>24 Your bank: the worksheet that replaces Example Bank | Liquidity Training</title><style>
+:root{color-scheme:light dark;--bg:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--accent:#2a78d6;--wash:#f2f1ee;--bar:#f9f9f7;
+--ctl:#1baf7a;--ex:#2a78d6;--watch:#eda100;--std:#6250d6;--typ:#898781}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--ink:#f0efec;--ink2:#c3c2b7;--line:#2c2c2a;--accent:#5a9ded;--wash:#222220;--bar:#1a1a19;
+--ctl:#199e70;--ex:#3987e5;--watch:#c98500;--std:#9085e9}}
+*{box-sizing:border-box}html{scroll-padding-top:44px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:6px 12px;background:var(--bar);border-bottom:1px solid var(--line);font-size:13px}
+header a{color:var(--accent);text-decoration:none;white-space:nowrap}header .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink2);font-weight:600}
+header select{max-width:34vw;font:inherit;padding:2px 4px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:10px 14px 28px}
+h1{font-size:23px;margin:6px 0 8px;line-height:1.25}h2{font-size:18px;margin:20px 0 6px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;margin:14px 0 4px}h4{font-size:15px;margin:10px 0 2px}h3.entry{background:var(--wash);padding:4px 8px;border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+p{margin:5px 0}ul,ol{margin:4px 0;padding-left:22px}li{margin:1px 0}a{color:var(--accent)}a.c{text-decoration:none;border-bottom:1px dotted var(--accent)}
+code{font:13px ui-monospace,Consolas,monospace;background:var(--wash);padding:0 4px;border-radius:4px}
+pre{background:var(--wash);padding:8px 10px;border-radius:6px;overflow:auto;margin:6px 0}pre code{background:none;padding:0}
+.tw{overflow-x:auto;margin:6px 0}table{border-collapse:collapse;font-size:13.5px;width:100%}
+th,td{border:1px solid var(--line);padding:3px 7px;text-align:left;vertical-align:top}th{background:var(--wash);font-weight:600}
+blockquote{margin:6px 0;padding:5px 10px;background:var(--wash);border-left:3px solid var(--muted);border-radius:0 6px 6px 0}blockquote p{margin:3px 0}
+.q-from{border-color:var(--ctl)}.q-example{border-color:var(--ex)}.q-watch{border-color:var(--watch)}.q-in{border-color:var(--std)}.q-typical{border-color:var(--typ)}
+hr{border:0;border-top:1px solid var(--line);margin:12px 0}.miss{color:#d03b3b;font-weight:600}
+footer{display:flex;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:8px 14px 20px;border-top:1px solid var(--line);font-size:13.5px}
+footer a{text-decoration:none}.toc{columns:2 320px;column-gap:28px}.toc h2{break-after:avoid;margin-top:8px;border:0}.toc li{break-inside:avoid}.toc small{color:var(--ink2)}
+table.ix td:first-child{white-space:nowrap;width:1%}table.ix td:last-child{width:22%}
+@media print{header,footer{display:none}main{max-width:none;padding:0}body{font-size:11pt}a{color:inherit;text-decoration:none}}
+</style></head><body>
+<header><a href="index.html">Contents</a><a href="23_Glossary.html" title="23 Glossary, acronyms and common confusions">&#9664; 23</a><span class="t">24 Your bank: the worksheet that replaces Example Bank</span><select aria-label="Jump to section" onchange="if(this.value)location.hash=this.value"><option value="">Sections</option><option value="#how-to-use-it">How to use it</option><option value="#1-what-kind-of-adi-are-we">1. What kind of ADI are we</option><option value="#2-limits-and-triggers">2. Limits and triggers</option><option value="#3-people-and-committees">3. People and committees</option><option value="#4-timetable">4. Timetable</option><option value="#5-systems-and-data">5. Systems and data</option><option value="#6-judgements-the-standard-leaves-to-the-bank">6. Judgements the standard leaves to the bank</option><option value="#7-reporting-to-apra">7. Reporting to APRA</option><option value="#8-the-balance-sheet-itself">8. The balance sheet itself</option><option value="#when-you-have-finished">When you have finished</option></select><a href="search.html">Search</a><a href="15_APS210_Paragraph_Index.html">Index</a><a href="25_Practice_Files.html" title="25 Practice files">25 &#9654;</a></header>
+<main><h1 id="24-your-bank-the-worksheet-that-replaces-example-bank">24 Your bank: the worksheet that replaces Example Bank</h1>
+<p><strong>Purpose:</strong> Everything in this pack that is labelled "Example Bank convention" or "typical practice" is a placeholder. This worksheet lists each placeholder and where to find your real bank's version, so you can replace the illustration with fact.</p>
+<p><strong>Before you start:</strong> Documents <a href="02_Liquidity_From_Zero.html">02</a> to 12.</p>
+<p><strong>Time:</strong> Two to three weeks alongside your normal work. Bring the completed sheet to your controller.</p>
+<blockquote class="q-from"><p><strong>From the controller:</strong> No training pack can know your bank. The rules are the same everywhere; the limits, systems, people and judgements are not. A new analyst who has filled in this sheet knows more about how the bank really works than most people after a year.</p>
+</blockquote>
+<h2 id="how-to-use-it">How to use it</h2>
+<p>Print it or copy it. For each row, find the answer, write down where you found it (the policy name and section, the system, or the person's role) and the date. If the answer does not exist, that is a finding: raise it.</p>
+<h2 id="1-what-kind-of-adi-are-we">1. What kind of ADI are we</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Why it matters</th>
+<th>Where to look</th>
+<th>Your answer and source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Are we an LCR ADI or an MLH ADI?</td>
+<td>Decides which attachment of APS 210 applies (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p52">APS 210 paras 52 to 54</a>)</td>
+<td>APRA's classification letter; the liquidity policy</td>
+<td></td>
+</tr>
+<tr>
+<td>Locally incorporated or a foreign ADI (branch)?</td>
+<td>100% or 40% LCR minimum; whether the NSFR applies (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p55">APS 210 paras 55, 59</a>)</td>
+<td>Annual report; the liquidity policy</td>
+<td></td>
+</tr>
+<tr>
+<td>Has APRA set a higher minimum LCR or NSFR for us?</td>
+<td>It replaces 100% as our real floor (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p56">APS 210 paras 56, 61</a>)</td>
+<td>APRA correspondence, held by the controller or Risk</td>
+<td></td>
+</tr>
+<tr>
+<td>What is in our Level 1 and Level 2 group?</td>
+<td>Which entities each number covers (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p3">APS 210 paras 3, 4</a>)</td>
+<td>Group structure chart; the capital and liquidity policies</td>
+<td></td>
+</tr>
+<tr>
+<td>Do we have securitisation vehicles, and how are they treated?</td>
+<td>Included in LCR cash flows; may be excluded from the NSFR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p5">APS 210 para 5</a>)</td>
+<td>Treasury; the securitisation policy</td>
+<td></td>
+</tr>
+<tr>
+<td>Which currencies are material?</td>
+<td>Separate analysis by currency; AUD and all-currencies LCR (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p43">APS 210 paras 43, 55</a>)</td>
+<td>Liquidity policy; the latest return</td>
+<td></td>
+</tr>
+<tr>
+<td>Has APRA granted any adjustment or exclusion?</td>
+<td>It changes how a rule applies to us (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p71">APS 210 paras 71, 72</a>)</td>
+<td>APRA correspondence</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-limits-and-triggers">2. Limits and triggers</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Example Bank placeholder</th>
+<th>Where to look</th>
+<th>Your bank's figure and source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Board risk appetite for the LCR</td>
+<td>120%</td>
+<td>Risk appetite statement (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p16">APS 210 paras 16, 21</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Board risk appetite for the NSFR</td>
+<td>110%</td>
+<td>Risk appetite statement</td>
+<td></td>
+</tr>
+<tr>
+<td>Management early-warning trigger, LCR</td>
+<td>125%</td>
+<td>Liquidity policy; limits schedule (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p37">APS 210 para 37</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Management early-warning trigger, NSFR</td>
+<td>115%</td>
+<td>Liquidity policy</td>
+<td></td>
+</tr>
+<tr>
+<td>Other limits (maturity gap, concentration, currency, intraday, encumbrance)</td>
+<td>Illustrative in document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a></td>
+<td>Limits schedule</td>
+<td></td>
+</tr>
+<tr>
+<td>Early warning indicators and their thresholds</td>
+<td>Twenty illustrative indicators in document <a href="10_Monitoring_Beyond_the_Ratios.html">10</a></td>
+<td>Liquidity policy (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p39">APS 210 para 39</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Who must be told when each limit is breached, and how fast</td>
+<td>Illustrative ladder in document <a href="12_Controls_Incidents_and_Escalation.html">12</a></td>
+<td>Escalation procedure; contingency funding plan</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3-people-and-committees">3. People and committees</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Role in this pack</th>
+<th>Your bank's equivalent (role title, not a name)</th>
+<th>What they decide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Liquidity Reporting (prepares the numbers)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Controller (signs the numbers)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Treasury (runs the liquid assets and funding)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Liquidity Risk (independent oversight, <a class="c" href="04_APS210_Companion_Main_Body.html#m-p28">APS 210 para 28</a>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ALCO (asset and liability committee)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Board Risk Committee</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Person authorised to notify APRA (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p14">APS 210 para 14</a>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Accountable person for liquidity under the Financial Accountability Regime (document <a href="19_Related_Standards_and_Accountability.html">19</a>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Internal audit contact for liquidity</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-timetable">4. Timetable</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Example Bank placeholder</th>
+<th>Your bank's timing, preparer, reviewer, approver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daily LCR</td>
+<td>10:00 am for the previous business day</td>
+<td></td>
+</tr>
+<tr>
+<td>NSFR</td>
+<td>Monthly</td>
+<td></td>
+</tr>
+<tr>
+<td>ALCO pack</td>
+<td>Monthly</td>
+<td></td>
+</tr>
+<tr>
+<td>Board report</td>
+<td>Quarterly</td>
+<td></td>
+</tr>
+<tr>
+<td>APRA returns (document <a href="18_ARS210_Returns_Companion.html">18</a>)</td>
+<td>Per the reporting standard</td>
+<td></td>
+</tr>
+<tr>
+<td>Public disclosure (document <a href="19_Related_Standards_and_Accountability.html">19</a>)</td>
+<td>Per APS 330</td>
+<td></td>
+</tr>
+<tr>
+<td>Stress tests (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p62">APS 210 paras 62 to 66</a>)</td>
+<td>Quarterly</td>
+<td></td>
+</tr>
+<tr>
+<td>Funding strategy review (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p45">APS 210 para 45</a>)</td>
+<td>At least annually</td>
+<td></td>
+</tr>
+<tr>
+<td>Contingency funding plan review and test (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p51">APS 210 para 51</a>)</td>
+<td>At least annually</td>
+<td></td>
+</tr>
+<tr>
+<td>Liquidity risk framework review (<a class="c" href="04_APS210_Companion_Main_Body.html#m-p17">APS 210 para 17</a>)</td>
+<td>At least annually</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-systems-and-data">5. Systems and data</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Example Bank placeholder</th>
+<th>Your bank's system, table or file, and owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deposits</td>
+<td>Core banking system</td>
+<td></td>
+</tr>
+<tr>
+<td>Loans</td>
+<td>Loan system</td>
+<td></td>
+</tr>
+<tr>
+<td>Securities, repos, derivatives, debt issued</td>
+<td>Treasury system</td>
+<td></td>
+</tr>
+<tr>
+<td>Pledged assets</td>
+<td>Collateral system</td>
+<td></td>
+</tr>
+<tr>
+<td>Customer type, group, insurance cover</td>
+<td>Customer master</td>
+<td></td>
+</tr>
+<tr>
+<td>Undrawn facilities</td>
+<td>Facilities and limits system</td>
+<td></td>
+</tr>
+<tr>
+<td>Trade finance and guarantees</td>
+<td>Trade finance system</td>
+<td></td>
+</tr>
+<tr>
+<td>Control totals</td>
+<td>General ledger</td>
+<td></td>
+</tr>
+<tr>
+<td>Prices and exchange rates</td>
+<td>Market data</td>
+<td></td>
+</tr>
+<tr>
+<td>The LCR and NSFR calculation itself</td>
+<td>A working paper</td>
+<td></td>
+</tr>
+<tr>
+<td>Where evidence and sign-offs are kept, and for how long</td>
+<td>Evidence folder</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>For each source also record: when it is refreshed, how you know it loaded completely, and what it reconciles to.</p>
+<h2 id="6-judgements-the-standard-leaves-to-the-bank">6. Judgements the standard leaves to the bank</h2>
+<p>Each of these needs a documented, approved answer. Find the document and read it.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Judgement</th>
+<th>Rule</th>
+<th>Your bank's documented answer and where it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What counts as an "established relationship" for a stable deposit</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How the scorecard criteria are measured: "on-line", "heavily rate-driven"</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p40">Att A para 40</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Whether on-line accounts can ever be stable</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p37">Att A para 37</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>What makes an early-withdrawal penalty "significant"</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p41">Att A para 41</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How operational deposits are identified, and the excess balance separated</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p47">Att A paras 47 to 50</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>When an intermediated deposit is looked through to the person</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p35">Att A para 35</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How an SME is defined and aggregated to the A$2 million test</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p46">Att A para 46</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>Which facilities are liquidity facilities</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p51">Att A paras 51, 52</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>The rates for the two contingent obligations the ADI sets itself</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How the HQLA2 caps and the unwind are calculated</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p6">Att A paras 6 to 8</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How HQLA is shown to be under Treasury's control</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-p22">Att A para 22</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How derivative netting and collateral outflows are measured</td>
+<td>(<a class="c" href="05_APS210_Companion_Attachment_A_LCR.html#a-t3">Att A Table 3</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How loans are split by maturity and risk weight for the NSFR</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p20">Att C paras 20 to 22, 35, 36</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>How encumbrance periods are recorded</td>
+<td>(<a class="c" href="06_APS210_Companion_Attachments_B_and_C.html#c-p23">Att C para 23</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td>What to do when a data attribute is missing</td>
+<td>Document <a href="07_Data_and_Classification.html">07</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Tolerances for reconciliations and movement checks</td>
+<td>Document <a href="12_Controls_Incidents_and_Escalation.html">12</a></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="7-reporting-to-apra">7. Reporting to APRA</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Where to look</th>
+<th>Your answer and source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which forms do we lodge, at which levels, and when is each due?</td>
+<td>Document <a href="18_ARS210_Returns_Companion.html">18</a>; the regulatory reporting calendar</td>
+<td></td>
+</tr>
+<tr>
+<td>Through which system, and who holds which role in it?</td>
+<td>Regulatory reporting team</td>
+<td></td>
+</tr>
+<tr>
+<td>Who attests to each return?</td>
+<td>Regulatory reporting procedure</td>
+<td></td>
+</tr>
+<tr>
+<td>What happened the last time a return was resubmitted?</td>
+<td>Incident log</td>
+<td></td>
+</tr>
+<tr>
+<td>What has APRA asked about in the last two years?</td>
+<td>Controller; Risk</td>
+<td></td>
+</tr>
+<tr>
+<td>When was our last APRA liquidity review, and what were the findings?</td>
+<td>Controller; Risk</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="8-the-balance-sheet-itself">8. The balance sheet itself</h2>
+<p>Take the latest month-end and rebuild these for your bank, as you did for Example Bank:</p>
+<ol>
+<li>The balance sheet in the layout of document <a href="02_Liquidity_From_Zero.html">02</a>, with every line classified.</li>
+<li>The LCR working paper of document <a href="08_LCR_Production_End_to_End.html">08</a>. Does it reproduce the reported figure?</li>
+<li>The NSFR working paper of document <a href="09_NSFR_Production_End_to_End.html">09</a>. Does it reconcile to the ledger?</li>
+<li>The five largest movements in each ratio over the last quarter, explained.</li>
+<li>The lineage of one number you choose, traced from source system to return, using document 16 as the template.</li>
+</ol>
+<h2 id="when-you-have-finished">When you have finished</h2>
+<p>Review the sheet with your controller. Anything you could not find, or found to be undocumented, goes on a list with an owner and a date. That list is the most useful thing a new analyst produces in the first three months.</p>
+<blockquote class="q-watch"><p><strong>Watch out:</strong> This worksheet will contain internal information about your bank. Keep the completed copy inside the bank's systems, not with this training pack.</p>
+</blockquote></main><footer><a href="23_Glossary.html">&#9664; 23 Glossary, acronyms and common confusions</a><a href="25_Practice_Files.html">25 Practice files &#9654;</a></footer></body></html>
